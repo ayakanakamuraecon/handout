@@ -22,7 +22,7 @@ jobs:
     - name: Convert Markdown to HTML
       run: |
         mkdir output
-        pandoc README.md -o output/index.html
+        pandoc index.md -o output/index.html
 
     # GitHub Pagesへのデプロイ
     - name: Deploy to GitHub Pages
