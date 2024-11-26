@@ -21,7 +21,7 @@ jobs:
     # MarkdownをHTMLに変換
     - name: Convert Markdown to HTML
       run: |
-        mkdir output
+        mkdir -p output
         cp bulma.css output/
         pandoc index.md -o output/index.html --css bulma.css
 
