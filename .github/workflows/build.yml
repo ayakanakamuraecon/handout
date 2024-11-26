@@ -10,27 +10,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # リポジトリをチェックアウト
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+    # リポジトリをチェックアウト
+    - name: Checkout Repository
+      uses: actions/checkout@v3
 
-      # Pandocのインストール
-      - name: Install Pandoc
-        run: sudo apt-get install -y pandoc
+    # Pandocのインストール
+    - name: Install Pandoc
+      run: sudo apt-get install -y pandoc
 
-      # MarkdownをHTMLに変換
-      - name: Convert Markdown to HTML
-        run: |
-          mkdir -p output
-          pandoc index.md -o output/index.html --css bulma.css
-          
-      # bulma.cssをoutputフォルダにコピー
-      - name: Copy CSS
-        run: cp bulma.css output/
+    # MarkdownをHTMLに変換
+    - name: Convert Markdown to HTML
+      run: |
+        mkdir output
+        cp bulma.css output/
+        pandoc index.md -o output/index.html --css bulma.css
 
-      # GitHub Pagesへのデプロイ
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./output
+    # GitHub Pagesへのデプロイ
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./output
