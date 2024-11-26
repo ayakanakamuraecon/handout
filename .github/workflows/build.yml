@@ -18,11 +18,12 @@ jobs:
     - name: Install Pandoc
       run: sudo apt-get install -y pandoc
 
-    # MarkdownをHTMLに変換
+    # CSSファイルをコピーし、MarkdownをHTMLに変換
     - name: Convert Markdown to HTML
       run: |
-        mkdir output
-        pandoc index.md -o ./index.html --css ./bulma.css
+        mkdir -p output
+        cp bulma.css output/  # CSSファイルをoutputディレクトリにコピー
+        pandoc index.md -o output/index.html --css bulma.css  # CSS適用時はoutputディレクトリを参照
 
     # GitHub Pagesへのデプロイ
     - name: Deploy to GitHub Pages
