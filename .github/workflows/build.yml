@@ -22,8 +22,9 @@ jobs:
     - name: Convert Markdown to HTML
       run: |
         mkdir -p output
-        cp bulma.css output/
-        pandoc index.md -o output/index.html --css bulma.css
+        pandoc index.md -o output/index.html \
+          --metadata pagetitle="My Website" \
+          --metadata link-css="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css"
 
     # GitHub Pagesへのデプロイ
     - name: Deploy to GitHub Pages
