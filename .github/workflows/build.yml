@@ -18,11 +18,12 @@ jobs:
     - name: Install Pandoc
       run: sudo apt-get install -y pandoc
 
-    # MarkdownをHTMLに変換
+# MarkdownをHTMLに変換
     - name: Convert Markdown to HTML
       run: |
         mkdir -p output
         pandoc index.md -o output/index.html \
+          --standalone \
           --metadata pagetitle="My Website" \
           --metadata link-css="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css"
 
