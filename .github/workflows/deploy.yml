@@ -1,0 +1,10 @@
+name: Deploy Markdown to GitHub Pages
+
+on:
+  push:
+
+jobs:    
+  steps:
+    # リポジトリをチェックアウト
+    - name: Checkout code
+      uses: actions/checkout@v3
