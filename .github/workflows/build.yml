@@ -22,7 +22,7 @@ jobs:
     - name: Convert Markdown to HTML
       run: |
         mkdir -p output
-        pandoc -f markdown -t html "intro.md" -o "output\intro.html" \
+        pandoc -f markdown -t html "index.md" -o "output\index.html" \
         --standalone \
         --metadata title=" " \
         --css="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css"
