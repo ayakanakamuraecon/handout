@@ -18,4 +18,4 @@ jobs:
 
       # マークダウンファイルをHTMLに変換
       - name: Markdown to HTML
-        run: pandoc docs\index.md -o docs\site\index.html
+        run: pandoc docs/index.md -o docs/site/index.html
