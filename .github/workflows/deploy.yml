@@ -12,5 +12,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Pandocをインストール
       - name: Install Pandoc
         run: sudo apt-get install -y pandoc
+
+      # マークダウンファイルをHTMLに変換
+      - name: Markdown to HTML
+        run: pandoc docs\index.md -o docs\site\index.html
