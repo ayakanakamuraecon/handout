@@ -1,0 +1,34 @@
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # メインブランチが変更されたときにトリガー
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # リポジトリをチェックアウト
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    # Pandocのインストール
+    - name: Install Pandoc
+      run: sudo apt-get install -y pandoc
+
+# MarkdownをHTMLに変換
+    - name: Convert Markdown to HTML
+      run: |
+        pandoc index.md -o index.html \
+        --standalone \
+        --metadata title=" " \
+        --css="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css"
+
+    # GitHub Pagesへのデプロイ
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./output
