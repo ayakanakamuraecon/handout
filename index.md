@@ -21,6 +21,7 @@
 ## 統計学入門A
 
 [イントロダクション](dataintro/intro.md)
+
 [記述統計](dataintro/stats.md)
 
 ## 統計学入門B
