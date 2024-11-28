@@ -20,7 +20,8 @@
 
 ## 統計学入門A
 
-[イントロダクション](https://www.notion.so/1459d129cb708068a5dcd6dbced273d9?pvs=21)
+[イントロダクション](dataintro/intro.md)
+[記述統計](dataintro/stats.md)
 
 ## 統計学入門B
 
