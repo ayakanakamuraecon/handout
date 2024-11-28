@@ -9,4 +9,4 @@ jobs:
 
     steps:
     - name: Checkout code
-      run: echo "hoge"
+      uses: actions/checkout@v3
