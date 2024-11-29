@@ -26,12 +26,12 @@ jobs:
 
       # マークダウンファイルをHTMLに変換
       - name: Markdown to HTML
-        run: pandoc docs/index.md -o docs/site/index.html --standalone --metadata title="" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css --shift-heading-level-by=-1
+        run: pandoc docs/source/index.md -o docs/index.html --standalone --metadata title="" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css --shift-heading-level-by=-1
       # 変換したファイルをプッシュ
       - name: Commit and push the HTML file
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add docs/site/index.html
+          git add docs/index.html
           git commit -m "Add HTML"
           git push
