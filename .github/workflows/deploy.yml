@@ -20,17 +20,7 @@ jobs:
       - name: Check Pandoc installation
         run: pandoc --version
 
-      # マークダウンファイルをHTMLに変換
-      - name: Markdown to HTML
-        run: pandoc docs/index.md -o docs/site/index.html
-
       # 
-      - name: File existence
-        run: |
-          if [-f docs/index.md]; then
-            echo "File exists"
-          else
-            echo "File does not exist"
-            exit 1
-          fi
+      - name: List files
+        run: git ls-tree -r HEAD --name--only
 
