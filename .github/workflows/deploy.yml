@@ -20,7 +20,19 @@ jobs:
       - name: Check Pandoc installation
         run: pandoc --version
 
-      # 
+      # ファイル名リストを取得
       - name: List files
         run: git ls-tree -r HEAD --name-only
 
+      # 
+      - name: Check write permission
+        run: |
+          PERMISSION=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/${{ github.repository }}/collaborators/${{ github.actor }}/permission" | jq -r '.permission')
+
+          if [[ "$PERMISSION" == "write" || "$PERMISSION" == "admin" ]]; then
+            echo "Write permissions granted."
+          else
+            echo "No write permissions."
+            exit 1
+          fi
