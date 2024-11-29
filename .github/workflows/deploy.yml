@@ -28,11 +28,17 @@ jobs:
       - name: Markdown to HTML
         run: pandoc docs/source/index.md -o docs/index.html --standalone --metadata title="" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css
       
-      # 変換したファイルをプッシュ
+      # 変換したファイルをプッシュ（変更があったときのみ）
       - name: Commit and push the HTML file
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add docs/index.html
-          git commit -m "Add HTML"
-          git push
+          git diff --exit-code docs/index.html
+          if [ $? -eq 1 ]; then
+            git add docs/index.html
+            git commit -m "Update HTML"
+            git push
+          else
+            echo "No changes detected, skipping commit."
+          fi
+          
