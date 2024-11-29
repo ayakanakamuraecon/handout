@@ -22,5 +22,5 @@ jobs:
 
       # 
       - name: List files
-        run: git ls-tree -r HEAD --name--only
+        run: git ls-tree -r HEAD --name-only
 
