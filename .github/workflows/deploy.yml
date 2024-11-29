@@ -27,6 +27,7 @@ jobs:
       # マークダウンファイルをHTMLに変換
       - name: Markdown to HTML
         run: pandoc docs/source/index.md -o docs/index.html --standalone --metadata title="" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css --shift-heading-level-by=-1
+      
       # 変換したファイルをプッシュ
       - name: Commit and push the HTML file
         run: |
@@ -35,3 +36,10 @@ jobs:
           git add docs/index.html
           git commit -m "Add HTML"
           git push
+
+      # GitHub Pagesにデプロイ
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs
