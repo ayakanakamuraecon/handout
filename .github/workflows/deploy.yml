@@ -2,6 +2,8 @@ name: Deploy Markdown to GitHub Pages
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -33,9 +35,12 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
+          git checkout -b gh-pages
           git add docs/index.html
           git commit -m "Add HTML"
-          git push
+          git push --force --set-upstream origin gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # GitHub Pagesにデプロイ
       - name: Deploy to GitHub Pages
