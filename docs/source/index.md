@@ -26,7 +26,7 @@
 
 # データを用いた実証分析入門
 
-[イントロダクション](dataintro/intro.md)
+[イントロダクション](dataintro_intro.md)
 
 [記述統計](dataintro/descriptive.md)
 
