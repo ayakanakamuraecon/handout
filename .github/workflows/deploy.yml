@@ -12,18 +12,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Pandocをインストール
+      # Pandocがインストールされているか確認
       - name: Install Pandoc
-        run: sudo apt-get install -y pandoc
-
-      # Pandocのインストールを確認
-      - name: Check Pandoc installation
-        run: pandoc --version
+        run: |
+          if ! command -v pandoc &> /dev/null
+          then
+            echo "Pandoc is not installed. Installing Pandoc..."
+            # Pandocをインストール
+            sudo apt-get update
+            sudo apt-get install -y pandoc
+          else
+            echo "Pandoc is already installed."
+          fi
+          pandoc --version
 
       # マークダウンファイルをHTMLに変換
       - name: Markdown to HTML
         run: |
           for file in docs/source/*.md; do
+            echo "$file"
             pandoc "$file" -o "docs/$(basename "$file%.md".html)" --standalone --metadata title="" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css
           done
 
