@@ -31,12 +31,8 @@ jobs:
         run: |
           for file in docs/source/*.md; do
             echo "Converting $file"
-            pandoc "$file" -o "docs/$(basename "$file%.md".html)" --standalone --metadata title="text" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css
+            pandoc "$file" -o "docs/$(basename "$file".html)" --standalone --metadata title="text" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css
           done
-
-      # ファイル名リストを取得
-      - name: List files
-        run: git ls-tree -r HEAD --name-only
       
       # 変換したファイルをプッシュ（変更があったときのみ）
       - name: Commit and push the HTML file
@@ -50,4 +46,8 @@ jobs:
             git commit -m "Update HTML"
             git push
           fi
+
+      # ファイル名リストを取得
+      - name: List files
+        run: git ls-tree -r HEAD --name-only
           
