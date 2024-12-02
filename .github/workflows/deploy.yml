@@ -30,7 +30,7 @@ jobs:
       - name: Markdown to HTML
         run: |
           for file in docs/source/*.md; do
-            echo "$file"
+            echo "Converting $file"
             pandoc "$file" -o "docs/$(basename "$file%.md".html)" --standalone --metadata title="" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css
           done
 
