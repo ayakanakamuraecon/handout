@@ -20,16 +20,16 @@ jobs:
       - name: Check Pandoc installation
         run: pandoc --version
 
-      # ファイル名リストを取得
-      - name: List files
-        run: git ls-tree -r HEAD --name-only
-
       # マークダウンファイルをHTMLに変換
       - name: Markdown to HTML
         run: |
           for file in docs/source/*.md; do
             pandoc "$file" -o "docs/$(basename "$file%.md".html)" --standalone --metadata title="" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css
           done
+
+      # ファイル名リストを取得
+      - name: List files
+        run: git ls-tree -r HEAD --name-only
       
       # 変換したファイルをプッシュ（変更があったときのみ）
       - name: Commit and push the HTML file
