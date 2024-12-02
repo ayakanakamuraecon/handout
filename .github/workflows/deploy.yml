@@ -26,7 +26,9 @@ jobs:
 
       # マークダウンファイルをHTMLに変換
       - name: Markdown to HTML
-        run: pandoc docs/source/index.md -o docs/index.html --standalone --metadata title="" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css
+        run: |
+          for file in docs/source/*.md; do
+            pandoc "$file" -o docs/$(basename "$file%.md".html) --standalone --metadata title="" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css
       
       # 変換したファイルをプッシュ（変更があったときのみ）
       - name: Commit and push the HTML file
