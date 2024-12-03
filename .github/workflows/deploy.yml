@@ -44,7 +44,7 @@ jobs:
             
             # Pandocで変換
             echo "Converting $file"
-            pandoc "$temp" -o "docs/$filename.html" --standalone --metadata title="$title" --css=https://cdn.jsdelivr.net/npm/bookdown@0.21.4/css/bookdown.min.css
+            pandoc "$temp" -o "docs/$filename.html" --standalone --metadata title="$title" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css
 
             # 一時ファイルを削除
             rm "$temp"
