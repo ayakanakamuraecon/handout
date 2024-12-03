@@ -33,10 +33,10 @@ jobs:
           for file in docs/sources/*.md; do
             
             # ファイル名のみ取得
-            filename = $(basename "$file" .md) 
+            filename=$(basename "$file" .md) 
 
             # 最初の見出しを取得
-            title = $(grep -m 1 '^#' "$file" | sed 's/^# //')
+            title=$(grep -m 1 '^#' "$file" | sed 's/^# //')
             
             # Pandocで変換
             echo "Converting $file"
