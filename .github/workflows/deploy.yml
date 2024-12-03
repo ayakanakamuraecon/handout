@@ -30,7 +30,7 @@ jobs:
       - name: Markdown to HTML
         run: |
           # すべてのMarkdownファイルを処理
-          for file in docs/sources/*.md; do
+          for file in docs/source/*.md; do
             
             # ファイル名のみ取得
             filename=$(basename "$file" .md) 
