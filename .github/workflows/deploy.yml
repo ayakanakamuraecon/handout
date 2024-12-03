@@ -29,10 +29,18 @@ jobs:
       # マークダウンファイルをHTMLに変換
       - name: Markdown to HTML
         run: |
-          for file in docs/source/*.md; do
-            filename=$(basename "$file" .md) 
+          # すべてのMarkdownファイルを処理
+          for file in docs/sources/*.md; do
+            
+            # ファイル名のみ取得
+            filename = $(basename "$md_file" .md) 
+
+            # 最初の見出しを取得
+            title = $(grep -m 1 '^#' "$md_file" | sed 's/^# //')
+            
+            # Pandocで変換
             echo "Converting $filename"
-            pandoc "$file" -o "docs/$filename.html" --standalone --metadata title="" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css
+            pandoc "$file" -o "docs/$filename.html" --standalone --metadata title="$title" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css
           done
       
       # 変換したファイルをプッシュ（変更があったときのみ）
