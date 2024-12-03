@@ -33,13 +33,13 @@ jobs:
           for file in docs/sources/*.md; do
             
             # ファイル名のみ取得
-            filename = $(basename "$md_file" .md) 
+            filename = $(basename "$file" .md) 
 
             # 最初の見出しを取得
-            title = $(grep -m 1 '^#' "$md_file" | sed 's/^# //')
+            title = $(grep -m 1 '^#' "$file" | sed 's/^# //')
             
             # Pandocで変換
-            echo "Converting $filename"
+            echo "Converting $file"
             pandoc "$file" -o "docs/$filename.html" --standalone --metadata title="$title" --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css
           done
       
