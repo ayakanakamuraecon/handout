@@ -1,13 +1,15 @@
 /* Water.cssを上書き */
+/* 目次の背景色と境界線 */
 nav#TOC {
-  width: 200px; /* 目次の幅 */
-  position: fixed; /* スクロールしても固定 */
+  width: 200px;
+  position: fixed;
   top: 0;
-  left: 0; /* 左側に配置 */
-  height: 100vh; /* 高さを画面いっぱいに */
-  overflow-y: auto; /* 縦スクロール */
+  left: 0;
+  height: 100vh;
+  background-color: #f0f0f0; /* 目次の背景色 */
+  border-right: 2px solid #000; /* 境界線 */
+  overflow-y: auto;
 }
-
 main {
   margin-left: 220px; /* 目次の横にコンテンツを配置 */
   flex-grow: 1;
