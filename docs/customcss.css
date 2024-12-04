@@ -1,11 +1,14 @@
 /* Water.cssを上書き */
 nav#TOC {
   width: 200px; /* 目次の幅 */
-  position: sticky; /* スクロール時も固定 */
+  position: fixed; /* スクロールしても固定 */
   top: 0;
-  margin-right: 20px;
+  left: 0; /* 左側に配置 */
+  height: 100vh; /* 高さを画面いっぱいに */
+  overflow-y: auto; /* 縦スクロール */
 }
 
 main {
-  flex-grow: 1; /* 目次の隣に残りのスペースを使う */
+  margin-left: 220px; /* 目次の横にコンテンツを配置 */
+  flex-grow: 1;
 }
