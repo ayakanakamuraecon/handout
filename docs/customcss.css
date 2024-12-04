@@ -7,7 +7,7 @@ body {
   margin: 0 auto;
 }
 
-div.toc {
+nav#TOC {
   position: fixed;
   top: 0;
   left: 0;
