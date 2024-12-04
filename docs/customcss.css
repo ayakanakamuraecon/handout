@@ -8,10 +8,14 @@ body {
 }
 
 div.toc {
-  width: 200px; /* 目次の幅 */
-  position: sticky;
+  position: fixed;
   top: 0;
-  margin-right: 20px; /* 少しスペースを空ける */
+  left: 0;
+  width: 200px; /* 目次の幅 */
+  height: 100%; /* 高さを画面いっぱいに */
+  overflow-y: auto; /* 内容が多い場合スクロール */
+  background-color: #f4f4f4; /* 背景色 */
+  padding: 10px;
 }
 
 main {
