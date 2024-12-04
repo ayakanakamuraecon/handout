@@ -1,9 +1,4 @@
 /* Water.cssを上書き */
-body {
-  display: flex;
-  margin: 0;
-}
-
 nav#TOC {
   width: 200px; /* 目次の幅 */
   position: sticky; /* スクロール時も固定 */
