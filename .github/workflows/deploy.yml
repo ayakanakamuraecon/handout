@@ -47,7 +47,7 @@ jobs:
             pandoc "$temp" -o "docs/$filename.html" \
             --standalone \
             --metadata title="$title" \
-            --css=https://cdn.jsdelivr.net/npm/bookdown@0.21.4/css/bookdown.min.css \
+            --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css \
             --css=docs/customcss.css
 
 
