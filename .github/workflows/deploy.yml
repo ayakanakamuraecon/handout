@@ -47,8 +47,7 @@ jobs:
             pandoc "$temp" -o "docs/$filename.html" \
             --standalone --toc \
             --metadata title="$title" \
-            --css=https://cdn.jsdelivr.net/npm/bookdown@0.21.4/css/bookdown.min.css \
-            --css=docs/customcss.css
+            --css=https://cdn.jsdelivr.net/npm/bookdown@0.21.4/css/bookdown.min.css
 
 
             # 一時ファイルを削除
