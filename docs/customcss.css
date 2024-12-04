@@ -1,24 +1,18 @@
-/* 目次とコンテンツを並べる */
 body {
-  font-family: 'Arial', sans-serif;
   display: flex;
-  flex-wrap: wrap; /* レイアウトが崩れないようにする */
-  max-width: 1000px; /* 幅を調整 */
-  margin: 0 auto;
+  margin: 0;
 }
 
 nav#TOC {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
   width: 200px; /* 目次の幅 */
-  height: 100%; /* 高さを画面いっぱいに */
-  overflow-y: auto; /* 内容が多い場合スクロール */
-  background-color: #f4f4f4; /* 背景色 */
-  padding: 10px;
+  height: 100vh; /* 画面全体の高さに合わせる */
+  overflow-y: auto; /* 必要に応じてスクロール */
+  padding-right: 20px;
 }
 
 main {
-  margin-left: 220px; /* 目次の右側に内容を表示 */
-  flex-grow: 1; /* 残りのスペースを使う */
+  flex-grow: 1;
+  margin-left: 220px; /* 目次の右側にコンテンツを表示 */
 }
