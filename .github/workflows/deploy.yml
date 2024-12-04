@@ -45,7 +45,8 @@ jobs:
             # Pandocで変換
             echo "Converting $file"
             pandoc "$temp" -o "docs/$filename.html" \
-            --standalone --toc \
+            --standalone \
+            --toc --toc-depth=2 \
             --metadata title="$title" \
             --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css \
             --css=customcss.css
