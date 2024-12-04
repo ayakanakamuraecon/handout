@@ -1,18 +1,18 @@
-/* Water.cssの基本スタイルを使用した後にカスタム */
+/* 目次とコンテンツを並べる */
 body {
   font-family: 'Arial', sans-serif;
+  display: flex;
   max-width: 800px; /* 幅を狭める */
   margin: 0 auto;
 }
 
 nav#TOC {
-  width: 200px; /* 目次の幅を指定 */
+  width: 200px; /* 目次の幅 */
   position: sticky;
   top: 0;
-  float: left;
-  margin-right: 20px;
 }
 
 main {
   margin-left: 220px; /* 目次の右側に内容を表示 */
+  flex-grow: 1; /* 残りのスペースを使う */
 }
