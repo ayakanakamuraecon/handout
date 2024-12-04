@@ -1,0 +1,18 @@
+/* Water.cssの基本スタイルを使用した後にカスタム */
+body {
+  font-family: 'Arial', sans-serif;
+  max-width: 800px; /* 幅を狭める */
+  margin: 0 auto;
+}
+
+nav#TOC {
+  width: 200px; /* 目次の幅を指定 */
+  position: sticky;
+  top: 0;
+  float: left;
+  margin-right: 20px;
+}
+
+main {
+  margin-left: 220px; /* 目次の右側に内容を表示 */
+}
