@@ -1,4 +1,8 @@
 /* Water.cssを上書き */
+body {
+  line-height: 1.8; /* 行間を広げる */
+}
+
 /* 目次の背景色と境界線 */
 nav#TOC {
   width: 200px;
