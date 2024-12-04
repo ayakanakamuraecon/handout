@@ -2,14 +2,16 @@
 body {
   font-family: 'Arial', sans-serif;
   display: flex;
-  max-width: 800px; /* 幅を狭める */
+  flex-wrap: wrap; /* レイアウトが崩れないようにする */
+  max-width: 1000px; /* 幅を調整 */
   margin: 0 auto;
 }
 
-nav#TOC {
+div.toc {
   width: 200px; /* 目次の幅 */
   position: sticky;
   top: 0;
+  margin-right: 20px; /* 少しスペースを空ける */
 }
 
 main {
