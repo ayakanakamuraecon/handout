@@ -1,19 +1,17 @@
+/* Water.cssを上書き */
 body {
   display: flex;
-  max-width: 800px;
+  flex-direction: row; /* 横並びにする */
   margin: 0;
 }
 
-div.TOC {
-  position: sticky;
-  top: 0;
+nav#TOC {
   width: 200px; /* 目次の幅 */
-  height: 100vh; /* 画面全体の高さに合わせる */
-  overflow-y: auto; /* 必要に応じてスクロール */
-  padding-right: 20px;
+  position: sticky; /* スクロール時も固定 */
+  top: 0;
+  margin-right: 20px;
 }
 
 main {
-  flex-grow: 1;
-  margin-left: 220px; /* 目次の右側にコンテンツを表示 */
+  flex-grow: 1; /* 目次の隣に残りのスペースを使う */
 }
