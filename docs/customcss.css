@@ -1,7 +1,6 @@
 /* Water.cssを上書き */
 body {
   display: flex;
-  flex-direction: row; /* 横並びにする */
   margin: 0;
 }
 
