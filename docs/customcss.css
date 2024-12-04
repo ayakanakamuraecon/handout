@@ -1,6 +1,8 @@
 /* Water.cssを上書き */
 body {
-  line-height: 1.8; /* 行間を広げる */
+  line-height: 2.5 /* 行間を広げる */
+  margin-top: 30px; /* 上のマージン */
+  margin-bottom: 30px; /* 下のマージン */
 }
 
 /* 目次と境界線 */
