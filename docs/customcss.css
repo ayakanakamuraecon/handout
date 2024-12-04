@@ -3,14 +3,13 @@ body {
   line-height: 1.8; /* 行間を広げる */
 }
 
-/* 目次の背景色と境界線 */
+/* 目次と境界線 */
 nav#TOC {
   width: 200px;
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
-  background-color: #f0f0f0; /* 目次の背景色 */
   border-right: 2px solid #000; /* 境界線 */
   overflow-y: auto;
 }
