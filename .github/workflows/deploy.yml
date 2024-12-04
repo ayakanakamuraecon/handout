@@ -48,7 +48,7 @@ jobs:
             --standalone --toc \
             --metadata title="$title" \
             --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css \
-            --css=docs/customcss.css
+            --css=customcss.css
 
 
             # 一時ファイルを削除
