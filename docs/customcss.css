@@ -26,13 +26,9 @@ main {
 /* 画面が小さいときの設定 */
 @media (max-width: 768px) {
     nav#TOC {
-        position: static; /* 固定を解除 */
-        width: 100%; /* 全幅に */
-        border-right: none; /* 境界線を非表示 */
-        border-bottom: 2px solid #000; /* 下に境界線 */
+        display: none; /* 小さい画面では目次を非表示 */
     }
     main {
         margin-left: 0; /* 本文を全幅に */
-        margin-top: 20px; /* 目次との間にスペース */
     }
 }
