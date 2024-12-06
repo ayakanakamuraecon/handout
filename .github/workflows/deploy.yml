@@ -48,7 +48,7 @@ jobs:
             --standalone \
             --toc --toc-depth=2 \
             --metadata title="$title" \
-            --template=docs/template.html
+            --template=docs/template2.html
 
 
             # 一時ファイルを削除
