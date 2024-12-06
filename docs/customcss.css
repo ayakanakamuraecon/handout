@@ -5,8 +5,11 @@ body {
   margin-bottom: 30px; /* 下のマージン */
 }
 
-h5, h6 {
-  font-size: 1em; /* h4とh5のフォントサイズを本文のサイズと同じに設定 */
+h5 {
+  font-size: 1.1em;
+}
+h6 {
+  font-size: 1.05em;
 }
 
 /* 目次と境界線 */
