@@ -28,7 +28,7 @@
 
 [イントロダクション](dataintro_intro.html)
 
-[記述統計](dataintro_descriptive.md)
+[記述統計](dataintro_descriptive.html)
 
 # データを用いた実証分析AB（大学院）
 
