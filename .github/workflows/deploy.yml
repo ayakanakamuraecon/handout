@@ -48,8 +48,7 @@ jobs:
             --standalone \
             --toc --toc-depth=2 \
             --metadata title="$title" \
-            --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css \
-            --css=customcss.css
+            --template=docs/template.html
 
 
             # 一時ファイルを削除
