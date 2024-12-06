@@ -46,10 +46,6 @@ jobs:
             --metadata title="$title" \
             --template=docs/template.html \
             --mathjax
-
-
-            # 一時ファイルを削除
-            rm "$temp"
           done
       
       # 変換したファイルをプッシュ（変更があったときのみ）
