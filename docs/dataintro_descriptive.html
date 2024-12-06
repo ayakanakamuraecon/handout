@@ -40,43 +40,64 @@
     <p>1番小さい階級からその階級までの相対度数を足し合わせたもの</p>
     <h3 id="excelで度数分布表を作る">Excelで度数分布表を作る</h3>
     <p>度数分布表は、データの特徴をつかむための第一歩です。</p>
-    <p>Excelは、セルに「<code>= 2 + 3</code>」や「<code>= SUM(A1:Z100)</code>」を入力することで、つまり、「<code>= 計算式</code>」や「<code>= 関数</code>」を入力することで、計算結果を表示してくれます。 Excelで度数分布表を作成するときは、度数、相対度数、累積相対度数を次のような関数を使って計算していきます。</p>
+    <p>Excelは、セルに「<code>= 2 + 3</code>」や「<code>= SUM(A1:Z100)</code>」を入力することで、つまり、<strong>「<code>= 計算式</code>」や「<code>= 関数</code>」を入力する</strong>ことで、計算結果を表示してくれます。 Excelで度数分布表を作成するときは、度数、相対度数、累積相対度数を次のような関数を使って計算していきます。</p>
     <p><a href="https://www.notion.so">https://www.notion.so</a></p>
-    <ul>
-    <li>度数</li>
-    </ul>
+    <h5 id="度数-1">度数</h5>
     <p><code>COUNTIF</code>関数を使い、<strong>「階級の上限値未満の観測値の個数」</strong>から<strong>「階級の下限値未満の観測値の個数」</strong>を引く</p>
-    <p>（例）<span class="math inline">100<em>以</em><em>上</em>200<em>未</em><em>満</em><em>の</em><em>階</em><em>級</em><em>の</em><em>度</em><em>数</em> = 200<em>未</em><em>満</em><em>の</em><em>観</em><em>測</em><em>値</em><em>の</em><em>個</em><em>数</em> − 100<em>未</em><em>満</em><em>の</em><em>観</em><em>測</em><em>値</em><em>の</em><em>個</em><em>数</em> = 100<em>以</em><em>上</em>200<em>未</em><em>満</em><em>の</em><em>観</em><em>測</em><em>値</em><em>の</em><em>個</em><em>数</em></span> - <code>COUNTIF</code>関数：<code>COUNTIF(データの範囲, "条件")</code></p>
-    <pre><code>（例）100未満の観測値の個数：`= COUNTIF($$:, &quot;&lt;100&quot;)`
-        - データの範囲は、普通に選択しただけだと、他のセルに関数をコピペしたときに、参照元のセルとコピペ先の位置関係に応じてデータの範囲も移動してしまいます。同じ関数を何回か使う必要があり、その際にデータの範囲を固定したいときは、列と行の英数字の前に`$`を付けると便利です。
-            - 列と行を固定したいとき：`$A$1:$B$20`
-            - 列を固定したいとき：`$A1:$B20`
-            - 行を固定したいとき：`A$1:B$20`
-            
-            関数を入力しているセルを選択している状態でF4を押すと切り替えられます。
-            
-        - 条件には比較演算子（数字の大小を比較する記号）を使います。これらの記号は、他のプログラミング言語でも共通なので、ぜひ覚えてください。
-            
-            
-            | `A &lt; B` | AはBより小さい |
-            | --- | --- |
-            | `A &gt; B` | AはBより大きい |
-            | `A &lt;= B` | AはB以下 |
-            | `A &gt;= B` | AはB以上 |
-            | `A = B` | AとBは等しい |
-            | `A != B` | AとBは等しくない |</code></pre>
+    <p>（例）100以上200未満の階級の度数$=<span class="math inline">200<em>未</em><em>満</em><em>の</em><em>観</em><em>測</em><em>値</em><em>の</em><em>個</em><em>数</em></span>-<span class="math inline">100<em>未</em><em>満</em><em>の</em><em>観</em><em>測</em><em>値</em><em>の</em><em>個</em><em>数</em></span>=$100以上200未満の観測値の個数</p>
+    <h6 id="countif関数"><code>COUNTIF</code>関数</h6>
+    <p><code>COUNTIF(データの範囲, "条件")</code></p>
+    <p>（例）100未満の観測値の個数：<code>= COUNTIF($$:, "&lt;100")</code></p>
     <ul>
-    <li>相対度数</li>
-    </ul>
-    <p>すでに計算した度数セルと<code>SUM</code>関数を使い、 <strong><span class="math inline">$\frac{度数}{サンプルサイズ}$</span></strong>を計算する - <code>SUM</code>関数：<code>SUM(データの範囲)</code></p>
-    <pre><code>（例）150の階級値の相対度数：`= SUM(:)`</code></pre>
+    <li><p>データの範囲は、普通に選択しただけだと、他のセルに関数をコピペしたときに、参照元のセルとコピペ先の位置関係に応じてデータの範囲も移動してしまいます。同じ関数を何回か使う必要があり、その際にデータの範囲を固定したいときは、列と行の英数字の前に<code>$</code>を付けると便利です。</p>
     <ul>
-    <li>累積相対度数</li>
+    <li>列と行を固定したいとき：<code>$A$1:$B$20</code></li>
+    <li>列を固定したいとき：<code>$A1:$B20</code></li>
+    <li>行を固定したいとき：<code>A$1:B$20</code></li>
     </ul>
-    <p>それまでの累積相対度数とその階級の相対度数を足す</p>
-    <p>（例）</p>
-    <p>100以上200未満の階級の累積相対度数：<code>=</code></p>
-    <p>200以上300未満の階級の累積相対度数：<code>=</code></p>
+    <p>関数を入力しているセルを選択している状態でF4を押すと切り替えられます。</p></li>
+    <li><p>条件には比較演算子（数字の大小を比較する記号）を使います。これらの記号は、他のプログラミング言語でも共通なので、ぜひ覚えてください。</p>
+    <table>
+    <thead>
+    <tr class="header">
+    <th><code>A &lt; B</code></th>
+    <th>AはBより小さい</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="odd">
+    <td><code>A &gt; B</code></td>
+    <td>AはBより大きい</td>
+    </tr>
+    <tr class="even">
+    <td><code>A &lt;= B</code></td>
+    <td>AはB以下</td>
+    </tr>
+    <tr class="odd">
+    <td><code>A &gt;= B</code></td>
+    <td>AはB以上</td>
+    </tr>
+    <tr class="even">
+    <td><code>A = B</code></td>
+    <td>AとBは等しい</td>
+    </tr>
+    <tr class="odd">
+    <td><code>A != B</code></td>
+    <td>AとBは等しくない</td>
+    </tr>
+    </tbody>
+    </table></li>
+    </ul>
+    <h5 id="相対度数-1">相対度数</h5>
+    <p>すでに計算した度数セルと<code>SUM</code>関数を使い、 <span class="math inline">$\frac{度数}{サンプルサイズ}$</span>を計算する</p>
+    <h6 id="sum関数"><code>SUM</code>関数</h6>
+    <p><code>SUM(データの範囲)</code> （例）150の階級値の相対度数：<code>= SUM(:)</code></p>
+    <h5 id="累積相対度数">累積相対度数</h5>
+    <p>それまでの累積相対度数とその階級の相対度数を足す （例）</p>
+    <ul>
+    <li>100以上200未満の階級の累積相対度数：<code>=</code></li>
+    <li>200以上300未満の階級の累積相対度数：<code>=</code></li>
+    </ul>
     <p>すべての階級についてそれぞれの値を計算することで、度数分布表を作成できます。</p>
     <p><a href="https://www.notion.so">https://www.notion.so</a></p>
     <p>↑出来上がった度数分布表を挿入</p>
@@ -211,13 +232,31 @@
     <p>折れ線グラフと円グラフを選択する画像</p>
     <h1 id="統計量">統計量</h1>
     <p>ビジュアル化は便利ですが、問題点もあります。</p>
-    <ul>
-    <li>グラフから受ける印象が人によって異なってしまう</li>
-    </ul>
-    <p>同じヒストグラムを見ても、データがまんべんなく分布していると感じる人もいれば、まとまって分布していると感じる人もいるでしょう。 - 複数のデータを比較することが難しい</p>
+    <h5 id="グラフから受ける印象が人によって異なってしまう">グラフから受ける印象が人によって異なってしまう</h5>
+    <p>同じヒストグラムを見ても、データがまんべんなく分布していると感じる人もいれば、まとまって分布していると感じる人もいるでしょう。</p>
+    <h5 id="複数のデータを比較することが難しい">複数のデータを比較することが難しい</h5>
     <p>それぞれのデータの特徴はどの程度似通っていて、どの程度異なるのか、その判断も人によって異なるでしょう。</p>
     <p>このような問題点を解決するために、グラフとともに<strong>統計量</strong>（データの特徴を数値に集約すること）を計算していくことが大切です。</p>
+    <p>ここでは、代表的な統計量として、<strong>平均</strong>、<strong>分散</strong>、<strong>標準偏差</strong>、<strong>共分散</strong>、<strong>相関係数</strong>の計算方法を学びます。</p>
     <h2 id="平均">平均</h2>
+    <p><strong>平均</strong>は、データの中心（重心）を表す数値です。</p>
+    <p><span class="math inline"><em>n</em></span>個の観測値からなるデータ<span class="math inline">(<em>x</em><sub>1</sub>, ⋯, <em>x</em><sub><em>n</em></sub>)</span>の平均<span class="math inline"><em>x̄</em></span>は、</p>
+    <p><br /><span class="math display">$$
+    \bar{x} = \frac{1}{n}(x_{1} + \cdots + x_{n}) = \frac{1}{n}\sum_{i=1}^{n}x_{i}
+    $$</span><br /></p>
+    <p>で求められます。つまり、<strong>観測値の値をすべて足し、それを観測値の個数（データサイズ）で割ったもの</strong>です。</p>
+    <p>似たような統計量に<strong>中央値</strong>がありますが、両者の間にはいくつかの違いがあります。</p>
+    <h5 id="平均-1">平均</h5>
+    <ul>
+    <li>データは平均の周辺に分布する</li>
+    <li>多く現れる値に影響を受ける</li>
+    <li>極端な値に<strong>影響を受ける</strong></li>
+    </ul>
+    <h5 id="中央値">中央値</h5>
+    <ul>
+    <li>データを小さい順に並べたときに真ん中に位置する値</li>
+    <li>極端な値に<strong>影響を受けにくい</strong></li>
+    </ul>
     <h2 id="分散と標準偏差">分散と標準偏差</h2>
     <h2 id="共分散と相関係数">共分散と相関係数</h2>
 </body>
