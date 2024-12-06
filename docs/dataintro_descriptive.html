@@ -30,7 +30,7 @@
     <p>ちなみに、こちらも<a href="dataintro_intro.html">はじめに</a>で説明しているように、生のデータファイルをそのまま操作することは避けましょう。ダウンロードしたファイルはコピーを作成し、生のデータと操作用データを別々に管理するか、新しく操作用データを作成して、ブックリンクでデータを参照するようにしましょう。</p>
     <h1 id="表とグラフ">表とグラフ</h1>
     <h2 id="度数分布表">度数分布表</h2>
-    <p>学祭の売り上げ向上を目指すためには、まず現状を知る必要があります。ここでは、過去の学祭で、1回の買い物あたりの売上金額がどのように分布しているかを見てみましょう。売上金額（<code>sales</code>変数）を<span class="math inline">100</span>刻みで区切って表にまとめるだけでも見やすくなります。これを<strong>度数分布表</strong>といいます。</p>
+    <p>学祭の売り上げ向上を目指すためには、まず現状を知る必要があります。ここでは、過去の学祭で、1回の買い物あたりの売上金額がどのように分布しているかを見てみましょう。売上金額（<code>sales</code>変数）を<span class="math inline">\(100\)</span>刻みで区切って表にまとめるだけでも見やすくなります。これを<strong>度数分布表</strong>といいます。</p>
     <p><a href="https://www.notion.so">https://www.notion.so</a></p>
     <p>↑度数分布表を貼り付け</p>
     <p>度数分布表は、以下のような項目で構成されています。</p>
@@ -45,7 +45,7 @@
     <h5 id="度数">度数</h5>
     <p>階級内に所属する観測値の数</p>
     <h5 id="相対度数">相対度数</h5>
-    <p>サンプルサイズに占める度数の割合 <span class="math inline">$\left(= \frac{度数}{サンプルサイズ}\right)$</span></p>
+    <p>サンプルサイズに占める度数の割合 <span class="math inline">\(\left(= \frac{度数}{サンプルサイズ}\right)\)</span></p>
     <h5 id="累積度数">累積度数</h5>
     <p>1番小さい階級からその階級までの相対度数を足し合わせたもの</p>
     <h3 id="excelで度数分布表を作る">Excelで度数分布表を作る</h3>
@@ -54,7 +54,7 @@
     <p><a href="https://www.notion.so">https://www.notion.so</a></p>
     <h5 id="度数-1">度数</h5>
     <p><code>COUNTIF</code>関数を使い、<strong>「階級の上限値未満の観測値の個数」</strong>から<strong>「階級の下限値未満の観測値の個数」</strong>を引く</p>
-    <p>（例）100以上200未満の階級の度数$=<span class="math inline">200<em>未</em><em>満</em><em>の</em><em>観</em><em>測</em><em>値</em><em>の</em><em>個</em><em>数</em></span>-<span class="math inline">100<em>未</em><em>満</em><em>の</em><em>観</em><em>測</em><em>値</em><em>の</em><em>個</em><em>数</em></span>=$100以上200未満の観測値の個数</p>
+    <p>（例）100以上200未満の階級の度数$=<span class="math inline">\(200未満の観測値の個数\)</span>-<span class="math inline">\(100未満の観測値の個数\)</span>=$100以上200未満の観測値の個数</p>
     <h6 id="countif関数"><code>COUNTIF</code>関数</h6>
     <p><code>COUNTIF(データの範囲, "条件")</code></p>
     <p>（例）100未満の観測値の個数：<code>= COUNTIF($$:, "&lt;100")</code></p>
@@ -99,7 +99,7 @@
     </table></li>
     </ul>
     <h5 id="相対度数-1">相対度数</h5>
-    <p>すでに計算した度数セルと<code>SUM</code>関数を使い、 <span class="math inline">$\frac{度数}{サンプルサイズ}$</span>を計算する</p>
+    <p>すでに計算した度数セルと<code>SUM</code>関数を使い、 <span class="math inline">\(\frac{度数}{サンプルサイズ}\)</span>を計算する</p>
     <h6 id="sum関数"><code>SUM</code>関数</h6>
     <p><code>SUM(データの範囲)</code> （例）150の階級値の相対度数：<code>= SUM(:)</code></p>
     <h5 id="累積相対度数">累積相対度数</h5>
@@ -215,7 +215,7 @@
     <ul>
     <li>複数のデータを重ねるときは、色分けや目盛りを工夫する</li>
     </ul>
-    <p>（例） - 線の区別がつきやすいよう、色分けをしたり、実線と破線を使い分けたりする - 縦軸の目盛りが<span class="math inline">0</span>から始まると変化がとらえづらいときは、適宜目盛りを省略する - 数値が大きく異なるグラフを重ねるときは、一方の目盛りを右側に配置する</p>
+    <p>（例） - 線の区別がつきやすいよう、色分けをしたり、実線と破線を使い分けたりする - 縦軸の目盛りが<span class="math inline">\(0\)</span>から始まると変化がとらえづらいときは、適宜目盛りを省略する - 数値が大きく異なるグラフを重ねるときは、一方の目盛りを右側に配置する</p>
     </blockquote>
     <h4 id="円グラフ帯グラフ">円グラフ・帯グラフ</h4>
     <p>カテゴリデータの各項目が全体に占める割合を示す際に用いられるグラフです。</p>
@@ -250,10 +250,10 @@
     <p>ここでは、代表的な統計量として、<strong>平均</strong>、<strong>分散</strong>、<strong>標準偏差</strong>、<strong>共分散</strong>、<strong>相関係数</strong>の計算方法を学びます。</p>
     <h2 id="平均">平均</h2>
     <p><strong>平均</strong>は、データの中心（重心）を表す数値です。</p>
-    <p><span class="math inline"><em>n</em></span>個の観測値からなるデータ<span class="math inline">(<em>x</em><sub>1</sub>, ⋯, <em>x</em><sub><em>n</em></sub>)</span>の平均<span class="math inline"><em>x̄</em></span>は、</p>
-    <p><br /><span class="math display">$$
+    <p><span class="math inline">\(n\)</span>個の観測値からなるデータ<span class="math inline">\((x_{1}, \cdots, x_{n})\)</span>の平均<span class="math inline">\(\bar{x}\)</span>は、</p>
+    <p><span class="math display">\[
     \bar{x} = \frac{1}{n}(x_{1} + \cdots + x_{n}) = \frac{1}{n}\sum_{i=1}^{n}x_{i}
-    $$</span><br /></p>
+    \]</span></p>
     <p>で求められます。つまり、<strong>観測値の値をすべて足し、それを観測値の個数（データサイズ）で割ったもの</strong>です。</p>
     <p>似たような統計量に<strong>中央値</strong>がありますが、両者の間にはいくつかの違いがあります。</p>
     <h5 id="平均-1">平均</h5>
