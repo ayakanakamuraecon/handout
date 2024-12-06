@@ -37,18 +37,15 @@ jobs:
 
             # 最初の見出しを取得
             title=$(grep -m 1 '^#' "$file" | sed 's/^# //')
-
-            # 最初の見出しを削除したファイル内容を一時ファイルに保存
-            temp=$(mktemp --suffix=.md)
-            sed '0,/^# /d' "$file" > "$temp"
             
             # Pandocで変換
             echo "Converting $file with title: $title"
-            pandoc "$temp" -o "docs/$filename.html" \
+            pandoc "$file" -o "docs/$filename.html" \
             --standalone \
             --toc --toc-depth=2 \
             --metadata title="$title" \
-            --template=docs/template2.html
+            --template=docs/template.html
+            --mathjax
 
 
             # 一時ファイルを削除
