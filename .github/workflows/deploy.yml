@@ -43,7 +43,7 @@ jobs:
             sed '0,/^# /d' "$file" > "$temp"
             
             # Pandocで変換
-            echo "Converting $file"
+            echo "Converting $file with title: $title"
             pandoc "$temp" -o "docs/$filename.html" \
             --standalone \
             --toc --toc-depth=2 \
