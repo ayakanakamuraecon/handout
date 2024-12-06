@@ -44,7 +44,7 @@ jobs:
             --standalone \
             --toc --toc-depth=2 \
             --metadata title="$title" \
-            --template=docs/template.html
+            --template=docs/template.html \
             --mathjax
 
 
