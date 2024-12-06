@@ -48,7 +48,8 @@ jobs:
             --standalone \
             --toc --toc-depth=2 \
             --metadata title="$title" \
-            --template=docs/template2.html
+            --template=docs/template2.html \
+            --mathjax
 
 
             # 一時ファイルを削除
