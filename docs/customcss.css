@@ -3,8 +3,6 @@ body {
   line-height: 2; /* 行間を広げる */
   margin-top: 80px; /* 上のマージン */
   margin-bottom: 80px; /* 下のマージン */
-  margin-left: 20px;
-  margin-right: 20px;
 }
 
 h5 {
