@@ -5,6 +5,10 @@ body {
   margin-bottom: 30px; /* 下のマージン */
 }
 
+h5, h6 {
+  font-size: 1em; /* h4とh5のフォントサイズを本文のサイズと同じに設定 */
+}
+
 /* 目次と境界線 */
 nav#TOC {
   z-index: 10; /* 目次を上に配置 */
