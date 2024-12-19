@@ -30,6 +30,8 @@
 
 [記述統計](dataintro_descriptive.html)
 
+[推測統計](dataintro_estimation.html)
+
 # データを用いた実証分析AB（大学院）
 
 ## データを用いた実証分析A
