@@ -3,7 +3,7 @@ body {
   line-height: 1.8; /* 行間を広げる */
   margin-top: 80px; /* 上のマージン */
   margin-bottom: 80px; /* 下のマージン */
-  max-width: 860px; /* 最大幅を指定 */
+  max-width: 160px; /* 最大幅を指定 */
   margin: 0 auto;    /* ページを中央揃え */
   padding: 20px;     /* サイドに余白を追加 */
 }
