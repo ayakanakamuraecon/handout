@@ -85,7 +85,7 @@
 
 「汚いデータ」とは、例えば以下のようなものです。
 
-![data_ng.png](data_ng.png)
+![](fig_dataintro_ng.png)
 
 > **ポイント**
 > 
@@ -125,7 +125,7 @@
 
 「綺麗なデータ」は以下のような構造です。
 
-![data_ok.png](data_ok.png)
+![](fig_dataintro_ok.png)
 
 > **ポイント**
 > 
@@ -160,7 +160,7 @@
 
 ダウンロードしたファイルをExcelで開くと、以下のような画面が見れると思います。
 
-![data_ok.png](data_ok.png)
+![](fig_dataintro_ok.png)
 
 このデータは「綺麗なデータ」になっているので、1番上の行に変数名、1番左の列（A列）にIDが入っています。
 
