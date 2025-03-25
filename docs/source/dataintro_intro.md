@@ -85,7 +85,7 @@
 
 「汚いデータ」とは、例えば以下のようなものです。
 
-![image.png](image.png)
+![data_ng.png](data_ng.png)
 
 > **ポイント**
 > 
@@ -125,7 +125,7 @@
 
 「綺麗なデータ」は以下のような構造です。
 
-![image.png](image%201.png)
+![data_ok.png](data_ok.png)
 
 > **ポイント**
 > 
@@ -156,11 +156,11 @@
 
 データは以下のリンクからダウンロードしてください。
 
-[CSVファイルをダウンロード]([https://github.com/ayakanakamuraecon/handout/blob/main/docs/data/sales.csv](https://github.com/ayakanakamuraecon/handout/blob/main/docs/data/sales.csv))
+[CSVファイルをダウンロード](https://github.com/ayakanakamuraecon/handout/blob/main/docs/data/sales.csv)
 
 ダウンロードしたファイルをExcelで開くと、以下のような画面が見れると思います。
 
-![image.png](image%201.png)
+![data_ok.png](data_ok.png)
 
 このデータは「綺麗なデータ」になっているので、1番上の行に変数名、1番左の列（A列）にIDが入っています。
 
