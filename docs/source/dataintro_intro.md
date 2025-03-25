@@ -156,7 +156,7 @@
 
 データは以下のリンクからダウンロードしてください。
 
-[CSVファイルをダウンロード](https://github.com/ayakanakamuraecon/handout/blob/main/docs/data/sales.csv)
+[学食売上データをダウンロード](https://github.com/ayakanakamuraecon/handout/blob/main/docs/data/sales.csv)
 
 ダウンロードしたファイルをExcelで開くと、以下のような画面が見れると思います。
 
