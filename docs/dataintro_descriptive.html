@@ -37,6 +37,7 @@
         <li><a href="#共分散と相関係数"
         id="toc-共分散と相関係数">共分散と相関係数</a></li>
         </ul></li>
+        <li><a href="#まとめ" id="toc-まとめ">まとめ</a></li>
         </ul>
     </nav>
     <main>
@@ -190,7 +191,7 @@
         <p>それまでの累積相対度数とその階級の相対度数を足す （例）</p>
         <ul>
         <li>200以上300未満の階級の累積相対度数：<code>=H2</code></li>
-        <li>300以上400未満の階級の累積相対度数：<code>=I4 + H2</code></li>
+        <li>300以上400未満の階級の累積相対度数：<code>=I2 + H3</code></li>
         </ul>
         <p><img src="fig_dataintro_freqtab_crf.png" /></p>
         <p>すべての階級についてそれぞれの値を計算することで、度数分布表を作成できます。</p>
@@ -201,8 +202,14 @@
         <p>次は、度数分布表を見える化した<strong>ヒストグラム</strong>と、その他の代表的なグラフを作成していきましょう。</p>
         <h3 id="ヒストグラム">ヒストグラム</h3>
         <p>階級値を横軸に、度数を縦軸にとったグラフを<strong>ヒストグラム</strong>といいます。</p>
-        <p><img src="fig_dataintro_freqtab_all.png" /><img
-        src="fig_dataintro_hist.png" /></p>
+        <figure>
+        <img src="fig_dataintro_freqtab_all.png" alt="度数分布表" />
+        <figcaption aria-hidden="true">度数分布表</figcaption>
+        </figure>
+        <figure>
+        <img src="fig_dataintro_hist.png" alt="ヒストグラム" />
+        <figcaption aria-hidden="true">ヒストグラム</figcaption>
+        </figure>
         <p>どちらにも階級値と度数の情報は含まれますが、ヒストグラムの方がより視覚的にデータの特徴をつかめることが分かると思います。</p>
         <blockquote>
         <p>380円～480円のデータが多い。</p>
@@ -311,7 +318,7 @@
         <p>数的データの<strong>時間的な変化</strong>を示す際に用いられるグラフです。</p>
         <p>以下のグラフは、学祭の売り上げデータから作成した、時間当たりの売り上げです。</p>
         <p><img src="fig_dataintro_line.png" /></p>
-        <p>他にも、例えば年別の人口推移、月別の飛行機のチケット代の推移、年別のたまごの価格の推移など、時系列データの表示に適しています。</p>
+        <p>他にも、例えば年別の人口推移、月別の飛行機のチケット代の推移、年別の米の価格の推移など、時系列データの表示に適しています。</p>
         <blockquote>
         <p><strong>注意点</strong></p>
         <ul>
@@ -384,11 +391,237 @@
         </ul>
         <h5 id="中央値">中央値</h5>
         <ul>
-        <li>データを小さい順に並べたときに真ん中に位置する値</li>
+        <li>データを小さい順に並べたときに真ん中に位置する値
+        <ul>
+        <li>データが中央値の周辺に分布するとは限らない</li>
+        </ul></li>
         <li>極端な値に<strong>影響を受けにくい</strong></li>
         </ul>
+        <h3 id="excelで平均を計算する">Excelで平均を計算する</h3>
+        <p>引き続き、学食の売上金額データを用いて平均を計算しましょう。Excelでは<code>AVERAGE</code>関数を使います。</p>
+        <h6 id="average関数"><code>AVERAGE</code>関数</h6>
+        <p><code>AVERAGE(データの範囲)</code></p>
+        <p>（例）<code>sales</code>変数の平均：<code>=AVERAGE(:)</code></p>
+        <p>平均を計算することで、データの中心（重心）を知ることができました。学食の売り上げデータでは、1回あたりの購入金額は、**円のようです。</p>
+        <h3
+        id="度数分布表から平均を求める">度数分布表から平均を求める</h3>
+        <p>度数分布表しか得られない場合でも、階級値と相対度数から平均を求めることができます。</p>
+        <p>政府機関や民間調査機関が公表するデータは、あらかじめ度数分布表に集計されていることも多いため、ぜひ覚えておきましょう。</p>
+        <p>度数分布表を使うときは、<strong>階級値と相対度数をかけたものをすべての階級値について合計</strong>します。</p>
+        <p><a href=""></a></p>
+        <p>↑度数分布表で平均を求めている画像</p>
+        <p>相対度数は <span
+        class="math inline">\(\frac{度数}{サンプルサイズ}\)</span>
+        で求められるため、<strong>階級値 <span
+        class="math inline">\(\times\)</span>
+        相対度数という式は、観測値をすべて階級値に置き換えたときの平均の式と一致</strong>します（確認してみてください）。</p>
+        <p>Excelでは、<code>SUMPRODUCT</code>関数を使います。</p>
+        <h6 id="sumproduct関数"><code>SUMPRODUCT</code>関数</h6>
+        <p><code>SUMPRODUCT(配列1, 配列2, ...)</code></p>
+        <p><code>SUMPRODUCT</code>関数は、指定した配列の同じ行同士を掛け算し、それを合計する関数です。</p>
+        <p>今回は階級値と相対度数の2つの配列を使っていますが、より多くの配列を指定することもできます。</p>
+        <p>（例）<code>sales</code>変数の度数分布表から平均を求める：<code>=SUMPRODUCT(:)</code></p>
         <h2 id="分散と標準偏差">分散と標準偏差</h2>
+        <p>データの特徴を知るためには、データの中心だけではなく、<strong>データのばらつきを知ることも大切</strong>です。</p>
+        <p>例えば、以下のような例を考えてみましょう。</p>
+        <ol type="1">
+        <li>5人の購入金額は、それぞれ <span class="math inline">\(\{500,
+        500, 500, 500, 500\}\)</span> （円）</li>
+        <li>5人の購入金額は、それぞれ <span class="math inline">\(\{100,
+        300, 500, 700, 900\}\)</span> （円）</li>
+        </ol>
+        <p>どちらも平均購入金額では500円になりますが、内訳は大きく異なります。</p>
+        <p>ケース1では全員が同じ金額で商品（恐らく<em>商品名</em>でしょう）を購入しているため、売上を伸ばすためには、<em>商品名</em>を広告の全面に打ち出したり、<em>商品名</em>が売り切れないよう仕入れを増やすことが考えられるかもしれません。</p>
+        <p>一方ケース2では全員がバラバラの商品を購入しているため、<em>商品名</em>の販促だけに注力していると、売上が下がってしまうかもしれません。</p>
+        <p>このように、ばらつきはデータの特徴を表す大事な指標です。</p>
+        <p>データのばらつきを表す指標が、<strong>分散</strong>と<strong>標準偏差</strong>です。データ<span
+        class="math inline">\((x_{1}, \cdots,
+        x_{n})\)</span>の<strong>分散<span
+        class="math inline">\(\sigma^2\)</span>は</strong>、</p>
+        <p><span class="math display">\[
+        \sigma^2 = \frac{1}{n}\{(x_{1} - \bar{x})^2 + \cdots + (x_{n} -
+        \bar{x})^2\} = \frac{1}{n}\sum_{i=1}^{n}(x_{i} - \bar{x})^2
+        \]</span></p>
+        <p>で求められます。つまり、<strong>各観測値の平均からの乖離（偏差）の2乗和の平均</strong>です。</p>
+        <p><strong>標準偏差 <span class="math inline">\(\sigma\)</span>
+        は、分散の平方根を取って元のデータと単位をそろえた指標</strong>です。</p>
+        <p>どちらも必ず<strong>0以上の値</strong>をとり、<strong>値が大きいほどばらつきが大きい</strong>（
+        <span class="math inline">\(=\)</span>
+        平均から離れた観測値が多い）ことを意味します。</p>
+        <h3
+        id="excelで分散と標準偏差を計算する">Excelで分散と標準偏差を計算する</h3>
+        <p>学食の売上金額の分散と標準偏差を計算しましょう。Excelでは、分散には<code>VAR.P</code>関数、標準偏差には<code>STDEV.P</code>関数を使います。</p>
+        <h6 id="var.p関数"><code>VAR.P</code>関数</h6>
+        <p><code>VAR.P(データの範囲)</code></p>
+        <p>（例）<code>sales</code>変数の分散：<code>=VAR.P(:)</code></p>
+        <h6 id="stdev.p関数"><code>STDEV.P</code>関数</h6>
+        <p><code>STDEV.P(データの範囲)</code></p>
+        <p>（例）<code>sales</code>変数の分散：<code>=STDEV.P(:)</code></p>
+        <p>分散と標準偏差を求めることで、データのばらつきを知ることができました。学食の売り上げデータでは、購入金額は平均**円、平均から離れているようです。</p>
+        <h5
+        id="p関数と.s関数"><code>.P</code>関数と<code>.S</code>関数</h5>
+        <p><code>VAR.P</code>関数と<code>STDEV.P</code>関数には、似た関数で<code>VAR.S</code>関数と<code>STDEV.S</code>関数が存在します。</p>
+        <p>実は2種類の関数は微妙に用途が異なります。</p>
+        <h6 id="p関数"><code>.P</code>関数</h6>
+        <p>厳密には標本分散を計算する関数です。</p>
+        <p>標本分散とは、文字通り手元にあるデータの分散を意味します。</p>
+        <p>手元のデータが、<strong>性質を知りたい対象（母集団）全体と見なせるとき</strong>や、<strong>単に手元のデータの分散を知りたいとき</strong>に使用します。</p>
+        <h6 id="s関数"><code>.S</code>関数</h6>
+        <p>こちらは不偏分散を計算する関数です。</p>
+        <p>不偏分散とは、手元のデータが母集団全体だと見なせないときに、<strong>手元のデータから母集団の分散を推定するとき</strong>に使用します。</p>
+        <p>ただし、データ<span class="math inline">\((x_{1}, \cdots,
+        x_{n})\)</span>の<strong>不偏分散<span
+        class="math inline">\(s^2\)</span>は</strong>、</p>
+        <p><span class="math display">\[
+        s^2 = \frac{1}{n-1}\{(x_{1} - \bar{x})^2 + \cdots + (x_{n} -
+        \bar{x})^2\} = \frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{x})^2
+        \]</span></p>
+        <p>で求められ、<strong>標本分散<span
+        class="math inline">\(\sigma^2\)</span>との違いは、<span
+        class="math inline">\(\frac{1}{n}\)</span> をかけるか、<span
+        class="math inline">\(\frac{1}{n-1}\)</span>
+        をかけるかだけ</strong>です。サンプルサイズ <span
+        class="math inline">\(n\)</span>
+        が大きいときにはほぼ同じような値になるため、十分なサイズのデータを集めることができれば、どちらを使うかはあまり気にしなくても良いでしょう。</p>
         <h2 id="共分散と相関係数">共分散と相関係数</h2>
+        <p>これまでは1変数（1つの調査項目）について平均や分散などの指標に注目してきました。ですが、一般的に、因果関係や予測値を知りたいときには、少なくとも2つの事柄の関係をチェックする必要があります。</p>
+        <p>例えば、学食の売上を上げていくためには、売上金額が時間や気温など、ほかのどのような変数と連動しているかを知ることも大事でしょう。</p>
+        <p><a href=""></a></p>
+        <p>↑売上と時間の生データ</p>
+        <p>上図は、売上金額と購入時間のデータを並べたものですが、生のデータを一見しただけでは、両者にどのような関係があるのか（あるいはないのか）を読み取ることは難しいと思います。</p>
+        <p>ここでは、2変数の関係を把握するための手法を学びましょう。</p>
+        <h3 id="散布図">散布図</h3>
+        <p>2変数の関係を視覚的に把握するには<strong>散布図</strong>が便利です。</p>
+        <p>散布図は、<strong>横軸に一方の変数、縦軸にもう一方の変数をとり、各データが当てはまるところに点を打って示す（プロットする）グラフ</strong>です。</p>
+        <p>具体的に、売上金額と時間の関係を考えてみましょう。時間を横軸、売上金額を縦軸にとったとき、手元にある購入ID
+        <span class="math inline">\(i\)</span> のデータは <span
+        class="math inline">\((時間, 売上金額) = (x_{i}, y_{i})\)</span>
+        と表すことができます。この <span class="math inline">\((x_{i},
+        y_{i})\)</span>
+        を座標とする点を平面上に表したものが散布図です。</p>
+        <p><a href=""></a></p>
+        <p>↑売上と時間の散布図</p>
+        <p>2つの変数が連動して動くことを<strong>相関</strong>と呼びます。</p>
+        <ul>
+        <li>一方が増加（減少）すればもう一方も増加（減少）する傾向があるとき、2変数間に<strong>正の相関</strong>があるという。</li>
+        <li>一方が増加（減少）すればもう一方は減少（増加）する傾向があるとき、2変数間に<strong>負の相関</strong>があるという。</li>
+        </ul>
+        <h4 id="excelで散布図を作る">Excelで散布図を作る</h4>
+        <p><a
+        href="#excelでヒストグラムを作る">Excelでヒストグラムを作る</a>の手順1で、相関を見たい2変数のデータ範囲を選択し、散布図を選択することで、簡単に散布図を作ることができます。</p>
+        <p><a href=""></a></p>
+        <p>散布図を選択する画像</p>
+        <h3 id="共分散">共分散</h3>
+        <p>散布図は、2変数間の相関を視覚的に把握するのに便利ですが、散布図の軸のとり方や縦横の比によっては、<strong>情報を読み誤る危険性</strong>があったり、1組の変数の相関を別の組の変数の相関と<strong>比較することが難し</strong>かったりと、問題点もあります。</p>
+        <p>このような問題点を克服するために、2変数の相関を数値化した<strong>共分散</strong>を計算していきましょう。</p>
+        <p><span
+        class="math inline">\(n\)</span>個の観測値のペアからなるデータ<span
+        class="math inline">\(\{(x_{1}, y_{1}), \cdots, (x_{n},
+        y_{n})\}\)</span>の共分散<span
+        class="math inline">\(\sigma_{xy}\)</span>は、</p>
+        <p><span class="math display">\[
+        \sigma_{xy} = \frac{1}{n}\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i} -
+        \bar{y})
+        \]</span></p>
+        <p>で求められます。つまり、 <strong><span
+        class="math inline">\(x\)</span> と <span
+        class="math inline">\(y\)</span>
+        それぞれの観測値からそれぞれの平均を引いたもの（<span
+        class="math inline">\(x\)</span> と <span
+        class="math inline">\(y\)</span>
+        それぞれの偏差）をかけたものの平均</strong>です。</p>
+        <p>共分散は、 <span class="math inline">\(x\)</span> と <span
+        class="math inline">\(y\)</span>
+        に<strong>正の相関があるときは正の値</strong>、<strong>負の相関があるときは負の値</strong>をとります。共分散がゼロとなるときは<strong>無相関</strong>であるといいます。</p>
+        <h4 id="excelで共分散を計算する">Excelで共分散を計算する</h4>
+        <p>学食データの売上金額と時間変数の共分散を計算してみましょう。Excelでは<code>COVARIANCE.P</code>関数を使います。</p>
+        <p>※<code>COVARIANCE.P</code>関数と<code>COVARIANCE.S</code>関数の違いは、<a
+        href="#%60.P%60関数と%60.S%60関数"><code>.P</code>関数と<code>.S</code>関数</a>を参照してください。</p>
+        <h6 id="covariance.p関数"><code>COVARIANCE.P</code>関数</h6>
+        <p><code>COVARIANCE.P(データの範囲1, データの範囲2)</code></p>
+        <p>（例）<code>sales</code>変数と<code>time</code>変数の共分散：<code>=COVARIANCE.P(:, :)</code></p>
+        <p>共分散を計算することで、2変数の相関の強さを知ることができました。売上金額と時間の共分散は**、つまり、時間と売上の間には正の相関があるようです。</p>
+        <p><strong>共分散を解釈するときは単位に気をつけてください。</strong></p>
+        <p>共分散の計算式を見ると分かるように、<strong>共分散の単位はそれぞれの変数の単位の積</strong>になります。<code>sales</code>変数と<code>time</code>変数の共分散の場合、その<strong>単位は円
+        <span class="math inline">\(\times\)</span>
+        分</strong>です。</p>
+        <p>「時間が〇分経つと△円売上が上がる」といった解釈はできません。<strong>共分散から分かるのは</strong>、あくまでその<strong>2変数間に正負どちらの相関があるのか</strong>、だけです。</p>
+        <p>また、例えば<code>sales</code>変数と<code>date</code>変数の共分散が<strong>だと分かった場合でも、<code>time</code>変数と<code>date</code>変数の</strong>どちらが<code>sales</code>変数との相関が強いかを比較することはできません**。</p>
+        <h3 id="相関係数">相関係数</h3>
+        <p>共分散の「値が変数の単位に影響され、解釈が難しい」という弱点を克服した指標が<strong>相関係数</strong>です。</p>
+        <p><span
+        class="math inline">\(n\)</span>個の観測値のペアからなるデータ<span
+        class="math inline">\(\{(x_{1}, y_{1}), \cdots, (x_{n},
+        y_{n})\}\)</span>の相関係数<span
+        class="math inline">\(\rho\)</span>は、</p>
+        <p><span class="math display">\[
+        \rho = \frac{\sigma_{xy}}{\sigma_{x}\sigma_{y}}
+        \]</span></p>
+        <p>（ただし、 <span class="math inline">\(\sigma_{x}\)</span>,
+        <span class="math inline">\(\sigma_{y}\)</span> はそれぞれ変数
+        <span class="math inline">\(x\)</span>, <span
+        class="math inline">\(y\)</span> の標準偏差）</p>
+        <p>で求められます。つまり、 <strong><span
+        class="math inline">\(x\)</span> と <span
+        class="math inline">\(y\)</span> の共分散を</strong>
+        <strong><span class="math inline">\(x\)</span> と <span
+        class="math inline">\(y\)</span>
+        それぞれの標準偏差の積で割ったもの</strong>です。</p>
+        <p>相関係数には、以下のような特徴があります。</p>
+        <ul>
+        <li>2変数間の統計的な傾向を1つの数字で表現する指標
+        <ul>
+        <li>あくまで統計的傾向を示す指標であり、<strong>因果関係を保証するものではない</strong>ことに注意</li>
+        </ul></li>
+        <li>必ず <strong><span class="math inline">\(-1\)</span> から
+        <span class="math inline">\(1\)</span> まで</strong>の値をとる
+        <ul>
+        <li><strong>正</strong>の相関があれば相関係数の値は<strong>正</strong></li>
+        <li><strong>負</strong>の相関があれば相関係数の値は<strong>負</strong></li>
+        <li><strong><span class="math inline">\(1\)</span>
+        に近いほど強い正の相関</strong>、 <strong><span
+        class="math inline">\(-1\)</span>
+        に近いほど強い負の相関</strong>を示す
+        <ul>
+        <li>慣例的に、 <span class="math inline">\(0.4 \sim 0.7\)</span>
+        でやや強い正の相関、<span class="math inline">\(0.7\)</span>
+        以上で強い正の相関があるということが多い</li>
+        <li>反対に、<span class="math inline">\(-0.7 \sim -0.4\)</span>
+        でやや強い負の相関、<span class="math inline">\(-0.7\)</span>
+        以下で強い正の相関があるという</li>
+        </ul></li>
+        <li>無相関のときは相関係数は <span
+        class="math inline">\(0\)</span></li>
+        </ul></li>
+        <li>変数の単位に依存しないため、<strong>複数の変数の関係を比較する際に便利</strong></li>
+        </ul>
+        <h4
+        id="excelで相関係数を計算する">Excelで相関係数を計算する</h4>
+        <p>学食データの売上金額と時間変数の相関係数を計算してみましょう。Excelでは<code>CORREL</code>関数を使います。</p>
+        <h6 id="correl関数"><code>CORREL</code>関数</h6>
+        <p><code>CORREL(データの範囲1, データの範囲2)</code></p>
+        <p>（例）<code>sales</code>変数と<code>time</code>変数の相関係数：<code>=CORREL(:, :)</code></p>
+        <p>売上金額と時間の相関係数は**、つまり、時間と売上の間には弱い正の相関があるようです。</p>
+        <h3 id="無相関-ne-関係がない">無相関 <span
+        class="math inline">\(\ne\)</span> 関係がない</h3>
+        <p><strong>「無相関であること」と「関係がない」は違う</strong>意味を表します。</p>
+        <p>先ほど<code>sales</code>変数と<code>time</code>変数の相関係数は**であることが分かりました。基準に照らし合わせると2変数間にほとんど相関はないと言えます。</p>
+        <p><strong>2変数は全くの無関係に動いている変数だと言えるでしょうか？</strong></p>
+        <p>散布図に立ち返ってみましょう。</p>
+        <p><a href=""></a></p>
+        <p>↑売上と時間の散布図</p>
+        <p>散布図は、<strong>明らかに2変数が連動して動いている</strong>ことを示しています。</p>
+        <p><strong>共分散や相関係数は、2変数間の線形的な（直線で示せる）相関関係のみを示し</strong>ます。</p>
+        <p>今回のように<code>time</code>変数の1か所でピークがくるような、<strong>線形以外の相関関係を表すことはできません</strong>。</p>
+        <p>共分散や相関係数がほとんど <span
+        class="math inline">\(0\)</span>
+        に近いからといって、変数間に全く関係がないと言えるとは限らないので、<strong>数値とグラフ、両方を使ってデータの特徴をとらえよう</strong>とすることが大切です。</p>
+        <h1 id="まとめ">まとめ</h1>
+        <p>この章では、手元のデータを分かりやすい形に加工し、表やグラフで視覚的に分布を把握したり、平均や分散などの統計量を用いて数値的にデータの特徴をとらえたりする方法を学んできました。</p>
+        <p>これらの工程は、データ分析を行う際のはじめの一歩です。まずは手元のデータの特徴を把握することが大切です。</p>
+        <p>しかし、手元のデータを使って何かを改善したり、解決したりする際には、別の適切な手法が必要です。</p>
+        <p>次の章では、手元のデータを使って何かを予測したり、効果検証を行ったりするための、考え方や手法を学んでいきます。</p>
+        <p><a href="index.html">講義資料に戻る</a></p>
     </main>
 </body>
 </html>
