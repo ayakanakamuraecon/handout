@@ -8,22 +8,6 @@
 
 ### 変更履歴
 
-# 労働経済学
-
-[イントロダクション](labor/intro.md)
-
-[労働供給と労働需要](labor/ds.md)
-
-[人的資本モデル](labor/hc.md)
-
-# 統計学入門AB
-
-## 統計学入門A
-
-[イントロダクション](statintro/intro.md)
-
-## 統計学入門B
-
 # データを用いた実証分析入門
 
 [イントロダクション](dataintro_intro.html)
@@ -32,7 +16,7 @@
 
 [推測統計](dataintro_estimation.html)
 
-# データを用いた実証分析AB（大学院）
+# データを用いた実証分析A/B（大学院）
 
 ## データを用いた実証分析A
 
@@ -45,3 +29,20 @@
 [イントロダクション](dataintro_intro.html)
 
 [推測統計](dataintro_estimation.html)
+
+# 統計学入門A/B
+
+## 統計学入門A
+
+[イントロダクション](statintro/intro.md)
+
+## 統計学入門B
+
+# 労働経済学
+
+[イントロダクション](labor/intro.md)
+
+[労働供給と労働需要](labor/ds.md)
+
+[人的資本モデル](labor/hc.md)
+
