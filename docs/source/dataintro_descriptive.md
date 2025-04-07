@@ -452,7 +452,6 @@ $$
 
 ![](fig_dataintro_dot_gen.png)
 
-散布図を選択する画像
 
 ### 共分散
 
