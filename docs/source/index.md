@@ -26,7 +26,7 @@
 
 ## データを用いた実証分析B
 
-[イントロダクション](dataintro_intro.html)
+[イントロダクション](dataintro_introb.html)
 
 [推測統計](dataintro_estimation.html)
 
