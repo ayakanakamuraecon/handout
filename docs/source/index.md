@@ -30,7 +30,7 @@
 
 [推測統計](dataintro_estimation.html)
 
-<!--
+<!-- 後期の講義
 # 統計学入門A/B
 
 ## 統計学入門A
