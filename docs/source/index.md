@@ -24,11 +24,15 @@
 
 [記述統計](dataintro_descriptive.html)
 
+[推薦図書](dataintro_book.html)
+
 ## データを用いた実証分析B
 
 [イントロダクション](dataintro_introb.html)
 
 [推測統計](dataintro_estimation.html)
+
+[推薦図書](dataintro_book.html)
 
 <!-- 後期の講義
 # 統計学入門A/B
