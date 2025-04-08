@@ -127,12 +127,7 @@
         <p>Excelは、セルに「<code>= 2 + 3</code>」や「<code>= SUM(A1:Z100)</code>」を入力することで、つまり、<strong>「<code>= 計算式</code>」や「<code>= 関数</code>」を入力する</strong>ことで、計算結果を表示してくれます。
         Excelで度数分布表を作成するときは、度数、相対度数、累積相対度数を次のような関数を使って計算していきます。</p>
         <h5 id="度数-1">度数</h5>
-        <p><code>COUNTIF</code>関数を使い、「<strong>階級の上限値未満の観測値の個数</strong>」から「<strong>階級の下限値未満の観測値の個数</strong>」を引く</p>
-        <p>（例）100以上200未満の階級の度数 <span
-        class="math inline">\(=\)</span> 200未満の観測値の個数 <span
-        class="math inline">\(-\)</span> 100未満の観測値の個数 <span
-        class="math inline">\(=\)</span>
-        100以上200未満の観測値の個数</p>
+        <p><code>COUNTIFS</code>関数を使い、<strong>階級の下限値以上</strong>かつ<strong>階級の上限値未満</strong>の観測値の個数を計算する。</p>
         <h6 id="countifs関数"><code>COUNTIFS</code>関数</h6>
         <p><code>COUNTIFS(検索条件範囲1, "条件1", [検索条件範囲2, "条件2"], ...)</code></p>
         <p>（例）200以上300未満の観測値の個数：<code>= COUNTIFS($A:$A:, "&gt;=200", $A:$A:, "&lt;300")</code></p>
