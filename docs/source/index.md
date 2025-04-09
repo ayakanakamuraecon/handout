@@ -16,6 +16,8 @@
 
 [推測統計](dataintro_estimation.html)
 
+[推薦図書](dataintro_book.html)
+
 # データを用いた実証分析A/B（大学院）
 
 ## データを用いた実証分析A
