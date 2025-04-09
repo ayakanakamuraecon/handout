@@ -7,7 +7,7 @@
 #### 学部中級レベルの統計の教科書
 
 - [『コア・テキスト 統計学（大屋幸輔）』](https://www.saiensu.co.jp/search/?isbn=978-4-88384-050-2&y=2003)
-- [『統計学入門（森棟公夫）』] (https://www.saiensu.co.jp/search/?isbn=978-4-88384-017-5&y=2000)
+- [『統計学入門（森棟公夫）』](https://www.saiensu.co.jp/search/?isbn=978-4-88384-017-5&y=2000)
 
 #### 因果推論
 
