@@ -2,7 +2,7 @@
 
 #### 一般書
 
-- <a href="[https://www.diamond.co.jp/book/9784478022214.html]" target="_blank">『統計学が最強の学問である』（西内啓）</a>
+- <a href="https://www.diamond.co.jp/book/9784478022214.html" target="_blank">『統計学が最強の学問である』（西内啓）</a>
 - [『統計学が最強の学問である』（西内啓）](https://www.diamond.co.jp/book/9784478022214.html)
 - [『今こそExcelで学ぶ統計解析入門』（菅民郎）](https://www.ohmsha.co.jp/book/9784274232350/)
 
