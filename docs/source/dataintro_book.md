@@ -18,5 +18,5 @@
 
 #### R を使った分析
 
-- [『社会科学のためのデータ分析入門（今井耕介）』](https://www.iwanami.co.jp/book/b352348.html)
+- 『社会科学のためのデータ分析入門（今井耕介）』[上](https://www.iwanami.co.jp/book/b352348.html)/[下]((https://www.iwanami.co.jp/book/b352363.html))
 - [『卒業論文のためのR入門（森知晴）』](https://tomoecon.github.io/R_for_graduate_thesis/)（ウェブサイト）
