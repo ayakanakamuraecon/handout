@@ -199,9 +199,9 @@ Excelでエラーバー付棒グラフを作るには、まず、グループ別
         - 90％信頼区間：`= 1.64*標準誤差のセル番地`
         - 99％信頼区間：`= 2.58*標準誤差のセル番地`
 
-[サンプルサイズ](fig_dataintro_sebar_count.png)
-[標準誤差](fig_dataintro_sebar_se.png)
-[信頼区間](fig_dataintro_sebar_ci.png)
+![サンプルサイズ](fig_dataintro_sebar_count.png)
+![標準誤差](fig_dataintro_sebar_se.png)
+![信頼区間](fig_dataintro_sebar_ci.png)
 
 表ができたら、グループ名と各平均値のセルを選択し、棒グラフを作ります。できたグラフに、以下の手順でエラーバーを追加しましょう。
 
@@ -212,9 +212,9 @@ Excelでエラーバー付棒グラフを作るには、まず、グループ別
 3. **誤差範囲の書式設定**メニューの**誤差範囲**から**ユーザー設定**を選択
 4. ユーザー設定の誤差範囲ウィンドウで、**正の誤差の値**と**負の誤差の値**両方に計算した**信頼区間のセル番地**を指定
 
-[グラフの選択](fig_dataintro_sebar_gen.png)
-[標準誤差を追加](fig_dataintro_sebar_gen1.png)
-[標準誤差の設定](fig_dataintro_sebar_gen2.png)
+![グラフの選択](fig_dataintro_sebar_gen.png)
+![標準誤差を追加](fig_dataintro_sebar_gen1.png)
+![標準誤差の設定](fig_dataintro_sebar_gen2.png)
 
 これで、エラーバー付棒グラフを作成できました。
 
