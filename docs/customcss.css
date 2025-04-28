@@ -41,3 +41,11 @@ main {
         margin-left: 0; /* 本文を全幅に */
     }
 }
+
+/* detailsの背景を白に戻す */
+details {
+  background: none;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
