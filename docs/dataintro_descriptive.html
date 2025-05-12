@@ -30,7 +30,8 @@
         </ul></li>
         <li><a href="#統計量" id="toc-統計量">統計量</a>
         <ul>
-        <li><a href="#平均" id="toc-平均">平均</a></li>
+        <li><a href="#平均中央値"
+        id="toc-平均中央値">平均・中央値</a></li>
         <li><a href="#分散と標準偏差"
         id="toc-分散と標準偏差">分散と標準偏差</a></li>
         <li><a href="#共分散と相関係数"
@@ -381,7 +382,7 @@
         <p>それぞれのデータの特徴はどの程度似通っていて、どの程度異なるのか、その判断も人によって異なるでしょう。</p>
         <p>このような問題点を解決するために、グラフとともに<strong>統計量</strong>（データの特徴を数値に集約すること）を計算していくことが大切です。</p>
         <p>ここでは、代表的な統計量として、<strong>平均</strong>、<strong>分散</strong>、<strong>標準偏差</strong>、<strong>共分散</strong>、<strong>相関係数</strong>の計算方法を学びます。</p>
-        <h2 id="平均">平均</h2>
+        <h2 id="平均中央値">平均・中央値</h2>
         <p><strong>平均</strong>は、データの中心（重心）を表す数値です。</p>
         <p><span
         class="math inline">\(n\)</span>個の観測値からなるデータ<span
@@ -393,7 +394,7 @@
         \]</span></p>
         <p>で求められます。つまり、<strong>観測値の値をすべて足し、それを観測値の個数（データサイズ）で割ったもの</strong>です。</p>
         <p>似たような統計量に<strong>中央値</strong>がありますが、両者の間にはいくつかの違いがあります。</p>
-        <h5 id="平均-1">平均</h5>
+        <h5 id="平均">平均</h5>
         <ul>
         <li>データは平均の周辺に分布する</li>
         <li>多く現れる値に影響を受ける</li>
@@ -401,19 +402,24 @@
         </ul>
         <h5 id="中央値">中央値</h5>
         <ul>
-        <li>データを小さい順に並べたときに真ん中に位置する値
+        <li><strong>データを小さい順に並べたときに真ん中に位置する値</strong>
         <ul>
         <li>データが中央値の周辺に分布するとは限らない</li>
         </ul></li>
         <li>極端な値に<strong>影響を受けにくい</strong></li>
         </ul>
-        <h3 id="excelで平均を計算する">Excelで平均を計算する</h3>
-        <p>引き続き、学食の売上金額データを用いて平均を計算しましょう。Excelでは<code>AVERAGE</code>関数を使います。</p>
+        <h3
+        id="excelで平均と中央値を計算する">Excelで平均と中央値を計算する</h3>
+        <p>学食の売上金額データを用いて平均を計算しましょう。Excelでは<code>AVERAGE</code>関数を使います。</p>
         <h6 id="average関数"><code>AVERAGE</code>関数</h6>
         <p><code>AVERAGE(データの範囲)</code></p>
         <p>（例）<code>sales</code>変数の平均：<code>=AVERAGE(A:A)</code></p>
         <p><img src="fig_dataintro_mean.png" /></p>
         <p>平均を計算することで、データの中心（重心）を知ることができました。学食の売り上げデータでは、1回あたりの購入金額は、428.57円のようです。</p>
+        <p>次に、同じく売上金額データを用いて中央値を計算しましょう。Excelでは<code>MEDIAN</code>関数を使います。関数名は異なりますが、使い方は<code>AVERAGE</code>関数と同じです。</p>
+        <h6 id="median関数"><code>MEDIAN</code>関数</h6>
+        <p><code>MEDIAN(データの範囲)</code></p>
+        <p>（例）<code>sales</code>変数の中央値：<code>=MEDIAN(A:A)</code></p>
         <h3
         id="度数分布表から平均を求める">度数分布表から平均を求める</h3>
         <p>度数分布表しか得られない場合でも、階級値と相対度数から平均を求めることができます。</p>
