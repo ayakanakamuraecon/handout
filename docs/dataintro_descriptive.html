@@ -383,7 +383,11 @@
         <p>このような問題点を解決するために、グラフとともに<strong>統計量</strong>（データの特徴を数値に集約すること）を計算していくことが大切です。</p>
         <p>ここでは、代表的な統計量として、<strong>平均</strong>、<strong>分散</strong>、<strong>標準偏差</strong>、<strong>共分散</strong>、<strong>相関係数</strong>の計算方法を学びます。</p>
         <h2 id="平均中央値">平均・中央値</h2>
-        <p><strong>平均</strong>は、データの中心（重心）を表す数値です。</p>
+        <p>データの中心を表す統計量としてよく使われるのは<strong>平均</strong>と<strong>中央値</strong>です。</p>
+        <p>2つの統計量はよく似ているように思われがちですが、それぞれに特徴や注意点があり、使い分けが必要です。</p>
+        <h5 id="平均">平均</h5>
+        <p><strong>平均</strong>（average,
+        mean）は、データの中心（重心）を表す数値です。</p>
         <p><span
         class="math inline">\(n\)</span>個の観測値からなるデータ<span
         class="math inline">\((x_{1}, \cdots, x_{n})\)</span>の平均<span
@@ -393,19 +397,15 @@
         \frac{1}{n}\sum_{i=1}^{n}x_{i}
         \]</span></p>
         <p>で求められます。つまり、<strong>観測値の値をすべて足し、それを観測値の個数（データサイズ）で割ったもの</strong>です。</p>
-        <p>似たような統計量に<strong>中央値</strong>がありますが、両者の間にはいくつかの違いがあります。</p>
-        <h5 id="平均">平均</h5>
         <ul>
         <li>データは平均の周辺に分布する</li>
         <li>多く現れる値に影響を受ける</li>
         <li>極端な値に<strong>影響を受ける</strong></li>
         </ul>
         <h5 id="中央値">中央値</h5>
-        <ul>
-        <li><strong>データを小さい順に並べたときに真ん中に位置する値</strong>
+        <p><strong>中央値</strong>（median）は、<strong>データを小さい順に並べたときに真ん中に位置する値</strong>のことです。</p>
         <ul>
         <li>データが中央値の周辺に分布するとは限らない</li>
-        </ul></li>
         <li>極端な値に<strong>影響を受けにくい</strong></li>
         </ul>
         <h3
