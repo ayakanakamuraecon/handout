@@ -276,8 +276,8 @@
         <strong>得られたデータが「差がない」前提の下ではとても珍しい確率でしか得られないもの</strong>だとしたら、
         3. <strong>差がないという前提を否定</strong>する、</p>
         <p>という手順を踏むことで、「差がある」という仮説を支持していくのです。</p>
-        <h3 id="excelで仮説検定-t-検定をする">Excelで仮説検定（ <span
-        class="math inline">\(t\)</span> 検定）をする</h3>
+        <h3
+        id="excelで仮説検定t検定をする">Excelで仮説検定（t検定）をする</h3>
         <p><strong>男女間での平均購入金額に差があるかどうかという仮説を例</strong>に、仮説検定の中でも、特に
         <strong><span class="math inline">\(t\)</span>
         検定の手順</strong>を見ていきましょう。t
@@ -478,10 +478,10 @@
         <p>仮説検定では、観測された差や効果が偶然によるものかどうかを判断することができます。しかし、実際のデータでは複数の要因が同時に影響している場合が多く、単純な比較だけでは不十分です。次に学ぶ回帰分析では、変数同士の関係（相関）を数式で表現し、データの傾向を把握したり、将来の値を予測したりすることが可能になります。</p>
         </details>
         <h1 id="回帰分析">回帰分析</h1>
+        <!---
         <details>
-        <summary>
-        回帰分析セクションを見る（クリックで開閉）
-        </summary>
+        <summary>回帰分析セクションを見る（クリックで開閉）</summary>
+        --->
         <p>このセクションでは、<strong>回帰分析</strong>について学んでいきます。</p>
         <p>一般に回帰（regression）とは「<strong>興味のある変数（<span
         class="math inline">\(Y\)</span>）の値を、他の変数（<span
@@ -573,8 +573,8 @@
         <h3
         id="excelを使ったノンパラメトリック回帰">Excelを使ったノンパラメトリック回帰</h3>
         <p>それでは、男女それぞれの売上金額をノンパラメトリック回帰に基づいて予測してみましょう。</p>
-        <p><code>gender</code>変数でフィルタをかけ、男女別に<code>sales</code>変数を分割し、<code>AVERAGE</code>関数を使って、男女それぞれの平均売上金額を計算すればそれでOKです。</p>
-        <p>（関数の使い方は<a
+        <p><code>gender</code>変数でフィルタをかけ、男女別に<code>sales</code>変数を分割し、<code>AVERAGE</code>関数を使って、男女それぞれの平均売上金額を計算すればそれでOKです。</br>
+        （関数の使い方は<a
         href="#excelで標準誤差を考慮した棒グラフを作る">Excelで標準誤差を考慮した棒グラフを作る</a>を参照してください。）</p>
         <p>あるいは、<code>AVERAGEIFS</code>関数を使って、生のデータから男女それぞれの売上金額を抽出し、平均を計算しても良いです。<code>AVERAGEIFS</code>関数は、<code>COUNTIFS</code>関数とほとんど同じように使えます。</p>
         <h6 id="averageifs関数"><code>AVERAGEIFS</code>関数</h6>
@@ -599,36 +599,37 @@
         <p>第二に、事前に説明変数<span
         class="math inline">\(X\)</span>と被説明変数<span
         class="math inline">\(Y\)</span>の関係が想定されるときに、全体の傾向が見づらいことがあります。</p>
-        <p><img src="fig_dataintro_agesales.png" /></p>
         <p>例えば、年齢と売上金額の関係を考えてみます。若い人の方がたくさん食べられるので売上金額は高い傾向にあるかもしれないし、年齢を重ねた人の方が金銭的に余裕があって売上金額が高い傾向にあるかもしれません。</p>
+        <p><img src="fig_dataintro_agesales.png" /></p>
         <p>上図は年齢ごとに売上金額をプロットしたものと、それをノンパラメトリック回帰した結果を表しています。</p>
         <p>「1年歳をとることで売上金額が何円上がるか（下がるか）」という全体的な傾向をノンパラメトリック回帰の結果から解釈することは難しいでしょう。</p>
         <p>横軸の取りうる値がもっと細かくなれば、回帰曲線自体がよりギザギザとなって見づらくなることもありますし、説明変数が手元のデータにないの値（ここでは、例えば15歳の人や40歳の人など）をとるときの予測値を計算することもできません。</p>
         <h2 id="線形回帰">線形回帰</h2>
         <p><a
-        href="#ノンパラメトリック回帰の注意点">ノンパラメトリック回帰の注意点</a>に挙げたような問題点に対処するために、説明変数<span
+        href="#ノンパラメトリック回帰の注意点">ノンパラメトリック回帰の注意点</a>に挙げたような問題点に対処するために、<strong>説明変数<span
         class="math inline">\(X\)</span>と被説明変数<span
-        class="math inline">\(Y\)</span>の関係になんらかの関数形を仮定する方法が、パラメトリック回帰です。</p>
-        <p>特に、被説明変数<span
+        class="math inline">\(Y\)</span>の関係になんらかの関数形を仮定する方法が、パラメトリック回帰</strong>です。</p>
+        <p>特に、<strong>被説明変数<span
         class="math inline">\(Y\)</span>は説明変数<span
-        class="math inline">\(X\)</span>の1次式であると仮定する方法を線形回帰（linear
-        regression）といいます。</p>
-        <p>例えば、売上金額（<code>sales</code>）は年齢（<code>age</code>）の1次式であると仮定すると、売上金額は以下の式で表すことができます。</p>
+        class="math inline">\(X\)</span>の1次式であると仮定する方法を線形回帰</strong>（<strong>linear
+        regression</strong>）<strong>といいます</strong>。</p>
+        <p>例えば、売上金額（<code>sales</code>）は気温（<code>temp</code>）の1次式であると仮定すると、売上金額は以下の式で表すことができます。</p>
         <p><span class="math display">\[
-        sales = \beta_{0} + \beta_{1} \times age + \varepsilon
+        sales = \beta_{0} + \beta_{1} \times temp + \varepsilon
         \]</span></p>
-        <p>例のように、説明変数が一つのときには特に単回帰モデルといい、説明変数が二つ以上の時には重回帰モデルといいます。</p>
+        <p>例のように、<strong>説明変数が一つのときには特に単回帰モデル</strong>といい、<strong>説明変数が二つ以上の時には重回帰モデル</strong>といいます。</p>
         <p>ここで、回帰モデルについていくつかの専門用語を整理しておきます。</p>
         <p><span class="math inline">\(Y = \beta_{0} + \beta_{1} X +
-        \varepsilon\)</span> のような説明変数<span
+        \varepsilon\)</span> のような<strong>説明変数<span
         class="math inline">\(X\)</span>と被説明変数<span
-        class="math inline">\(Y\)</span>の関係式を回帰式と呼び、直線の切片<span
+        class="math inline">\(Y\)</span>の関係式を回帰式</strong>と呼び、<strong>直線の切片<span
         class="math inline">\(\beta_{0}\)</span>、直線の傾き<span
-        class="math inline">\(\beta_{1}\)</span>を回帰係数と呼びます。</p>
-        <p>線形回帰は、手元のデータ<span class="math inline">\((age,
+        class="math inline">\(\beta_{1}\)</span>を回帰係数</strong>と呼びます。</p>
+        <p><strong>線形回帰は、手元のデータ<span
+        class="math inline">\((temp,
         sales)\)</span>の組み合わせから、データの動きを最もよく表す直線の回帰係数<span
         class="math inline">\((\beta_{0},
-        \beta_{1})\)</span>を見つける作業です。</p>
+        \beta_{1})\)</span>を見つける作業</strong>です。</p>
         <p>データの動きを最もよく表す直線とは、（ノンパラメトリック回帰と同様に）予測誤差の少ない直線のことです。</p>
         <p>ここでも、予測誤差は<span
         class="math inline">\(\varepsilon\)</span>で表されるので、回帰係数<span
@@ -640,10 +641,10 @@
         MSE = \frac{1}{n} \sum_{i=1}^{n} (Y_{i} - \beta_{0} - \beta_{1}
         X_{i})^{2}
         \]</span></p>
-        <p>この誤差を最小にする回帰係数の値<span
+        <p><strong>この誤差を最小にする回帰係数の値</strong><span
         class="math inline">\((\hat{\beta_{0}},
-        \hat{\beta_{1}})\)</span>を、最小二乗推定量、あるいはOLS(ordinary
-        least squares)推定量と呼びます。</p>
+        \hat{\beta_{1}})\)</span><strong>を、最小二乗推定量</strong>、あるいは<strong>OLS(ordinary
+        least squares)推定量と呼びます</strong>。</p>
         <p>具体的な導出過程は割愛しますが、OLS推定量は以下の式で求められます。</p>
         <p><span class="math display">\[
         \begin{align}
@@ -657,22 +658,26 @@
         \end{align}
         \]</span></p>
         <p>式を見ていただいて予想がつくかもしれませんが、<span
-        class="math inline">\(\beta_{1}\)</span>（傾きの係数）の方が大切です（<span
+        class="math inline">\(\beta_{1}\)</span>（<strong>傾きの係数</strong>）<strong>の方が大切</strong>です（<span
         class="math inline">\(\beta_{0}\)</span>はおまけのようなものです）。</p>
         <p>直線において、説明変数<span
         class="math inline">\(X\)</span>と被説明変数<span
         class="math inline">\(Y\)</span>が相関するかどうかを決めるのが傾きの係数だからです。</p>
-        <p><span class="math inline">\(\beta_{1}\)</span>がほとんど<span
-        class="math inline">\(0\)</span>のケースを考えます。
+        <p><strong><span
+        class="math inline">\(\beta_{1}\)</span>がほとんど<span
+        class="math inline">\(0\)</span>のケース</strong>を考えます。
         散布図と回帰曲線は、例えばこんな感じになります。</p>
         <p><img src="fig_dataintro_0slope.png" /></p>
         <p>被説明変数<span
         class="math inline">\(Y\)</span>の値が、説明変数<span
-        class="math inline">\(X\)</span>の値にかかわらず分布している、つまり、説明変数<span
+        class="math inline">\(X\)</span>の値にかかわらず分布している、つまり、<strong>説明変数<span
         class="math inline">\(X\)</span>と被説明変数<span
-        class="math inline">\(Y\)</span>が連動して動いていないことが読み取れると思います。</p>
-        <p>よって、ある変数を用いてほかの変数の値を予測したいときや、何か意味のある相関を見つけたいときは、傾きが<span
-        class="math inline">\(0\)</span>ではないことを確認する必要があるのです。</p>
+        class="math inline">\(Y\)</span>が連動して動いていない</strong>ことが読み取れると思います。</p>
+        <p>このような状態では、説明変数<span
+        class="math inline">\(X\)</span>から被説明変数<span
+        class="math inline">\(Y\)</span>の値を予測することはできません。</p>
+        <p>よって、ある変数を用いてほかの変数の値を予測したいときや、何か意味のある相関を見つけたいときは、<strong>傾きが<span
+        class="math inline">\(0\)</span>ではないことを確認する必要がある</strong>のです。</p>
         <h3 id="excelで回帰分析をする">Excelで回帰分析をする</h3>
         <p>Excelで回帰分析をするとき、単回帰分析（説明変数<span
         class="math inline">\(X\)</span>が1つだけ）の場合は2通りの方法があります。</p>
@@ -683,37 +688,307 @@
         href="dataintro_descriptive.html#散布図">記述統計（散布図）</a>を参照）</li>
         <li>散布図を選択し、「デザイン」タブ→「グラフ要素を追加」→「近似曲線」→「線形」の順に選択</li>
         </ol>
-        <p>単回帰分析であれば、散布図に近似曲線を追加するだけで、回帰係数を求めることができます。</p>
-        <p>しかし、傾きが<span
-        class="math inline">\(0\)</span>ではないかどうかを確認したいときには、グラフだけでは不十分です。
+        <p><strong>単回帰分析であれば、散布図に近似曲線を追加</strong>するだけで、回帰係数を求めることができます。</p>
+        <p>しかし、傾<strong>きが<span
+        class="math inline">\(0\)</span>ではないかどうかを確認したいときには、グラフだけでは不十分</strong>です。
         また、説明変数<span
         class="math inline">\(X\)</span>が2つ以上の場合は回帰曲線を図示することはできません。
         その場合は、次のセクションで説明される方法で分析します。</p>
         <h4 id="分析ツールを使う">2. 分析ツールを使う</h4>
-        <p>傾きが<span
+        <p><strong>傾きが<span
         class="math inline">\(0\)</span>ではないかどうかを確認したいとき、説明変数<span
-        class="math inline">\(X\)</span>が2つ以上の場合は、<a
+        class="math inline">\(X\)</span>が2つ以上の場合</strong>は、<a
         href="#仮説検定">仮説検定</a>でも使った分析ツールを使います。</p>
         <p>分析ツールの追加方法は<a
         href="#分析ツールアドインの追加">分析ツールアドインの追加</a>を参照してください。</p>
         <p><span class="math display">\[
-        sales = \beta_{0} + \beta_{1} \times age + \varepsilon
+        sales = \beta_{0} + \beta_{1} \times temp + \varepsilon
         \]</span></p>
         <p>この回帰式の係数を推定してみます。</p>
         <ol type="1">
         <li>「データ」タブ→「データ分析」の順に選択して分析ツールを開く</li>
         <li>「回帰分析」を選択</li>
-        <li>入力<span
-        class="math inline">\(Y\)</span>範囲に被説明変数、入力<span
-        class="math inline">\(X\)</span>範囲に説明変数のデータ範囲を入力</li>
-        <li>1行目に変数名が入っているときにはラベルにチェックを入れる</li>
-        <li>出力オプションに結果を出力したい場所を入力する
-        <ul>
-        <li>一覧の入力先：入力した既存ワークシートのセルに出力される</li>
-        <li>新規ワークシート：自動的に出力用の新規ワークシートが作成される</li>
-        <li>新規ブック：自動的に出力用の新規ブックが作成される</li>
-        </ul></li>
+        <li>必要な項目を記入</li>
         </ol>
+        <table>
+        <colgroup>
+        <col style="width: 31%" />
+        <col style="width: 68%" />
+        </colgroup>
+        <thead>
+        <tr class="header">
+        <th>項目</th>
+        <th>内容</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="odd">
+        <td>入力<span class="math inline">\(Y\)</span>範囲</td>
+        <td>被説明変数のデータ範囲を入力</td>
+        </tr>
+        <tr class="even">
+        <td>入力<span class="math inline">\(X\)</span>範囲</td>
+        <td>説明変数のデータ範囲を入力</td>
+        </tr>
+        <tr class="odd">
+        <td>ラベルの指定</td>
+        <td>1行目に変数名がある場合、「ラベル」にチェックを入れる</td>
+        </tr>
+        <tr class="even">
+        <td>出力オプションの指定</td>
+        <td>結果を出力したい場所を指定</td>
+        </tr>
+        <tr class="odd">
+        <td> 一覧の入力先</td>
+        <td>入力した既存ワークシートのセルに結果が出力される</td>
+        </tr>
+        <tr class="even">
+        <td> 新規ワークシート</td>
+        <td>出力用の新しいワークシートが自動で作成される</td>
+        </tr>
+        <tr class="odd">
+        <td> 新規ブック</td>
+        <td>出力用の新しいExcelブックが自動で作成される</td>
+        </tr>
+        </tbody>
+        </table>
+        <p><img src="fig_dataintro_linreg.png" /></p>
+        <p>正しく入力されていれば、出力オプションで指定したセルに結果が出力されます。</p>
+        <p><img src="fig_dataintro_linregrsl.png" /></p>
+        <table>
+        <colgroup>
+        <col style="width: 19%" />
+        <col style="width: 25%" />
+        <col style="width: 55%" />
+        </colgroup>
+        <thead>
+        <tr class="header">
+        <th>区分</th>
+        <th>項目</th>
+        <th>説明</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="odd">
+        <td>概要</td>
+        <td>重相関 <span class="math inline">\(R\)</span></td>
+        <td>説明変数と被説明変数の相関係数（複数の<span
+        class="math inline">\(X\)</span>がある場合でもまとめた指標）</td>
+        </tr>
+        <tr class="even">
+        <td></td>
+        <td>決定係数 <span class="math inline">\(R^2\)</span></td>
+        <td>回帰モデルによって説明される<span
+        class="math inline">\(Y\)</span>の変動の割合（決定係数）</td>
+        </tr>
+        <tr class="odd">
+        <td></td>
+        <td>補正 <span class="math inline">\(R^2\)</span></td>
+        <td>自由度調整済み決定係数（説明変数が多いと過大評価になるのを補正）</td>
+        </tr>
+        <tr class="even">
+        <td></td>
+        <td>標準誤差</td>
+        <td>推定誤差の標準偏差（残差のばらつきの尺度）</td>
+        </tr>
+        <tr class="odd">
+        <td></td>
+        <td>観測数</td>
+        <td>データのサンプル数（行数）</td>
+        </tr>
+        <tr class="even">
+        <td>分散分析</td>
+        <td>回帰</td>
+        <td>回帰によって説明される分散に関する統計量（自由度,
+        分散など）</td>
+        </tr>
+        <tr class="odd">
+        <td></td>
+        <td>残差</td>
+        <td>説明できなかった残差の分散</td>
+        </tr>
+        <tr class="even">
+        <td></td>
+        <td>合計</td>
+        <td>総平方和（回帰+残差）</td>
+        </tr>
+        <tr class="odd">
+        <td></td>
+        <td>分散比</td>
+        <td><span
+        class="math inline">\(F\)</span>値の計算に用いる（回帰分散 ÷
+        残差分散）</td>
+        </tr>
+        <tr class="even">
+        <td></td>
+        <td>有意 <span class="math inline">\(F\)</span></td>
+        <td>モデル全体の有意性の検定（<span
+        class="math inline">\(p\)</span>値）</td>
+        </tr>
+        <tr class="odd">
+        <td>係数表</td>
+        <td>切片</td>
+        <td>回帰式の切片（<span class="math inline">\(Y = \beta_{0} +
+        \beta_{1}X\)</span> の <span
+        class="math inline">\(\beta_{0}\)</span> 部分）</td>
+        </tr>
+        <tr class="even">
+        <td></td>
+        <td>説明変数名</td>
+        <td>各説明変数の名前（例：<code>temp</code>）</td>
+        </tr>
+        <tr class="odd">
+        <td></td>
+        <td><strong>係数</strong></td>
+        <td><strong>各説明変数の回帰係数（傾き<span
+        class="math inline">\(\beta_{1}\)</span>）</strong></td>
+        </tr>
+        <tr class="even">
+        <td></td>
+        <td>標準誤差</td>
+        <td>各係数の標準誤差（ばらつき）</td>
+        </tr>
+        <tr class="odd">
+        <td></td>
+        <td><span class="math inline">\(t\)</span> 値</td>
+        <td>係数の有意性を検定するための統計量</td>
+        </tr>
+        <tr class="even">
+        <td></td>
+        <td><strong><span class="math inline">\(P\)</span>
+        値</strong></td>
+        <td><strong><span class="math inline">\(t\)</span>検定の<span
+        class="math inline">\(p\)</span>値。小さいほど係数が有意（例：<span
+        class="math inline">\(&lt; 0.05\)</span>）</strong></td>
+        </tr>
+        <tr class="odd">
+        <td></td>
+        <td>下限 <span class="math inline">\(95\%\)</span></td>
+        <td>係数の95%信頼区間の下限</td>
+        </tr>
+        <tr class="even">
+        <td></td>
+        <td>上限 <span class="math inline">\(95\%\)</span></td>
+        <td>係数の95%信頼区間の上限</td>
+        </tr>
+        </tbody>
+        </table>
+        <p>たくさんの数値が出てきますが、<strong>重要なのは係数と<span
+        class="math inline">\(P\)</span> 値</strong>です。</p>
+        <p>係数は各説明変数の回帰係数（ここでは<span
+        class="math inline">\(\beta_{1}\)</span>）を表します。
+        回帰係数が<span
+        class="math inline">\(-11.28\)</span>であるということは、気温（<code>temp</code>）が一度上がると売上（<code>sales</code>）は<span
+        class="math inline">\(-11.28\)</span>円変化する、つまり、<strong>気温が一度上昇すると売上は<span
+        class="math inline">\(11.28\)</span>円下がる</strong>という関係になっていることが分かります。</p>
+        <p>一方、<span class="math inline">\(P\)</span>
+        値はその回帰係数が統計的に<span
+        class="math inline">\(0\)</span>と異なると言えるかどうかを示します。</p>
+        <p>これは、<strong>回帰係数が<span
+        class="math inline">\(0\)</span>である</strong>という帰無仮説に対する検定を行っていることを意味します。</p>
+        <p>説明変数が被説明変数の予測に有効であるためには、<strong>対応する回帰係数が<span
+        class="math inline">\(0\)</span>ではない</strong>、つまり<strong>統計的に有意</strong>である必要があります。</p>
+        <p>そのため、回帰分析を行う際は、<a
+        href="#仮説検定">仮説検定</a>で学んだ考え方に基づき、回帰係数が統計的に<span
+        class="math inline">\(0\)</span>と異なることを判断するのが一般的です。</p>
+        <p>詳しくは、<a
+        href="#excelで仮説検定t検定をする">Excelで仮説検定（t検定）をする</a>を参照してください。</p>
+        <p>分析者は、事前に有意水準を設定し、<span
+        class="math inline">\(P\)</span>
+        値がその水準よりも小さいときに、回帰係数は有意に<span
+        class="math inline">\(0\)</span>と異なると結論付けます。</p>
+        <p>例えば、有意水準を<span
+        class="math inline">\(5\%\)</span>（<span
+        class="math inline">\(=
+        0.05\)</span>）とした場合、<code>temp</code>の回帰係数について<span
+        class="math inline">\(P値 = 1.96773E-75 (=
+        1.96773×\frac{1}{10^{75}}) &lt; 0.05\)</span>
+        なので、<code>temp</code>の回帰係数は有意に<span
+        class="math inline">\(0\)</span>と異なると言えます。</p>
+        <p>よって、<code>temp</code>は<code>sales</code>の予測に有効な説明変数だと判断され、以下のような回帰モデルを使って売上を予測できます。</p>
+        <p><span class="math display">\[
+        sales = 647.2523251 -11.28513304 \times temp
+        \]</span></p>
+        <p>この回帰式に、実際の気温の値を代入することで、その日の売上を予測することができます。</p>
+        <h3
+        id="ダミー変数を使った線形回帰">ダミー変数を使った線形回帰</h3>
+        <p>先ほどの例では、<code>temp</code>のような<strong>連続変数</strong>（ある値と次の値の間に無限の中間値を持つ変数）を説明変数とする回帰分析を扱いました。</p>
+        <p>しかし、実際の分析では、性別や職種など、数値ではないカテゴリ変数を扱う場面も多くあります。
+        <a
+        href="#仮説検定">仮説検定</a>の例のように、男女間での売上金額の差を分析したいような場合です。</p>
+        <p>このようなときは、<strong>各カテゴリに数値を対応させることで、それを説明変数として回帰モデルに組み込むことができます</strong>。
+        例えば、性別を男性<span
+        class="math inline">\(=1\)</span>、女性<span
+        class="math inline">\(=0\)</span>のように変換します。</p>
+        <p>特に、0と1の<strong>2値しかとらない変数</strong>を<strong>ダミー変数</strong>と呼びます。</p>
+        <h3 id="ダミー変数の係数の解釈">ダミー変数の係数の解釈</h3>
+        <p>ダミー変数を回帰モデルに入れると、その<strong>係数は基準となるカテゴリ（0が割り当てられたカテゴリ）との差を表す</strong>ようになります。</p>
+        <p>例えば、</p>
+        <p><span class="math display">\[
+        sales = \beta_{0} + \beta_{1} \times male + \varepsilon
+        \]</span></p>
+        <p>というモデルでは、</p>
+        <ul>
+        <li><code>male</code><span class="math inline">\(=
+        1\)</span>のとき（男性）、予測される<code>sales</code>の値は<span
+        class="math inline">\(\beta_{0} + \beta_{1}\)</span></li>
+        <li><code>male</code><span class="math inline">\(=
+        0\)</span>のとき（女性）、予測される<code>sales</code>の値は<span
+        class="math inline">\(\beta_{0}\)</span></li>
+        </ul>
+        <p>となり、<span
+        class="math inline">\(\beta_{1}\)</span>は<strong>男性と女性の平均的な差</strong>（男性の売上金額は女性と比較して平均的に<span
+        class="math inline">\(\beta_{1}\)</span>円異なる）を示す係数になります。</p>
+        <p>このように、ダミー変数の係数は基準カテゴリとの比較として解釈します。</p>
+        <h3 id="excelでダミー変数を作る">Excelでダミー変数を作る</h3>
+        <p><span class="math inline">\(\{男, 男, 男, 女, 女, 男,
+        ...\}\)</span>のように文字列でデータが入力されている場合、各カテゴリに数値を割り当て、男性<span
+        class="math inline">\(=1\)</span>、女性<span
+        class="math inline">\(=0\)</span>となるようなダミー変数を作ります。</p>
+        <p>Excelでは<code>IF</code>関数を使います。</p>
+        <h4 id="if関数"><code>IF</code>関数</h4>
+        <p><code>IF(条件, 真の場合の値, 偽の場合の値)</code></p>
+        <p>（例）<code>gender</code>変数が<code>男</code>のときに<span
+        class="math inline">\(1\)</span>、<code>女</code>のときに<span
+        class="math inline">\(0\)</span>を割り当てる:
+        <code>IF(A2="男", 1, 0)</code></p>
+        <p><img src="fig_dataintro_dummy.png" /></p>
+        <p>このようにカテゴリと数値を対応させることで、連続変数と同じように回帰分析ができるようになります。</p>
+        <p><img src="fig_dataintro_linreg_dum.png" /></p>
+        <p><img src="fig_dataintro_linregrsl_dum.png" /></p>
+        <p><code>male</code>の回帰係数は<span
+        class="math inline">\(30.15\)</span>、<span
+        class="math inline">\(P\)</span>値は<span
+        class="math inline">\(9.84E-10 (= 9.84×\frac{1}{10^{10}}) &lt;
+        0.05\)</span>なので、性別ダミーは売上予測に有効な変数であり、以下のような回帰モデルを使って売上を予測できます。</p>
+        <p><span class="math display">\[
+        sales = 407.963 +30.15132275 \times male
+        \]</span></p>
+        <h3 id="重回帰分析">重回帰分析</h3>
+        <p>これまでは、説明変数が1つだけのケースを考えてきました。</p>
+        <p>売上金額が気温によって変化するのは、恐らく寒いときに温かいものが食べたくなることが理由の1つでしょう。</p>
+        <p>しかし、売上金額が変化する要因はほかにも考えられます。</p>
+        <ul>
+        <li>男性の方が女性よりもたくさん食べるので、売上金額は大きくなるかもしれない（実際に、性別ダミーは正に有意だったので、予測に有効な変数であることが分かりました）。</li>
+        <li>学生よりも職員の方が予算が潤沢なので、売上金額は大きくなるかもしれない。
+        <ul>
+        <li>逆に、学生の方が食べ盛りなので、売上金額は大きくなるかもしれない。</li>
+        </ul></li>
+        <li>学食で割引キャンペーンなどの施策を行っている日は、売上金額は大きくなるかもしれない。</li>
+        </ul>
+        <p>このように、考えようと思えば、いくらでも売上金額と相関していそうな要因を挙げることができます。</p>
+        <p>ここでは、2つ以上の説明変数を用いて売上金額を予測していきます。</p>
+        <p>2つ以上の説明変数を使った線形回帰のことを、重回帰分析と呼びます。</p>
+        <p>例えば、売上金額（<code>sales</code>）が気温（<code>temp</code>）と職位（<code>position</code>）によって予測されるモデルを仮定します。</p>
+        <p>現在職位（<code>position</code>）変数は文字列のデータになっているので、先ほどの性別ダミーと同様に、学生<span
+        class="math inline">\(=1\)</span>、職員<span
+        class="math inline">\(=0\)</span>となるようなダミー変数を作っておきましょう（<code>student</code>変数とします）。</p>
+        <p><img src="fig_dataintro_mulreg_dum.png" /></p>
+        <p>このとき、売上金額は以下の式で表すことができます。</p>
+        <p><span class="math display">\[
+        sales = \beta_{0} + \beta_{1} \times temp + \beta_{2} \times
+        student + \varepsilon
+        \]</span></p>
         </details>
         <h1 id="因果推論">因果推論</h1>
         <!---
