@@ -247,8 +247,8 @@
         <p>この問いに答えるために、まずは<strong>仮説を立てます</strong>。</p>
         <p>統計的手法を用いて仮説検定を行う際には、<strong>仮説の立て方に少し独特な作法があります</strong>。</p>
         <ul>
-        <li><strong>NG</strong>　男女間で平均購入金額に差が<strong>ある</strong></li>
-        <li><strong>OK</strong>　男女間で平均購入金額に差は<strong>ない</strong></li>
+        <li><strong>×</strong>　男女間で平均購入金額に差が<strong>ある</strong></li>
+        <li><strong>〇</strong>　男女間で平均購入金額に差は<strong>ない</strong></li>
         </ul>
         <p>このように、<strong>差はないという仮説を立て</strong>、この仮説を統計的に否定する（<strong>棄却する</strong>）ことで、<strong>男女間で平均購入金額に差があるという仮説を支持</strong>します。</p>
         <h4 id="帰無仮説と対立仮説">帰無仮説と対立仮説</h4>
@@ -269,8 +269,12 @@
         </ul></li>
         </ul></li>
         </ul>
-        <p>少し回りくどく見えるかもしれませんが、<strong>「差がある」ことを仮説にするのは意外と難しい</strong>のです。</p>
-        <p>大きな理由は、<strong>どの程度の大きさであれば「差がある」と言えるのか、客観的な指標で判断しづらい</strong>ことです。10円の差を「差がある」と言う人もいれば、100円差があっても「差はない」と言う人もいるかもしれません。</p>
+        <p>少し回りくどく見えるかもしれませんが、「<strong>差がある</strong>」<strong>ことを仮説にするのは意外と難しい</strong>のです。</p>
+        <p>大きな理由は、<strong>どの程度の大きさであれば</strong>「<strong>差がある</strong>」<strong>と言えるのか、客観的な指標で判断しづらい</strong>ことです。10円の差を「差がある」と言う人もいれば、100円の差があっても「差はない」と言う人もいるかもしれません。</p>
+        <p>また、同じ差であっても、データの単位によってその大きさは違って見えます。</p>
+        <p>例えば、同じ「30円多い」と言っても、顧客の平均購入金額が100円のときと、10,000円のときとでは、意味が100倍違います。
+        100円に対する30円は大きな差に見えますが、10,000円に対する30円は、それこそ単なる誤差に見えます。</p>
+        <p>また、「差がある」ときには「差がある」と言うことができますが、「<strong>差が観察できない</strong>」<strong>ときには、</strong>「<strong>実際に差がない</strong>」<strong>のか、</strong>「<strong>実際には差があるけど観察できていないだけ</strong>」<strong>なのかを判断することが難しい</strong>という理由もあります。</p>
         <p>そこで、 1. <strong>差がないことが正しいと仮定</strong>し、
         2.
         <strong>得られたデータが「差がない」前提の下ではとても珍しい確率でしか得られないもの</strong>だとしたら、
@@ -280,17 +284,19 @@
         id="excelで仮説検定t検定をする">Excelで仮説検定（t検定）をする</h3>
         <p><strong>男女間での平均購入金額に差があるかどうかという仮説を例</strong>に、仮説検定の中でも、特に
         <strong><span class="math inline">\(t\)</span>
-        検定の手順</strong>を見ていきましょう。t
-        検定は、平均値の差があるかどうかを検定するときに使われる手法です。手順は以下の通りです。</p>
+        検定の手順</strong>を見ていきましょう。<span
+        class="math inline">\(t\)</span>
+        検定は、<strong>平均値の差があるかどうかを検定するときに使われる手法</strong>です。手順は以下の通りです。</p>
         <ol type="1">
-        <li>有意水準を決める</li>
-        <li>仮説を立てる</li>
-        <li><span class="math inline">\(t\)</span> 検定を実行する</li>
-        <li>結果を解釈する</li>
+        <li><strong>有意水準を決める</strong></li>
+        <li><strong>仮説を立てる</strong></li>
+        <li><strong><span class="math inline">\(t\)</span>
+        検定を実行する</strong></li>
+        <li><strong>結果を解釈する</strong></li>
         </ol>
         <p>1つひとつを詳しく見ていきましょう。</p>
         <h4 id="有意水準を決める">1. 有意水準を決める</h4>
-        <p>まずは、どういう数字が出てきたら帰無仮説を棄却するか、最初に基準となる数字を決めておきます。</p>
+        <p>まずは、<strong>どういう数字が出てきたら帰無仮説を棄却するか</strong>、最初に基準となる数字を決めておきます。</p>
         <p>具体的には、<strong>男女間での平均購入金額に差がないという仮説が正しいときに、手元のデータの平均の差が
         <span class="math inline">\(X\)</span> 円以上となる確率が <span
         class="math inline">\(\alpha\)</span>
@@ -319,8 +325,8 @@
         <h4 id="t-検定を実行する">3. <span
         class="math inline">\(t\)</span> 検定を実行する</h4>
         <p>ここからは、Excelのデータ分析ツールを使って検定を行っていきます。</p>
-        <p>データ分析ツールは、Excelの「データ」タブ内にある「データ分析」をクリックすると使えます。</p>
-        <p>「データ分析」が見つからないときは、先に「分析ツールアドイン」を追加する必要があります。</p>
+        <p>データ分析ツールは、Excelの「データ」タブ内にある「<strong>データ分析</strong>」をクリックすると使えます。</p>
+        <p>「データ分析」が見つからないときは、先に「<strong>分析ツールアドイン</strong>」を追加する必要があります。</p>
         <h5 id="分析ツールアドインの追加">分析ツールアドインの追加</h5>
         <ol type="1">
         <li>「ファイル」タブ→「オプション」を選択</li>
@@ -328,7 +334,7 @@
         <li>「分析ツール」にチェックを入れ、OKをクリック</li>
         <li>Excelを再起動する</li>
         </ol>
-        <p>次に、データ分析ツールに合わせてデータを加工します。</p>
+        <p>次に、<strong>データ分析ツールに合わせてデータを加工</strong>します。</p>
         <p><a
         href="#excelで標準誤差を考慮した棒グラフを作る">Excelで標準誤差を考慮した棒グラフを作る</a>と同じように、男性のデータと女性のデータに分割しましょう。</p>
         <p>分割ができたら、「分析ツール」を起動します。分析ツールから
@@ -337,42 +343,46 @@
         <p><img src="fig_dataintro_ttest_gen.png" /></p>
         <h5 id="t-検定のオプション">t 検定のオプション</h5>
         <p><img src="fig_dataintro_ttest_input.png" /></p>
-        <ul>
-        <li>変数1の入力範囲
-        <ul>
-        <li>1つ目のデータの範囲</li>
-        <li>ここでは男性のデータの範囲</li>
-        </ul></li>
-        <li>変数2の入力範囲
-        <ul>
-        <li>2つ目のデータの範囲</li>
-        <li>ここでは女性のデータの範囲</li>
-        </ul></li>
-        <li>仮説平均との差異
-        <ul>
-        <li>帰無仮説で設定した差を入力（デフォルトは <span
-        class="math inline">\(0\)</span> ）</li>
-        <li>ここでは空欄または0</li>
-        </ul></li>
-        <li>ラベル
-        <ul>
-        <li>データ範囲にラベル（列名）が含まれるときはチェックを入れる</li>
-        </ul></li>
-        <li><span class="math inline">\(\alpha\)</span>
-        <ul>
-        <li>有意水準（デフォルトは <span
-        class="math inline">\(0.05\)</span>）</li>
-        </ul></li>
-        <li>出力オプション
-        <ul>
-        <li>結果を出力したいセルを入力
-        <ul>
-        <li>出力先：データと同じシートに出力したいときに、出力したいセルを入力</li>
-        <li>新規ワークシート：新しいシートに出力したいときに、ワークシート名を記入（空欄でもOK）</li>
-        <li>新規ブック：新しいファイルに出力したいときに、ファイル名を記入（空欄でもOK）</li>
-        </ul></li>
-        </ul></li>
-        </ul>
+        <table>
+        <colgroup>
+        <col style="width: 33%" />
+        <col style="width: 66%" />
+        </colgroup>
+        <thead>
+        <tr class="header">
+        <th>項目</th>
+        <th>内容</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="odd">
+        <td>変数1の入力範囲</td>
+        <td>1つ目のデータの範囲<br> ここでは男性のデータの範囲</td>
+        </tr>
+        <tr class="even">
+        <td>変数2の入力範囲</td>
+        <td>2つ目のデータの範囲<br> ここでは女性のデータの範囲</td>
+        </tr>
+        <tr class="odd">
+        <td>仮説平均との差異</td>
+        <td>帰無仮説で設定した差を入力（デフォルトは <span
+        class="math inline">\(0\)</span>）<br> ここでは空欄または0</td>
+        </tr>
+        <tr class="even">
+        <td>ラベル</td>
+        <td>データ範囲にラベル（列名）が含まれるときはチェックを入れる</td>
+        </tr>
+        <tr class="odd">
+        <td><span class="math inline">\(\alpha\)</span></td>
+        <td>有意水準（デフォルトは <span
+        class="math inline">\(0.05\)</span>）</td>
+        </tr>
+        <tr class="even">
+        <td>出力オプション</td>
+        <td>結果を出力したいセルを入力<br>　・<strong>出力先</strong>：同じシートに出力したいときにセルを指定<br>　・<strong>新規ワークシート</strong>：シート名を記入（空欄でもOK）<br>　・<strong>新規ブック</strong>：ファイル名を記入（空欄でもOK）</td>
+        </tr>
+        </tbody>
+        </table>
         <p>以上を入力してOKをクリックすると、指定した出力先に結果が表示されます。</p>
         <h4 id="結果を解釈する">4. 結果を解釈する</h4>
         <p>オプションが正しく入力されていれば、以下のような結果が表示されるはずです。</p>
@@ -463,25 +473,26 @@
         class="math inline">\(9.83813 \times 10^{-10}
         \left(=\frac{9.83813}{10^{10}}\right)\)</span>
         という、非常に小さい値になっています。</p>
-        <p>これはつまり、「男女の購入金額の差が0円である」という帰無仮説が正しい場合でも、手元のデータで観測されたような30円の差が生じる確率は、わずか
+        <p>これはつまり、「<strong>男女の購入金額の差が0円である</strong>」<strong>という帰無仮説が正しい場合に、手元のデータで観測されたような30円の差が生じる確率は、わずか
         <span class="math inline">\(0.0000000983813\%\)</span>
-        しかない、ということを意味します。</p>
-        <p>私たちは事前に、「観測された差が偶然によって生じる確率（<span
+        しかない</strong>、ということを意味します。</p>
+        <p>私たちは事前に、<strong>観測された差が偶然によって生じる確率（<span
         class="math inline">\(p\)</span> 値）が <span
         class="math inline">\(5\%\)</span>
         以下であれば、帰無仮説を棄却する（<span
-        class="math inline">\(=\)</span>差がないという前提を否定する）」と決めていました。</p>
-        <p>したがって、この場合は「男女の購入金額の差が0円である」という前提は成り立たないと判断し、男女の購入金額に統計的に有意な差があると結論づけることができます。</p>
-        <p>以上のように、仮説検定では「偶然では説明できない差があるのかどうか」を、データに基づいて判断することができます。特に
-        <span class="math inline">\(p\)</span>
-        値は、その差が偶然に生じる可能性を数値で示してくれるため、データの意味を客観的に捉えるための強力なツールとなります。</p>
-        <p>仮説検定では、観測された差や効果が偶然によるものかどうかを判断することができます。しかし、実際のデータでは複数の要因が同時に影響している場合が多く、単純な比較だけでは不十分です。次に学ぶ回帰分析では、変数同士の関係（相関）を数式で表現し、データの傾向を把握したり、将来の値を予測したりすることが可能になります。</p>
+        class="math inline">\(=\)</span>差がないという前提を否定する）</strong>と決めていました。</p>
+        <p>したがって、この場合は「<strong>男女の購入金額の差が0円である</strong>」<strong>という前提は成り立たない</strong>と判断し、<strong>男女の購入金額に統計的に有意な差があると結論</strong>づけることができます。</p>
+        <p>以上のように、仮説検定では<strong>偶然では説明できない差があるのかどうか</strong>を、データに基づいて判断することができます。特に
+        <strong><span class="math inline">\(p\)</span>
+        値は、その差が偶然に生じる確率を数値で示してくれる</strong>ため、データの意味を客観的に捉えるための強力なツールとなります。</p>
+        <p>特に、ここで学んだ<span class="math inline">\(t\)</span>
+        <strong>検定（平均の差の検定）では、観測された差や効果が偶然によるものかどうかを判断することができます</strong>。しかし、実際のデータでは複数の要因が同時に影響している場合が多く、単純な比較だけでは不十分です。次に学ぶ回帰分析では、変数同士の関係（相関）を数式で表現し、データの傾向を把握したり、将来の値を予測したりすることが可能になります。</p>
         </details>
         <h1 id="回帰分析">回帰分析</h1>
+        <!---
         <details>
-        <summary>
-        回帰分析セクションを見る（クリックで開閉）
-        </summary>
+        <summary>回帰分析セクションを見る（クリックで開閉）</summary>
+        --->
         <p>このセクションでは、<strong>回帰分析</strong>について学んでいきます。</p>
         <p>一般に回帰（regression）とは「<strong>興味のある変数（<span
         class="math inline">\(Y\)</span>）の値を、他の変数（<span
@@ -617,12 +628,12 @@
         <p><span class="math display">\[
         sales = \beta_{0} + \beta_{1} \times temp + \varepsilon
         \]</span></p>
-        <p>例のように、<strong>説明変数が一つのときには特に単回帰モデル</strong>といい、<strong>説明変数が二つ以上の時には重回帰モデル</strong>といいます。</p>
-        <p>ここで、回帰モデルについていくつかの専門用語を整理しておきます。</p>
+        <p>例のように、<strong>説明変数が一つのときには特に単回帰式</strong>といい、<strong>説明変数が二つ以上の時には重回帰式</strong>といいます。</p>
+        <p>ここで、回帰式についていくつかの専門用語を整理しておきます。</p>
         <p><span class="math inline">\(Y = \beta_{0} + \beta_{1} X +
         \varepsilon\)</span> のような<strong>説明変数<span
         class="math inline">\(X\)</span>と被説明変数<span
-        class="math inline">\(Y\)</span>の関係式を回帰式</strong>と呼び、<strong>直線の切片<span
+        class="math inline">\(Y\)</span>の関係式を回帰式</strong>（<strong>回帰式</strong>）と呼び、<strong>直線の切片<span
         class="math inline">\(\beta_{0}\)</span>、直線の傾き<span
         class="math inline">\(\beta_{1}\)</span>を回帰係数</strong>と呼びます。</p>
         <p><strong>線形回帰は、手元のデータ<span
@@ -778,7 +789,7 @@
         <tr class="even">
         <td></td>
         <td>決定係数 <span class="math inline">\(R^2\)</span></td>
-        <td>回帰モデルによって説明される<span
+        <td>回帰式によって説明される<span
         class="math inline">\(Y\)</span>の変動の割合（決定係数）</td>
         </tr>
         <tr class="odd">
@@ -855,8 +866,8 @@
         </tr>
         <tr class="even">
         <td></td>
-        <td><strong><span class="math inline">\(P\)</span>
-        値</strong></td>
+        <td><strong><span
+        class="math inline">\(P\)</span>値</strong></td>
         <td><strong><span class="math inline">\(t\)</span>検定の<span
         class="math inline">\(p\)</span>値。小さいほど係数が有意（例：<span
         class="math inline">\(&lt; 0.05\)</span>）</strong></td>
@@ -905,25 +916,30 @@
         1.96773×\frac{1}{10^{75}}) &lt; 0.05\)</span>
         なので、<code>temp</code>の回帰係数は有意に<span
         class="math inline">\(0\)</span>と異なると言えます。</p>
-        <p>よって、<code>temp</code>は<code>sales</code>の予測に有効な説明変数だと判断され、以下のような回帰モデルを使って売上を予測できます。</p>
+        <p>よって、<code>temp</code>は<code>sales</code>の予測に有効な説明変数だと判断され、以下のような回帰式を使って売上を予測できます。</p>
         <p><span class="math display">\[
         sales = 647.2523251 -11.28513304 \times temp
         \]</span></p>
-        <p>この回帰式に、実際の気温の値を代入することで、その日の売上を予測することができます。</p>
+        <p>このに、実際の気温の値を代入することで、その日の売上を予測することができます。</p>
+        <p>例えば、気温が22度のとき、売上金額は<span
+        class="math inline">\(647.2523251 -11.28513304 \times
+        22=398.97939822\)</span>円であると予測できます。</p>
         <h3
         id="ダミー変数を使った線形回帰">ダミー変数を使った線形回帰</h3>
         <p>先ほどの例では、<code>temp</code>のような<strong>連続変数</strong>（ある値と次の値の間に無限の中間値を持つ変数）を説明変数とする回帰分析を扱いました。</p>
         <p>しかし、実際の分析では、性別や職種など、数値ではないカテゴリ変数を扱う場面も多くあります。
         <a
         href="#仮説検定">仮説検定</a>の例のように、男女間での売上金額の差を分析したいような場合です。</p>
-        <p>このようなときは、<strong>各カテゴリに数値を対応させることで、それを説明変数として回帰モデルに組み込むことができます</strong>。
+        <p>このようなときは、<strong>各カテゴリに数値を対応させることで、それを説明変数として回帰式に組み込むことができます</strong>。
         例えば、性別を男性<span
         class="math inline">\(=1\)</span>、女性<span
         class="math inline">\(=0\)</span>のように変換します。</p>
         <p>特に、0と1の<strong>2値しかとらない変数</strong>を<strong>ダミー変数</strong>と呼びます。</p>
         <h3 id="ダミー変数の係数の解釈">ダミー変数の係数の解釈</h3>
-        <p>ダミー変数を回帰モデルに入れると、その<strong>係数は基準となるカテゴリ（0が割り当てられたカテゴリ）との差を表す</strong>ようになります。</p>
-        <p>例えば、</p>
+        <p>ダミー変数を回帰式に入れると、その<strong>係数は基準となるカテゴリ（0が割り当てられたカテゴリ）との差を表す</strong>ようになります。</p>
+        <p>例えば、男性<span
+        class="math inline">\(=1\)</span>、女性<span
+        class="math inline">\(=0\)</span>をとるような<code>male</code>変数を考えると、</p>
         <p><span class="math display">\[
         sales = \beta_{0} + \beta_{1} \times male + \varepsilon
         \]</span></p>
@@ -960,10 +976,16 @@
         class="math inline">\(30.15\)</span>、<span
         class="math inline">\(P\)</span>値は<span
         class="math inline">\(9.84E-10 (= 9.84×\frac{1}{10^{10}}) &lt;
-        0.05\)</span>なので、性別ダミーは売上予測に有効な変数であり、以下のような回帰モデルを使って売上を予測できます。</p>
+        0.05\)</span>なので、性別ダミーは売上予測に有効な変数であり、以下のような回帰式を使って売上を予測できます。</p>
         <p><span class="math display">\[
         sales = 407.963 +30.15132275 \times male
         \]</span></p>
+        <p>これにより、客が男性のとき（<code>male</code><span
+        class="math inline">\(= 1\)</span>）の売上金額の予測値は<span
+        class="math inline">\(407.963
+        +30.15132275=438.11432275\)</span>円、客が女性のとき（<code>male</code><span
+        class="math inline">\(= 0\)</span>）の売上金額の予測値は<span
+        class="math inline">\(407.963\)</span>円になります。</p>
         <h3 id="重回帰分析">重回帰分析</h3>
         <p>これまでは、説明変数が1つだけのケースを考えてきました。</p>
         <p>売上金額が気温によって変化するのは、恐らく寒いときに温かいものが食べたくなることが理由の1つでしょう。</p>
@@ -987,8 +1009,84 @@
         <p>このとき、売上金額は以下の式で表すことができます。</p>
         <p><span class="math display">\[
         sales = \beta_{0} + \beta_{1} \times temp + \beta_{2} \times
-        student + \varepsilon
+        student + \varepsilon \qqad \text{（1）}
         \]</span></p>
+        <p>回帰式を一般的な形式に書き直すと、重回帰分析は<span
+        class="math inline">\(d\)</span>（<span
+        class="math inline">\(\geq 2\)</span>）個の説明変数<span
+        class="math inline">\(X\)</span>を用い、以下の回帰式の回帰係数
+        <span class="math inline">\((\beta_{0}, \beta_{1}, \beta_{2},
+        \dots, \beta_{d})\)</span> を求める手法だと言えます。</p>
+        <p><span class="math display">\[
+        Y = \beta_{0} + \beta_{1} X_{1} + \beta_{2} X_{2} + \cdots +
+        \beta_{d} X_{d} + \varepsilon
+        \]</span></p>
+        <p>このとき、重回帰分析のOLS推定量は、以下のMSEを最小化する
+        <span class="math inline">\((\beta_{0}, \beta_{1}, \beta_{2},
+        \dots, \beta_{d})\)</span>
+        の値として定義されます（具体的な関数形は省略します）。</p>
+        <p><span class="math display">\[
+        MSE = \frac{1}{n}\sum_{i=1}^{n}(Y_{i} - \beta_{0} - \beta_{1}
+        X_{1i} - \beta_{2} X_{2i} - \cdots - \beta_{di} X_{di})
+        \]</span></p>
+        <p>回帰係数を求めるには、<a
+        href="#2-分析ツールを使う">分析ツールを使う</a>の方法を使います。</p>
+        <p>（1）式を分析するときの例では、以下のように必要な項目を入力します。</p>
+        <ol type="1">
+        <li>「データ」タブ→「データ分析」の順に選択して分析ツールを開く</li>
+        <li>「回帰分析」を選択</li>
+        <li>必要な項目を入力</li>
+        </ol>
+        <table>
+        <colgroup>
+        <col style="width: 31%" />
+        <col style="width: 68%" />
+        </colgroup>
+        <thead>
+        <tr class="header">
+        <th>項目</th>
+        <th>内容</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="odd">
+        <td>入力<span class="math inline">\(Y\)</span>範囲</td>
+        <td><code>sales</code>変数のデータ範囲を入力</td>
+        </tr>
+        <tr class="even">
+        <td>入力<span class="math inline">\(X\)</span>範囲</td>
+        <td><code>temp</code>変数と<code>student</code>変数のデータ範囲を入力</td>
+        </tr>
+        <tr class="odd">
+        <td>ラベルの指定</td>
+        <td>1行目に変数名がある場合、「ラベル」にチェックを入れる</td>
+        </tr>
+        <tr class="even">
+        <td>出力オプションの指定</td>
+        <td>結果を出力したい場所を指定</td>
+        </tr>
+        <tr class="odd">
+        <td> 一覧の入力先</td>
+        <td>入力した既存ワークシートのセルに結果が出力される</td>
+        </tr>
+        <tr class="even">
+        <td> 新規ワークシート</td>
+        <td>出力用の新しいワークシートが自動で作成される</td>
+        </tr>
+        <tr class="odd">
+        <td> 新規ブック</td>
+        <td>出力用の新しいExcelブックが自動で作成される</td>
+        </tr>
+        </tbody>
+        </table>
+        <p><img src="fig_dataintro_mulreg.png" /></p>
+        <p>正しく入力されていれば、出力オプションで指定したセルに結果が出力されます。</p>
+        <p><img src="fig_dataintro_mulregrsl.png" /></p>
+        <p>ここでも、<strong>係数</strong>と<strong>p値</strong>に注目します。</p>
+        <p><code>student</code>変数の係数は<span
+        class="math inline">\(-3.86\)</span>、p値は<span
+        class="math inline">\(0.44\)</span>です。</p>
+        <p>ダミー変数の係数は基準カテゴリとの比較だと解釈できるので、</p>
         </details>
         <h1 id="因果推論">因果推論</h1>
         <!---
