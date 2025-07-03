@@ -2,6 +2,8 @@ name: Deploy Markdown to GitHub Pages
 
 on:
   push:
+    paths:
+      - 'docs/source/*.md'
 
 jobs:
   deploy:
