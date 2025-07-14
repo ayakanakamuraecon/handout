@@ -796,7 +796,7 @@ $$
 このとき、売上金額は以下の式で表すことができます。
 
 $$
-sales = \beta_{0} + \beta_{1} \times temp + \beta_{2} \times student + \varepsilon \qqad \text{（1）}
+sales = \beta_{0} + \beta_{1} \times temp + \beta_{2} \times student + \varepsilon \qquad \text{（1）}
 $$
 
 回帰式を一般的な形式に書き直すと、重回帰分析は$d$（$\geq 2$）個の説明変数$X$を用い、以下の回帰式の回帰係数 $(\beta_{0}, \beta_{1}, \beta_{2}, \dots, \beta_{d})$ を求める手法だと言えます。
