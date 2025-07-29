@@ -3,13 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "講義資料"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: labor_intro.qmd
-        text: "はじめに"     
+  title: "講義資料"     
 
 format:
   html:

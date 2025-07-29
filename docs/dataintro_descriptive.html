@@ -50,7 +50,7 @@
         href="dataintro_intro.html">はじめに</a>で説明している<a
         href="https://github.com/ayakanakamuraecon/handout/blob/main/docs/data/sales.csv"><strong>学食の売り上げデータ</strong></a>を使っていきます。それぞれの変数が何を表しているのかなどは、そちらを参照してください。</p>
         <p>ファイルを開くと分かるように、生のデータは数字の羅列にすぎません。</p>
-        <p><img src="fig_dataintro_ok.png" /></p>
+        <p><img src="/images/fig_dataintro_ok.png" /></p>
         <p>以下では、具体的にどのように加工すると分かりやすくなるのかを学んでいきます。</p>
         <p>ちなみに、こちらも<a
         href="dataintro_intro.html">はじめに</a>で説明しているように、生のデータファイルをそのまま操作することは避けましょう。ダウンロードしたファイルはコピーを作成し、生のデータと操作用データを別々に管理するか、新しく操作用データを作成して、ブックリンクでデータを参照するようにしましょう。</p>
@@ -145,7 +145,7 @@
         <p>複数の範囲のセルに条件を適用して、すべての条件が満たされた回数をカウントする関数です。</p>
         <p><code>COUNTIFS(検索条件範囲1, "条件1", [検索条件範囲2, "条件2"], ...)</code></p>
         <p>（例）200以上300未満の観測値の個数：<code>= COUNTIFS($A:$A:, "&gt;=200", $A:$A:, "&lt;300")</code></p>
-        <p><img src="fig_dataintro_freqtab_freq.png" /></p>
+        <p><img src="/images/fig_dataintro_freqtab_freq.png" /></p>
         <ul>
         <li><p>検索条件範囲は、普通に選択しただけだと、他のセルに関数をコピペしたときに、参照元のセルとコピペ先の位置関係に応じてデータの範囲も移動してしまいます。同じ関数を何回か使う必要があり、その際にデータの範囲を固定したいときは、列と行の英数字の前に<code>$</code>を付けると便利です。</p>
         <ul>
@@ -190,20 +190,20 @@
         <h6 id="sum関数"><code>SUM</code>関数</h6>
         <p><code>SUM(データの範囲)</code>
         （例）度数の合計：<code>=SUM(G2:G5)</code></p>
-        <p><img src="fig_dataintro_freqtab_total.png" /></p>
+        <p><img src="/images/fig_dataintro_freqtab_total.png" /></p>
         <h5 id="相対度数-1">相対度数</h5>
         <p>すでに計算した度数セルと度数の合計セルを使い、 <span
         class="math inline">\(\frac{度数}{サンプルサイズ}\)</span>を計算する</p>
-        <p><img src="fig_dataintro_freqtab_ratio.png" /></p>
+        <p><img src="/images/fig_dataintro_freqtab_ratio.png" /></p>
         <h5 id="累積相対度数-1">累積相対度数</h5>
         <p>それまでの累積相対度数とその階級の相対度数を足す （例）</p>
         <ul>
         <li>200以上300未満の階級の累積相対度数：<code>=H2</code></li>
         <li>300以上400未満の階級の累積相対度数：<code>=I2 + H3</code></li>
         </ul>
-        <p><img src="fig_dataintro_freqtab_crf.png" /></p>
+        <p><img src="/images/fig_dataintro_freqtab_crf.png" /></p>
         <p>すべての階級についてそれぞれの値を計算することで、度数分布表を作成できます。</p>
-        <p><img src="fig_dataintro_freqtab_all.png" /></p>
+        <p><img src="/images/fig_dataintro_freqtab_all.png" /></p>
         <p>これで、売上金額の分布を把握することができました。</p>
         <h2 id="データのビジュアル化">データのビジュアル化</h2>
         <p>度数分布表はデータの特徴をとらえるのに便利ですが、さらに「見える化」することで、よりデータの特徴をとらえやすくなります。</p>
@@ -211,11 +211,11 @@
         <h3 id="ヒストグラム">ヒストグラム</h3>
         <p>階級値を横軸に、度数を縦軸にとったグラフを<strong>ヒストグラム</strong>といいます。</p>
         <figure>
-        <img src="fig_dataintro_freqtab_all.png" alt="度数分布表" />
+        <img src="/images/fig_dataintro_freqtab_all.png" alt="度数分布表" />
         <figcaption aria-hidden="true">度数分布表</figcaption>
         </figure>
         <figure>
-        <img src="fig_dataintro_hist.png" alt="ヒストグラム" />
+        <img src="/images/fig_dataintro_hist.png" alt="ヒストグラム" />
         <figcaption aria-hidden="true">ヒストグラム</figcaption>
         </figure>
         <p>どちらにも階級値と度数の情報は含まれますが、ヒストグラムの方がより視覚的にデータの特徴をつかめることが分かると思います。</p>
@@ -237,16 +237,16 @@
         項目軸）」→ヒストグラムアイコンをクリック→「ビンの幅」を適切な幅に変更する</li>
         </ol>
         <figure>
-        <img src="fig_dataintro_hist_gen.png" alt="手順1" />
+        <img src="/images/fig_dataintro_hist_gen.png" alt="手順1" />
         <figcaption aria-hidden="true">手順1</figcaption>
         </figure>
         <figure>
-        <img src="fig_dataintro_hist_bin.png" alt="手順2" />
+        <img src="/images/fig_dataintro_hist_bin.png" alt="手順2" />
         <figcaption aria-hidden="true">手順2</figcaption>
         </figure>
         <h4 id="ヒストグラムと棒グラフ">ヒストグラムと棒グラフ</h4>
         <p>ヒストグラムとよく似たグラフに、<strong>棒グラフ</strong>があります。</p>
-        <p><img src="fig_dataintro_bar.png" /></p>
+        <p><img src="/images/fig_dataintro_bar.png" /></p>
         <p>どちらを使っても同じかと思われがちですが、実はこの2つはさまざまな点で異なります。</p>
         <table>
         <colgroup>
@@ -297,7 +297,7 @@
         <p>例えば、同じ人口を表すとしても、年齢階級ごとの人口や所得階級ごとの人口などを表す際にはヒストグラムが適切であるのに対し、地域別人口や誕生月別人口を表す際には棒グラフが適切です。</p>
         <h3 id="箱ひげ図">箱ひげ図</h3>
         <p>ヒストグラムと並んで使いこなせるようになってほしいグラフが<strong>箱ひげ図</strong>です。</p>
-        <p><img src="fig_dataintro_box.png" /></p>
+        <p><img src="/images/fig_dataintro_box.png" /></p>
         <p>四角い箱とその両端から生えているひげから構成されているグラフで、データのばらつきを示すのに用いられます。</p>
         <p>箱ひげ図は四分位数と最大値・最小値を表しています。小さい方から見て</p>
         <ul>
@@ -308,14 +308,14 @@
         <li>最大値：ひげの上端</li>
         </ul>
         <p>で表されています（下図参照）。</p>
-        <p><img src="fig_dataintro_boxex.png" /></p>
+        <p><img src="/images/fig_dataintro_boxex.png" /></p>
         <p>中央値については<a
         href="#中央値">中央値</a>セクションも参照してください。</p>
         <p>ヒストグラムでもデータのばらつきを見ることはできますが、分布の情報を四分位数に集約し、情報を落とすことで、<strong>より分布のばらつきに注目できる点</strong>、<strong>複数のデータの比較が容易な点</strong>がメリットです。</p>
         <h4 id="excelで箱ひげ図を作る">Excelで箱ひげ図を作る</h4>
         <p><a
         href="#excelでヒストグラムを作る">Excelでヒストグラムを作る</a>の手順1で、ヒストグラムの代わりに箱ひげ図を選択すれば、簡単に箱ひげ図を作成できます。</p>
-        <p><img src="fig_dataintro_box_gen.png" /></p>
+        <p><img src="/images/fig_dataintro_box_gen.png" /></p>
         <h3 id="その他の代表的なグラフ">その他の代表的なグラフ</h3>
         <p>他に、よく使われる代表的なグラフを紹介します。それぞれのグラフが得意なデータがあるので、データの特性に合わせて適切なグラフを選ぶことが重要です。</p>
         <p>ちなみに、データの特性を分かりやすく伝えるためには、余分な装飾は省くことが望ましいです。3Dにしない、影を付けない、過度にカラフルにしないようにし、できるだけシンプルで色数を抑えたグラフになるよう意識しましょう。</p>
@@ -323,7 +323,7 @@
         <h4 id="折れ線グラフ">折れ線グラフ</h4>
         <p>数的データの<strong>時間的な変化</strong>を示す際に用いられるグラフです。</p>
         <p>以下のグラフは、学食の売り上げデータから作成した、時間当たりの売り上げです。</p>
-        <p><img src="fig_dataintro_line.png" /></p>
+        <p><img src="/images/fig_dataintro_line.png" /></p>
         <p>他にも、例えば年別の人口推移、月別の飛行機のチケット代の推移、年別の米の価格の推移など、時系列データの表示に適しています。</p>
         <blockquote>
         <p><strong>注意点</strong></p>
@@ -339,11 +339,11 @@
         <p>カテゴリデータの各項目が全体に占める割合を示す際に用いられるグラフです。</p>
         <p>以下のグラフは、学食の売り上げデータから作成した、購入品の内訳です。</p>
         <figure>
-        <img src="fig_dataintro_pie.png" alt="円グラフ" />
+        <img src="/images/fig_dataintro_pie.png" alt="円グラフ" />
         <figcaption aria-hidden="true">円グラフ</figcaption>
         </figure>
         <figure>
-        <img src="fig_dataintro_stack.png" alt="帯グラフ" />
+        <img src="/images/fig_dataintro_stack.png" alt="帯グラフ" />
         <figcaption aria-hidden="true">帯グラフ</figcaption>
         </figure>
         <p>他にも、国籍別外国人の割合、血液型、男女比などのデータを表示する際に適しています。</p>
@@ -363,11 +363,11 @@
         <p><a
         href="#excelでヒストグラムを作る">Excelでヒストグラムを作る</a>の手順1で、ヒストグラムの代わりに作りたいグラフを選択することで、さまざまなグラフを作ることができます。</p>
         <figure>
-        <img src="fig_dataintro_line_gen.png" alt="折れ線グラフ" />
+        <img src="/images/fig_dataintro_line_gen.png" alt="折れ線グラフ" />
         <figcaption aria-hidden="true">折れ線グラフ</figcaption>
         </figure>
         <figure>
-        <img src="fig_dataintro_pie_gen.png" alt="円グラフ" />
+        <img src="/images/fig_dataintro_pie_gen.png" alt="円グラフ" />
         <figcaption aria-hidden="true">円グラフ</figcaption>
         </figure>
         </details>
@@ -440,13 +440,13 @@
         <h6 id="average関数"><code>AVERAGE</code>関数</h6>
         <p><code>AVERAGE(データの範囲)</code></p>
         <p>（例）<code>sales</code>変数の平均：<code>=AVERAGE(A:A)</code></p>
-        <p><img src="fig_dataintro_mean.png" /></p>
+        <p><img src="/images/fig_dataintro_mean.png" /></p>
         <p>平均を計算することで、データの中心（重心）を知ることができました。学食の売り上げデータでは、1回あたりの購入金額は、428.57円のようです。</p>
         <p>次に、同じく売上金額データを用いて中央値を計算しましょう。Excelでは<code>MEDIAN</code>関数を使います。関数名は異なりますが、使い方は<code>AVERAGE</code>関数と同じです。</p>
         <h6 id="median関数"><code>MEDIAN</code>関数</h6>
         <p><code>MEDIAN(データの範囲)</code></p>
         <p>（例）<code>sales</code>変数の中央値：<code>=MEDIAN(A:A)</code></p>
-        <p><img src="fig_dataintro_med.png" /></p>
+        <p><img src="/images/fig_dataintro_med.png" /></p>
         <h3
         id="度数分布表から平均を求める">度数分布表から平均を求める</h3>
         <p>度数分布表しか得られない場合でも、階級値と相対度数から平均を求めることができます。</p>
@@ -462,7 +462,7 @@
         <p><code>SUMPRODUCT(配列1, 配列2, ...)</code></p>
         <p><code>SUMPRODUCT</code>関数は、指定した配列の同じ行同士を掛け算し、それを合計する関数です。</p>
         <p>（例）<code>sales</code>変数の度数分布表から平均を求める：<code>=SUMPRODUCT(F2:F5, H2:H5)</code></p>
-        <p><img src="fig_dataintro_tabmean.png" /></p>
+        <p><img src="/images/fig_dataintro_tabmean.png" /></p>
         <p>今回は階級値と相対度数の2つの配列を使っていますが、より多くの配列を指定することもできます。</p>
         <h2 id="分散と標準偏差">分散と標準偏差</h2>
         <p>データの特徴を知るためには、データの中心だけではなく、<strong>データのばらつきを知ることも大切</strong>です。</p>
@@ -497,11 +497,11 @@
         <h6 id="var.p関数"><code>VAR.P</code>関数</h6>
         <p><code>VAR.P(データの範囲)</code></p>
         <p>（例）<code>sales</code>変数の分散：<code>=VAR.P(A:A)</code></p>
-        <p><img src="fig_dataintro_var.png" /></p>
+        <p><img src="/images/fig_dataintro_var.png" /></p>
         <h6 id="stdev.p関数"><code>STDEV.P</code>関数</h6>
         <p><code>STDEV.P(データの範囲)</code></p>
         <p>（例）<code>sales</code>変数の分散：<code>=STDEV.P(A:A)</code></p>
-        <p><img src="fig_dataintro_std.png" /></p>
+        <p><img src="/images/fig_dataintro_std.png" /></p>
         <p>分散と標準偏差を求めることで、データのばらつきを知ることができました。学食の売り上げデータでは、購入金額は平均で52.7円、平均から離れているようです。</p>
         <h5
         id="p関数と.s関数"><code>.P</code>関数と<code>.S</code>関数</h5>
@@ -531,7 +531,7 @@
         <h2 id="共分散と相関係数">共分散と相関係数</h2>
         <p>これまでは1変数（1つの調査項目）について平均や分散などの指標に注目してきました。ですが、一般的に、因果関係や予測値を知りたいときには、少なくとも2つの事柄の関係をチェックする必要があります。</p>
         <p>例えば、学食の売上を上げていくためには、売上金額が時間や気温など、ほかのどのような変数と連動しているかを知ることも大事でしょう。</p>
-        <p><img src="fig_dataintro_datesales.png" /></p>
+        <p><img src="/images/fig_dataintro_datesales.png" /></p>
         <p>上図は、売上金額と購入日のデータを並べたものですが、生のデータを一見しただけでは、両者にどのような関係があるのか（あるいはないのか）を読み取ることは難しいと思います。</p>
         <p>ここでは、2変数の関係を把握するための手法を学びましょう。</p>
         <h3 id="散布図">散布図</h3>
@@ -543,7 +543,7 @@
         と表すことができます。この <span class="math inline">\((x_{i},
         y_{i})\)</span>
         を座標とする点を平面上に表したものが散布図です。</p>
-        <p><img src="fig_dataintro_dot.png" /></p>
+        <p><img src="/images/fig_dataintro_dot.png" /></p>
         <p>2つの変数が連動して動くことを<strong>相関</strong>と呼びます。</p>
         <ul>
         <li>一方が増加（減少）すればもう一方も増加（減少）する傾向があるとき、2変数間に<strong>正の相関</strong>があるという。</li>
@@ -552,7 +552,7 @@
         <h4 id="excelで散布図を作る">Excelで散布図を作る</h4>
         <p><a
         href="#excelでヒストグラムを作る">Excelでヒストグラムを作る</a>の手順1で、相関を見たい2変数のデータ範囲を選択し、散布図を選択することで、簡単に散布図を作ることができます。</p>
-        <p><img src="fig_dataintro_dot_gen.png" /></p>
+        <p><img src="/images/fig_dataintro_dot_gen.png" /></p>
         <h3 id="共分散">共分散</h3>
         <p>散布図は、2変数間の相関を視覚的に把握するのに便利ですが、散布図の軸のとり方や縦横の比によっては、<strong>情報を読み誤る危険性</strong>があったり、1組の変数の相関を別の組の変数の相関と<strong>比較することが難し</strong>かったりと、問題点もあります。</p>
         <p>このような問題点を克服するために、2変数の相関を数値化した<strong>共分散</strong>を計算していきましょう。</p>
@@ -582,7 +582,7 @@
         <h6 id="covariance.p関数"><code>COVARIANCE.P</code>関数</h6>
         <p><code>COVARIANCE.P(データの範囲1, データの範囲2)</code></p>
         <p>（例）<code>sales</code>変数と<code>date</code>変数の共分散：<code>=COVARIANCE.P(A:A, B:B)</code></p>
-        <p><img src="fig_dataintro_cov.png" /></p>
+        <p><img src="/images/fig_dataintro_cov.png" /></p>
         <p>共分散を計算することで、2変数の相関の強さを知ることができました。売上金額と時間の共分散は<span
         class="math inline">\(-64.14\)</span>、つまり、時間と売上の間には負の相関があるようです。</p>
         <p><strong>共分散を解釈するときは単位に気をつけてください。</strong></p>
@@ -646,7 +646,7 @@
         <h6 id="correl関数"><code>CORREL</code>関数</h6>
         <p><code>CORREL(データの範囲1, データの範囲2)</code></p>
         <p>（例）<code>sales</code>変数と<code>date</code>変数の相関係数：<code>=CORREL(A:A, B:B)</code></p>
-        <p><img src="fig_dataintro_cor.png" /></p>
+        <p><img src="/images/fig_dataintro_cor.png" /></p>
         <p>売上金額と日付の相関係数は<span
         class="math inline">\(-0.26\)</span>、つまり、日付と売上の間には弱い負の相関があるようです。</p>
         <h3 id="無相関-ne-関係がない">無相関 <span
@@ -656,7 +656,7 @@
         class="math inline">\(-0.26\)</span>であることが分かりました。基準に照らし合わせると2変数間にほとんど相関はないと言えます。</p>
         <p><strong>2変数は全くの無関係に動いている変数だと言えるでしょうか？</strong></p>
         <p>散布図に立ち返ってみましょう。</p>
-        <p><img src="fig_dataintro_dot.png" /></p>
+        <p><img src="/images/fig_dataintro_dot.png" /></p>
         <p>散布図は、<strong>2変数が連動して動いている</strong>ことを示しているように見えます。</p>
         <p><strong>共分散や相関係数は、2変数間の線形的な（直線で示せる）相関関係のみを示し</strong>ます。</p>
         <p>今回のように<code>date</code>変数の一部でピークがくるような、<strong>線形以外の相関関係を表すことはできません</strong>。</p>
