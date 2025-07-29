@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: docs
+  resources: 
+    - styles.css
+    - images/
+
 
 website:
   title: "講義資料"     
@@ -12,6 +16,4 @@ format:
       - brand
     css: styles.css
     toc: true
-
-
 
