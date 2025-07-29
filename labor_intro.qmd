@@ -1,0 +1,58 @@
+---
+title: "労働経済学"
+format: html
+---
+
+## 労働経済学とは？
+
+労働経済学は、働く人・雇う人・社会の関係を経済学の視点から分析する学問です。
+労働市場における「需要と供給」「賃金の決定」「雇用の仕組み」「教育や訓練の効果」など、日常に密接に関わるテーマを扱います。
+
+たとえば、なぜ正社員と非正規社員がいるのか、大学に進学するとどのくらい将来の収入が変わるのか、最低賃金を引き上げると雇用はどうなるのか……といった問いに答えるのが労働経済学です。
+
+---
+
+## ❓ クイズ1
+
+労働経済学が扱うトピックには、どのようなものがあると思いますか？
+
+<textarea id="q1" rows="4" placeholder="ここに自由に記述してください" style="width: 100%; padding: 8px; margin-top: 5px;"></textarea>
+
+---
+
+## ❓ クイズ2
+
+最低賃金を引き上げたとき、どのような影響が考えられるでしょうか？
+（良い影響・悪い影響の両方を挙げてみましょう）
+
+<textarea id="q2" rows="4" placeholder="ここに自由に記述してください" style="width: 100%; padding: 8px; margin-top: 5px;"></textarea>
+
+---
+
+## ❓ クイズ3
+
+あなた自身の経験や周囲の人の働き方を振り返って、「労働」に関して疑問に思ったことはありますか？自由に書いてみましょう。
+
+<textarea id="q3" rows="4" placeholder="ここに自由に記述してください" style="width: 100%; padding: 8px; margin-top: 5px;"></textarea>
+
+---
+
+<button onclick="localStorage.clear(); location.reload();">🧹 すべての記録を消す</button>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  ["q1", "q2", "q3"].forEach(function(id) {
+    const saved = localStorage.getItem(id);
+    if (saved) document.getElementById(id).value = saved;
+    document.getElementById(id).addEventListener("input", function() {
+      localStorage.setItem(id, this.value);
+    });
+  });
+});
+</script>
+
+---
+
+以上の問いを考えながら、講義を聞いてみてください。
+
+[講義資料に戻る](index.html)
