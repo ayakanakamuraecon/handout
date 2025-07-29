@@ -1,1 +1,9 @@
+# ローカル生成物（公開不要）
+/_site/
 /.quarto/
+
+# ルート直下の site_libs は無視（誤生成の保険）
+/site_libs/
+
+# ただし docs/site_libs は追跡する（公開に必要）
+!docs/site_libs/
