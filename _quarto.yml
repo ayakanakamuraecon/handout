@@ -9,7 +9,7 @@ website:
       - href: index.qmd
         text: Home
       - href: labor_intro.qmd
-        text: "初めに"     
+        text: "はじめに"     
 
 format:
   html:

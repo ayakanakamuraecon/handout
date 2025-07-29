@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "test.html",
+    "href": "test.html",
+    "title": "第1章 回帰分析とは",
+    "section": "",
+    "text": "回帰分析の目的\n回帰分析は、説明変数を用いて被説明変数を予測する統計手法です。\n\n\n\n\n\n\nTip\n\n\n\nヒント： 平均的な関係を知るために使います。"
+  },
+  {
+    "objectID": "dataintro_book.html",
+    "href": "dataintro_book.html",
+    "title": "推薦書籍",
+    "section": "",
+    "text": "一般書\n\n『統計学が最強の学問である』（西内啓）\n『今こそExcelで学ぶ統計解析入門』（菅民郎）\n\n\n\n学部中級レベルの統計の教科書\n\n『コア・テキスト 統計学（大屋幸輔）』\n『統計学入門（森棟公夫）』\n\n\n\n因果推論\n\n『｢原因と結果｣の経済学（中室牧子/津川友介）』\n『計量経済学の第一歩（田中隆一）』\n『The Book of Why: The New Science of Cause and Effect（Judea Pearl）』\n『「ほとんど無害」な計量経済学（ヨシュア・アングリスト）』\n\n\n\nR を使った分析\n\n『社会科学のためのデータ分析入門（今井耕介）』上/下\n『卒業論文のためのR入門（森知晴）』（ウェブサイト）\n\n講義資料に戻る"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "講義資料",
+    "section": "",
+    "text": "最終更新日：2025年7月29日"
+  },
+  {
+    "objectID": "index.html#データを用いた実証分析a",
+    "href": "index.html#データを用いた実証分析a",
+    "title": "講義資料",
+    "section": "データを用いた実証分析A",
+    "text": "データを用いた実証分析A\nイントロダクション\n記述統計\n推薦図書"
+  },
+  {
+    "objectID": "index.html#データを用いた実証分析b",
+    "href": "index.html#データを用いた実証分析b",
+    "title": "講義資料",
+    "section": "データを用いた実証分析B",
+    "text": "データを用いた実証分析B\nイントロダクション\n推測統計\n推薦図書"
+  }
+]
