@@ -111,7 +111,7 @@
         class="math inline">\(1/100\)</span>
         の確率で当たる（標本として抽出される）くじを引いてもらうようなイメージです。</p>
         <p>ランダムサンプリングを行うことで、母集団の情報をバランス良く反映した標本を作ることができます。</p>
-        <p><img src="fig_dataintro_random.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_random.png" /></p>
         <p>代表性のある標本を作ることができたら、標本から得られた数値を推定量にすることができます。</p>
         <p>ただし、母集団の情報をすべて集めているわけではない以上、<strong>推定量には必ず誤差が生じます</strong>。<strong>推測をする際には、この誤差も考慮に入れる必要があります</strong>。</p>
         <h2 id="標準誤差">標準誤差</h2>
@@ -144,7 +144,7 @@
         <p>標準誤差を用いると、手元のデータで得られた統計量の精度はどの程度なのかを知ることができました。</p>
         <p>この推定精度を考慮したグラフを作成することで、より深い洞察が得られる場合があります。</p>
         <p>例えば、男女間で平均購入金額に差があるかを知りたい、気温によってよく購入される商品の違いがあるのかを知りたいなど、特に<strong>グループ間の平均に統計的に差があるかどうかを知りたいとき</strong>にとても有用です。</p>
-        <p><img src="fig_dataintro_sebar.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_sebar.png" /></p>
         <p>これは、標準誤差を考慮したうえで男女別に平均購入金額を棒グラフにしたものです。</p>
         <p><strong>棒グラフの高さは、男性、女性それぞれの平均購入金額</strong>を表します。</p>
         <p>それぞれのバーには、<strong>バーの高さを中心にエラーバーと呼ばれるひげのようなもの</strong>がついています。これが<strong>誤差範囲</strong>を表します。</p>
@@ -169,7 +169,7 @@
         <p>いくつか方法はありますが、グループごとにデータを分割すると分かりやすいでしょう。</p>
         <p>ここでは、男女で平均購入金額の差があるかどうかを分析していきます。</p>
         <p><strong>データ分割方法</strong></p>
-        <p><img src="fig_dataintro_sebar_filter.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_sebar_filter.png" /></p>
         <ol type="1">
         <li><code>gender</code>変数でフィルタをかけ、男性のデータのみを表示
         <ul>
@@ -179,7 +179,7 @@
         <li>女性についても1と2を行う</li>
         </ol>
         <p>男女別にデータを分割できたら、以下のような表を作ります。</p>
-        <p><img src="fig_dataintro_sebar_table.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_sebar_table.png" /></p>
         <p><strong>必要項目</strong></p>
         <ul>
         <li>男女別の平均
@@ -214,9 +214,9 @@
         </ul></li>
         </ul></li>
         </ul>
-        <p><img src="fig_dataintro_sebar_count.png"
-        alt="サンプルサイズ" /> <img src="fig_dataintro_sebar_se.png"
-        alt="標準誤差" /> <img src="fig_dataintro_sebar_ci.png"
+        <p><img src="/handout/images/fig_dataintro_sebar_count.png"
+        alt="サンプルサイズ" /> <img src="/handout/images/fig_dataintro_sebar_se.png"
+        alt="標準誤差" /> <img src="/handout/images/fig_dataintro_sebar_ci.png"
         alt="信頼区間" /></p>
         <p>表ができたら、グループ名と各平均値のセルを選択し、棒グラフを作ります。できたグラフに、以下の手順でエラーバーを追加しましょう。</p>
         <p><strong>エラーバー追加手順</strong></p>
@@ -226,12 +226,12 @@
         <li><strong>誤差範囲の書式設定</strong>メニューの<strong>誤差範囲</strong>から<strong>ユーザー設定</strong>を選択</li>
         <li>ユーザー設定の誤差範囲ウィンドウで、<strong>正の誤差の値</strong>と<strong>負の誤差の値</strong>両方に計算した<strong>信頼区間のセル番地</strong>を指定</li>
         </ol>
-        <p><img src="fig_dataintro_sebar_gen.png" alt="グラフの選択" />
-        <img src="fig_dataintro_sebar_gen1.png" alt="標準誤差を追加" />
-        <img src="fig_dataintro_sebar_gen2.png"
+        <p><img src="/handout/images/fig_dataintro_sebar_gen.png" alt="グラフの選択" />
+        <img src="/handout/images/fig_dataintro_sebar_gen1.png" alt="標準誤差を追加" />
+        <img src="/handout/images/fig_dataintro_sebar_gen2.png"
         alt="標準誤差の設定" /></p>
         <p>これで、エラーバー付棒グラフを作成できました。</p>
-        <p><img src="fig_dataintro_sebar.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_sebar.png" /></p>
         <p>男性のほうが女性より平均購入金額が高く、しかも、男女のエラーバーが重なる範囲がないため、真の平均購入金額も男女で異なる可能性が高いといえます。</p>
         </details>
         <h1 id="仮説検定-1">仮説検定</h1>
@@ -348,9 +348,9 @@
         <p>分割ができたら、「分析ツール」を起動します。分析ツールから
         <strong>t 検定:
         等分散を仮定した2標本による検定</strong>を選択し、必要なオプションを入力します。</p>
-        <p><img src="fig_dataintro_ttest_gen.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_ttest_gen.png" /></p>
         <h5 id="t-検定のオプション">t 検定のオプション</h5>
-        <p><img src="fig_dataintro_ttest_input.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_ttest_input.png" /></p>
         <table>
         <colgroup>
         <col style="width: 33%" />
@@ -394,7 +394,7 @@
         <p>以上を入力してOKをクリックすると、指定した出力先に結果が表示されます。</p>
         <h4 id="結果を解釈する">4. 結果を解釈する</h4>
         <p>オプションが正しく入力されていれば、以下のような結果が表示されるはずです。</p>
-        <p><img src="fig_dataintro_ttest_result.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_ttest_result.png" /></p>
         <h5 id="結果の表">結果の表</h5>
         <table>
         <colgroup>
@@ -611,7 +611,7 @@
         <p>複数の条件を満たすすべてのセルの平均を返す関数です。</p>
         <p><code>AVERAGEIFS(平均範囲, 条件範囲 1, 条件 1, [条件範囲 2, 条件 2], ...)</code></p>
         <p>（例）男性の平均売上金額：<code>= AVERAGEIFS($B:$B, $A:$A, "男")</code></p>
-        <p><img src="fig_dataintro_nonpara.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_nonpara.png" /></p>
         <p>データから得られた平均購入金額は、男性が約438円、女性が約408円でした。これらの値が、それぞれの性別における売上金額の予測値として用いられます。</p>
         <h3
         id="ノンパラメトリック回帰の注意点">ノンパラメトリック回帰の注意点</h3>
@@ -630,7 +630,7 @@
         class="math inline">\(X\)</span><strong>と被説明変数</strong><span
         class="math inline">\(Y\)</span><strong>の関係が想定されるときに、全体の傾向が見づらい</strong>ことがあります。</p>
         <p>例えば、年齢と売上金額の関係を考えてみます。若い人の方がたくさん食べられるので売上金額は高い傾向にあるかもしれないし、年齢を重ねた人の方が金銭的に余裕があって売上金額が高い傾向にあるかもしれません。</p>
-        <p><img src="fig_dataintro_agesales.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_agesales.png" /></p>
         <p>上図は年齢ごとに売上金額をプロットしたものと、それをノンパラメトリック回帰した結果を表しています。</p>
         <p>「<strong>1年歳をとることで売上金額が何円上がるか</strong>（<strong>下がるか</strong>）」という<strong>全体的な傾向をノンパラメトリック回帰の結果から解釈することは難しい</strong>でしょう。</p>
         <p>横軸の取りうる値がもっと細かくなれば、回帰曲線自体がよりギザギザとなって見づらくなることもありますし、説明変数が手元のデータにないの値（ここでは、例えば15歳の人や40歳の人など）をとるときの予測値を計算することもできません。</p>
@@ -708,7 +708,7 @@
         class="math inline">\(\beta_{1}\)</span>がほとんど<span
         class="math inline">\(0\)</span>のケース</strong>を考えます。
         散布図と回帰曲線は、例えばこんな感じになります。</p>
-        <p><img src="fig_dataintro_0slope.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_0slope.png" /></p>
         <p>被説明変数<span
         class="math inline">\(Y\)</span>の値が、説明変数<span
         class="math inline">\(X\)</span>の値にかかわらず分布している、つまり、<strong>説明変数<span
@@ -729,7 +729,7 @@
         href="dataintro_descriptive.html#散布図">記述統計（散布図）</a>を参照）</li>
         <li>散布図を選択し、「デザイン」タブ→「グラフ要素を追加」→「近似曲線」→「線形」の順に選択</li>
         </ol>
-        <p><img src="fig_dataintro_linregdot.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_linregdot.png" /></p>
         <p><strong>単回帰分析であれば、散布図に近似曲線を追加</strong>するだけで、回帰係数を求めることができます。</p>
         <p>しかし、傾<strong>きが<span
         class="math inline">\(0\)</span>ではないかどうかを確認したいときには、グラフだけでは不十分</strong>です。
@@ -794,9 +794,9 @@
         </tr>
         </tbody>
         </table>
-        <p><img src="fig_dataintro_linreg.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_linreg.png" /></p>
         <p>正しく入力されていれば、出力オプションで指定したセルに結果が出力されます。</p>
-        <p><img src="fig_dataintro_linregrsl.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_linregrsl.png" /></p>
         <table>
         <colgroup>
         <col style="width: 19%" />
@@ -999,10 +999,10 @@
         class="math inline">\(1\)</span>、<code>女</code>のときに<span
         class="math inline">\(0\)</span>を割り当てる:
         <code>IF(A2="男", 1, 0)</code></p>
-        <p><img src="fig_dataintro_dummy.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_dummy.png" /></p>
         <p>このようにカテゴリと数値を対応させることで、連続変数と同じように回帰分析ができるようになります。</p>
-        <p><img src="fig_dataintro_linreg_dum.png" /></p>
-        <p><img src="fig_dataintro_linregrsl_dum.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_linreg_dum.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_linregrsl_dum.png" /></p>
         <p><code>male</code>の回帰係数は<span
         class="math inline">\(30.15\)</span>、<span
         class="math inline">\(P\)</span>値は<span
@@ -1036,7 +1036,7 @@
         <p>現在職位（<code>position</code>）変数は文字列のデータになっているので、先ほどの性別ダミーと同様に、学生<span
         class="math inline">\(=1\)</span>、職員<span
         class="math inline">\(=0\)</span>となるようなダミー変数を作っておきましょう（<code>student</code>変数とします）。</p>
-        <p><img src="fig_dataintro_mulreg_dum.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_mulreg_dum.png" /></p>
         <p>このとき、売上金額は以下の式で表すことができます。</p>
         <p><span class="math display">\[
         sales = \beta_{0} + \beta_{1} \times temp + \beta_{2} \times
@@ -1110,9 +1110,9 @@
         </tr>
         </tbody>
         </table>
-        <p><img src="fig_dataintro_mulreg.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_mulreg.png" /></p>
         <p>正しく入力されていれば、出力オプションで指定したセルに結果が出力されます。</p>
-        <p><img src="fig_dataintro_mulregrsl.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_mulregrsl.png" /></p>
         <p>ここでも、<strong>係数</strong>と<strong>p値</strong>に注目します。</p>
         <p><code>student</code>変数の係数は<span
         class="math inline">\(-3.86\)</span>、p値は<span
@@ -1167,7 +1167,7 @@
         class="math inline">\(R^{2}=0\)</span>のとき：回帰式が全くデータを説明できておらず、残差変動と総変動が等しい</li>
         </ul>
         <p>このように、決定係数は回帰モデルの説明力を直感的に把握するための有用な指標です。</p>
-        <p><img src="fig_dataintro_linregrsl.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_linregrsl.png" /></p>
         <p>購入金額を気温に回帰したときの結果を振り返ってみます。 重決定
         R2 という項目が決定係数 <span
         class="math inline">\(R^{2}\)</span> です。</p>
@@ -1186,7 +1186,7 @@
         <p>そこで、重回帰分析の場合は、<strong>説明変数の個数を考慮した自由度調整済み決定係数</strong>
         <span class="math inline">\(R^{2}\)</span> 用います。
         Excelの分析結果では、補正 R2 という項目で出力されます。</p>
-        <p><img src="fig_dataintro_mulregrsl.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_mulregrsl.png" /></p>
         <p>購入金額を気温と学生ダミーに回帰した分析結果を振り返ってみると、重決定
         R2<span class="math inline">\(=0.485\)</span>、 補正 R2<span
         class="math inline">\(=0.483\)</span>でした。今回は2つの決定係数にほとんど差はありませんが、説明変数の個数が増えると両者は乖離してしまうため、その場合は自由度調整済み決定係数を用いて適切なモデル評価をすることが求められます。</p>
@@ -1235,7 +1235,7 @@
         <p>まずは、<strong>そもそも因果関係とは何か</strong>？をきちんと定義し、<strong>相関はあるが因果関係はない</strong>ケースを考えていきます。</p>
         <p><strong>因果関係</strong>とは、<strong>2つの変数のうち、どちらかが原因で、どちらかが結果となる関係のこと</strong>です。</p>
         <p>これに対して、<strong>相関関係</strong>とは、<strong>2つの変数が一緒に変化する傾向はあるものの、一方が他方の原因であるとは限らない関係のこと</strong>です。</p>
-        <p><img src="fig_dataintro_causal.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_causal.png" /></p>
         <p>一般に、両者の関係を区別することは容易ではありません。</p>
         <p>なぜなら、どちらの関係であったとしても、2つの変数は連動して動いて見えるからです。</p>
         <p>実際は相関関係であるのに、それを因果関係と混同してしまうと、期待した結果を得られません。</p>
@@ -1275,7 +1275,7 @@
         <li><strong>混雑を避けて空いている時間に来ており、時間的余裕から注文数も多い</strong></li>
         <li><strong>昼休み後の空きコマに来る学生は、追加メニューを頼む余裕がある</strong></li>
         </ul>
-        <p><img src="fig_dataintro_confounder.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_confounder.png" /></p>
         <p>このように、<strong>滞在時間と売上の両方に影響を与える第三の変数</strong>のことを<strong>交絡因子</strong>と呼びます。</p>
         <p>滞在時間と売上の間に相関が見つかったとしても、<strong>滞在時間そのものが原因とは限らない</strong>のです。</p>
         <p>この交絡因子はデータとして取れない性質のもの（例えば、人々のやる気やその日の体調、友人との関係性など）であることも多いので、手元にデータとして存在する変数だけではなく、手元には存在しない変数も含めて、交絡因子が存在していないかどうかを疑ってみることが大切です。</p>
@@ -1484,7 +1484,7 @@
         ATE = \overline{Y}_{D=1} - \overline{Y}_{D=0}
         \]</span></p>
         <p>Excelを用いるときは、<code>AVERAGEIFS()</code>関数などを使って、広告ありの日・広告なしの日の平均売上をそれぞれ計算し、両者の差を取るだけでATEを推定できます。</p>
-        <p><img src="fig_dataintro_rctavg.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_rctavg.png" /></p>
         <p>この例では、ATE の推定値は <span
         class="math inline">\(73.58\)</span>
         でした。つまり、広告を出した日の方が、出していない日と比べて平均で
@@ -1518,8 +1518,8 @@
         <li><strong>対立仮説</strong>：広告は売上に影響を与える（<span
         class="math inline">\(\alpha \ne 0\)</span>）</li>
         </ul>
-        <p><img src="fig_dataintro_rctreg.png" /></p>
-        <p><img src="fig_dataintro_rctrsl.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_rctreg.png" /></p>
+        <p><img src="/handout/images/fig_dataintro_rctrsl.png" /></p>
         <p>この回帰分析でも、広告の効果（<span
         class="math inline">\(\alpha\)</span>）の推定値は <span
         class="math inline">\(73.58\)</span>
