@@ -1,98 +1,9 @@
 ---
-title: "日本の労働市場"
+title: "労働市場における需要と供給"
 format: html
 ---
 
-## 労働経済学とは？
 
-労働経済学は、働く人・雇う人・社会の関係を経済学の視点から分析する学問です。
-労働市場における「需要と供給」「賃金の決定」「雇用の仕組み」「教育や訓練の効果」など、日常に密接に関わるテーマを扱います。
-
-たとえば、なぜ正社員と非正規社員がいるのか、大学に進学するとどのくらい将来の収入が変わるのか、最低賃金を引き上げると雇用はどうなるのか……といった問いに答えるのが労働経済学です。
-
-## 日本の労働市場
-
-まずは、労働市場を理解するために重要な統計指標を確認し、それらの指標を国際的に比較することで、近年の日本の労働市場の実態や特徴を把握していきましょう。
-
-ここで紹介する統計指標は、複合的に分析することで、各国の労働市場の状況について多角的な情報を提供してくれます。
-
-## 労働市場の重要な指標
-
-### 労働の構造を示す統計指標
-
-#### 労働力率
-
-労働力率とは、15歳以上人口に占める労働力の割合です。
-
-* 労働力：仕事をしている者 \$+\$ 仕事についていないが仕事を探していてすぐに仕事に就けるもの。
-  * 自営業、家族従業、パート・アルバイト、フルタイム雇用、いずれの場合も労働力に含まれます。
-
-##### 年齢階級別労働力率
-
-日本
-![]()
-
-女性の労働力率の国際比較
-![]()
-
-
-図から分かること：
-
-* 日本では、女性は育児期に労働力率が落ち込み、育児期の後に再び上昇する（M字型カーブ）。
-  * 最近になるにつれてM字型カーブの底は浅くなっている。
-
-* 他の多くの国ではM字型から高原型に変わってきた。
-  * 韓国は依然M字型。
-  * 女性の労働力率が最も高いのはスウェーデン。
-
-
-**確認クイズ：**
-
-なぜ日本の女性の労働力率はM字型になるのでしょうか？また、その形状は近年どう変化していますか？
-
-<textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('quiz1', this.value)"></textarea>
-
-
-#### 労働時間
-
-就業女性の週労働時間の分布（図挿入予定）
-
-\::: {.quiz}
-**確認クイズ：**
-
-オランダやスウェーデンなど、女性の労働時間が短い国では、どのような家庭内の役割分担が行われていると考えられますか？
-
-<textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('quiz2', this.value)"></textarea>
-
-\:::
-
-（中略）
-
-#### 賃金率
-
-##### 日本の男女・正規非正規別賃金率（図挿入予定）
-
-\::: {.quiz}
-**確認クイズ：**
-
-非正社員と正社員、男女間で賃金率に大きな差が見られるのはなぜでしょうか？あなたの考えを自由に述べてください。
-
-<textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('quiz3', this.value)"></textarea>
-
-\:::
-
-（中略）
-
-### 日本の労働統計
-
-代表的な統計：
-
-* [労働経済白書](https://www.mhlw.go.jp/stf/wp/hakusyo/kousei/23/index.html)
-* [働く女性の実情](https://www.mhlw.go.jp/content/11901000/001155643.pdf)
-* [男女共同参画白書](https://www.gender.go.jp/about_danjo/whitepaper/index.html)
-* [国勢調査](https://www.stat.go.jp/data/kokusei/2020/gaiyou.html)
-
-（後続内容省略）
 
 ---
 
@@ -107,6 +18,20 @@ window.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <style>
-.quiz { background: #f9f9f9; padding: 1em; border-left: 4px solid #007acc; margin: 1em 0; }
-.quiz-answer { width: 100%; min-height: 5em; margin-top: 0.5em; }
+.quizbox {
+  background-color: #f0f4f8; /* グレーと青の中間のごく薄い色 */
+  border-left: 4px solid #9db4c0; /* 中間のブルーグレー系 */
+  padding: 1em;
+  margin: 1.5em 0;
+  border-radius: 6px;
+}
+.quiz-answer {
+  width: 100%;
+  min-height: 5em;
+  margin-top: 0.5em;
+  font-family: sans-serif;
+  font-size: 1em;
+  padding: 0.5em;
+}
 </style>
+
