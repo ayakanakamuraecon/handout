@@ -1,5 +1,5 @@
 ---
-title: "労働経済学"
+title: "はじめに"
 format: html
 ---
 
