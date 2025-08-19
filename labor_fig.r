@@ -1,5 +1,44 @@
 library(tidyverse)
 
+# 賃金率の男女格差、日米比較
+# データの読み込み（Shift-JISのCSVファイル）
+df <- read_csv("labor_wageratedif_jpus.csv", locale = locale(encoding = "shift-jis"))
+
+df_long <- df %>%
+  select("year", "JPN", "USA") %>%
+  pivot_longer(
+    cols = -year,
+    names_to = "country",
+    values_to = "rate"
+  )
+
+# グラフ描画
+p <- ggplot(df_long, aes(x = year, y = rate, group = country, color = country)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  scale_y_continuous(limits = c(0, 100)) +
+  labs(
+    title = "フルタイム労働者の男女間賃金格差 (2024)",
+    x = "調査念",
+    color = "国名"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "bottom"
+  )
+
+# PNGファイルとして保存（横長）
+ggsave(
+  filename = "images/labor_workforce_oecd.png",
+  plot = p,
+  width = 8,       # 横幅（inch）
+  height = 6,       # 縦幅（inch）
+  dpi = 300         # 解像度
+)
+
+
+
 # 労働力率、国別
 # データの読み込み（Shift-JISのCSVファイル）
 df <- read_csv("labor_force_by_country_female.csv", locale = locale(encoding = "shift-jis"))
@@ -36,9 +75,9 @@ p <- ggplot(df_long, aes(x = age_group, y = rate, group = country, color = count
 
 # PNGファイルとして保存（横長）
 ggsave(
-  filename = "images/labor_workforce.png",
+  filename = "images/labor_workforce_oecd.png",
   plot = p,
-  width = 12,       # 横幅（inch）
+  width = 8,       # 横幅（inch）
   height = 6,       # 縦幅（inch）
   dpi = 300         # 解像度
 )
