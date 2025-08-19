@@ -34,9 +34,9 @@ format: html
 
 ##### 年齢階級別労働力率
 
-![日本]()
+![出典：総務省統計局「労働力調査」](images/labor_workforce.png)
 
-![女性の労働力率の国際比較]()
+![出典：労働政策研究・研修機『データブック国際労働比較2023』](images/labor_workforce_oecd.png)
 
 
 図から分かること：
