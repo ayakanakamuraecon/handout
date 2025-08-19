@@ -11,7 +11,26 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.fill-in').forEach(input => {
+    const key = "fillin-" + input.id;
+    input.value = localStorage.getItem(key) || "";
+    input.addEventListener('input', () => {
+      localStorage.setItem(key, input.value);
+    });
+  });
+});
+</script>
+
 <style>
+.fill-in {
+  min-width: 8em;
+  font-size: 1em;
+  font-family: sans-serif;
+  padding: 0.3em;
+  margin: 0 0.3em;
+}
 .quizbox {
   background-color: #f0f4f8; /* グレーと青の中間のごく薄い色 */
   border-left: 4px solid #9db4c0; /* 中間のブルーグレー系 */
