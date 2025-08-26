@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -83,12 +112,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#賃金と雇用量の決定" id="toc-賃金と雇用量の決定" class="nav-link active" data-scroll-target="#賃金と雇用量の決定">賃金と雇用量の決定</a></li>
-  <li><a href="#労働供給" id="toc-労働供給" class="nav-link" data-scroll-target="#労働供給">労働供給</a></li>
-  <li><a href="#労働需要" id="toc-労働需要" class="nav-link" data-scroll-target="#労働需要">労働需要</a>
+  <li><a href="#賃金と雇用量の決定" id="toc-賃金と雇用量の決定" class="nav-link active" data-scroll-target="#賃金と雇用量の決定">賃金と雇用量の決定</a>
   <ul class="collapse">
-  <li><a href="#参考文献" id="toc-参考文献" class="nav-link" data-scroll-target="#参考文献">参考文献</a></li>
+  <li><a href="#労働需要曲線労働供給曲線のシフト" id="toc-労働需要曲線労働供給曲線のシフト" class="nav-link" data-scroll-target="#労働需要曲線労働供給曲線のシフト">労働需要曲線・労働供給曲線のシフト</a></li>
   </ul></li>
+  <li><a href="#労働供給" id="toc-労働供給" class="nav-link" data-scroll-target="#労働供給">労働供給</a>
+  <ul class="collapse">
+  <li><a href="#労働供給モデル" id="toc-労働供給モデル" class="nav-link" data-scroll-target="#労働供給モデル">労働供給モデル</a>
+  <ul class="collapse">
+  <li><a href="#財と効用" id="toc-財と効用" class="nav-link" data-scroll-target="#財と効用">1. 財と効用</a></li>
+  <li><a href="#労働と余暇のトレードオフ" id="toc-労働と余暇のトレードオフ" class="nav-link" data-scroll-target="#労働と余暇のトレードオフ">2. 労働と余暇のトレードオフ</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#労働需要" id="toc-労働需要" class="nav-link" data-scroll-target="#労働需要">労働需要</a></li>
   </ul>
 </nav>
     </div>
@@ -114,36 +150,109 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<blockquote class="blockquote">
+<p>本資料は、大森義明・永瀬伸子（2021）『労働経済学をつかむ』有斐閣　を参考に作成しています。 授業目的に合わせて一部構成や表現を調整しています。</p>
+</blockquote>
 <section id="賃金と雇用量の決定" class="level1">
 <h1>賃金と雇用量の決定</h1>
 <p>この資料には、度々「労働市場」という言葉が出てきますが、労働市場とは何でしょうか？</p>
 <p><strong>労働市場</strong>とは、働き手が働きたいと思って仕事に応募（<strong>求職</strong>）し、企業が雇いたいと思って求人を出し、その結果労働力が取引される市場を指します。</p>
 <p>実際には、労働市場という名前の具体的な場所があるわけではないですし、魚市場のように労働者が競りにかけられたり、明確に価格（時間当たり賃金）が変動したりするわけではありません。</p>
 <p>しかし、求職者数に対して求人が多ければ、時間をかけて時給は上昇していきますし、逆に求人が少なければ時給は下がっていきます。</p>
-<p>例えば、新型コロナ感染拡大期以前、2015年～2019年までに、求職者1人当たりの求人数を表す有効求人倍率は1.2から1.6まで上昇し（JILPT, 2025）、同じ時期に三大都市圏におけるアルバイト・パートの募集時平均時給も981円から1084円へと上昇しました（リクルートリサーチセンター, n.d.）。</p>
+<p>例えば、新型コロナ感染拡大期以前、2015年～2019年までに、求職者1人当たりの求人数を表す有効求人倍率は1.2から1.6まで上昇し<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、同じ時期に三大都市圏におけるアルバイト・パートの募集時平均時給も981円から1084円へと上昇しました<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
 <p>このように、「求人を出す」「応募する」といった行動が交わされる概念的な空間として労働市場を捉えることで、財やサービスの市場と同じように、その動きをデータから分析することが可能になります。</p>
 <p>労働市場において、雇用量と賃金は、企業の求人数の増加や減少、働きたい人の増加や減少によって決定されます。</p>
 <p>このような決定を示すために、<strong>横軸に雇用量</strong>、<strong>縦軸に賃金</strong>をとる<strong>労働市場のモデル</strong>が使用されます。</p>
 <p>労働市場全体の<strong>労働供給曲線</strong>は、賃金が与えられたとき、その労働市場にいる労働者それぞれが働きたいと思う労働量を足し合わせたもの、つまり、その賃金に対して働きたい人々の量（<strong>労働供給量</strong>）をを示します。</p>
-<p>市場で提示される賃金が高いほど、働きたいと思う労働者の数や1人の労働者が働きたいと思う時間は増加し（労働供給の増加）、賃金が低いほど、働きたいと思う労働者の数や1人の労働者が働きたいと思う時間は減少する（労働供給の減少）ため、は労働供給曲線は右上がりの曲線として表されます。</p>
+<p>市場で提示される賃金が高いほど、働きたいと思う労働者の数や1人の労働者が働きたいと思う時間は増加し（労働供給の増加）、賃金が低いほど、働きたいと思う労働者の数や1人の労働者が働きたいと思う時間は減少する（労働供給の減少）ため、労働供給曲線は右上がりの曲線として表されます。</p>
 <p>一方、労働市場全体の<strong>労働需要曲線</strong>は、賃金が与えられたとき、各企業が利潤を最大化するために雇用したい労働量について、労働市場における企業全体の合計（<strong>労働需要量</strong>）を表します。</p>
 <p>市場で提示される賃金が高いとき、各企業が雇用したい労働量は減少し（労働需要の減少）、賃金が低いときには雇用したい労働量が増加する（労働需要の増加）ため、<strong>労働需要曲線</strong>は右下がりの曲線になります。</p>
-<p><img src=".\images/labor_sdcurve.png" class="img-fluid"></p>
-<p>賃金と雇用量はこれら2つの曲線の交点で決まり、それ以外の点では労働供給が過剰（失業が生じる）か、労働需要が満たされない（企業に欠員が生じる）ことになります。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_sdcurve.png" class="img-fluid figure-img"></p>
+<figcaption>労働市場のモデル</figcaption>
+</figure>
+</div>
+<p>賃金と雇用量はこれら2つの曲線の交点（需要と供給が一致する点）で決まり、それ以外の点では労働供給が過剰（<strong>失業</strong>が生じる）か、労働需要が満たされない（企業に<strong>欠員</strong>が生じる）ことになります。</p>
 <p>前者では賃金を下げる圧力が働き、後者では賃金を上げる圧力が働くことによって、市場の賃金と雇用は2つの曲線の交点に近づいていきます。</p>
-<p>交点を均衡点、そのときの賃金を<strong>均衡賃金</strong>、雇用量を<strong>均衡雇用量</strong>と呼びます。</p>
+<p>交点を均衡点、そのときの賃金を<strong>均衡賃金</strong>（<span class="math inline">\(W^*\)</span>）、雇用量を<strong>均衡雇用量</strong>（<span class="math inline">\(L^*\)</span>）と呼びます。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文の空欄を埋めてください。</p>
+<p>ある賃金が与えられたときに、その賃金のもとで雇用したい労働量を表した曲線を <strong><input type="text" class="fill-in" id="fill1" placeholder="ここに入力"></strong> 、その賃金のもとで働きたい労働者の量を表した曲線を <strong><input type="text" class="fill-in" id="fill2" placeholder="ここに入力"></strong> という。</p>
+<p>均衡における賃金と雇用量は <strong><input type="text" class="fill-in" id="fill1" placeholder="ここに入力"></strong> で決まり、そのとき、労働者の需要と供給は <strong><input type="text" class="fill-in" id="fill1" placeholder="ここに入力"></strong> 。</p>
+<hr>
+<p><strong>選択肢</strong></p>
+<p>労働者　労働需要曲線　労働供給曲線　時間当たり賃金　市場均衡　均衡点　生産性　景気循環　一致する　労働供給量の方が多い　労働需要量の方が多い</p>
+</div>
+<section id="労働需要曲線労働供給曲線のシフト" class="level2">
+<h2 class="anchored" data-anchor-id="労働需要曲線労働供給曲線のシフト">労働需要曲線・労働供給曲線のシフト</h2>
+<p>労働需要曲線・労働供給曲線は、景気の動向や人々の選好の変化によって変化（<strong>シフト</strong>）します。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_sdcurve_dshift.png" class="img-fluid figure-img"></p>
+<figcaption>労働需要曲線のシフト</figcaption>
+</figure>
+</div>
+<p>シフトが起こる前の均衡雇用量は<span class="math inline">\(L_1\)</span>、均衡賃金は<span class="math inline">\(W_1\)</span>だとします。</p>
+<p>例えば、景気が良くなると、同じ賃金のもとで労働者を雇いたい企業が増える（<strong>労働需要の増加</strong>）ため、<strong>労働需要曲線は右上にシフト</strong>します。</p>
+<p>このとき、シフト前の均衡賃金<span class="math inline">\(W_1\)</span>のもとで雇いたい労働者の数は<span class="math inline">\(L_1\)</span>から<span class="math inline">\(L_3\)</span>に増加しますが、<span class="math inline">\(W_1\)</span>のもとで働きたい労働者は<span class="math inline">\(L_1\)</span>のままなので、企業の欠員が生じ、賃金に対する上昇圧力が働きます。この圧力は賃金は<span class="math inline">\(W_2\)</span>に上がるまで続き、最終的に、シフト後の需要曲線と供給曲線の交点で決まる均衡に落ち着きます。このとき、雇用量も<span class="math inline">\(L_1\)</span>から<span class="math inline">\(L_2\)</span>に増加しています。</p>
+<p>好景気のほかにも、例えば特定の財やサービスの需要の増加や、技術革新・産業構造の変化などによって労働需要がシフトします。</p>
+<p>もちろん、反対に景気後退や特定産業での需要減少などが生じると、<strong>労働需要は減少し、労働需要曲線は左下にシフト</strong>することになります。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_sdcurve_sshift.png" class="img-fluid figure-img"></p>
+<figcaption>労働供給曲線のシフト</figcaption>
+</figure>
+</div>
+<p>労働供給曲線がシフトすると何が起こるでしょうか？</p>
+<p>例えば、何らかの要因によって自国民と同質の労働を提供できる移民労働者が流入が増えたとすると、同じ賃金のもとで働きたい労働者が増える（<strong>労働供給の増加</strong>）ため、<strong>労働供給曲線は右下にシフト</strong>します。</p>
+<p>このとき、市場にはシフト前の均衡賃金<span class="math inline">\(W_1\)</span>のもとで働きたい労働者よりも少ない雇用量しか需要されていないため、失業が生じ、賃金に対する下降圧力が働きます。この圧力は賃金が<span class="math inline">\(W_4\)</span>に下落するまで続き、最終的に、需要曲線とシフト後の供給曲線の交点で決まる均衡に落ち着きます。このとき、雇用量は<span class="math inline">\(L_1\)</span>から<span class="math inline">\(L_4\)</span>に増加します。</p>
+<p>ほかにも、家電製品の進歩により家事負担が減ったり、人口が増加したりすることによって、同じ賃金でも働きたいという個人が増えると労働供給はシフトします。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_sdcurve_slope.png" class="img-fluid figure-img"></p>
+<figcaption>労働供給曲線の傾き</figcaption>
+</figure>
+</div>
+<p>供給曲線の傾きは、人によって異なると考えられます。傾きが緩やかだということは、少しの賃金上昇に反応して労働供給が大きく増加する状況を反映しています。反対に、傾きが急だということは、多少の賃金上昇では労働供給があまり増えない状況を表しています。</p>
+<p>例えば、パート労働者の労働供給曲線は、正社員に比べて緩やかな右上がりだと言われていますが、これは、賃金が上昇するとこれまで働いていなかった層が働きに出るため、労働供給が大きく増加すると考えられるためです。</p>
+<p>一方、医師の労働供給曲線はかなり急な右上がりだと考えられています。これは、医師として働くには国家資格が必要であり、医師免許を持っていて働けるような人は、すでにその多くが働いていると考えられるためです。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文の空欄を埋めてください。</p>
+<p>労働需要が減少すると、労働需要曲線は <strong><input type="text" class="fill-in" id="fill1" placeholder="ここに入力"></strong> にシフトする。シフト前と比較して、シフト後の均衡賃金は <strong><input type="text" class="fill-in" id="fill2" placeholder="ここに入力"></strong> し、均衡雇用量は <strong><input type="text" class="fill-in" id="fill1" placeholder="ここに入力"></strong> する。</p>
+<hr>
+<p><strong>選択肢</strong></p>
+<p>右上　右下　左上　左下　上昇　下落　増加　減少</p>
+</div>
+</section>
 </section>
 <section id="労働供給" class="level1">
 <h1>労働供給</h1>
+<section id="労働供給モデル" class="level2">
+<h2 class="anchored" data-anchor-id="労働供給モデル">労働供給モデル</h2>
+<p>ここでは、先ほど見たような労働供給曲線の傾きの差はなぜ生じるのか、労働供給行動はどのように決定されるのかについて考えていきます。</p>
+<p>労働供給とは、マクロ経済学的な視点から見ると、働いている、もしくは働きたいと思って仕事を探している人数の合計であり、その人々が供給している労働時間の総計でもあります。</p>
+<p>一方、ミクロ経済学的な視点から見ると、1人の個人が仕事を探して働くか働かないか、働くとしたら何時間働くかの意思決定の結果だと考えられます。</p>
+<p>このような意思決定を個人の視点から考えるのが<strong>労働供給モデル</strong>です。</p>
+<p>ここでは、労働供給モデルを考えるために必要な概念を1つひとつ押さえながら、労働供給がどのように決定され、どのように変化するのかを分析していきましょう。</p>
+<section id="財と効用" class="level3">
+<h3 class="anchored" data-anchor-id="財と効用">1. 財と効用</h3>
+<p>そもそも人が働く根本的な理由は生きていくためです。私たちは、労働力を提供することで初めて所得を得て、さまざまな財やサービスを消費することで、生きていくことができるのです。</p>
+<p>経済学では、私たち消費者が財やサービスを消費することによって得られる満足度を<strong>効用</strong>と言います。ここで、財やサービスが具体的に何であるかは重要ではありません。私たちが消費するあらゆるものをひとまとめに指しています。従って以下では、「財やサービス」は単に「財」と呼ぶことにします。</p>
+</section>
+<section id="労働と余暇のトレードオフ" class="level3">
+<h3 class="anchored" data-anchor-id="労働と余暇のトレードオフ">2. 労働と余暇のトレードオフ</h3>
+<p>より長時間働けば、それだけ多くの所得が得られ、より多くの財を消費し、効用を高めることができます。</p>
+<p>一方で、長時間働くと、それだけ余暇の時間（働かない時間）が犠牲になり、余暇からの効用を得ることができません。</p>
+<p>財の消費と余暇はいずれも効用を高めるという仮定が、労働供給モデルを考えるうえでの根幹です。</p>
+<p>労働供給モデルでは、<strong>人は消費と余暇のトレードオフ</strong>（一方を増やすにはもう一方を減らす必要があること）<strong>を考え、自分の効用を最大化するように労働供給</strong>（労働時間や日数）<strong>を決定する</strong>と考えます。</p>
+</section>
+</section>
 </section>
 <section id="労働需要" class="level1">
 <h1>労働需要</h1>
-<section id="参考文献" class="level2">
-<h2 class="anchored" data-anchor-id="参考文献">参考文献</h2>
-<ul>
-<li><p>労働政策研究・研修機構（JILPT）.（2025）. <em>完全失業率・有効求人倍率</em>. <a href="https://www.jil.go.jp/kokunai/statistics/timeseries/html/g0301.html">https://www.jil.go.jp/kokunai/statistics/timeseries/html/g0301.html</a></p></li>
-<li><p>リクルート・リサーチセンター.（n.d.）. <em>アルバイト・パート募集時平均時給調査</em>. <a href="https://jbrc.recruit.co.jp/data/ap/">https://jbrc.recruit.co.jp/data/ap/</a> （2025年8月5日アクセス）</p></li>
-</ul>
 <p><a href="docs/index.html">講義資料に戻る</a></p>
 <!-- 自由記述クイズのスクリプトとスタイル -->
 <script>
@@ -193,9 +302,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>労働政策研究・研修機構（JILPT）.（2025）. <em>完全失業率・有効求人倍率</em>. <a href="https://www.jil.go.jp/kokunai/statistics/timeseries/html/g0301.html">https://www.jil.go.jp/kokunai/statistics/timeseries/html/g0301.html</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>リクルート・リサーチセンター.（n.d.）. <em>アルバイト・パート募集時平均時給調査</em>. <a href="https://jbrc.recruit.co.jp/data/ap/">https://jbrc.recruit.co.jp/data/ap/</a> （2025年8月5日アクセス）<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
