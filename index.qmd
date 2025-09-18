@@ -42,6 +42,8 @@ title: "講義資料"
 
 [イントロダクション](labor_intro.html)
 
+[労働市場における需要と供給](labor_supply.html)
+
 <!-- 後期の講義
 # 統計学入門A/B
 
