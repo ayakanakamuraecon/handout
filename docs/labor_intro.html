@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,14 +31,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -123,8 +124,16 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <section id="労働経済学とは" class="level2">
 <h2 class="anchored" data-anchor-id="労働経済学とは">労働経済学とは？</h2>
-<p>労働経済学は、働く人・雇う人・社会の関係を経済学の視点から分析する学問です。 労働市場における「需要と供給」「賃金の決定」「雇用の仕組み」「教育や訓練の効果」など、日常に密接に関わるテーマを扱います。</p>
-<p>たとえば、なぜ正社員と非正規社員がいるのか、大学に進学するとどのくらい将来の収入が変わるのか、最低賃金を引き上げると雇用はどうなるのか……といった問いに答えるのが労働経済学です。</p>
+<p>労働経済学は、働く人・雇う人・社会の関係を経済学の視点から分析する学問です。 日常に密接に関わるテーマを扱います。</p>
+<ul>
+<li>労働市場における「需要と供給」「賃金の決定」「雇用の仕組み」「教育や訓練の効果」など
+<ul>
+<li>なぜ正社員と非正規社員がいるのか</li>
+<li>大学に進学するとどのくらい将来の収入が変わるのか</li>
+<li>最低賃金を引き上げると雇用はどうなるのか……</li>
+</ul></li>
+</ul>
+<p>このような問いに答えるのが労働経済学です。</p>
 <p>この授業では、そういった労働経済学の基礎的な理論を学び、日本の労働市場の特徴を分析していくことを目的とします。</p>
 </section>
 <section id="日本の労働市場" class="level2">
@@ -140,9 +149,10 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="労働力率">労働力率</h4>
 <p>労働力率とは、15歳以上人口に占める労働力の割合です。</p>
 <ul>
-<li>労働力：仕事をしている人（<strong>就業者</strong>）と仕事についていないが仕事を探していてすぐに仕事に就ける人（<strong>完全失業者</strong>）を合わせた数。国の経済規模や労働市場の市況を表します。
+<li>労働力：仕事をしている人（<strong>就業者</strong>）と仕事についていないが仕事を探していてすぐに仕事に就ける人（<strong>完全失業者</strong>）を合わせた数
 <ul>
-<li>自営業、家族従業、パート・アルバイト、フルタイム雇用、いずれの場合も労働力に含まれます。</li>
+<li>国の経済規模や労働市場の市況を表す</li>
+<li>自営業、家族従業、パート・アルバイト、フルタイム雇用、いずれの場合も労働力に含まれる</li>
 </ul></li>
 </ul>
 <section id="年齢階級別労働力率" class="level5">
@@ -577,13 +587,14 @@ window.addEventListener('DOMContentLoaded', () => {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

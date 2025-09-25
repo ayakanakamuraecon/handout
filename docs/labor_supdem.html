@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,14 +31,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -81,7 +82,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -157,17 +158,37 @@ window.Quarto = {
 <section id="賃金と雇用量の決定" class="level1">
 <h1>賃金と雇用量の決定</h1>
 <p>この資料には、度々「労働市場」という言葉が出てきますが、労働市場とは何でしょうか？</p>
-<p><strong>労働市場</strong>とは、働き手が働きたいと思って仕事に応募（<strong>求職</strong>）し、企業が雇いたいと思って求人を出し、その結果労働力が取引される市場を指します。</p>
+<ul>
+<li><strong>労働市場</strong>：働き手が働きたいと思って仕事に応募（<strong>求職</strong>）し、企業が雇いたいと思って求人を出し、その結果労働力が取引される市場</li>
+</ul>
 <p>実際には、労働市場という名前の具体的な場所があるわけではないですし、魚市場のように労働者が競りにかけられたり、明確に価格（時間当たり賃金）が変動したりするわけではありません。</p>
 <p>しかし、求職者数に対して求人が多ければ、時間をかけて時給は上昇していきますし、逆に求人が少なければ時給は下がっていきます。</p>
+<blockquote class="blockquote">
 <p>例えば、新型コロナ感染拡大期以前、2015年～2019年までに、求職者1人当たりの求人数を表す有効求人倍率は1.2から1.6まで上昇し<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、同じ時期に三大都市圏におけるアルバイト・パートの募集時平均時給も981円から1084円へと上昇しました<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
+</blockquote>
 <p>このように、「求人を出す」「応募する」といった行動が交わされる概念的な空間として労働市場を捉えることで、財やサービスの市場と同じように、その動きをデータから分析することが可能になります。</p>
-<p>労働市場において、雇用量と賃金は、企業の求人数の増加や減少、働きたい人の増加や減少によって決定されます。</p>
+<p>労働市場において、雇用量と賃金は、</p>
+<ul>
+<li>企業の求人数の増加や減少</li>
+<li>働きたい人の増加や減少</li>
+</ul>
+<p>によって決定されます。</p>
 <p>このような決定を示すために、<strong>横軸に雇用量</strong>、<strong>縦軸に賃金</strong>をとる<strong>労働市場のモデル</strong>が使用されます。</p>
-<p>労働市場全体の<strong>労働供給曲線</strong>は、賃金が与えられたとき、その労働市場にいる労働者それぞれが働きたいと思う労働量を足し合わせたもの、つまり、その賃金に対して働きたい人々の量（<strong>労働供給量</strong>）をを示します。</p>
-<p>市場で提示される賃金が高いほど、働きたいと思う労働者の数や1人の労働者が働きたいと思う時間は増加し（労働供給の増加）、賃金が低いほど、働きたいと思う労働者の数や1人の労働者が働きたいと思う時間は減少する（労働供給の減少）ため、労働供給曲線は右上がりの曲線として表されます。</p>
-<p>一方、労働市場全体の<strong>労働需要曲線</strong>は、賃金が与えられたとき、各企業が利潤を最大化するために雇用したい労働量について、労働市場における企業全体の合計（<strong>労働需要量</strong>）を表します。</p>
-<p>市場で提示される賃金が高いとき、各企業が雇用したい労働量は減少し（労働需要の減少）、賃金が低いときには雇用したい労働量が増加する（労働需要の増加）ため、<strong>労働需要曲線</strong>は右下がりの曲線になります。</p>
+<ul>
+<li>（労働市場全体の）<strong>労働供給曲線</strong>
+<ul>
+<li>賃金が与えられたとき、その労働市場にいる労働者それぞれが働きたいと思う労働量を足し合わせたもの
+<ul>
+<li>つまり、その賃金に対して働きたい人々の量（<strong>労働供給量</strong>）を示す</li>
+</ul></li>
+<li>市場で提示される賃金が高いほど、働きたいと思う労働者の数や1人の労働者が働きたいと思う時間は増加し（労働供給の増加）、賃金が低いほど、働きたいと思う労働者の数や1人の労働者が働きたいと思う時間は減少する（労働供給の減少）ため、労働供給曲線は右上がりの曲線として表されます。</li>
+</ul></li>
+<li>（労働市場全体の）<strong>労働需要曲線</strong>
+<ul>
+<li>賃金が与えられたとき、各企業が利潤を最大化するために雇用したい労働量について、労働市場における企業全体の合計（<strong>労働需要量</strong>）を表す。</li>
+<li>市場で提示される賃金が高いとき、各企業が雇用したい労働量は減少し（労働需要の減少）、賃金が低いときには雇用したい労働量が増加する（労働需要の増加）ため、<strong>労働需要曲線</strong>は右下がりの曲線になります。</li>
+</ul></li>
+</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src=".\images/labor_sdcurve.png" class="img-fluid figure-img"></p>
@@ -175,13 +196,21 @@ window.Quarto = {
 </figure>
 </div>
 <p>賃金と雇用量はこれら2つの曲線の交点（需要と供給が一致する点）で決まり、それ以外の点では労働供給が過剰（<strong>失業</strong>が生じる）か、労働需要が満たされない（企業に<strong>欠員</strong>が生じる）ことになります。</p>
-<p>前者では賃金を下げる圧力が働き、後者では賃金を上げる圧力が働くことによって、市場の賃金と雇用は2つの曲線の交点に近づいていきます。</p>
-<p>交点を均衡点、そのときの賃金を<strong>均衡賃金</strong>（<span class="math inline">\(W^*\)</span>）、雇用量を<strong>均衡雇用量</strong>（<span class="math inline">\(L^*\)</span>）と呼びます。</p>
+<ul>
+<li>失業：労働供給<span class="math inline">\(&gt;\)</span>労働需要であるため、賃金を下げる圧力が働く</li>
+<li>欠員：労働供給<span class="math inline">\(&lt;\)</span>労働需要であるため、賃金を上げる圧力が働く</li>
+</ul>
+<p>これにより、市場の賃金と雇用は2つの曲線の交点に近づいていきます。</p>
+<ul>
+<li>交点：均衡点</li>
+<li>交点における賃金：<strong>均衡賃金</strong>（<span class="math inline">\(W^*\)</span>）</li>
+<li>交点における雇用量：<strong>均衡雇用量</strong>（<span class="math inline">\(L^*\)</span>）</li>
+</ul>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
 <p>次の文の空欄を埋めてください。</p>
 <p>ある賃金が与えられたときに、その賃金のもとで雇用したい労働量を表した曲線を <strong><input type="text" class="fill-in" id="fill1" placeholder="ここに入力"></strong> 、その賃金のもとで働きたい労働者の量を表した曲線を <strong><input type="text" class="fill-in" id="fill2" placeholder="ここに入力"></strong> という。</p>
-<p>均衡における賃金と雇用量は <strong><input type="text" class="fill-in" id="fill1" placeholder="ここに入力"></strong> で決まり、そのとき、労働者の需要と供給は <strong><input type="text" class="fill-in" id="fill1" placeholder="ここに入力"></strong> 。</p>
+<p>均衡における賃金と雇用量は <strong><input type="text" class="fill-in" id="fill1" placeholder="ここに入力"></strong> で決まり、そのとき、労働者の需要と供給を比較すると <strong><input type="text" class="fill-in" id="fill1" placeholder="ここに入力"></strong> 。</p>
 <hr>
 <p><strong>選択肢</strong></p>
 <p>労働者　労働需要曲線　労働供給曲線　時間当たり賃金　市場均衡　均衡点　生産性　景気循環　一致する　労働供給量の方が多い　労働需要量の方が多い</p>
@@ -197,7 +226,14 @@ window.Quarto = {
 </div>
 <p>シフトが起こる前の均衡雇用量は<span class="math inline">\(L_1\)</span>、均衡賃金は<span class="math inline">\(W_1\)</span>だとします。</p>
 <p>例えば、景気が良くなると、同じ賃金のもとで労働者を雇いたい企業が増える（<strong>労働需要の増加</strong>）ため、<strong>労働需要曲線は右上にシフト</strong>します。</p>
-<p>このとき、シフト前の均衡賃金<span class="math inline">\(W_1\)</span>のもとで雇いたい労働者の数は<span class="math inline">\(L_1\)</span>から<span class="math inline">\(L_3\)</span>に増加しますが、<span class="math inline">\(W_1\)</span>のもとで働きたい労働者は<span class="math inline">\(L_1\)</span>のままなので、企業の欠員が生じ、賃金に対する上昇圧力が働きます。この圧力は賃金は<span class="math inline">\(W_2\)</span>に上がるまで続き、最終的に、シフト後の需要曲線と供給曲線の交点で決まる均衡に落ち着きます。このとき、雇用量も<span class="math inline">\(L_1\)</span>から<span class="math inline">\(L_2\)</span>に増加しています。</p>
+<p>このとき、</p>
+<ol type="1">
+<li>シフト前の均衡賃金<span class="math inline">\(W_1\)</span>のもとで雇いたい労働者の数は<span class="math inline">\(L_1\)</span>から<span class="math inline">\(L_3\)</span>に増加</li>
+<li><span class="math inline">\(W_1\)</span>のもとで働きたい労働者は<span class="math inline">\(L_1\)</span>のまま</li>
+<li>企業の欠員が生じ、賃金に対する上昇圧力が働く</li>
+<li>この圧力は賃金は<span class="math inline">\(W_2\)</span>に上がるまで続き、最終的に、シフト後の需要曲線と供給曲線の交点で決まる均衡に落ち着く</li>
+</ol>
+<p><span class="math inline">\(\rightarrow\)</span> 賃金は<span class="math inline">\(W_1\)</span>から<span class="math inline">\(W_2\)</span>に上昇し、雇用量も<span class="math inline">\(L_1\)</span>から<span class="math inline">\(L_2\)</span>に増加</p>
 <p>好景気のほかにも、例えば特定の財やサービスの需要の増加や、技術革新・産業構造の変化などによって労働需要がシフトします。</p>
 <p>もちろん、反対に景気後退や特定産業での需要減少などが生じると、<strong>労働需要は減少し、労働需要曲線は左下にシフト</strong>することになります。</p>
 <div class="quarto-figure quarto-figure-center">
@@ -208,7 +244,13 @@ window.Quarto = {
 </div>
 <p>労働供給曲線がシフトすると何が起こるでしょうか？</p>
 <p>例えば、何らかの要因によって自国民と同質の労働を提供できる移民労働者が流入が増えたとすると、同じ賃金のもとで働きたい労働者が増える（<strong>労働供給の増加</strong>）ため、<strong>労働供給曲線は右下にシフト</strong>します。</p>
-<p>このとき、市場にはシフト前の均衡賃金<span class="math inline">\(W_1\)</span>のもとで働きたい労働者よりも少ない雇用量しか需要されていないため、失業が生じ、賃金に対する下降圧力が働きます。この圧力は賃金が<span class="math inline">\(W_4\)</span>に下落するまで続き、最終的に、需要曲線とシフト後の供給曲線の交点で決まる均衡に落ち着きます。このとき、雇用量は<span class="math inline">\(L_1\)</span>から<span class="math inline">\(L_4\)</span>に増加します。</p>
+<p>このとき、</p>
+<ol type="1">
+<li>市場にはシフト前の均衡賃金<span class="math inline">\(W_1\)</span>のもとで働きたい労働者よりも少ない雇用量しか需要されていない</li>
+<li>失業が生じ、賃金に対する下降圧力が働く</li>
+<li>この圧力は賃金が<span class="math inline">\(W_4\)</span>に下落するまで続き、最終的に、需要曲線とシフト後の供給曲線の交点で決まる均衡に落ち着く</li>
+</ol>
+<p><span class="math inline">\(\rightarrow\)</span> 賃金は<span class="math inline">\(W_1\)</span>から<span class="math inline">\(W_4\)</span>に下落し、雇用量は<span class="math inline">\(L_1\)</span>から<span class="math inline">\(L_4\)</span>に増加</p>
 <p>ほかにも、家電製品の進歩により家事負担が減ったり、人口が増加したりすることによって、同じ賃金でも働きたいという個人が増えると労働供給はシフトします。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -216,9 +258,22 @@ window.Quarto = {
 <figcaption>労働供給曲線の傾き</figcaption>
 </figure>
 </div>
-<p>供給曲線の傾きは、人によって異なると考えられます。傾きが緩やかだということは、少しの賃金上昇に反応して労働供給が大きく増加する状況を反映しています。反対に、傾きが急だということは、多少の賃金上昇では労働供給があまり増えない状況を表しています。</p>
-<p>例えば、パート労働者の労働供給曲線は、正社員に比べて緩やかな右上がりだと言われていますが、これは、賃金が上昇するとこれまで働いていなかった層が働きに出るため、労働供給が大きく増加すると考えられるためです。</p>
-<p>一方、医師の労働供給曲線はかなり急な右上がりだと考えられています。これは、医師として働くには国家資格が必要であり、医師免許を持っていて働けるような人は、すでにその多くが働いていると考えられるためです。</p>
+<p>供給曲線の傾きは、人によって異なると考えられます。</p>
+<ul>
+<li>傾きが緩やか：少しの賃金上昇に反応して労働供給が大きく増加する状況を反映</li>
+<li>傾きが急：多少の賃金上昇では労働供給があまり増えない状況を表す</li>
+</ul>
+<p>例えば、</p>
+<ul>
+<li>パート労働者：正社員に比べて緩やかな右上がりだと言われている
+<ul>
+<li>賃金が上昇するとこれまで働いていなかった層が働きに出るため、労働供給が大きく増加すると考えられる</li>
+</ul></li>
+<li>医師：かなり急な右上がりだと考えられている
+<ul>
+<li>医師として働くには国家資格が必要であり、医師免許を持っていて働けるような人は、すでにその多くが働いていると考えられる</li>
+</ul></li>
+</ul>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
 <p>次の文の空欄を埋めてください。</p>
@@ -234,29 +289,183 @@ window.Quarto = {
 <section id="労働供給モデル" class="level2">
 <h2 class="anchored" data-anchor-id="労働供給モデル">労働供給モデル</h2>
 <p>ここでは、先ほど見たような労働供給曲線の傾きの差はなぜ生じるのか、労働供給行動はどのように決定されるのかについて考えていきます。</p>
-<p>労働供給とは、マクロ経済学的な視点から見ると、働いている、もしくは働きたいと思って仕事を探している人数の合計であり、その人々が供給している労働時間の総計でもあります。</p>
-<p>一方、ミクロ経済学的な視点から見ると、1人の個人が仕事を探して働くか働かないか、働くとしたら何時間働くかの意思決定の結果だと考えられます。</p>
+<p>労働供給とは、</p>
+<ul>
+<li>マクロ経済学的な視点から見ると、
+<ul>
+<li>働いている、もしくは働きたいと思って仕事を探している人数の合計</li>
+<li>その人々が供給している労働時間の総計</li>
+</ul></li>
+<li>ミクロ経済学的な視点から見ると、
+<ul>
+<li>1人の個人が仕事を探して働くか働かないか</li>
+<li>働くとしたら何時間働くかの意思決定の結果</li>
+</ul></li>
+</ul>
 <p>このような意思決定を個人の視点から考えるのが<strong>労働供給モデル</strong>です。</p>
 <p>ここでは、労働供給モデルを考えるために必要な概念を1つひとつ押さえながら、労働供給がどのように決定され、どのように変化するのかを分析していきましょう。</p>
 <section id="財と効用" class="level3">
 <h3 class="anchored" data-anchor-id="財と効用">1. 財と効用</h3>
-<p>そもそも人が働く根本的な理由は生きていくためです。私たちは、労働力を提供することで初めて所得を得て、さまざまな財やサービスを消費することで、生きていくことができるのです。</p>
-<p>経済学では、私たち消費者が財やサービスを消費することによって得られる満足度を<strong>効用</strong>と言います。ここで、財やサービスが具体的に何であるかは重要ではありません。私たちが消費するあらゆるものをひとまとめに指しています。従って以下では、「財やサービス」は単に「財」と呼ぶことにします。</p>
+<p>そもそも人が働く根本的な理由は生きていくためです。</p>
+<ol type="1">
+<li>労働力を提供する</li>
+<li>所得を得る</li>
+<li>さまざまな財やサービスを消費する</li>
+</ol>
+<ul>
+<li><strong>効用</strong>：私たち消費者が財やサービスを消費することによって得られる満足度
+<ul>
+<li>財やサービスが具体的に何であるかは重要ではなく、私たちが消費するあらゆるものをひとまとめに指す</li>
+</ul></li>
+</ul>
+<p>以下では、「財やサービス」は単に「財」と呼ぶことにします。</p>
 </section>
 <section id="労働と余暇のトレードオフ" class="level3">
 <h3 class="anchored" data-anchor-id="労働と余暇のトレードオフ">2. 労働と余暇のトレードオフ</h3>
-<p>より長時間働けば、それだけ多くの所得が得られ、より多くの財を消費し、効用を高めることができます。</p>
-<p>一方で、長時間働くと、それだけ余暇の時間（働かない時間）が犠牲になり、余暇からの効用を得ることができません。</p>
-<p>労働供給モデルでは、<strong>人は消費と余暇のトレードオフ</strong>（一方を増やすにはもう一方を減らす必要があること）<strong>を考え、自分の効用を最大化するように労働供給</strong>（労働時間や日数）<strong>を決定する</strong>と考えます。</p>
+<p>長時間働くと何が起こるでしょうか？</p>
+<ul>
+<li>長時間働く <span class="math inline">\(\rightarrow\)</span> 多くの所得を得る <span class="math inline">\(\rightarrow\)</span> 多くの財を消費できる <span class="math inline">\(\rightarrow\)</span> 効用が高くなる</li>
+<li>長時間働く <span class="math inline">\(\rightarrow\)</span> 余暇の時間（働かない時間）が犠牲になる <span class="math inline">\(\rightarrow\)</span> 余暇からの効用を得ることができない</li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>労働供給モデルにおける前提
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>個人は消費と余暇のトレードオフ</strong>（一方を増やすにはもう一方を減らす必要があること）<strong>を考え、自分の効用を最大化するように労働供給</strong>（労働時間や日数）<strong>を決定する</strong></p>
+</div>
+</div>
 <p>以下では、財の消費と余暇はいずれも効用を高めると仮定します。この仮定は、長時間働くことは効用を低めると仮定することも意味します。財と余暇が両方とも効用を高めるからこそ、両者のトレードオフが問題になるのです。</p>
-<p>例えば、身近な例として大学生のアルバイトを想定してみます。 大学2回生のタカシは、毎月8万円（週2万円）の仕送りをもらいながら1人暮らしをしています。 しかしこれでは生活が苦しいため、時給1000円でアルバイトを始めることを考えます。 このときに、1週間の総時間は168時間（24時間×7日）ですが、すべての時間をアルバイトに充てることはできません。 食事や睡眠などの健康維持に必要な時間や、授業に出る時間も必要になります。 タカシは、健康維持には最低週70時間（1日あたり睡眠7時間、食事や身だしなみに3時間の計10時間×7日）、講義に出席するために週20時間（1週間あたり90分×8コマ）の合計週90時間が必要であると考えています。 この90時間は働いていない時間なので、余暇の最下限であると考えることができます。 タカシは、残りの78時間のうち、何時間働いて、何時間を余暇（友人と遊ぶ、趣味をする、自主的な勉強時間<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>などのアルバイト以外の時間）に割り振るかを決める必要があります。</p>
-<p>78時間をすべてアルバイトに費やせば月78,000円稼ぐことができ生活は楽になりますが、友人との遊びや趣味の時間は一切なく、勉強時間も取れずに成績が下がる可能性があるため、大学生活を楽しんでいる実感が得られなかったり、何のために働いているのかが分からなくなったりするかもしれません。</p>
-<p>逆に、すべてを余暇の時間に割り振ると、生活は苦しいままです。</p>
-<p>消費から得られる効用と余暇から得られる効用の、どちらもそれなりに得られるように、アルバイトと余暇の時間をバランスよく割り振ることが、消費と余暇のトレードオフを考えるということです。</p>
-<p>このとき、アルバイトに振り分けられる時間は最大でも78時間であり、タカシは時間的制約に直面していることが分かります。</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>例：大学生のアルバイト
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>大学2回生のタカシは、毎月8万円（週2万円）の仕送りをもらいながら1人暮らしをしています。 しかしこれでは生活が苦しいため、時給1000円でアルバイトを始めることを考えます。</p>
+<p>このときに、アルバイトの時間は以下のように制約されます。</p>
+<ul>
+<li>1週間の総時間は168時間（24時間×7日）</li>
+<li>食事や睡眠などの健康維持に必要な時間や、授業に出る時間
+<ul>
+<li>健康維持には最低週70時間（1日あたり睡眠7時間、食事や身だしなみに3時間の計10時間×7日）</li>
+<li>講義に出席するために週20時間（1週間あたり90分×8コマ）</li>
+<li>合計週90時間が必要
+<ul>
+<li>余暇の最下限だと考えられる</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 残り78時間</p>
+</div>
+</div>
+<p>つまり、この例において、タカシがアルバイトに費やすことができるのは最大週78時間に限られて（制約されて）いて、その78時間を<strong>何時間働くか</strong>、 <strong>何時間を余暇</strong>（友人と遊ぶ、趣味をする、自主的な勉強時間<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>などのアルバイト以外の時間）<strong>に割り当てるか</strong>を決定する必要があるです。</p>
 </section>
 <section id="予算制約線" class="level3">
 <h3 class="anchored" data-anchor-id="予算制約線">3. 予算制約線</h3>
+<p>何時間アルバイトに費やすか（労働供給量）を決定するにあたって、タカシはもう一つの制約に直面しています。それが<strong>総収入と余暇時間のトレードオフ</strong>です。</p>
+<p>先ほどの例について、極端な例を考えてみましょう。</p>
+<ul>
+<li>週78時間働く
+<ul>
+<li>月78,000円稼ぐことができ生活は楽になる</li>
+<li>友人との遊びや趣味の時間は一切なし</li>
+<li>勉強時間も取れずに成績が下がる可能性がある</li>
+<li>大学生活を楽しんでいる実感が得られなかったり、何のために働いているのかが分からなくなったりする可能性がある</li>
+</ul></li>
+<li>すべてを余暇の時間にする
+<ul>
+<li>生活は苦しいまま</li>
+</ul></li>
+</ul>
+<p>どちらの選択肢をとったとしても、生活の満足度が最大になっているとは言えません。消費から得られる効用と余暇から得られる効用の、どちらもそれなりに得られるように、アルバイトと余暇の時間をバランスよく割り振ることが、消費と余暇のトレードオフを考えるということです。</p>
+<p>ここで、タカシが取りうる選択肢を見ていきます。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>余暇時間数（時間）<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>30</td>
+<td>40</td>
+<td>50</td>
+<td>60</td>
+<td>70</td>
+<td>78</td>
+</tr>
+<tr class="even">
+<td>アルバイト時間数</td>
+<td>78</td>
+<td>68</td>
+<td>58</td>
+<td>48</td>
+<td>38</td>
+<td>28</td>
+<td>18</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>アルバイト収入（千円）</td>
+<td>78</td>
+<td>68</td>
+<td>58</td>
+<td>48</td>
+<td>38</td>
+<td>28</td>
+<td>18</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>親からの仕送り収入（千円）</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>総収入（千円）</td>
+<td>98</td>
+<td>88</td>
+<td>78</td>
+<td>68</td>
+<td>58</td>
+<td>48</td>
+<td>38</td>
+<td>28</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p>この表から分かる通り、タカシが働ける時間は週78時間以内に限られているので、総収入を増やすには、アルバイトの時間数を増やし、余暇時間数を減らす必要があります。逆に、余暇時間数を増やすにはアルバイトの時間数を減らす必要があります。</p>
 </section>
 </section>
 </section>
@@ -319,6 +528,7 @@ window.addEventListener('DOMContentLoaded', () => {
 <li id="fn1"><p>労働政策研究・研修機構（JILPT）.（2025）. <em>完全失業率・有効求人倍率</em>. <a href="https://www.jil.go.jp/kokunai/statistics/timeseries/html/g0301.html">https://www.jil.go.jp/kokunai/statistics/timeseries/html/g0301.html</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>リクルート・リサーチセンター.（n.d.）. <em>アルバイト・パート募集時平均時給調査</em>. <a href="https://jbrc.recruit.co.jp/data/ap/">https://jbrc.recruit.co.jp/data/ap/</a> （2025年8月5日アクセス）<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>学生にとって自主的な勉強時間は本業にあたると思いますが、賃金を得る労働時間ではないため、ここでは余暇と呼ぶことにします。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>ここで余暇時間数は、週90時間の必要最低限の余暇時間数を超過する、追加的な余暇時間数を表しています。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -372,13 +582,14 @@ window.addEventListener('DOMContentLoaded', () => {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

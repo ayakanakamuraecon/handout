@@ -7,3 +7,5 @@
 
 # ただし docs/site_libs は追跡する（公開に必要）
 !docs/site_libs/
+
+**/*.quarto_ipynb
