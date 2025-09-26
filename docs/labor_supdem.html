@@ -140,7 +140,7 @@ window.Quarto = {
   <li><a href="#家庭内生産モデル" id="toc-家庭内生産モデル" class="nav-link" data-scroll-target="#家庭内生産モデル">家庭内生産モデル</a>
   <ul class="collapse">
   <li><a href="#単身者の家庭内生産と市場財の購入" id="toc-単身者の家庭内生産と市場財の購入" class="nav-link" data-scroll-target="#単身者の家庭内生産と市場財の購入">1. 単身者の家庭内生産と市場財の購入</a></li>
-  <li><a href="#最適な家庭内生産時間数と市場労働時間数" id="toc-最適な家庭内生産時間数と市場労働時間数" class="nav-link" data-scroll-target="#最適な家庭内生産時間数と市場労働時間数">2. 最適な家庭内生産時間数と市場労働時間数</a></li>
+  <li><a href="#最適な市場労働時間家庭内生産時間余暇" id="toc-最適な市場労働時間家庭内生産時間余暇" class="nav-link" data-scroll-target="#最適な市場労働時間家庭内生産時間余暇">2. 最適な「市場労働時間」「家庭内生産時間」「余暇」</a></li>
   </ul></li>
   <li><a href="#家庭内生産モデルの応用" id="toc-家庭内生産モデルの応用" class="nav-link" data-scroll-target="#家庭内生産モデルの応用">家庭内生産モデルの応用</a></li>
   </ul></li>
@@ -1358,7 +1358,7 @@ window.Quarto = {
 </colgroup>
 <tbody>
 <tr class="odd">
-<td>家庭内生産時関数（<span class="math inline">\(H\)</span>）</td>
+<td>家庭内生産時間数（<span class="math inline">\(H\)</span>）</td>
 <td>0</td>
 <td>10</td>
 <td>20</td>
@@ -1402,7 +1402,7 @@ window.Quarto = {
 </tbody>
 </table>
 </div>
-<p>上の表は、マミが費やす1週間当たりの家庭内生産時関数と家庭内生産量の関係を表しています。 この例では、家庭内生産時関数 <span class="math inline">\(H\)</span> から生産できる量 <span class="math inline">\(Q\)</span> が以下の式によって表されます。</p>
+<p>上の表は、マミが費やす1週間当たりの家庭内生産時間数と家庭内生産量の関係を表しています。 この例では、家庭内生産時間数 <span class="math inline">\(H\)</span> から生産できる量 <span class="math inline">\(Q\)</span> が以下の式によって表されます。</p>
 <p><span class="math display">\[
 Q = 15\sqrt{H}
 \]</span></p>
@@ -1510,9 +1510,139 @@ Q = 15\sqrt{H}
 <li>市場労働時間数が増えても市場労働の限界購入量は一定</li>
 </ul>
 </section>
-<section id="最適な家庭内生産時間数と市場労働時間数" class="level3">
-<h3 class="anchored" data-anchor-id="最適な家庭内生産時間数と市場労働時間数">2. 最適な家庭内生産時間数と市場労働時間数</h3>
+<section id="最適な市場労働時間家庭内生産時間余暇" class="level3">
+<h3 class="anchored" data-anchor-id="最適な市場労働時間家庭内生産時間余暇">2. 最適な「市場労働時間」「家庭内生産時間」「余暇」</h3>
 <p>この状況で、マミはどのような行動をとるでしょうか？</p>
+<p>マミは最終的に「市場労働時間」「家庭内生産時間数」「余暇」の3つの活動に時間を配分しますが、まずは最適な家庭内生産活動時間について考えましょう。</p>
+<section id="最適な家庭内生産時間数" class="level5">
+<h5 class="anchored" data-anchor-id="最適な家庭内生産時間数">最適な家庭内生産時間数</h5>
+<p>限界原理を使って考えます。</p>
+<ul>
+<li>家庭内生産の限界便益は<strong>家庭内限界生産量</strong>、限界費用は<strong>市場労働の限界購入量</strong>
+<ul>
+<li>なぜなら、家庭内生産を追加的に10時間行うと、家庭内限界生産量の分だけ生産量を増やすことができ、市場労働の限界購入量の分だけ市場労働を行うことによって得られる財の購入量を諦めるから</li>
+</ul></li>
+<li>限界原理にしたがうと、最適な家庭内生産時間数は「<strong>家庭内限界生産量 <span class="math inline">\(=\)</span> 市場労働の限界購入量</strong>」となる点で達成される</li>
+<li>家庭内限界生産量 <span class="math inline">\(=\)</span> 市場労働の限界購入量 <span class="math inline">\(=15\)</span> となる<strong>30時間の家庭内生産が最適</strong></li>
+</ul>
+<p>これをグラフに表すと以下のようになります。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_housestar.png" class="img-fluid figure-img"></p>
+<figcaption>最適な家庭内生産時間数</figcaption>
+</figure>
+</div>
+<ul>
+<li>家庭内生産時間数が30時間未満のときには、「家庭内限界生産量 <span class="math inline">\(&gt;\)</span> 市場労働の限界購入量」であるため、市場で働かずに家庭内生産を行った方が良い</li>
+<li>家庭内生産時間数が30時間を超えるときには、、「家庭内限界生産量 <span class="math inline">\(&lt;\)</span> 市場労働の限界購入量」であるため、家庭内生産を行わず市場で働いた方が良い</li>
+</ul>
+<p>ここで重要なことは、<strong>最適な家庭内生産時間数の決定は、家庭内限界生産量と賃金</strong>（マミの家庭内の生産性がどの程度か、時給がいくらか）<strong>のみに依存</strong>し、マミの<strong>無差別曲線</strong>（財と余暇に対する好み）<strong>には依存しない</strong>点です。</p>
+<p>このあと最適な市場労働時間と余暇について考えていくには、無差別曲線、つまり両者のバランスも考える必要があります。</p>
+</section>
+<section id="最適な市場労働時間と余暇" class="level5">
+<h5 class="anchored" data-anchor-id="最適な市場労働時間と余暇">最適な市場労働時間と余暇</h5>
+<p>すでに最適な家庭内生産時間数が30時間だと分かっているので、100時間のうちの残り70時間をどのように市場労働時間と余暇に割り当てるのかを考えます。</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>余暇時間数</td>
+<td>70</td>
+<td>60</td>
+<td>50</td>
+<td>40</td>
+<td>30</td>
+<td>20</td>
+<td>10</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>市場労働時間数</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>30</td>
+<td>40</td>
+<td>50</td>
+<td>60</td>
+<td>70</td>
+</tr>
+<tr class="odd">
+<td>労働所得</td>
+<td>0</td>
+<td>15</td>
+<td>30</td>
+<td>45</td>
+<td>60</td>
+<td>75</td>
+<td>90</td>
+<td>105</td>
+</tr>
+<tr class="even">
+<td>市場財の購入量</td>
+<td>0</td>
+<td>15</td>
+<td>30</td>
+<td>45</td>
+<td>60</td>
+<td>75</td>
+<td>90</td>
+<td>105</td>
+</tr>
+<tr class="odd">
+<td>家庭内生産量</td>
+<td>82</td>
+<td>82</td>
+<td>82</td>
+<td>82</td>
+<td>82</td>
+<td>82</td>
+<td>82</td>
+<td>82</td>
+</tr>
+<tr class="even">
+<td>財の消費量の総和<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></td>
+<td>82</td>
+<td>97</td>
+<td>112</td>
+<td>127</td>
+<td>142</td>
+<td>157</td>
+<td>172</td>
+<td>187</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>この表は、余暇時間数と市場労働時間数、そのときの市場財の購入量および財の消費量の総和の関係を表したものです。</p>
+<p>この条件のもとで、最適な市場労働時間と余暇時間がどの点で決まるかは、マミの無差別曲線に依存します。</p>
+<p>ここでも、限界原理を使って考えます。</p>
+<ul>
+<li>余暇の限界効用は<strong>無差別曲線の傾き</strong>、限界費用は<strong>市場労働の限界購入量</strong>
+<ul>
+<li>なぜなら、余暇を追加的に1単位増やすとき効用を一定にするためには、1単位の追加的な市場労働で得られる所得で購入可能な財を諦める必要があり、余暇の限界効用は余暇を1単位増やすときに諦めても良い財の単位数であるため</li>
+<li>一方で、このときに諦めた財の単位数は余暇の限界費用である</li>
+<li>限界費用 <span class="math inline">\(=\)</span> 財1.5単位</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_lsstar.png" class="img-fluid figure-img"></p>
+<figcaption>最適な市場労働時間と余暇</figcaption>
+</figure>
+</div>
+</section>
 </section>
 </section>
 <section id="家庭内生産モデルの応用" class="level2">
@@ -1581,6 +1711,7 @@ window.addEventListener('DOMContentLoaded', () => {
 <li id="fn4"><p>ここで余暇時間数は、週90時間の必要最低限の余暇時間数を超過する、追加的な余暇時間数を表しています。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>通常、ミクロ経済学で習う予算制約線は縦軸と横軸に2つの財の消費量をとり、予算の範囲内で購入可能な財の組み合わせを表す直線のことです。その予算制約の考え方を労働供給量の決定に適用すると、ここで習うような直線になります。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>労働時間を10時間増やすごとにどれだけ市場財の購入量が増えるかを示す。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>家庭内生産量 <span class="math inline">\(+\)</span> 市場財購入量 で求められる。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
