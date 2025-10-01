@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,15 +31,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -153,12 +181,100 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="人的資本モデルとシグナリングモデル">人的資本モデルとシグナリングモデル</h2>
 <section id="高卒と大卒の収入の差" class="level3">
 <h3 class="anchored" data-anchor-id="高卒と大卒の収入の差">高卒と大卒の収入の差</h3>
+<p>高校卒業後に就職するか、それとも大学に進学するか—みなさんも一度は進路について考えたことがあると思います。その際に、「高卒」と「大卒」とで、将来的にどれくらい収入が変わるのかについて考えた人もいるのではないでしょうか。</p>
+<p>日本における平均初任給、生涯賃金は以下の表のとおりです。</p>
+<table class="caption-top table">
+<caption>厚生労働省「賃金構造基本統計調査」2019年</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>高卒初任給</strong></td>
+<td><strong>大卒初任給</strong></td>
+<td><strong>高卒と大卒の差</strong></td>
+</tr>
+<tr class="even">
+<td>167,400円</td>
+<td>210,200円</td>
+<td>43,000円</td>
+</tr>
+<tr class="odd">
+<td><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a><strong>高卒生涯賃金</strong></td>
+<td><strong>大卒・大学院卒生涯賃金</strong></td>
+<td><strong>高卒と大卒の差</strong></td>
+</tr>
+<tr class="even">
+<td>2億1千万円</td>
+<td>2億7千万円</td>
+<td>6千万円</td>
+</tr>
+</tbody>
+</table>
+<p>2023年度の私立大学の平均的な4年間の学費は、文系学部で約410万円、理系学部で約540万円<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>です（文部科学省「令和5年度私立大学入学者に係る初年度学生納付金等平均額」）。</p>
+<p>大学進学をしたら400～500万円の学費がかかるが、生涯賃金は6千万増える。平均的な学生にとっては、大学進学は良い投資<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>だと言えるでしょう。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/labor_colhighwage.png" class="img-fluid figure-img"></p>
+<figcaption>収入と費用のフロー（学歴別）</figcaption>
+</figure>
+</div>
 </section>
 <section id="人的資本モデル" class="level3">
 <h3 class="anchored" data-anchor-id="人的資本モデル">人的資本モデル</h3>
+<p>このように、人が持つ知識や能力などを投資の対象となる<strong>資本</strong>とらえる考え方を<strong>人的資本モデル</strong>と言います。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+人的資本モデル
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>知識、能力、スキルなど、労働者による労働サービスの（企業にとっての）価値を生む総体を<strong>人的資本</strong>ととらえ、人的資本に投資する（教育・訓練を行う）ことで個人のスキルや能力が高くなるという考え方</p>
+<p>人的資本が蓄積される分、企業での生産性が向上し、それに伴い収入も上がることを想定する</p>
+</div>
+</div>
+<p>その他の条件が一定のもとで、大卒の期待収益から大学進学の費用を差し引いた純収益が、高卒のそれを上回る人は大学に進学します。</p>
+<p>現状、日本の高卒者の半数は大学進学していますが、大学に進学しない人がいるのはなぜでしょうか？</p>
+<p><strong>誰でも学費を工面できるとき</strong></p>
+<p>①　受験や大学卒業には心理的費用（努力や忍耐）を必要とするため</p>
+<p>学習能力の高い人（努力のコストが低い人）が大学進学をする傾向があります。</p>
+<p>②　人は将来よりも現在を重視する（将来の価値を割り引く、<strong>現在価値</strong>に換算する）傾向があるため</p>
+<p>先ほどのグラフでは、現在の大学進学の費用と将来の収入を同じ金額として扱っていましたが、実際の意思決定では将来の収入は割り引かれて評価されます。未来志向の人ほど大学進学をする傾向があります。</p>
+<p>③　平均的な生涯賃金よりも低い生涯賃金しか期待できない人がいるため</p>
+<p>中にはパートやアルバイトで働いたり、無職になったりする人もいます。先ほどの生涯賃金は平均的な賃金と退職金が支払われることを想定しているため、それよりも低い生涯賃金しか期待できない人もいます。また、雇用機会により期待できる生涯賃金が異なるため、日本では雇用で差別されがちな女性より、男性の方が大学進学をする傾向があります。</p>
+<p>ただし、ほとんどのOECD加盟国では1990年代前半に男女の進学率が逆転し、女性の方が男性よりも大学進学率が高くなっています。</p>
+<p><strong>学費を工面できないとき</strong></p>
+<p>④　学費を工面できないため</p>
+<p>大学進学には学費がかかり、これが工面できない人もいます。経済学では、これを<strong>借り入れ制約</strong>とよびます。このため、裕福な家庭の人ほど大学進学をする傾向があります。奨学金などの学生への貸付制度には、この制約を緩和する働きがあります。</p>
 </section>
 <section id="シグナリングモデル" class="level3">
 <h3 class="anchored" data-anchor-id="シグナリングモデル">シグナリングモデル</h3>
+<p>大学進学の意思決定については、人的資本投資の考え方とは異なるシグナリングという考え方もあります。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+シグナリングモデル
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>人には生まれつき能力に差があるが、企業には誰が高い能力の持ち主であるかを容易には判断できない（個人の能力に対して<strong>情報の非対称性</strong>がある）とき、教育は（能力を高める手段ではなく）労働市場において個人の能力の高さを企業に示す<strong>シグナル</strong>として機能するという考え方</p>
+<p>生まれつきの能力が高い人は教育コストが低いため、より高い学歴を取得しやすく、企業は学歴をもとに採用判断を行う</p>
+</div>
+</div>
+<p>人的資本モデルとシグナリングモデルでは、（大学）教育の役割が異なります。</p>
+<p><strong>人的資本モデル</strong>における（大学）教育：教育を行うことによって人的資本（個人のスキルや能力）が高まる</p>
+<p><span class="math inline">\(\rightarrow\)</span> <strong>人的資本を養う機能</strong></p>
+<p><strong>シグナリングモデル</strong>における（大学）教育：教育は能力を引き上げる役割ではなく、教育を受けられるほどその人の能力が高いことを示す</p>
+<p><span class="math inline">\(\rightarrow\)</span> <strong>選別機能</strong></p>
 </section>
 <section id="モデルの応用教育における男女の差異" class="level3">
 <h3 class="anchored" data-anchor-id="モデルの応用教育における男女の差異">モデルの応用：教育における男女の差異</h3>
@@ -265,7 +381,15 @@ window.addEventListener('DOMContentLoaded', () => {
 </section>
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>「賃金構造基本統計調査」2017年から推計、労働政策研究・研修機構「ユースフル労働統計2018」<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>医歯系学部は卒業までに6年間在籍が必要です。平均的な6年間の学費は約2350万円です。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>一般に、先に費用を負担し、将来的に不確実な収益を得る取引のことを投資と言います。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -317,14 +441,13 @@ window.addEventListener('DOMContentLoaded', () => {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
