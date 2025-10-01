@@ -161,6 +161,7 @@ window.Quarto = {
   <li><a href="#景気と雇用調整" id="toc-景気と雇用調整" class="nav-link" data-scroll-target="#景気と雇用調整">景気と雇用調整</a>
   <ul class="collapse">
   <li><a href="#調整費用モデル" id="toc-調整費用モデル" class="nav-link" data-scroll-target="#調整費用モデル">調整費用モデル</a></li>
+  <li><a href="#調整費用モデルの応用" id="toc-調整費用モデルの応用" class="nav-link" data-scroll-target="#調整費用モデルの応用">調整費用モデルの応用</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -2739,8 +2740,195 @@ P \cdot MP_{H}(N, H) = wN
 <ul>
 <li>雇用調整を行った際の粗利潤を表す（調整費用は考慮しない）</li>
 <li>曲線のピークが原点より右側に位置しているのは、調整費用がなければ雇用を増やす場合に利潤が最大になるケースを想定しているためである</li>
+<li>純利潤は粗利潤と調整費用の差、すなわち2曲線間の距離で表される</li>
 </ul></li>
 </ul>
+<p>企業の目的は利潤最大化なので、調整費用を考慮したときに企業にとって最適な雇用調整量は、粗利潤と調整費用の2曲線の間た最も大きい点で表されます。</p>
+<p>雇用調整は、調整費用に応じて異なったスピードで行われます。</p>
+<p><strong>調整費用が低いとき</strong></p>
+<ul>
+<li>雇用調整は速やかに（1期で）行われます。</li>
+<li>例：派遣社員を数人増やしたり、パートを1日多く働かせるようなケース
+<ul>
+<li>すぐに人を増やしてもコストがあまりかからないため、企業は即座に「粗利潤のピーク」へジャンプする</li>
+</ul></li>
+</ul>
+<p><strong>調整費用が高いとき</strong></p>
+<ul>
+<li>雇用調整はゆっくりと（各期、少しずつ調整が行われ、調整が終わるまで多期間を要して）行われます。図のように、雇用調整を行わないのが最適である場合もあります。</li>
+<li>例：正社員を雇う場合
+<ul>
+<li>採用コストや教育訓練、将来の解雇のしにくさ</li>
+<li>一度に多く雇うとリスクが大きい</li>
+<li>まずは少しだけ調整して様子を見て、数期にわけて少しずつ雇用を増やす</li>
+</ul></li>
+</ul>
+</section>
+<section id="調整費用モデルの応用" class="level3">
+<h3 class="anchored" data-anchor-id="調整費用モデルの応用">調整費用モデルの応用</h3>
+<p>調整費用モデルの観点から、日本企業の雇用調整について考察してみましょう。</p>
+<p>景気後退期の大企業の雇用調整は以下の順で行われると言われています。</p>
+<ol type="1">
+<li>従業員の残業時間の削減</li>
+<li>パート・アルバイト、派遣社員、契約社員などの有期労働者の採用や契約更新の取りやめ</li>
+<li>正社員の新規採用の取りやめ</li>
+<li>すでに採用している社員の出向や転籍</li>
+<li>希望退職の募集</li>
+</ol>
+<p>1990年代後半以降、企業は正社員としての新卒採用を縮小し、有期雇用を増やしており、これによって雇用調整のスピードは以前と比較して大きく上がった可能性があります。</p>
+<p>次に、解雇規制について考えてみます。解雇規制が強いほど労働者を減らすときの調整費用が大きくなると考えられます。</p>
+<p>企業の業績が悪化した際に速やかに従業員を解雇できるかどうかは、国ごとの労働法制やこれを前提とした企業の雇用慣行によって大きく異なっています。</p>
+<p><strong>アメリカ</strong></p>
+<ul>
+<li>at-will employment（労使相互の自由契約に基づく雇用契約）が浸透
+<ul>
+<li>雇用契約期間が明示されていない限り、企業側も労働者側も自由に契約を辞めることができる</li>
+</ul></li>
+<li>同じ企業に勤務し続けるものの割合は日本よりも低く、平均勤続年数も短い</li>
+<li>解雇や新規就職などの流動性が日本に比べて高い</li>
+</ul>
+<p><strong>日本</strong></p>
+<ul>
+<li>解雇要件：30日以上前に予告するかどう日数分以上の平均賃金を支払うこと
+<ul>
+<li>ただし、労働者の責に帰すべき事由がある場合にはこれを免除される</li>
+</ul></li>
+<li>1950～60年代にかけて企業の解雇を制限する裁判の判例が続出
+<ul>
+<li><strong>整理解雇の4要件</strong>が確立</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>整理解雇の4要件
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>整理解雇することに客観的な必要があること</li>
+<li>解雇を回避するために最大限の努力を行ったこと</li>
+<li>解雇の対象となる人選の基準、運用が合理的に行われていること</li>
+<li>労使間で十分に協議を行ったこと</li>
+</ol>
+</div>
+</div>
+<p>では、日本では本当に解雇が難しいのでしょうか？</p>
+<p>裁判は長期間を要するため、中小企業相手に解雇の無効を何十年かかけて争っても利益は少ないでしょう。よって、判例法は、大企業については解雇を避ける慣行を形成させていったが、中小企業への影響は小さかったと考えられます。</p>
+<p>実際、1994～2007年における東京の労働相談（主に中小企業が利用）の第1位は「解雇」でした。日本の解雇規制は、大企業にとっては強すぎるかもしれず、中小企業の労働者にとってはとても弱いという見方もできるでしょう。</p>
+<p>このような見方を背景に、2003年に改正された労働基準法（2004年1月から施行）に織り込まれたのは、判例法を労働基準法に書き込むことでした。</p>
+<ul>
+<li>就業規則と労働契約書（労働条件通知書）にどのような事由により解雇されるかを書き入れられることが定められる
+<ul>
+<li>ただし、明示されている場合でも「客観的に合理的な理由を欠き、社会通念上相当であると認められない場合には、その権利を乱用したものとして、無効とする」（<strong>解雇権濫用の法理</strong>）</li>
+</ul></li>
+</ul>
+<p>この影響か、2008～18年までの東京の労働相談は第1位「退職」、第2位「解雇」となりました。</p>
+<p>大企業側から見ると、会社都合による雇用契約の解除が容易ではないことは、新しい労働者を雇うことのリスクがとても高いことを意味します。</p>
+<p>技術の進歩や世界情勢の変化が目覚ましい現代において、採用時点の労働者のスキルや生産性が40年間も続くことは考えづらく、このような場合、正社員の新卒採用に際しては、企業が面接を繰り返し慎重な採用をするのも至極当然のことだと言えるかもしれません。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>企業の雇用量と粗利潤、雇用調整量と調整費用のデータが以下の表で与えられている。現在の雇用量が9人であるとき、来期の適切な雇用量は何人か答えなさい。</p>
+<p>雇用量と粗利潤</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>雇用量</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>粗利潤</td>
+<td>12</td>
+<td>19</td>
+<td>24</td>
+<td>27</td>
+<td>28</td>
+<td>24</td>
+<td>19</td>
+<td>12</td>
+<td>3</td>
+<td>-8</td>
+<td>-21</td>
+<td>-36</td>
+<td>-53</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>雇用調整量と調整費用</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>雇用調整量</td>
+<td>-5</td>
+<td>-4</td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>調整費用</td>
+<td>53</td>
+<td>35</td>
+<td>21</td>
+<td>11</td>
+<td>5</td>
+<td>0</td>
+<td>5</td>
+<td>11</td>
+<td>21</td>
+<td>35</td>
+<td>53</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong><input type="text" class="fill-in" id="8" placeholder="ここに入力"></strong> 人</p>
+</div>
 <p><a href="index.html">講義資料に戻る</a></p>
 <!-- 自由記述クイズのスクリプトとスタイル -->
 <script>
