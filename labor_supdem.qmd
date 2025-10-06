@@ -84,7 +84,6 @@ format: html
 労働需要曲線・労働供給曲線・均衡点・一致する
 </div>
 
-
 :::
 
 ## 労働需要曲線・労働供給曲線のシフト
@@ -153,6 +152,11 @@ $\rightarrow$ 賃金は$W_1$から$W_4$に下落し、雇用量は$L_1$から$L_
 **選択肢**
 
 右上　右下　左上　左下　上昇　下落　増加　減少
+
+<button onclick="showAnswer('lsd')">答えを見る</button>
+<div id="lsd" class="answer" style="display:none; margin-top: 0.5em;">
+左下・下落・減少
+</div>
 
 :::
 
@@ -478,6 +482,11 @@ Aさんの余暇の限界効用が以下の表で与えられているとき、A
 
 __<input type="text" class="fill-in" id="50" placeholder="ここに入力">__ %
 
+<button onclick="showAnswer('mb')">答えを見る</button>
+<div id="mb" class="answer" style="display:none; margin-top: 0.5em;">
+50
+</div>
+
 :::
 
 
@@ -729,6 +738,11 @@ __<input type="text" class="fill-in" id="50" placeholder="ここに入力">__ %
 
 労働供給量　労働需要量　賃金　労働所得　非労働所得　右上　右下　左上　左下　時給　社会保険料　
 
+<button onclick="showAnswer('wife')">答えを見る</button>
+<div id="wife" class="answer" style="display:none; margin-top: 0.5em;">
+労働供給量・非労働所得・左下
+</div>
+
 :::
 
 # 労働と家庭内生産
@@ -952,7 +966,13 @@ __<input type="text" class="fill-in" id="hhoutput" placeholder="ここに入力"
 
 ![](images/labor_hhshift.png)
 
+<button onclick="showAnswer('renji')">答えを見る</button>
+<div id="renji" class="answer" style="display:none; margin-top: 0.5em;">
+左側の図のように、家庭内生産関数を上方にシフトさせた。
+</div>
+
 :::
+
 
 
 ## 家庭内生産モデルの応用
@@ -1552,7 +1572,12 @@ $$
 
 同じ生産性を持つ労働者について、短時間労働であれば、事業主が社会保険料負担なしで雇用できるが、フルタイムであれば、事業主が社会保険料を負担しなければならないとき、労働需要にどのような影響が及ぼされるか。空欄に適切な語句を入れて答えなさい。
 
-企業がフルタイム労働者を雇用すると、賃金に加えて社会保険料などの __<input type="text" class="fill-in" id="qfcost" placeholder="ここに入力">__ が発生する。一方、短時間労働者にはこの負担がない場合、同じ生産性であれば企業は __<input type="text" class="fill-in" id="short" placeholder="ここに入力">__ の方を選好する。結果として、企業にとって __<input type="text" class="fill-in" id="long" placeholder="ここに入力">__ の雇用コストが相対的に高くなるため、 __<input type="text" class="fill-in" id="full" placeholder="ここに入力">__ の労働需要が減少する可能性がある。
+企業がフルタイム労働者を雇用すると、賃金に加えて社会保険料などの __<input type="text" class="fill-in" id="qfcost" placeholder="ここに入力">__ が発生する。一方、短時間労働者にはこの負担がない場合、同じ生産性であれば企業は __<input type="text" class="fill-in" id="short" placeholder="ここに入力">__ の方を選好する。結果として、企業にとって __<input type="text" class="fill-in" id="long" placeholder="ここに入力">__ の雇用コストが相対的に高くなるため、 フルタイム労働者の労働需要が __<input type="text" class="fill-in" id="full" placeholder="ここに入力">__ する可能性がある。
+
+<button onclick="showAnswer('syaho')">答えを見る</button>
+<div id="syaho" class="answer" style="display:none; margin-top: 0.5em;">
+準固定費用・短時間労働者・フルタイム労働者・減少
+</div>
 
 :::
 
@@ -1720,6 +1745,21 @@ $$
 </div>
 
 __<input type="text" class="fill-in" id="8" placeholder="ここに入力">__ 人
+
+<button onclick="showAnswer('koyo')">答えを見る</button>
+<div id="koyo" class="answer" style="display:none; margin-top: 0.5em;">
+8人
+
+現在の雇用量は9人なので、雇用調整後の利潤は以下のようになる。
+<div style="overflow-x: auto;">
+||||||||||||||
+|----|----|----|----|----|----|----|----|----|----|----|----|----|
+| 雇用調整量 | -5 | -4 | -3 | -2 | -1 | 0 | 1 | 2 | 3 | 4 | 5 |
+| 雇用量 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 |
+| 利潤 | -29 | -8 | 7 | 13 | 14 | 12 | -2 | -19 | -42 | -71 | -106 |
+</div>
+
+</div>
 
 :::
 

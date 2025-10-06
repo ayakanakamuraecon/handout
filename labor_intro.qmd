@@ -317,6 +317,6 @@ format: html
 
 :::
 
-[講義資料に戻る](docs/index.html)
+[講義資料に戻る](index.html)
 
 {{< include quiz.html >}}

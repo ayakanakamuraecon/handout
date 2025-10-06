@@ -333,6 +333,12 @@ window.Quarto = {
 <hr>
 <p><strong>選択肢</strong></p>
 <p>右上　右下　左上　左下　上昇　下落　増加　減少</p>
+<button onclick="showAnswer('lsd')">
+答えを見る
+</button>
+<div id="lsd" class="answer" style="display:none; margin-top: 0.5em;">
+<p>左下・下落・減少</p>
+</div>
 </div>
 </section>
 </section>
@@ -835,6 +841,12 @@ window.Quarto = {
 </table>
 </div>
 <p><strong><input type="text" class="fill-in" id="50" placeholder="ここに入力"></strong> %</p>
+<button onclick="showAnswer('mb')">
+答えを見る
+</button>
+<div id="mb" class="answer" style="display:none; margin-top: 0.5em;">
+<p>50</p>
+</div>
 </div>
 </section>
 </section>
@@ -1279,6 +1291,12 @@ window.Quarto = {
 <hr>
 <p><strong>選択肢</strong></p>
 <p>労働供給量　労働需要量　賃金　労働所得　非労働所得　右上　右下　左上　左下　時給　社会保険料　</p>
+<button onclick="showAnswer('wife')">
+答えを見る
+</button>
+<div id="wife" class="answer" style="display:none; margin-top: 0.5em;">
+<p>労働供給量・非労働所得・左下</p>
+</div>
 </div>
 </section>
 </section>
@@ -1699,6 +1717,12 @@ Q = 15\sqrt{H}
 <p>電子レンジなどの家電製品は、家庭内生産関数をどのようにシフトさせたと考えられるか？</p>
 <p><strong><input type="text" class="fill-in" id="hhoutput" placeholder="ここに入力"></strong></p>
 <p><img src="images/labor_hhshift.png" class="img-fluid"></p>
+<button onclick="showAnswer('renji')">
+答えを見る
+</button>
+<div id="renji" class="answer" style="display:none; margin-top: 0.5em;">
+<p>左側の図のように、家庭内生産関数を上方にシフトさせた。</p>
+</div>
 </div>
 </section>
 </section>
@@ -2669,7 +2693,13 @@ P \cdot MP_{H}(N, H) = wN
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
 <p>同じ生産性を持つ労働者について、短時間労働であれば、事業主が社会保険料負担なしで雇用できるが、フルタイムであれば、事業主が社会保険料を負担しなければならないとき、労働需要にどのような影響が及ぼされるか。空欄に適切な語句を入れて答えなさい。</p>
-<p>企業がフルタイム労働者を雇用すると、賃金に加えて社会保険料などの <strong><input type="text" class="fill-in" id="qfcost" placeholder="ここに入力"></strong> が発生する。一方、短時間労働者にはこの負担がない場合、同じ生産性であれば企業は <strong><input type="text" class="fill-in" id="short" placeholder="ここに入力"></strong> の方を選好する。結果として、企業にとって <strong><input type="text" class="fill-in" id="long" placeholder="ここに入力"></strong> の雇用コストが相対的に高くなるため、 <strong><input type="text" class="fill-in" id="full" placeholder="ここに入力"></strong> の労働需要が減少する可能性がある。</p>
+<p>企業がフルタイム労働者を雇用すると、賃金に加えて社会保険料などの <strong><input type="text" class="fill-in" id="qfcost" placeholder="ここに入力"></strong> が発生する。一方、短時間労働者にはこの負担がない場合、同じ生産性であれば企業は <strong><input type="text" class="fill-in" id="short" placeholder="ここに入力"></strong> の方を選好する。結果として、企業にとって <strong><input type="text" class="fill-in" id="long" placeholder="ここに入力"></strong> の雇用コストが相対的に高くなるため、 フルタイム労働者の労働需要が <strong><input type="text" class="fill-in" id="full" placeholder="ここに入力"></strong> する可能性がある。</p>
+<button onclick="showAnswer('syaho')">
+答えを見る
+</button>
+<div id="syaho" class="answer" style="display:none; margin-top: 0.5em;">
+<p>準固定費用・短時間労働者・フルタイム労働者・減少</p>
+</div>
 </div>
 </section>
 </section>
@@ -2938,6 +2968,64 @@ P \cdot MP_{H}(N, H) = wN
 </table>
 </div>
 <p><strong><input type="text" class="fill-in" id="8" placeholder="ここに入力"></strong> 人</p>
+<button onclick="showAnswer('koyo')">
+答えを見る
+</button>
+<div id="koyo" class="answer" style="display:none; margin-top: 0.5em;">
+<p>8人</p>
+現在の雇用量は9人なので、雇用調整後の利潤は以下のようになる。
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>雇用調整量</td>
+<td>-5</td>
+<td>-4</td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>雇用量</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>利潤</td>
+<td>-29</td>
+<td>-8</td>
+<td>7</td>
+<td>13</td>
+<td>14</td>
+<td>12</td>
+<td>-2</td>
+<td>-19</td>
+<td>-42</td>
+<td>-71</td>
+<td>-106</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <p><a href="index.html">講義資料に戻る</a></p>
 <!-- クイズ機能スクリプト -->
