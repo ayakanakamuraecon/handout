@@ -285,7 +285,7 @@ format: html
 
 次の文の空欄を埋めてください。
 
-日本の女性の労働力率は、__<input type="text" class="fill-in" id="fill1" placeholder="ここに入力">__ 期に低下し、その後再び上昇する、いわゆる「__<input type="text" class="fill-in" id="fill2" placeholder="ここに入力">__ カーブ」を描きます。
+日本の女性の労働力率は、__<input type="text" class="fill-in" id="ikuji" placeholder="ここに入力">__ 期に低下し、その後再び上昇する、いわゆる「__<input type="text" class="fill-in" id="m" placeholder="ここに入力">__ カーブ」を描きます。
 
 :::
 
