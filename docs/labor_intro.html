@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -170,11 +199,11 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>図から分かること：</p>
 <ul>
-<li>日本では、女性は育児期に労働力率が落ち込み、育児期の後に再び上昇する（M字型カーブ）。
+<li>日本では、女性は育児期に労働力率が落ち込み、育児期の後に再び上昇する（<strong>M字型カーブ</strong>）。
 <ul>
 <li>最近になるにつれてM字型カーブの底は浅くなっている。</li>
 </ul></li>
-<li>他の多くの国ではM字型から高原型に変わってきた。
+<li>他の多くの国ではM字型から<strong>高原型</strong>に変わってきた。
 <ul>
 <li>韓国は依然M字型。</li>
 <li>女性の労働力率が最も高いのはスウェーデン。</li>
@@ -235,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
 <li>一番長く働いているのはシンガポール、一番短いのはオランダ</li>
 </ul></li>
 </ul>
-<p>次に、男女別に週当たりの有償労働時間と無償労働時間の分布を見てみましょう。有償労働は、すべての仕事、通勤・通学、学校での生活時間などを含む、有償労働・学業関連行動の時間を合計です。無償労働は、家事や育児、介護など、有償労働以外のすべての労働時間の合計です。</p>
+<p>次に、男女別に週当たりの有償労働時間と無償労働時間の分布を見てみましょう。<strong>有償労働</strong>は、<strong>すべての仕事、通勤・通学、学校での生活時間などを含む、有償労働・学業関連行動の時間の合計</strong>です。<strong>無償労働</strong>は、<strong>家事や育児、介護など、有償労働以外のすべての労働時間の合計</strong>です。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/labor_unpaidwork.gif" class="img-fluid figure-img"></p>
@@ -252,8 +281,8 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 <p>このように、週労働時間だけでなく、無償労働時間も加味すると、国ごとの違いが見えてきます。</p>
-<p>どの国でも女性の無償労働の時間が長いのは、有償労働を減らして家事や育児に時間を割く傾向があると考えられます。このとき、日本や韓国などでは、女性が労働時間を減らす、あるいは離職する一方で、男性が労働時間を増やすことで、家庭内で役割分担が行われている様子がうかがえます。</p>
-<p>一方、フィンランドやスウェーデンなど夫婦共働き世帯が多い国では、子どもが生まれた後には男女ともに労働時間を減らし、育児時間を増やす傾向があります。家庭内で育児と労働を分担する形がとられるのです。</p>
+<p>どの国でも女性の無償労働の時間が長いのは、有償労働を減らして家事や育児に時間を割く傾向があると考えられます。このとき、<strong>日本や韓国などでは、女性が労働時間を減らす、あるいは離職する一方で、男性が労働時間を増やすことで、家庭内で役割分担が行われている</strong>様子がうかがえます。</p>
+<p>一方、フィンランドやスウェーデンなど<strong>夫婦共働き世帯が多い国</strong>では、子どもが生まれた後には<strong>男女ともに労働時間を減らし、育児時間を増やす傾向</strong>があります。家庭内で育児と労働を分担する形がとられるのです。</p>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
 <p>日本や韓国など、無償労働の男女比が大きい国では、どのような家庭内の役割分担が行われていると考えられますか？</p>
@@ -262,8 +291,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="賃金率" class="level4">
 <h4 class="anchored" data-anchor-id="賃金率">賃金率</h4>
-<p>賃金率は、単位時間当たりの給与（労働所得）であり、給与を労働時間で割ることで得られます。</p>
-<p>基本的には単位時間あたりに生み出した価値の代理変数だと考えられるので、生産性を示す指標だと解釈することができます。</p>
+<p>賃金率は、<strong>単位時間当たりの給与</strong>（<strong>労働所得</strong>）であり、給与を労働時間で割ることで得られます。</p>
+<p>基本的には<strong>単位時間あたりに生み出した価値の代理変数</strong>だと考えられるので、生産性を示す指標だと解釈することができます。</p>
 <p>日本の場合、</p>
 <ul>
 <li>正規労働者（正社員）は月給のことが多い
@@ -281,8 +310,8 @@ ul.task-list li input[type="checkbox"] {
 <h5 class="anchored" data-anchor-id="日本の男女正規非正規別賃金率">日本の男女・正規非正規別賃金率</h5>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/labor_wage_regnonreg.gif" class="img-fluid figure-img"></p>
-<figcaption>出典：内閣府男女共同参画局（2023）</figcaption>
+<p><img src="images/labor_wage_regnonreg.png" class="img-fluid figure-img"></p>
+<figcaption>大森義明・永瀬伸子（2021）『労働経済学をつかむ』 図1-3 日本の男女・正規非正規別賃金率（時間当たり賃金、20～24歳女性正社員 <span class="math inline">\(=100\)</span>）</figcaption>
 </figure>
 </div>
 <p>図から分かること</p>
@@ -307,7 +336,7 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>出典：労働政策研究・研修機構『データブック国際労働比較2024』</figcaption>
 </figure>
 </div>
-<p>※ここで、賃金格差は女の中位所得の差を男性中位所得で除した数値のことを指します。</p>
+<p>※ここで、賃金格差は男女の中位所得の差を男性中位所得で除した数値のことを指します。</p>
 <p>こうした違いはなぜ生まれるのでしょうか？</p>
 <p>以降の章で関連する話にも触れていきます。</p>
 <div class="quizbox">
