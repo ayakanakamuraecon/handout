@@ -69,15 +69,21 @@ format: html
 
 次の文の空欄を埋めてください。
 
-ある賃金が与えられたときに、その賃金のもとで雇用したい労働量を表した曲線を __<input type="text" class="fill-in" id="sup" placeholder="ここに入力">__ 、その賃金のもとで働きたい労働者の量を表した曲線を __<input type="text" class="fill-in" id="dem" placeholder="ここに入力">__ という。
+ある賃金が与えられたときに、その賃金のもとで雇用したい労働量を表した曲線を __<input type="text" class="fill-in" id="dep" placeholder="ここに入力">__ 、その賃金のもとで働きたい労働者の量を表した曲線を __<input type="text" class="fill-in" id="sup" placeholder="ここに入力">__ という。
 
-均衡における賃金と雇用量は __<input type="text" class="fill-in" id="fill1" placeholder="ここに入力">__ で決まり、そのとき、労働者の需要と供給を比較すると __<input type="text" class="fill-in" id="fill1" placeholder="ここに入力">__ 。
+均衡における賃金と雇用量は __<input type="text" class="fill-in" id="equib" placeholder="ここに入力">__ で決まり、そのとき、労働者の需要量と供給量は __<input type="text" class="fill-in" id="eq" placeholder="ここに入力">__ 。
 
 ---
 
 **選択肢**
 
 労働者　労働需要曲線　労働供給曲線　時間当たり賃金　市場均衡　均衡点　生産性　景気循環　一致する　労働供給量の方が多い　労働需要量の方が多い
+
+<button onclick="showAnswer('lsd')">答えを見る</button>
+<div id="lsd" class="answer" style="display:none; margin-top: 0.5em;">
+労働需要曲線・労働供給曲線・均衡点・一致する
+</div>
+
 
 :::
 

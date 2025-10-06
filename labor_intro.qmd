@@ -70,6 +70,11 @@ format: html
 
 <textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('quiz1', this.value)"></textarea>
 
+<button onclick="showAnswer('a1')">答えを見る</button>
+<div id="a1" class="answer" style="display:none; margin-top: 0.5em;">
+解答例：結婚や出産を機に仕事を辞めるため。近年は高原型に近づいている。
+</div>
+
 :::
 
 #### 労働時間
@@ -110,6 +115,11 @@ format: html
 日本や韓国など、無償労働の男女比が大きい国では、どのような家庭内の役割分担が行われていると考えられますか？
 
 <textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('quiz2', this.value)"></textarea>
+
+<button onclick="showAnswer('a2')">答えを見る</button>
+<div id="a2" class="answer" style="display:none; margin-top: 0.5em;">
+解答例：女性が労働時間を減らしたり離職したりする一方で、男性が労働時間を増やすことで家事育児と労働を役割分担している。
+</div>
 
 :::
 
@@ -166,6 +176,13 @@ format: html
 
 <textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('quiz3', this.value)"></textarea>
 
+<button onclick="showAnswer('a3')">答えを見る</button>
+<div id="a3" class="answer" style="display:none; margin-top: 0.5em;">
+解答例：<br>
+- 正社員には訓練を行い、非正社員には訓練を行わないことで生産性の差が生まれる。<br>
+- 女性は結婚や出産を機に離職するケースが多いため、男性に比べて高い賃金を支払われづらかったり、出世しづらいことで生産性の差や賃金差が生まれる。
+</div>
+
 :::
 
 
@@ -215,9 +232,15 @@ format: html
 
 「正社員と非正社員の賃金の違いを、できるだけ正確な金額で把握したい」と思ったとき、どの統計調査を使えばよいでしょうか？また、その理由を説明してください。
 
-<textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('quiz3', this.value)"></textarea>
+<textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('quiz4', this.value)"></textarea>
+
+<button onclick="showAnswer('a4')">答えを見る</button>
+<div id="a4" class="answer" style="display:none; margin-top: 0.5em;">
+解答例：企業の回答に基づく正確な給与データが得られるため、賃金構造基本統計調査を使うのが最適である。
+</div>
 
 :::
+
 
 ### 労働統計の利用
 
@@ -279,13 +302,18 @@ format: html
 労働経済学の理論は、こうした変化の中で「なぜそうなるのか」「これからどうなるのか」を考えるための手がかりになります。
 単なる知識としてではなく、自分のキャリアや生き方を考えるうえでのヒントとして、ぜひ活用してみてください。
 
-::: {.quizbox}
+:::{.quizbox}
 
 **確認クイズ：**
 
 次の文の空欄を埋めてください。
 
 日本の女性の労働力率は、__<input type="text" class="fill-in" id="ikuji" placeholder="ここに入力">__ 期に低下し、その後再び上昇する、いわゆる「__<input type="text" class="fill-in" id="m" placeholder="ここに入力">__ カーブ」を描きます。
+
+<button onclick="showAnswer('a5')">答えを見る</button>
+<div id="a5" class="answer" style="display:none; margin-top: 0.5em;">
+育児・M字型
+</div>
 
 :::
 

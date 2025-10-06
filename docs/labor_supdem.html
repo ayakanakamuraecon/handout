@@ -255,11 +255,17 @@ window.Quarto = {
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
 <p>次の文の空欄を埋めてください。</p>
-<p>ある賃金が与えられたときに、その賃金のもとで雇用したい労働量を表した曲線を <strong><input type="text" class="fill-in" id="sup" placeholder="ここに入力"></strong> 、その賃金のもとで働きたい労働者の量を表した曲線を <strong><input type="text" class="fill-in" id="dem" placeholder="ここに入力"></strong> という。</p>
-<p>均衡における賃金と雇用量は <strong><input type="text" class="fill-in" id="fill1" placeholder="ここに入力"></strong> で決まり、そのとき、労働者の需要と供給を比較すると <strong><input type="text" class="fill-in" id="fill1" placeholder="ここに入力"></strong> 。</p>
+<p>ある賃金が与えられたときに、その賃金のもとで雇用したい労働量を表した曲線を <strong><input type="text" class="fill-in" id="dep" placeholder="ここに入力"></strong> 、その賃金のもとで働きたい労働者の量を表した曲線を <strong><input type="text" class="fill-in" id="sup" placeholder="ここに入力"></strong> という。</p>
+<p>均衡における賃金と雇用量は <strong><input type="text" class="fill-in" id="equib" placeholder="ここに入力"></strong> で決まり、そのとき、労働者の需要量と供給量は <strong><input type="text" class="fill-in" id="eq" placeholder="ここに入力"></strong> 。</p>
 <hr>
 <p><strong>選択肢</strong></p>
 <p>労働者　労働需要曲線　労働供給曲線　時間当たり賃金　市場均衡　均衡点　生産性　景気循環　一致する　労働供給量の方が多い　労働需要量の方が多い</p>
+<button onclick="showAnswer('lsd')">
+答えを見る
+</button>
+<div id="lsd" class="answer" style="display:none; margin-top: 0.5em;">
+<p>労働需要曲線・労働供給曲線・均衡点・一致する</p>
+</div>
 </div>
 <section id="労働需要曲線労働供給曲線のシフト" class="level2">
 <h2 class="anchored" data-anchor-id="労働需要曲線労働供給曲線のシフト">労働需要曲線・労働供給曲線のシフト</h2>
@@ -2934,18 +2940,10 @@ P \cdot MP_{H}(N, H) = wN
 <p><strong><input type="text" class="fill-in" id="8" placeholder="ここに入力"></strong> 人</p>
 </div>
 <p><a href="index.html">講義資料に戻る</a></p>
-<!-- 自由記述クイズのスクリプトとスタイル -->
-<script>
-// 自動で入力値を復元
-window.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.quiz-answer').forEach(el => {
-    const saved = localStorage.getItem(el.previousElementSibling.textContent.trim());
-    if (saved) el.value = saved;
-  });
-});
-</script>
+<!-- クイズ機能スクリプト -->
 <script>
 window.addEventListener('DOMContentLoaded', () => {
+  // 入力ボックス .fill-in の値を復元・保存
   document.querySelectorAll('.fill-in').forEach(input => {
     const key = "fillin-" + input.id;
     input.value = localStorage.getItem(key) || "";
@@ -2953,9 +2951,72 @@ window.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem(key, input.value);
     });
   });
+
+  // テキストエリア .quiz-answer の値を復元（oninput 属性から key を抽出）
+  document.querySelectorAll('.quiz-answer').forEach(textarea => {
+    const key = textarea.getAttribute("oninput")?.match(/'([^']+)'/)?.[1];
+    if (key) {
+      textarea.value = localStorage.getItem(key) || "";
+    }
+
+    // 入力イベントを明示的に設定（安全のため）
+    textarea.addEventListener('input', () => {
+      if (key) localStorage.setItem(key, textarea.value);
+    });
+  });
+
+  // 全削除ボタンの処理
+  const clearButton = document.getElementById("clear-answers");
+  if (clearButton) {
+    clearButton.addEventListener("click", () => {
+      const confirmed = confirm("本当にすべての回答を削除しますか？");
+      if (!confirmed) return;
+
+      document.querySelectorAll(".fill-in").forEach(input => {
+        const key = "fillin-" + input.id;
+        localStorage.removeItem(key);
+        input.value = "";
+      });
+
+      document.querySelectorAll(".quiz-answer").forEach(textarea => {
+        const k = textarea.getAttribute("oninput")?.match(/'([^']+)'/)?.[1];
+        if (k) {
+          localStorage.removeItem(k);
+        }
+        textarea.value = "";
+      });
+
+      alert("すべての回答を削除しました");
+    });
+  }
 });
+
+// 解答表示切替ボタン
+function showAnswer(id) {
+  const answerDiv = document.getElementById(id);
+  if (!answerDiv) return;
+  answerDiv.style.display = (answerDiv.style.display === "none") ? "block" : "none";
+}
 </script>
+<!-- 全削除ボタン -->
+<div id="quiz-tools" style="margin: 2em 0;">
+<p><button id="clear-answers">全問クリア</button></p>
+</div>
+<!-- スタイル -->
 <style>
+#quiz-tools button {
+  font-size: 1em;
+  padding: 0.5em 1em;
+  margin-right: 1em;
+  border: none;
+  background-color: #557a95;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#quiz-tools button:hover {
+  background-color: #416175;
+}
 .fill-in {
   min-width: 8em;
   font-size: 1em;
@@ -2964,8 +3025,8 @@ window.addEventListener('DOMContentLoaded', () => {
   margin: 0 0.3em;
 }
 .quizbox {
-  background-color: #f0f4f8; /* グレーと青の中間のごく薄い色 */
-  border-left: 4px solid #9db4c0; /* 中間のブルーグレー系 */
+  background-color: #f0f4f8;
+  border-left: 4px solid #9db4c0;
   padding: 1em;
   margin: 1.5em 0;
   border-radius: 6px;
@@ -2977,6 +3038,11 @@ window.addEventListener('DOMContentLoaded', () => {
   font-family: sans-serif;
   font-size: 1em;
   padding: 0.5em;
+}
+.answer {
+  background-color: #eef5fa;
+  padding: 0.5em;
+  border-radius: 4px;
 }
 </style>
 
