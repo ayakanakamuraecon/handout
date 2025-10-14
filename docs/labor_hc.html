@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,14 +31,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -81,7 +82,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -230,7 +231,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-人的資本モデル
+<span class="screen-reader-only">Note</span>人的資本モデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -261,7 +262,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-シグナリングモデル
+<span class="screen-reader-only">Note</span>シグナリングモデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -275,13 +276,13 @@ window.Quarto = {
 <p><strong>シグナリングモデル</strong>における（大学）教育：教育は能力を引き上げる役割ではなく、教育を受けられるほどその人の能力が高いことを示す</p>
 <p><span class="math inline">\(\rightarrow\)</span> <strong>選別機能</strong></p>
 <p>人的資本モデルとシグナリングモデル、どちらのモデルが正しいかをデータから識別することは難しいです。どちらのモデルも、能力が高い人が大学進学をする傾向があり、大卒者の方が高卒者よりも平均賃金が高くなることを示唆しているからです。ただし、偶然に教育年数が長くなると賃金が上がるという研究結果もありますので、大学教育には多少なりとも人的資本を蓄積する役割があると言えるでしょう。</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout callout-style-default callout-important no-icon callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-まとめ：人的資本モデルとシグナリングモデル
+<span class="screen-reader-only">Important</span>まとめ：人的資本モデルとシグナリングモデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -428,7 +429,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-一般的人的資本と企業特殊的人的資本
+<span class="screen-reader-only">Note</span>一般的人的資本と企業特殊的人的資本
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -446,7 +447,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-大卒で銀行に就職したユウコの例
+<span class="screen-reader-only">Tip</span>大卒で銀行に就職したユウコの例
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -480,7 +481,7 @@ window.Quarto = {
 <ul>
 <li>それに伴い賃金も上昇</li>
 </ul></li>
-<li><strong>訓練の総費用は赤い長方形の面積分</strong>、ユウコが受け取る<strong>訓練の収益は青い長方形の面積分</strong></li>
+<li><strong>訓練の総費用は赤い長方形の面積分</strong>、労働者が受け取る<strong>訓練の収益は青い長方形の面積分</strong></li>
 </ul>
 <p>訓練の収益は100％労働者が受け取るため、訓練の費用は100%労働者が負担します。企業が負担してしまうと、引き抜かれたときに訓練の費用分だけ損してしまうからです。</p>
 <p><strong>一般的訓練は、経験年数とともに賃金が上昇することを示唆</strong>します。</p>
@@ -488,19 +489,19 @@ window.Quarto = {
 <li>訓練期間中の賃金は <span class="math inline">\(w_1\)</span> <span class="math inline">\(\rightarrow\)</span> 訓練を受けない場合の賃金 <span class="math inline">\(w_0\)</span> よりも低い</li>
 <li>訓練期間中の賃金は <span class="math inline">\(w_2\)</span> <span class="math inline">\(\rightarrow\)</span> 訓練を受けない場合の賃金 <span class="math inline">\(w_0\)</span> よりも高い</li>
 </ul>
-<p><span class="math inline">\(\rightarrow\)</span> 一般訓練が雇用期間中に頻繁に行われていくとすれば、賃金は経験年数とともに上昇する</p>
+<p><span class="math inline">\(\rightarrow\)</span> 一般的訓練が雇用期間中に頻繁に行われていくとすれば、賃金は経験年数とともに上昇する</p>
 <p>ここで言う<strong>経験年数</strong>とは、<strong>労働市場で働いた年数</strong>のことを指します。</p>
 <p>重要なのは、<strong>一般的訓練による賃金の上昇は、労働者が他企業に転職しても起こる</strong>ということです。 労働者の訓練後の高い生産性に見合う賃金が支払われなければ、労働者は転職する可能性があるのです。</p>
 </section>
 <section id="企業特殊訓練モデル" class="level3">
 <h3 class="anchored" data-anchor-id="企業特殊訓練モデル">企業特殊訓練モデル</h3>
-<p>ユウコが、資格を取得するための研修ではなく、自社のサービス固有の知識や技術（例えば、特定のシステムや機械の操作方法、社内の業務フローや規定など）を習得するための研修を受けていたらどうなるでしょうか。</p>
+<p>ユウコが、資格を取得するための研修ではなく、自社のサービス固有の知識や技術（例えば、特定のシステムや機械の操作方法、社内の業務フローや規定など）を習得するための研修（企業特殊的訓練）を受けていたらどうなるでしょうか。</p>
 <p>このときの研修がもたらす便益は、以下のような性質を持ちます。</p>
 <ul>
 <li>労働者の生産性の向上は、労働者と企業の雇用関係が続く限り両者に便益をもたらす</li>
 <li>労働者が離職する、あるいは企業が解雇することで雇用関係が終われば、労働者も企業も便益を受け取ることができない</li>
 </ul>
-<p>理論的には、<strong>企業特殊的訓練の費用と便益は、企業と労働者とでシェアする</strong>ことになります。</p>
+<p>理論的には、<strong>企業特殊的訓練の費用と便益は、企業と労働者とでシェアする</strong>（企業と労働者の<strong>共同投資</strong>の形をとる）ことになります。</p>
 <p>このことは、企業と労働者、それぞれが費用や便益を100%引き受けるケースを考えると分かります。</p>
 <table class="caption-top table">
 <colgroup>
@@ -524,9 +525,82 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
+<p>このように、労働者と企業のいずれにも企業特殊的訓練の費用を単独で負担するインセンティブがなく、費用をシェアするのであれば、便益もシェアをする必要が生じるのです。</p>
+<p>企業特殊的訓練の費用と便益をシェアすることで、<strong>雇用関係を維持するインセンティブ</strong>も生まれます。企業が解雇するにしても、労働者が自ら離職するにしても、双方は雇用関係を維持していれば受け取れた企業特殊的訓練の便益を失うことになるからです。</p>
+<p>企業特殊訓練の場合、勤続年数と賃金の関係は下図のように表すことができます。</p>
+<p><img src="images/labor_trainfrm.png" class="img-fluid"></p>
+<ul>
+<li>訓練前の労働の限界収入は <span class="math inline">\(w_0\)</span></li>
+<li>訓練期間中は労働時間が減少するため、労働の限界収入が <span class="math inline">\(w_1\)</span> に減少
+<ul>
+<li>訓練の費用を企業とシェアするため、賃金は <span class="math inline">\(w'_1\)</span></li>
+</ul></li>
+<li>訓練期間後は生産性が向上し、労働の限界収入が <span class="math inline">\(w_2\)</span> に増加
+<ul>
+<li>訓練の便益も企業とシェアするため、賃金は <span class="math inline">\(w'_2\)</span></li>
+</ul></li>
+<li><strong>労働者が負担する訓練費用は赤い長方形の面積分</strong>、<strong>企業が負担する訓練費用は赤い網掛けの面積分</strong></li>
+<li><strong>労働者が受け取る訓練の便益は青い長方形の面積分</strong>、<strong>企業が受け取る訓練の便益は青い網掛けの面積分</strong></li>
+</ul>
+<p><strong>企業特殊訓練は、勤続年数とともに賃金が上昇することを示唆</strong>します。</p>
+<ul>
+<li>訓練期間中の賃金は <span class="math inline">\(w'_1\)</span> <span class="math inline">\(\rightarrow\)</span> 訓練を受けない場合の賃金 <span class="math inline">\(w_0\)</span> よりも低い</li>
+<li>訓練期間中の賃金は <span class="math inline">\(w'_2\)</span> <span class="math inline">\(\rightarrow\)</span> 訓練を受けない場合の賃金 <span class="math inline">\(w_0\)</span> よりも高い</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 企業特殊訓練が雇用期間中に頻繁に行われていくとすれば、賃金は勤続年数とともに上昇する</p>
+<p>ここで言う勤続年数とは、特定の企業で働いた年数を指します。1つの企業で2年働いた場合は勤続年数2年ですが、2つの企業で1年ずつ働いた場合には、今の企業での勤続年数は1年になります。</p>
+<p>重要なのは、<strong>企業特殊訓練による賃金成長は、労働者がその企業で働き続ける間だけ続き、転職したら終わる</strong>という点です。</p>
+<p>企業特殊訓練の成果は他の企業で生かすことはできないため、訓練を終えた労働者が他の企業に転職した際は、 <span class="math inline">\(w_0\)</span> の賃金しか期待できなくなるのです。労働者は訓練費用の一部を負担したにもかかわらず便益を受け取れないことになりますので、他の理由がない限り労働者に転職をするインセンティブは生まれません。</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>一般的訓練と企業特殊的訓練
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>一般的訓練</strong></p>
+<ul>
+<li>どの企業でも通用する人的資本に対する訓練</li>
+<li>訓練の費用と便益は、<strong>100％労働者に帰属する</strong></li>
+<li><strong>経験年数</strong>とともに賃金が上昇することを示唆する</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 他の企業に転職しても賃金は上昇する</p>
+<p><strong>企業特殊的訓練</strong></p>
+<ul>
+<li>その企業でのみ役に立つ人的資本に対する訓練</li>
+<li>訓練の費用と便益は、<strong>労働者と企業でシェア</strong>する</li>
+<li><strong>勤続年数</strong>とともに賃金が上昇することを示唆する</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 両者に雇用関係を維持するインセンティブが生じる</p>
+</div>
+</div>
 </section>
 <section id="大卒の賃金が高卒よりも年齢による上昇が大きい理由" class="level3">
 <h3 class="anchored" data-anchor-id="大卒の賃金が高卒よりも年齢による上昇が大きい理由">大卒の賃金が高卒よりも年齢による上昇が大きい理由</h3>
+<p>一般的訓練と企業特殊訓練を区別することで、において、大卒層の方が高卒層よりも年齢階級による平均賃金の上がり方が急になっている理由を一定程度推察できます。</p>
+<p>恐らく、<strong>大卒者に対して高卒者よりも多くの企業内訓練が提供されている</strong>からです。つまり、大卒者に対してより多くの人的資本投資が行われていると考えられます。なぜそのような区別を行うかというと、恐らく過去の経験から、大卒者の方が投資効果があるからでしょう。</p>
+<p>そうして労働生産性が上がった労働者を、企業は長く働かせたくなります。投資を受けた賃金の高い大卒者がより長時間働くことで、労働所得は増加し、大卒者と高卒者の格差はさらに拡大すると考えられます。</p>
+<p>一方、同じ大卒者同士でも、男女で年齢階級による平均賃金の上昇率が異なるのはなぜでしょうか？</p>
+<p>図からだけでは分かりませんが、恐らく以下のような点が理由になっていると考えられます。</p>
+<ul>
+<li>女性は出産等の理由で育児休業の取得や時短勤務、一時的な離職や再就職を行うことで、就業年数が短くなる傾向があり、企業内訓練の総量が少なくなる</li>
+<li>「女性の方が男性よりも離職する可能性が高い」と企業が考えれば、企業が費用を負担する企業内訓練は、女性に対して少なくしか実施されない（<strong>企業特殊的訓練の実施における男女差別</strong>）</li>
+</ul>
+<p>このような差別に対抗するには、自分自身の経済負担で一般的人的資本投資を行うことや、よりマッチする企業を探すことが必要になります。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文章に、適切な語句を入れなさい。</p>
+<p>訓練には一般的訓練と <strong><input type="text" class="fill-in" id="fspe" placeholder="ここに入力"></strong> があり、前者は賃金が <strong><input type="text" class="fill-in" id="exp" placeholder="ここに入力"></strong> とともに上がることを、後者は賃金が <strong><input type="text" class="fill-in" id="ten" placeholder="ここに入力"></strong> とともに上がることを示唆する。一般的訓練では、訓練の便益の100％を労働者が享受することになるため、費用も100％ <strong><input type="text" class="fill-in" id="lab" placeholder="ここに入力"></strong> の負担となる。企業特殊的訓練では、便益と費用が企業と労働者との間でシェアされ、両者に <strong><input type="text" class="fill-in" id="share" placeholder="ここに入力"></strong> するインセンティブが生まれる。</p>
+<button onclick="showAnswer('train')">
+答えを見る
+</button>
+<div id="train" class="answer" style="display:none; margin-top: 0.5em;">
+<p>企業特殊的訓練・経験年数・勤続年数・労働者・雇用関係を維持</p>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -736,13 +810,14 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
