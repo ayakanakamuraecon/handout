@@ -153,8 +153,8 @@ $\rightarrow$ 賃金は$W_1$から$W_4$に下落し、雇用量は$L_1$から$L_
 
 右上　右下　左上　左下　上昇　下落　増加　減少
 
-<button onclick="showAnswer('lsd')">答えを見る</button>
-<div id="lsd" class="answer" style="display:none; margin-top: 0.5em;">
+<button onclick="showAnswer('shift')">答えを見る</button>
+<div id="shift" class="answer" style="display:none; margin-top: 0.5em;">
 左下・下落・減少
 </div>
 

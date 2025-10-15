@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,15 +31,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -82,7 +81,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -133,7 +132,6 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#勤続年数と賃金" id="toc-勤続年数と賃金" class="nav-link" data-scroll-target="#勤続年数と賃金">勤続年数と賃金</a>
   <ul class="collapse">
-  <li><a href="#勤続年数と賃金の関係企業特殊訓練モデルによる説明" id="toc-勤続年数と賃金の関係企業特殊訓練モデルによる説明" class="nav-link" data-scroll-target="#勤続年数と賃金の関係企業特殊訓練モデルによる説明">勤続年数と賃金の関係：企業特殊訓練モデルによる説明</a></li>
   <li><a href="#後払い賃金の理論" id="toc-後払い賃金の理論" class="nav-link" data-scroll-target="#後払い賃金の理論">後払い賃金の理論</a></li>
   <li><a href="#後払い賃金の理論の応用年功序列賃金" id="toc-後払い賃金の理論の応用年功序列賃金" class="nav-link" data-scroll-target="#後払い賃金の理論の応用年功序列賃金">後払い賃金の理論の応用：年功序列賃金</a></li>
   <li><a href="#退職金と企業年金" id="toc-退職金と企業年金" class="nav-link" data-scroll-target="#退職金と企業年金">退職金と企業年金</a></li>
@@ -231,7 +229,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>人的資本モデル
+人的資本モデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -262,7 +260,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>シグナリングモデル
+シグナリングモデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -276,13 +274,13 @@ window.Quarto = {
 <p><strong>シグナリングモデル</strong>における（大学）教育：教育は能力を引き上げる役割ではなく、教育を受けられるほどその人の能力が高いことを示す</p>
 <p><span class="math inline">\(\rightarrow\)</span> <strong>選別機能</strong></p>
 <p>人的資本モデルとシグナリングモデル、どちらのモデルが正しいかをデータから識別することは難しいです。どちらのモデルも、能力が高い人が大学進学をする傾向があり、大卒者の方が高卒者よりも平均賃金が高くなることを示唆しているからです。ただし、偶然に教育年数が長くなると賃金が上がるという研究結果もありますので、大学教育には多少なりとも人的資本を蓄積する役割があると言えるでしょう。</p>
-<div class="callout callout-style-default callout-important no-icon callout-empty-content callout-titled">
+<div class="callout callout-style-default callout-important no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>まとめ：人的資本モデルとシグナリングモデル
+まとめ：人的資本モデルとシグナリングモデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -429,7 +427,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>一般的人的資本と企業特殊的人的資本
+一般的人的資本と企業特殊的人的資本
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -447,7 +445,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>大卒で銀行に就職したユウコの例
+大卒で銀行に就職したユウコの例
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -557,7 +555,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>一般的訓練と企業特殊的訓練
+まとめ：一般的訓練と企業特殊的訓練
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -608,11 +606,45 @@ window.Quarto = {
 <h1>長期雇用の賃金決定のメカニズム</h1>
 <section id="勤続年数と賃金" class="level2">
 <h2 class="anchored" data-anchor-id="勤続年数と賃金">勤続年数と賃金</h2>
-<section id="勤続年数と賃金の関係企業特殊訓練モデルによる説明" class="level3">
-<h3 class="anchored" data-anchor-id="勤続年数と賃金の関係企業特殊訓練モデルによる説明">勤続年数と賃金の関係：企業特殊訓練モデルによる説明</h3>
-</section>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+復習：勤続年数と賃金の関係：企業特殊訓練モデルによる説明
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>訓練を行うことで、<strong>経験年数</strong>や<strong>勤続年数</strong>とともに賃金が上昇することを示唆する</p>
+<ul>
+<li>勤続年数の低い時期に行われた訓練が、勤続年数の高い時期に労働者の限界生産性（と賃金）を引き上げる</li>
+<li>現実の賃金格差をある程度説明する
+<ul>
+<li>学歴間賃金格差：高卒よりも大卒に対して多く訓練投資する</li>
+<li>正規非正規間賃金格差：短時間労働者よりも長時間労働者に対して多く訓練投資する</li>
+<li>男女間賃金格差：女性の方が離職期間が多く訓練の量が少ない／女性の方が離職確率が高いと企業が思うと女性に対して少なく訓練投資を行う</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p>年齢や勤続年数と賃金の間の関係を説明できるのは企業特殊的訓練モデルだけではありません。</p>
+<ul>
+<li>後払い賃金の理論</li>
+<li>ジョブ・サーチ理論
+<ul>
+<li>仕事をしながらより賃金の高い職を探す状況</li>
+<li>今の賃金が高い労働者：今の賃金を上回る企業からのオファーが簡単にはないので、転職確率が低くなり、結果として勤続年数が長くなる</li>
+<li>今の賃金が低い労働者：今の賃金を上回る企業に転職するため、勤続年数は短くなる</li>
+<li><strong>賃金が高いから勤続年数が長くなる</strong>（企業特殊的訓練モデルとは逆の因果関係）</li>
+</ul></li>
+</ul>
+<p>この章では、後払い賃金の理論を紹介します。</p>
 <section id="後払い賃金の理論" class="level3">
 <h3 class="anchored" data-anchor-id="後払い賃金の理論">後払い賃金の理論</h3>
+<p>後払い賃金の理論を考えるにあたって、訓練もジョブサーチ（転職活動）もないと仮定します。</p>
+<p>訓練を行わないので、人的資本が蓄積されず、生産性は向上しません。</p>
+<p>ジョブサーチもないので、賃金の高い企業に転職することによって賃金を上げることもできません。</p>
 </section>
 <section id="後払い賃金の理論の応用年功序列賃金" class="level3">
 <h3 class="anchored" data-anchor-id="後払い賃金の理論の応用年功序列賃金">後払い賃金の理論の応用：年功序列賃金</h3>
@@ -810,14 +842,13 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
