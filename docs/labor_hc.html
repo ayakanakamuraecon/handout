@@ -135,13 +135,7 @@ window.Quarto = {
   <li><a href="#後払い賃金の理論" id="toc-後払い賃金の理論" class="nav-link" data-scroll-target="#後払い賃金の理論">後払い賃金の理論</a></li>
   <li><a href="#後払い賃金の理論の応用年功序列賃金" id="toc-後払い賃金の理論の応用年功序列賃金" class="nav-link" data-scroll-target="#後払い賃金の理論の応用年功序列賃金">後払い賃金の理論の応用：年功序列賃金</a></li>
   <li><a href="#後払い賃金の理論の応用退職金と企業年金" id="toc-後払い賃金の理論の応用退職金と企業年金" class="nav-link" data-scroll-target="#後払い賃金の理論の応用退職金と企業年金">後払い賃金の理論の応用：退職金と企業年金</a></li>
-  </ul></li>
-  <li><a href="#日本の長期雇用と賃金構造" id="toc-日本の長期雇用と賃金構造" class="nav-link" data-scroll-target="#日本の長期雇用と賃金構造">日本の長期雇用と賃金構造</a>
-  <ul class="collapse">
   <li><a href="#日本的雇用慣行" id="toc-日本的雇用慣行" class="nav-link" data-scroll-target="#日本的雇用慣行">日本的雇用慣行</a></li>
-  <li><a href="#賃金制度の変化" id="toc-賃金制度の変化" class="nav-link" data-scroll-target="#賃金制度の変化">賃金制度の変化</a></li>
-  <li><a href="#日米の労働者保護政策の違い" id="toc-日米の労働者保護政策の違い" class="nav-link" data-scroll-target="#日米の労働者保護政策の違い">日米の労働者保護政策の違い</a></li>
-  <li><a href="#調査データから見る日本の賃金水準の変化" id="toc-調査データから見る日本の賃金水準の変化" class="nav-link" data-scroll-target="#調査データから見る日本の賃金水準の変化">調査データから見る日本の賃金水準の変化</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -283,7 +277,34 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p><strong>人的資本モデル</strong></p>
+<ul>
+<li>労働者が価値を生む総体を<strong>人的資本</strong>ととらえ、そこに投資する（教育・訓練を行う）ことで<strong>個人の能力が上昇する</strong>という考え方。
+<ul>
+<li>投資後の期待収益から投資のコスト（直接・間接費用を含む）を差し引いた純収益が正の時に人的資本への投資を行う。</li>
+</ul></li>
+</ul>
+<p><strong>シグナリングモデル</strong></p>
+<ul>
+<li>個人の生まれつきの能力には差があるが、能力に対する情報が非対称であるため、<strong>教育は能力の高さを示すシグナルとして機能する</strong>という考え方。
+<ul>
+<li>このモデルにおいては教育は個人の能力を引き上げない。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文章に適切な語句を入れなさい。</p>
+<p>人的資本とは、知識、能力、技能など、労働者による労働サービスの（企業にとっての）価値を生む総体のことを指す。大学進学は一種の <strong><input type="text" class="fill-in" id="toushi" placeholder="ここに入力"></strong> であり、先に <strong><input type="text" class="fill-in" id="cost" placeholder="ここに入力"></strong> （受験勉強や学費）を負担し、卒業後に不確実な <strong><input type="text" class="fill-in" id="benefit" placeholder="ここに入力"></strong> （生涯賃金）を得る。その他の条件を一定をすれば、2つの差である <strong><input type="text" class="fill-in" id="netbenefit" placeholder="ここに入力"></strong> が高卒のそれを上回る人は大学に進学する</p>
+<hr>
+<p><strong>語句</strong></p>
+<p>収益　費用　消費　投資　純収益</p>
+<button onclick="showAnswer('koyo')">
+答えを見る
+</button>
+<div id="koyo" class="answer" style="display:none; margin-top: 0.5em;">
+<p>投資・費用・収益・純収益</p>
 </div>
 </div>
 </section>
@@ -389,16 +410,13 @@ window.Quarto = {
 </ul>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
-<p>次の文章に適切な語句を入れなさい。</p>
-<p>人的資本とは、知識、能力、技能など、労働者による労働サービスの（企業にとっての）価値を生む総体のことを指す。大学進学は一種の <strong><input type="text" class="fill-in" id="toushi" placeholder="ここに入力"></strong> であり、先に <strong><input type="text" class="fill-in" id="cost" placeholder="ここに入力"></strong> （受験勉強や学費）を負担し、卒業後に不確実な <strong><input type="text" class="fill-in" id="benefit" placeholder="ここに入力"></strong> （生涯賃金）を得る。その他の条件を一定をすれば、2つの差である <strong><input type="text" class="fill-in" id="netbenefit" placeholder="ここに入力"></strong> が高卒のそれを上回る人は大学に進学する</p>
-<hr>
-<p><strong>語句</strong></p>
-<p>収益　費用　消費　投資　純収益</p>
-<button onclick="showAnswer('koyo')">
+<p>女性の大学進学がシグナリングとして働くとはどういう意味でしょうか？</p>
+<textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('edu_quiz4', this.value)"></textarea>
+<button onclick="showAnswer('fem')">
 答えを見る
 </button>
-<div id="koyo" class="answer" style="display:none; margin-top: 0.5em;">
-<p>投資・費用・収益・純収益</p>
+<div id="fem" class="answer" style="display:none; margin-top: 0.5em;">
+<p>解答例：女性が4年制大学に進学し、長期就業の意思を企業に示すことで、補助的業務ではなく正規のキャリアを目指す意思を伝えることができる。</p>
 </div>
 </div>
 </section>
@@ -489,6 +507,17 @@ window.Quarto = {
 <p><span class="math inline">\(\rightarrow\)</span> 一般的訓練が雇用期間中に頻繁に行われていくとすれば、賃金は経験年数とともに上昇する</p>
 <p>ここで言う<strong>経験年数</strong>とは、<strong>労働市場で働いた年数</strong>のことを指します。</p>
 <p>重要なのは、<strong>一般的訓練による賃金の上昇は、労働者が他企業に転職しても起こる</strong>ということです。 労働者の訓練後の高い生産性に見合う賃金が支払われなければ、労働者は転職する可能性があるのです。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>なぜ一般的訓練において、その費用と便益はすべて労働者に帰属するのが合理的なのでしょうか？</p>
+<textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('ippan', this.value)"></textarea>
+<button onclick="showAnswer('trng')">
+答えを見る
+</button>
+<div id="trng" class="answer" style="display:none; margin-top: 0.5em;">
+<p>解答例：一般的訓練によって蓄積される人的資本は他企業に転職しても通用するものであるため、企業が費用を負担すると労働者が離職した際に損をしてしまうため。</p>
+</div>
+</div>
 </section>
 <section id="fshc" class="level3">
 <h3 class="anchored" data-anchor-id="fshc">企業特殊訓練モデル</h3>
@@ -574,6 +603,17 @@ window.Quarto = {
 <p><span class="math inline">\(\rightarrow\)</span> 両者に雇用関係を維持するインセンティブが生じる</p>
 </div>
 </div>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文章に、適切な語句を入れなさい。</p>
+<p>訓練には一般的訓練と <strong><input type="text" class="fill-in" id="fspe" placeholder="ここに入力"></strong> があり、前者は賃金が <strong><input type="text" class="fill-in" id="exp" placeholder="ここに入力"></strong> とともに上がることを、後者は賃金が <strong><input type="text" class="fill-in" id="ten" placeholder="ここに入力"></strong> とともに上がることを示唆する。一般的訓練では、訓練の便益の100％を労働者が享受することになるため、費用も100％ <strong><input type="text" class="fill-in" id="lab" placeholder="ここに入力"></strong> の負担となる。企業特殊的訓練では、便益と費用が企業と労働者との間でシェアされ、両者に <strong><input type="text" class="fill-in" id="share" placeholder="ここに入力"></strong> するインセンティブが生まれる。</p>
+<button onclick="showAnswer('train')">
+答えを見る
+</button>
+<div id="train" class="answer" style="display:none; margin-top: 0.5em;">
+<p>企業特殊的訓練・経験年数・勤続年数・労働者・雇用関係を維持</p>
+</div>
+</div>
 </section>
 <section id="大卒の賃金が高卒よりも年齢による上昇が大きい理由" class="level3">
 <h3 class="anchored" data-anchor-id="大卒の賃金が高卒よりも年齢による上昇が大きい理由">大卒の賃金が高卒よりも年齢による上昇が大きい理由</h3>
@@ -589,13 +629,18 @@ window.Quarto = {
 <p>このような差別に対抗するには、自分自身の経済負担で一般的人的資本投資を行うことや、よりマッチする企業を探すことが必要になります。</p>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
-<p>次の文章に、適切な語句を入れなさい。</p>
-<p>訓練には一般的訓練と <strong><input type="text" class="fill-in" id="fspe" placeholder="ここに入力"></strong> があり、前者は賃金が <strong><input type="text" class="fill-in" id="exp" placeholder="ここに入力"></strong> とともに上がることを、後者は賃金が <strong><input type="text" class="fill-in" id="ten" placeholder="ここに入力"></strong> とともに上がることを示唆する。一般的訓練では、訓練の便益の100％を労働者が享受することになるため、費用も100％ <strong><input type="text" class="fill-in" id="lab" placeholder="ここに入力"></strong> の負担となる。企業特殊的訓練では、便益と費用が企業と労働者との間でシェアされ、両者に <strong><input type="text" class="fill-in" id="share" placeholder="ここに入力"></strong> するインセンティブが生まれる。</p>
-<button onclick="showAnswer('train')">
+<p>なぜ、大卒者の方が高卒者よりも年齢とともに賃金が上昇しやすいのでしょうか？</p>
+<p>また、大卒でも男女で賃金の上昇幅に違いがあるのはなぜだと考えられますか？</p>
+<textarea class="quiz-answer" placeholder="ここに記入してください…" oninput="localStorage.setItem('quiz_training_gap', this.value)"></textarea>
+<button onclick="showAnswer('a_training_gap')">
 答えを見る
 </button>
-<div id="train" class="answer" style="display:none; margin-top: 0.5em;">
-<p>企業特殊的訓練・経験年数・勤続年数・労働者・雇用関係を維持</p>
+<div id="a_training_gap" class="answer" style="display:none; margin-top: 0.5em;">
+<p>解答例：</p>
+<ul>
+<li>大卒は企業内訓練が多く、生産性上昇により賃金も上がりやすい。</li>
+<li>女性は就業継続率が低いため訓練機会が減り、賃金も上がりにくい。</li>
+</ul>
 </div>
 </div>
 </section>
@@ -694,6 +739,22 @@ window.Quarto = {
 <p><a href="#fshc">企業特殊訓練モデル</a>で学んだように、企業特殊訓練は労働者と企業が人的資本に対して共同投資を行います。</p>
 <p>これは、企業が人的資本投資をした労働者の離職が起きれば、訓練費用が無駄になってしまうからです。 そのため、勤続年数が短い労働者には他企業よりも低い賃金を支払い、勤続年数が長い労働者には他企業よりも高い賃金を支払うことで離職を防ぎます。</p>
 <p>これも後払い賃金の一種です。企業特殊訓練の場合には、企業は<strong>労働者の離職を防ぐこと</strong>によって、人的資本投資の成果の一部を確保することができます。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文章に、適切な語句を入れなさい。</p>
+<p>後払い賃金の理論に共通するのは、勤続年数が短いときに賃金を抑え、つまり実質的に労働者からお金を <strong><input type="text" class="fill-in" id="azukari" placeholder="ここに入力"></strong> 、 <strong><input type="text" class="fill-in" id="rishoku" placeholder="ここに入力"></strong> しなかった労働者にのみ、勤続年数が長いときに賃金を高める、つまり実質的に労働者にお金を <strong><input type="text" class="fill-in" id="kaesu" placeholder="ここに入力"></strong> 仕組みである。</p>
+<p>企業特殊訓練モデルで企業が後払い賃金を設定し、 <strong><input type="text" class="fill-in" id="leave" placeholder="ここに入力"></strong> を抑制するのは、企業が訓練の便益を回収するためである。</p>
+<p>怠けのモデルで企業が後払い賃金を設定するのは、勤続年数が短いときの <strong><input type="text" class="fill-in" id="namake" placeholder="ここに入力"></strong> を抑制するためである。</p>
+<hr>
+<p><strong>語句</strong></p>
+<p>怠け　預かり　離職　訓練　返す</p>
+<button onclick="showAnswer('back')">
+答えを見る
+</button>
+<div id="back" class="answer" style="display:none; margin-top: 0.5em;">
+<p>預かり、離職、返す、離職、怠け</p>
+</div>
+</div>
 </section>
 </section>
 <section id="後払い賃金の理論の応用年功序列賃金" class="level3">
@@ -747,55 +808,69 @@ window.Quarto = {
 <p>日本の退職金は欧米に比べるとかなり高い水準ですが、企業年金の給付割合は高くありません。 日本では企業年金の代わりに退職金が発達してきたとも言えます。 企業年金制度のある企業も少なくありませんが、長期勤続に対して税の所得控除が大きいため、退職金として受け取る労働者が少なくないのが現状です。</p>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
-<p>次の文章に、適切な語句を入れなさい。</p>
-<p>後払い賃金の理論に共通するのは、勤続年数が短いときに賃金を抑え、つまり実質的に労働者からお金を <strong><input type="text" class="fill-in" id="azukari" placeholder="ここに入力"></strong> 、 <strong><input type="text" class="fill-in" id="rishoku" placeholder="ここに入力"></strong> しなかった労働者にのみ、勤続年数が長いときに賃金を高める、つまり実質的に労働者にお金を <strong><input type="text" class="fill-in" id="kaesu" placeholder="ここに入力"></strong> 仕組みである。</p>
-<p>企業特殊訓練モデルで企業が後払い賃金を設定し、 <strong><input type="text" class="fill-in" id="leave" placeholder="ここに入力"></strong> を抑制するのは、企業が訓練の便益を回収するためである。</p>
-<p>怠けのモデルで企業が後払い賃金を設定するのは、勤続年数が短いときの <strong><input type="text" class="fill-in" id="namake" placeholder="ここに入力"></strong> を抑制するためである。</p>
-<hr>
-<p><strong>語句</strong></p>
-<p>怠け　預かり　離職　訓練　返す</p>
-<button onclick="showAnswer('back')">
+<p>退職金や企業年金は、どのような経済的インセンティブを労働者に与えると考えられますか？</p>
+<textarea class="quiz-answer" placeholder="ここに記入してください…" oninput="localStorage.setItem('obe', this.value)"></textarea>
+<button onclick="showAnswer('nenkin')">
 答えを見る
 </button>
-<div id="back" class="answer" style="display:none; margin-top: 0.5em;">
-<p>預かり、離職、返す、離職、怠け</p>
+<div id="nenkin" class="answer" style="display:none; margin-top: 0.5em;">
+<p>解答例：長く勤めることで受け取れるため、離職せず働き続ける動機づけになる。</p>
 </div>
 </div>
 </section>
-</section>
-<section id="日本の長期雇用と賃金構造" class="level2">
-<h2 class="anchored" data-anchor-id="日本の長期雇用と賃金構造">日本の長期雇用と賃金構造</h2>
 <section id="日本的雇用慣行" class="level3">
 <h3 class="anchored" data-anchor-id="日本的雇用慣行">日本的雇用慣行</h3>
 <p>日本独特の雇用慣行として、以下のような点が挙げられます。</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-日本的雇用慣行
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <ol type="1">
 <li><strong>新卒一括採用</strong></li>
-<li><strong>年功賃金、終身雇用、企業別労働組合</strong></li>
-<li><strong>企業内の賃金制度、企業内訓練慣行</strong></li>
-<li><strong>強い配転命令権</strong></li>
-<li><strong>内部昇進</strong></li>
 </ol>
+<ul>
+<li>大学在学中に就職活動を行い、卒業後の4月からいっせいに働き始めるという慣行。</li>
+<li>入社後数年は「同期」の間では大きい賃金差をつけずに昇格させ、さまざまな職場を経験させながら、やがて同期間で昇進スピードに差をつけていくことが多い。</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>年功賃金、終身雇用、企業別労働組合</strong></li>
+</ol>
+<ul>
+<li>1980年代に<strong>日本的雇用慣行</strong>の3種の神器として紹介されてきた特徴。今でも大企業正社員では一定程度見られる。</li>
+<li>ただし、すでに労働者の4割弱は非正社員であり、年齢によって賃金が上がる度合いは低下しているため、現在はこの日本的雇用慣行の枠外で働く労働者の方が多い。</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>内部昇進、企業内訓練慣行</strong></li>
+</ol>
+<ul>
+<li>日本の大企業では、長期に定着する社員の中から優秀な人材を昇進させるため、新入社員の選抜に時間をかけ、入社後は職場で訓練を実施し、就業継続を促すよう勤続が評価されるような賃金構造を形成してきた。</li>
+<li>海外、例えばアメリカでは、ポストに空きが出たときには内部昇進だけでなく外部からの採用も検討する。
+<ul>
+<li>賃金は個人の経験・能力に応じて採用時の契約で決まる。そうした雇用慣行を支えるべく、賃金を調査する企業が、職種あるいは地域ごとに賃金相場を公表している。</li>
+</ul></li>
+<li>内部昇進は企業内の人材育成の仕組みを活発にし、技能伝承が起こりやすい反面、非正規雇用者が活用されにくい、幹部候補生（長期雇用だが転勤あり）に女性の応募が少なくなる、社内にない発想が生まれづらいというデメリットがある。</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>強い配転命令権</strong></li>
+</ol>
+<ul>
+<li>長期雇用を約束する代わりに、企業側に強い配転命令権や残業を命令権がある。
+<ul>
+<li>長期雇用を約束する代わりに、景気変動や産業構造の変化に対応するため、景気が良いときに残業を増やしたり、採用条件に転勤や配置転換が盛り込まれている（いわゆる<strong>総合職</strong>）。</li>
+<li>転勤を受け入れたくない場合は<strong>一般職</strong>や<strong>地域総合職</strong>で就職するが、その代わりに昇進スピードは遅い。</li>
+</ul></li>
+<li><strong>就業規則</strong>という形の集団的な契約に従わなければいけない。
+<ul>
+<li>アメリカでは雇用契約は個別で締結され、転勤するかどうかは、その時々の個人のキャリア選択である。</li>
+</ul></li>
+</ul>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文章に、適切な語句を入れなさい。</p>
+<p>日本的雇用の3種の神器として <strong><input type="text" class="fill-in" id="nenko" placeholder="ここに入力"></strong> 、 <strong><input type="text" class="fill-in" id="shushin" placeholder="ここに入力"></strong> 、 <strong><input type="text" class="fill-in" id="kigyo" placeholder="ここに入力"></strong> などがあげられ、高度成長期にこうした働き方が完成し、その後の日本の経済成長を支えてきたという評価がなされている。</p>
+<button onclick="showAnswer('jingi')">
+答えを見る
+</button>
+<div id="jingi" class="answer" style="display:none; margin-top: 0.5em;">
+<p>年功賃金　終身雇用　企業別労働組合</p>
 </div>
 </div>
-</section>
-<section id="賃金制度の変化" class="level3">
-<h3 class="anchored" data-anchor-id="賃金制度の変化">賃金制度の変化</h3>
-</section>
-<section id="日米の労働者保護政策の違い" class="level3">
-<h3 class="anchored" data-anchor-id="日米の労働者保護政策の違い">日米の労働者保護政策の違い</h3>
-</section>
-<section id="調査データから見る日本の賃金水準の変化" class="level3">
-<h3 class="anchored" data-anchor-id="調査データから見る日本の賃金水準の変化">調査データから見る日本の賃金水準の変化</h3>
 <p><a href="index.html">講義資料に戻る</a></p>
 <!-- クイズ機能スクリプト -->
 <script>
