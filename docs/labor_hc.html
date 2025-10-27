@@ -124,7 +124,7 @@ window.Quarto = {
   <li><a href="#企業内訓練" id="toc-企業内訓練" class="nav-link" data-scroll-target="#企業内訓練">企業内訓練</a>
   <ul class="collapse">
   <li><a href="#一般的訓練" id="toc-一般的訓練" class="nav-link" data-scroll-target="#一般的訓練">一般的訓練</a></li>
-  <li><a href="#企業特殊訓練モデル" id="toc-企業特殊訓練モデル" class="nav-link" data-scroll-target="#企業特殊訓練モデル">企業特殊訓練モデル</a></li>
+  <li><a href="#fshc" id="toc-fshc" class="nav-link" data-scroll-target="#fshc">企業特殊訓練モデル</a></li>
   <li><a href="#大卒の賃金が高卒よりも年齢による上昇が大きい理由" id="toc-大卒の賃金が高卒よりも年齢による上昇が大きい理由" class="nav-link" data-scroll-target="#大卒の賃金が高卒よりも年齢による上昇が大きい理由">大卒の賃金が高卒よりも年齢による上昇が大きい理由</a></li>
   </ul></li>
   </ul></li>
@@ -134,8 +134,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#後払い賃金の理論" id="toc-後払い賃金の理論" class="nav-link" data-scroll-target="#後払い賃金の理論">後払い賃金の理論</a></li>
   <li><a href="#後払い賃金の理論の応用年功序列賃金" id="toc-後払い賃金の理論の応用年功序列賃金" class="nav-link" data-scroll-target="#後払い賃金の理論の応用年功序列賃金">後払い賃金の理論の応用：年功序列賃金</a></li>
-  <li><a href="#退職金と企業年金" id="toc-退職金と企業年金" class="nav-link" data-scroll-target="#退職金と企業年金">退職金と企業年金</a></li>
-  <li><a href="#後払い賃金の理論の有効性" id="toc-後払い賃金の理論の有効性" class="nav-link" data-scroll-target="#後払い賃金の理論の有効性">後払い賃金の理論の有効性</a></li>
+  <li><a href="#後払い賃金の理論の応用退職金と企業年金" id="toc-後払い賃金の理論の応用退職金と企業年金" class="nav-link" data-scroll-target="#後払い賃金の理論の応用退職金と企業年金">後払い賃金の理論の応用：退職金と企業年金</a></li>
   </ul></li>
   <li><a href="#日本の長期雇用と賃金構造" id="toc-日本の長期雇用と賃金構造" class="nav-link" data-scroll-target="#日本の長期雇用と賃金構造">日本の長期雇用と賃金構造</a>
   <ul class="collapse">
@@ -491,8 +490,8 @@ window.Quarto = {
 <p>ここで言う<strong>経験年数</strong>とは、<strong>労働市場で働いた年数</strong>のことを指します。</p>
 <p>重要なのは、<strong>一般的訓練による賃金の上昇は、労働者が他企業に転職しても起こる</strong>ということです。 労働者の訓練後の高い生産性に見合う賃金が支払われなければ、労働者は転職する可能性があるのです。</p>
 </section>
-<section id="企業特殊訓練モデル" class="level3">
-<h3 class="anchored" data-anchor-id="企業特殊訓練モデル">企業特殊訓練モデル</h3>
+<section id="fshc" class="level3">
+<h3 class="anchored" data-anchor-id="fshc">企業特殊訓練モデル</h3>
 <p>ユウコが、資格を取得するための研修ではなく、自社のサービス固有の知識や技術（例えば、特定のシステムや機械の操作方法、社内の業務フローや規定など）を習得するための研修（企業特殊的訓練）を受けていたらどうなるでしょうか。</p>
 <p>このときの研修がもたらす便益は、以下のような性質を持ちます。</p>
 <ul>
@@ -660,33 +659,134 @@ window.Quarto = {
 <p>後払い賃金を導入するケースとして以下の3点がある。</p>
 <ol type="1">
 <li><strong>怠けの抑制</strong></li>
-<li><strong>離転職の抑止</strong></li>
+<li><strong>離職・転職の抑止</strong></li>
 <li><strong>企業特殊訓練</strong></li>
 </ol>
 </div>
 </div>
 <section id="怠けの抑制" class="level4">
 <h4 class="anchored" data-anchor-id="怠けの抑制">1. 怠けの抑制</h4>
-<p>企業としては労働者に怠けてほしくないが、監視（モニタリング）にはコストがかかる</p>
-<p>勤続年数の前半では限界生産性の価値を下回る賃金を支払う（生産性の価値を企業に貸し出す） 勤続年数の後半では限界生産性の価値を上回る賃金を支払う（貸し出していた生産性の価値を返済される）</p>
-<p>途中でさぼりが見つかると解雇され貸し出していた生産性の価値を受け取れないため、労働者はまじめに働くインセンティブがある</p>
-<p>Shirking model 企業が嘘をついて貯金を搾取しないことが重要。企業の評判が採用に重要であることがこのうそを抑止する。</p>
+<p>一般的には、企業が労働者を監視（<strong>モニタリング</strong>）することで、労働者が怠けることを防げますが、モニタリングには一定のコストがかかります。 具体的には、監視者を配置する際の人件費、PCの画面を監視できるようなシステムを導入するコストなんかが挙げられます。</p>
+<p>そこで、後払い賃金にすることで、<strong>労働者に真面目に働くインセンティブ</strong>を与えることができます。</p>
+<ul>
+<li>勤続年数の前半では<strong>労働者の限界生産性の価値を下回る賃金</strong>を支払う
+<ul>
+<li>生産性の価値との差額を<strong>企業に貸し出す</strong>（赤い三角形）</li>
+</ul></li>
+<li>勤続年数の後半では<strong>労働者の限界生産性の価値を上回る賃金</strong>を支払う
+<ul>
+<li>貸し出していた生産性の価値との差額を<strong>返済される</strong>（青い三角形）</li>
+</ul></li>
+</ul>
+<p><img src="images/labor_shirk.png" class="img-fluid"></p>
+<p>このような後払い賃金制度にすると、途中でサボりが見つかると解雇され、貸し出していた生産性の価値を受け取れなくなるリスクがあるため、労働者は監視をしなくとも真面目に働くインセンティブがあるのです。</p>
+<p>労働者としても、監視コスト（<span class="math inline">\(m\)</span>）がかからない分、監視を行うときの賃金（<span class="math inline">\((W-m)\times T\)</span>、網掛けの長方形）よりも高い賃金を得られるメリットがあります。</p>
+<p>後払い賃金制度によって企業と労働者ともに高い生産性を実現できるとするこの理論を、<strong>怠けの理論</strong>（<strong>Shirking model</strong>）と呼びます。</p>
+<p>この理論が成り立つには、企業が嘘をついて貯金を搾取しないことが重要です。企業の評判が採用に重要であることがこの嘘を抑止すると考えられています。</p>
+</section>
+<section id="離職転職の抑止" class="level4">
+<h4 class="anchored" data-anchor-id="離職転職の抑止">2. 離職・転職の抑止</h4>
+<p>企業が新しい労働者を雇うときには、採用費用や訓練費用などを負担する必要があるので、いかにして<strong>労働者の離職・転職を防ぐ</strong>かは企業にとって大きな課題です。</p>
+<p>後払い賃金制度にすることは、仕事に飽きやすい・忍耐力のない労働者が応募してくることを防ぐインセンティブになります。 後払い賃金制度の下では、労働者は長期間その企業で働かないと貸し出した報酬の返済を受けることができないためです。</p>
+</section>
+<section id="企業特殊訓練" class="level4">
+<h4 class="anchored" data-anchor-id="企業特殊訓練">3. 企業特殊訓練</h4>
+<p><a href="#fshc">企業特殊訓練モデル</a>で学んだように、企業特殊訓練は労働者と企業が人的資本に対して共同投資を行います。</p>
+<p>これは、企業が人的資本投資をした労働者の離職が起きれば、訓練費用が無駄になってしまうからです。 そのため、勤続年数が短い労働者には他企業よりも低い賃金を支払い、勤続年数が長い労働者には他企業よりも高い賃金を支払うことで離職を防ぎます。</p>
+<p>これも後払い賃金の一種です。企業特殊訓練の場合には、企業は<strong>労働者の離職を防ぐこと</strong>によって、人的資本投資の成果の一部を確保することができます。</p>
 </section>
 </section>
 <section id="後払い賃金の理論の応用年功序列賃金" class="level3">
 <h3 class="anchored" data-anchor-id="後払い賃金の理論の応用年功序列賃金">後払い賃金の理論の応用：年功序列賃金</h3>
+<p>ここまで学ぶと、後払い賃金の理論が、賃金が勤続年数とともに上昇する<strong>年功序列賃金</strong>をせつめいすることが分かったでしょう。</p>
+<p>後払い賃金の理論の背後にあった、企業が直面する問題は以下のようなものでした。</p>
+<ul>
+<li>労働者の怠けを抑制すること</li>
+<li>労働者の離職や採用の費用を抑制すること</li>
+<li>企業特殊訓練投資の成果を確保すること</li>
+</ul>
+<p>これらの問題が重要であるとき、企業にとって、できる限り長期間に渡って賃金を勤続年数とともに上昇させることは経済合理的です。</p>
+<p>これらの問題は、日本に限られたものではないため、長期雇用や年功賃金は当然海外でも見られるものです。</p>
+<p>一方で、</p>
+<ul>
+<li>日本は欧米と比較して勤続年数による賃金上昇が大きい</li>
+<li>大企業の管理職において、日本では多くが1社のみの経験、海外では複数社経験することが多い</li>
+</ul>
+<p>といった、日本の雇用慣行の独特の面も存在します。</p>
+<p>これは欧米企業では、採用における職種が明確であり、企業間の転職を通じて、同じ職種内のより高度な仕事をすることで、<strong>職種特殊的人的資本</strong>投資ができるという労働市場の特性によるものだと言われています。</p>
 </section>
-<section id="退職金と企業年金" class="level3">
-<h3 class="anchored" data-anchor-id="退職金と企業年金">退職金と企業年金</h3>
-</section>
-<section id="後払い賃金の理論の有効性" class="level3">
-<h3 class="anchored" data-anchor-id="後払い賃金の理論の有効性">後払い賃金の理論の有効性</h3>
+<section id="後払い賃金の理論の応用退職金と企業年金" class="level3">
+<h3 class="anchored" data-anchor-id="後払い賃金の理論の応用退職金と企業年金">後払い賃金の理論の応用：退職金と企業年金</h3>
+<p>企業を退職する労働者に支払われる退職金や企業年金は、後払い賃金の一種だと考えられます。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+退職金と企業年金
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>退職金</strong></p>
+<ul>
+<li>企業から退職する労働者に、退職時に一括で支払われる</li>
+</ul>
+<p><strong>企業年金</strong></p>
+<ul>
+<li>退職金の一部または全部を年金として、一定期間、退職後に支払われる</li>
+<li>企業は、掛金を資金運用するために設けられた基金などで、退職金の原資を積み立て、これを金融市場で運用し、労働者が退職した後の一定期間、企業年金を給付する。
+<ul>
+<li><strong>確定給付年金</strong>：年金給付額を一定の計算式などで事前に約束する形式</li>
+<li><strong>確定拠出年金</strong>：掛金を決め、その運用実績に応じて給付する形式</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p>経済学的にみると、退職金や企業年金は労働者が長期にわたって働くためのインセンティブだと考えられます。</p>
+<p>日本の退職金は欧米に比べるとかなり高い水準ですが、企業年金の給付割合は高くありません。 日本では企業年金の代わりに退職金が発達してきたとも言えます。 企業年金制度のある企業も少なくありませんが、長期勤続に対して税の所得控除が大きいため、退職金として受け取る労働者が少なくないのが現状です。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文章に、適切な語句を入れなさい。</p>
+<p>後払い賃金の理論に共通するのは、勤続年数が短いときに賃金を抑え、つまり実質的に労働者からお金を <strong><input type="text" class="fill-in" id="azukari" placeholder="ここに入力"></strong> 、 <strong><input type="text" class="fill-in" id="rishoku" placeholder="ここに入力"></strong> しなかった労働者にのみ、勤続年数が長いときに賃金を高める、つまり実質的に労働者にお金を <strong><input type="text" class="fill-in" id="kaesu" placeholder="ここに入力"></strong> 仕組みである。</p>
+<p>企業特殊訓練モデルで企業が後払い賃金を設定し、 <strong><input type="text" class="fill-in" id="leave" placeholder="ここに入力"></strong> を抑制するのは、企業が訓練の便益を回収するためである。</p>
+<p>怠けのモデルで企業が後払い賃金を設定するのは、勤続年数が短いときの <strong><input type="text" class="fill-in" id="namake" placeholder="ここに入力"></strong> を抑制するためである。</p>
+<hr>
+<p><strong>語句</strong></p>
+<p>怠け　預かり　離職　訓練　返す</p>
+<button onclick="showAnswer('back')">
+答えを見る
+</button>
+<div id="back" class="answer" style="display:none; margin-top: 0.5em;">
+<p>預かり、離職、返す、離職、怠け</p>
+</div>
+</div>
 </section>
 </section>
 <section id="日本の長期雇用と賃金構造" class="level2">
 <h2 class="anchored" data-anchor-id="日本の長期雇用と賃金構造">日本の長期雇用と賃金構造</h2>
 <section id="日本的雇用慣行" class="level3">
 <h3 class="anchored" data-anchor-id="日本的雇用慣行">日本的雇用慣行</h3>
+<p>日本独特の雇用慣行として、以下のような点が挙げられます。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+日本的雇用慣行
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>新卒一括採用</strong></li>
+<li><strong>年功賃金、終身雇用、企業別労働組合</strong></li>
+<li><strong>企業内の賃金制度、企業内訓練慣行</strong></li>
+<li><strong>強い配転命令権</strong></li>
+<li><strong>内部昇進</strong></li>
+</ol>
+</div>
+</div>
 </section>
 <section id="賃金制度の変化" class="level3">
 <h3 class="anchored" data-anchor-id="賃金制度の変化">賃金制度の変化</h3>
