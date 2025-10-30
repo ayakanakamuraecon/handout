@@ -46,6 +46,8 @@ title: "講義資料"
 
 [人的資本モデル](labor_hc.html)
 
+[マクロ経済学から見る労働経済学](labor_search.html)
+
 <!-- 後期の講義
 # 統計学入門A/B
 
