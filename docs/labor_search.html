@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -165,6 +194,70 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="転職の決定と職探し">転職の決定と職探し</h2>
 <section id="ジョブサーチの理論" class="level3">
 <h3 class="anchored" data-anchor-id="ジョブサーチの理論">ジョブ・サーチの理論</h3>
+<p><strong>ジョブ・サーチ</strong>とは、職探しのことです。まずは、大学生の就職活動の例を通して、職探しのプロセスでは、何に基づいてどのような意思決定が行われているかを見ていきましょう。</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+就職浪人をしようかどうか迷うタロウの例
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>大学4回生のタロウは、内定をもらった第2志望の会社に就職するか、就職浪人をして第1希望の会社への就職を目指すか悩んでいます。</p>
+<ul>
+<li>第1希望
+<ul>
+<li>生涯賃金4億円</li>
+<li>内定なし</li>
+</ul></li>
+<li>第2希望
+<ul>
+<li>生涯賃金3億円</li>
+<li>内定あり</li>
+</ul></li>
+</ul>
+<p>※生涯賃金以外の面での魅力度は同じ</p>
+<p>タロウはすでに単位を取り終え、卒論を提出すれば卒業できる状態です。</p>
+</div>
+</div>
+<p>このとき、今年第2志望の会社に就職するべきか、1年留年して、来年第1希望の会社に就職できるように就職活動をやり直すべきか、考えてみます。</p>
+<section id="追加的な1年間の就職活動の純便益" class="level4">
+<h4 class="anchored" data-anchor-id="追加的な1年間の就職活動の純便益">追加的な1年間の就職活動の純便益</h4>
+<p><strong>就職活動の費用</strong></p>
+<ul>
+<li>留年 <span class="math inline">\(\rightarrow\)</span> 1年分の学費100万円※ただし授業は取らないので得られるものはない</li>
+<li>就職活動の直接費用10万円（交通費や携帯代など）</li>
+<li>第2志望の会社に就職していれば得られたであろう生涯賃金3億円（<strong>機会費用</strong>）</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 計3億110万円</p>
+<p><strong>就職活動の便益</strong></p>
+<ul>
+<li>（第1志望の会社に就職すれば）生涯賃金3億9000万円
+<ul>
+<li>上述した生涯賃金4億円は、今年就職し定年まで43年勤めたときの総所得</li>
+<li>留年すれば勤続年数は42年、この会社の65歳時の平均年収1000万円を取りそこなう</li>
+</ul></li>
+<li>（就職活動がうまくいかなければ）生涯賃金8000万円（塾講師のアルバイトを想定）</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 純便益は内定確率によって異なる</p>
+<p><strong>就職成功</strong> <span class="math inline">\(\rightarrow\)</span> <strong>8890万円</strong>（3億9000万円 <span class="math inline">\(-\)</span> 3億110万円）</p>
+<p><strong>就職失敗</strong> <span class="math inline">\(\rightarrow\)</span> <strong>-2億2110万円</strong>（8000万円 <span class="math inline">\(-\)</span> 3億110万円）</p>
+<p>では、どのくらいの内定確率があれば就職活動を続けるべきでしょうか？求める確率を <span class="math inline">\(P_{1}\)</span> とすると、</p>
+<p><span class="math display">\[
+P_{1} \times 8890万円 - (1 -  P_{1}) \times 2億2110万円 = 0
+\]</span></p>
+<p>が成り立つ必要があります。つまり、</p>
+<p><span class="math display">\[
+\begin{align}
+P_{1} \times (8890万円 + 2億2110万円) - 2億2110万円  =&amp; 0 \\
+P_{1} \times 3億1000万円 =&amp; 2億2110万円 \\
+P_{1} \approx&amp; 0.713 \\
+\end{align}
+\]</span></p>
+<p>内定確率が71.3%を上回っている必要があります。</p>
+</section>
 </section>
 <section id="オンザジョブサーチ" class="level3">
 <h3 class="anchored" data-anchor-id="オンザジョブサーチ">オン・ザ・ジョブ・サーチ</h3>
