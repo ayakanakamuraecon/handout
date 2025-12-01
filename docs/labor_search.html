@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,15 +31,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -82,7 +81,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -118,7 +117,6 @@ window.Quarto = {
   <li><a href="#転職の決定と職探し" id="toc-転職の決定と職探し" class="nav-link" data-scroll-target="#転職の決定と職探し">転職の決定と職探し</a>
   <ul class="collapse">
   <li><a href="#ジョブサーチの理論" id="toc-ジョブサーチの理論" class="nav-link" data-scroll-target="#ジョブサーチの理論">ジョブ・サーチの理論</a></li>
-  <li><a href="#オンザジョブサーチ" id="toc-オンザジョブサーチ" class="nav-link" data-scroll-target="#オンザジョブサーチ">オン・ザ・ジョブ・サーチ</a></li>
   <li><a href="#ジョブマッチングの理論" id="toc-ジョブマッチングの理論" class="nav-link" data-scroll-target="#ジョブマッチングの理論">ジョブ・マッチングの理論</a></li>
   </ul></li>
   <li><a href="#労働市場の流動性" id="toc-労働市場の流動性" class="nav-link" data-scroll-target="#労働市場の流動性">労働市場の流動性</a>
@@ -202,7 +200,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>就職浪人をしようかどうか迷うタロウの例
+就職浪人をしようかどうか迷うタロウの例
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -265,7 +263,7 @@ P_{1} \approx&amp; 0.713 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>まとめ：就職活動を続けるために必要な内定確率
+まとめ：就職活動を続けるために必要な内定確率
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -285,10 +283,9 @@ P =&amp; \frac{-\pi_{F}}{\pi_{S} - \pi_{F}}
 </div>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong><br>
-あなたは内定をもらったアルバイトで1か月働くか（<span class="math inline">\(月収4万円\)</span>）、内定を辞退し、来月憧れのアルバイト（<span class="math inline">\(月収20万円\)</span>）に挑戦するか迷っています。アルバイト探しの直接費用は1万円です。内定を断ると収入は0円です。次の問いに答えなさい。</p>
+大学に入学したばかりのあなたは、紹介された塾のアルバイト（月収10万円）に今月から入るか、それを辞退して、来月応募予定の有名テーマパークのアルバイト（月収20万円）に挑戦するか迷っています。アルバイト探しにかかる直接費用は無視できるものとします。雇用期間は、塾が3ヶ月、テーマパークが2ヶ月です。塾の内定を辞退した場合、今月の収入はありません。テーマパークのアルバイトに受からなければ、近所のカフェ（月収5万円）で働く予定です。次の問いに答えなさい。</p>
 <ol type="1">
-<li><p>憧れのアルバイに内定したときの純便益はいくらか？<br>
-<input type="text" class="fill-in" id="quiz1a" placeholder="ここに入力">万円</p></li>
+<li><p>テーマパークに内定したときの純便益はいくらか？ <input type="text" class="fill-in" id="quiz1a" placeholder="ここに入力">万円</p></li>
 <li><p>アルバイト探しに失敗したときの純便益はいくらか？<br>
 <input type="text" class="fill-in" id="quiz1b" placeholder="ここに入力">万円</p></li>
 <li><p>アルバイト探し続けることが合理的となるために必要な内定確率はいくらか？ <input type="text" class="fill-in" id="quiz1c" placeholder="ここに入力"></p></li>
@@ -298,9 +295,9 @@ P =&amp; \frac{-\pi_{F}}{\pi_{S} - \pi_{F}}
 </button>
 <div id="jobsearch" class="answer" style="display:none; margin-top: 0.5em;">
 <ol type="1">
-<li>15万円（<span class="math inline">\(= 20万円 - 4万円 - 1万円\)</span>）<br></li>
-<li>-5万円（<span class="math inline">\(= 0円 - 4万円 - 1万円\)</span>）<br></li>
-<li>約 0.25 （<span class="math inline">\(P = 5/(15 + 5)\)</span>）</li>
+<li>10万円（<span class="math inline">\(= 20万円 \times 2 - 10万円 \times 3\)</span>）<br></li>
+<li>-20万円（<span class="math inline">\(= 5万円 \times 2 - 10万円 \times 3\)</span>）<br></li>
+<li>約 0.67 （<span class="math inline">\(P = 20/(10 + 20)\)</span>）</li>
 </ol>
 </div>
 </div>
@@ -379,7 +376,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>ジョブ・サーチの理論
+ジョブ・サーチの理論
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -399,11 +396,46 @@ P_{5} \approx&amp; 0.404 \\
 </ul>
 </div>
 </div>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文章を読み、空欄に入る最も適切な語句を選びなさい。</p>
+<p>タロウが第1志望の企業への内定を目指して就職活動を続けるかどうかは、内定確率やその他の条件に左右される。たとえば、失敗したときに「家業を継ぐ」という選択肢があると、最悪でも一定の生涯賃金が得られる。このような選択肢は <input type="text" class="fill-in" id="safe" placeholder="ここに入力"> の役割を果たし、必要な内定確率を引き下げることになる。一方、第2志望の会社の生涯賃金が高まると、就職活動を続けることで失われる <input type="text" class="fill-in" id="cost" placeholder="ここに入力"> が大きくなり、活動を続けるにはより高い内定確率が必要になる。また、第1志望の会社の生涯賃金が高まると、得られる利益が大きくなるため、より <input type="text" class="fill-in" id="low" placeholder="ここに入力"> 内定確率でも活動を続けることが合理的になる。</p>
+<button onclick="showAnswer('search')">
+答えを見る
+</button>
+<div id="search" class="answer" style="display:none; margin-top: 0.5em;">
+<p>セーフティネット・機会費用・低い</p>
+</div>
+</div>
+<p>ここまでは新卒としての就職活動を分析してきましたが、いったん就職をしたとしても、中途採用で転職するケースはよくあります。現職で働きながら行う就職活動のことを<strong>オン・ザ・ジョブ・サーチ</strong>と呼びます。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+オン・ザ・ジョブ・サーチ
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>現職で働きながら行う就職活動のこと</li>
+<li>転職をしない場合と比較して、転職する場合の生涯所得が大きいときに転職をする。
+<ul>
+<li>ただし、生涯所得と賃金は異なるため、必ずしも転職後の賃金が高くなることを意味しない。</li>
+<li>現実には、求職者は生涯賃金だけではなく、労働時間、フレックスタイム制、仕事内容、通勤時間、出産・育児休暇、事業所内保育施設、訓練、転職の機会など、多くの属性によって仕事を評価し、仕事から得られる長期的効用を比較しながら転職の意思決定を行っていると考えられる。</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p>転職によって必ずしも賃金が上昇しないケースには、例えば</p>
+<ul>
+<li>現職の企業の業績悪化が予想され、今後賃金が下がると思われるため、賃金が下がる前に転職する。</li>
+<li>現時点では、現職の賃金の方が高いが今後の上昇率は低いと思われる。一方で、転職先の賃金は低いが長期にわたって務めることで大幅な上昇が見込まれる。</li>
+</ul>
+<p>といったものが該当します。</p>
 </section>
 </section>
-</section>
-<section id="オンザジョブサーチ" class="level3">
-<h3 class="anchored" data-anchor-id="オンザジョブサーチ">オン・ザ・ジョブ・サーチ</h3>
 </section>
 <section id="ジョブマッチングの理論" class="level3">
 <h3 class="anchored" data-anchor-id="ジョブマッチングの理論">ジョブ・マッチングの理論</h3>
@@ -646,14 +678,13 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
