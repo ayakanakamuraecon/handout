@@ -16,7 +16,7 @@ format:
       - cosmo
       - brand
     css: styles.css
-    toc: true
+    toc: false
 
 watch:
   input: true   # 入力ファイルの変更を監視
