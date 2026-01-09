@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,15 +31,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -82,7 +81,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -149,7 +148,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>就職浪人をしようかどうか迷うタロウの例
+就職浪人をしようかどうか迷うタロウの例
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -212,7 +211,7 @@ P_{1} \approx&amp; 0.713 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>まとめ：就職活動を続けるために必要な内定確率
+まとめ：就職活動を続けるために必要な内定確率
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -224,8 +223,7 @@ P_{1} \approx&amp; 0.713 \\
 <p>就職が成功したときの純便益を <span class="math inline">\(\pi_{S}\)</span>、失敗したときの純便益を <span class="math inline">\(\pi_{F}\)</span> とすると、リスク中立的な態度を持つ人にとって就職活動を続けることが合理的になる内定確率 <span class="math inline">\(P\)</span> は、</p>
 <p><span class="math display">\[
 \begin{align}
-P \pi_{S} + (1-P) \pi_{F} =&amp; 0 \\
-P =&amp; \frac{-\pi_{F}}{\pi_{S} - \pi_{F}}
+P \pi_{S} + (1-P) \pi_{F} =&amp; 0
 \end{align}
 \]</span></p>
 </div>
@@ -234,10 +232,12 @@ P =&amp; \frac{-\pi_{F}}{\pi_{S} - \pi_{F}}
 <p><strong>確認クイズ：</strong><br>
 大学に入学したばかりのあなたは、紹介された塾のアルバイト（月収10万円）に今月から入るか、それを辞退して、来月応募予定の有名テーマパークのアルバイト（月収20万円）に挑戦するか迷っています。アルバイト探しにかかる直接費用は無視できるものとします。雇用期間は、塾が3ヶ月、テーマパークが2ヶ月です。塾の内定を辞退した場合、今月の収入はありません。テーマパークのアルバイトに受からなければ、近所のカフェ（月収5万円）で働く予定です。次の問いに答えなさい。</p>
 <ol type="1">
-<li><p>テーマパークに内定したときの純便益はいくらか？ <input type="text" class="fill-in" id="quiz1a" placeholder="ここに入力">万円</p></li>
-<li><p>アルバイト探しに失敗したときの純便益はいくらか？<br>
-<input type="text" class="fill-in" id="quiz1b" placeholder="ここに入力">万円</p></li>
-<li><p>アルバイト探し続けることが合理的となるために必要な内定確率はいくらか？ <input type="text" class="fill-in" id="quiz1c" placeholder="ここに入力"></p></li>
+<li><p>テーマパークに内定したときの純便益はいくらか？</p>
+<p><input type="text" class="fill-in" id="quiz1a" placeholder="ここに入力">万円</p></li>
+<li><p>アルバイト探しに失敗したときの純便益はいくらか？</p>
+<p><input type="text" class="fill-in" id="quiz1b" placeholder="ここに入力">万円</p></li>
+<li><p>アルバイト探し続けることが合理的となるために必要な内定確率はいくらか？</p>
+<p><input type="text" class="fill-in" id="quiz1c" placeholder="ここに入力"></p></li>
 </ol>
 <button onclick="showAnswer('jobsearch')">
 答えを見る
@@ -282,6 +282,33 @@ P_{3} \approx&amp; 0.772 \\
 <p>内定確率が77.2%を上回っている必要があります。相当な自信がないと就職活動を続けることは合理的とは言えません。</p>
 <p>家業を継ぐという選択肢がなければ、就職活動を辞め、第2志望の会社に就職するインセンティブが高まるのです。</p>
 <p>多くの労働者にとっては、雇用保険の失業手当がセーフティネットの役割を果たします。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong><br>
+就職活動を続けるか、第2志望の会社に就職するか迷っているハナコを考えます。</p>
+<ul>
+<li>第2志望に就職した場合の生涯賃金：<strong>3億円</strong><br>
+</li>
+<li>就職活動を続けて第1志望に<strong>内定した場合</strong>の生涯賃金：<strong>4億円</strong><br>
+</li>
+<li>就職活動に<strong>失敗した場合</strong>、家業を継ぐため生涯賃金は <strong>2億円</strong></li>
+</ul>
+<p>就職活動を続けることが合理的になるために必要な<strong>内定確率 (P)</strong> を求めなさい。</p>
+<p><input type="text" class="fill-in" id="quiz1c" placeholder="ここに入力"></p>
+<p>また、家業を継ぐという選択肢がなかったときに、必要な内定確率はどう変化するか？</p>
+<p>家業が継げるときより <input type="text" class="fill-in" id="high" placeholder="ここに入力"> なる。</p>
+<button onclick="showAnswer('safe')">
+答えを見る
+</button>
+<div id="safe" class="answer" style="display:none; margin-top: 0.5em;">
+<p>成功した場合の純便益：1億円</p>
+<p>失敗した場合の純便益：-1億円</p>
+<p><span class="math display">\[
+P\times 1億 + (1-P) \times -1億 = 0
+\]</span></p>
+<p>より、<span class="math inline">\(P = 0.5\)</span></p>
+<p>また、家業を継ぐという選択肢がなかったとき、必要な内定確率は<strong>高く</strong>なる。</p>
+</div>
+</div>
 </section>
 <section id="case-2第2志望の会社の生涯賃金が高いとき" class="level5">
 <h5 class="anchored" data-anchor-id="case-2第2志望の会社の生涯賃金が高いとき">Case 2：第2志望の会社の生涯賃金が高いとき</h5>
@@ -301,6 +328,33 @@ P_{4} \approx&amp; 0.795 \\
 <p>内定確率が79.5%を上回っていないと、就職活動を続けることは非合理的になってしまいます。この確率は、Case 1での確率53.2%よりもかなり高い確率です。</p>
 <p>現在のオファーである第2志望の会社の生涯賃金が高くなると、就職活動を辞め、第2志望の会社に就職するインセンティブが高まるのです。</p>
 <p>働いている労働者が職探しを始める場合には、現在の仕事の所得が現在のオファーとなります。現在の仕事の所得が低ければ、職探しをするインセンティブが高まり、離職しやすくなります。よって、所得の高い仕事をしている労働者は勤続年数が長くなり、所得が低いと勤続年数は短くなる傾向があります。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong><br>
+就職活動を続けるか、第2志望の会社に就職するか迷っているタロウを考えます。</p>
+<ul>
+<li>就職活動を続けて<strong>内定した場合</strong>の生涯賃金：<strong>4億円</strong><br>
+</li>
+<li>就職活動に<strong>失敗した場合</strong>、家業を継ぐため生涯賃金は <strong>2億円</strong><br>
+</li>
+<li>第2志望の会社に就職した場合の生涯賃金：<strong><span class="math inline">\(X\)</span> 億円</strong></li>
+</ul>
+<p>就職活動を続けることが合理的になるために必要な内定確率が<br>
+ちょうど 50％（<span class="math inline">\(P = 0.5\)</span>） になるような 第2志望の会社の生涯賃金 <span class="math inline">\(X\)</span> を求めなさい。</p>
+<p><input type="text" class="fill-in" id="half" placeholder="ここに入力"></p>
+<button onclick="showAnswer('highwage')">
+答えを見る
+</button>
+<div id="highwage" class="answer" style="display:none; margin-top: 0.5em;">
+<p>成功した場合の純便益：<span class="math inline">\((4-X)\)</span>億円</p>
+<p>失敗した場合の純便益：<span class="math inline">\((2-X)\)</span>億円</p>
+<p><span class="math inline">\(P=0.5\)</span> より、 <span class="math display">\[
+\begin{align}
+0.5(4-X)+0.5(2-X) &amp;=0 \\
+X &amp;=3
+\end{align}
+\]</span></p>
+</div>
+</div>
 </section>
 <section id="case-3第1志望の会社の生涯賃金が高いとき" class="level5">
 <h5 class="anchored" data-anchor-id="case-3第1志望の会社の生涯賃金が高いとき">Case 3：第1志望の会社の生涯賃金が高いとき</h5>
@@ -318,6 +372,33 @@ P_{5} \approx&amp; 0.404 \\
 \end{align}
 \]</span></p>
 <p>内定確率が40.4%を上回っていれば、就職活動を続けることは合理的になります。この確率は、生涯賃金が3億9000万であるときの確率53.2%よりも低く、期待オファーが高まると、第2志望の内定を辞退し、就職活動を続けるインセンティブが高まることが分かります。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong><br>
+モモコは、<strong>内定確率が40％を上回るなら就職活動を続けたい</strong>と考えています。</p>
+<p>条件は次の通りです。</p>
+<ul>
+<li>第2志望の会社に就職した場合の生涯賃金：<strong>3億円</strong><br>
+</li>
+<li>就職活動に失敗した場合、家業を継ぐため生涯賃金は <strong>2億円</strong><br>
+</li>
+<li>第1志望の会社に内定した場合の生涯賃金：<strong><span class="math inline">\(Y\)</span> 億円</strong></li>
+</ul>
+<p>このとき、就職活動を続けることが合理的になるためには、第1志望の会社の生涯賃金 <span class="math inline">\(Y\)</span> はいくら以上である必要がありますか。</p>
+<p><input type="text" class="fill-in" id="wage1" placeholder="ここに入力"></p>
+<button onclick="showAnswer('howwage')">
+答えを見る
+</button>
+<div id="howwage" class="answer" style="display:none; margin-top: 0.5em;">
+<p>成功した場合の純便益：<span class="math inline">\((Y-3)\)</span>億円</p>
+<p>失敗した場合の純便益：<span class="math inline">\(-1\)</span>億円</p>
+<p><span class="math inline">\(P \geq 0.4\)</span> より、 <span class="math display">\[
+\begin{align}
+0.4(Y-3) + (1-0.4)\times (-1) &amp;\geq 0 \\
+Y &amp; \geq 4.5
+\end{align}
+\]</span></p>
+</div>
+</div>
 <p>以上のCase 1 ～ Case 3 より<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、ジョブ・サーチの理論から得られる示唆をまとめると次のようになります。</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -325,7 +406,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>ジョブ・サーチの理論
+ジョブ・サーチの理論
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -363,7 +444,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>オン・ザ・ジョブ・サーチ
+オン・ザ・ジョブ・サーチ
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -398,7 +479,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>ジョブ・マッチングの理論
+ジョブ・マッチングの理論
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -450,7 +531,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>男女間の転職行動の差
+男女間の転職行動の差
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -480,7 +561,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>年齢間の転職行動の差
+年齢間の転職行動の差
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -510,7 +591,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>転職による賃金上昇の役割
+転職による賃金上昇の役割
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -536,7 +617,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>有効求人倍率
+有効求人倍率
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -559,6 +640,18 @@ P_{5} \approx&amp; 0.404 \\
 <li>上がる転職が増える</li>
 <li>求人が少ない（有効求人倍率が低い時期） <span class="math inline">\(\rightarrow\)</span> 経営不振などのやむを得ない転職 <span class="math inline">\(\rightarrow\)</span> 賃金が下がる転職が増える</li>
 </ul>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文の空欄に当てはまる最も適切な言葉を答えなさい。</p>
+<p><input type="text" class="fill-in" id="sukunai" placeholder="ここに入力"> では、転職による賃金上昇の役割は比較的限定的である一方で、 <input type="text" class="fill-in" id="main" placeholder="ここに入力"> では、転職（雇用主間移動）が賃金上昇の重要な要因になりやすい。</p>
+<p>このような違いは、アメリカの労働市場の <input type="text" class="fill-in" id="ryoko" placeholder="ここに入力"> が日本よりも高いことと関係している。</p>
+<button onclick="showAnswer('ryudo')">
+答えを見る
+</button>
+<div id="ryudo" class="answer" style="display:none; margin-top: 0.5em;">
+<p>日本、アメリカ、流動性</p>
+</div>
+</div>
 <section id="労働市場の流動化と解雇規制" class="level3">
 <h3 class="anchored" data-anchor-id="労働市場の流動化と解雇規制">労働市場の流動化と解雇規制</h3>
 <p>長期デフレ等による就職難、経済的困窮等からの再チャレンジを掲げ、2006年、経済財政諮問会議において「労働ビッグバン」という呼称の労働市場改革が提唱されました。</p>
@@ -584,6 +677,30 @@ P_{5} \approx&amp; 0.404 \\
 <li>解雇規制が緩い：解雇が容易で、それに伴う転職も増えるため、労働資源の再配分がより迅速に行われる</li>
 </ul></li>
 </ul>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>以下は、労働市場に関する政策や制度の特徴です。<br>
+それぞれについて、最も直接的に生じやすい結果として<strong>正しいもの</strong>を<br>
+A〜Dから1つずつ選びなさい。</p>
+<p><strong>政策・制度</strong></p>
+<ol type="1">
+<li>解雇規制が厳しい <input type="text" class="fill-in" id="b" placeholder="ここに入力"></li>
+<li>労働市場の流動性が高い <input type="text" class="fill-in" id="a" placeholder="ここに入力"></li>
+<li>有効求人倍率が高い局面 <input type="text" class="fill-in" id="v" placeholder="ここに入力"></li>
+<li>同一企業内での長期雇用が中心 <input type="text" class="fill-in" id="b" placeholder="ここに入力"></li>
+</ol>
+<p><strong>結果</strong></p>
+<p>A. 転職を通じた賃金上昇が起こりやすい</p>
+<p>B. 労働資源の再分配が進みにくい</p>
+<p>C. 賃金が下がる転職が増えやすい</p>
+<p>D. 勤続を通じた賃金上昇が中心になる</p>
+<button onclick="showAnswer('ad')">
+答えを見る
+</button>
+<div id="ad" class="answer" style="display:none; margin-top: 0.5em;">
+<p>B A A D</p>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -597,7 +714,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>職種間の賃金格差
+職種間の賃金格差
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -621,7 +738,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>男女間の賃金格差
+男女間の賃金格差
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -642,7 +759,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>格差の「要因」
+格差の「要因」
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -671,11 +788,34 @@ P_{5} \approx&amp; 0.404 \\
 <p>賃金格差はさまざまなグループ間で観察されます。</p>
 <p>学歴間、経験年数・勤続年数間、職種間、企業規模間、産業間、雇用形態間、男女間などです。</p>
 <p>しかし、例えば職種間で賃金格差が観察されたとしても、「職種」自体が格差の要因ではありません。「職種」そのものが賃金に因果的影響を与えているわけではないからです。職種間の賃金格差が生じるのは、職種に対する需要と供給のバランス、職種が要求する人的資本、職種の職場環境などの賃金格差要因が、職種間で異なるのが主な理由だと考えられています。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次のA〜Eは、日本で観察される賃金格差に関する記述です。<br>
+このうち、<strong>賃金格差の「要因」ではなく、単なる「観察された違い」</strong>に該当するものを<br>
+すべて選びなさい。</p>
+<p>A 管理的職業の平均賃金は、サービス職より高い</p>
+<p>B 教育・学歴の違いは、賃金に因果的な影響を与える可能性がある</p>
+<p>C 男女間で平均賃金に差があり、女性は男性の約7割の水準である</p>
+<p>D 職種によって、必要とされる技能や人的資本が異なる</p>
+<p>E 意欲や能力の違いが賃金に影響している可能性がある</p>
+<p><input type="text" class="fill-in" id="youin" placeholder="該当する記号をすべて入力"></p>
+<button onclick="showAnswer('kakusa')">
+答えを見る
+</button>
+<div id="kakusa" class="answer" style="display:none; margin-top: 0.5em;">
+<p>A, C</p>
+<ul>
+<li>A・Cは、データから<strong>観察されている賃金の差</strong>を述べたものであり、それ自体は賃金に因果的な影響を与える「要因」ではありません。<br>
+</li>
+<li>B・D・Eは、<strong>他の条件が一定であるときに賃金へ影響を与えうる要因</strong>です。</li>
+</ul>
+</div>
+</div>
 <section id="賃金格差をもたらす測定可能な要因に関する経済理論" class="level4">
 <h4 class="anchored" data-anchor-id="賃金格差をもたらす測定可能な要因に関する経済理論">賃金格差をもたらす測定可能な要因に関する経済理論</h4>
 <p>ここでは、まず賃金格差の測定可能な要因を見ていきます。</p>
 <ol type="1">
-<li>需要・供給要因
+<li><strong>需要・供給要因</strong>
 <ul>
 <li>労働市場のモデルより、労働需要が増えると賃金は高くなる、あるいは労働供給が増えると賃金は低くなる
 <ul>
@@ -685,19 +825,19 @@ P_{5} \approx&amp; 0.404 \\
 </ul></li>
 <li>賃金格差があることによって、他の産業から需要が高い産業へ労働者が移動する（そして、それは賃金格差が消滅するまで続く）ため、賃金格差は労働サービスという希少資源を効率的に配分する機能があると言える</li>
 </ul></li>
-<li>教育・学歴
+<li><strong>教育・学歴</strong>
 <ul>
 <li>教育や学歴は、生産性の高い仕事に就く可能性を高める</li>
 <li>企業は、より高い成果が期待できる（より多くの人的資本を蓄積した）労働者に対して高い賃金を支払う傾向がある</li>
 <li><strong>学歴・教育年数間の格差</strong>として現れる</li>
 </ul></li>
-<li>訓練
+<li><strong>訓練</strong>
 <ul>
 <li>企業内訓練や職業訓練を通じて技能を身につけた労働者は、生産性が高まる</li>
 <li>訓練機会の多い職種や働き方ほど、賃金が高くなりやすい</li>
 <li><strong>雇用形態間、経験年数・勤続年数間の格差</strong>として現れる</li>
 </ul></li>
-<li>ジョブ・サーチ
+<li><strong>ジョブ・サーチ</strong>
 <ul>
 <li>転職や就職の際に、より良い条件の仕事を探すには時間や情報が必要となる</li>
 <li>ジョブ・サーチにはコスト（収入の不安定さ、時間や労力）がかかる
@@ -707,12 +847,12 @@ P_{5} \approx&amp; 0.404 \\
 </ul></li>
 <li><strong>能力（生産性）とは無関係な格差</strong>として現れる</li>
 </ul></li>
-<li>後払い賃金制度
+<li><strong>後払い賃金制度</strong>
 <ul>
 <li>従業員の長期定着や努力を引き出すため、若年期は生産性よりも低く、中高年期は生産性よりも高く賃金を支払う</li>
 <li><strong>勤続年数、年齢間の賃金格差</strong>として現れる</li>
 </ul></li>
-<li>補償賃金
+<li><strong>補償賃金</strong>
 <ul>
 <li>人に好まれにくい仕事で働く人を集めるために、他の仕事よりも高い賃金を支払うことによる賃金格差（<strong>補償賃金格差</strong>）
 <ul>
@@ -783,20 +923,191 @@ P_{5} \approx&amp; 0.404 \\
 <li>母親は育児に専念するべきだというアンコンシャス・バイアス</li>
 </ul></li>
 </ul>
+<div class="quizbox">
+<p><strong>確認クイズ</strong></p>
+<p>次の１〜６は、賃金格差が生じている具体的な状況です。<br>
+それぞれについて、<strong>最も適切な理論を1つだけ</strong>下の選択肢から選びなさい。</p>
+<ol type="1">
+<li><p>ある産業で人手不足が深刻化し、他産業より賃金が高くなった結果、労働者がその産業へ移動している。　<input type="text" class="fill-in" id="cdes" placeholder="ここに入力"></p></li>
+<li><p>大学進学により高度な知識を身につけた人ほど、高い賃金の仕事に就いている。　<input type="text" class="fill-in" id="fdes" placeholder="ここに入力"></p></li>
+<li><p>企業内で長く働くほど賃金が上昇し、若年期は生産性より低い賃金が支払われている。 <input type="text" class="fill-in" id="edes" placeholder="ここに入力"></p></li>
+<li><p>収入の余裕や情報が乏しい人ほど、条件の悪い仕事でも早く受け入れている。　<input type="text" class="fill-in" id="ddes" placeholder="ここに入力"></p></li>
+<li><p>危険で敬遠されやすい仕事ほど、他の仕事より賃金が高く設定されている。　<input type="text" class="fill-in" id="ades" placeholder="ここに入力"></p></li>
+<li><p>能力や経験が同じでも、性別や出身といった属性によって賃金や採用が不利になる。　<input type="text" class="fill-in" id="bdes" placeholder="ここに入力"></p></li>
+</ol>
+<p><strong>選択肢</strong></p>
+<p>A 補償賃金<br>
+B 差別（偏見・統計的差別・アンコンシャス・バイアス）<br>
+C 需要・供給要因<br>
+D ジョブ・サーチ<br>
+E 後払い賃金制度<br>
+F 教育・学歴</p>
+<button onclick="showAnswer('difcase')">
+答えを見る
+</button>
+<div id="difcase" class="answer" style="display:none; margin-top: 0.5em;">
+<p><strong>答え</strong></p>
+<ol type="1">
+<li>C</li>
+<li>F</li>
+<li>E</li>
+<li>D</li>
+<li>A</li>
+<li>B</li>
+</ol>
+</div>
+</div>
 </section>
 </section>
 <section id="差別による賃金格差を縮小するための法律" class="level3">
 <h3 class="anchored" data-anchor-id="差別による賃金格差を縮小するための法律">差別による賃金格差を縮小するための法律</h3>
+<p>このように、差別はさまざまな背景によって生じますが、労働者の生活を守るために、差別を解消するための政策的な取り組みが行われています。</p>
 <ol type="1">
-<li>男女雇用機会均等法</li>
-<li>同一労働同一賃金</li>
-<li>ポジティブ・アクション（<strong>アファーマティブ・アクション</strong>）</li>
+<li><strong>男女雇用機会均等法</strong></li>
 </ol>
+<ul>
+<li>1985年に成立した、それまでの男女別採用を禁止した法律</li>
+<li>妻子を養う男性を想定した（昇進可能性が高くコミットメントの高い）働き方 <span class="math inline">\(\rightarrow\)</span> 総合職</li>
+<li>もともと未婚女性を想定した働き方 <span class="math inline">\(\rightarrow\)</span> 一般職</li>
+<li>多くの男性は総合職、女性は一般職に就くという状況は2000年代になってもなかなか変わらなかった
+<ul>
+<li>2000年代以降、特に女性の非正社員雇用（不安定、低賃金）が拡大</li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li><strong>同一労働同一賃金</strong></li>
+</ol>
+<ul>
+<li>同じ労働をしているのであれば同じ賃金を支払うべきだという基本的な原則</li>
+<li>2018年「働き方改革法案」によって登場</li>
+<li>「同一労働」の定義について、厚生労働省は司法に判断をゆだねた</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>ポジティブ・アクション</strong>（<strong>アファーマティブ・アクション</strong>）</li>
+</ol>
+<ul>
+<li>平等な機会に恵まれなかった小数集団に対してこれを是正するような積極的な取り組みを行うこと</li>
+<li>厚生労働省「固定的な男女の役割分担意識や過去の経緯から、管理職に女性はほとんどいない、課長以上の管理職は男性が大半を占めている等の差が男女労働者に生じている場合、このような差を解消しようと、個々の企業が行う自主的かつ積極的な取り組み」
+<ul>
+<li>特定の集団に対して、一定の雇用の割当を課している国もある</li>
+</ul></li>
+</ul>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文章を読み、空欄に最も適切な語句を入れなさい。</p>
+<p>他の条件を一定として、若い女性労働者の提供サービスと比べ高齢の男性労働者の提供するサービスを顧客が嫌う場合は、 <input type="text" class="fill-in" id="kokyaku" placeholder="ここに入力"> が、財やサービスを購入する際に、価格のみならず、高齢の男性労働者によて提供されたサービスを消費する <input type="text" class="fill-in" id="cost" placeholder="ここに入力"> を支払っていると考えると理解しやすい。高齢の男性の賃金が若い女性と比べ十分 <input type="text" class="fill-in" id="low" placeholder="ここに入力"> なければ、雇用主は <input type="text" class="fill-in" id="men" placeholder="ここに入力"> を雇わない。従って、雇用主が <input type="text" class="fill-in" id="nodes" placeholder="ここに入力"> であっても、顧客が <input type="text" class="fill-in" id="des" placeholder="ここに入力"> であるならば、若い女性よりも <input type="text" class="fill-in" id="hikui" placeholder="ここに入力"> 賃金で高齢の男性を雇えることになる。</p>
+<p>人は自身が差別をしていることを認識しないまま差別的な行動をとり、これが採用差別や、昇進差別を引き起こす可能性がある。こうした差別は、意識的な差別でないだけに <input type="text" class="fill-in" id="un" placeholder="ここに入力"> と呼ばれる。</p>
+<hr>
+<p>語句</p>
+<p>低い、低く、高い、高く、機会費用、心理的費用、差別的、非差別的、高齢の男性、若い女性、顧客、雇用主、アンコンシャス・バイアス</p>
+<button onclick="showAnswer('descrimination')">
+答えを見る
+</button>
+<div id="descrimination" class="answer" style="display:none; margin-top: 0.5em;">
+<p>顧客、心理的費用、低く、高齢の男性、非差別的、低い、アンコンシャス・バイアス</p>
+</div>
+</div>
 </section>
 <section id="グループ間の賃金格差" class="level2">
 <h2 class="anchored" data-anchor-id="グループ間の賃金格差">グループ間の賃金格差</h2>
+<p>これまで、賃金格差を生む要因（測定可能なもの・不可能なもの）を学んできました。ここでは、まず、多くの国で見られるさまざまなグループ間の賃金格差を見た後、日本の特徴を学んでいきます。</p>
 <section id="さまざまなグループ間の賃金格差" class="level3">
 <h3 class="anchored" data-anchor-id="さまざまなグループ間の賃金格差">さまざまなグループ間の賃金格差</h3>
+<p>まず、多くの国で見られるさまざまなグループ間の賃金格差を見ていきます。</p>
+<ol type="1">
+<li><strong>学歴間賃金格差</strong>
+<ul>
+<li>どの国においても、学歴が高いほど平均賃金が高い傾向がみられる</li>
+<li>考えられる要因（※賃金を決定する「要因」としての教育・学歴ではないことに注意）
+<ul>
+<li>人的資本に対する投資の因果的影響</li>
+<li>学歴の（シグナルとしての）因果的影響</li>
+<li>訓練、ジョブ・サーチの差</li>
+<li>後払い賃金制度下で働く傾向の差</li>
+<li>需要と供給のバランスの差</li>
+<li>例：高学歴の労働者ほど、多く訓練を受け、全国規模の労働市場でジョブ・サーチを行い、後払い賃金制度を採用する企業への就職が多い</li>
+</ul></li>
+</ul></li>
+<li><strong>経験年数・勤続年数間賃金格差</strong>
+<ul>
+<li>考えられる要因
+<ul>
+<li>教育、学歴、訓練、ジョブ・サーチなどの差</li>
+<li>例：経験年数とともに一般的人的資本が蓄積される、勤続年数とともに企業特殊的人的資本が蓄積される、賃金が高い仕事に就いている労働者ほど経験年数・勤続年数が長くなる</li>
+</ul></li>
+</ul></li>
+<li><strong>職種間賃金格差</strong>
+<ul>
+<li>考えられる要因
+<ul>
+<li>職種間の人的資本格差</li>
+<li>補償賃金格差</li>
+<li>例：高い訓練が要求され、仕事に就くために試験の合格が必要などの制約がある仕事の方が平均賃金が高い</li>
+</ul></li>
+<li>格差はあくまで<strong>平均的</strong>な話であり、もちろん、同じ職種でも高い賃金を得ている労働者もいれば、低賃金の労働者もいる
+<ul>
+<li>例：人気のYouTuberと、ほとんど視聴者がいないYouTuber</li>
+</ul></li>
+<li>補償賃金格差の予測では3Kの仕事は賃金が高くなるはずであるが、現実には賃金が低い仕事が多い
+<ul>
+<li>他の条件が一定でない可能性を示唆</li>
+<li>例：3Kの仕事だが、他の仕事よりも高度な人的資本を必要としない</li>
+</ul></li>
+</ul></li>
+<li><strong>企業規模間賃金格差</strong>
+<ul>
+<li>日本では、比較的企業規模間賃金格差が大きい</li>
+<li>考えられる要因
+<ul>
+<li>大企業、中小企業間での人的資本格差や、後払い賃金制度採用の格差</li>
+<li>大企業では中小企業よりも多様な仕事の機会があり、ジョブ・マッチングが容易である可能性</li>
+<li>大企業の方が、正社員を新卒採用し、企業特殊訓練を与える傾向</li>
+<li>大企業は、中小企業と比較して、財・サービス市場での価格支配力が強く、高い利潤を得られている可能性</li>
+<li>大企業への就職が競争的であることによる、個人間の能力差</li>
+</ul></li>
+</ul></li>
+<li><strong>産業間賃金格差</strong>
+<ul>
+<li>考えられる要因
+<ul>
+<li>産業間での財・サービスに対する需給格差</li>
+<li>人的資本格差や後払い賃金制度採用の格差</li>
+<li>資本装備率（労働者1人当たりの資本設備の量）の差
+<ul>
+<li>例：大きな機械がある製造業と、簡単な設備の製造業では、1人当たりの生産性の差がある可能性</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><strong>雇用形態間賃金格差</strong>
+<ul>
+<li>多くの先進国で、有期雇用や短時間雇用など、不安定な雇用や多様な働き方が広がっている</li>
+<li>考えられる要因
+<ul>
+<li>雇用形態間での就職における競争の差</li>
+<li>期待される雇用期間の差</li>
+<li>採用後の企業内訓練の差</li>
+<li>仕事内容や責任の差</li>
+</ul></li>
+<li>いったん有期雇用になると、雇用期間の定めのない雇用に移りにくいと言われている</li>
+</ul></li>
+<li><strong>男女間賃金格差</strong>
+<ul>
+<li>考えられる要因
+<ul>
+<li>人的資本格差</li>
+<li>後払い賃金制度採用の格差</li>
+<li>補償賃金格差</li>
+<li>女性差別
+<ul>
+<li>同じ学歴、同じ経験、同じ勤続年数にも関わらず、賃金が異なる場合は女性差別が疑われる</li>
+</ul></li>
+<li>出産・育児による制約を受けやすいような働き方のルールや雇用慣行があることにより、このような格差が生じている</li>
+</ul></li>
+</ul></li>
+</ol>
+</section>
+<section id="日本の賃金格差の特徴" class="level3">
+<h3 class="anchored" data-anchor-id="日本の賃金格差の特徴">日本の賃金格差の特徴</h3>
 </section>
 </section>
 </section>
@@ -1008,14 +1319,13 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
