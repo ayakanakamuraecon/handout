@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,14 +31,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -81,7 +82,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -100,64 +101,14 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="quarto-light">
+<body class="fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#転職就職" id="toc-転職就職" class="nav-link active" data-scroll-target="#転職就職">転職・就職</a>
-  <ul class="collapse">
-  <li><a href="#転職の決定と職探し" id="toc-転職の決定と職探し" class="nav-link" data-scroll-target="#転職の決定と職探し">転職の決定と職探し</a>
-  <ul class="collapse">
-  <li><a href="#ジョブサーチの理論" id="toc-ジョブサーチの理論" class="nav-link" data-scroll-target="#ジョブサーチの理論">ジョブ・サーチの理論</a></li>
-  <li><a href="#ジョブマッチングの理論" id="toc-ジョブマッチングの理論" class="nav-link" data-scroll-target="#ジョブマッチングの理論">ジョブ・マッチングの理論</a></li>
-  </ul></li>
-  <li><a href="#労働市場の流動性" id="toc-労働市場の流動性" class="nav-link" data-scroll-target="#労働市場の流動性">労働市場の流動性</a>
-  <ul class="collapse">
-  <li><a href="#労働市場の流動化と解雇規制" id="toc-労働市場の流動化と解雇規制" class="nav-link" data-scroll-target="#労働市場の流動化と解雇規制">労働市場の流動化と解雇規制</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#賃金格差" id="toc-賃金格差" class="nav-link" data-scroll-target="#賃金格差">賃金格差</a>
-  <ul class="collapse">
-  <li><a href="#賃金格差が生じる要因" id="toc-賃金格差が生じる要因" class="nav-link" data-scroll-target="#賃金格差が生じる要因">賃金格差が生じる要因</a>
-  <ul class="collapse">
-  <li><a href="#さまざまな賃金格差" id="toc-さまざまな賃金格差" class="nav-link" data-scroll-target="#さまざまな賃金格差">さまざまな賃金格差</a></li>
-  <li><a href="#賃金格差を生じさせる要因" id="toc-賃金格差を生じさせる要因" class="nav-link" data-scroll-target="#賃金格差を生じさせる要因">賃金格差を生じさせる要因</a></li>
-  <li><a href="#賃金格差をもたらす測定可能な要因に関する経済理論" id="toc-賃金格差をもたらす測定可能な要因に関する経済理論" class="nav-link" data-scroll-target="#賃金格差をもたらす測定可能な要因に関する経済理論">賃金格差をもたらす測定可能な要因に関する経済理論</a></li>
-  <li><a href="#賃金格差に関する測定不可能な要因" id="toc-賃金格差に関する測定不可能な要因" class="nav-link" data-scroll-target="#賃金格差に関する測定不可能な要因">賃金格差に関する測定不可能な要因</a></li>
-  <li><a href="#差別による賃金格差を縮小するための方法" id="toc-差別による賃金格差を縮小するための方法" class="nav-link" data-scroll-target="#差別による賃金格差を縮小するための方法">差別による賃金格差を縮小するための方法</a></li>
-  </ul></li>
-  <li><a href="#グループ間の賃金格差" id="toc-グループ間の賃金格差" class="nav-link" data-scroll-target="#グループ間の賃金格差">グループ間の賃金格差</a>
-  <ul class="collapse">
-  <li><a href="#さまざまなグループ間の賃金格差" id="toc-さまざまなグループ間の賃金格差" class="nav-link" data-scroll-target="#さまざまなグループ間の賃金格差">さまざまなグループ間の賃金格差</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#失業と不安定雇用" id="toc-失業と不安定雇用" class="nav-link" data-scroll-target="#失業と不安定雇用">失業と不安定雇用</a>
-  <ul class="collapse">
-  <li><a href="#失業のストックとフロー" id="toc-失業のストックとフロー" class="nav-link" data-scroll-target="#失業のストックとフロー">失業のストックとフロー</a>
-  <ul class="collapse">
-  <li><a href="#失業率とは" id="toc-失業率とは" class="nav-link" data-scroll-target="#失業率とは">失業率とは</a></li>
-  <li><a href="#労働力のフロー分析" id="toc-労働力のフロー分析" class="nav-link" data-scroll-target="#労働力のフロー分析">労働力のフロー分析</a></li>
-  <li><a href="#マクロ経済と失業率の関係" id="toc-マクロ経済と失業率の関係" class="nav-link" data-scroll-target="#マクロ経済と失業率の関係">マクロ経済と失業率の関係</a></li>
-  </ul></li>
-  <li><a href="#不本意な非正規雇用" id="toc-不本意な非正規雇用" class="nav-link" data-scroll-target="#不本意な非正規雇用">不本意な非正規雇用</a>
-  <ul class="collapse">
-  <li><a href="#非正規雇用の拡大" id="toc-非正規雇用の拡大" class="nav-link" data-scroll-target="#非正規雇用の拡大">非正規雇用の拡大</a></li>
-  <li><a href="#安定雇用への入口" id="toc-安定雇用への入口" class="nav-link" data-scroll-target="#安定雇用への入口">安定雇用への入口？</a></li>
-  <li><a href="#不安定な非正規労働" id="toc-不安定な非正規労働" class="nav-link" data-scroll-target="#不安定な非正規労働">不安定な非正規労働</a></li>
-  <li><a href="#非正社員の安定性を確保するための政策" id="toc-非正社員の安定性を確保するための政策" class="nav-link" data-scroll-target="#非正社員の安定性を確保するための政策">非正社員の安定性を確保するための政策</a></li>
-  </ul></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -198,7 +149,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-就職浪人をしようかどうか迷うタロウの例
+<span class="screen-reader-only">Tip</span>就職浪人をしようかどうか迷うタロウの例
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -261,7 +212,7 @@ P_{1} \approx&amp; 0.713 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-まとめ：就職活動を続けるために必要な内定確率
+<span class="screen-reader-only">Important</span>まとめ：就職活動を続けるために必要な内定確率
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -374,7 +325,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ジョブ・サーチの理論
+<span class="screen-reader-only">Note</span>ジョブ・サーチの理論
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -412,7 +363,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-オン・ザ・ジョブ・サーチ
+<span class="screen-reader-only">Note</span>オン・ザ・ジョブ・サーチ
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -447,7 +398,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ジョブ・マッチングの理論
+<span class="screen-reader-only">Note</span>ジョブ・マッチングの理論
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -499,7 +450,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-男女間の転職行動の差
+<span class="screen-reader-only">Note</span>男女間の転職行動の差
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -529,7 +480,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-年齢間の転職行動の差
+<span class="screen-reader-only">Note</span>年齢間の転職行動の差
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -559,7 +510,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-転職による賃金上昇の役割
+<span class="screen-reader-only">Note</span>転職による賃金上昇の役割
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -585,7 +536,7 @@ P_{5} \approx&amp; 0.404 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-有効求人倍率
+<span class="screen-reader-only">Note</span>有効求人倍率
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -638,23 +589,209 @@ P_{5} \approx&amp; 0.404 \\
 </section>
 <section id="賃金格差" class="level1">
 <h1>賃金格差</h1>
-<section id="賃金格差が生じる要因" class="level2">
-<h2 class="anchored" data-anchor-id="賃金格差が生じる要因">賃金格差が生じる要因</h2>
-<section id="さまざまな賃金格差" class="level3">
-<h3 class="anchored" data-anchor-id="さまざまな賃金格差">さまざまな賃金格差</h3>
-</section>
+<p>私たちは普段、アルバイトや就職活動を通じて「時給」や「初任給」の違いを目にします。しかし、日本全体で見たとき、その格差はどの程度存在し、どのような要因で生まれているのでしょうか。</p>
+<p>まずは現在観察されている事実を確認することから始めましょう。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>職種間の賃金格差
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>職種によって平均的な賃金は大きく異なります。厚生労働省の「賃金構造基本統計調査（令和6年）」のデータを見ると、職種別の所定内給与額の平均は、以下のようになっています。</p>
+<ul>
+<li>管理的職業：約57万円</li>
+<li>技術者：約37万円</li>
+<li>医師：約91万</li>
+<li>看護師：約33万</li>
+<li>学校教員：約43万</li>
+<li>事務職：約32万円</li>
+<li>販売職：約33万円</li>
+<li>サービス職：約26万円</li>
+</ul>
+<p>このように、職務内容や求められる技能が異なる職種の間では、平均賃金に明確な差が観察されます。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>男女間の賃金格差
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>日本における労働市場の大きな課題の一つが、男女間の賃金格差です。</p>
+<ul>
+<li><strong>G7（主要7カ国）で最下位</strong>: OECD（経済協力開発機構）のデータによると、日本の男女間賃金格差は加盟国の中でも大きく、G7の中では依然として最下位レベルに位置しています。</li>
+<li><strong>約7割の水準</strong>: 男性一般労働者の給与水準を100とした場合、女性一般労働者の給与水準はおおよそ70〜75程度で推移しています（所定内給与額ベース）。</li>
+</ul>
+<p>この格差は、単に「同じ仕事をしている男女の賃金が異なる」ことだけを意味するものではなく、職種・勤続年数・労働時間・役職・雇用形態などの違いが複合的に関係している可能性があります。</p>
+</div>
+</div>
 <section id="賃金格差を生じさせる要因" class="level3">
 <h3 class="anchored" data-anchor-id="賃金格差を生じさせる要因">賃金格差を生じさせる要因</h3>
+<p>このように、賃金格差はさまざまな角度から観察することができます。このような格差を生じさせる要因とは何でしょうか？</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>格差の「要因」
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>他の条件が一定であるとき</strong>に、賃金に対して<strong>因果的影響を与える原因</strong>のこと。</p>
+<p><strong>観察できる要因</strong></p>
+<ul>
+<li>需要・供給要因</li>
+<li>人的資本（教育、学歴、訓練）</li>
+<li>ジョブ・サーチ</li>
+<li>後払い賃金制度</li>
+<li>補償賃金（職場環境、付加給付）</li>
+</ul>
+<p><strong>観察できない要因</strong></p>
+<ul>
+<li>意欲・やる気</li>
+<li>能力</li>
+<li>差別
+<ul>
+<li>偏見・嗜好による差別</li>
+<li>統計的差別</li>
+<li>アンコンシャス・バイアス（無意識の差別）</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p>賃金格差はさまざまなグループ間で観察されます。</p>
+<p>学歴間、経験年数・勤続年数間、職種間、企業規模間、産業間、雇用形態間、男女間などです。</p>
+<p>しかし、例えば職種間で賃金格差が観察されたとしても、「職種」自体が格差の要因ではありません。「職種」そのものが賃金に因果的影響を与えているわけではないからです。職種間の賃金格差が生じるのは、職種に対する需要と供給のバランス、職種が要求する人的資本、職種の職場環境などの賃金格差要因が、職種間で異なるのが主な理由だと考えられています。</p>
+<section id="賃金格差をもたらす測定可能な要因に関する経済理論" class="level4">
+<h4 class="anchored" data-anchor-id="賃金格差をもたらす測定可能な要因に関する経済理論">賃金格差をもたらす測定可能な要因に関する経済理論</h4>
+<p>ここでは、まず賃金格差の測定可能な要因を見ていきます。</p>
+<ol type="1">
+<li>需要・供給要因
+<ul>
+<li>労働市場のモデルより、労働需要が増えると賃金は高くなる、あるいは労働供給が増えると賃金は低くなる
+<ul>
+<li>ある仕事の需要が増えると、その仕事の賃金は高くなる</li>
+<li>ある世代の労働者の数が多いと、その世代の労働者の賃金は他の世代の労働者の賃金と比較して低くなる</li>
+<li><strong>産業間、職種間、世代間などの格差</strong>として現れる</li>
+</ul></li>
+<li>賃金格差があることによって、他の産業から需要が高い産業へ労働者が移動する（そして、それは賃金格差が消滅するまで続く）ため、賃金格差は労働サービスという希少資源を効率的に配分する機能があると言える</li>
+</ul></li>
+<li>教育・学歴
+<ul>
+<li>教育や学歴は、生産性の高い仕事に就く可能性を高める</li>
+<li>企業は、より高い成果が期待できる（より多くの人的資本を蓄積した）労働者に対して高い賃金を支払う傾向がある</li>
+<li><strong>学歴・教育年数間の格差</strong>として現れる</li>
+</ul></li>
+<li>訓練
+<ul>
+<li>企業内訓練や職業訓練を通じて技能を身につけた労働者は、生産性が高まる</li>
+<li>訓練機会の多い職種や働き方ほど、賃金が高くなりやすい</li>
+<li><strong>雇用形態間、経験年数・勤続年数間の格差</strong>として現れる</li>
+</ul></li>
+<li>ジョブ・サーチ
+<ul>
+<li>転職や就職の際に、より良い条件の仕事を探すには時間や情報が必要となる</li>
+<li>ジョブ・サーチにはコスト（収入の不安定さ、時間や労力）がかかる
+<ul>
+<li>早く収入を得る必要がある、転職回数が評価を下げやすい、情報が限られている、といった労働者は、条件の良くない仕事でも受け入れる必要がある</li>
+<li>収入がなくても生活に余裕がある、転職が不利になりにくい立場にある、情報収集や交渉が得意、といった労働者は、時間をかけてでも良い条件の仕事を探すことができる</li>
+</ul></li>
+<li><strong>能力（生産性）とは無関係な格差</strong>として現れる</li>
+</ul></li>
+<li>後払い賃金制度
+<ul>
+<li>従業員の長期定着や努力を引き出すため、若年期は生産性よりも低く、中高年期は生産性よりも高く賃金を支払う</li>
+<li><strong>勤続年数、年齢間の賃金格差</strong>として現れる</li>
+</ul></li>
+<li>補償賃金
+<ul>
+<li>人に好まれにくい仕事で働く人を集めるために、他の仕事よりも高い賃金を支払うことによる賃金格差（<strong>補償賃金格差</strong>）
+<ul>
+<li>3K（きつい、危険、汚い）、責任が重い、不安定な雇用など</li>
+</ul></li>
+<li><strong>職種間の賃金格差</strong>として現れる</li>
+</ul></li>
+</ol>
 </section>
-<section id="賃金格差をもたらす測定可能な要因に関する経済理論" class="level3">
-<h3 class="anchored" data-anchor-id="賃金格差をもたらす測定可能な要因に関する経済理論">賃金格差をもたらす測定可能な要因に関する経済理論</h3>
+<section id="賃金格差に関する測定不可能な要因" class="level4">
+<h4 class="anchored" data-anchor-id="賃金格差に関する測定不可能な要因">賃金格差に関する測定不可能な要因</h4>
+<p>賃金は、資源配分（労働サービスの配分）が効率的に行われるための重要な指標であることが分かりました。一方で、学歴や経験など測定できる要因によらない賃金格差も存在します。</p>
+<ol type="1">
+<li><strong>偏見・嗜好による差別</strong>
+<ul>
+<li><strong>雇用主・労働者・顧客</strong>の偏見・嗜好によって生じる
+<ul>
+<li>古くは Becker (1957)<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> の偏見・嗜好による人種差別がもたらす賃金格差の理論</li>
+<li>賃金決定の際に、生産性に貢献する観測可能な要因が同一である労働者を、性別、年齢、出身地、人種、信仰、外見、性的嗜好などにより異なる扱いをすることは非合理的</li>
+</ul></li>
+<li>雇用主の差別：（例）女性よりも男性を好む
+<ul>
+<li>女性の賃金が男性よりも十分低くないと女性を雇わない</li>
+<li>雇用主は女性を雇う際に心理的費用を払っていると考えられる</li>
+</ul></li>
+<li>労働者の差別：（例）自分とは別の特定グループの労働者とともに働くことを嫌う
+<ul>
+<li>雇用主はどちらかのグループの労働者のみを雇うことが最適</li>
+<li>グループ別の職場が生じるが、グループ間の賃金格差は生じない</li>
+</ul></li>
+<li>顧客の差別：（例）女性労働者が担当者であることを嫌う
+<ul>
+<li>雇用主は女性の賃金が男性よりも十分低くないと女性を雇わない</li>
+</ul></li>
+</ul></li>
+</ol>
+<ol start="2" type="1">
+<li><strong>統計的差別</strong></li>
+</ol>
+<ul>
+<li>労働者の個々の属性に関して企業と労働者の間で情報の非対称性があり、個々の労働者の属性を判断する費用が高いときに、企業が労働者の属するグループの平均的属性に従って個々の労働者を扱うこと</li>
+<li>（例）企業は長期勤続をしてくれる労働者を雇いたいが、長期勤続の意思が強い労働者とそうでない労働者を見極めるのが難しい
+<ul>
+<li>男性全体よりも女性全体の平均離職率が高い</li>
+</ul>
+<span class="math inline">\(\rightarrow\)</span> 女性の雇用を控える、女性に企業特殊訓練を与えない</li>
+<li>（例）企業は個々の労働者の能力を見極めることが困難
+<ul>
+<li>偏差値が高い大学を卒業した労働者の方が偏差値が低い大学を卒業した労働者よりも能力が高いと予測</li>
+</ul>
+<span class="math inline">\(\rightarrow\)</span> 偏差値の低い大学を卒業した労働者を採用しない</li>
+<li><strong>個々の労働者の属性を判断するコストが低いときには企業にとっても非合理的</strong></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>アンコンシャス・バイアス</strong></li>
+</ol>
+<ul>
+<li>無意識に差別的な行動をしていること
+<ul>
+<li>心理学の成果を取り入れ</li>
+<li>時間をかければ公正な判断ができるが、時間の制約があるなかで仕事に追われ、短時間で判断を下す場合には、意識的に判断する場合の脳領域と異なる領域で、無意識に判断してしまう
+<ul>
+<li>当人の持っている暗黙の価値規範に影響を受け、暗黙の差別が生じる</li>
+</ul></li>
+</ul></li>
+<li>（例）育児休業から復帰した女性に対して、当人への相談なしに、上司が無意識に本人の職位と乖離した簡単な仕事を与える
+<ul>
+<li>母親は育児に専念するべきだというアンコンシャス・バイアス</li>
+</ul></li>
+</ul>
 </section>
-<section id="賃金格差に関する測定不可能な要因" class="level3">
-<h3 class="anchored" data-anchor-id="賃金格差に関する測定不可能な要因">賃金格差に関する測定不可能な要因</h3>
 </section>
-<section id="差別による賃金格差を縮小するための方法" class="level3">
-<h3 class="anchored" data-anchor-id="差別による賃金格差を縮小するための方法">差別による賃金格差を縮小するための方法</h3>
-</section>
+<section id="差別による賃金格差を縮小するための法律" class="level3">
+<h3 class="anchored" data-anchor-id="差別による賃金格差を縮小するための法律">差別による賃金格差を縮小するための法律</h3>
+<ol type="1">
+<li>男女雇用機会均等法</li>
+<li>同一労働同一賃金</li>
+<li>ポジティブ・アクション（<strong>アファーマティブ・アクション</strong>）</li>
+</ol>
 </section>
 <section id="グループ間の賃金格差" class="level2">
 <h2 class="anchored" data-anchor-id="グループ間の賃金格差">グループ間の賃金格差</h2>
@@ -817,6 +954,7 @@ function showAnswer(id) {
 <li id="fn9"><p>Topel, Robert H., and Michael P. Ward. “Job mobility and the careers of young men.” <em>The Quarterly Journal of Economics</em> 107, no. 2 (1992): 439-479.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn10"><p>Bureau of Labor Statistics, <em>Employee Tenure Summary</em>, 2024<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn11"><p>しかし、「解雇の金銭補償ルール」のような正規労働者の流動性を高める政策は、いまだに議論が続いています。<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>Becker, Gary Stanley. The economics of discrimination: an economic view of racial discrimination. University of Chicago, 1957.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -870,13 +1008,14 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
