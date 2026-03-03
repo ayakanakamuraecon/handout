@@ -116,7 +116,7 @@ window.Quarto = {
 
 <section id="記述統計" class="level1">
 <h1>記述統計</h1>
-<p>最終更新日：2025年4月7日</p>
+<p>最終更新日：2026年3月3日</p>
 <p>この章では、生のデータを加工し、情報を集約することで、データの特徴を分かりやすく表現する方法を学んでいきます。</p>
 <p>このように、手元のデータの特徴や傾向を明らかにすることを<strong>記述統計</strong>といいます。</p>
 <p>具体的には、<strong>表やグラフを作成</strong>したり、<strong>統計量を計算</strong>します。</p>
@@ -220,7 +220,7 @@ window.Quarto = {
 <h6 class="anchored" data-anchor-id="countifs関数"><code>COUNTIFS</code>関数</h6>
 <p>複数の範囲のセルに条件を適用して、すべての条件が満たされた回数をカウントする関数です。</p>
 <p><code>COUNTIFS(検索条件範囲1, "条件1", [検索条件範囲2, "条件2"], ...)</code></p>
-<p>（例）200以上300未満の観測値の個数：<code>= COUNTIFS($A:$A:, "&gt;=200", $A:$A:, "&lt;300")</code></p>
+<p>（例）200以上300未満の観測値の個数：<code>= COUNTIFS($A:$A, "&gt;=200", $A:$A, "&lt;300")</code></p>
 <p><img src="images/dataintro_freqtab_freq.png" class="img-fluid"></p>
 <ul>
 <li><p>検索条件範囲は、普通に選択しただけだと、他のセルに関数をコピペしたときに、参照元のセルとコピペ先の位置関係に応じてデータの範囲も移動してしまいます。同じ関数を何回か使う必要があり、その際にデータの範囲を固定したいときは、列と行の英数字の前に<code>$</code>を付けると便利です。</p>
@@ -422,7 +422,7 @@ window.Quarto = {
 <p>逆に言えば、装飾が多いグラフは、データの特性を覆い隠しているケースもあります。グラフを解釈するときには、そのグラフが何を伝えたいグラフなのかを考えながら解釈するのが良いでしょう。</p>
 <section id="折れ線グラフ" class="level4">
 <h4 class="anchored" data-anchor-id="折れ線グラフ">折れ線グラフ</h4>
-<p>数的データの<strong>時間的な変化</strong>を示す際に用いられるグラフです。</p>
+<p>量的データの<strong>時間的な変化</strong>を示す際に用いられるグラフです。</p>
 <p>以下のグラフは、学食の売り上げデータから作成した、時間当たりの売り上げです。</p>
 <p><img src="images/dataintro_line.png" class="img-fluid"></p>
 <p>他にも、例えば年別の人口推移、月別の飛行機のチケット代の推移、年別の米の価格の推移など、時系列データの表示に適しています。</p>
@@ -518,7 +518,7 @@ window.Quarto = {
 <p><strong>特徴</strong></p>
 <ul>
 <li>データは平均の周辺に分布する</li>
-<li>多く現れる値に影響を受ける</li>
+<li>すべての観測値を均等に反映する</li>
 <li>極端な値（外れ値）に<strong>大きく影響を受ける</strong></li>
 </ul>
 </section>
@@ -548,11 +548,34 @@ window.Quarto = {
 <p>平均を計算することで、データの中心（重心）を知ることができました。学食の売り上げデータでは、1回あたりの購入金額は、428.57円のようです。</p>
 <p>次に、同じく売上金額データを用いて中央値を計算しましょう。Excelでは<code>MEDIAN</code>関数を使います。関数名は異なりますが、使い方は<code>AVERAGE</code>関数と同じです。</p>
 </section>
+<section id="ダミー変数の平均" class="level5">
+<h5 class="anchored" data-anchor-id="ダミー変数の平均">ダミー変数の平均</h5>
+<p>ダミー変数は<span class="math inline">\(0\)</span>か<span class="math inline">\(1\)</span>の値しかとらないため、平均の計算式を考えると、<span class="math inline">\(1\)</span>をとる観測値の個数をサンプルサイズで割ったものに等しくなります。つまり、ダミー変数の平均は、<strong>そのダミー変数が1をとる観測値の割合</strong>を表します。</p>
+<p>例えば、性別ダミー変数（男性<span class="math inline">\(=0\)</span>, 女性<span class="math inline">\(=1\)</span>）の平均が<span class="math inline">\(0.6\)</span>であれば、回答者の60%が女性であることを意味します。</p>
+<p>ダミー変数の平均を計算するためには、まず売上データの<code>gender</code>変数（<code>male/female</code>）をダミー変数に変換する必要があります。Excelでは、<code>IF</code>関数を使うのが一般的です。</p>
+<section id="if関数" class="level6">
+<h6 class="anchored" data-anchor-id="if関数"><code>IF</code>関数</h6>
+<p><code>IF</code>関数は、「もし〇〇ならA、そうでなければB」という条件分岐を行う関数です。</p>
+<p><code>IF(条件, 真の場合の値, 偽の場合の値)</code></p>
+<p>（例）<code>gender</code>変数が<code>male</code>のときに<span class="math inline">\(1\)</span>、そうでないときに<span class="math inline">\(0\)</span>をとるダミー変数（<code>male</code>変数）：<code>=IF(B1="male", 1, 0)</code></p>
+<p><img src="images/dataintro_dummy.png" class="img-fluid"></p>
+<p><strong>注意点</strong></p>
+<ul>
+<li><code>IF</code>関数の条件の部分は、文字列を比較する場合はダブルクォーテーションで囲む必要があります。</li>
+<li>結果を数値で出力したい場合は、ダブルクォーテーションで囲まないようにしましょう。</li>
+</ul>
+<p>ダミー変数が作成できたら、<code>AVERAGE</code>関数を使って平均を計算することができます。</p>
+<p><img src="images/dataintro_propmale.png" class="img-fluid"></p>
+<p><code>IF</code>関数を使えるようになると、例えば、売上金額が500円以上のときに<span class="math inline">\(1\)</span>、そうでないときに<span class="math inline">\(0\)</span>をとるダミー変数（<code>high_sales</code>変数）を作成することもできます。</p>
+<p><code>=IF(C1&gt;=500, 1, 0)</code></p>
+<p><img src="images/dataintro_prophigh.png" class="img-fluid"></p>
+</section>
 <section id="median関数" class="level6">
 <h6 class="anchored" data-anchor-id="median関数"><code>MEDIAN</code>関数</h6>
 <p><code>MEDIAN(データの範囲)</code></p>
 <p>（例）<code>sales</code>変数の中央値：<code>=MEDIAN(A:A)</code></p>
 <p><img src="images/dataintro_med.png" class="img-fluid"></p>
+</section>
 </section>
 </section>
 <section id="度数分布表から平均を求める" class="level3">
@@ -605,7 +628,7 @@ window.Quarto = {
 <p><code>STDEV.P(データの範囲)</code></p>
 <p>（例）<code>sales</code>変数の分散：<code>=STDEV.P(A:A)</code></p>
 <p><img src="images/dataintro_std.png" class="img-fluid"></p>
-<p>分散と標準偏差を求めることで、データのばらつきを知ることができました。学食の売り上げデータでは、購入金額は平均で52.7円、平均から離れているようです。</p>
+<p>分散と標準偏差を求めることで、データのばらつきを知ることができました。学食の売り上げデータでは、標準偏差が52.7円、すなわち購入金額は平均から平均的に約52.7円のばらつきがあるようです。</p>
 </section>
 <section id="p関数と.s関数" class="level5">
 <h5 class="anchored" data-anchor-id="p関数と.s関数"><code>.P</code>関数と<code>.S</code>関数</h5>
@@ -667,7 +690,7 @@ s^2 = \frac{1}{n-1}\{(x_{1} - \bar{x})^2 + \cdots + (x_{n} - \bar{x})^2\} = \fra
 <section id="excelで共分散を計算する" class="level4">
 <h4 class="anchored" data-anchor-id="excelで共分散を計算する">Excelで共分散を計算する</h4>
 <p>学食データの売上金額と時間変数の共分散を計算してみましょう。Excelでは<code>COVARIANCE.P</code>関数を使います。</p>
-<p>※<code>COVARIANCE.P</code>関数と<code>COVARIANCE.S</code>関数の違いは、<a href="#%60.P%60関数と%60.S%60関数"><code>.P</code>関数と<code>.S</code>関数</a>を参照してください。</p>
+<p>※<code>COVARIANCE.P</code>関数と<code>COVARIANCE.S</code>関数の違いは、<a href="#%60.P%60関数と%60.S%60関数"><code>.P</code>関数と<code>.S</code>関数</a>を参照してください。ここでは、手元のデータの共分散を知りたいので、<code>COVARIANCE.P</code>関数を使います。</p>
 <section id="covariance.p関数" class="level6">
 <h6 class="anchored" data-anchor-id="covariance.p関数"><code>COVARIANCE.P</code>関数</h6>
 <p><code>COVARIANCE.P(データの範囲1, データの範囲2)</code></p>
@@ -703,7 +726,7 @@ s^2 = \frac{1}{n-1}\{(x_{1} - \bar{x})^2 + \cdots + (x_{n} - \bar{x})^2\} = \fra
 <li><strong><span class="math inline">\(1\)</span> に近いほど強い正の相関</strong>、 <strong><span class="math inline">\(-1\)</span> に近いほど強い負の相関</strong>を示す
 <ul>
 <li>慣例的に、 <span class="math inline">\(0.4 \sim 0.7\)</span> でやや強い正の相関、<span class="math inline">\(0.7\)</span> 以上で強い正の相関があるということが多い</li>
-<li>反対に、<span class="math inline">\(-0.7 \sim -0.4\)</span> でやや強い負の相関、<span class="math inline">\(-0.7\)</span> 以下で強い正の相関があるという</li>
+<li>反対に、<span class="math inline">\(-0.7 \sim -0.4\)</span> でやや強い負の相関、<span class="math inline">\(-0.7\)</span> 以下で強い負の相関があるという</li>
 </ul></li>
 <li>無相関のときは相関係数は <span class="math inline">\(0\)</span></li>
 </ul></li>
