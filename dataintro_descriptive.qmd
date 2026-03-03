@@ -8,15 +8,15 @@
 
 具体的には、**表やグラフを作成**したり、**統計量を計算**します。
 
-データは、[はじめに](dataintro_intro.html)で説明している[**学食の売り上げデータ**](https://github.com/ayakanakamuraecon/handout/blob/main/docs/data/sales.csv)を使っていきます。それぞれの変数が何を表しているのかなどは、そちらを参照してください。
+データは、[はじめに](images/dataintro_intro.html)で説明している[**学食の売り上げデータ**](https://github.com/ayakanakamuraecon/handout/blob/main/docs/data/sales.csv)を使っていきます。それぞれの変数が何を表しているのかなどは、そちらを参照してください。
 
 ファイルを開くと分かるように、生のデータは数字の羅列にすぎません。
 
-![](fig_dataintro_ok.png)
+![](images/dataintro_ok.png)
 
 以下では、具体的にどのように加工すると分かりやすくなるのかを学んでいきます。
 
-ちなみに、こちらも[はじめに](dataintro_intro.html)で説明しているように、生のデータファイルをそのまま操作することは避けましょう。ダウンロードしたファイルはコピーを作成し、生のデータと操作用データを別々に管理するか、新しく操作用データを作成して、ブックリンクでデータを参照するようにしましょう。
+ちなみに、こちらも[はじめに](images/dataintro_intro.html)で説明しているように、生のデータファイルをそのまま操作することは避けましょう。ダウンロードしたファイルはコピーを作成し、生のデータと操作用データを別々に管理するか、新しく操作用データを作成して、ブックリンクでデータを参照するようにしましょう。
 
 # 表とグラフ
 <details>
@@ -80,7 +80,7 @@ Excelで度数分布表を作成するときは、度数、相対度数、累積
 
 （例）200以上300未満の観測値の個数：`= COUNTIFS($A:$A:, ">=200", $A:$A:, "<300")`
 
-![](fig_dataintro_freqtab_freq.png)
+![](images/dataintro_freqtab_freq.png)
 
 - 検索条件範囲は、普通に選択しただけだと、他のセルに関数をコピペしたときに、参照元のセルとコピペ先の位置関係に応じてデータの範囲も移動してしまいます。同じ関数を何回か使う必要があり、その際にデータの範囲を固定したいときは、列と行の英数字の前に`$`を付けると便利です。
     - 列と行を固定したいとき：`$A$1:$B$20`
@@ -107,13 +107,13 @@ Excelで度数分布表を作成するときは、度数、相対度数、累積
 `SUM(データの範囲)` 
 （例）度数の合計：`=SUM(G2:G5)`
 
-![](fig_dataintro_freqtab_total.png)
+![](images/dataintro_freqtab_total.png)
 
 ##### 相対度数
 
 すでに計算した度数セルと度数の合計セルを使い、 $\frac{度数}{サンプルサイズ}$を計算する
 
-![](fig_dataintro_freqtab_ratio.png)
+![](images/dataintro_freqtab_ratio.png)
 
 ##### 累積相対度数
 それまでの累積相対度数とその階級の相対度数を足す
@@ -122,11 +122,11 @@ Excelで度数分布表を作成するときは、度数、相対度数、累積
 - 200以上300未満の階級の累積相対度数：`=H2`
 - 300以上400未満の階級の累積相対度数：`=I2 + H3`
 
-![](fig_dataintro_freqtab_crf.png)
+![](images/dataintro_freqtab_crf.png)
 
 すべての階級についてそれぞれの値を計算することで、度数分布表を作成できます。
 
-![](fig_dataintro_freqtab_all.png)
+![](images/dataintro_freqtab_all.png)
 
 
 これで、売上金額の分布を把握することができました。
@@ -141,9 +141,9 @@ Excelで度数分布表を作成するときは、度数、相対度数、累積
 
 階級値を横軸に、度数を縦軸にとったグラフを**ヒストグラム**といいます。
 
-![度数分布表](fig_dataintro_freqtab_all.png)
+![度数分布表](images/dataintro_freqtab_all.png)
 
-![ヒストグラム](fig_dataintro_hist.png)
+![ヒストグラム](images/dataintro_hist.png)
 
 どちらにも階級値と度数の情報は含まれますが、ヒストグラムの方がより視覚的にデータの特徴をつかめることが分かると思います。
 
@@ -162,15 +162,15 @@ Excelでは、生のデータから直接ヒストグラムを作ることがで
 1. データを選択した状態で「挿入」→「グラフ」→「ヒストグラム」を選択する
 2. バー（ビンと呼ぶ）の幅を変えたいときは、グラフを右クリックし、「グラフエリアの書式設定」→「軸のオプション（横 項目軸）」→ヒストグラムアイコンをクリック→「ビンの幅」を適切な幅に変更する
 
-![手順1](fig_dataintro_hist_gen.png)
+![手順1](images/dataintro_hist_gen.png)
 
-![手順2](fig_dataintro_hist_bin.png)
+![手順2](images/dataintro_hist_bin.png)
 
 #### ヒストグラムと棒グラフ
 
 ヒストグラムとよく似たグラフに、**棒グラフ**があります。
 
-![](fig_dataintro_bar.png)
+![](images/dataintro_bar.png)
 
 どちらを使っても同じかと思われがちですが、実はこの2つはさまざまな点で異なります。
 
@@ -189,7 +189,7 @@ Excelでは、生のデータから直接ヒストグラムを作ることがで
 
 ヒストグラムと並んで使いこなせるようになってほしいグラフが**箱ひげ図**です。
 
-![](fig_dataintro_box.png)
+![](images/dataintro_box.png)
 
 四角い箱とその両端から生えているひげから構成されているグラフで、データのばらつきを示すのに用いられます。
 
@@ -203,7 +203,7 @@ Excelでは、生のデータから直接ヒストグラムを作ることがで
 
 で表されています（下図参照）。
 
-![](fig_dataintro_boxex.png)
+![](images/dataintro_boxex.png)
 
 中央値については[中央値](#中央値)セクションも参照してください。
 
@@ -214,7 +214,7 @@ Excelでは、生のデータから直接ヒストグラムを作ることがで
 
 [Excelでヒストグラムを作る](#excelでヒストグラムを作る)の手順1で、ヒストグラムの代わりに箱ひげ図を選択すれば、簡単に箱ひげ図を作成できます。
 
-![](fig_dataintro_box_gen.png)
+![](images/dataintro_box_gen.png)
 
 ### その他の代表的なグラフ
 
@@ -230,7 +230,7 @@ Excelでは、生のデータから直接ヒストグラムを作ることがで
 
 以下のグラフは、学食の売り上げデータから作成した、時間当たりの売り上げです。
 
-![](fig_dataintro_line.png)
+![](images/dataintro_line.png)
 
 他にも、例えば年別の人口推移、月別の飛行機のチケット代の推移、年別の米の価格の推移など、時系列データの表示に適しています。
 
@@ -250,9 +250,9 @@ Excelでは、生のデータから直接ヒストグラムを作ることがで
 
 以下のグラフは、学食の売り上げデータから作成した、購入品の内訳です。
 
-![円グラフ](fig_dataintro_pie.png)
+![円グラフ](images/dataintro_pie.png)
 
-![帯グラフ](fig_dataintro_stack.png)
+![帯グラフ](images/dataintro_stack.png)
 
 他にも、国籍別外国人の割合、血液型、男女比などのデータを表示する際に適しています。
 
@@ -267,9 +267,9 @@ Excelでは、生のデータから直接ヒストグラムを作ることがで
 
 [Excelでヒストグラムを作る](#excelでヒストグラムを作る)の手順1で、ヒストグラムの代わりに作りたいグラフを選択することで、さまざまなグラフを作ることができます。
 
-![折れ線グラフ](fig_dataintro_line_gen.png)
+![折れ線グラフ](images/dataintro_line_gen.png)
 
-![円グラフ](fig_dataintro_pie_gen.png)
+![円グラフ](images/dataintro_pie_gen.png)
 
 </details>
 
@@ -352,7 +352,7 @@ $$
 
 （例）`sales`変数の平均：`=AVERAGE(A:A)` 
 
-![](fig_dataintro_mean.png)
+![](images/dataintro_mean.png)
 
 平均を計算することで、データの中心（重心）を知ることができました。学食の売り上げデータでは、1回あたりの購入金額は、428.57円のようです。
 
@@ -364,7 +364,7 @@ $$
 
 （例）`sales`変数の中央値：`=MEDIAN(A:A)` 
 
-![](fig_dataintro_med.png)
+![](images/dataintro_med.png)
 
 ### 度数分布表から平均を求める
 
@@ -386,7 +386,7 @@ Excelでは、`SUMPRODUCT`関数を使います。
 
 （例）`sales`変数の度数分布表から平均を求める：`=SUMPRODUCT(F2:F5, H2:H5)` 
 
-![](fig_dataintro_tabmean.png)
+![](images/dataintro_tabmean.png)
 
 今回は階級値と相対度数の2つの配列を使っていますが、より多くの配列を指定することもできます。
 
@@ -429,7 +429,7 @@ $$
 
 （例）`sales`変数の分散：`=VAR.P(A:A)` 
 
-![](fig_dataintro_var.png)
+![](images/dataintro_var.png)
 
 ###### `STDEV.P`関数
 
@@ -437,7 +437,7 @@ $$
 
 （例）`sales`変数の分散：`=STDEV.P(A:A)` 
 
-![](fig_dataintro_std.png)
+![](images/dataintro_std.png)
 
 分散と標準偏差を求めることで、データのばらつきを知ることができました。学食の売り上げデータでは、購入金額は平均で52.7円、平均から離れているようです。
 
@@ -475,7 +475,7 @@ $$
 
 例えば、学食の売上を上げていくためには、売上金額が時間や気温など、ほかのどのような変数と連動しているかを知ることも大事でしょう。
 
-![](fig_dataintro_datesales.png)
+![](images/dataintro_datesales.png)
 
 上図は、売上金額と購入日のデータを並べたものですが、生のデータを一見しただけでは、両者にどのような関係があるのか（あるいはないのか）を読み取ることは難しいと思います。
 
@@ -489,7 +489,7 @@ $$
 
 具体的に、売上金額と日付の関係を考えてみましょう。日付を横軸、売上金額を縦軸にとったとき、手元にある購入ID $i$ のデータは $(日付, 売上金額) = (x_{i}, y_{i})$ と表すことができます。この $(x_{i}, y_{i})$ を座標とする点を平面上に表したものが散布図です。
 
-![](fig_dataintro_dot.png)
+![](images/dataintro_dot.png)
 
 2つの変数が連動して動くことを**相関**と呼びます。
 
@@ -500,7 +500,7 @@ $$
 
 [Excelでヒストグラムを作る](#excelでヒストグラムを作る)の手順1で、相関を見たい2変数のデータ範囲を選択し、散布図を選択することで、簡単に散布図を作ることができます。
 
-![](fig_dataintro_dot_gen.png)
+![](images/dataintro_dot_gen.png)
 
 
 ### 共分散
@@ -531,7 +531,7 @@ $$
 
 （例）`sales`変数と`date`変数の共分散：`=COVARIANCE.P(A:A, B:B)` 
 
-![](fig_dataintro_cov.png)
+![](images/dataintro_cov.png)
 
 共分散を計算することで、2変数の相関の強さを知ることができました。売上金額と時間の共分散は$-64.14$、つまり、時間と売上の間には負の相関があるようです。
 
@@ -580,7 +580,7 @@ $$
 
 （例）`sales`変数と`date`変数の相関係数：`=CORREL(A:A, B:B)` 
 
-![](fig_dataintro_cor.png)
+![](images/dataintro_cor.png)
 
 売上金額と日付の相関係数は$-0.26$、つまり、日付と売上の間には弱い負の相関があるようです。
 
@@ -594,7 +594,7 @@ $$
 
 散布図に立ち返ってみましょう。
 
-![](fig_dataintro_dot.png)
+![](images/dataintro_dot.png)
 
 散布図は、**2変数が連動して動いている**ことを示しているように見えます。
 
@@ -617,3 +617,5 @@ $$
 次の章では、手元のデータを使って何かを予測したり、効果検証を行ったりするための、考え方や手法を学んでいきます。
 
 [講義資料に戻る](index.html)
+
+{{< include quiz.html >}}
