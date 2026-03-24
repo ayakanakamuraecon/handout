@@ -244,9 +244,9 @@ window.Quarto = {
 <li>変数名はアルファベットで定義されている</li>
 </ul>
 </blockquote>
-<p>「整然データ」の基本は、<strong>1番上の行に変数名、1番左の列にID、それぞれがクロスするセルにデータ（情報）</strong>です。それぞれのデータは表記ゆれがないようにクリーニングしておきましょう。日本語は全角で、英数字は半角で入力されている状態が基本です。</p>
+<p>「整然データ」の基本は、<strong>1番上の行に変数名、1番左の列にID、それぞれがクロスするセルにデータ（情報）</strong>です。それぞれのデータは表記ゆれがないようにクリーニングしておきましょう。<strong>日本語は全角</strong>で、<strong>英数字は半角</strong>で入力されている状態が基本です。</p>
 <p><strong>データ（情報）は、できるだけ数字で表されている状態が望ましい</strong>です。数字の方が統計量を計算したり、仮説検定や回帰分析を行ったりするときに扱いやすいからです。</p>
-<p>カテゴリーデータを扱う場合も、<strong>できるだけ数字に変換</strong>しておきましょう。例えば、性別変数は通常「男性／女性」と日本語で表される場合が多いですが、男性を<span class="math inline">\(0\)</span>、女性を<span class="math inline">\(1\)</span>に対応させることで、「<span class="math inline">\(0\)</span>／<span class="math inline">\(1\)</span>」に変換することができます。</p>
+<p>カテゴリデータを扱う場合も、<strong>できるだけ数字に変換</strong>しておきましょう。例えば、性別変数は通常「男性／女性」と日本語で表される場合が多いですが、男性を<span class="math inline">\(0\)</span>、女性を<span class="math inline">\(1\)</span>に対応させることで、「<span class="math inline">\(0\)</span>／<span class="math inline">\(1\)</span>」に変換することができます。</p>
 <p>このように、カテゴリを「<span class="math inline">\(0\)</span>／<span class="math inline">\(1\)</span>」で表した変数を、<strong>ダミー変数</strong>と呼びます。ダミー変数は、統計分析の際に扱いやすい形式でデータを表すための工夫の1つです。</p>
 <p>変数名は、できればアルファベットで定義されている状態が理想です。これは、Excelを使っている限りにおいてはさほど問題にならないかもしれませんが、他の統計ソフトを使う際に支障となる場合があります。</p>
 <p>余談ですが、同様の理由でファイル名も日本語を使わずアルファベット表記にする方が望ましいです。</p>
@@ -257,7 +257,7 @@ window.Quarto = {
 <p>今後扱うデータは、<strong>学食の売り上げデータ</strong>を想定して作成したデータです。</p>
 <p>みなさんは、このデータを使って<strong>「学食の売上向上プロジェクト」</strong>を進めていきます。このようなシチュエーションにおけるデータ活用方法を学びながら、基礎的な統計分析の手法を身につけましょう。</p>
 <p>データは以下のリンクからダウンロードしてください。</p>
-<p><a href="https://github.com/ayakanakamuraecon/handout/blob/main/docs/data/sales.csv">学食売上データをダウンロード</a></p>
+<p><a href="https://github.com/ayakanakamuraecon/handout/blob/main/sales.csv">学食売上データをダウンロード</a></p>
 <p>ダウンロードしたファイルをExcelで開くと、以下のような画面が見れると思います。</p>
 <p><img src="images/dataintro_ok.png" class="img-fluid"></p>
 <p>このデータは「整然データ」になっているので、1番上の行に変数名、1番左の列（A列）にIDが入っています。</p>
@@ -267,7 +267,7 @@ window.Quarto = {
 <tr class="header">
 <th><strong>変数名</strong></th>
 <th><strong>説明</strong></th>
-<th><strong>値の範囲</strong></th>
+<th><strong>値の範囲、カテゴリ</strong></th>
 </tr>
 </thead>
 <tbody>
@@ -279,17 +279,17 @@ window.Quarto = {
 <tr class="even">
 <td>date</td>
 <td>日付</td>
-<td>2025/4/1~2025/4/17</td>
+<td>2026/4/1~2026/4/17</td>
 </tr>
 <tr class="odd">
 <td>day_week</td>
 <td>曜日</td>
-<td>日、月、火、水、木、金、土</td>
+<td>Sun, Mon, Tue, Wed, Thu, Fri, Sat</td>
 </tr>
 <tr class="even">
 <td>gender</td>
 <td>性別</td>
-<td>男、女</td>
+<td>male, female</td>
 </tr>
 <tr class="odd">
 <td>age</td>
@@ -299,12 +299,12 @@ window.Quarto = {
 <tr class="even">
 <td>position</td>
 <td>職位</td>
-<td>学生、職員</td>
+<td>student, staff</td>
 </tr>
 <tr class="odd">
 <td>item</td>
 <td>商品名</td>
-<td>麺、丼、定食</td>
+<td>noodle, rice, set</td>
 </tr>
 <tr class="even">
 <td>sales</td>
