@@ -125,7 +125,7 @@ window.Quarto = {
 <p>ファイルを開くと分かるように、生のデータは数字の羅列にすぎません。</p>
 <p><img src="images/dataintro_ok.png" class="img-fluid"></p>
 <p>以下では、具体的にどのように加工すると分かりやすくなるのかを学んでいきます。</p>
-<p>ちなみに、こちらも<a href="images/dataintro_intro.html">はじめに</a>で説明しているように、生のデータファイルをそのまま操作することは避けましょう。ダウンロードしたファイルはコピーを作成し、生のデータと操作用データを別々に管理するか、新しく操作用データを作成して、ブックリンクでデータを参照するようにしましょう。</p>
+<p>ちなみに、こちらも<a href="dataintro_intro.html">はじめに</a>で説明しているように、生のデータファイルをそのまま操作することは避けましょう。ダウンロードしたファイルはコピーを作成し、生のデータと操作用ファイルを別々に管理するか、新しく操作用ファイルを作成して、ブックリンクでデータを参照するようにしましょう。</p>
 </section>
 <section id="表とグラフ" class="level1">
 <h1>表とグラフ</h1>
@@ -257,7 +257,7 @@ window.Quarto = {
 <td>AとBは等しい</td>
 </tr>
 <tr class="odd">
-<td><code>A != B</code></td>
+<td><code>A &lt;&gt; B</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
 <td>AとBは等しくない</td>
 </tr>
 </tbody>
@@ -278,7 +278,8 @@ window.Quarto = {
 </section>
 <section id="累積相対度数-1" class="level5">
 <h5 class="anchored" data-anchor-id="累積相対度数-1">累積相対度数</h5>
-<p>それまでの累積相対度数とその階級の相対度数を足す （例）</p>
+<p>それまでの累積相対度数とその階級の相対度数を足す</p>
+<p>（例）</p>
 <ul>
 <li>200以上300未満の階級の累積相対度数：<code>=H2</code></li>
 <li>300以上400未満の階級の累積相対度数：<code>=I2 + H3</code></li>
@@ -573,9 +574,11 @@ window.Quarto = {
 </section>
 <section id="median関数" class="level6">
 <h6 class="anchored" data-anchor-id="median関数"><code>MEDIAN</code>関数</h6>
+<p>今度は、売上金額の中央値を計算しましょう。Excelでは<code>MEDIAN</code>関数を使います。</p>
 <p><code>MEDIAN(データの範囲)</code></p>
 <p>（例）<code>sales</code>変数の中央値：<code>=MEDIAN(A:A)</code></p>
 <p><img src="images/dataintro_med.png" class="img-fluid"></p>
+<p>このデータの中央値は420円でした。平均の428.57円よりもわずかに小さい値ですが、ほとんど差はないと言って良いでしょう。外れ値の影響はあまりないことが予測できます。</p>
 </section>
 </section>
 </section>
@@ -593,6 +596,7 @@ window.Quarto = {
 <p>（例）<code>sales</code>変数の度数分布表から平均を求める：<code>=SUMPRODUCT(F2:F5, H2:H5)</code></p>
 <p><img src="images/dataintro_tabmean.png" class="img-fluid"></p>
 <p>今回は階級値と相対度数の2つの配列を使っていますが、より多くの配列を指定することもできます。</p>
+<p>度数分布表から求めた平均値は約433円でした。生データから求めた値とは少しずれますが、データの中心を把握する目的としては十分に使えることが分かります。</p>
 </section>
 </section>
 </section>
@@ -600,10 +604,8 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="分散と標準偏差">分散と標準偏差</h2>
 <p>データの特徴を知るためには、データの中心だけではなく、<strong>データのばらつきを知ることも大切</strong>です。</p>
 <p>例えば、以下のような例を考えてみましょう。</p>
-<ol type="1">
-<li>5人の購入金額は、それぞれ <span class="math inline">\(\{500, 500, 500, 500, 500\}\)</span> （円）</li>
-<li>5人の購入金額は、それぞれ <span class="math inline">\(\{100, 300, 500, 700, 900\}\)</span> （円）</li>
-</ol>
+<p>① 5人の購入金額は、それぞれ <span class="math inline">\(\{500, 500, 500, 500, 500\}\)</span> （円）</p>
+<p>② 5人の購入金額は、それぞれ <span class="math inline">\(\{100, 300, 500, 700, 900\}\)</span> （円）</p>
 <p>どちらも平均購入金額では500円になりますが、内訳は大きく異なります。</p>
 <p>ケース1では全員が同じ金額を支払っているため、同じ商品を購入している可能性が高いです。売上を伸ばすためには、その商品名を広告の全面に打ち出したり、売り切れないよう仕入れを増やすことが考えられるかもしれません。</p>
 <p>一方ケース2では全員がバラバラの商品を購入しているため、特定の商品の販促だけに注力していると、売上が下がってしまうかもしれません。</p>
@@ -876,7 +878,13 @@ function showAnswer(id) {
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><code>&lt;&gt;</code>は、Excelで「等しくない」を表す記号です。一般的なプログラミング言語では<code>!=</code>や<code>~=</code>などが使われます。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
