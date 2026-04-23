@@ -38,6 +38,7 @@ title: "講義資料"
 
 [推薦図書](dataintro_book.html)
 
+<!-- 後期の講義
 # 労働経済学
 
 [イントロダクション](labor_intro.html)
@@ -48,7 +49,6 @@ title: "講義資料"
 
 [マクロ経済学から見る労働経済学](labor_search.html)
 
-<!-- 後期の講義
 # 統計学入門A/B
 
 ## 統計学入門A

@@ -1,0 +1,32 @@
+{
+  "dataintro_book.qmd": {
+    "dataintro_book.html": "774f00b6"
+  },
+  "dataintro_descriptive.qmd": {
+    "dataintro_descriptive.html": "97ea1b61"
+  },
+  "dataintro_estimation.qmd": {
+    "dataintro_estimation.html": "795bdf94"
+  },
+  "dataintro_intro.qmd": {
+    "dataintro_intro.html": "9b832b5f"
+  },
+  "dataintro_introb.md": {
+    "dataintro_introb.html": "cfa74ea0"
+  },
+  "index.qmd": {
+    "index.html": "ad5621a7"
+  },
+  "labor_hc.qmd": {
+    "labor_hc.html": "59bfc914"
+  },
+  "labor_intro.qmd": {
+    "labor_intro.html": "ced1608f"
+  },
+  "labor_search.qmd": {
+    "labor_search.html": "9c7e8441"
+  },
+  "labor_supdem.qmd": {
+    "labor_supdem.html": "1a07cce3"
+  }
+}
