@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,14 +31,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -81,7 +82,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -148,7 +149,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-就職浪人をしようかどうか迷うタロウの例
+<span class="screen-reader-only">Tip</span>就職浪人をしようかどうか迷うタロウの例
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -211,7 +212,7 @@ P_{1} \approx&amp; 0.713 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-まとめ：就職活動を続けるために必要な内定確率
+<span class="screen-reader-only">Important</span>まとめ：就職活動を続けるために必要な内定確率
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -406,7 +407,7 @@ Y &amp; \geq 4.5
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ジョブ・サーチの理論
+<span class="screen-reader-only">Note</span>ジョブ・サーチの理論
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -444,7 +445,7 @@ Y &amp; \geq 4.5
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-オン・ザ・ジョブ・サーチ
+<span class="screen-reader-only">Note</span>オン・ザ・ジョブ・サーチ
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -479,7 +480,7 @@ Y &amp; \geq 4.5
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-ジョブ・マッチングの理論
+<span class="screen-reader-only">Note</span>ジョブ・マッチングの理論
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -531,7 +532,7 @@ Y &amp; \geq 4.5
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-男女間の転職行動の差
+<span class="screen-reader-only">Note</span>男女間の転職行動の差
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -561,7 +562,7 @@ Y &amp; \geq 4.5
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-年齢間の転職行動の差
+<span class="screen-reader-only">Note</span>年齢間の転職行動の差
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -591,7 +592,7 @@ Y &amp; \geq 4.5
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-転職による賃金上昇の役割
+<span class="screen-reader-only">Note</span>転職による賃金上昇の役割
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -617,7 +618,7 @@ Y &amp; \geq 4.5
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-有効求人倍率
+<span class="screen-reader-only">Note</span>有効求人倍率
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -714,7 +715,7 @@ A〜Dから1つずつ選びなさい。</p>
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-職種間の賃金格差
+<span class="screen-reader-only">Note</span>職種間の賃金格差
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -738,7 +739,7 @@ A〜Dから1つずつ選びなさい。</p>
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-男女間の賃金格差
+<span class="screen-reader-only">Note</span>男女間の賃金格差
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -759,7 +760,7 @@ A〜Dから1つずつ選びなさい。</p>
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-格差の「要因」
+<span class="screen-reader-only">Note</span>格差の「要因」
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1480,13 +1481,14 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
