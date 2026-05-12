@@ -103,7 +103,7 @@
 データ$(x_{1}, \cdots, x_{n})$を用いた**標準誤差$SE$は**、
 
 $$
-SE = \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{1}{1-n}\sum_{i=1}^{n}(x_{i} - \bar{x})^2}}{\sqrt{n}}
+SE = \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{x})^2}}{\sqrt{n}}
 $$
 
 で求められます。つまり、**不偏分散をサンプルサイズで割ったものの平方根**です。
