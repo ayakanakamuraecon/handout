@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,15 +31,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -82,7 +81,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -188,7 +187,7 @@ window.Quarto = {
 <p>標準誤差は<strong>推定の精度を表す指標</strong>で、<strong>標準誤差が小さいほど、推定量はばらつきが小さく推定の精度が高い</strong>ことを示します。</p>
 <p>データ<span class="math inline">\((x_{1}, \cdots, x_{n})\)</span>を用いた<strong>標準誤差<span class="math inline">\(SE\)</span>は</strong>、</p>
 <p><span class="math display">\[
-SE = \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{1}{1-n}\sum_{i=1}^{n}(x_{i} - \bar{x})^2}}{\sqrt{n}}
+SE = \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{x})^2}}{\sqrt{n}}
 \]</span></p>
 <p>で求められます。つまり、<strong>不偏分散をサンプルサイズで割ったものの平方根</strong>です。</p>
 <p>不偏分散については、<a href="dataintro_descriptive.html#.P関数と.S関数">記述統計（ <code>.P</code>関数と<code>.S</code>関数）</a>を参照してください。</p>
@@ -247,7 +246,7 @@ SE = \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{1}{1-n}\sum_{i=1}^{n}(x_{i} - \bar{x
 </ul></li>
 <li>男女別の不偏分散
 <ul>
-<li><code>STDEV.S</code>関数を使う</li>
+<li><code>VAR.S</code>関数を使う</li>
 </ul></li>
 <li>男女別のサンプルサイズ
 <ul>
@@ -259,7 +258,7 @@ SE = \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{1}{1-n}\sum_{i=1}^{n}(x_{i} - \bar{x
 <li>男女別の標準誤差
 <ul>
 <li>男女別に計算した平均、不偏分散、サンプルサイズを使って計算する</li>
-<li>セルに<code>= 不偏分散のセル番地/SQRT(サンプルサイズのセル番地)</code>と入力</li>
+<li>セルに<code>= SQRT(不偏分散のセル番地/サンプルサイズのセル番地)</code>と入力</li>
 <li><code>SQRT()</code>関数は、（）内に指定した数値（計算式でもOK）の平方根を返す関数</li>
 </ul></li>
 <li>男女別の信頼区間
@@ -1499,14 +1498,13 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

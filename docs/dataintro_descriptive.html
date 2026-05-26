@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,15 +31,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -82,7 +81,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -547,8 +546,7 @@ window.Quarto = {
 <p><code>AVERAGE(データの範囲)</code></p>
 <p>（例）<code>sales</code>変数の平均：<code>=AVERAGE(A:A)</code></p>
 <p><img src="images/dataintro_mean.png" class="img-fluid"></p>
-<p>平均を計算することで、データの中心（重心）を知ることができました。学食の売り上げデータでは、1回あたりの購入金額は、428.57円のようです。</p>
-<p>次に、同じく売上金額データを用いて中央値を計算しましょう。Excelでは<code>MEDIAN</code>関数を使います。関数名は異なりますが、使い方は<code>AVERAGE</code>関数と同じです。</p>
+<p>平均を計算することで、データの中心（重心）を知ることができました。学食の売り上げデータでは、1回あたりの購入金額は、429.84円のようです。</p>
 </section>
 <section id="ダミー変数の平均" class="level5">
 <h5 class="anchored" data-anchor-id="ダミー変数の平均">ダミー変数の平均</h5>
@@ -578,7 +576,7 @@ window.Quarto = {
 <p><code>MEDIAN(データの範囲)</code></p>
 <p>（例）<code>sales</code>変数の中央値：<code>=MEDIAN(A:A)</code></p>
 <p><img src="images/dataintro_med.png" class="img-fluid"></p>
-<p>このデータの中央値は420円でした。平均の428.57円よりもわずかに小さい値ですが、ほとんど差はないと言って良いでしょう。外れ値の影響はあまりないことが予測できます。</p>
+<p>このデータの中央値は430円でした。平均の429.84円とわずかに異なる値ですが、ほとんど差はないと言って良いでしょう。外れ値の影響はあまりないことが予測できます。</p>
 </section>
 </section>
 </section>
@@ -596,7 +594,7 @@ window.Quarto = {
 <p>（例）<code>sales</code>変数の度数分布表から平均を求める：<code>=SUMPRODUCT(F2:F5, H2:H5)</code></p>
 <p><img src="images/dataintro_tabmean.png" class="img-fluid"></p>
 <p>今回は階級値と相対度数の2つの配列を使っていますが、より多くの配列を指定することもできます。</p>
-<p>度数分布表から求めた平均値は約433円でした。生データから求めた値とは少しずれますが、データの中心を把握する目的としては十分に使えることが分かります。</p>
+<p>度数分布表から求めた平均値は約434円でした。生データから求めた値とは少しずれますが、データの中心を把握する目的としては十分に使えることが分かります。</p>
 </section>
 </section>
 </section>
@@ -631,7 +629,7 @@ window.Quarto = {
 <p><code>STDEV.P(データの範囲)</code></p>
 <p>（例）<code>sales</code>変数の分散：<code>=STDEV.P(A:A)</code></p>
 <p><img src="images/dataintro_std.png" class="img-fluid"></p>
-<p>分散と標準偏差を求めることで、データのばらつきを知ることができました。学食の売り上げデータでは、標準偏差が52.7円、すなわち購入金額は平均から平均的に約52.7円のばらつきがあるようです。</p>
+<p>分散と標準偏差を求めることで、データのばらつきを知ることができました。学食の売り上げデータでは、標準偏差が50.5円、すなわち購入金額は平均から平均的に約50.5円のばらつきがあるようです。</p>
 </section>
 <section id="p関数と.s関数" class="level5">
 <h5 class="anchored" data-anchor-id="p関数と.s関数"><code>.P</code>関数と<code>.S</code>関数</h5>
@@ -660,14 +658,14 @@ s^2 = \frac{1}{n-1}\{(x_{1} - \bar{x})^2 + \cdots + (x_{n} - \bar{x})^2\} = \fra
 <h2 class="anchored" data-anchor-id="共分散と相関係数">共分散と相関係数</h2>
 <p>これまでは1変数（1つの調査項目）について平均や分散などの指標に注目してきました。ですが、一般的に、因果関係や予測値を知りたいときには、少なくとも2つの事柄の関係をチェックする必要があります。</p>
 <p>例えば、学食の売上を上げていくためには、売上金額が時間や気温など、ほかのどのような変数と連動しているかを知ることも大事でしょう。</p>
-<p><img src="images/dataintro_datesales.png" class="img-fluid"></p>
-<p>上図は、売上金額と購入日のデータを並べたものですが、生のデータを一見しただけでは、両者にどのような関係があるのか（あるいはないのか）を読み取ることは難しいと思います。</p>
+<p><img src="images/dataintro_tempsales.png" class="img-fluid"></p>
+<p>上図は、売上金額と気温のデータを並べたものですが、生のデータを一見しただけでは、両者にどのような関係があるのか（あるいはないのか）を読み取ることは難しいと思います。</p>
 <p>ここでは、2変数の関係を把握するための手法を学びましょう。</p>
 <section id="散布図" class="level3">
 <h3 class="anchored" data-anchor-id="散布図">散布図</h3>
 <p>2変数の関係を視覚的に把握するには<strong>散布図</strong>が便利です。</p>
 <p>散布図は、<strong>横軸に一方の変数、縦軸にもう一方の変数をとり、各データが当てはまるところに点を打って示す（プロットする）グラフ</strong>です。</p>
-<p>具体的に、売上金額と日付の関係を考えてみましょう。日付を横軸、売上金額を縦軸にとったとき、手元にある購入ID <span class="math inline">\(i\)</span> のデータは <span class="math inline">\((日付, 売上金額) = (x_{i}, y_{i})\)</span> と表すことができます。この <span class="math inline">\((x_{i}, y_{i})\)</span> を座標とする点を平面上に表したものが散布図です。</p>
+<p>具体的に、売上金額と気温の関係を考えてみましょう。気温を横軸、売上金額を縦軸にとったとき、手元にある購入ID <span class="math inline">\(i\)</span> のデータは <span class="math inline">\((気温, 売上金額) = (x_{i}, y_{i})\)</span> と表すことができます。この <span class="math inline">\((x_{i}, y_{i})\)</span> を座標とする点を平面上に表したものが散布図です。</p>
 <p><img src="images/dataintro_dot.png" class="img-fluid"></p>
 <p>2つの変数が連動して動くことを<strong>相関</strong>と呼びます。</p>
 <ul>
@@ -692,18 +690,18 @@ s^2 = \frac{1}{n-1}\{(x_{1} - \bar{x})^2 + \cdots + (x_{n} - \bar{x})^2\} = \fra
 <p>共分散は、 <span class="math inline">\(x\)</span> と <span class="math inline">\(y\)</span> に<strong>正の相関があるときは正の値</strong>、<strong>負の相関があるときは負の値</strong>をとります。共分散がゼロとなるときは<strong>無相関</strong>であるといいます。</p>
 <section id="excelで共分散を計算する" class="level4">
 <h4 class="anchored" data-anchor-id="excelで共分散を計算する">Excelで共分散を計算する</h4>
-<p>学食データの売上金額と時間変数の共分散を計算してみましょう。Excelでは<code>COVARIANCE.P</code>関数を使います。</p>
+<p>学食データの売上金額と気温の共分散を計算してみましょう。Excelでは<code>COVARIANCE.P</code>関数を使います。</p>
 <p>※<code>COVARIANCE.P</code>関数と<code>COVARIANCE.S</code>関数の違いは、<a href="#%60.P%60関数と%60.S%60関数"><code>.P</code>関数と<code>.S</code>関数</a>を参照してください。ここでは、手元のデータの共分散を知りたいので、<code>COVARIANCE.P</code>関数を使います。</p>
 <section id="covariance.p関数" class="level6">
 <h6 class="anchored" data-anchor-id="covariance.p関数"><code>COVARIANCE.P</code>関数</h6>
 <p><code>COVARIANCE.P(データの範囲1, データの範囲2)</code></p>
-<p>（例）<code>sales</code>変数と<code>date</code>変数の共分散：<code>=COVARIANCE.P(A:A, B:B)</code></p>
+<p>（例）<code>sales</code>変数と<code>temp</code>変数の共分散：<code>=COVARIANCE.P(A:A, B:B)</code></p>
 <p><img src="images/dataintro_cov.png" class="img-fluid"></p>
-<p>共分散を計算することで、2変数の相関の強さを知ることができました。売上金額と時間の共分散は<span class="math inline">\(-64.14\)</span>、つまり、時間と売上の間には負の相関があるようです。</p>
+<p>共分散を計算することで、2変数の相関の強さを知ることができました。売上金額と気温の共分散は<span class="math inline">\(-109.24\)</span>、つまり、気温と売上の間には負の相関があるようです。</p>
 <p><strong>共分散を解釈するときは単位に気をつけてください。</strong></p>
-<p>共分散の計算式を見ると分かるように、<strong>共分散の単位はそれぞれの変数の単位の積</strong>になります。<code>sales</code>変数と<code>date</code>変数の共分散の場合、その<strong>単位は円 <span class="math inline">\(\times\)</span> 日</strong>です。</p>
-<p>「日付が〇日経つと△円売上が下がる」といった解釈はできません。<strong>共分散から分かるのは</strong>、あくまでその<strong>2変数間に正負どちらの相関があるのか</strong>、だけです。</p>
-<p>また、例えば<code>sales</code>変数と<code>time</code>変数の共分散が<span class="math inline">\(0.09\)</span>だと分かった場合でも、<code>date</code>変数<code>とtime</code>変数の<strong>どちらが<code>sales</code>変数との相関が強いかを比較することはできません</strong>。</p>
+<p>共分散の計算式を見ると分かるように、<strong>共分散の単位はそれぞれの変数の単位の積</strong>になります。<code>sales</code>変数と<code>temp</code>変数の共分散の場合、その<strong>単位は円 <span class="math inline">\(\times\)</span> ℃</strong>です。</p>
+<p>「気温が〇℃上がると△円売上が下がる」といった解釈はできません。<strong>共分散から分かるのは</strong>、あくまでその<strong>2変数間に正負どちらの相関があるのか</strong>、だけです。</p>
+<p>また、例えば<code>sales</code>変数と<code>time</code>変数の共分散が<span class="math inline">\(0.09\)</span>だと分かった場合でも、<code>temp</code>変数<code>とtime</code>変数の<strong>どちらが<code>sales</code>変数との相関が強いかを比較することはできません</strong>。</p>
 </section>
 </section>
 </section>
@@ -737,23 +735,23 @@ s^2 = \frac{1}{n-1}\{(x_{1} - \bar{x})^2 + \cdots + (x_{n} - \bar{x})^2\} = \fra
 </ul>
 <section id="excelで相関係数を計算する" class="level4">
 <h4 class="anchored" data-anchor-id="excelで相関係数を計算する">Excelで相関係数を計算する</h4>
-<p>学食データの売上金額と日付変数の相関係数を計算してみましょう。Excelでは<code>CORREL</code>関数を使います。</p>
+<p>学食データの売上金額と気温の相関係数を計算してみましょう。Excelでは<code>CORREL</code>関数を使います。</p>
 <section id="correl関数" class="level6">
 <h6 class="anchored" data-anchor-id="correl関数"><code>CORREL</code>関数</h6>
 <p><code>CORREL(データの範囲1, データの範囲2)</code></p>
-<p>（例）<code>sales</code>変数と<code>date</code>変数の相関係数：<code>=CORREL(A:A, B:B)</code></p>
+<p>（例）<code>sales</code>変数と<code>temp</code>変数の相関係数：<code>=CORREL(A:A, B:B)</code></p>
 <p><img src="images/dataintro_cor.png" class="img-fluid"></p>
-<p>売上金額と日付の相関係数は<span class="math inline">\(-0.26\)</span>、つまり、日付と売上の間には弱い負の相関があるようです。</p>
+<p>売上金額と気温の相関係数は<span class="math inline">\(-0.66\)</span>、つまり、気温と売上の間には強い負の相関があるようです。</p>
 </section>
 </section>
 </section>
 <section id="無相関-ne-関係がない" class="level3">
 <h3 class="anchored" data-anchor-id="無相関-ne-関係がない">無相関 <span class="math inline">\(\ne\)</span> 関係がない</h3>
 <p><strong>「無相関であること」と「関係がない」は違う</strong>意味を表します。</p>
-<p>先ほど<code>sales</code>変数と<code>date</code>変数の相関係数は<span class="math inline">\(-0.26\)</span>であることが分かりました。基準に照らし合わせると2変数間にほとんど相関はないと言えます。</p>
+<p>例えば、<code>sales</code>変数と<code>date</code>変数の相関係数は<span class="math inline">\(-0.26\)</span>になります。基準に照らし合わせると2変数間にほとんど相関はないと言えます。</p>
 <p><strong>2変数は全くの無関係に動いている変数だと言えるでしょうか？</strong></p>
-<p>散布図に立ち返ってみましょう。</p>
-<p><img src="images/dataintro_dot.png" class="img-fluid"></p>
+<p>散布図を見てみましょう。</p>
+<p><img src="images/dataintro_dotdate.png" class="img-fluid"></p>
 <p>散布図は、<strong>2変数が連動して動いている</strong>ことを示しているように見えます。</p>
 <p><strong>共分散や相関係数は、2変数間の線形的な（直線で示せる）相関関係のみを示し</strong>ます。</p>
 <p>今回のように<code>date</code>変数の一部でピークがくるような、<strong>線形以外の相関関係を表すことはできません</strong>。</p>
@@ -936,14 +934,13 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
