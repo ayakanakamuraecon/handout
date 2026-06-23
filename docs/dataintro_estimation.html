@@ -860,17 +860,17 @@ sales = \beta_{0} + \beta_{1} \times male + \varepsilon
 </section>
 <section id="excelでダミー変数を作る" class="level4">
 <h4 class="anchored" data-anchor-id="excelでダミー変数を作る">Excelでダミー変数を作る</h4>
-<p><span class="math inline">\(\{男, 男, 男, 女, 女, 男, ...\}\)</span>のように文字列でデータが入力されている場合、各カテゴリに数値を割り当て、男性<span class="math inline">\(=1\)</span>、女性<span class="math inline">\(=0\)</span>となるようなダミー変数を作ります。</p>
+<p><span class="math inline">\(\{male, male, male, female, female, male, ...\}\)</span>のように文字列でデータが入力されている場合、各カテゴリに数値を割り当て、male<span class="math inline">\(=1\)</span>、female<span class="math inline">\(=0\)</span>となるようなダミー変数を作ります。</p>
 <p>Excelでは<code>IF</code>関数を使います。</p>
 <section id="if関数" class="level5">
 <h5 class="anchored" data-anchor-id="if関数"><code>IF</code>関数</h5>
 <p><code>IF(条件, 真の場合の値, 偽の場合の値)</code></p>
-<p>（例）<code>gender</code>変数が<code>男</code>のときに<span class="math inline">\(1\)</span>、<code>女</code>のときに<span class="math inline">\(0\)</span>を割り当てる: <code>IF(A2="男", 1, 0)</code></p>
+<p>（例）<code>gender</code>変数が<code>male</code>のときに<span class="math inline">\(1\)</span>、<code>female</code>のときに<span class="math inline">\(0\)</span>を割り当てる: <code>IF(A2="male", 1, 0)</code></p>
 <p><img src="images/dataintro_dummy.png" class="img-fluid"></p>
 <p>このようにカテゴリと数値を対応させることで、連続変数と同じように回帰分析ができるようになります。</p>
 <p><img src="images/dataintro_linreg_dum.png" class="img-fluid"></p>
 <p><img src="images/dataintro_linregrsl_dum.png" class="img-fluid"></p>
-<p><code>male</code>の回帰係数は<span class="math inline">\(28.4\)</span>、<span class="math inline">\(P\)</span>値は<span class="math inline">\(1.93E-09 (= 1.93 \times \frac{1}{10^{9}}) &lt; 0.05\)</span>なので、性別ダミーは売上予測に有効な変数であり、以下のような回帰式を使って売上を予測できます。</p>
+<p><code>male</code>変数の回帰係数は<span class="math inline">\(28.4\)</span>、<span class="math inline">\(P\)</span>値は<span class="math inline">\(1.93E-09 (= 1.93 \times \frac{1}{10^{9}}) &lt; 0.05\)</span>なので、性別ダミーは売上予測に有効な変数であり、以下のような回帰式を使って売上を予測できます。</p>
 <p><span class="math display">\[
 sales = 410.4 +28.4 \times male
 \]</span></p>
