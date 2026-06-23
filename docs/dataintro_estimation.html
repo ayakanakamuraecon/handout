@@ -307,7 +307,7 @@ SE = \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{x
 <p>データを利用して、このような<strong>仮説が正しいかどうかを客観的に判断することを仮説検定</strong>と呼びます。</p>
 <p>例えば、男女間で平均購入金額に差があるのではないか、という仮説を検討します。</p>
 <p>データから得られた平均購入金額は、男性が約438円、女性が約410円でした。</p>
-<p>男性の方が30円多く購入しているから、<strong>男女間では平均購入金額に差があると言える</strong>でしょうか？それとも、たまたま選ばれたデータによって<strong>偶然生じた差にすぎない</strong>のでしょうか？</p>
+<p>男性の方が28円多く購入しているから、<strong>男女間では平均購入金額に差があると言える</strong>でしょうか？それとも、たまたま選ばれたデータによって<strong>偶然生じた差にすぎない</strong>のでしょうか？</p>
 <p>仮に言えたとして、<strong>何円以上の差があれば男女間に差があると言えるでしょうか？</strong></p>
 <p>この問いに答えるために、まずは<strong>仮説を立てます</strong>。</p>
 <p>統計的手法を用いて仮説検定を行う際には、<strong>仮説の立て方に少し独特な作法があります</strong>。</p>
@@ -504,8 +504,8 @@ SE = \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{x
 <p>これは、<strong>「男女間の平均購入金額に差がない」という帰無仮説が正しいときに、手元のデータで観察される差が生じるのはどのくらい珍しいことなのかを表す確率</strong>です。</p>
 <p>私たちは最初に、<strong>男女間での平均購入金額に差がないという仮説が正しいときに、手元のデータの平均の差が <span class="math inline">\(X\)</span> 円以上となる確率が <span class="math inline">\(\alpha\)</span> 以下であれば、差がないという前提が間違っていたと判断する</strong>と決めました。</p>
 <p>よって、<span class="math inline">\(t\)</span> 検定で得られた <span class="math inline">\(p\)</span> 値と最初に決めた <span class="math inline">\(\alpha\)</span> を比較し、<strong><span class="math inline">\(p&lt; \alpha\)</span> であれば帰無仮説を棄却</strong>し、<strong><span class="math inline">\(p&gt; \alpha\)</span> であれば帰無仮説を支持する</strong>という判断を行うことになります。</p>
-<p>ここで得られた結果では、<span class="math inline">\(p\)</span> 値は <span class="math inline">\(9.83813 \times 10^{-10} \left(=\frac{9.83813}{10^{10}}\right)\)</span> という、非常に小さい値になっています。</p>
-<p>これはつまり、「<strong>男女の購入金額の差が0円である</strong>」<strong>という帰無仮説が正しい場合に、手元のデータで観測されたような30円の差が生じる確率は、わずか</strong> <span class="math inline">\(0.0000000983813\%\)</span> <strong>しかない</strong>、ということを意味します。</p>
+<p>ここで得られた結果では、<span class="math inline">\(p\)</span> 値は <span class="math inline">\(1.93 \times 10^{-9} \left(=\frac{1.93}{10^{10}}\right)\)</span> という、非常に小さい値になっています。</p>
+<p>これはつまり、「<strong>男女の購入金額の差が0円である</strong>」<strong>という帰無仮説が正しい場合に、手元のデータで観測されたような28円の差が生じる確率は、わずか</strong> <span class="math inline">\(0.000000193\%\)</span> <strong>しかない</strong>、ということを意味します。</p>
 <p>私たちは事前に、<strong>観測された差が偶然によって生じる確率（<span class="math inline">\(p\)</span> 値）が <span class="math inline">\(5\%\)</span> 以下であれば、帰無仮説を棄却する（<span class="math inline">\(=\)</span>差がないという前提を否定する）</strong>と決めていました。</p>
 <p>したがって、この場合は「<strong>男女の購入金額の差が0円である</strong>」<strong>という前提は成り立たない</strong>と判断し、<strong>男女の購入金額に統計的に有意な差があると結論</strong>づけることができます。</p>
 <p>以上のように、仮説検定では<strong>偶然では説明できない差があるのかどうか</strong>を、データに基づいて判断することができます。特に <strong><span class="math inline">\(p\)</span> 値は、その差が偶然に生じる確率を数値で示してくれる</strong>ため、データの意味を客観的に捉えるための強力なツールとなります。</p>
