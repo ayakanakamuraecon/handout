@@ -306,7 +306,7 @@ SE = \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{x
 <p>こういった<strong>仮説</strong>にしっかりと答えるためには、何らかの<strong>客観的な基準で評価をする</strong>ことが必要です。</p>
 <p>データを利用して、このような<strong>仮説が正しいかどうかを客観的に判断することを仮説検定</strong>と呼びます。</p>
 <p>例えば、男女間で平均購入金額に差があるのではないか、という仮説を検討します。</p>
-<p>データから得られた平均購入金額は、男性が約438円、女性が約408円でした。</p>
+<p>データから得られた平均購入金額は、男性が約438円、女性が約410円でした。</p>
 <p>男性の方が30円多く購入しているから、<strong>男女間では平均購入金額に差があると言える</strong>でしょうか？それとも、たまたま選ばれたデータによって<strong>偶然生じた差にすぎない</strong>のでしょうか？</p>
 <p>仮に言えたとして、<strong>何円以上の差があれば男女間に差があると言えるでしょうか？</strong></p>
 <p>この問いに答えるために、まずは<strong>仮説を立てます</strong>。</p>
@@ -582,7 +582,7 @@ MSE &amp;= \frac{1}{N}\sum_{i = 1}^{N}(Y_{i}- \hat{Y})^{2} \\
 <p><code>AVERAGEIFS(平均範囲, 条件範囲 1, 条件 1, [条件範囲 2, 条件 2], ...)</code></p>
 <p>（例）男性の平均売上金額：<code>= AVERAGEIFS($B:$B, $A:$A, "男")</code></p>
 <p><img src="images/dataintro_nonpara.png" class="img-fluid"></p>
-<p>データから得られた平均購入金額は、男性が約438円、女性が約408円でした。これらの値が、それぞれの性別における売上金額の予測値として用いられます。</p>
+<p>データから得られた平均購入金額は、男性が約438円、女性が約410円でした。これらの値が、それぞれの性別における売上金額の予測値として用いられます。</p>
 </section>
 </section>
 <section id="ノンパラメトリック回帰の注意点" class="level3">
@@ -821,7 +821,7 @@ sales = \beta_{0} + \beta_{1} \times temp + \varepsilon
 </tbody>
 </table>
 <p>たくさんの数値が出てきますが、<strong>重要なのは係数と<span class="math inline">\(P\)</span> 値</strong>です。</p>
-<p>係数は各説明変数の回帰係数（ここでは<span class="math inline">\(\beta_{1}\)</span>）を表します。 回帰係数が<span class="math inline">\(-11.28\)</span>であるということは、気温（<code>temp</code>）が一度上がると売上（<code>sales</code>）は<span class="math inline">\(-11.28\)</span>円変化する、つまり、<strong>気温が一度上昇すると売上は<span class="math inline">\(11.28\)</span>円下がる</strong>という関係になっていることが分かります。</p>
+<p>係数は各説明変数の回帰係数（ここでは<span class="math inline">\(\beta_{1}\)</span>）を表します。 回帰係数が<span class="math inline">\(-10.3\)</span>であるということは、気温（<code>temp</code>）が一度上がると売上（<code>sales</code>）は<span class="math inline">\(-10.3\)</span>円変化する、つまり、<strong>気温が一度上昇すると売上は<span class="math inline">\(10.3\)</span>円下がる</strong>という関係になっていることが分かります。</p>
 <p>一方、<span class="math inline">\(P\)</span> 値はその回帰係数が統計的に<span class="math inline">\(0\)</span>と異なると言えるかどうかを示します。</p>
 <p>これは、<strong>回帰係数が<span class="math inline">\(0\)</span>である</strong>という帰無仮説に対する検定を行っていることを意味します。</p>
 <p>説明変数が被説明変数の予測に有効であるためには、<strong>対応する回帰係数が<span class="math inline">\(0\)</span>ではない</strong>、つまり<strong>統計的に有意</strong>である必要があります。</p>
@@ -831,10 +831,10 @@ sales = \beta_{0} + \beta_{1} \times temp + \varepsilon
 <p>例えば、有意水準を<span class="math inline">\(5\%\)</span>（<span class="math inline">\(= 0.05\)</span>）とした場合、<code>temp</code>の回帰係数について<span class="math inline">\(P値 = 1.96773E-75 (= 1.96773×\frac{1}{10^{75}}) &lt; 0.05\)</span> なので、<code>temp</code>の回帰係数は有意に<span class="math inline">\(0\)</span>と異なると言えます。</p>
 <p>よって、<code>temp</code>は<code>sales</code>の予測に有効な説明変数だと判断され、以下のような回帰式を使って売上を予測できます。</p>
 <p><span class="math display">\[
-sales = 647.2523251 -11.28513304 \times temp
+sales = 629.8 -10.3 \times temp
 \]</span></p>
 <p>このに、実際の気温の値を代入することで、その日の売上を予測することができます。</p>
-<p>例えば、気温が22度のとき、売上金額は<span class="math inline">\(647.2523251 -11.28513304 \times 22=398.97939822\)</span>円であると予測できます。</p>
+<p>例えば、気温が22度のとき、売上金額は<span class="math inline">\(629.8 - 10.3 \times 22 = 402.8\)</span>円であると予測できます。</p>
 </section>
 </section>
 <section id="ダミー変数を使った線形回帰" class="level3">
@@ -870,11 +870,11 @@ sales = \beta_{0} + \beta_{1} \times male + \varepsilon
 <p>このようにカテゴリと数値を対応させることで、連続変数と同じように回帰分析ができるようになります。</p>
 <p><img src="images/dataintro_linreg_dum.png" class="img-fluid"></p>
 <p><img src="images/dataintro_linregrsl_dum.png" class="img-fluid"></p>
-<p><code>male</code>の回帰係数は<span class="math inline">\(30.15\)</span>、<span class="math inline">\(P\)</span>値は<span class="math inline">\(9.84E-10 (= 9.84×\frac{1}{10^{10}}) &lt; 0.05\)</span>なので、性別ダミーは売上予測に有効な変数であり、以下のような回帰式を使って売上を予測できます。</p>
+<p><code>male</code>の回帰係数は<span class="math inline">\(28.4\)</span>、<span class="math inline">\(P\)</span>値は<span class="math inline">\(1.93E-09 (= 1.93 \times \frac{1}{10^{9}}) &lt; 0.05\)</span>なので、性別ダミーは売上予測に有効な変数であり、以下のような回帰式を使って売上を予測できます。</p>
 <p><span class="math display">\[
-sales = 407.963 +30.15132275 \times male
+sales = 410.4 +28.4 \times male
 \]</span></p>
-<p>これにより、客が男性のとき（<code>male</code><span class="math inline">\(= 1\)</span>）の売上金額の予測値は<span class="math inline">\(407.963 +30.15132275=438.11432275\)</span>円、客が女性のとき（<code>male</code><span class="math inline">\(= 0\)</span>）の売上金額の予測値は<span class="math inline">\(407.963\)</span>円になります。</p>
+<p>これにより、客が男性のとき（<code>male</code><span class="math inline">\(= 1\)</span>）の売上金額の予測値は<span class="math inline">\(410.4 + 28.4 = 438.8\)</span>円、客が女性のとき（<code>male</code><span class="math inline">\(= 0\)</span>）の売上金額の予測値は<span class="math inline">\(410.4\)</span>円になります。</p>
 </section>
 </section>
 </section>
@@ -962,12 +962,12 @@ MSE = \frac{1}{n}\sum_{i=1}^{n}(Y_{i} - \beta_{0} - \beta_{1} X_{1i} - \beta_{2}
 <p>正しく入力されていれば、出力オプションで指定したセルに結果が出力されます。</p>
 <p><img src="images/dataintro_mulregrsl.png" class="img-fluid"></p>
 <p>ここでも、<strong>係数</strong>と<strong>p値</strong>に注目します。</p>
-<p><code>student</code>変数の係数は<span class="math inline">\(-3.86\)</span>、p値は<span class="math inline">\(0.44\)</span>です。</p>
-<p>ダミー変数の係数は基準カテゴリとの比較だと解釈できます。ここでは、職員（<code>student</code><span class="math inline">\(=0\)</span>）と比較して、学生（<code>student</code><span class="math inline">\(=1\)</span>）は<span class="math inline">\(3.86\)</span>円平均購入金額が低いということを示しています。</p>
-<p>ただし、p値が<span class="math inline">\(0.44\)</span>と有意水準の<span class="math inline">\(0.05\)</span>より大きいため、これは統計的に有意ではないと判断されます。</p>
+<p><code>student</code>変数の係数は<span class="math inline">\(-10.8\)</span>、p値は<span class="math inline">\(0.03\)</span>です。</p>
+<p>ダミー変数の係数は基準カテゴリとの比較だと解釈できます。ここでは、職員（<code>student</code><span class="math inline">\(=0\)</span>）と比較して、学生（<code>student</code><span class="math inline">\(=1\)</span>）は<span class="math inline">\(10.8\)</span>円平均購入金額が低いということを示しています。</p>
+<p>また、p値が<span class="math inline">\(0.03\)</span>と有意水準の<span class="math inline">\(0.05\)</span>より小さいため、これは統計的に有意であると判断されます。</p>
 <p>ちなみに、重回帰分析のパラメターは、<strong>他の条件を一定にしたもとで、その説明変数が1単位変化したときの被説明変数の平均的な変化の大きさ</strong>を表します。</p>
-<p>したがって、<code>student</code>変数の係数は、気温（<code>temp</code>）を一定にしたときに（気温が同じであれば）、職員と学生を比較したときに、学生の方が平均購入金額が<span class="math inline">\(-3.86\)</span>円高い（つまり、<span class="math inline">\(3.86\)</span>円低い）と解釈できます。</p>
-<p><code>temp</code>変数の係数は<span class="math inline">\(-11.3\)</span>、p値は<span class="math inline">\(2.07\times 10^{-75}\)</span>です。これは<code>student</code>変数を一定としたときに（学生同士、職員同士で比較した場合）、気温が1度上がると平均購入金額は<span class="math inline">\(-11.3\)</span>円増加する（温が1度上がると平均購入金額は<span class="math inline">\(11.3\)</span>円減少する）ことを示しています。この係数のp値は非常に小さいため、統計的に有意であると判断できます。</p>
+<p>したがって、<code>student</code>変数の係数は、気温（<code>temp</code>）を一定にしたときに（気温が同じであれば）、職員と学生を比較したときに、学生の方が平均購入金額が<span class="math inline">\(-10.8\)</span>円高い（つまり、<span class="math inline">\(10.8\)</span>円低い）と解釈できます。</p>
+<p><code>temp</code>変数の係数は<span class="math inline">\(-10.4\)</span>、p値は<span class="math inline">\(3.34 \times 10^{-67}\)</span>です。これは<code>student</code>変数を一定としたときに（学生同士、職員同士で比較した場合）、気温が1度上がると平均購入金額は<span class="math inline">\(-10.4\)</span>円増加する（温が1度上がると平均購入金額は<span class="math inline">\(10.4\)</span>円減少する）ことを示しています。この係数のp値は非常に小さいため、統計的に有意であると判断できます。</p>
 <p>このように、重回帰分析を用いると、複数の説明変数を同時に用いた予測を行うことができます。</p>
 <p>実際の社会では、ある事柄が1つの要因だけで説明できることはほとんどありません。何かを予測・説明したい場合には、複数の関連しそうな変数を考慮し、それらのデータを収集する必要があります。</p>
 <p>ただし、やみくもに説明変数を増やせばよいというものではありません。</p>
@@ -997,14 +997,14 @@ R^{2} = 1 - \frac{\text{残差変動}}{\text{総変動}} = 1 - \frac{\sum_{i=1}^
 </ul>
 <p>このように、決定係数は回帰モデルの説明力を直感的に把握するための有用な指標です。</p>
 <p><img src="images/dataintro_linregrsl.png" class="img-fluid"></p>
-<p>購入金額を気温に回帰したときの結果を振り返ってみます。 重決定 R2 という項目が決定係数 <span class="math inline">\(R^{2}\)</span> です。</p>
-<p><span class="math inline">\(R^{2}=0.484\)</span> なので、総変動の<span class="math inline">\(48\%\)</span>が説明変数によって説明されており、残りの<span class="math inline">\(52\%\)</span>は他の要因によって説明されていると解釈できます。</p>
+<p>購入金額を気温に回帰したときの結果を振り返ってみます。 <strong>重決定 R2</strong> という項目が決定係数 <span class="math inline">\(R^{2}\)</span> です。</p>
+<p><span class="math inline">\(R^{2}=0.441\)</span> なので、総変動の<span class="math inline">\(44.1\%\)</span>が説明変数によって説明されており、残りの<span class="math inline">\(55.9\%\)</span>は他の要因によって説明されていると解釈できます。</p>
 <p>一般的に決定係数が<span class="math inline">\(0.5\)</span>以上の場合はある程度データへの当てはまりが良いと言われるので、今回はあまり当てはまりの良くないモデルであると言えるでしょう。</p>
 <p>重回帰分析でもデータへの当てはまりの良さを表す指標として決定係数 <span class="math inline">\(R^{2}\)</span> をそのまま使うことができます。</p>
 <p>しかし、<strong>定義上説明変数の個数が多くなるほど決定係数 <span class="math inline">\(R^{2}\)</span> は大きくなってしまいます。</strong></p>
-<p>そこで、重回帰分析の場合は、<strong>説明変数の個数を考慮した自由度調整済み決定係数</strong> <span class="math inline">\(R^{2}\)</span> 用います。 Excelの分析結果では、補正 R2 という項目で出力されます。</p>
+<p>そこで、重回帰分析の場合は、<strong>説明変数の個数を考慮した自由度調整済み決定係数</strong> <span class="math inline">\(R^{2}\)</span> 用います。 Excelの分析結果では、<strong>補正 R2</strong> という項目で出力されます。</p>
 <p><img src="images/dataintro_mulregrsl.png" class="img-fluid"></p>
-<p>購入金額を気温と学生ダミーに回帰した分析結果を振り返ってみると、重決定 R2<span class="math inline">\(=0.485\)</span>、 補正 R2<span class="math inline">\(=0.483\)</span>でした。今回は2つの決定係数にほとんど差はありませんが、説明変数の個数が増えると両者は乖離してしまうため、その場合は自由度調整済み決定係数を用いて適切なモデル評価をすることが求められます。</p>
+<p>購入金額を気温と学生ダミーに回帰した分析結果を振り返ってみると、重決定 R2<span class="math inline">\(=0.447\)</span>、 補正 R2<span class="math inline">\(=0.444\)</span>でした。今回は2つの決定係数にほとんど差はありませんが、説明変数の個数が増えると両者は乖離してしまうため、その場合は自由度調整済み決定係数を用いて適切なモデル評価をすることが求められます。</p>
 <section id="決定係数の注意点" class="level4">
 <h4 class="anchored" data-anchor-id="決定係数の注意点">決定係数の注意点</h4>
 <p>回帰式の当てはまりの良さを評価できる決定係数ですが、あくまでも<strong>当てはまりの良さ（予測の正確性）を評価する指標</strong>であって、必ずしも<strong>回帰式そのものが正しいことや妥当であることを保証するものではない</strong>、ということに注意が必要です。</p>
@@ -1032,7 +1032,7 @@ study = \beta_{0} + \beta_{1} \times score + \varepsilon
 <p>しかし、<strong>回帰分析に出てきた関係は、あくまで一緒に変化しているだけ</strong>であって、<strong>どちらかが原因で、どちらかが結果だということは示していません</strong>。</p>
 <p>例えば、先ほどのテストの点数と勉強時間のケースを考えると、テストの点数と勉強時間に強い相関があったとしても、点数が高いから勉強しているのか、勉強しているから点数が高いのかは、回帰式だけでは判断できません。</p>
 <p>また、<strong>別の隠れた要因</strong>（例えば体調や家庭環境など）<strong>が、両方に影響している可能性もあります</strong>。 このような場合、<strong>見かけ上は相関があるように見えても、実際には因果関係はない</strong>ということも往々にして起こり得ます。</p>
-<p>したがって、回帰分析の結果を解釈するときは、<strong>これは原因と結果の関係なのか</strong>？****ほかの要因はないのか<strong>？といった視点を持ち、</strong>データだけではなく文脈や常識も含めて慎重に判断することが大切**です。</p>
+<p>したがって、回帰分析の結果を解釈するときは、<strong>これは原因と結果の関係なのか</strong>？<strong>ほかの要因はないのか</strong>？といった視点を持ち、<strong>データだけではなく文脈や常識も含めて慎重に判断することが大切</strong>です。</p>
 </section></section></details>
 </section>
 
