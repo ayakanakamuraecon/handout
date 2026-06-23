@@ -895,7 +895,7 @@ sales = 410.4 +28.4 \times male
 <p>ここでは、2つ以上の説明変数を用いて売上金額を予測していきます。</p>
 <p>2つ以上の説明変数を使った線形回帰のことを、重回帰分析と呼びます。</p>
 <p>例えば、売上金額（<code>sales</code>）が気温（<code>temp</code>）と職位（<code>position</code>）によって予測されるモデルを仮定します。</p>
-<p>現在職位（<code>position</code>）変数は文字列のデータになっているので、先ほどの性別ダミーと同様に、学生<span class="math inline">\(=1\)</span>、職員<span class="math inline">\(=0\)</span>となるようなダミー変数を作っておきましょう（<code>student</code>変数とします）。</p>
+<p>現在職位（<code>position</code>）変数は文字列のデータになっているので、先ほどの性別ダミーと同様に、student<span class="math inline">\(=1\)</span>、staff<span class="math inline">\(=0\)</span>となるようなダミー変数を作っておきましょう（<code>student</code>変数とします）。</p>
 <p><img src="images/dataintro_mulreg_dum.png" class="img-fluid"></p>
 <p>このとき、売上金額は以下の式で表すことができます。</p>
 <p><span class="math display">\[
