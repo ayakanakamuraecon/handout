@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>発表</title>
+<style>
+  :root{
+    --ink:#242a30;
+    --paper:#f7f8fa;
+    --line:#d5dbe2;
+    --accent:#2e5476;
+    --accent-soft:#e4ecf3;
+    --sub:#6b6558;
+    --good:#3d6b5c;
+    --good-soft:#e3efe9;
+    --good-line:#c2ddd0;
+    --bad:#9c4a3c;
+    --bad-soft:#f6ebe8;
+    --bad-line:#e6c9c1;
+    --warm:#b5654a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+    line-height:1.75;
+  }
+  .page{max-width:920px; margin:0 auto; padding:56px 40px 120px;}
+
+  h1{font-size:34px; margin:0 0 6px; font-weight:700; letter-spacing:.02em;}
+  .lead{
+    color:var(--sub); font-size:15px; margin:0 0 40px;
+    padding-bottom:32px; border-bottom:1px solid var(--line);
+  }
+  h2{font-size:22px; margin:64px 0 20px; display:flex; align-items:baseline; gap:12px;}
+  h2 .num{
+    font-size:14px; color:var(--accent); font-weight:700;
+    border:1px solid var(--accent); border-radius:999px;
+    padding:2px 10px; letter-spacing:.05em;
+  }
+  h3{font-size:16px; margin:28px 0 12px; color:var(--ink); font-weight:700;}
+  h4{font-size:14px; margin:20px 0 10px; color:var(--accent); font-weight:700;}
+  p{margin:0 0 14px;}
+  ul,ol{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px;}
+  ul ul{margin:4px 0 0; padding-left:20px;}
+
+  .callout{
+    background:var(--accent-soft); border-left:4px solid var(--accent);
+    padding:18px 22px; border-radius:2px; margin:20px 0 28px; font-size:15px;
+  }
+
+  .grid{display:flex; flex-direction:column; gap:14px; margin:20px 0 28px;}
+  .card{background:#fff; border:1px solid var(--line); border-top:4px solid var(--accent); padding:18px 20px;}
+  .card h4{margin:0 0 10px; font-size:15px; color:var(--accent); font-weight:700;}
+  .card ul{margin:0; padding-left:18px; font-size:13.5px; line-height:1.75;}
+  .card li{margin-bottom:5px;}
+
+  .compare{display:flex; flex-wrap:wrap; gap:16px; margin:20px 0 28px;}
+  .compare-box{flex:1 1 280px; border-radius:4px; padding:18px 22px; font-size:14.5px;}
+  .compare-box.good{background:var(--good-soft); border:1px solid var(--good-line);}
+  .compare-box.bad{background:var(--bad-soft); border:1px solid var(--bad-line);}
+  .compare-box .tag{font-weight:700; font-size:14px; margin-bottom:4px; display:block;}
+  .compare-box.good .tag{color:var(--good);}
+  .compare-box.bad .tag{color:var(--bad);}
+
+  /* アイコン比較（図形表現の×/〇） */
+  .icon-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(96px,1fr)); gap:14px; margin-top:14px;}
+  .icon-item{text-align:center;}
+  .icon-item .shape{height:52px; display:flex; align-items:center; justify-content:center; margin:0 auto 8px;}
+  .icon-item .cap{font-size:11.5px; color:var(--sub); line-height:1.5;}
+
+  /* チェックリスト */
+  .checklist{background:#fff; border:1px solid var(--line); padding:18px 22px; margin:16px 0 28px;}
+  .checklist div{display:flex; gap:10px; padding:6px 0; font-size:14.5px;}
+  .checklist div::before{content:"✓"; color:var(--good); font-weight:700;}
+  .check-group{background:#fff; border:1px solid var(--line); border-top:4px solid var(--accent); padding:20px 22px; margin:16px 0 28px;}
+  .check-group h3{margin-top:0;}
+  .check-group .checklist{border:none; padding:0; margin:0 0 18px;}
+  .check-group .checklist:last-child{margin-bottom:0;}
+
+  /* 縦ステップ */
+  .steps{display:flex; flex-direction:column; margin:20px 0 28px;}
+  .step{
+    display:flex; align-items:center; gap:16px; padding:12px 18px;
+    background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent); margin-bottom:8px;
+  }
+  .step .n{
+    flex-shrink:0; width:30px; height:30px; background:var(--accent); color:#fff;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:700;
+  }
+  .step .txt{font-size:15px; color:var(--ink);}
+  .step .txt b{color:var(--accent);}
+
+  details{background:#fff; border:1px solid var(--line); margin:12px 0; padding:0;}
+  summary{
+    cursor:pointer; padding:14px 20px; font-weight:700; color:var(--accent);
+    list-style:none; position:relative;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"＋"; position:absolute; right:20px; top:14px; font-size:14px; color:var(--sub);}
+  details[open] summary::after{content:"－";}
+  details[open] summary{border-bottom:1px solid var(--line);}
+  .details-body{padding:16px 20px 22px;}
+  .ppt-item{margin-bottom:26px;}
+  .ppt-item:last-child{margin-bottom:0;}
+  .ppt-item h4{font-size:14.5px; margin:0 0 8px;}
+  .ppt-item img{max-width:100%; border:1px solid var(--line); border-radius:3px; display:block;}
+  .ppt-item .cap{font-size:12.5px; color:var(--sub); margin-top:6px;}
+
+  table{width:100%; border-collapse:collapse; font-size:14px; margin:16px 0 28px;}
+  th,td{border:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top;}
+  th{background:var(--accent-soft); font-weight:700; font-size:13px;}
+
+  /* プレゼン用モックスライド（HTML/CSSイメージ図） */
+  .mockrow{display:flex; flex-wrap:wrap; gap:16px; margin:20px 0 8px;}
+  .mockcol{flex:1 1 280px;}
+  .mockcol .tag{font-weight:700; font-size:13px; margin-bottom:8px; display:block;}
+  .mockcol .tag.bad{color:var(--bad);}
+  .mockcol .tag.good{color:var(--good);}
+  .mockcard{background:#fff; border:1px solid var(--line); padding:16px; min-height:130px;}
+  .mockcard.messy{border-color:var(--bad-line);}
+  .mockcard.messy .slide-title{font-size:12px; font-weight:700; color:var(--bad); margin:0 0 8px; padding-bottom:6px; border-bottom:1px solid var(--bad-line);}
+  .mockcard.messy .slide-block{margin-bottom:8px;}
+  .mockcard.messy .slide-block b{display:block; font-size:11px; color:var(--ink); margin-bottom:3px;}
+  .mockcard.messy .slide-block p{font-size:10px; color:var(--sub); margin:0; line-height:1.6;}
+  .mockcard.clean{border-color:var(--good-line);}
+  .mockcard.clean .slide-title{font-size:15px; font-weight:700; color:var(--accent); margin:0 0 12px;}
+
+  .mockgraph{background:#fff; border:1px solid var(--line); padding:14px;}
+  .mockgraph table{margin:0; font-size:10.5px;}
+  .mockgraph th,.mockgraph td{padding:4px 6px; border-color:#ccc;}
+  .mockgraph th{background:#eee; color:var(--ink); font-size:10px;}
+  .mockgraph td{text-align:right;}
+  .mockgraph td:first-child{text-align:left;}
+  .mockgraph .cap{font-size:11.5px; color:var(--sub); margin:8px 0 0;}
+  .cap-list{font-size:11px; color:var(--sub); margin:10px 0 0; padding-left:16px; line-height:1.7;}
+  .cap-list li{margin-bottom:3px;}
+
+  /* 棒グラフ（軸付き、HTML/CSSイメージ図） */
+  .bar-chart{display:flex; gap:6px;}
+  .bar-chart .yaxis-block{flex:0 0 40px; display:flex; gap:2px;}
+  .bar-chart .yaxis-title{
+    flex:0 0 12px; writing-mode:vertical-rl; text-orientation:mixed;
+    font-size:9px; color:var(--sub); display:flex; align-items:center; justify-content:center;
+  }
+  .bar-chart .yaxis{
+    flex:1; display:flex; flex-direction:column; justify-content:space-between;
+    height:90px; font-size:9px; color:var(--sub); text-align:right; padding-right:2px;
+  }
+  .bar-chart .plot{flex:1; border-left:1px solid var(--ink); border-bottom:1px solid var(--ink);}
+  .mockgraph .bars{display:flex; align-items:flex-end; gap:14px; height:90px; padding:0 6px;}
+  .mockgraph .bar-col{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%;}
+  .mockgraph .bar-col .bar{width:100%; border-radius:2px 2px 0 0; background:var(--line); position:relative;}
+  .mockgraph .bar-col .bar.hi{background:var(--accent);}
+  .mockgraph .bar-col .bar .v{position:absolute; top:-16px; left:0; right:0; text-align:center; font-size:10.5px; color:var(--ink);}
+  .bar-chart-labels{display:flex; gap:6px; margin-bottom:8px;}
+  .bar-chart-labels .yaxis-spacer{flex:0 0 40px;}
+  .bar-chart-labels .xlabels{flex:1; display:flex; gap:14px; padding:4px 6px 0;}
+  .bar-chart-labels .xlabels span{flex:1; text-align:center; font-size:10.5px; color:var(--sub);}
+
+  .swatch-row{display:flex; flex-wrap:wrap; gap:14px; margin:16px 0;}
+  .swatch{flex:1 1 160px; height:56px; border-radius:4px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px; font-weight:700;}
+  .colorbar{display:flex; height:36px; border-radius:3px; overflow:hidden; margin:16px 0 10px; border:1px solid var(--line);}
+  .colorbar-legend{display:flex; flex-wrap:wrap; gap:16px; font-size:12.5px; margin-bottom:20px;}
+  .colorbar-legend span{display:inline-flex; align-items:center; gap:6px;}
+  .colorbar-legend .sw{width:12px; height:12px; border-radius:2px; display:inline-block;}
+
+  .related-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px;}
+  .related-nav a{
+    font-size:12.5px; color:var(--sub); text-decoration:none;
+    padding:5px 12px; border:1px solid var(--line); border-radius:999px; background:#fff;
+  }
+  .related-nav a.current{color:#fff; background:var(--accent); border-color:var(--accent); font-weight:700;}
+
+  .toc-return{margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--sub);}
+  .toc-return a{color:var(--accent); text-decoration:none;}
+
+  @media (max-width:700px){
+    .page{padding:32px 20px 80px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>発表</h1>
+  <p class="lead">研究報告に向けて、良いプレゼンの作り方、スライドの構成、発表前の確認、評価のポイントをまとめています。研究報告のたびに見返してください。</p>
+
+  <h2><span class="num">01</span>良いプレゼンとは — コンテンツ</h2>
+  <p>プレゼンテーションの目的は、伝えたいメッセージを聞き手に理解してもらうことです。聞き手の負担を減らし、主張に納得してもらうことが大切です。</p>
+
+  <h3>分かりやすいプレゼンとは</h3>
+  <ul>
+    <li>メッセージが的確に伝わる</li>
+    <li>分かりやすく丁寧な言葉</li>
+    <li>聞き取りやすい声・話のスピード</li>
+    <li>分かりやすい論理構成（話の流れ）</li>
+  </ul>
+  <p>聞き手が「難しい」「引っかかる」と感じる部分がないかを意識します。</p>
+
+  <h3>ワンスライド・ワンメッセージ</h3>
+  <p>1枚のスライドに情報を詰め込みすぎると見づらくなります。1スライドにつき伝えるメッセージは1つに絞ります。</p>
+  <div class="mockrow">
+    <div class="mockcol">
+      <span class="tag bad">✕ 情報が多くて見づらい</span>
+      <div class="mockcard messy">
+        <div class="slide-title">結果の解釈</div>
+        <div class="slide-block">
+          <b>保育所整備率が高い地域ほど、女性就業率も高い傾向が見られた。</b>
+          <p>都道府県別パネルデータを用いた分析の結果、両者の間には統計的に有意な正の相関が確認された。</p>
+        </div>
+        <div class="slide-block">
+          <b>都市部よりも地方の方が、この相関がやや強く出ている。</b>
+          <p>都市部と地方を分けて推定したところ、地方のサンプルで係数がより大きく、整備の効果がより顕著に表れている。</p>
+        </div>
+        <div class="slide-block">
+          <b>ただし産業構造など他の交絡要因は十分に統制できていない。</b>
+          <p>本分析では地域の産業構造や所得水準といった要因を十分に統制できておらず、因果関係の解釈には注意が必要である。</p>
+        </div>
+      </div>
+    </div>
+    <div class="mockcol">
+      <span class="tag good">〇 情報が少なくて見やすい</span>
+      <div class="mockcard clean">
+        <div class="slide-title">結果の解釈</div>
+        <p style="font-size:13px; font-weight:700; color:var(--ink); margin:0 0 6px;">保育所整備率が高い地域ほど、女性就業率も高い傾向が見られた。</p>
+        <p style="font-size:12px; color:var(--sub); margin:0;">都道府県別パネルデータを用いた分析の結果、両者の間には統計的に有意な正の相関が確認された。</p>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="num">02</span>良いプレゼンとは — レイアウト</h2>
+  <p>同じ内容でも、レイアウト次第で伝わりやすさが大きく変わります。以下の原則を意識します。</p>
+
+  <h3>伝わるスライドの5原則</h3>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div class="txt"><b>ビジュアル化する</b></div></div>
+    <div class="step"><div class="n">2</div><div class="txt"><b>シンプルにする</b></div></div>
+    <div class="step"><div class="n">3</div><div class="txt"><b>大きくする</b></div></div>
+    <div class="step"><div class="n">4</div><div class="txt"><b>そろえる</b></div></div>
+    <div class="step"><div class="n">5</div><div class="txt"><b>見やすい文字を使う</b></div></div>
+  </div>
+
+  <h3>ビジュアル化の原則</h3>
+  <ul>
+    <li>影・グラデーションは取り除き、矢印は目立たせない</li>
+    <li>よく分からない図形は極力使わない</li>
+    <li>枠が目立ちすぎないようにする、楕円は多用しない</li>
+    <li>色や形はシンプルに、統一感をもたせる</li>
+    <li>見えない線をそろえ、関連する要素はグループにまとめる</li>
+  </ul>
+  <div class="compare">
+    <div class="compare-box bad">
+      <span class="tag">✕ 避けたい図形表現</span>
+      <div class="icon-grid">
+        <div class="icon-item">
+          <div class="shape"><div style="width:60px;height:40px;border:5px double var(--bad);box-shadow:2px 2px 5px rgba(0,0,0,.25);"></div></div>
+          <div class="cap">額縁が目立ちすぎる</div>
+        </div>
+        <div class="icon-item">
+          <div class="shape"><div style="width:60px;height:38px;background:var(--bad-soft);border:2px solid var(--bad);border-radius:18px 18px 18px 2px;"></div></div>
+          <div class="cap">吹き出しは形の調整が困難</div>
+        </div>
+        <div class="icon-item">
+          <div class="shape" style="font-size:28px;color:var(--bad);font-weight:900;text-shadow:2px 2px 3px rgba(0,0,0,.3);">➜</div>
+          <div class="cap">太い矢印が目立ちすぎる</div>
+        </div>
+        <div class="icon-item">
+          <div class="shape" style="position:relative;width:60px;">
+            <div style="position:absolute;left:4px;top:6px;width:36px;height:26px;border-radius:50%;background:#d98a3d;"></div>
+            <div style="position:absolute;left:24px;top:14px;width:36px;height:26px;border-radius:50%;background:#3d7ad9;"></div>
+          </div>
+          <div class="cap">楕円の多用で見にくい</div>
+        </div>
+        <div class="icon-item">
+          <div class="shape" style="position:relative;width:60px;height:44px;">
+            <div style="position:absolute;left:2px;top:2px;width:15px;height:15px;background:var(--bad-soft);border:1.5px solid var(--bad);transform:rotate(-10deg);"></div>
+            <div style="position:absolute;left:26px;top:16px;width:15px;height:15px;background:var(--bad-soft);border:1.5px solid var(--bad);transform:rotate(8deg);"></div>
+            <div style="position:absolute;left:8px;top:28px;width:15px;height:15px;background:var(--bad-soft);border:1.5px solid var(--bad);transform:rotate(-5deg);"></div>
+          </div>
+          <div class="cap">線がそろわずバラバラに配置</div>
+        </div>
+      </div>
+    </div>
+    <div class="compare-box good">
+      <span class="tag">〇 シンプルな図形表現</span>
+      <div class="icon-grid">
+        <div class="icon-item">
+          <div class="shape"><div style="width:60px;height:40px;border:1.5px solid var(--sub);"></div></div>
+          <div class="cap">枠はシンプルに1本線で</div>
+        </div>
+        <div class="icon-item">
+          <div class="shape"><div style="width:60px;height:38px;background:var(--accent-soft);border:1.5px solid var(--accent);"></div></div>
+          <div class="cap">四角で囲むだけにする</div>
+        </div>
+        <div class="icon-item">
+          <div class="shape" style="font-size:22px;color:var(--sub);">→</div>
+          <div class="cap">矢印は細く控えめに</div>
+        </div>
+        <div class="icon-item">
+          <div class="shape" style="display:flex;gap:6px;">
+            <div style="width:26px;height:36px;background:var(--accent-soft);border:1.5px solid var(--accent);"></div>
+            <div style="width:26px;height:36px;background:var(--accent-soft);border:1.5px solid var(--accent);"></div>
+          </div>
+          <div class="cap">形をそろえて統一感を出す</div>
+        </div>
+        <div class="icon-item">
+          <div class="shape" style="position:relative; width:60px; height:44px;">
+            <div style="position:absolute; left:7px; top:0; height:100%; border-left:1px dashed var(--accent);"></div>
+            <div style="position:absolute; left:56px; top:0; height:100%; border-left:1px dashed var(--accent);"></div>
+            <div style="display:flex; gap:5px; position:absolute; top:2px; left:7px;">
+              <div style="width:13px;height:13px;background:#fff;border:1.5px solid var(--accent);"></div>
+              <div style="width:13px;height:13px;background:#fff;border:1.5px solid var(--accent);"></div>
+              <div style="width:13px;height:13px;background:#fff;border:1.5px solid var(--accent);"></div>
+            </div>
+            <div style="display:flex; gap:5px; position:absolute; top:25px; left:7px;">
+              <div style="width:13px;height:13px;background:#fff;border:1.5px solid var(--accent);"></div>
+              <div style="width:13px;height:13px;background:#fff;border:1.5px solid var(--accent);"></div>
+              <div style="width:13px;height:13px;background:#fff;border:1.5px solid var(--accent);"></div>
+            </div>
+          </div>
+          <div class="cap">見えない線をそろえる</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>表・グラフの原則</h3>
+  <ul>
+    <li>Excel や論文の表をそのまま貼らない</li>
+    <li>余分な要素（不要な罫線・目盛）は取り除く</li>
+    <li>凡例はグラフの近くに大きく置く</li>
+    <li>データの示し方に強弱をつける（強調したい部分をサイズ・色で目立たせる）</li>
+    <li>数値はできれば整数に、軸目盛は少なく</li>
+  </ul>
+  <div class="mockrow">
+    <div class="mockcol">
+      <span class="tag good">〇 良い表の例</span>
+      <div class="mockgraph">
+        <table style="border-collapse:collapse; width:100%; font-size:11px;">
+          <thead>
+            <tr>
+              <th style="border:1px solid var(--line); padding:5px 8px; text-align:left; background:var(--accent); color:#fff;">地域</th>
+              <th style="border:1px solid var(--line); padding:5px 8px; text-align:right; background:var(--accent); color:#fff;">子育て支援満足度（%）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:var(--accent-soft);"><td style="border:1px solid var(--line); padding:5px 8px; font-weight:700;">A市</td><td style="border:1px solid var(--line); padding:5px 8px; text-align:right; font-weight:700;">82</td></tr>
+            <tr><td style="border:1px solid var(--line); padding:5px 8px;">B市</td><td style="border:1px solid var(--line); padding:5px 8px; text-align:right;">45</td></tr>
+            <tr><td style="border:1px solid var(--line); padding:5px 8px;">C市</td><td style="border:1px solid var(--line); padding:5px 8px; text-align:right;">38</td></tr>
+          </tbody>
+        </table>
+        <ul class="cap-list">
+          <li>項目見出しは濃いめの色にし、文字は白抜きにする</li>
+          <li>細い境界線を入れてもよい</li>
+          <li>強調したい部分はサイズ・色を変える</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mockcol">
+      <span class="tag good">〇 良いグラフの例</span>
+      <div class="mockgraph">
+        <div class="bar-chart">
+          <div class="yaxis-block">
+            <div class="yaxis-title">満足度（%）</div>
+            <div class="yaxis"><span>100</span><span>50</span><span>0</span></div>
+          </div>
+          <div class="plot">
+            <div class="bars">
+              <div class="bar-col">
+                <div class="bar hi" style="height:90%;"><span class="v">82</span></div>
+              </div>
+              <div class="bar-col">
+                <div class="bar" style="height:49%;"><span class="v">45</span></div>
+              </div>
+              <div class="bar-col">
+                <div class="bar" style="height:41%;"><span class="v">38</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bar-chart-labels">
+          <div class="yaxis-spacer"></div>
+          <div class="xlabels"><span>A市</span><span>B市</span><span>C市</span></div>
+        </div>
+        <ul class="cap-list">
+          <li>数値はできれば整数にする</li>
+          <li>軸目盛は少なくする</li>
+          <li>強調したい項目だけ色を変える</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h3>フォント・レイアウトの原則</h3>
+  <ul>
+    <li>視認性の高いゴシック体を使う（明朝体は投影時に細線が飛びやすいため、スクリーン投影では避ける）
+      <ul>
+        <li>推奨は<strong>BIZ UDPゴシック</strong>（ユニバーサルデザインフォント。Windows 10 以降に標準搭載。英数字や似た文字が判別しやすく、太さの段階も豊富）。定番の游ゴシック・メイリオも可</li>
+        <li>游ゴシックを使う場合は、細字だと投影時に見えにくいため、太さを「Medium」または「Bold」に指定する</li>
+        <li>英数字（欧文）は Segoe UI・Calibri・Helvetica Neue など</li>
+      </ul>
+    </li>
+    <li>文字の大きさは24pt以上にする</li>
+    <li>ニセ太字・ニセ斜体を使わない（MS ゴシック・MS 明朝・Century は太字/斜体に非対応）</li>
+    <li>左揃え または 両端揃えにする</li>
+    <li>行間・文字間隔を読みやすく調整する</li>
+  </ul>
+
+  <h3>色遣いの原則</h3>
+  <ul>
+    <li>1つの色には1つの意味をもたせる</li>
+    <li>背景色を含めて合計4色までに抑える</li>
+    <li>原色は使わない（少し彩度を落とす）</li>
+    <li>色のみに頼らない（色覚の多様性に配慮する）</li>
+    <li>ユニバーサルな配色：暖色と寒色を組み合わせ、明度に差をつける</li>
+  </ul>
+
+  <h4>ユニバーサルな配色</h4>
+
+  <p style="font-size:13.5px; color:var(--sub); margin-bottom:6px;">暖色と寒色を合わせる</p>
+  <div class="swatch-row">
+    <div class="swatch" style="background:var(--warm);"></div>
+    <div class="swatch" style="background:var(--accent);"></div>
+  </div>
+
+  <p style="font-size:13.5px; color:var(--sub); margin-bottom:6px;">暖色系と寒色系の中性色を合わせる</p>
+  <div class="swatch-row">
+    <div class="swatch" style="background:#7d6a9c;"></div>
+    <div class="swatch" style="background:#5f8f6e;"></div>
+  </div>
+
+  <p style="font-size:13.5px; color:var(--sub); margin-bottom:6px;">明度に差をつける</p>
+  <div class="swatch-row">
+    <div class="swatch" style="background:#dce6ee;"></div>
+    <div class="swatch" style="background:#7d9db5;"></div>
+    <div class="swatch" style="background:#2e5476;"></div>
+  </div>
+
+  <h4>配色の分量の目安</h4>
+  <p>背景（ベース）・メインカラー・アクセントカラーは、7:2.5:0.5程度の分量を目安にします。</p>
+  <div class="colorbar">
+    <div style="width:70%; background:#fff; border-right:1px solid var(--line);"></div>
+    <div style="width:25%; background:var(--accent);"></div>
+    <div style="width:5%; background:var(--warm);"></div>
+  </div>
+  <div class="colorbar-legend">
+    <span><span class="sw" style="background:#fff; border:1px solid var(--line);"></span>背景 70%</span>
+    <span><span class="sw" style="background:var(--accent);"></span>メイン 25%</span>
+    <span><span class="sw" style="background:var(--warm);"></span>アクセント 5%</span>
+  </div>
+
+  <h2><span class="num">03</span>報告スライドの構成</h2>
+  <p>研究報告のスライドを作る際は、報告スライド・テンプレートの項目と流れを参考にしてください。このテンプレートは、研究の流れがそのままスライドの流れになるよう構成されています。必ずこのとおりにする必要はありませんが、何をどの順で示すかの目安になります。</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div class="txt"><b>タイトル</b>（タイトル・グループ名・メンバー・発表日）</div></div>
+    <div class="step"><div class="n">2</div><div class="txt"><b>研究背景</b>（なぜこのテーマが重要か。設定した問いの重要性を示す）</div></div>
+    <div class="step"><div class="n">3</div><div class="txt"><b>リサーチクエスチョン</b>（具体的な RQ）</div></div>
+    <div class="step"><div class="n">4</div><div class="txt"><b>先行研究</b>（このテーマで何が知られているか、先行研究の課題、自分たちが見るべき問い）</div></div>
+    <div class="step"><div class="n">5</div><div class="txt"><b>データ</b>（出典・特徴・期間・サンプルサイズ・使用した変数）</div></div>
+    <div class="step"><div class="n">6</div><div class="txt"><b>分析方法</b>（変数の定義、回帰式、推定方法。X と Y は何か、どう確かめるか）</div></div>
+    <div class="step"><div class="n">7</div><div class="txt"><b>結果</b>（推定結果の表・グラフ。伝えたいメッセージが端的に伝わる表現に）</div></div>
+    <div class="step"><div class="n">8</div><div class="txt"><b>まとめ</b>（やったこと（問い・分析方法）のおさらいと結果の解釈）</div></div>
+    <div class="step"><div class="n">9</div><div class="txt"><b>限界と今後の課題</b>（明らかにできなかったことと、その要因）</div></div>
+    <div class="step"><div class="n">10</div><div class="txt"><b>参考文献</b>（発表で引用した文献リスト）</div></div>
+  </div>
+  <p><a href="#" style="color:var(--accent);">参考：報告スライド・テンプレート（.pptx）</a></p>
+
+  <h2><span class="num">04</span>発表前チェックリスト</h2>
+  <p>資料を共有する前や報告の前に、以下を確認してから報告に臨んでください。</p>
+
+  <div class="check-group">
+    <h3>スライドのチェック</h3>
+    <h4>内容</h4>
+    <div class="checklist">
+      <div>このスライドで一番伝えたいことは明確か</div>
+      <div>ワンスライド・ワンメッセージになっているか</div>
+      <div>事実と意見を区別できているか</div>
+      <div>結論に至る流れが分かるか</div>
+    </div>
+    <h4>見た目</h4>
+    <div class="checklist">
+      <div>フォントサイズは24pt以上あるか</div>
+      <div>色は多すぎないか（背景を含めて4色まで）</div>
+      <div>図表や文章は整列しているか</div>
+      <div>不要な線や装飾を削除したか</div>
+      <div>表や図をそのまま貼っただけになっていないか</div>
+    </div>
+    <h4>図表</h4>
+    <div class="checklist">
+      <div>何を見てほしい図か分かるか</div>
+      <div>凡例やラベルは読みやすいか</div>
+      <div>不要な情報を入れすぎていないか</div>
+      <div>強調したい部分が分かるか</div>
+    </div>
+  </div>
+
+  <div class="check-group">
+    <h3>発表のチェック</h3>
+    <div class="checklist">
+      <div>最初に問いやテーマを明確に言えているか</div>
+      <div>結果を読み上げるだけになっていないか</div>
+      <div>最後に何が分かったかを簡潔に言えるか</div>
+      <div>結論を言いすぎていないか</div>
+    </div>
+  </div>
+
+  <h2><span class="num">05</span>評価されるポイント</h2>
+  <p>研究報告は、以下の観点で評価されます。事前に確認しておいてください。</p>
+  <div class="grid">
+    <div class="card">
+      <h4>発表</h4>
+      <ul>
+        <li>声の大きさ・明瞭さ（聞き取りやすいか。重要な箇所で話し方を変えるなどの工夫があるか）</li>
+        <li>態度（聴衆の方を見て話しているか。聴衆を巻き込む工夫があるか）</li>
+        <li>役割分担（全員が役割を果たしているか。※グループでの発表の場合）</li>
+        <li>発表時間（時間内に収まっているか）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>研究内容</h4>
+      <ul>
+        <li>テーマ設定・RQ の明確さ（社会的に重要なテーマか。RQ が具体的かつ明確か）</li>
+        <li>データと分析方法の適切さ（RQ に対応するデータと分析方法が選ばれているか）</li>
+        <li>結果の解釈の慎重さ（相関と因果の違いを意識しているか。言えること・言えないことを区別しているか）</li>
+        <li>先行研究との接続（先行研究を踏まえた研究の位置づけが示されているか）</li>
+        <li>主張と根拠の整合性（主張と根拠に整合性があるか）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>提示資料（スライド）</h4>
+      <ul>
+        <li>分かりやすさ（発表内容と整合し、見やすいか）</li>
+        <li>図表の利用方法（データが適切に図表化され、効果的に使われているか）</li>
+        <li>出所の明示（データ・図表・参考文献が適切に明記されているか）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Q&amp;A</h4>
+      <ul>
+        <li>質問対応（質問に対して適切に回答できているか）</li>
+      </ul>
+    </div>
+  </div>
+
+  <details>
+    <summary>▼ PowerPoint Tips — スライドマスターの使い方など</summary>
+    <div class="details-body">
+      <p>スライドマスターを使うと、全スライドに共通の設定（背景・色・フォント・ロゴなど）を一括で適用でき、テーマとして保存もできます。以下の操作を知っておくと、統一感のあるスライドを効率よく作れます。</p>
+
+      <div class="ppt-item">
+        <h4>スライドマスターとは</h4>
+        <img src="../images/seminar_pptmaster_25.png" alt="スライドマスターとは（全スライド共通設定・テーマ保存）">
+        <div class="cap">全スライドに一括して変更を適用できる機能。背景や色、フォントなどをテーマとして保存できる</div>
+      </div>
+      <div class="ppt-item">
+        <h4>マスターとレイアウトの関係</h4>
+        <img src="../images/seminar_pptmaster_26.png" alt="マスターとレイアウトの関係">
+        <div class="cap">スライドマスターはレイアウトすべてに共通する設定（タイトル・テキスト・フッター・ロゴ）を行い、レイアウトはスライドごとの配置を定義する</div>
+      </div>
+      <div class="ppt-item">
+        <h4>マスターの設定</h4>
+        <img src="../images/seminar_pptmaster_27.png" alt="マスターの設定（ロゴ・タイトル・フォント・インデント・行間・フッター）">
+        <div class="cap">タイトル・フッター（日付・スライド番号）・ロゴ画像・フォント・インデント・行間などを設定する</div>
+      </div>
+      <div class="ppt-item">
+        <h4>レイアウトの設定</h4>
+        <img src="../images/seminar_pptmaster_28.png" alt="レイアウトの設定（プレースホルダー）">
+        <div class="cap">プレースホルダー（文字や画像を入れるための枠）を設定する</div>
+      </div>
+      <div class="ppt-item">
+        <h4>配色とフォントの設定</h4>
+        <img src="../images/seminar_pptmaster_29.png" alt="配色とフォントの設定">
+        <div class="cap">テーマの色とフォントをまとめて設定する</div>
+      </div>
+      <div class="ppt-item">
+        <h4>テーマの保存</h4>
+        <img src="../images/seminar_pptmaster_30.png" alt="テーマの保存">
+        <div class="cap">保存したテーマは、以後の資料でテンプレートとして使えるようになる</div>
+      </div>
+    </div>
+  </details>
+
+  <div class="toc-return">
+    <nav class="related-nav">
+      <a href="seminar_kiso.html">研究と論文の基礎</a>
+      <a href="seminar_hajimekata.html">研究の始め方</a>
+      <a href="seminar_bunken.html">文献の探し方</a>
+      <a href="seminar_data.html">データの準備</a>
+      <a href="seminar_bunseki.html">分析と解釈</a>
+      <a href="seminar_happyo.html" class="current">発表</a>
+      <a href="seminar_r.html">R</a>
+    </nav>
+    <a href="#">← 目次に戻る</a>
+  </div>
+</div>
+</body>
+</html>

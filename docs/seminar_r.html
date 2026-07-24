@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>R</title>
+<style>
+  :root{
+    --ink:#242a30;
+    --paper:#f7f8fa;
+    --line:#d5dbe2;
+    --accent:#2e5476;
+    --accent-soft:#e4ecf3;
+    --sub:#6b6558;
+    --good:#3d6b5c;
+    --good-soft:#e3efe9;
+    --good-line:#c2ddd0;
+    --bad:#9c4a3c;
+    --bad-soft:#f6ebe8;
+    --bad-line:#e6c9c1;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+    line-height:1.75;
+  }
+  .page{max-width:920px; margin:0 auto; padding:56px 40px 120px;}
+
+  h1{font-size:34px; margin:0 0 6px; font-weight:700; letter-spacing:.02em;}
+  .lead{
+    color:var(--sub); font-size:15px; margin:0 0 28px;
+    padding-bottom:32px; border-bottom:1px solid var(--line);
+  }
+  h2{font-size:22px; margin:64px 0 20px; display:flex; align-items:baseline; gap:12px; scroll-margin-top:24px;}
+  h2 .num{
+    font-size:14px; color:var(--accent); font-weight:700;
+    border:1px solid var(--accent); border-radius:999px;
+    padding:2px 10px; letter-spacing:.05em;
+  }
+  h3{font-size:16px; margin:28px 0 12px; color:var(--ink); font-weight:700;}
+  h4{font-size:14px; margin:20px 0 10px; color:var(--accent); font-weight:700;}
+  p{margin:0 0 14px;}
+  ul,ol{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px;}
+  code{
+    font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
+    background:var(--accent-soft); color:var(--accent);
+    padding:1px 5px; border-radius:3px; font-size:.92em;
+  }
+
+  /* ジャンプリンク目次 */
+  .jumpnav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 32px;}
+  .jumpnav a{
+    font-size:12.5px; color:var(--accent); text-decoration:none;
+    padding:5px 12px; border:1px solid var(--line); border-radius:999px; background:#fff;
+  }
+  .jumpnav a:hover{background:var(--accent-soft);}
+
+  /* 強調ボックス */
+  .callout{
+    background:var(--accent-soft); border-left:4px solid var(--accent);
+    padding:18px 22px; border-radius:2px; margin:20px 0 28px; font-size:15px;
+  }
+  .callout ul{margin:10px 0 0; padding-left:20px;}
+  .callout li{margin-bottom:4px;}
+
+  /* 補足ボックス（小さめ） */
+  .note{background:#fff; border:1px solid var(--line); border-left:3px solid var(--sub); padding:10px 16px; margin:10px 0 22px; font-size:13.5px;}
+  .note .note-label{font-size:11px; font-weight:700; color:var(--sub); letter-spacing:.05em; margin-bottom:4px;}
+
+  /* 補足ボックス（tip・見出し付き） */
+  .tip{background:#fff; border:1px solid var(--line); padding:16px 20px; margin:16px 0 28px;}
+  .tip .tip-head{font-weight:700; font-size:14px; margin-bottom:8px; color:var(--accent);}
+  .tip ul{margin:0; padding-left:20px; font-size:14px;}
+  .tip ul li{margin-bottom:5px;}
+
+  /* 注意ボックス */
+  .alert{background:var(--bad-soft); border:1px solid var(--bad-line); border-left:4px solid var(--bad); padding:14px 18px; margin:14px 0 24px; font-size:14px;}
+  .alert strong{color:var(--bad);}
+
+  /* コードボックス */
+  .codebox{
+    background:#eef1f4; border:1px solid var(--line); border-radius:4px;
+    padding:16px 20px; font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
+    font-size:13px; line-height:1.8; overflow-x:auto; margin:14px 0 8px;
+    white-space:pre; color:var(--ink);
+  }
+  .codebox .cmt{color:var(--sub);}
+  .codebox:last-child{margin-bottom:24px;}
+
+  /* 実行結果ボックス */
+  .resultbox{
+    background:#fbfbfa; border:1px solid var(--line); border-left:4px solid var(--good);
+    border-radius:4px; padding:12px 18px 14px; margin:0 0 24px;
+  }
+  .resultbox .rlabel{font-size:11px; font-weight:700; color:var(--good); letter-spacing:.05em; margin-bottom:6px;}
+  .resultbox pre{
+    margin:0; font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
+    font-size:12px; line-height:1.65; white-space:pre; overflow-x:auto; color:var(--ink);
+  }
+
+  /* 左右対比（中立トーン） */
+  .compare{display:flex; flex-wrap:wrap; gap:16px; margin:20px 0 28px;}
+  .compare-box{flex:1 1 260px; border-radius:4px; padding:18px 22px; font-size:14.5px;}
+  .compare-box.neutral{background:var(--accent-soft); border:1px solid var(--line);}
+  .compare-box .tag{font-weight:700; font-size:14px; margin-bottom:10px; display:block; color:var(--accent);}
+
+  /* 縦ステップ */
+  .steps{display:flex; flex-direction:column; margin:20px 0 28px;}
+  .step{
+    display:flex; align-items:center; gap:16px; padding:12px 18px;
+    background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent); margin-bottom:8px;
+  }
+  .step .n{
+    flex-shrink:0; width:30px; height:30px; background:var(--accent); color:#fff;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:700;
+  }
+  .step .txt{font-size:14.5px; color:var(--ink);}
+  .step .txt b{color:var(--accent); display:block; margin-bottom:2px;}
+
+
+  /* RStudio 4ペイン図 */
+  .rstudio-panes{
+    display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
+    gap:2px; background:var(--line); border:1px solid var(--line);
+    min-height:220px; margin:20px 0 28px;
+  }
+  .rstudio-panes .pane{background:#fff; padding:14px 16px;}
+  .rstudio-panes .pane h4{margin:0 0 6px; font-size:13.5px; color:var(--accent);}
+  .rstudio-panes .pane p{margin:0; font-size:12.5px; color:var(--ink); line-height:1.6;}
+
+  /* ggplot 3層スタック図（詳細） */
+  .layer-stack{display:flex; flex-direction:column; margin:20px 0 28px;}
+  .layer{background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent); padding:14px 20px; font-size:14px;}
+  .layer .lnum{font-size:11px; font-weight:700; color:var(--accent); letter-spacing:.05em; margin-bottom:4px;}
+  .layer-plus{text-align:center; color:var(--sub); font-size:16px; font-weight:700; margin:2px 0;}
+
+  /* ggplot：半透明のシートを重ねて描き足していくイメージ図 */
+  .layer-visual{position:relative; height:210px; margin:24px 0 6px;}
+  .layer-visual .sheet{
+    position:absolute; width:190px; height:150px;
+    background:rgba(255,255,255,.55); border:1px solid var(--line); border-radius:2px;
+    box-shadow:2px 4px 12px rgba(36,42,48,.08);
+  }
+  .layer-visual .sheet.s1{top:44px; left:44px; z-index:1;}
+  .layer-visual .sheet.s2{top:22px; left:22px; z-index:2;}
+  .layer-visual .sheet.s3{top:0; left:0; z-index:3; background:rgba(255,255,255,.8);}
+  .layer-visual .axis-x{position:absolute; left:16px; right:12px; bottom:16px; height:2px; background:var(--ink);}
+  .layer-visual .axis-y{position:absolute; left:16px; top:12px; bottom:16px; width:2px; background:var(--ink);}
+  .layer-visual .dot{position:absolute; width:7px; height:7px; margin:-3.5px; border-radius:50%; background:var(--accent);}
+  .layer-visual-legend{list-style:none; margin:10px 0 28px; padding:0; font-size:13.5px; color:var(--ink);}
+  .layer-visual-legend li{margin-bottom:6px;}
+  .layer-visual-legend li b{color:var(--accent); margin-right:4px;}
+
+  /* Q&A */
+  .qa{background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent); padding:16px 20px; margin-bottom:10px;}
+  .qa .q{font-weight:700; font-size:14.5px; color:var(--ink); margin-bottom:6px;}
+  .qa .q::before{content:"Q. "; color:var(--accent);}
+  .qa .a{font-size:14px; color:var(--ink); margin:0;}
+  .qa .a::before{content:"A. "; color:var(--sub); font-weight:700;}
+
+  /* 折りたたみ */
+  details{background:#fff; border:1px solid var(--line); margin:12px 0; padding:0;}
+  summary{cursor:pointer; padding:14px 20px; font-weight:700; color:var(--accent); list-style:none; position:relative;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"＋"; position:absolute; right:20px; top:14px; font-size:14px; color:var(--sub);}
+  details[open] summary::after{content:"－";}
+  details[open] summary{border-bottom:1px solid var(--line);}
+  .details-body{padding:16px 20px 22px;}
+
+  /* ダウンロードリンク */
+  .dl-link{
+    display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line);
+    border-left:4px solid var(--accent); padding:14px 20px; text-decoration:none; color:var(--ink); font-size:14.5px; margin:8px 0 24px;
+  }
+  .dl-link b{color:var(--accent);}
+
+  /* ページ間ナビゲーション（フッター） */
+  .related-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px;}
+  .related-nav a{
+    font-size:12.5px; color:var(--sub); text-decoration:none;
+    padding:5px 12px; border:1px solid var(--line); border-radius:999px; background:#fff;
+  }
+  .related-nav a.current{color:#fff; background:var(--accent); border-color:var(--accent); font-weight:700;}
+
+  .toc-return{margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--sub);}
+  .toc-return a{color:var(--accent); text-decoration:none;}
+
+  @media (max-width:700px){
+    .rstudio-panes{grid-template-columns:1fr;}
+    .page{padding:32px 20px 80px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>R</h1>
+  <p class="lead">Posit Cloud で R を使うための準備から、基本的な関数の使い方までをまとめています。</p>
+
+  <nav class="jumpnav">
+    <a href="#setup">セットアップ</a>
+    <a href="#screen">画面の見方</a>
+    <a href="#basics">基本操作</a>
+    <a href="#import">データのインポート</a>
+    <a href="#wrangle">前処理</a>
+    <a href="#descriptive">記述統計</a>
+    <a href="#viz">可視化</a>
+    <a href="#regression">回帰分析</a>
+    <a href="#errors">エラー対処</a>
+    <a href="#samplecode">サンプルコード</a>
+  </nav>
+
+  <h2 id="setup"><span class="num">01</span>Posit Cloud のセットアップ</h2>
+  <details>
+    <summary>▼ Posit Cloud のセットアップ（初回のみ）</summary>
+    <div class="details-body">
+      <p>Posit Cloud は、ブラウザ上で R を使えるサービスです。インストール不要で、どの PC からでも同じ環境で作業できます。</p>
+      <ul>
+        <li>インストール不要・ブラウザで完結</li>
+        <li>作業がクラウドに自動保存される</li>
+        <li>授業の PC でも自宅の PC でも続きから作業できる</li>
+      </ul>
+      <div class="alert">
+        <strong>注意：</strong>無料プランで十分使えますが、月25時間の制限があります。授業以外で使いすぎないよう注意してください。自分の PC に RStudio をインストールすれば時間制限なく使えます。
+      </div>
+
+      <h3>準備するもの</h3>
+      <ul>
+        <li>PC（Windows または Mac）※スマホ・タブレット不可</li>
+        <li>Google アカウント</li>
+        <li>ブラウザは Chrome または Edge を推奨</li>
+      </ul>
+
+      <div class="steps">
+        <div class="step"><div class="n">1</div><div class="txt"><b>Posit Cloud にアクセス</b>ブラウザで posit.cloud を開き、「Get Started for Free」をクリック</div></div>
+        <div class="step"><div class="n">2</div><div class="txt"><b>アカウントを作成</b>「Sign Up with Google」→ Google アカウントでログイン → 利用規約に同意（すでにアカウントがある人は「Log In」から）</div></div>
+        <div class="step"><div class="n">3</div><div class="txt"><b>プロジェクトを作成</b>右上「New Project」→「New RStudio Project」→ 名前を入力（例：seminar2026）して Enter</div></div>
+        <div class="step"><div class="n">4</div><div class="txt"><b>tidyverse をインストール</b>左下の Console に下記を貼り付けて Enter</div></div>
+        <div class="step"><div class="n">5</div><div class="txt"><b>動作を確認</b>続けて確認用コードを貼り付けて Enter。グラフが表示されれば完了</div></div>
+      </div>
+
+      <p>手順4：Console に貼り付けるコード</p>
+      <div class="codebox">install.packages("tidyverse")</div>
+      <div class="note"><div class="note-label">補足</div>インストールには1〜2分かかります。赤い文字が出ることがありますが、エラーでなければ問題ありません。</div>
+
+      <p>手順5：続けて貼り付けるコード</p>
+      <div class="codebox">library(tidyverse)
+ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()</div>
+    </div>
+  </details>
+
+  <h2 id="screen"><span class="num">02</span>画面の見方</h2>
+  <details>
+    <summary>▼ 画面の見方</summary>
+    <div class="details-body">
+      <p>RStudio の画面は4つの領域に分かれています。</p>
+
+      <div class="rstudio-panes">
+        <div class="pane">
+          <h4>Source（左上）</h4>
+          <p>コードを書く場所。コードはファイルとして保存できる</p>
+        </div>
+        <div class="pane">
+          <h4>Environment（右上）</h4>
+          <p>作成したオブジェクト（データや変数）の一覧</p>
+        </div>
+        <div class="pane">
+          <h4>Console（左下）</h4>
+          <p>コードが実行され、結果が表示される場所。ここに直接コードを書くことも可能</p>
+        </div>
+        <div class="pane">
+          <h4>Files / Plots / Packages / Help（右下）</h4>
+          <p>ファイル一覧、作成したグラフ、パッケージ、ヘルプ。使うファイルや作成したファイルはここから確認する</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>コードの実行方法：</strong>Source に書いたコードは <code>Ctrl + Enter</code>（Mac は <code>Cmd + Enter</code>）で実行します。1行だけ実行したいときはその行にカーソルを置き、複数行実行したいときは範囲を選択してから押します。
+      </div>
+
+      <div class="note">
+        <div class="note-label">補足：Source と Console の使い分け</div>
+        Console は試し打ち用で、入力した内容は残りません。あとから見返したいコードは Source に書いて保存してください。
+      </div>
+    </div>
+  </details>
+
+  <h2 id="basics"><span class="num">03</span>R の基本操作</h2>
+
+  <h3>パッケージ</h3>
+  <p>R の機能を拡張する道具をパッケージといいます。tidyverse は、データ操作と可視化のための代表的なパッケージです。</p>
+  <div class="compare">
+    <div class="compare-box neutral">
+      <span class="tag">install.packages("tidyverse")</span>
+      インストール（初回の1回だけ）
+    </div>
+    <div class="compare-box neutral">
+      <span class="tag">library(tidyverse)</span>
+      読み込み（作業のたびに毎回）
+    </div>
+  </div>
+  <div class="note"><div class="note-label">補足</div>新しいセッションを開いたときは、<code>library()</code> を実行しないと関数が使えません。「関数が見つからない」というエラーが出たら、まず <code>library()</code> を実行したか確認してください。</div>
+
+  <h3>基本演算</h3>
+  <div class="codebox">1 + 1        <span class="cmt"># 足し算</span>
+10 - 3       <span class="cmt"># 引き算</span>
+4 * 5        <span class="cmt"># 掛け算</span>
+20 / 4       <span class="cmt"># 割り算</span>
+2^3          <span class="cmt"># べき乗（2の3乗）</span>
+10 %% 3      <span class="cmt"># 余り（10 ÷ 3 の余り）</span></div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre>[1] 2
+[1] 7
+[1] 20
+[1] 5
+[1] 8
+[1] 1</pre>
+  </div>
+
+  <h3>オブジェクト（変数への代入）</h3>
+  <p><code>&lt;-</code> を使うと、値をオブジェクトに保存できます。保存した値は、あとから何度でも使えます。</p>
+  <div class="codebox">x &lt;- 10           <span class="cmt"># xに10を代入</span>
+y &lt;- 3            <span class="cmt"># yに3を代入</span>
+x + y             <span class="cmt"># 計算できる</span>
+z &lt;- x * y        <span class="cmt"># 計算結果を新しいオブジェクトに保存</span>
+z                 <span class="cmt"># 中身を確認</span></div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre>[1] 13
+[1] 30</pre>
+  </div>
+  <div class="note"><div class="note-label">補足</div>代入しただけでは何も表示されません。中身を見たいときは、オブジェクト名だけを実行します。</div>
+
+  <h3>ベクトル</h3>
+  <p>複数の値をまとめたものをベクトルといいます。<code>c()</code> で作成します。</p>
+  <div class="codebox">scores &lt;- c(80, 65, 90, 72, 88)
+
+length(scores)    <span class="cmt"># 要素数</span>
+sum(scores)       <span class="cmt"># 合計</span>
+mean(scores)      <span class="cmt"># 平均</span>
+max(scores)       <span class="cmt"># 最大値</span>
+min(scores)       <span class="cmt"># 最小値</span></div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre>[1] 5
+[1] 395
+[1] 79
+[1] 90
+[1] 65</pre>
+  </div>
+
+  <h4>要素の取り出し</h4>
+  <div class="codebox">scores[1]         <span class="cmt"># 1番目</span>
+scores[2:4]       <span class="cmt"># 2〜4番目</span></div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre>[1] 80
+[1] 65 90 72</pre>
+  </div>
+  <div class="note"><div class="note-label">補足</div>要素の番号は0ではなく<strong>1から</strong>始まります。</div>
+
+  <h2 id="import"><span class="num">04</span>データのインポート</h2>
+
+  <h3>CSVファイルの読み込み</h3>
+  <p><code>read_csv()</code> で CSV ファイルを読み込みます。ファイルはあらかじめプロジェクトにアップロードしておきます。</p>
+  <div class="codebox">df &lt;- read_csv("ファイル名.csv")</div>
+  <div class="note"><div class="note-label">補足</div>ファイルがプロジェクト内にないとエラーになります。右下の Files タブにファイルが表示されているか確認してください。</div>
+
+  <h3>練習用データ</h3>
+  <p>tidyverse には練習用のデータが含まれています。ここでは自動車の燃費データ <code>mpg</code> を使います。</p>
+  <div class="codebox">df &lt;- mpg      <span class="cmt"># 練習用データを df に代入</span></div>
+
+  <h3>データの構造を確認する</h3>
+  <p>読み込んだら、まずデータの中身と大きさを確認します。</p>
+  <ul>
+    <li><code>df</code> — データ全体を表示</li>
+    <li><code>head(df)</code> — 先頭数行と各列の型を確認</li>
+    <li><code>nrow(df)</code> — 行数（サンプルサイズ）</li>
+    <li><code>ncol(df)</code> — 列数（変数の数）</li>
+  </ul>
+  <div class="codebox">head(df)
+nrow(df)
+ncol(df)</div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre># A tibble: 6 x 11
+  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class
+  &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
+1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compact
+2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compact
+3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compact
+4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compact
+5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compact
+6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compact
+
+[1] 234
+[1] 11</pre>
+  </div>
+
+  <h2 id="wrangle"><span class="num">05</span>データの前処理</h2>
+
+  <h3>パイプ演算子</h3>
+  <p><code>%&gt;%</code>（パイプ演算子）は、左の結果を右の関数に渡す記号です。処理を順番につなげて書けるため、コードが読みやすくなります。</p>
+  <div class="codebox">df %&gt;% filter(year == 2008)
+<span class="cmt"># df というデータを filter() に渡して、2008年の行だけを取り出す</span></div>
+
+  <h3>filter：条件に合う行を取り出す</h3>
+  <div class="codebox">df %&gt;% filter(year == 2008)                  <span class="cmt"># 2008年のデータのみ</span>
+df %&gt;% filter(cyl >= 6)                      <span class="cmt"># 気筒数6以上</span>
+df %&gt;% filter(manufacturer == "toyota")      <span class="cmt"># トヨタのみ</span></div>
+  <div class="note"><div class="note-label">補足</div>「等しい」の条件はイコール2つ（<code>==</code>）です。1つ（<code>=</code>）は代入の意味になるためエラーになります。文字列は必ず <code>"</code> で囲みます。</div>
+
+  <h3>select：列（変数）を選ぶ</h3>
+  <div class="codebox">df %&gt;% select(manufacturer, model, year, hwy)</div>
+
+  <h3>mutate：新しい変数を作る</h3>
+  <div class="codebox">df %&gt;% mutate(hwy_km = hwy * 1.609)          <span class="cmt"># マイル→kmに変換した新しい列を追加</span></div>
+
+  <h3>summarise：集計する</h3>
+  <div class="codebox">df %&gt;% summarise(
+  mean.hwy = mean(hwy),
+  max.hwy = max(hwy),
+  n = n()
+)</div>
+  <div class="note"><div class="note-label">補足</div><code>n()</code> はデータの件数を数える関数です。</div>
+
+  <h3>group_by：グループ別に集計する</h3>
+  <div class="codebox">df %&gt;%
+  group_by(manufacturer) %&gt;%
+  summarise(mean.hwy = mean(hwy)) %&gt;%
+  arrange(desc(mean.hwy))    <span class="cmt"># 降順に並び替え</span></div>
+  <div class="note"><div class="note-label">補足</div><code>arrange()</code> は並び替えの関数です。デフォルトは昇順で、<code>desc()</code> で囲むと降順になります。</div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre># A tibble: 15 x 2
+   manufacturer mean.hwy
+   &lt;chr&gt;           &lt;dbl&gt;
+ 1 honda            32.6
+ 2 volkswagen       29.2
+ 3 hyundai          26.9
+ 4 subaru           25.6
+ 5 audi             26.4
+ 6 toyota           24.9
+ 7 nissan           24.6
+ 8 pontiac          26.4
+ 9 chevrolet        21.9
+10 ford             19.4
+   ...（以下略）</pre>
+  </div>
+
+  <h3>欠損値の確認</h3>
+  <div class="codebox">is.na(df) %&gt;% colSums()    <span class="cmt"># 各変数の欠損値の数を確認</span>
+df %&gt;% filter(is.na(hwy))  <span class="cmt"># 欠損のある行を表示</span></div>
+
+  <h2 id="descriptive"><span class="num">06</span>記述統計</h2>
+  <p>分析の前に、使う変数の平均・ばらつき・最小最大を確認します。</p>
+
+  <h3>確認用：summary</h3>
+  <div class="codebox">summary(df)</div>
+  <div class="note"><div class="note-label">補足</div>手早く全体を把握するのに便利ですが、論文に載せる形式ではありません。</div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre>     displ            year           cyl              cty             hwy
+ Min.   :1.600   Min.   :1999   Min.   :4.000   Min.   : 9.00   Min.   :12.00
+ 1st Qu.:2.400   1st Qu.:1999   1st Qu.:4.000   1st Qu.:14.00   1st Qu.:18.00
+ Median :3.300   Median :2004   Median :6.000   Median :17.00   Median :24.00
+ Mean   :3.472   Mean   :2004   Mean   :5.889   Mean   :16.86   Mean   :23.44
+ 3rd Qu.:4.600   3rd Qu.:2008   3rd Qu.:8.000   3rd Qu.:19.00   3rd Qu.:27.00
+ Max.   :7.000   Max.   :2008   Max.   :8.000   Max.   :35.00   Max.   :44.00</pre>
+  </div>
+
+  <h3>論文用の記述統計表：datasummary</h3>
+  <p><code>modelsummary</code> パッケージの <code>datasummary()</code> を使うと、論文に載せる形の記述統計表が作れます。左辺に変数、右辺に統計量を並べて書きます。</p>
+  <div class="codebox">install.packages("modelsummary")   <span class="cmt"># 初回のみ</span>
+library(modelsummary)
+install.packages("flextable")      <span class="cmt"># 初回のみ</span>
+library(flextable)
+
+datasummary(displ + hwy + cty ~ Mean + SD + Min + Max + N, data = df)</div>
+  <div class="note"><div class="note-label">補足</div>統計量は <code>Mean</code>（平均）・<code>SD</code>（標準偏差）・<code>Min</code>・<code>Max</code>・<code>Median</code>・<code>N</code>（観測数）などから選べます。</div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre>          Mean    SD   Min   Max    N
+displ     3.47  1.29   1.6   7.0  234
+hwy      23.44  5.95    12    44  234
+cty      16.86  4.26     9    35  234</pre>
+  </div>
+
+  <h3>Word形式で保存する</h3>
+  <div class="codebox">datasummary(displ + hwy + cty ~ Mean + SD + Min + Max + N,
+            data = df,
+            output = "flextable") %&gt;%
+  save_as_docx(path = "descriptive_stats.docx")</div>
+  <div class="note"><div class="note-label">補足</div><code>output = "flextable"</code> を付けて <code>save_as_docx()</code> に渡す、という形は、後述の回帰結果表の保存とまったく同じです。この型を覚えておけば、どちらの表も Word に出力できます。</div>
+  <div class="note"><div class="note-label">補足</div>保存したファイルは右下の Files タブに表示されます。ダウンロードするには、Files タブでファイルにチェックを入れ、More → Export を選びます。</div>
+
+  <h2 id="viz"><span class="num">07</span>可視化</h2>
+  <p>グラフの作成には <code>ggplot2</code>（tidyverse に含まれる）を使います。</p>
+
+  <p>ggplot2 のグラフは、透明なシートを1枚ずつ重ねてグラフを完成させるようなイメージで組み立てます。</p>
+
+  <div class="layer-stack">
+    <div class="layer"><div class="lnum">第1層：データ</div>ggplot(<b>df</b>, ...) — どのデータを使うか</div>
+    <div class="layer-plus">＋</div>
+    <div class="layer"><div class="lnum">第2層：軸</div>aes(x = displ, y = hwy) — どの変数を軸に置くか</div>
+    <div class="layer-plus">＋</div>
+    <div class="layer"><div class="lnum">第3層：グラフの種類</div>geom_point() — どんなグラフにするか</div>
+  </div>
+
+  <div class="layer-visual">
+    <div class="sheet s1"></div>
+    <div class="sheet s2">
+      <div class="axis-x"></div>
+      <div class="axis-y"></div>
+    </div>
+    <div class="sheet s3">
+      <div class="axis-x"></div>
+      <div class="axis-y"></div>
+      <div class="dot" style="left:30px; bottom:100px;"></div>
+      <div class="dot" style="left:55px; bottom:85px;"></div>
+      <div class="dot" style="left:80px; bottom:70px;"></div>
+      <div class="dot" style="left:105px; bottom:55px;"></div>
+      <div class="dot" style="left:130px; bottom:42px;"></div>
+      <div class="dot" style="left:155px; bottom:30px;"></div>
+    </div>
+  </div>
+  <ul class="layer-visual-legend">
+    <li><b>①</b>ggplot(df, ...) — 描画画面を用意する</li>
+    <li><b>②</b>+ aes(x = displ, y = hwy) — 軸を追加する</li>
+    <li><b>③</b>+ geom_point() — グラフ（点）を描き足す</li>
+  </ul>
+
+  <h3>ヒストグラム（1変数の分布）</h3>
+  <div class="codebox">ggplot(df, aes(x = hwy)) +
+  geom_histogram(binwidth = 2)</div>
+  <div class="note"><div class="note-label">補足</div><code>binwidth</code> は棒の幅。データに合わせて調整します。</div>
+
+  <h3>散布図（2変数の関係）</h3>
+  <div class="codebox">ggplot(df, aes(x = displ, y = hwy)) +
+  geom_point()</div>
+
+  <h3>棒グラフ（グループ別の平均）</h3>
+  <div class="codebox">df %&gt;%
+  group_by(class) %&gt;%
+  summarise(mean_hwy = mean(hwy)) %&gt;%
+  ggplot(aes(x = class, y = mean_hwy)) +
+  geom_bar(stat = "identity")</div>
+  <div class="note"><div class="note-label">補足</div><code>geom_bar()</code> のデフォルトは <code>stat = "count"</code> で、カテゴリごとの件数を数えて棒の高さにします。上のようにあらかじめ <code>summarise()</code> で集計した値をそのまま棒の高さに使いたいときは、<code>stat = "identity"</code> を指定します。</div>
+
+  <h3>箱ひげ図（グループ別の分布）</h3>
+  <div class="codebox">ggplot(df, aes(x = class, y = hwy)) +
+  geom_boxplot()</div>
+
+  <h3>グラフの保存</h3>
+  <div class="codebox">ggsave("my_plot.png")                       <span class="cmt"># 最後に表示したグラフを保存</span>
+
+p &lt;- ggplot(df, aes(x = displ, y = hwy)) +  <span class="cmt"># 名前を付けて保存</span>
+  geom_point()
+ggsave("my_plot.png", plot = p)</div>
+  <div class="note"><div class="note-label">補足</div><code>width</code>（幅）・<code>height</code>（高さ）・<code>dpi</code>（解像度）も指定できます。</div>
+  <div class="codebox">ggsave("my_plot.png", plot = p, width = 8, height = 5, dpi = 150)</div>
+  <div class="note"><div class="note-label">補足</div>保存したファイルは右下の Files タブに表示されます。ダウンロードするには、Files タブでファイルにチェックを入れ、More → Export を選びます。</div>
+
+  <h2 id="regression"><span class="num">08</span>回帰分析</h2>
+
+  <h3>単回帰分析</h3>
+  <p><code>lm()</code> で回帰式を推定します。<code>Y ~ X</code> の形で書き、<code>data =</code> に使うデータを指定します。</p>
+  <div class="codebox">model1 &lt;- lm(hwy ~ displ, data = df)   <span class="cmt"># モデルの推定</span>
+summary(model1)                        <span class="cmt"># 結果の確認</span></div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre>Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)  35.6977     0.7204   49.55   &lt;2e-16 ***
+displ        -3.5306     0.1945  -18.15   &lt;2e-16 ***
+
+Residual standard error: 3.836 on 232 degrees of freedom
+Multiple R-squared:  0.5871,    Adjusted R-squared:  0.5848
+F-statistic: 329.9 on 1 and 232 DF,  p-value: &lt; 2.2e-16</pre>
+  </div>
+
+  <div class="tip">
+    <div class="tip-head">結果の読み方</div>
+    <ul>
+      <li><code>Estimate</code>（係数）— X が1増えると Y がどれだけ変化するか</li>
+      <li><code>Pr(&gt;|t|)</code>（p値）— 一般的には0.05未満なら統計的に有意</li>
+      <li><code>R-squared</code> — モデルの当てはまりの良さ（0〜1）</li>
+    </ul>
+  </div>
+  <p style="font-size:13.5px;">詳しい解釈は<a href="seminar_bunseki.html" style="color:var(--accent);">「分析と解釈」のページ</a>を参照してください。</p>
+
+  <h3>重回帰分析</h3>
+  <p>説明変数を増やすときは <code>+</code> でつなぎます。</p>
+  <div class="codebox">model2 &lt;- lm(hwy ~ displ + cyl, data = df)
+model3 &lt;- lm(hwy ~ displ + cyl + factor(year), data = df)
+
+summary(model2)
+summary(model3)</div>
+  <div class="note"><div class="note-label">補足</div><code>factor()</code> で変数をカテゴリ型に変換すると、<code>lm()</code> が自動的にダミー変数に変換して回帰式に組み込みます。年など、数値としてではなくカテゴリとして扱いたい変数に使います。</div>
+
+  <h3>結果表の作成</h3>
+  <p><code>modelsummary()</code> を使うと、複数のモデルを並べた結果表を作れます。</p>
+  <div class="note"><div class="note-label">補足</div>記述統計で読み込んだ <code>modelsummary</code> と <code>flextable</code> をそのまま使います。セッションを開き直した場合は <code>library()</code> を再実行してください。</div>
+  <div class="codebox">modelsummary(
+  list("モデル1" = model1,
+       "モデル2" = model2,
+       "モデル3" = model3),
+  stars = TRUE,          <span class="cmt"># 有意水準の星印を表示</span>
+  coef_omit = "factor",  <span class="cmt"># factor() で作ったダミー変数を出力しない</span>
+  gof_omit = "IC|Log|F"  <span class="cmt"># 不要な適合度指標を省略</span>
+)</div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre>              モデル1     モデル2     モデル3
+displ         -3.531***   -2.221***   -2.152***
+              (0.194)     (0.372)     (0.373)
+cyl                       -1.246***   -1.192***
+                          (0.301)     (0.300)
+Num.Obs.       234         234         234
+R2             0.587       0.610       0.613</pre>
+  </div>
+  <div class="note"><div class="note-label">補足</div><code>msummary()</code> という書き方も見かけますが、<code>modelsummary()</code> と同じ関数です。</div>
+
+  <h3>結果表をWord・PowerPointで保存する</h3>
+  <div class="codebox">modelsummary(model1, output = "flextable") %&gt;%
+  save_as_docx(path = "regression_table.docx")
+
+modelsummary(model1, output = "flextable") %&gt;%
+  save_as_pptx(path = "regression_table.pptx")</div>
+  <div class="note"><div class="note-label">補足</div><code>output = "regression_table.docx"</code> と直接ファイル名を書く方法は、modelsummary v2.0以降では動きません。上記のように <code>output = "flextable"</code> と <code>save_as_docx()</code> を組み合わせてください。</div>
+
+  <h2 id="errors"><span class="num">09</span>エラーと困ったときは</h2>
+
+  <div class="qa">
+    <div class="q">「Error」と赤い文字が出た</div>
+    <p class="a">エラーはよくあることです。まずエラー文をコピーして Teams の質問チャンネルに投稿してください。コードの打ち間違い（スペース、記号、大文字小文字）が原因のことが多いので、まず見直してみましょう。</p>
+  </div>
+  <div class="qa">
+    <div class="q">「could not find function」と出る</div>
+    <p class="a">その関数を含むパッケージが読み込まれていません。<code>library()</code> を実行してください。</p>
+  </div>
+  <div class="qa">
+    <div class="q">「object not found」と出る</div>
+    <p class="a">指定したオブジェクトがまだ作られていないか、名前が違います。Environment タブで確認してください。</p>
+  </div>
+  <div class="qa">
+    <div class="q">インストールが終わらない</div>
+    <p class="a">時間がかかることがあります。5分以上動きがなければ、ページを更新して再度試してください。</p>
+  </div>
+  <div class="qa">
+    <div class="q">プロジェクトはどこに保存される？</div>
+    <p class="a">Posit Cloud のサーバーに自動保存されます。「Save」を押す必要はありません。次回ログインすれば同じプロジェクトから再開できます。</p>
+  </div>
+  <div class="qa">
+    <div class="q">自宅の PC でも使える？</div>
+    <p class="a">使えます。同じアカウントでログインすれば、続きから作業できます。</p>
+  </div>
+
+  <div class="alert">
+    <strong>困ったときは：</strong>Teams の「質問チャンネル」に投稿する（スクリーンショット添付推奨）、または授業の前後に教員に直接聞いてください。
+  </div>
+
+  <h2 id="samplecode"><span class="num">10</span>サンプルコード</h2>
+  <p>このページで紹介したコードは、<code>sample_code.R</code> にまとめてあります。ダウンロードして Posit Cloud にアップロードすれば、実行しながら確認できます。</p>
+  <a class="dl-link" href="sample_code.R" download><b>⬇</b> sample_code.R をダウンロード</a>
+
+  <div class="toc-return">
+    <nav class="related-nav">
+      <a href="seminar_kiso.html">研究と論文の基礎</a>
+      <a href="seminar_hajimekata.html">研究の始め方</a>
+      <a href="seminar_bunken.html">文献の探し方</a>
+      <a href="seminar_data.html">データの準備</a>
+      <a href="seminar_bunseki.html">分析と解釈</a>
+      <a href="seminar_happyo.html">発表</a>
+      <a href="seminar_r.html" class="current">R</a>
+    </nav>
+    <a href="#">← 目次に戻る</a>
+  </div>
+</div>
+</body>
+</html>

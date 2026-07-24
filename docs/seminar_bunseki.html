@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>分析と解釈</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [], displayMath: [['$$','$$']] } };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+<style>
+  :root{
+    --ink:#242a30;
+    --paper:#f7f8fa;
+    --line:#d5dbe2;
+    --accent:#2e5476;
+    --accent-soft:#e4ecf3;
+    --sub:#6b6558;
+    --good:#3d6b5c;
+    --good-soft:#e3efe9;
+    --good-line:#c2ddd0;
+    --bad:#9c4a3c;
+    --bad-soft:#f6ebe8;
+    --bad-line:#e6c9c1;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+    line-height:1.75;
+  }
+  .page{max-width:920px; margin:0 auto; padding:56px 40px 120px;}
+
+  h1{font-size:34px; margin:0 0 6px; font-weight:700; letter-spacing:.02em;}
+  .lead{
+    color:var(--sub); font-size:15px; margin:0 0 40px;
+    padding-bottom:32px; border-bottom:1px solid var(--line);
+  }
+  h2{font-size:22px; margin:64px 0 20px; display:flex; align-items:baseline; gap:12px;}
+  h2 .num{
+    font-size:14px; color:var(--accent); font-weight:700;
+    border:1px solid var(--accent); border-radius:999px;
+    padding:2px 10px; letter-spacing:.05em;
+  }
+  h3{font-size:16px; margin:28px 0 12px; color:var(--ink); font-weight:700;}
+  p{margin:0 0 14px;}
+  ul,ol{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px;}
+  code{
+    font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
+    background:var(--accent-soft); color:var(--accent);
+    padding:1px 5px; border-radius:3px; font-size:.92em;
+  }
+
+  .callout{
+    background:var(--accent-soft); border-left:4px solid var(--accent);
+    padding:18px 22px; border-radius:2px; margin:20px 0 28px; font-size:15px;
+  }
+  .callout ul{margin:10px 0 0; padding-left:20px;}
+  .callout li{margin-bottom:4px;}
+
+  .compare{display:flex; flex-wrap:wrap; gap:16px; margin:20px 0 28px;}
+  .compare-box{flex:1 1 260px; border-radius:4px; padding:18px 22px; font-size:14.5px;}
+  .compare-box.good{background:var(--good-soft); border:1px solid var(--good-line);}
+  .compare-box.bad{background:var(--bad-soft); border:1px solid var(--bad-line);}
+  .compare-box .tag{font-weight:700; font-size:15px; margin-bottom:12px; display:block;}
+  .compare-box.good .tag{color:var(--good);}
+  .compare-box.bad .tag{color:var(--bad);}
+  .compare-box ul{margin:0; padding-left:18px; line-height:1.85;}
+  .compare-box li{margin-bottom:4px;}
+
+  .checklist{background:#fff; border:1px solid var(--line); padding:18px 22px; margin:16px 0 28px;}
+  .checklist div{display:flex; gap:10px; padding:6px 0; font-size:14.5px;}
+  .checklist div::before{content:"✓"; color:var(--good); font-weight:700;}
+
+  .steps{display:flex; flex-direction:column; margin:20px 0 28px;}
+  .step{
+    display:flex; align-items:center; gap:16px; padding:12px 18px;
+    background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent); margin-bottom:8px;
+  }
+  .step .n{
+    flex-shrink:0; width:30px; height:30px; background:var(--accent); color:#fff;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:700;
+  }
+  .step .txt{font-size:15px; color:var(--ink);}
+  .step .txt b{color:var(--accent);}
+
+  .codebox{
+    background:#eef1f4; border:1px solid var(--line); border-radius:4px;
+    padding:16px 20px; font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
+    font-size:13px; line-height:1.8; overflow-x:auto; margin:14px 0 24px;
+    white-space:pre; color:var(--ink);
+  }
+
+  /* 数式ブロック */
+  .math-block{
+    background:#fff; border:1px solid var(--line); padding:20px 24px;
+    margin:16px 0 20px; text-align:center; overflow-x:auto;
+  }
+
+  .alert{
+    background:var(--bad-soft); border:1px solid var(--bad-line); border-left:4px solid var(--bad);
+    padding:14px 18px; margin:14px 0 24px; font-size:14px;
+  }
+  .alert strong{color:var(--bad);}
+  .alert ul{margin:6px 0 0; padding-left:18px;}
+  .alert li{margin-bottom:6px;}
+
+  .related-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px;}
+  .related-nav a{
+    font-size:12.5px; color:var(--sub); text-decoration:none;
+    padding:5px 12px; border:1px solid var(--line); border-radius:999px; background:#fff;
+  }
+  .related-nav a.current{color:#fff; background:var(--accent); border-color:var(--accent); font-weight:700;}
+
+  .toc-return{margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--sub);}
+  .toc-return a{color:var(--accent); text-decoration:none;}
+
+  @media (max-width:700px){
+    .page{padding:32px 20px 80px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>分析と解釈</h1>
+  <p class="lead">回帰分析の基本的な考え方と、結果の読み方についてまとめています。</p>
+
+  <h2><span class="num">01</span>回帰分析は何のためにやるのか</h2>
+  <div class="callout">
+    回帰分析は、X が Y にどの程度関連しているかを数値で示すための手法です。ただし、関連の強さを示すものであって、それ単独で因果関係を証明するものではありません。
+  </div>
+  <ul>
+    <li><b>Y（被説明変数）：</b>説明したい結果。RQ で書いた「結果として見たいもの」</li>
+    <li><b>X（説明変数）：</b>Y に影響を与えていると考える要因。RQ で書いた「要因として見たいもの」</li>
+  </ul>
+  <p>RQ 検討シートで書いた X と Y が、そのまま回帰式の変数になります。</p>
+
+  <h2><span class="num">02</span>回帰式の形</h2>
+  <p>最も単純な回帰式は次の形です。</p>
+  <div class="math-block">$$Y = \beta_0 + \beta_1 X + u$$</div>
+  <ul>
+    <li>β<sub>0</sub>（切片）：X が0のときの Y の値</li>
+    <li>β<sub>1</sub>（傾き）：X が1単位増えたときに Y がどれだけ変化するかを表す</li>
+  </ul>
+  <p>R では次のように書いて係数を推定します。</p>
+  <div class="codebox">lm(Y ~ X, data = df)</div>
+
+  <h3>コントロール変数を入れる場合</h3>
+  <p>X 以外にも、Y と相関していそうな要素（コントロール変数）がある場合は、式に追加できます。コントロール変数を入れることで、その影響（例：所得や年齢構成など）を取り除いたうえで、X と Y の関係を見ることができます。ただし、変数を増やしすぎるとサンプルサイズに対して変数が多くなりすぎます。特に単年の都道府県データ（n=47）のような小標本では、多くても5個程度に抑えるのが目安です。</p>
+
+  <h3>ダミー変数の扱い方</h3>
+  <p>カテゴリ（地域、年次、性別など）を回帰式に入れたい場合は、ダミー変数（0か1の値を取る変数）に変換して使います。<br>例：「2026年かどうか」を表すダミー変数は、2026年なら1、それ以外なら0を取る。<br>R では <code>factor()</code> で変数をカテゴリ型に変換すれば、<code>lm()</code> が自動的にダミー変数を作って分析します。</p>
+  <div class="codebox">lm(Y ~ X + factor(year), data = df)</div>
+  <p>都道府県×年のパネルデータでは、地域ダミー・年ダミーを入れることで、地域ごとの固有の特徴や、年ごとの全国的な変化の影響を考慮できます。</p>
+
+  <h2><span class="num">03</span>結果の読み方</h2>
+  <p>結果表が出てきても、数字を読むだけでは不十分で、それぞれの数字が何を意味しているかを考えることが大切です。次の順番で読みます。</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div class="txt"><b>係数の符号→大きさ</b>を見る</div></div>
+    <div class="step"><div class="n">2</div><div class="txt"><b>p値</b>を確認する</div></div>
+    <div class="step"><div class="n">3</div><div class="txt"><b>R<sup>2</sup></b>を確認する</div></div>
+    <div class="step"><div class="n">4</div><div class="txt"><b>結果から言えること・言えないこと</b>を考える</div></div>
+  </div>
+
+  <h3>① 係数</h3>
+  <p>係数は、X が1単位変化したときに、Y がどのくらい変化するかを表します。例えば、係数が0.5のとき、X が1増えると、Y は平均して0.5増える関係があります。</p>
+  <p>ダミー変数の係数は、その変数が1のグループは、0のグループと比べて Y が平均してどれだけ違うかを表します。例えば、「2026年ダミー」の係数が0.5のとき、2026年は基準の年と比べて Y が平均して0.5大きい、という意味になります。</p>
+  <ul>
+    <li>プラスかマイナスか</li>
+    <li>大きさはどのくらいか</li>
+    <li>単位は何か</li>
+  </ul>
+  <div class="alert"><strong>注意：</strong>係数がプラスでもマイナスでも、それだけで因果とは言えません。</div>
+
+  <h3>② p値</h3>
+  <p>p値は、「X と Y には本当は関係がないのに、たまたまデータ上で関係があるように見えているだけ」という可能性がどのくらいあるかを示す目安です。この値が小さいほど、見られた関係が偶然である可能性が低いと考えます。一般に、p値が0.05未満であれば、統計的に有意（偶然とは考えにくい）と判断します（より厳しく0.01、緩く0.10を基準にすることもあります）。</p>
+  <ul>
+    <li>統計的に有意か</li>
+    <li>ただし、有意かどうかだけで判断しない</li>
+  </ul>
+  <div class="alert">
+    <strong>注意：</strong>
+    <ul>
+      <li>有意でなくても、「何も分からない」わけではありません。──関係が見られなかったこと自体が一つの結果であり、「X と Y には明確な関係がなさそうだ」という情報になります。</li>
+      <li>有意であっても、「重要である」とは限りません。──データの数が多いと、ごく小さな関係でも「有意」と出やすくなります。有意かどうかと、関係の大きさ（係数の大きさ）は別のことなので、両方を見る必要があります。</li>
+    </ul>
+  </div>
+
+  <h3>③ R<sup>2</sup></h3>
+  <p>R<sup>2</sup>は、モデルがデータにどのくらい当てはまっているか（フィットしているか）を表す指標です。0から1の値をとり、1に近いほど当てはまりがよいことを示します（Y のばらつきのうち、モデルで説明できる割合を表します）。</p>
+  <ul>
+    <li>値が高いほど、モデルの当てはまりはよい</li>
+    <li>ただし、高ければ良い研究というわけではない</li>
+  </ul>
+  <div class="alert"><strong>注意：</strong>R<sup>2</sup>が高くても、因果関係が示されたことにはなりません。</div>
+
+  <h2><span class="num">04</span>発表で使いたい表現・避けたい表現</h2>
+  <p>回帰分析は、結果を正しく解釈し、適切な表現で報告することが大切です。同じ結果でも、言い方によって「言いすぎ」になってしまうことがあります。</p>
+  <div class="compare">
+    <div class="compare-box good">
+      <span class="tag">〇 使いたい表現</span>
+      <ul>
+        <li>X が高い地域ほど、Y も高い傾向が見られた</li>
+        <li>X と Y には正の関係が見られた</li>
+        <li>回帰分析の結果、X の係数はプラスであった</li>
+        <li>統計的に有意な関係が見られた</li>
+      </ul>
+    </div>
+    <div class="compare-box bad">
+      <span class="tag">✕ 避けたい表現</span>
+      <ul>
+        <li>X が Y を増やした</li>
+        <li>X が Y の原因である</li>
+        <li>この結果で証明された</li>
+      </ul>
+    </div>
+  </div>
+  <p style="color:var(--sub);">※どのような表現を使う場合でも、回帰分析だけでは因果関係までは言えないことに注意してください。</p>
+
+  <h2><span class="num">05</span>回帰結果を見るときの注意</h2>
+  <div class="checklist">
+    <div>数字だけで終わらず、単位を意識する</div>
+    <div>現実に照らして不自然ではないか考える</div>
+    <div>有意かどうかだけに注目しない</div>
+    <div>相関と因果を混同しない</div>
+  </div>
+  <div class="callout">
+    <strong>最低限できるようになってほしいこと</strong>
+    <ul>
+      <li>係数の符号と大きさを説明できる</li>
+      <li>p値と R<sup>2</sup> の意味を大まかに説明できる</li>
+      <li>結果から言えることと言えないことを区別できる</li>
+    </ul>
+  </div>
+
+  <div class="toc-return">
+    <nav class="related-nav">
+      <a href="seminar_kiso.html">研究と論文の基礎</a>
+      <a href="seminar_hajimekata.html">研究の始め方</a>
+      <a href="seminar_bunken.html">文献の探し方</a>
+      <a href="seminar_data.html">データの準備</a>
+      <a href="seminar_bunseki.html" class="current">分析と解釈</a>
+      <a href="seminar_happyo.html">発表</a>
+      <a href="seminar_r.html">R</a>
+    </nav>
+    <a href="#">← 目次に戻る</a>
+  </div>
+</div>
+</body>
+</html>

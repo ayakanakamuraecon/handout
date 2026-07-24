@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>研究の始め方</title>
+<style>
+  :root{
+    --ink:#242a30;
+    --paper:#f7f8fa;
+    --line:#d5dbe2;
+    --accent:#2e5476;
+    --accent-soft:#e4ecf3;
+    --sub:#6b6558;
+    --good:#3d6b5c;
+    --good-soft:#e3efe9;
+    --good-line:#c2ddd0;
+    --bad:#9c4a3c;
+    --bad-soft:#f6ebe8;
+    --bad-line:#e6c9c1;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+    line-height:1.75;
+  }
+  .page{max-width:920px; margin:0 auto; padding:56px 40px 120px;}
+  h1{font-size:34px; margin:0 0 6px; font-weight:700; letter-spacing:.02em;}
+  .lead{
+    color:var(--sub); font-size:15px; margin:0 0 40px;
+    padding-bottom:32px; border-bottom:1px solid var(--line);
+  }
+  h2{font-size:22px; margin:64px 0 20px; display:flex; align-items:baseline; gap:12px;}
+  h2 .num{
+    font-size:14px; color:var(--accent); font-weight:700;
+    border:1px solid var(--accent); border-radius:999px;
+    padding:2px 10px; letter-spacing:.05em;
+  }
+  h3{font-size:16px; margin:28px 0 12px; color:var(--ink); font-weight:700;}
+  p{margin:0 0 14px;}
+  ul,ol{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px;}
+
+  /* 強調ボックス */
+  .callout{
+    background:var(--accent-soft); border-left:4px solid var(--accent);
+    padding:18px 22px; border-radius:2px; margin:20px 0 28px; font-size:15px;
+  }
+
+  /* テーマ例カードグリッド */
+  .grid{
+    display:grid; grid-template-columns:repeat(2,1fr);
+    gap:14px; margin:20px 0 28px;
+  }
+  .card{
+    background:#fff; border:1px solid var(--line);
+    border-top:4px solid var(--accent); padding:18px 20px;
+  }
+  .card h4{
+    margin:0 0 10px; font-size:16px; color:var(--accent); font-weight:700;
+  }
+  .card ul{margin:0; padding-left:18px; font-size:14px; line-height:1.75;}
+  .card li{margin-bottom:5px;}
+
+  /* ポイント補足ボックス */
+  .tip{
+    background:#fff; border:1px solid var(--line);
+    padding:16px 20px; margin:16px 0 28px;
+  }
+  .tip .tip-head{font-weight:700; font-size:14px; margin-bottom:8px; color:var(--accent);}
+  .tip ul{margin:0; padding-left:20px; font-size:14px;}
+
+  /* 良い問い・悪い問い 左右対比 */
+  .compare{display:flex; gap:16px; margin:20px 0 28px;}
+  .compare-box{flex:1; border-radius:4px; padding:18px 22px; font-size:14.5px;}
+  .compare-box.good{background:var(--good-soft); border:1px solid var(--good-line);}
+  .compare-box.bad{background:var(--bad-soft); border:1px solid var(--bad-line);}
+  .compare-box .tag{font-weight:700; font-size:15px; margin-bottom:12px; display:block;}
+  .compare-box.good .tag{color:var(--good);}
+  .compare-box.bad .tag{color:var(--bad);}
+  .compare-box ul{margin:0; padding-left:18px; line-height:1.85;}
+  .compare-box li{margin-bottom:4px;}
+
+  /* ビフォーアフター表 */
+  .ba-table{width:100%; border-collapse:collapse; font-size:14px; margin:20px 0 28px;}
+  .ba-table th,.ba-table td{border:1px solid var(--line); padding:12px 14px; text-align:left; vertical-align:top;}
+  .ba-table th{background:var(--accent-soft); font-weight:700; font-size:13px;}
+  .ba-table td.bad-cell{background:var(--bad-soft); width:30%;}
+  .ba-table td.reason-cell{width:34%; color:var(--sub); font-size:13.5px;}
+  .ba-table td.good-cell{background:var(--good-soft); width:36%;}
+
+  /* RQテンプレートカード */
+  .templates{display:flex; flex-direction:column; gap:10px; margin:20px 0 28px;}
+  .template{
+    background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+    padding:14px 20px; font-size:16px;
+  }
+  .template .ph{
+    display:inline-block; background:var(--accent-soft); color:var(--accent);
+    font-weight:700; padding:1px 10px; border-radius:3px; margin:0 2px;
+  }
+
+  /* チェックリスト */
+  .checklist{background:#fff; border:1px solid var(--line); padding:18px 22px; margin:16px 0 28px;}
+  .checklist div{display:flex; gap:10px; padding:6px 0; font-size:14.5px;}
+  .checklist div::before{content:"✓"; color:var(--good); font-weight:700;}
+
+  .related-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px;}
+  .related-nav a{
+    font-size:12.5px; color:var(--sub); text-decoration:none;
+    padding:5px 12px; border:1px solid var(--line); border-radius:999px; background:#fff;
+  }
+  .related-nav a.current{color:#fff; background:var(--accent); border-color:var(--accent); font-weight:700;}
+
+  .toc-return{margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--sub);}
+  .toc-return a{color:var(--accent); text-decoration:none;}
+
+  @media (max-width:700px){
+    .grid{grid-template-columns:1fr;}
+    .compare{flex-direction:column;}
+    .page{padding:32px 20px 80px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>研究の始め方</h1>
+  <p class="lead">テーマの探し方、良い問いの条件、RQ（リサーチ・クエスチョン）の立て方について説明します。</p>
+
+  <h2><span class="num">01</span>テーマの探し方</h2>
+  <p>研究テーマの出発点は、自分の身の回りのことへの「引っかかり」や疑問です。「答えが分かるわけない」「無理」と最初から決めつけず、まず実際に調べたうえで、自分の問いを絞り込んでいきます。</p>
+  <p>まずは漠然とでもよいので、研究の範囲を決めることが必要です（例：教育政策・人口動態など）。</p>
+
+  <div class="callout">
+    大切なのは「知りたいこと」と「使えそうなデータ」が両方あることです。以下は経済学でよく扱われるテーマの例です。必ずしもこの中から選ぶ必要はありません。
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h4>労働・雇用</h4>
+      <ul>
+        <li>女性就業率が高い地域にはどのような特徴があるか</li>
+        <li>非正規雇用比率が高い地域では、平均所得は低いか</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>教育</h4>
+      <ul>
+        <li>大学進学率が高い地域ほど、平均所得は高いか</li>
+        <li>教育支出の大きい地域ほど、進学率は高いか</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>人口・地域</h4>
+      <ul>
+        <li>人口減少が大きい地域ほど、失業率は高いか</li>
+        <li>地方と都市部で、若者の生活環境にどのような違いがあるか</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>家計・生活</h4>
+      <ul>
+        <li>家計所得が高い地域ほど、消費支出は大きいか</li>
+        <li>物価が高い地域ほど、生活の余裕は小さいか</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>福祉・医療</h4>
+      <ul>
+        <li>保育所整備率が高い地域ほど、女性就業率は高いか</li>
+        <li>医師数が多い地域ほど、平均寿命は長いか</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>地域経済</h4>
+      <ul>
+        <li>観光客数が多い地域ほど、地域所得は高いか</li>
+        <li>製造業比率の高い地域ほど、賃金は高いか</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-head">テーマを考えるときのポイント</div>
+    <ul>
+      <li>「おもしろそう」で終わらず、XとYを数字で置けるか考える</li>
+      <li>まずは都道府県別など、比較しやすい単位から考える</li>
+      <li>広すぎるテーマは避ける</li>
+      <li>公開データで無理なく扱える範囲に絞る</li>
+    </ul>
+  </div>
+
+  <h2><span class="num">02</span>良い問いの条件</h2>
+  <p>研究テーマを考えるときは、「おもしろそう」だけで終わらせず、データで確かめられる問いになっているかを意識します。良い問いを立てることは、良い研究のための第一歩であり、核心でもあります。</p>
+
+  <div class="compare">
+    <div class="compare-box good">
+      <span class="tag">〇 良い問いの条件</span>
+      <ul>
+        <li>何を知りたいかが1文で言える</li>
+        <li>XとYがある程度はっきりしている</li>
+        <li>数字で置きかえられる</li>
+        <li>比較する単位がある</li>
+        <li>使えそうなデータがある</li>
+      </ul>
+    </div>
+    <div class="compare-box bad">
+      <span class="tag">✕ 悪い問いの特徴</span>
+      <ul>
+        <li>広すぎる</li>
+        <li>抽象的すぎる</li>
+        <li>数字で測れない</li>
+        <li>何と何を比べるのか分からない</li>
+        <li>原因を強く言いすぎている</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>悪い問いを、良い問いに直す</h3>
+  <table class="ba-table">
+    <thead>
+      <tr><th>悪い問いの例</th><th>問題点</th><th>改善例</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="bad-cell">少子化はなぜ起こるのか</td>
+        <td class="reason-cell">範囲が広すぎる。原因が多すぎる</td>
+        <td class="good-cell">保育所整備率が高い地域ほど、女性就業率は高いか</td>
+      </tr>
+      <tr>
+        <td class="bad-cell">住みやすい地域とは何か</td>
+        <td class="reason-cell">住みやすさが抽象的。何で測るか分からない</td>
+        <td class="good-cell">家賃が高い地域ほど、平均所得は高いか</td>
+      </tr>
+      <tr>
+        <td class="bad-cell">教育は大事か</td>
+        <td class="reason-cell">価値判断になっている。分析の形になっていない</td>
+        <td class="good-cell">大学進学率が高い地域ほど、平均所得は高いか</td>
+      </tr>
+      <tr>
+        <td class="bad-cell">観光地は地域を活性化させるか</td>
+        <td class="reason-cell">「活性化」があいまい。「させる」という表現が強い</td>
+        <td class="good-cell">観光客数が多い地域ほど、宿泊業や飲食業の割合は高いか</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2><span class="num">03</span>RQの立て方</h2>
+  <p>問いは疑問文にします。論文の基本は、自分の立てた問いに、裏付けとなる資料・データを示して答えることです。問いはWhat（〜とは何か）ではなく、Why（なぜ〜なのか）、How（どうすれば解決できるか）、Should（〜をどうするべきか）で考えます。What型の問いは説明で終わってしまうため、解決策を考える問いのほうが望ましいとされています。</p>
+
+  <h3>まず目指したい問いの形</h3>
+  <div class="templates">
+    <div class="template"><span class="ph">X</span> が大きい地域ほど、<span class="ph">Y</span> はどうか</div>
+    <div class="template"><span class="ph">X</span> と <span class="ph">Y</span> にはどのような関係があるか</div>
+    <div class="template"><span class="ph">X</span> が異なると、<span class="ph">Y</span> に違いは見られるか</div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-head">問いを立てる際に留意すること</div>
+    <ul>
+      <li>どのような研究方法を使いたいか（事例研究か統計分析か）。研究方法は問いによって決まることが多いため、問いを立てる段階で見通しを立てておく</li>
+      <li>データ収集や観察を行うことができそうか</li>
+      <li>分析や観察を行う単位をどうするか</li>
+    </ul>
+  </div>
+
+  <h3>問いを考えるときのチェックポイント</h3>
+  <div class="checklist">
+    <div>Xは何か</div>
+    <div>Yは何か</div>
+    <div>XとYは数字で置けるか</div>
+    <div>何を1つの単位として比べるか</div>
+    <div>そのデータは公開されているか</div>
+  </div>
+
+  <div class="toc-return">
+    <nav class="related-nav">
+      <a href="seminar_kiso.html">研究と論文の基礎</a>
+      <a href="seminar_hajimekata.html" class="current">研究の始め方</a>
+      <a href="seminar_bunken.html">文献の探し方</a>
+      <a href="seminar_data.html">データの準備</a>
+      <a href="seminar_bunseki.html">分析と解釈</a>
+      <a href="seminar_happyo.html">発表</a>
+      <a href="seminar_r.html">R</a>
+    </nav>
+    <a href="#">← 目次に戻る</a>
+  </div>
+</div>
+</body>
+</html>

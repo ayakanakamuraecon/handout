@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>研究と論文の基礎</title>
+<style>
+  :root{
+    --ink:#242a30;
+    --paper:#f7f8fa;
+    --line:#d5dbe2;
+    --accent:#2e5476;      /* 落ち着いた紺青 */
+    --accent-soft:#e4ecf3;
+    --sub:#6b6558;
+    --good:#3d6b5c;
+    --bad:#9c4a3c;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+    line-height:1.75;
+  }
+  .page{
+    max-width:920px;
+    margin:0 auto;
+    padding:56px 40px 120px;
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.15em;
+    color:var(--accent);
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  h1{
+    font-size:34px;
+    margin:0 0 6px;
+    font-weight:700;
+    letter-spacing:.02em;
+  }
+  .lead{
+    color:var(--sub);
+    font-size:15px;
+    margin:0 0 40px;
+    padding-bottom:32px;
+    border-bottom:1px solid var(--line);
+  }
+  h2{
+    font-size:22px;
+    margin:64px 0 20px;
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+  }
+  h2 .num{
+    font-size:14px;
+    color:var(--accent);
+    font-weight:700;
+    border:1px solid var(--accent);
+    border-radius:999px;
+    padding:2px 10px;
+    letter-spacing:.05em;
+  }
+  h3{
+    font-size:16px;
+    margin:28px 0 12px;
+    color:var(--ink);
+    font-weight:700;
+  }
+  p{margin:0 0 14px;}
+  ul,ol{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px;}
+
+  /* 論文の説明カード */
+  .callout{
+    background:var(--accent-soft);
+    border-left:4px solid var(--accent);
+    padding:18px 22px;
+    border-radius:2px;
+    margin:20px 0 28px;
+    font-size:15px;
+  }
+
+  /* 研究報告6項目の縦ステップ */
+  .steps{display:flex; flex-direction:column; margin:20px 0 28px;}
+  .step{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:12px 18px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    margin-bottom:8px;
+  }
+  .step .n{
+    flex-shrink:0;
+    width:30px; height:30px;
+    background:var(--accent);
+    color:#fff;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:700;
+  }
+  .step .txt{font-size:15px; color:var(--ink);}
+  .step .txt b{color:var(--accent);}
+
+  .flow-box li.highlight{color:var(--accent); font-weight:700;}
+
+  /* 序論・本論・結論の図解 */
+  .flow{
+    display:flex;
+    align-items:stretch;
+    gap:0;
+    margin:28px 0 36px;
+  }
+  .flow-box{
+    flex:1;
+    background:#fff;
+    border:1px solid var(--line);
+    border-top:4px solid var(--accent);
+    padding:20px 18px;
+    position:relative;
+  }
+  .flow-box h4{
+    margin:0 0 10px;
+    font-size:17px;
+    color:var(--accent);
+  }
+  .flow-box ul{
+    margin:0;
+    padding-left:18px;
+    font-size:13.5px;
+    color:var(--ink);
+  }
+  .flow-box li{margin-bottom:4px;}
+  .flow-arrow{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:36px;
+    color:var(--sub);
+    font-size:20px;
+  }
+  .flow-plus{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:36px;
+    color:var(--sub);
+    font-size:22px;
+    font-weight:700;
+  }
+  .flow-box.refs{
+    border-top-color:var(--sub);
+    background:#fbfbfa;
+  }
+  .flow-box.refs h4{color:var(--sub);}
+  .flow-note{
+    font-size:13px;
+    color:var(--sub);
+    margin-top:16px;
+    padding:12px 16px;
+    background:var(--accent-soft);
+    border-radius:3px;
+    line-height:1.7;
+  }
+
+  /* 結論チェックリスト */
+  .checklist{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:18px 22px;
+    margin:16px 0 28px;
+  }
+  .checklist div{
+    display:flex;
+    gap:10px;
+    padding:6px 0;
+    font-size:14.5px;
+  }
+  .checklist div::before{
+    content:"✓";
+    color:var(--good);
+    font-weight:700;
+  }
+
+  /* 構成要素の分量目安：数字を大きく見せる */
+  .amount{
+    background:#fff;
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    padding:22px 26px;
+    margin:20px 0 0;
+  }
+  .amount-main{
+    font-size:22px;
+    color:var(--ink);
+  }
+  .amount-main strong{
+    font-size:30px;
+    color:var(--accent);
+    font-weight:700;
+    margin:0 4px;
+  }
+  .amount-sub{
+    font-size:14.5px;
+    color:var(--sub);
+    margin-top:12px;
+    padding-top:12px;
+    border-top:1px dashed var(--line);
+    line-height:1.7;
+  }
+
+  /* 執筆ルール：良い例／避ける例 */
+  .compare{
+    display:flex;
+    gap:16px;
+    margin:20px 0 28px;
+  }
+  .compare-box{
+    flex:1;
+    border-radius:2px;
+    padding:16px 18px;
+    font-size:14px;
+  }
+  .compare-box.bad{
+    background:#fbf1ee;
+    border:1px solid #e6c9c1;
+  }
+  .compare-box.bad .tag{color:var(--bad);}
+  .compare-box.good{
+    background:#e3efe9;
+    border:1px solid #c2ddd0;
+  }
+  .compare-box.good .tag{color:var(--good);}
+  .compare-box .tag{
+    font-weight:700;
+    font-size:13px;
+    margin-bottom:8px;
+    display:block;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+    margin:16px 0 28px;
+  }
+  th,td{
+    border:1px solid var(--line);
+    padding:10px 12px;
+    text-align:left;
+    vertical-align:top;
+  }
+  th{
+    background:var(--accent-soft);
+    font-weight:700;
+    font-size:13px;
+  }
+
+  .related-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px;}
+  .related-nav a{
+    font-size:12.5px; color:var(--sub); text-decoration:none;
+    padding:5px 12px; border:1px solid var(--line); border-radius:999px; background:#fff;
+  }
+  .related-nav a.current{color:#fff; background:var(--accent); border-color:var(--accent); font-weight:700;}
+
+  .toc-return{
+    margin-top:60px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:13px;
+    color:var(--sub);
+  }
+  .toc-return a{color:var(--accent); text-decoration:none;}
+
+  @media (max-width:700px){
+    .flow, .compare, .stats{flex-direction:column;}
+    .flow-arrow{transform:rotate(90deg); padding:6px 0;}
+    .page{padding:32px 20px 80px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>研究と論文の基礎</h1>
+  <p class="lead">論文とは何か、研究報告で示すべきこと、論文の構成、執筆のルールについて説明します。</p>
+
+  <h2><span class="num">01</span>論文とは何か</h2>
+  <div class="callout">
+    論文の基本は、自分の立てた<strong>「問い（リサーチ・クエスチョン）」</strong>に、裏付けとなる資料・データを示して答えることです。
+  </div>
+  <p>説明で終わるのではなく、問題解決を目指すものが良い論文とされます。「〜について」「〜とは何か」のような説明で終わる問いではなく、<strong>「なぜ〜なのか」「どうすれば解決できるか」「〜をどうするべきか」</strong>を問う形が望ましいとされています。</p>
+
+  <div class="compare">
+    <div class="compare-box bad">
+      <span class="tag">✕ 説明で終わる問い</span>
+      〜とは何か／〜について
+    </div>
+    <div class="compare-box good">
+      <span class="tag">〇 解決を目指す問い</span>
+      なぜ〜なのか／どうすれば〜できるか／〜をどうするべきか
+    </div>
+  </div>
+
+  <h2><span class="num">02</span>研究報告で示すべきこと</h2>
+  <p>研究報告・論文では、以下を順に示す必要があります。</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div class="txt"><b>どのような状況で</b>（現状・背景）</div></div>
+    <div class="step"><div class="n">2</div><div class="txt"><b>どのような問題があり</b>（問題点の指摘）</div></div>
+    <div class="step"><div class="n">3</div><div class="txt"><b>これまでどう対処してきたか</b>（先行研究）</div></div>
+    <div class="step"><div class="n">4</div><div class="txt"><b>どう解決するのか</b>（自分の問いと方法）</div></div>
+    <div class="step"><div class="n">5</div><div class="txt"><b>何が分かったか</b>（結果）</div></div>
+    <div class="step"><div class="n">6</div><div class="txt"><b>何が言えて、何が言えないか</b>（考察）</div></div>
+  </div>
+
+  <h2><span class="num">03</span>論文の構成</h2>
+  <p>論文は「序論」「本論」「結論」「参考文献一覧」の4要素で構成します。</p>
+
+  <div class="flow">
+    <div class="flow-box">
+      <h4>序論</h4>
+      <ul>
+        <li>現状・背景説明</li>
+        <li>問題点の指摘</li>
+        <li>先行研究</li>
+        <li>問い</li>
+        <li>本稿の主な結果</li>
+      </ul>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">
+      <h4>本論</h4>
+      <ul>
+        <li>方法の説明</li>
+        <li>先行研究への言及</li>
+        <li>用語の定義</li>
+        <li>結果の提示</li>
+      </ul>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">
+      <h4>結論</h4>
+      <ul>
+        <li>本論のまとめ・振り返り</li>
+        <li>考察</li>
+        <li>今後の課題</li>
+      </ul>
+    </div>
+    <div class="flow-plus">＋</div>
+    <div class="flow-box refs">
+      <h4>参考文献一覧</h4>
+      <ul>
+        <li>本文で引用した文献の出典</li>
+      </ul>
+    </div>
+  </div>
+  <p class="flow-note">序論は論文全体の見取り図。何を問い、何が分かったのかまで、論文の要点がひととおり示されている状態を目指す。</p>
+
+  <h3>結論を書いたあとの確認</h3>
+  <div class="checklist">
+    <div>序論・本論に書いていないことが突然登場していないか（今後の課題を除く）</div>
+    <div>当初の問いと序論の内容に対応しているか</div>
+    <div>本論の全ての論点に登場順に触れているか</div>
+  </div>
+
+  <h3>参考文献一覧</h3>
+  <p>本文中で引用した文献の出典を明示します。本文で言及していない文献（教科書など）は記載しません。書き方は<a href="seminar_bunken.html" style="color:var(--accent);">文献の探し方</a>を参照してください。</p>
+
+  <h2><span class="num">04</span>執筆のルール</h2>
+
+  <h3>分量の目安（卒業論文）</h3>
+  <div class="amount">
+    <div class="amount-main">本文 <strong>12,000字</strong> 以上</div>
+    <div class="amount-sub">図表は1枚を500字として換算し、合計2,000字まで本文の字数に含めることができます。</div>
+  </div>
+  <p style="font-size:13.5px;color:var(--sub);margin-top:14px;">※参考文献リストは字数にカウントしません。また、記載するのは、論文を直接書くのに使用した文献のみとし、参考にした教科書等は含めません。</p>
+
+  <h3>引用に関する注意</h3>
+  <div class="compare">
+    <div class="compare-box bad">
+      <span class="tag">✕ 不適切な引用</span>
+      コピペなど。内容が良くても<strong>不合格の対象</strong>になります。必ず自分の言葉で書いてください。
+    </div>
+  </div>
+
+  <div class="toc-return">
+    <nav class="related-nav">
+      <a href="seminar_kiso.html" class="current">研究と論文の基礎</a>
+      <a href="seminar_hajimekata.html">研究の始め方</a>
+      <a href="seminar_bunken.html">文献の探し方</a>
+      <a href="seminar_data.html">データの準備</a>
+      <a href="seminar_bunseki.html">分析と解釈</a>
+      <a href="seminar_happyo.html">発表</a>
+      <a href="seminar_r.html">R</a>
+    </nav>
+    <a href="#">← 目次に戻る</a>
+  </div>
+</div>
+</body>
+</html>

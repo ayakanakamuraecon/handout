@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>データの準備</title>
+<style>
+  :root{
+    --ink:#242a30;
+    --paper:#f7f8fa;
+    --line:#d5dbe2;
+    --accent:#2e5476;
+    --accent-soft:#e4ecf3;
+    --sub:#6b6558;
+    --good:#3d6b5c;
+    --good-soft:#e3efe9;
+    --good-line:#c2ddd0;
+    --bad:#9c4a3c;
+    --bad-soft:#f6ebe8;
+    --bad-line:#e6c9c1;
+    --warm:#b5654a;
+    --warm-soft:#f3e3dc;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+    line-height:1.75;
+  }
+  .page{max-width:920px; margin:0 auto; padding:56px 40px 120px;}
+
+  h1{font-size:34px; margin:0 0 6px; font-weight:700; letter-spacing:.02em;}
+  .lead{
+    color:var(--sub); font-size:15px; margin:0 0 40px;
+    padding-bottom:32px; border-bottom:1px solid var(--line);
+  }
+  h2{font-size:22px; margin:64px 0 20px; display:flex; align-items:baseline; gap:12px;}
+  h2 .num{
+    font-size:14px; color:var(--accent); font-weight:700;
+    border:1px solid var(--accent); border-radius:999px;
+    padding:2px 10px; letter-spacing:.05em;
+  }
+  h3{font-size:16px; margin:28px 0 12px; color:var(--ink); font-weight:700;}
+  p{margin:0 0 14px;}
+  ul,ol{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px;}
+  code{
+    font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
+    background:var(--accent-soft); color:var(--accent);
+    padding:1px 5px; border-radius:3px; font-size:.92em;
+  }
+
+  .callout{
+    background:var(--accent-soft); border-left:4px solid var(--accent);
+    padding:18px 22px; border-radius:2px; margin:20px 0 28px; font-size:15px;
+  }
+
+  /* 前処理フェーズ：番号付きカードを縦に並べる */
+  .phase-grid{display:flex; flex-direction:column; gap:14px; margin:20px 0 10px;}
+  .phase-card{background:#fff; border:1px solid var(--line); border-top:4px solid var(--accent); padding:20px 16px 16px; position:relative;}
+  .phase-card .pn{
+    position:absolute; top:-13px; left:16px; width:26px; height:26px; background:var(--accent); color:#fff;
+    border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12.5px; font-weight:700;
+  }
+  .phase-card h4{margin:6px 0 10px; font-size:15px; color:var(--accent);}
+  .phase-card ol,.phase-card ul{margin:0; padding-left:18px; font-size:13px;}
+  .phase-card li{margin-bottom:6px;}
+  .flow-legend{font-size:14px; color:var(--sub); margin:0 0 16px;}
+  .flow-note{
+    font-size:14px; color:var(--sub); margin:16px 0 28px; padding:12px 16px;
+    background:var(--accent-soft); border-radius:3px; line-height:1.7;
+  }
+
+  /* 横持ち⇄整然データ／pivot_longer：常に縦並び */
+  .reshape-row{display:flex; flex-direction:column; align-items:center; gap:12px; margin:20px 0 6px;}
+  .reshape-row .diagram-box{width:100%; max-width:520px;}
+  /* left_join：幅に応じて折り返し */
+  .join-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:16px; margin:20px 0 6px;}
+  .diagram-box{flex:1 1 260px; min-width:240px;}
+  .diagram-box .dtitle{font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:8px; text-align:center;}
+  .diagram-box .dnote{font-size:12.5px; color:var(--sub); text-align:center; margin:8px 0 0;}
+  .diagram-box .overflow-wrap{overflow-x:auto;}
+  .diagram-arrow{
+    flex:0 0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:4px; color:var(--sub); font-size:13px; text-align:center; padding:6px 10px;
+  }
+  .diagram-arrow .glyph{font-size:24px; line-height:1;}
+  .diagram-arrow code{font-size:11.5px;}
+  .diagram-down{display:flex; flex-direction:column; align-items:center; gap:4px; margin:14px 0; color:var(--sub); font-size:13px;}
+  .diagram-down .glyph{font-size:24px;}
+  .diagram-result{margin:6px 0 4px;}
+  .diagram-legend{display:flex; flex-wrap:wrap; gap:18px; font-size:13px; color:var(--ink); margin:0 0 16px;}
+  .diagram-legend .dot{width:11px; height:11px; border-radius:3px; display:inline-block; margin-right:6px; vertical-align:middle;}
+  .hl{background:var(--accent-soft); color:var(--accent); padding:0 5px; border-radius:2px; font-weight:700;}
+  .hl.good{background:var(--good-soft); color:var(--good);}
+
+  .codebox{
+    background:#eef1f4; border:1px solid var(--line); border-radius:4px;
+    padding:16px 20px; font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
+    font-size:13px; line-height:1.8; overflow-x:auto; margin:14px 0 24px;
+    white-space:pre; color:var(--ink);
+  }
+  .codebox .cmt{color:var(--sub);}
+
+  details{background:#fff; border:1px solid var(--line); margin:12px 0; padding:0;}
+  summary{
+    cursor:pointer; padding:14px 20px; font-weight:700; color:var(--accent);
+    list-style:none; position:relative;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"＋"; position:absolute; right:20px; top:14px; font-size:14px; color:var(--sub);}
+  details[open] summary::after{content:"－";}
+  details[open] summary{border-bottom:1px solid var(--line);}
+  .details-body{padding:16px 20px 22px;}
+
+  table{width:100%; border-collapse:collapse; font-size:14px; margin:16px 0 28px;}
+  th,td{border:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top;}
+  th{background:var(--accent-soft); font-weight:700; font-size:13px;}
+
+  /* 図解内の小さな表 */
+  .mini-table{width:100%; border-collapse:collapse; font-size:12.5px; margin:0;}
+  .mini-table th,.mini-table td{border:1px solid var(--line); padding:6px 8px; text-align:left; white-space:nowrap;}
+  .mini-table th{background:var(--accent-soft); font-weight:700;}
+  .mini-table th.col-key,.mini-table td.col-key{background:var(--good-soft); color:var(--ink);}
+  .mini-table th.col-key{color:var(--good);}
+  .mini-table th.col-warm,.mini-table td.col-warm{background:var(--warm-soft); color:var(--ink);}
+  .mini-table th.col-warm{color:var(--warm);}
+  .mini-table th.col-accent,.mini-table td.col-accent{background:var(--accent-soft); color:var(--ink);}
+  .mini-table th.col-accent{color:var(--accent);}
+
+  .related-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px;}
+  .related-nav a{
+    font-size:12.5px; color:var(--sub); text-decoration:none;
+    padding:5px 12px; border:1px solid var(--line); border-radius:999px; background:#fff;
+  }
+  .related-nav a.current{color:#fff; background:var(--accent); border-color:var(--accent); font-weight:700;}
+
+  .toc-return{margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--sub);}
+  .toc-return a{color:var(--accent); text-decoration:none;}
+
+  @media (max-width:700px){
+    .page{padding:32px 20px 80px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>データの準備</h1>
+  <p class="lead">分析に使えるデータの形と、前処理でよく使う操作についてまとめています。</p>
+
+  <h2><span class="num">01</span>理想のデータ形式</h2>
+  <p>分析に使えるデータは、観察単位（都道府県・個人など）が行、変数が列という構造になっている必要があります。e-Stat などからダウンロードしたデータがこの形になっていない場合は、整形が必要です。</p>
+
+  <div class="reshape-row">
+    <div class="diagram-box">
+      <div class="dtitle">✕ 横持ち</div>
+      <div class="overflow-wrap">
+        <table class="mini-table">
+          <thead><tr><th>都道府県</th><th>労働生産性<br>2019</th><th>2020</th><th>2021</th><th>IT投資<br>2019</th><th>2020</th><th>2021</th></tr></thead>
+          <tbody>
+            <tr><td>東京都</td><td>820</td><td>810</td><td>830</td><td>150</td><td>155</td><td>162</td></tr>
+            <tr><td>大阪府</td><td>710</td><td>700</td><td>720</td><td>98</td><td>101</td><td>105</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="dnote">年次と変数が<span class="hl">列名</span>に埋め込まれ、セルが結合されているため、<code>read_csv()</code> で読み込むと列名が崩れる</p>
+    </div>
+    <div class="diagram-arrow"><span class="glyph">↓</span></div>
+    <div class="diagram-box">
+      <div class="dtitle">〇 整然データ</div>
+      <div class="overflow-wrap">
+        <table class="mini-table">
+          <thead><tr><th class="col-key">pref</th><th class="col-key">year</th><th>productivity</th><th>it_investment</th></tr></thead>
+          <tbody>
+            <tr><td class="col-key">東京都</td><td class="col-key">2019</td><td>820</td><td>150</td></tr>
+            <tr><td class="col-key">東京都</td><td class="col-key">2020</td><td>810</td><td>155</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="dnote">1行＝1観察単位（都道府県×年次）、列＝変数。X と Y がそれぞれ<span class="hl">1列</span>。変数名はアルファベットで統一する</p>
+    </div>
+  </div>
+  <p style="color:var(--sub);">※変数の定義・説明は、必ずメモを取るようにしてください。</p>
+
+  <h2><span class="num">02</span>前処理の一般的な工程</h2>
+  <p class="flow-legend">番号付き（1→2→3）は順番どおりに行う工程です。点（・）はどの順で行ってもよい工程です。</p>
+
+  <div class="phase-grid">
+    <div class="phase-card">
+      <div class="pn">1</div>
+      <h4>準備</h4>
+      <ol>
+        <li><code>Posit Cloud</code> で研究用プロジェクトを作成する</li>
+        <li>データファイル（CSV等）をプロジェクトにアップロードする</li>
+        <li>アップロードしたファイルが Files パネルに表示されているか確認する</li>
+      </ol>
+    </div>
+    <div class="phase-card">
+      <div class="pn">2</div>
+      <h4>読み込み</h4>
+      <ol>
+        <li><code>read_csv("ファイル名.csv")</code> を実行する</li>
+        <li>エラーが出ずに読み込めるか確認する（文字コードエラーが出たら <code>locale</code> を指定）</li>
+        <li>読み込んだデータをオブジェクトに代入する（<code>df &lt;- read_csv(...)</code>）</li>
+      </ol>
+    </div>
+    <div class="phase-card">
+      <div class="pn">3</div>
+      <h4>構造確認</h4>
+      <ul>
+        <li><code>head(df)</code> で先頭数行、各列の型、行数・列数の見当を確認する</li>
+        <li><code>summary(df)</code> で基本統計量を確認する</li>
+      </ul>
+    </div>
+    <div class="phase-card">
+      <div class="pn">4</div>
+      <h4>問題発見</h4>
+      <ul>
+        <li>列名が日本語・スペース入りでないか確認する</li>
+        <li>数値のはずの列が <code>chr</code> になっていないか確認する</li>
+        <li>欠損値があるか確認する（<code>is.na(df) %&gt;% colSums()</code>）</li>
+        <li>横持ちになっていないか確認する（年次等が列名に入っていないか）</li>
+      </ul>
+    </div>
+    <div class="phase-card">
+      <div class="pn">5</div>
+      <h4>整形</h4>
+      <ul>
+        <li>列名を変更する（<code>rename()</code>）</li>
+        <li>型を変換する（<code>mutate()</code> と <code>as.numeric()</code> など）</li>
+        <li>横持ちなら <code>pivot_longer()</code> で縦持ちに変換する</li>
+        <li>複数ファイルがあれば <code>left_join()</code> で結合する</li>
+        <li>不要な列・行を取り除く（<code>select()</code>・<code>filter()</code>）</li>
+      </ul>
+    </div>
+  </div>
+  <p class="flow-note">整形フェーズの注意：不要な列・行は、後の工程で使わないと確信できた時点で早めに落とすと効率的です。ただし、<code>left_join()</code> の結合キーや <code>filter()</code> の条件に使う列は、その処理より前に落とさないよう注意してください。</p>
+
+  <h2><span class="num">03</span>工程の詳細解説</h2>
+
+  <details>
+    <summary>▼ 型の変換</summary>
+    <div class="details-body">
+      <p><code>read_csv()</code> でデータを読み込むと、各列に型が割り当てられます。型が合っていないと集計・分析でエラーが出るので確認が必要です。</p>
+      <ul>
+        <li><code>dbl</code>・<code>int</code>：数値である。そのまま計算できる</li>
+        <li><code>chr</code>：文字列である。数値のように見えても計算できない</li>
+        <li><code>fct</code>：因子型である。カテゴリ変数に使う</li>
+      </ul>
+      <p>型を確認するには <code>head(df)</code> を使います。数値のはずの列が <code>chr</code> になっている場合は、次のように変換します。</p>
+      <div class="codebox">df %&gt;% mutate(変数名 = as.numeric(変数名))</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>▼ 欠損値の扱い</summary>
+    <div class="details-body">
+      <p>データに欠損値（NA）が含まれていると、集計や分析の結果に影響します。まず、どの変数にどれだけ欠損があるかを確認し、除外するか補完するかを判断してください。欠損が多い変数は、そもそも分析に使えない可能性があります。</p>
+      <div class="codebox">is.na(df) %&gt;% colSums()      <span class="cmt"># 各変数の欠損数を確認</span>
+df %&gt;% filter(is.na(変数名))  <span class="cmt"># 欠損のある行を表示</span>
+df %&gt;% drop_na(変数名)        <span class="cmt"># 欠損のある行を除外</span></div>
+    </div>
+  </details>
+
+  <details>
+    <summary>▼ 横持ち→縦持ちの変換</summary>
+    <div class="details-body">
+      <p>e-Stat などでよくある横持ちデータは、<code>pivot_longer()</code> で整形できます。</p>
+      <div class="codebox">df %&gt;%
+  pivot_longer(
+    cols = c("2019年", "2020年", "2021年"),  <span class="cmt"># 縦に変換したい列</span>
+    names_to = "year",             <span class="cmt"># 列名を格納する新しい変数名</span>
+    values_to = "productivity"     <span class="cmt"># 値を格納する新しい変数名</span>
+  )</div>
+
+      <div class="reshape-row">
+        <div class="diagram-box">
+          <div class="dtitle">変換前（横持ち）</div>
+          <table class="mini-table">
+            <thead><tr><th>pref</th><th class="col-accent">2019年</th><th class="col-accent">2020年</th><th class="col-accent">2021年</th></tr></thead>
+            <tbody>
+              <tr><td>東京都</td><td>820</td><td>810</td><td>830</td></tr>
+              <tr><td>大阪府</td><td>710</td><td>700</td><td>720</td></tr>
+              <tr><td>愛知県</td><td>680</td><td>670</td><td>690</td></tr>
+            </tbody>
+          </table>
+          <p class="dnote">年次が<span class="hl">列名</span>に埋め込まれている</p>
+        </div>
+        <div class="diagram-arrow"><span class="glyph">↓</span><code>pivot_longer()</code></div>
+        <div class="diagram-box">
+          <div class="dtitle">変換後（縦持ち）</div>
+          <table class="mini-table">
+            <thead><tr><th>pref</th><th class="col-accent">year</th><th>productivity</th></tr></thead>
+            <tbody>
+              <tr><td>東京都</td><td class="col-accent">2019年</td><td>820</td></tr>
+              <tr><td>東京都</td><td class="col-accent">2020年</td><td>810</td></tr>
+              <tr><td>東京都</td><td class="col-accent">2021年</td><td>830</td></tr>
+              <tr><td>大阪府</td><td class="col-accent">2019年</td><td>710</td></tr>
+            </tbody>
+          </table>
+          <p class="dnote">年次が<span class="hl">変数（列）</span>になった</p>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>▼ 複数ファイルの結合</summary>
+    <div class="details-body">
+      <p>複数のデータソースを組み合わせたい場合は、<code>left_join()</code> で結合します。観察単位（都道府県名・年次など）が一致していることを確認してから結合してください。</p>
+      <div class="codebox">df_joined &lt;- left_join(
+  df_x, df_y,             <span class="cmt"># 結合したいデータフレーム名</span>
+  by = c("pref", "year")  <span class="cmt"># 結合に使用するキー変数</span>
+)</div>
+
+      <div class="diagram-legend">
+        <span><span class="dot" style="background:var(--good);"></span>結合キー（共通の変数）</span>
+        <span><span class="dot" style="background:var(--warm);"></span>df_x の変数</span>
+        <span><span class="dot" style="background:var(--accent);"></span>df_y の変数</span>
+      </div>
+
+      <div class="join-row">
+        <div class="diagram-box">
+          <div class="dtitle">df_x（基準）</div>
+          <table class="mini-table">
+            <thead><tr><th class="col-key">pref</th><th class="col-key">year</th><th class="col-warm">it_investment</th></tr></thead>
+            <tbody>
+              <tr><td class="col-key">東京都</td><td class="col-key">2019</td><td class="col-warm">150</td></tr>
+              <tr><td class="col-key">東京都</td><td class="col-key">2020</td><td class="col-warm">155</td></tr>
+              <tr><td class="col-key">大阪府</td><td class="col-key">2019</td><td class="col-warm">98</td></tr>
+              <tr><td class="col-key">大阪府</td><td class="col-key">2020</td><td class="col-warm">101</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="diagram-arrow"><code>left_join()</code><span class="glyph">⇐</span><span>by = c("pref","year")</span></div>
+        <div class="diagram-box">
+          <div class="dtitle">df_y</div>
+          <table class="mini-table">
+            <thead><tr><th class="col-key">pref</th><th class="col-key">year</th><th class="col-accent">productivity</th></tr></thead>
+            <tbody>
+              <tr><td class="col-key">東京都</td><td class="col-key">2019</td><td class="col-accent">820</td></tr>
+              <tr><td class="col-key">東京都</td><td class="col-key">2020</td><td class="col-accent">810</td></tr>
+              <tr><td class="col-key">大阪府</td><td class="col-key">2019</td><td class="col-accent">710</td></tr>
+              <tr><td class="col-key">大阪府</td><td class="col-key">2020</td><td class="col-accent">700</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="diagram-down"><span class="glyph">⇓</span>結合後</div>
+
+      <div class="diagram-result">
+        <div class="dtitle">df_joined（結合後）</div>
+        <div class="overflow-wrap">
+          <table class="mini-table">
+            <thead><tr><th class="col-key">pref</th><th class="col-key">year</th><th class="col-warm">it_investment</th><th class="col-accent">productivity</th></tr></thead>
+            <tbody>
+              <tr><td class="col-key">東京都</td><td class="col-key">2019</td><td class="col-warm">150</td><td class="col-accent">820</td></tr>
+              <tr><td class="col-key">東京都</td><td class="col-key">2020</td><td class="col-warm">155</td><td class="col-accent">810</td></tr>
+              <tr><td class="col-key">大阪府</td><td class="col-key">2019</td><td class="col-warm">98</td><td class="col-accent">710</td></tr>
+              <tr><td class="col-key">大阪府</td><td class="col-key">2020</td><td class="col-warm">101</td><td class="col-accent">700</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="dnote">結合キー（<span class="hl good">pref・year</span>）が一致する行が1つのデータにまとまる</p>
+      </div>
+    </div>
+  </details>
+
+  <h2><span class="num">04</span>よくあるエラーと対処</h2>
+  <p>どのようなデータでどのような分析を行うかによって、さまざまなエラーが出ます。対処が難しいエラーが出たら、その都度教員に相談してください。代表的なエラーを以下にまとめます。</p>
+  <table>
+    <thead><tr><th>エラー・症状</th><th>原因</th><th>対処</th></tr></thead>
+    <tbody>
+      <tr><td><code>read_csv()</code> で文字化けする</td><td>CSV の文字コードが UTF-8 ではない</td><td><code>read_csv("file.csv", locale = locale(encoding = "CP932"))</code>（CP932 は Shift-JIS）</td></tr>
+      <tr><td>列名に空白や日本語が入る</td><td>e-Stat の列名をそのまま読み込んだ</td><td>CSV の変数名を英語に変更してから読み込む</td></tr>
+      <tr><td>数値のはずの列が <code>chr</code> になる</td><td>カンマ区切りや単位が含まれている</td><td><code>mutate()</code> と <code>as.numeric()</code> で数値に変換する</td></tr>
+      <tr><td><code>left_join()</code> 後に行数が増える</td><td>結合キーに重複がある</td><td>結合前に <code>distinct()</code> で重複を確認する</td></tr>
+      <tr><td>NA が大量に発生する</td><td>結合キーの表記がずれている（「東京都」vs「東京」など）</td><td>表記を統一してから結合する</td></tr>
+    </tbody>
+  </table>
+
+  <div class="toc-return">
+    <nav class="related-nav">
+      <a href="seminar_kiso.html">研究と論文の基礎</a>
+      <a href="seminar_hajimekata.html">研究の始め方</a>
+      <a href="seminar_bunken.html">文献の探し方</a>
+      <a href="seminar_data.html" class="current">データの準備</a>
+      <a href="seminar_bunseki.html">分析と解釈</a>
+      <a href="seminar_happyo.html">発表</a>
+      <a href="seminar_r.html">R</a>
+    </nav>
+    <a href="#">← 目次に戻る</a>
+  </div>
+</div>
+</body>
+</html>
