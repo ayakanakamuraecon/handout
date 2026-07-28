@@ -1,10 +1,18 @@
 project:
   type: website
   output-dir: docs
-  resources: 
+  resources:
     - styles.css
     - images/
     - robots.txt
+    - seminar_kiso.html
+    - seminar_hajimekata.html
+    - seminar_bunken.html
+    - seminar_data.html
+    - seminar_bunseki.html
+    - seminar_happyo.html
+    - seminar_r.html
+    - sample_code.R
 
 
 website:
@@ -15,6 +23,7 @@ format:
     theme:
       - cosmo
       - brand
+      - seminar-theme.scss
     css: styles.css
     toc: false
 

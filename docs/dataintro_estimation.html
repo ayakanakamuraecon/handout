@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,14 +31,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5af9380780ebe5f0b5b980898e1b2726.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -81,7 +82,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -275,12 +276,14 @@ SE = \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{x
 <p><img src="images/dataintro_sebar_count.png" class="img-fluid" alt="サンプルサイズ"> <img src="images/dataintro_sebar_se.png" class="img-fluid" alt="標準誤差"> <img src="images/dataintro_sebar_ci.png" class="img-fluid" alt="信頼区間"></p>
 <p>表ができたら、グループ名と各平均値のセルを選択し、棒グラフを作ります。できたグラフに、以下の手順でエラーバーを追加しましょう。</p>
 <p><strong>エラーバー追加手順</strong></p>
+<div class="seminar-steps">
 <ol type="1">
 <li>グラフを選択し、<strong>グラフのデザイン</strong>→<strong>グラフ要素を追加</strong>→<strong>誤差範囲</strong>→<strong>その他の誤差範囲オプション</strong>の順に選択</li>
 <li>誤差範囲の追加ウィンドウでエラーバーを追加したいグループ名を選択しOKをクリック</li>
 <li><strong>誤差範囲の書式設定</strong>メニューの<strong>誤差範囲</strong>から<strong>ユーザー設定</strong>を選択</li>
 <li>ユーザー設定の誤差範囲ウィンドウで、<strong>正の誤差の値</strong>と<strong>負の誤差の値</strong>両方に計算した<strong>信頼区間のセル番地</strong>を指定</li>
 </ol>
+</div>
 <p><img src="images/dataintro_sebar_gen.png" class="img-fluid" alt="グラフの選択"> <img src="images/dataintro_sebar_gen1.png" class="img-fluid" alt="標準誤差を追加"> <img src="images/dataintro_sebar_gen2.png" class="img-fluid" alt="標準誤差の設定"></p>
 <p>これで、エラーバー付棒グラフを作成できました。</p>
 <p><img src="images/dataintro_sebar.png" class="img-fluid"></p>
@@ -346,12 +349,14 @@ SE = \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{x
 <section id="excelで仮説検定t検定をする" class="level3">
 <h3 class="anchored" data-anchor-id="excelで仮説検定t検定をする">Excelで仮説検定（t検定）をする</h3>
 <p><strong>男女間での平均購入金額に差があるかどうかという仮説を例</strong>に、仮説検定の中でも、特に <strong><span class="math inline">\(t\)</span> 検定の手順</strong>を見ていきましょう。<span class="math inline">\(t\)</span> 検定は、<strong>平均値の差があるかどうかを検定するときに使われる手法</strong>です。手順は以下の通りです。</p>
+<div class="seminar-steps">
 <ol type="1">
 <li><strong>有意水準を決める</strong></li>
 <li><strong>仮説を立てる</strong></li>
 <li><strong><span class="math inline">\(t\)</span> 検定を実行する</strong></li>
 <li><strong>結果を解釈する</strong></li>
 </ol>
+</div>
 <p>1つひとつを詳しく見ていきましょう。</p>
 <section id="有意水準を決める" class="level4">
 <h4 class="anchored" data-anchor-id="有意水準を決める">1. 有意水準を決める</h4>
@@ -377,12 +382,14 @@ SE = \frac{s}{\sqrt{n}} = \frac{\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_{i} - \bar{x
 <p>「データ分析」が見つからないときは、先に「<strong>分析ツールアドイン</strong>」を追加する必要があります。</p>
 <section id="分析ツールアドインの追加" class="level5">
 <h5 class="anchored" data-anchor-id="分析ツールアドインの追加">分析ツールアドインの追加</h5>
+<div class="seminar-steps">
 <ol type="1">
 <li>「ファイル」タブ→「オプション」を選択</li>
 <li>「アドイン」→「設定」を選択</li>
 <li>「分析ツール」にチェックを入れ、OKをクリック</li>
 <li>Excelを再起動する</li>
 </ol>
+</div>
 <p>次に、<strong>データ分析ツールに合わせてデータを加工</strong>します。</p>
 <p><a href="#excelで標準誤差を考慮した棒グラフを作る">Excelで標準誤差を考慮した棒グラフを作る</a>と同じように、男性のデータと女性のデータに分割しましょう。</p>
 <p>分割ができたら、「分析ツール」を起動します。分析ツールから <strong>t 検定: 等分散を仮定した2標本による検定</strong>を選択し、必要なオプションを入力します。</p>
@@ -1400,40 +1407,46 @@ function showAnswer(id) {
   padding: 0.5em 1em;
   margin-right: 1em;
   border: none;
-  background-color: #557a95;
+  background-color: var(--seminar-accent, #2e5476);
   color: white;
   border-radius: 4px;
   cursor: pointer;
 }
 #quiz-tools button:hover {
-  background-color: #416175;
+  background-color: #22405a;
 }
 .fill-in {
   min-width: 8em;
   font-size: 1em;
-  font-family: sans-serif;
-  padding: 0.3em;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  padding: 0.3em 0.5em;
   margin: 0 0.3em;
+  border: 1px solid var(--seminar-line, #d5dbe2);
+  border-radius: 3px;
 }
 .quizbox {
-  background-color: #f0f4f8;
-  border-left: 4px solid #9db4c0;
-  padding: 1em;
+  background-color: var(--seminar-accent-soft, #e4ecf3);
+  border-left: 4px solid var(--seminar-accent, #2e5476);
+  padding: 1em 1.2em;
   margin: 1.5em 0;
-  border-radius: 6px;
+  border-radius: 2px;
 }
 .quiz-answer {
   width: 100%;
   min-height: 5em;
   margin-top: 0.5em;
-  font-family: sans-serif;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
   font-size: 1em;
   padding: 0.5em;
+  border: 1px solid var(--seminar-line, #d5dbe2);
+  border-radius: 3px;
+  box-sizing: border-box;
 }
 .answer {
-  background-color: #eef5fa;
-  padding: 0.5em;
-  border-radius: 4px;
+  background-color: var(--seminar-good-soft, #e3efe9);
+  border-left: 3px solid var(--seminar-good, #3d6b5c);
+  padding: 0.6em 0.9em;
+  border-radius: 2px;
 }
 </style>
 
@@ -1498,13 +1511,14 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

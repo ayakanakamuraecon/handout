@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,14 +31,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-053c53c6e194e33da7889a865f9fcd47.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -81,7 +82,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -836,40 +837,46 @@ function showAnswer(id) {
   padding: 0.5em 1em;
   margin-right: 1em;
   border: none;
-  background-color: #557a95;
+  background-color: var(--seminar-accent, #2e5476);
   color: white;
   border-radius: 4px;
   cursor: pointer;
 }
 #quiz-tools button:hover {
-  background-color: #416175;
+  background-color: #22405a;
 }
 .fill-in {
   min-width: 8em;
   font-size: 1em;
-  font-family: sans-serif;
-  padding: 0.3em;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  padding: 0.3em 0.5em;
   margin: 0 0.3em;
+  border: 1px solid var(--seminar-line, #d5dbe2);
+  border-radius: 3px;
 }
 .quizbox {
-  background-color: #f0f4f8;
-  border-left: 4px solid #9db4c0;
-  padding: 1em;
+  background-color: var(--seminar-accent-soft, #e4ecf3);
+  border-left: 4px solid var(--seminar-accent, #2e5476);
+  padding: 1em 1.2em;
   margin: 1.5em 0;
-  border-radius: 6px;
+  border-radius: 2px;
 }
 .quiz-answer {
   width: 100%;
   min-height: 5em;
   margin-top: 0.5em;
-  font-family: sans-serif;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
   font-size: 1em;
   padding: 0.5em;
+  border: 1px solid var(--seminar-line, #d5dbe2);
+  border-radius: 3px;
+  box-sizing: border-box;
 }
 .answer {
-  background-color: #eef5fa;
-  padding: 0.5em;
-  border-radius: 4px;
+  background-color: var(--seminar-good-soft, #e3efe9);
+  border-left: 3px solid var(--seminar-good, #3d6b5c);
+  padding: 0.6em 0.9em;
+  border-radius: 2px;
 }
 </style>
 
@@ -934,13 +941,14 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

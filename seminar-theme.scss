@@ -1,0 +1,357 @@
+/*-- scss:defaults --*/
+
+// ゼミ資料（docs/seminar_*.html）の配色・書体を講義資料全体に適用する
+// 元の変数定義: seminar_kiso.html ほか docs 内の各 seminar_*.html の :root{}
+
+$seminar-ink:         #242a30;
+$seminar-paper:       #f7f8fa;
+$seminar-line:        #d5dbe2;
+$seminar-accent:      #2e5476;
+$seminar-accent-soft: #e4ecf3;
+$seminar-sub:         #6b6558;
+$seminar-good:        #3d6b5c;
+$seminar-good-soft:   #e3efe9;
+$seminar-good-line:   #c2ddd0;
+$seminar-bad:         #9c4a3c;
+$seminar-bad-soft:    #f6ebe8;
+$seminar-bad-line:    #e6c9c1;
+$seminar-warm:        #b5654a;
+
+$font-family-sans-serif: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+$font-family-base: $font-family-sans-serif;
+
+$body-bg:    $seminar-paper;
+$body-color: $seminar-ink;
+
+$link-color:       $seminar-accent;
+$link-hover-color:  darken($seminar-accent, 8%);
+
+$headings-color:       $seminar-ink;
+$headings-font-weight: 700;
+
+$border-color: $seminar-line;
+
+// Quarto標準 callout の配色をゼミ資料のトーンに合わせる
+$callout-color-note:      $seminar-accent;
+$callout-color-tip:       $seminar-good;
+$callout-color-important: $seminar-bad;
+$callout-color-caution:   $seminar-warm;
+$callout-color-warning:   $seminar-warm;
+
+/*-- scss:rules --*/
+
+// 他ページ（seminar_*.html）と共有できるよう、CSS変数としても定義しておく
+:root{
+  --seminar-ink: #{$seminar-ink};
+  --seminar-paper: #{$seminar-paper};
+  --seminar-line: #{$seminar-line};
+  --seminar-accent: #{$seminar-accent};
+  --seminar-accent-soft: #{$seminar-accent-soft};
+  --seminar-sub: #{$seminar-sub};
+  --seminar-good: #{$seminar-good};
+  --seminar-good-soft: #{$seminar-good-soft};
+  --seminar-good-line: #{$seminar-good-line};
+  --seminar-bad: #{$seminar-bad};
+  --seminar-bad-soft: #{$seminar-bad-soft};
+  --seminar-bad-line: #{$seminar-bad-line};
+  --seminar-warm: #{$seminar-warm};
+}
+
+body{
+  line-height: 1.75;
+}
+
+#quarto-document-content{
+  max-width: 860px;
+
+  h1{
+    font-size: 2.05rem;
+    letter-spacing: .02em;
+    margin: 0 0 .35rem;
+  }
+  h1.title{
+    margin-bottom: .35rem;
+  }
+  > header#title-block-header{
+    margin-bottom: 2rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid $seminar-line;
+  }
+  h2{
+    font-size: 1.35rem;
+    margin: 3rem 0 1.1rem;
+    padding-top: .2rem;
+  }
+  h3{
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 1.6rem 0 .7rem;
+  }
+  h4{
+    font-size: .875rem;
+    color: $seminar-accent;
+    font-weight: 700;
+    margin: 1.2rem 0 .6rem;
+  }
+  p, ul, ol{
+    margin-bottom: .9rem;
+  }
+  li{
+    margin-bottom: .35rem;
+  }
+
+  // インラインコード
+  code{
+    font-family: "SFMono-Regular",Consolas,"Courier New",monospace;
+    background: $seminar-accent-soft;
+    color: $seminar-accent;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: .92em;
+  }
+
+  // コードブロック（コピペ用のコードボックス）
+  div.sourceCode, pre.sourceCode{
+    background: #eef1f4;
+    border: 1px solid $seminar-line;
+    border-radius: 4px;
+  }
+  pre.sourceCode code, pre code{
+    color: $seminar-ink;
+    background: transparent;
+  }
+  pre > code.sourceCode{
+    font-size: .82em;
+  }
+
+  // Rの出力ボックス（実行結果）
+  pre.cell-output, pre.cell-output-stdout{
+    background: #fbfbfa;
+    border: 1px solid $seminar-line;
+    border-left: 4px solid $seminar-good;
+    border-radius: 4px;
+  }
+
+  // 表
+  table{
+    border-collapse: collapse;
+    font-size: .95rem;
+  }
+  th, td{
+    border: 1px solid $seminar-line;
+    padding: 10px 12px;
+    vertical-align: top;
+  }
+  thead th{
+    background: $seminar-accent-soft;
+    font-weight: 700;
+  }
+
+  // 折りたたみ（<details>/<summary> を使っている既存qmdにも適用される）
+  details{
+    background: #fff;
+    border: 1px solid $seminar-line;
+    border-radius: 3px;
+    margin: 1rem 0;
+    padding: 0;
+  }
+  details summary{
+    cursor: pointer;
+    padding: 14px 20px;
+    font-weight: 700;
+    color: $seminar-accent;
+    list-style: none;
+    position: relative;
+  }
+  details summary::-webkit-details-marker{
+    display: none;
+  }
+  details summary::after{
+    content: "＋";
+    position: absolute;
+    right: 20px;
+    top: 14px;
+    font-size: 14px;
+    color: $seminar-sub;
+  }
+  details[open] summary::after{
+    content: "－";
+  }
+  details[open] summary{
+    border-bottom: 1px solid $seminar-line;
+  }
+  details > *:not(summary){
+    padding: 0 20px;
+  }
+  details > *:last-child{
+    padding-bottom: 18px;
+  }
+  details > summary + *{
+    padding-top: 16px;
+  }
+}
+
+// ---------------------------------------------------------------
+// 再利用コンポーネント（seminar- 接頭辞。Quarto標準の callout とは衝突しない）
+// qmd側で ::: {.seminar-callout} ... ::: のように使う想定
+// ---------------------------------------------------------------
+
+.seminar-callout{
+  background: $seminar-accent-soft;
+  border-left: 4px solid $seminar-accent;
+  padding: 18px 22px;
+  border-radius: 2px;
+  margin: 20px 0 28px;
+  font-size: 1rem;
+}
+
+.seminar-note{
+  background: #fff;
+  border: 1px solid $seminar-line;
+  border-left: 3px solid $seminar-sub;
+  padding: 10px 16px;
+  margin: 10px 0 22px;
+  font-size: .95rem;
+}
+
+.seminar-alert{
+  background: $seminar-bad-soft;
+  border: 1px solid $seminar-bad-line;
+  border-left: 4px solid $seminar-bad;
+  padding: 14px 18px;
+  margin: 14px 0 24px;
+}
+
+.seminar-tip{
+  background: #fff;
+  border: 1px solid $seminar-line;
+  padding: 16px 20px;
+  margin: 16px 0 28px;
+}
+.seminar-tip-head{
+  font-weight: 700;
+  font-size: .9rem;
+  margin-bottom: 8px;
+  color: $seminar-accent;
+}
+
+.seminar-compare{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 20px 0 28px;
+}
+.seminar-compare-box{
+  flex: 1 1 260px;
+  border-radius: 4px;
+  padding: 18px 22px;
+}
+.seminar-compare-box.good{
+  background: $seminar-good-soft;
+  border: 1px solid $seminar-good-line;
+}
+.seminar-compare-box.bad{
+  background: $seminar-bad-soft;
+  border: 1px solid $seminar-bad-line;
+}
+.seminar-compare-box .seminar-tag{
+  font-weight: 700;
+  font-size: .95rem;
+  margin-bottom: 10px;
+  display: block;
+}
+.seminar-compare-box.good .seminar-tag{ color: $seminar-good; }
+.seminar-compare-box.bad .seminar-tag{ color: $seminar-bad; }
+
+.seminar-steps{
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 28px;
+}
+.seminar-step{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 18px;
+  background: #fff;
+  border: 1px solid $seminar-line;
+  border-left: 4px solid $seminar-accent;
+  margin-bottom: 8px;
+}
+.seminar-step .seminar-n{
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  background: $seminar-accent;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .875rem;
+  font-weight: 700;
+}
+
+// qmd側で ::: {.seminar-steps} に番号付きMarkdownリストを入れるだけで
+// 上と同じ丸番号ステップ表示になるバリエーション。
+// counter-resetはコンテナ側で1回だけ行う（各項目に補足の箇条書きが挟まると
+// Pandocが<ol>を複数に分割することがあり、<ol>ごとにリセットすると
+// 番号がすべて1に戻ってしまうため）
+.seminar-steps{
+  counter-reset: seminar-step;
+}
+.seminar-steps ol{
+  list-style: none;
+  margin: 20px 0 28px;
+  padding: 0;
+}
+.seminar-steps ol li{
+  counter-increment: seminar-step;
+  position: relative;
+  background: #fff;
+  border: 1px solid $seminar-line;
+  border-left: 4px solid $seminar-accent;
+  padding: 12px 18px 12px 58px;
+  margin: 0 0 8px;
+  min-height: 30px;
+}
+.seminar-steps ol li::before{
+  content: counter(seminar-step);
+  position: absolute;
+  left: 14px;
+  top: 13px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: $seminar-accent;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  font-weight: 700;
+}
+.seminar-steps ol li > :last-child{
+  margin-bottom: 0;
+}
+
+.seminar-checklist{
+  background: #fff;
+  border: 1px solid $seminar-line;
+  padding: 18px 22px;
+  margin: 16px 0 28px;
+}
+.seminar-checklist div{
+  display: flex;
+  gap: 10px;
+  padding: 6px 0;
+}
+.seminar-checklist div::before{
+  content: "✓";
+  color: $seminar-good;
+  font-weight: 700;
+}
+
+@media (max-width: 700px){
+  .seminar-compare{ flex-direction: column; }
+}
