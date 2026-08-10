@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>推薦書籍 – 講義資料</title>
+<title>dataintro_introb – 講義資料</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -80,56 +109,173 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">推薦書籍</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="一般書" class="level4">
-<h4 class="anchored" data-anchor-id="一般書">一般書</h4>
+<section id="はじめに" class="level1">
+<h1>はじめに</h1>
+<p>最終更新日：2025年4月7日</p>
+<p>この文書は、Excelを用いてデータ実証を行う方法をまとめたものです。和歌山大学経済学部の統計学入門を履修した学生を対象にしていますが、基礎的な統計学の知識があれば、履修していない方でも理解できる内容です。</p>
+<p>分析には、ExcelやGoogle Sheetsなどの表計算ソフトを使うことを想定します。ですが、具体的な関数の話以外は、他の統計ソフトを使う際にも適用できるものです。まずは実際に手元のデータで何ができるかを知りたいという方へのヒントにもなると思います。</p>
+<p>「実際に起こりうるシチュエーションにおいて、どのようにデータを活用するか」を主眼に置いているため、厳密さより分かりやすさを優先した記述があります。ご了承ください。</p>
+<section id="学習内容について" class="level2">
+<h2 class="anchored" data-anchor-id="学習内容について">学習内容について</h2>
+<p>具体的には、以下の内容を学習します。</p>
 <ul>
-<li><a href="https://www.diamond.co.jp/book/9784478022214.html" target="_blank">『統計学が最強の学問である』（西内啓）</a></li>
-<li><a href="https://www.ohmsha.co.jp/book/9784274232350/" target="_blank">『今こそExcelで学ぶ統計解析入門』（菅民郎）</a></li>
+<li>記述統計と推測統計の違いを理解する</li>
+<li>記述統計の基礎的な手法を身に着ける
+<ul>
+<li>手元のデータを適切に加工し、表やグラフを作成する</li>
+<li>統計量（特に平均、分散と標準偏差、共分散と相関係数）を計算し、データの特徴を理解する</li>
+</ul></li>
+<li>推測統計の基礎的な手法を身に着ける
+<ul>
+<li>仮説検定の手順を身に着ける</li>
+<li>回帰分析を行う</li>
+<li>因果推論について知る</li>
+</ul></li>
 </ul>
 </section>
-<section id="学部中級レベルの統計の教科書" class="level4">
-<h4 class="anchored" data-anchor-id="学部中級レベルの統計の教科書">学部中級レベルの統計の教科書</h4>
-<ul>
-<li><a href="https://www.saiensu.co.jp/search/?isbn=978-4-88384-050-2&amp;y=2003" target="_blank">『コア・テキスト 統計学（大屋幸輔）』</a></li>
-<li><a href="https://www.saiensu.co.jp/search/?isbn=978-4-88384-017-5&amp;y=2000" target="_blank">『統計学入門（森棟公夫）』</a></li>
-</ul>
 </section>
-<section id="因果推論" class="level4">
-<h4 class="anchored" data-anchor-id="因果推論">因果推論</h4>
-<ul>
-<li><a href="https://www.diamond.co.jp/book/9784478039472.html" target="_blank">『｢原因と結果｣の経済学（中室牧子/津川友介）』</a></li>
-<li><a href="https://www.yuhikaku.co.jp/books/detail/9784641150287" target="_blank">『計量経済学の第一歩（田中隆一）』</a></li>
-<li><a href="https://www.amazon.co.jp/Book-Why-Science-Cause-Effect/dp/046509760X" target="_blank">『The Book of Why: The New Science of Cause and Effect（Judea Pearl）』</a></li>
-<li><a href="https://shorturl.at/nRiir" target="_blank">『「ほとんど無害」な計量経済学（ヨシュア・アングリスト）』</a></li>
-</ul>
+<section id="データの種類と構造について" class="level1">
+<h1>データの種類と構造について</h1>
+<p>データの種類や目指すべきデータ構造など、基本的な事項は<a href="dataintro_intro.html">データを用いた実証分析Aの資料#はじめに</a>を参照してください。</p>
+<section id="ここで使用するデータについて" class="level3">
+<h3 class="anchored" data-anchor-id="ここで使用するデータについて">ここで使用するデータについて</h3>
+<p>次の章から、実際にデータ分析を行っていきます。</p>
+<p>今後扱うデータは、<strong>学食の売り上げデータ</strong>を想定して作成したデータです。</p>
+<p>みなさんは、このデータを使って<strong>「学食の売上向上プロジェクト」</strong>を進めていきます。このようなシチュエーションにおけるデータ活用方法を学びながら、基礎的な統計分析の手法を身につけましょう。</p>
+<p>データは以下のリンクからダウンロードしてください。</p>
+<p><a href="https://github.com/ayakanakamuraecon/handout/blob/main/docs/data/sales.csv">学食売上データをダウンロード</a></p>
+<p>ダウンロードしたファイルをExcelで開くと、以下のような画面が見れると思います。</p>
+<p><img src="fig_dataintro_ok.png" class="img-fluid"></p>
+<p>このデータは「綺麗なデータ」になっているので、1番上の行に変数名、1番左の列（A列）にIDが入っています。</p>
+<p>以下の表で、各変数の説明をしています。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><strong>変数名</strong></th>
+<th><strong>説明</strong></th>
+<th><strong>値の範囲</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>売上ID、各売上ごとにユニークな識別番号</td>
+<td>1~512</td>
+</tr>
+<tr class="even">
+<td>date</td>
+<td>日付</td>
+<td>2025/4/1~2025/4/17</td>
+</tr>
+<tr class="odd">
+<td>day_week</td>
+<td>曜日</td>
+<td>日、月、火、水、木、金、土</td>
+</tr>
+<tr class="even">
+<td>gender</td>
+<td>性別</td>
+<td>男、女</td>
+</tr>
+<tr class="odd">
+<td>age</td>
+<td>年齢（歳）</td>
+<td>18~</td>
+</tr>
+<tr class="even">
+<td>position</td>
+<td>職位</td>
+<td>学生、職員</td>
+</tr>
+<tr class="odd">
+<td>item</td>
+<td>商品名</td>
+<td>麺、丼、定食</td>
+</tr>
+<tr class="even">
+<td>sales</td>
+<td>売上金額（円）</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>temp</td>
+<td>気温（℃）</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>campaign</td>
+<td>キャンペーン</td>
+<td>0, 1</td>
+</tr>
+</tbody>
+</table>
+<p>以降の章では、このデータを使いながら、統計分析を行っていきます。</p>
 </section>
-<section id="r-を使った分析" class="level4">
-<h4 class="anchored" data-anchor-id="r-を使った分析">R を使った分析</h4>
-<ul>
-<li>『社会科学のためのデータ分析入門（今井耕介）』<a href="https://www.iwanami.co.jp/book/b352348.html" target="_blank">上</a>/<a href="https://www.iwanami.co.jp/book/b352363.html" target="_blank">下</a></li>
-<li><a href="https://tomoecon.github.io/R_for_graduate_thesis/" target="_blank">『卒業論文のためのR入門（森知晴）』</a>（ウェブサイト）</li>
-</ul>
+</section>
+<section id="用語解説" class="level1">
+<h1>用語解説</h1>
+<p>以降の章で頻出する用語について解説します。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>用語</strong></th>
+<th><strong>意味</strong></th>
+<th><strong>備考</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>変数</td>
+<td>調査項目</td>
+<td>（例）身長</td>
+</tr>
+<tr class="even">
+<td>観測値</td>
+<td>調査の結果</td>
+<td>（例）回答者それぞれの身長<br>Aさん: <span class="math inline">\(160cm\)</span>、Bさん: <span class="math inline">\(172cm\)</span>、・・・</td>
+</tr>
+<tr class="odd">
+<td>母集団</td>
+<td>調査や分析の対象となる全体の集まり</td>
+<td>（例）全国の大学生の平均身長を調べる場合→母集団は「全国のすべての大学生」</td>
+</tr>
+<tr class="even">
+<td>データ（標本）</td>
+<td>観測値の集まり</td>
+<td>（例）全回答者の身長<br><span class="math inline">\(\{160cm, 172cm, 158cm, …\}\)</span><br><strong>※「個々の観測値」と「データ（観測値の集まり）」は区別する</strong></td>
+</tr>
+<tr class="odd">
+<td>データサイズ（サンプルサイズ）</td>
+<td>データに含まれる観測値の個数</td>
+<td>（例）回答者の数</td>
+</tr>
+<tr class="even">
+<td>データ数（サンプル数）</td>
+<td>データの個数</td>
+<td>（例）1つの大学を対象に4月と10月の2回調査を行ったとき→データ数は2<br><strong>※観測値の集まりであるデータの個数であり、1つのデータに含まれるサンプルの数とは別なので注意</strong></td>
+</tr>
+<tr class="odd">
+<td>量的データ</td>
+<td>数字で表されるデータ</td>
+<td>数字の大小に意味があり、足し算や引き算をした値にも意味を持つデータのこと<br>（例）気温、売上金額、人口など</td>
+</tr>
+<tr class="even">
+<td>カテゴリデータ</td>
+<td>数字で表されないデータ</td>
+<td>足し算や引き算をした値に意味を持たないデータのこと<br>データに順序があるものとないものがある<br>（例）血液型、出身地、満足度など</td>
+</tr>
+</tbody>
+</table>
 <p><a href="index.html">講義資料に戻る</a></p>
 
 

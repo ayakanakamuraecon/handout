@@ -16,6 +16,7 @@ $seminar-bad:         #9c4a3c;
 $seminar-bad-soft:    #f6ebe8;
 $seminar-bad-line:    #e6c9c1;
 $seminar-warm:        #b5654a;
+$seminar-warm-soft:   #f2dccf;
 
 $font-family-sans-serif: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
 $font-family-base: $font-family-sans-serif;
@@ -55,15 +56,17 @@ $callout-color-warning:   $seminar-warm;
   --seminar-bad-soft: #{$seminar-bad-soft};
   --seminar-bad-line: #{$seminar-bad-line};
   --seminar-warm: #{$seminar-warm};
+  --seminar-warm-soft: #{$seminar-warm-soft};
 }
 
 body{
-  line-height: 1.75;
+  font-size: 1.0625rem;
+  line-height: 1.85;
 }
 
 #quarto-document-content{
-  max-width: 860px;
-  font-size: 1rem;
+  max-width: 880px;
+  font-size: 1.0625rem;
   counter-reset: seminar-sec;
 
   h1{
@@ -143,12 +146,18 @@ body{
   // 図
   .quarto-figure{ margin: 20px 0 8px; }
   img.img-fluid{
-    max-width: 100%;
+    max-width: min(100%, 640px);
+    height: auto;
     background: #fff;
     border: 1px solid $seminar-line;
     border-radius: 3px;
     display: block;
     margin: 0 auto;
+  }
+  // 個別の図で幅上限を解除したい場合に qmd 側で付与するクラス
+  // 例: ![キャプション](image.png){.seminar-fullwidth}
+  img.seminar-fullwidth{
+    max-width: 100%;
   }
   figcaption{
     font-size: .78rem;
@@ -250,6 +259,57 @@ body{
 }
 
 // ---------------------------------------------------------------
+// Quarto標準 callout（type付き）のヘッダーを、seminar トーンで強化
+// ---------------------------------------------------------------
+
+.callout.callout-titled{
+  border: 1px solid $seminar-line;
+  border-left-width: 4px;
+  border-radius: 3px;
+  margin: 20px 0 28px;
+  overflow: hidden;
+
+  .callout-header{
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 1.0625rem;
+    letter-spacing: .02em;
+    background: $seminar-accent-soft;
+    color: $seminar-accent;
+    border-bottom: 1px solid $seminar-line;
+  }
+  .callout-icon-container{ display: none; }
+
+  .callout-body{
+    background: #fff;
+    padding: 14px 18px;
+
+    p:last-child{ margin-bottom: 0; }
+    // 本文内の <strong> が青リンクと混同されないよう本文色で固定
+    strong{ color: $seminar-ink; }
+  }
+
+  // typeごとにボーダー色とヘッダー色を切り替え
+  &.callout-note{
+    border-left-color: $seminar-accent;
+    .callout-header{ background: $seminar-accent-soft; color: $seminar-accent; }
+  }
+  &.callout-tip{
+    border-left-color: $seminar-good;
+    .callout-header{ background: $seminar-good-soft; color: $seminar-good; }
+  }
+  &.callout-important{
+    border-left-color: $seminar-bad;
+    .callout-header{ background: $seminar-bad-soft; color: $seminar-bad; }
+  }
+  &.callout-warning,
+  &.callout-caution{
+    border-left-color: $seminar-warm;
+    .callout-header{ background: $seminar-warm-soft; color: $seminar-warm; }
+  }
+}
+
+// ---------------------------------------------------------------
 // 確認クイズ（quiz.html から include される .quizbox 等）
 // ---------------------------------------------------------------
 
@@ -340,7 +400,7 @@ body{
 }
 .seminar-tip-head{
   font-weight: 700;
-  font-size: .9rem;
+  font-size: 1.125rem;
   margin-bottom: 8px;
   color: $seminar-accent;
 }

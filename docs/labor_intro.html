@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>はじめに – 講義資料</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-dda421e7baab2750d3fe39ccc7eb988f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">はじめに</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<p>本資料は、大森義明・永瀬伸子（2021）『労働経済学をつかむ』有斐閣　を参考に作成しています。 授業目的に合わせて一部構成や表現を調整しています。</p>
+</blockquote>
+<section id="労働経済学とは" class="level2">
+<h2 class="anchored" data-anchor-id="労働経済学とは">労働経済学とは？</h2>
+<p>労働経済学とは、労働者・雇用主・社会全体のつながりを経済学のモデルを使って読み解く分野です。私たちの生活に身近な問題を数多く扱います。</p>
+<ul>
+<li>「労働需要と労働供給」「賃金決定メカニズム」「雇用形態の多様化」「人的資本投資の効果」といったトピックを扱う
+<ul>
+<li>正社員と非正規社員という区分はなぜ存在するのか</li>
+<li>大学進学によって将来の収入はどれくらい変化するのか</li>
+<li>最低賃金の引き上げは雇用にどのような影響を与えるのか……</li>
+</ul></li>
+</ul>
+<p>労働経済学は、こうした問いに理論と実証の両面から迫っていく学問です。</p>
+<p>この授業では、労働経済学の基本的な考え方を身につけたうえで、日本の労働市場が持つ特徴を実際のデータから読み解いていきます。</p>
+</section>
+<section id="日本の労働市場" class="level2">
+<h2 class="anchored" data-anchor-id="日本の労働市場">日本の労働市場</h2>
+<p>まず、労働市場を読み解くうえで基本となる統計指標を確認します。これらを他国と比較することで、近年の日本の労働市場が持つ実態や特徴を捉えていきます。</p>
+<p>ここで扱う指標は、単独ではなく組み合わせて見ることで、各国の労働市場の状況をより多面的に理解する手がかりになります。</p>
+</section>
+<section id="労働市場の重要な指標" class="level2">
+<h2 class="anchored" data-anchor-id="労働市場の重要な指標">労働市場の重要な指標</h2>
+<section id="労働の構造を示す統計指標" class="level3">
+<h3 class="anchored" data-anchor-id="労働の構造を示す統計指標">労働の構造を示す統計指標</h3>
+<section id="労働力率" class="level4">
+<h4 class="anchored" data-anchor-id="労働力率">労働力率</h4>
+<p>労働力率は、15歳以上の人口のうち、労働力に該当する人が占める割合を指します。</p>
+<ul>
+<li>労働力：現に仕事に就いている人（<strong>就業者</strong>）と、仕事はしていないが求職中ですぐに働ける人（<strong>完全失業者</strong>）を合計した人数
+<ul>
+<li>その国の経済規模や労働市場の動向を示す指標となる</li>
+<li>自営業や家族従業者、パート・アルバイト、フルタイム雇用者は、いずれも労働力に含まれる</li>
+</ul></li>
+</ul>
+<section id="年齢階級別労働力率" class="level5">
+<h5 class="anchored" data-anchor-id="年齢階級別労働力率">年齢階級別労働力率</h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/labor_workforce.png" class="img-fluid figure-img"></p>
+<figcaption>出典：総務省統計局「労働力調査」</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/labor_workforce_oecd.png" class="img-fluid figure-img"></p>
+<figcaption>出典：労働政策研究・研修機構『データブック国際労働比較2024』</figcaption>
+</figure>
+</div>
+<p>図から分かること：</p>
+<ul>
+<li>日本の女性は、結婚・出産・育児の時期にあたる年代で労働力率が落ち込み、その後の年代で再び上昇するという<strong>M字型カーブ</strong>を描く。
+<ul>
+<li>近年はこのくぼみが以前ほど深くなくなってきている。</li>
+</ul></li>
+<li>他の多くの国では、M字型ではなく<strong>高原型</strong>と呼ばれる形状に近づいてきている。
+<ul>
+<li>韓国は今もM字型の傾向が強い。</li>
+<li>女性の労働力率がもっとも高いのはスウェーデンである。</li>
+</ul></li>
+</ul>
+<p>労働力率のカーブがどのような形になるかは、各国の育児休業制度や、公的な補助を受けた保育施設の整備状況など、女性の就業を後押しする政策の有無に左右されます。</p>
+<details>
+<summary>
+各国の育児支援制度（参考）
+</summary>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>国名</th>
+<th>制度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span style="white-space:nowrap">スウェーデン</span></td>
+<td><strong>育児休業制度</strong>：両親それぞれに240日ずつ付与され、賃金の80％が補填される。<br><strong>子育て支援制度</strong>：自治体は保育所への入所を希望する1歳以上の子どもに就学前保育の場を提供する義務を負う。16歳未満のすべての子どもに児童手当（所得制限なし）を支給。<br><strong>参考</strong>：<a href="https://www.jil.go.jp/foreign/labor_system/2018/12/sweden.html">スウェーデンにおける仕事と育児の両立支援施策の現状（JILPT, 2018）</a></td>
+</tr>
+<tr class="even">
+<td><span style="white-space:nowrap">アメリカ</span></td>
+<td><strong>育児休業制度</strong>：連邦法では、従業員50人以上の企業に勤務する母親に対して、年間12週間の無給休暇の取得が認められている。有給休業制度については、居住する州や勤務先の企業によって導入状況に大きな差がある。<br><strong>子育て支援制度</strong>：貧困家庭を対象とした扶養控除、児童税額控除などに留まる。<br><strong>参考</strong>：<a href="https://www.jil.go.jp/foreign/labor_system/2018/12/usa.html">アメリカにおける仕事と育児の両立支援に関する諸政策（JILPT, 2018）</a></td>
+</tr>
+<tr class="odd">
+<td><span style="white-space:nowrap">日本</span></td>
+<td><strong>育児休業制度</strong>：子が1歳に達するまで育児休業の権利を保障する。<br><strong>子育て支援制度</strong>：年齢や所得に応じた給付金、児童手当などと支給。所得に応じた就学費用の援助や医療費助成制度などもある。<br><strong>参考</strong>：<a href="https://www.mhlw.go.jp/seisakunitsuite/bunya/koyou_roudou/koyoukintou/ryouritsu/ikuji/">育児休業特設サイト（厚生労働省）</a><br><a href="https://www.cfa.go.jp/policies/kokoseido/sukusuku">よくわかる「子ども・子育て支援新制度」（こども家庭庁）</a></td>
+</tr>
+</tbody>
+</table>
+</details>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>なぜ日本の女性の労働力率はM字型になるのでしょうか？また、その形状は近年どう変化していますか？</p>
+<textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('quiz1', this.value)"></textarea>
+<button onclick="showAnswer('a1')">
+答えを見る
+</button>
+<div id="a1" class="answer" style="display:none; margin-top: 0.5em;">
+<p>解答例：結婚・出産・育児を理由に離職する女性が多いため。近年はそのくぼみが浅くなり、高原型に近づく傾向にある。</p>
+</div>
+</div>
+</section>
+</section>
+<section id="労働時間" class="level4">
+<h4 class="anchored" data-anchor-id="労働時間">労働時間</h4>
+<p>労働時間は、週平均や1日あたりの平均という形で示されるのが一般的です。ここでは、週あたりの労働時間を国どうしで比べてみましょう。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/labor_workhour.png" class="img-fluid figure-img"></p>
+<figcaption>出典：労働政策研究・研修機構『データブック国際労働比較2024』</figcaption>
+</figure>
+</div>
+<p>表から分かること：</p>
+<ul>
+<li>日本では、近年にかけて労働時間が徐々に短くなってきている。</li>
+<li>総じてヨーロッパ諸国は労働時間が短く、アジア諸国は長めである傾向がみられる。
+<ul>
+<li>もっとも労働時間が長いのはシンガポール、もっとも短いのはオランダである</li>
+</ul></li>
+</ul>
+<p>続いて、男女別に週あたりの有償労働時間・無償労働時間がどのように分布しているかを見てみます。ここでいう<strong>有償労働</strong>とは、<strong>仕事全般に加え、通勤・通学や学校で過ごす時間まで含めた、労働・学業に関連する時間の合計</strong>を指します。一方の<strong>無償労働</strong>は、<strong>家事・育児・介護など、有償労働にあたらない労働時間すべての合計</strong>です。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/labor_unpaidwork.gif" class="img-fluid figure-img"></p>
+<figcaption>出典：内閣府男女共同参画局（2020）</figcaption>
+</figure>
+</div>
+<p>先ほどの週労働時間だけの表と比べると、数字の受け止め方が変わってくるかもしれません。</p>
+<ul>
+<li>いずれの国でも、有償労働時間は男性の方が長く、無償労働時間は女性の方が長い傾向にある。
+<ul>
+<li>有償労働の男女差（女性を1とした男性の倍率）がもっとも大きいのは日本とイタリアの1.7倍、次いでニュージーランドの1.6倍。</li>
+<li>無償労働の男女差（男性を1とした女性の倍率）がもっとも大きいのは日本の5.5倍、次いで韓国の4.4倍、イタリアの2.3倍。</li>
+<li>有償・無償いずれの労働時間についても男女差がほとんどないのはフィンランドとスウェーデンで、比率はほぼ1に近い</li>
+</ul></li>
+</ul>
+<p>このように、週労働時間の数字だけでなく無償労働の時間もあわせて見ることで、国ごとの違いがより浮かび上がってきます。</p>
+<p>どの国でも女性の無償労働時間が長いのは、有償労働を切り詰めて家事や育児にあてる時間を確保しているためだと考えられます。<strong>日本や韓国のケースでは、女性が労働時間を減らしたり離職したりする一方で、男性の労働時間が増えるという形で、家庭内の役割分担がなされている</strong>様子がうかがえます。</p>
+<p>これに対して、フィンランドやスウェーデンのように<strong>共働き世帯が多数を占める国</strong>では、子どもが生まれたあとに<strong>夫婦そろって労働時間を減らし、育児にあてる時間を増やす傾向</strong>が見られます。育児と労働の負担を夫婦で分け合う形になっているといえます。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>日本や韓国など、無償労働の男女比が大きい国では、どのような家庭内の役割分担が行われていると考えられますか？</p>
+<textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('quiz2', this.value)"></textarea>
+<button onclick="showAnswer('a2')">
+答えを見る
+</button>
+<div id="a2" class="answer" style="display:none; margin-top: 0.5em;">
+<p>解答例：女性が労働時間を短縮したり仕事を辞めたりする一方で、男性が労働時間を伸ばすという形で、夫婦間で家事・育児と労働の役割が分担されている。</p>
+</div>
+</div>
+</section>
+<section id="賃金率" class="level4">
+<h4 class="anchored" data-anchor-id="賃金率">賃金率</h4>
+<p>賃金率とは、<strong>労働1単位時間あたりに支払われる給与</strong>（<strong>労働所得</strong>）のことで、総給与を労働時間で割ることによって求められます。</p>
+<p>これは、単位時間あたりにどれだけの<strong>価値を生み出したかを近似的に表すもの</strong>と考えられるため、生産性を測る指標のひとつとして解釈されます。</p>
+<p>日本の場合、</p>
+<ul>
+<li>正規雇用者（正社員）は月給制であることが多い
+<ul>
+<li>所定内給与（決まって支給される給与）として、基本給、職務手当、役職手当など
+<ul>
+<li>企業によっては精勤・皆勤手当、通勤手当、家族手当等の手当てもあらかじめ労働契約によって決められていることも</li>
+</ul></li>
+<li>超過労働給与として、時間外勤務手当、深夜勤務手当、休日出勤手当、宿日当手当、交代勤務手当など</li>
+<li>年2回程度賞与が出ることが多い</li>
+</ul></li>
+<li>パート・アルバイトは時給制・日給制であることが多い</li>
+</ul>
+<section id="日本の男女正規非正規別賃金率" class="level5">
+<h5 class="anchored" data-anchor-id="日本の男女正規非正規別賃金率">日本の男女・正規非正規別賃金率</h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/labor_wage_regnonreg.png" class="img-fluid figure-img"></p>
+<figcaption>大森義明・永瀬伸子（2021）『労働経済学をつかむ』 図1-3 日本の男女・正規非正規別賃金率（時間当たり賃金、20～24歳女性正社員 <span class="math inline">\(=100\)</span>）</figcaption>
+</figure>
+</div>
+<p>図から分かること</p>
+<ul>
+<li>男性正社員の賃金率は、年齢が上がるにつれて大きく山型を描くように上昇し、その後下がっていく
+<ul>
+<li>同じ正社員でも女性の場合、この山の高さは男性ほど大きくない</li>
+</ul></li>
+<li>非正社員については、男女どちらも年齢による賃金率の変化がほとんど見られない
+<ul>
+<li>フルタイム勤務か短時間勤務かによる違いもさほど大きくない</li>
+</ul></li>
+</ul>
+<p>賃金率が生産性を映す指標だとすれば、正社員の男女間や、正社員と非正社員の間には大きな生産性の差があることになりますが、実際にそれほどの差が存在するのでしょうか。</p>
+<p>仮に生産性の差があるとしても、それは受けてきた人材育成・訓練の差によるものなのでしょうか。</p>
+<p>それとも、各自が望む働き方を選んだ結果としての差なのでしょうか。</p>
+<p>非正社員が持つ能力は、十分に発揮される機会を得られているのでしょうか。</p>
+<p>実際のところ、日本における男女間・正規非正規間の賃金格差は、国際的に見ても大きい部類に入ります。一例として、アメリカとの比較でフルタイム労働者の男女賃金格差を見てみましょう。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/labor_wagegap_jpus.png" class="img-fluid figure-img"></p>
+<figcaption>出典：労働政策研究・研修機構『データブック国際労働比較2024』</figcaption>
+</figure>
+</div>
+<p>※ここで、賃金格差は男女の中位所得の差を男性中位所得で除した数値のことを指します。</p>
+<p>なぜこのような差が生まれるのでしょうか。</p>
+<p>この点については、以降の章でも関連するテーマとして取り上げていきます。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>非正社員と正社員、男女間で賃金率に大きな差が見られるのはなぜでしょうか？あなたの考えを自由に述べてください。</p>
+<textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('quiz3', this.value)"></textarea>
+<button onclick="showAnswer('a3')">
+答えを見る
+</button>
+<div id="a3" class="answer" style="display:none; margin-top: 0.5em;">
+<p>解答例：<br> - 企業が正社員には訓練投資を行う一方で非正社員には行わないため、両者の間に生産性の差が生じている可能性がある。<br> - 女性は結婚・出産を機に離職することが多く、そのため昇進や高賃金の機会を得にくく、結果として生産性・賃金の差につながっている可能性がある。</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="日本の労働統計" class="level3">
+<h3 class="anchored" data-anchor-id="日本の労働統計">日本の労働統計</h3>
+<p>日本の労働の実態を把握するため、政府はさまざまな統計調査を実施しています。それらの内容を整理したものが白書としてまとめられているので、一度目を通してみることをおすすめします。</p>
+<ul>
+<li>『<a href="https://www.mhlw.go.jp/stf/wp/hakusyo/kousei/23/index.html">労働経済白書</a>』（厚生労働省）
+<ul>
+<li>賃金、労働時間、労働生産性、地域の雇用状況、人材マネジメントなど</li>
+</ul></li>
+<li>『<a href="https://www.mhlw.go.jp/content/11901000/001155643.pdf">働く女性の実情</a>』（厚生労働省）</li>
+<li>『<a href="https://www.gender.go.jp/about_danjo/whitepaper/index.html">男女共同参画白書</a>』（内閣府男女共同参画局）
+<ul>
+<li>男女の労働参加、仕事と家庭の両立の状況、政治参加など</li>
+</ul></li>
+</ul>
+<p>日本国内で実施される統計調査のうち、もっとも規模が大きいのが<strong>国勢調査</strong>です。5年ごとに、日本に住むすべての人を対象として、世帯の状況や就業状態、職業の種類などを調べています（参考：<a href="https://www.stat.go.jp/data/kokusei/2020/gaiyou.html">令和2年国勢調査の概要</a>）。</p>
+<p>全数調査であるため非常に詳細なデータが得られる一方、実施には多くのコストと時間を要するという難点もあります。</p>
+<p>そのため、現状をより頻繁に把握する目的で、年1回や毎月といった短い周期で実施される標本調査も用いられています。</p>
+<p>標本調査では、調査対象となる母集団をいくつかの層に分けたうえで、各層から適切な割合で無作為に抽出したサンプルをもとに調査が行われます。この方法により、コストと時間を抑えながらも、国全体を代表するデータを得ることができます。</p>
+<p>以下で代表的な労働統計を紹介します。</p>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">労働力調査</span></p>
+<p><strong>毎月 / 総務省統計局 / 対象:世帯(約4万世帯・約10万人)</strong></p>
+<p>各月末の1週間における就業状態を調査し、失業率の推計に用いられる。</p>
+<p>失業者とは、月末1週間に仕事をしておらず、求職活動をしていて、すぐに就業可能な人を指す。</p>
+</div>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">就業構造基本調査</span></p>
+<p><strong>5年に1回 / 総務省統計局 / 対象:世帯(約52万世帯・約108万人)</strong></p>
+<p>就業状態や労働時間、年収などを対象とした大規模な調査。</p>
+<p>地域別・属性別により細かい分析を行うことができる。</p>
+</div>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">賃金構造基本統計調査</span></p>
+<p><strong>毎年 / 厚生労働省 / 対象:5人以上の常用雇用者のいる事業所(約6万5000事業所)</strong></p>
+<p>企業の賃金台帳をもとにしているため、正確な給与・賞与のデータが得られる。</p>
+<p>労働者の賃金構造を細かく把握することができる。</p>
+</div>
+<p>ここまで見てきた世帯対象の調査と企業対象の調査には、それぞれ次のような特徴があります。</p>
+<p>世帯への調査</p>
+<ul>
+<li>小規模な事業所で働く人も含め、幅広い層の労働者を捉えることができる。</li>
+<li>賃金については「200万円台」「300万円台」といった階級値でしか把握できないことが多い。
+<ul>
+<li>例外として、厚生労働省「国民生活基礎調査」、総務省統計局「全国消費実態調査」、厚生労働省「21世紀成年者縦断調査」などが挙げられる</li>
+</ul></li>
+</ul>
+<p>企業への調査</p>
+<ul>
+<li>給与額や労働時間数を、より正確に把握することができる。</li>
+<li>失業者や無業者はもとより、小規模事業所で働く人や自営業者などは調査の対象に含まれない。</li>
+</ul>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>「正社員と非正社員の賃金の違いを、できるだけ正確な金額で把握したい」と思ったとき、どの統計調査を使えばよいでしょうか？また、その理由を説明してください。</p>
+<textarea class="quiz-answer" placeholder="ここに回答を入力..." oninput="localStorage.setItem('quiz4', this.value)"></textarea>
+<button onclick="showAnswer('a4')">
+答えを見る
+</button>
+<div id="a4" class="answer" style="display:none; margin-top: 0.5em;">
+<p>解答例：企業側の記録に基づいた正確な給与データが得られる賃金構造基本統計調査を用いるのが適している。</p>
+</div>
+</div>
+</section>
+<section id="労働統計の利用" class="level3">
+<h3 class="anchored" data-anchor-id="労働統計の利用">労働統計の利用</h3>
+<p>近年では、こうした統計の結果概要に誰でも簡単にアクセスできる環境が整ってきました。</p>
+<p>日本の政府統計は過去のデータを含め、総務省が運営する政府統計の総合窓口（e-Stat）でまとめて確認することができます。</p>
+<p><a href="https://www.e-stat.go.jp/">e-Stat 政府統計の総合窓口</a></p>
+<p>データはExcel形式で公開されているため、目的に応じて自分で表やグラフを作成したり、必要な数値を計算したりすることが可能です。</p>
+<p>また、OECDのデータベースを使えば、各国の統計データの中から関心のある項目を選び、自分なりの集計表を作ることもできます。</p>
+<p><a href="https://data-explorer.oecd.org/">OECD Data Explorer</a></p>
+<p>英語のサイトなので最初はとっつきにくく感じるかもしれませんが、操作自体は直感的にできるよう作られているので、ぜひ一度触ってみてください。</p>
+<p>近年はChatGPTなどの生成AIが発達したことで、統計ソフトの扱いに関する敷居も下がってきました。すでに整理されたデータを見るだけでなく、自分自身で生データに触れてみることで、得られる情報量や理解の深さは格段に広がります。難しく考える必要はありません。まずは自分の興味のあるテーマから、実際にデータを確かめ、世の中を観察するきっかけにしてみてください。</p>
+</section>
+<section id="tips" class="level3">
+<h3 class="anchored" data-anchor-id="tips">Tips</h3>
+<p>ここでは、統計調査に関して知っておくと役立つ知識を整理しておきます。</p>
+<section id="調査分析の方法" class="level4">
+<h4 class="anchored" data-anchor-id="調査分析の方法">調査分析の方法</h4>
+<p>調査は、その性質に応じていくつかの種類に分類することができます。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 25%">
+<col style="width: 32%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>分析の種類</th>
+<th>データの特徴</th>
+<th>主な用途</th>
+<th>留意点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>横断面分析<br>（クロスセクションデータ）</td>
+<td>複数の対象について、ある一時点のみで調査を行う</td>
+<td>地域による違いや性別・年齢層による違いを分析するのに用いる</td>
+<td>ある一時点の情報にとどまるため、時間の経過に伴う変化は把握できない</td>
+</tr>
+<tr class="even">
+<td>時系列分析</td>
+<td>同一の対象を複数の時点で継続的に調査する</td>
+<td>時間の経過に伴う傾向や変化を分析するのに用いる</td>
+<td>同じ対象を継続して調査し続ける必要がある</td>
+</tr>
+<tr class="odd">
+<td>パネル分析</td>
+<td>複数の対象について、複数の時点にわたり繰り返し調査を行う</td>
+<td>地域や属性ごとの変化の追跡、同一個体内での変化の分析などに適している</td>
+<td>時間の経過とともに特定の傾向を持つ対象が調査から抜け落ちやすく、母集団とのずれが生じる可能性がある</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="統計における働き方の分類" class="level4">
+<h4 class="anchored" data-anchor-id="統計における働き方の分類">統計における働き方の分類</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/labor_classification.svg" class="seminar-fullwidth img-fluid figure-img"></p>
+<figcaption>出典：総務省統計局「労働力調査」の就業状態別分類および従業上の地位別分類に基づき筆者作成</figcaption>
+</figure>
+</div>
+<p>労働力調査や就業構造基本調査といった統計調査では、働き方はこの図のような形で分類されています。</p>
+<p>このような分類が用いられるようになった背景には、1980年代に主婦層を中心にパートという働き方が広がり、1990年代から2000年代にかけては未婚者や高齢者、男性にもパート・アルバイトという働き方が浸透し、さらに2000年代初頭の規制緩和を経て派遣労働者や契約労働者が増加したことで、正規の職員・従業員とは異なる働き方として区別されるようになったという経緯があります。</p>
+<p>日本では、雇用形態の呼び名によって賃金に大きな差が生じることが従来から指摘されてきました。正社員とパートの間、あるいは短時間正社員とパートの間には大きな賃金格差がある一方で、パート雇用者の中で有期雇用者と無期雇用者を比べても、賃金格差はほとんど見られません。</p>
+<p>これに対し海外の研究では、有期雇用か無期雇用かという違いこそが賃金を左右する重要な要因であるとする結果が多く報告されています。</p>
+</section>
+</section>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<p>ここまで、男女別・年齢階級別の賃金率や労働力率、労働時間について、国際比較を交えながら日本の状況を見てきました。</p>
+<p>その中でも、たとえば労働時間の男女比は国によってかなりばらつきがあることが分かりました。こうした国ごとの違いはどこから生まれるのでしょうか。文化や制度の違い、教育や保育の仕組み、企業の慣行、社会の価値観など、さまざまな要因が関わっていると考えられます。</p>
+<p>この先の章では、労働者個人の行動（働くかどうか、何時間働くか）、企業側の労働需要、賃金と職務経験の関係、労働市場のミスマッチや失業が起こる仕組みなどを取り上げていきます。労働経済学の理論を学ぶことで、実社会で起きている現象への理解をより深めることができます。</p>
+<p>皆さん自身も、これから働き方や雇用をめぐる大きな変化に直面する場面があるかもしれません。たとえばコロナ禍では、需要の急激な落ち込みによって多くの人が職を失う一方、テレワークや副業といった新しい働き方が広まりました。少子高齢化やAIの発展といった長期的な変化も、今後の労働市場に大きな影響を与えていくと考えられます。</p>
+<p>労働経済学の理論は、こうした変化のただ中で「なぜこうなるのか」「これからどうなっていくのか」を考えるための道具になります。単なる知識として学ぶだけでなく、自分自身のキャリアや生き方を考えるためのヒントとしても、ぜひ活用してください。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文の空欄を埋めてください。</p>
+<p>日本の女性の労働力率は、<strong><input type="text" class="fill-in" id="ikuji" placeholder="ここに入力"></strong> 期に低下し、その後再び上昇する、いわゆる「<strong><input type="text" class="fill-in" id="m" placeholder="ここに入力"></strong> カーブ」を描きます。</p>
+<button onclick="showAnswer('a5')">
+答えを見る
+</button>
+<div id="a5" class="answer" style="display:none; margin-top: 0.5em;">
+<p>育児・M字型</p>
+</div>
+</div>
+<p><a href="index.html">講義資料に戻る</a></p>
+<!-- クイズ機能スクリプト -->
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  // 入力ボックス .fill-in の値を復元・保存
+  document.querySelectorAll('.fill-in').forEach(input => {
+    const key = "fillin-" + input.id;
+    input.value = localStorage.getItem(key) || "";
+    input.addEventListener('input', () => {
+      localStorage.setItem(key, input.value);
+    });
+  });
+
+  // テキストエリア .quiz-answer の値を復元（oninput 属性から key を抽出）
+  document.querySelectorAll('.quiz-answer').forEach(textarea => {
+    const key = textarea.getAttribute("oninput")?.match(/'([^']+)'/)?.[1];
+    if (key) {
+      textarea.value = localStorage.getItem(key) || "";
+    }
+
+    // 入力イベントを明示的に設定（安全のため）
+    textarea.addEventListener('input', () => {
+      if (key) localStorage.setItem(key, textarea.value);
+    });
+  });
+
+  // 全削除ボタンの処理
+  const clearButton = document.getElementById("clear-answers");
+  if (clearButton) {
+    clearButton.addEventListener("click", () => {
+      const confirmed = confirm("本当にすべての回答を削除しますか？");
+      if (!confirmed) return;
+
+      document.querySelectorAll(".fill-in").forEach(input => {
+        const key = "fillin-" + input.id;
+        localStorage.removeItem(key);
+        input.value = "";
+      });
+
+      document.querySelectorAll(".quiz-answer").forEach(textarea => {
+        const k = textarea.getAttribute("oninput")?.match(/'([^']+)'/)?.[1];
+        if (k) {
+          localStorage.removeItem(k);
+        }
+        textarea.value = "";
+      });
+
+      alert("すべての回答を削除しました");
+    });
+  }
+});
+
+// 解答表示切替ボタン
+function showAnswer(id) {
+  const answerDiv = document.getElementById(id);
+  if (!answerDiv) return;
+  answerDiv.style.display = (answerDiv.style.display === "none") ? "block" : "none";
+}
+</script>
+<!-- 全削除ボタン -->
+<div id="quiz-tools" style="margin: 2em 0;">
+<p><button id="clear-answers">全問クリア</button></p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,3452 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>労働市場における需要と供給 – 講義資料</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-29c15abfb92b329b14b0a600eec64cf8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">労働市場における需要と供給</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<p>本資料は、大森義明・永瀬伸子（2021）『労働経済学をつかむ』（有斐閣）　を参考に作成しています。 授業目的に合わせて一部構成や表現を調整しています。</p>
+</blockquote>
+<p>本章では労働経済学の土台として、「労働市場とは何を指すのか」、そして「労働市場における需要と供給によって何が決まるのか」を取り上げます。 以降の議論すべての基礎となる部分なので、ここでしっかり理解しておきましょう。</p>
+<section id="賃金と雇用量の決定" class="level1">
+<h1>賃金と雇用量の決定</h1>
+<p>ここまで何度も「労働市場」という語が登場していますが、そもそも労働市場とは何を指すのでしょうか。</p>
+<ul>
+<li><strong>労働市場</strong>：働きたい人が仕事を探し（<strong>求職</strong>）、企業が人を雇いたいと考えて求人を出し、その結果として労働力のやり取りが行われる場のこと</li>
+</ul>
+<p>もっとも、労働市場という固有の場所が実在するわけではなく、魚市場のように労働者に値がつけられ、価格（時間あたり賃金）が目に見える形で変動するわけでもありません。</p>
+<p>とはいえ、求職者の数に比べて求人が多ければ時間の経過とともに時給は上がっていき、逆に求人が少なければ時給は下がっていく、という関係があります。</p>
+<blockquote class="blockquote">
+<p>一例として、新型コロナの感染拡大前にあたる2015〜2019年には、求職者1人あたりの求人数を示す有効求人倍率が1.2から1.6へと上昇し<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、同じ期間に三大都市圏のアルバイト・パート募集時の平均時給も981円から1084円へ上がりました<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
+</blockquote>
+<p>このように、「求人を出す」「応募する」というやり取りが行われる概念的な場として労働市場を捉えることで、財・サービスの市場と同様に、そこで起きている動きをデータをもとに分析できるようになります。</p>
+<p>労働市場における雇用量と賃金は、</p>
+<ul>
+<li>企業が出す求人数の増減</li>
+<li>働きたい人の数の増減</li>
+</ul>
+<p>によって決まります。</p>
+<p>こうした決定のしくみを表すために、<strong>横軸に雇用量</strong>、<strong>縦軸に賃金</strong>をとった<strong>労働市場のモデル</strong>を用います。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+労働市場のモデル
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>（市場全体の）<strong>労働供給曲線</strong></p>
+<ul>
+<li>ある賃金水準のもとで、その労働市場に属する労働者一人ひとりが働きたいと考える労働量を合計したもの
+<ul>
+<li>すなわち、その賃金に対応する労働供給量を表す</li>
+</ul></li>
+<li>提示される賃金が高くなるほど、働きたいと考える人の数や1人あたりの希望労働時間は増え（労働供給の増加）、賃金が低くなるほどそれらは減る（労働供給の減少）ため、労働供給曲線は右上がりの形になります。</li>
+</ul>
+<p>（市場全体の）<strong>労働需要曲線</strong></p>
+<ul>
+<li>ある賃金水準のもとで、各企業が利潤を最大化する観点から雇いたいと考える労働量を、市場全体の企業について合計したもの（<strong>労働需要量</strong>）</li>
+<li>提示される賃金が高いときは各企業が雇いたい労働量が減り（労働需要の減少）、賃金が低いときは増える（労働需要の増加）ため、<strong>労働需要曲線</strong>は右下がりの形になります。</li>
+</ul>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_sdcurve.png" class="img-fluid figure-img"></p>
+<figcaption>労働市場のモデル</figcaption>
+</figure>
+</div>
+<p>賃金と雇用量は、この2本の曲線が交わる点（需要と供給が釣り合う点）で決まります。それ以外の点では、労働供給の方が多い状態（<strong>失業</strong>が発生）か、労働需要が満たされない状態（企業に<strong>欠員</strong>が発生）のどちらかになります。</p>
+<ul>
+<li>失業：労働供給<span class="math inline">\(&gt;\)</span>労働需要となっているため、賃金には下落圧力がかかる</li>
+<li>欠員：労働供給<span class="math inline">\(&lt;\)</span>労働需要となっているため、賃金には上昇圧力がかかる</li>
+</ul>
+<p>こうした圧力の結果、市場の賃金と雇用量は2曲線の交点に向かって調整されていきます。</p>
+<ul>
+<li>交点のことを均衡点と呼ぶ</li>
+<li>交点での賃金：<strong>均衡賃金</strong>（<span class="math inline">\(W^*\)</span>）</li>
+<li>交点での雇用量：<strong>均衡雇用量</strong>（<span class="math inline">\(L^*\)</span>）</li>
+</ul>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文の空欄を埋めてください。</p>
+<p>ある賃金が与えられたときに、その賃金のもとで雇用したい労働量を表した曲線を <strong><input type="text" class="fill-in" id="dep" placeholder="ここに入力"></strong> 、その賃金のもとで働きたい労働者の量を表した曲線を <strong><input type="text" class="fill-in" id="sup" placeholder="ここに入力"></strong> という。</p>
+<p>均衡における賃金と雇用量は <strong><input type="text" class="fill-in" id="equib" placeholder="ここに入力"></strong> で決まり、そのとき、労働者の需要量と供給量は <strong><input type="text" class="fill-in" id="eq" placeholder="ここに入力"></strong> 。</p>
+<hr>
+<p><strong>選択肢</strong></p>
+<p>労働者　労働需要曲線　労働供給曲線　時間当たり賃金　市場均衡　均衡点　生産性　景気循環　一致する　労働供給量の方が多い　労働需要量の方が多い</p>
+<button onclick="showAnswer('lsd')">
+答えを見る
+</button>
+<div id="lsd" class="answer" style="display:none; margin-top: 0.5em;">
+<p>労働需要曲線・労働供給曲線・均衡点・一致する</p>
+</div>
+</div>
+<section id="労働需要曲線労働供給曲線のシフト" class="level2">
+<h2 class="anchored" data-anchor-id="労働需要曲線労働供給曲線のシフト">労働需要曲線・労働供給曲線のシフト</h2>
+<p>労働需要曲線と労働供給曲線は、景気の状況や人々の好みの変化に応じて位置が変わる（<strong>シフト</strong>する）ことがあります。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_sdcurve_dshift.png" class="img-fluid figure-img"></p>
+<figcaption>労働需要曲線のシフト</figcaption>
+</figure>
+</div>
+<p>シフトが起きる前の均衡雇用量を<span class="math inline">\(L_1\)</span>、均衡賃金を<span class="math inline">\(W_1\)</span>とします。</p>
+<p>たとえば景気が良くなると、同じ賃金水準でも労働者を雇いたい企業が増える（<strong>労働需要の増加</strong>）ため、<strong>労働需要曲線が右上方向にシフト</strong>します。</p>
+<p>このとき、</p>
+<div class="seminar-steps">
+<ol type="1">
+<li>シフト前の均衡賃金<span class="math inline">\(W_1\)</span>のもとで企業が雇いたい労働者数は、<span class="math inline">\(L_1\)</span>から<span class="math inline">\(L_3\)</span>へ増加する</li>
+<li>しかし<span class="math inline">\(W_1\)</span>のもとで働きたい労働者数は<span class="math inline">\(L_1\)</span>のまま変わらない</li>
+<li>その結果、企業に欠員が生じ、賃金には上昇圧力がかかる</li>
+<li>この圧力は賃金が<span class="math inline">\(W_2\)</span>まで上がるところまで続き、最終的にシフト後の需要曲線と供給曲線の交点で新たな均衡に落ち着く</li>
+</ol>
+</div>
+<p><span class="math inline">\(\rightarrow\)</span> 賃金は<span class="math inline">\(W_1\)</span>から<span class="math inline">\(W_2\)</span>へ上昇し、雇用量も<span class="math inline">\(L_1\)</span>から<span class="math inline">\(L_2\)</span>へ増加する</p>
+<p>好況以外にも、特定の財・サービスに対する需要の高まりや、技術革新・産業構造の変化などが労働需要をシフトさせる要因になります。</p>
+<p>逆に、景気後退や特定産業での需要減少が起きれば、<strong>労働需要が減少し、労働需要曲線は左下方向にシフト</strong>します。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_sdcurve_sshift.png" class="img-fluid figure-img"></p>
+<figcaption>労働供給曲線のシフト</figcaption>
+</figure>
+</div>
+<p>では、労働供給曲線がシフトすると何が起きるのでしょうか。</p>
+<p>たとえば、自国民と同等の労働を提供できる移民労働者の流入が何らかの理由で増えたとすると、同じ賃金水準でも働きたい人の数が増える（<strong>労働供給の増加</strong>）ため、<strong>労働供給曲線は右下方向にシフト</strong>します。</p>
+<p>このとき、</p>
+<div class="seminar-steps">
+<ol type="1">
+<li>シフト前の均衡賃金<span class="math inline">\(W_1\)</span>のもとで働きたい労働者数に対して、需要されている雇用量はそれより少なくなる</li>
+<li>失業が発生し、賃金には下落圧力がかかる</li>
+<li>この圧力は賃金が<span class="math inline">\(W_4\)</span>まで下がるところまで続き、最終的に需要曲線とシフト後の供給曲線の交点で新たな均衡に落ち着く</li>
+</ol>
+</div>
+<p><span class="math inline">\(\rightarrow\)</span> 賃金は<span class="math inline">\(W_1\)</span>から<span class="math inline">\(W_4\)</span>へ下落し、雇用量は<span class="math inline">\(L_1\)</span>から<span class="math inline">\(L_4\)</span>へ増加する</p>
+<p>このほか、家電製品の発達によって家事の負担が軽くなったり、人口が増えたりして、同じ賃金でも働きたい人が増えるようなときにも労働供給曲線はシフトします。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_sdcurve_slope.png" class="img-fluid figure-img"></p>
+<figcaption>労働供給曲線の傾き</figcaption>
+</figure>
+</div>
+<p>供給曲線の傾き具合は、人によって違うと考えられています。</p>
+<ul>
+<li>傾きが緩やかな場合：わずかな賃金上昇でも労働供給が大きく増える状況を表す</li>
+<li>傾きが急な場合：賃金が多少上がっても労働供給はあまり増えない状況を表す</li>
+</ul>
+<p>たとえば、</p>
+<ul>
+<li>パート労働者は、正社員と比べて傾きが緩やかだとされている
+<ul>
+<li>賃金が上がると、それまで働いていなかった層が新たに働きに出てくるため、労働供給が大きく増える</li>
+</ul></li>
+<li>医師は、かなり急な傾きを持つと考えられている
+<ul>
+<li>医師として働くには国家資格が必要で、資格を持ち働ける人はすでに大半が就業しているため</li>
+</ul></li>
+</ul>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>次の文の空欄を埋めてください。</p>
+<p>労働需要が減少すると、労働需要曲線は <strong><input type="text" class="fill-in" id="dl" placeholder="ここに入力"></strong> にシフトする。シフト前と比較して、シフト後の均衡賃金は <strong><input type="text" class="fill-in" id="down" placeholder="ここに入力"></strong> し、均衡雇用量は <strong><input type="text" class="fill-in" id="fewer" placeholder="ここに入力"></strong> する。</p>
+<hr>
+<p><strong>選択肢</strong></p>
+<p>右上　右下　左上　左下　上昇　下落　増加　減少</p>
+<button onclick="showAnswer('shift')">
+答えを見る
+</button>
+<div id="shift" class="answer" style="display:none; margin-top: 0.5em;">
+<p>左下・下落・減少</p>
+</div>
+</div>
+</section>
+</section>
+<section id="労働供給" class="level1">
+<h1>労働供給</h1>
+<section id="労働供給モデル" class="level2">
+<h2 class="anchored" data-anchor-id="労働供給モデル">労働供給モデル</h2>
+<p>ここからは、先ほど見た労働供給曲線の傾きの違いがなぜ生まれるのか、また労働供給という行動がどのように決まるのかを考えていきます。</p>
+<p>労働供給とは、</p>
+<ul>
+<li>マクロ経済学の視点でみると、
+<ul>
+<li>就業している、あるいは仕事を探している人の総数</li>
+<li>その人たちが提供している労働時間の合計</li>
+</ul></li>
+<li>ミクロ経済学の視点でみると、
+<ul>
+<li>個人が仕事を探して働くか働かないかの選択</li>
+<li>働く場合に何時間働くかという意思決定の結果</li>
+</ul></li>
+</ul>
+<p>こうした個人レベルの意思決定を扱うのが<strong>労働供給モデル</strong>です。</p>
+<p>以下では、労働供給モデルの土台となる概念を一つずつ確認しながら、労働供給がどのように決まり、どのような要因で変化するのかを見ていきます。</p>
+<section id="財と効用" class="level3">
+<h3 class="anchored" data-anchor-id="財と効用">1. 財と効用</h3>
+<p>そもそも、人が働くもっとも根本的な理由は生活していくためです。</p>
+<div class="seminar-steps">
+<ol type="1">
+<li>労働力を提供する</li>
+<li>その対価として所得を得る</li>
+<li>所得を使ってさまざまな財・サービスを消費する</li>
+</ol>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+効用
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>消費者が財・サービスを消費することで得る満足度のこと。ここでは財・サービスの中身自体は問題にせず、私たちが消費するものすべてをまとめてこう呼ぶ</p>
+</div>
+</div>
+<p>以降は、「財・サービス」をまとめて単に「財」と表記します。</p>
+</section>
+<section id="労働と余暇のトレードオフ" class="level3">
+<h3 class="anchored" data-anchor-id="労働と余暇のトレードオフ">2. 労働と余暇のトレードオフ</h3>
+<p>長時間働くと、どのようなことが起きるでしょうか。</p>
+<ul>
+<li>長時間働く <span class="math inline">\(\rightarrow\)</span> 所得が増える <span class="math inline">\(\rightarrow\)</span> 消費できる財が増える <span class="math inline">\(\rightarrow\)</span> 効用が上がる</li>
+<li>長時間働く <span class="math inline">\(\rightarrow\)</span> 余暇（働かない時間）が犠牲になる <span class="math inline">\(\rightarrow\)</span> 余暇からの効用が得られなくなる</li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+労働供給モデルにおける前提
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>個人は消費と余暇のトレードオフ</strong>（一方を増やせばもう一方を減らさざるを得ない関係）<strong>を踏まえたうえで、自分の効用が最大になるように労働供給</strong>（労働時間や労働日数）<strong>を選ぶ</strong></p>
+</div>
+</div>
+<p>以下では、財の消費・余暇のどちらも効用を高めるものと仮定します。裏を返せば、長時間働くこと自体は効用を下げる方向に働くという仮定でもあります。財と余暇の両方が効用を高めるからこそ、両者の間にトレードオフという問題が生じるのです。</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+例：大学生のアルバイト
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>大学2年生のタカシは、実家から毎月8万円（週あたり2万円）の仕送りを受けながら一人暮らしをしています。 それだけでは生活費が足りないため、時給1000円のアルバイトを始めようと考えています。</p>
+<p>ここで、アルバイトに使える時間には次のような制約があります。</p>
+<ul>
+<li>1週間はすべて合わせて168時間（24時間×7日）</li>
+<li>生活や学業に欠かせない時間を差し引く必要がある
+<ul>
+<li>健康を保つには最低でも週70時間（1日の睡眠7時間、食事や身支度に3時間、計10時間×7日）</li>
+<li>授業に出るには週20時間（1コマ90分×週8コマ）</li>
+<li>あわせて週90時間が必要
+<ul>
+<li>これが余暇の下限にあたると考えられる</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 残りは78時間</p>
+</div>
+</div>
+<p>つまりこの例では、タカシがアルバイトに充てられる時間は最大でも週78時間までに制約されており、その78時間の中で<strong>何時間働くか</strong>、そして<strong>残りの何時間を余暇</strong>（友人と過ごす時間、趣味、自主的な勉強時間<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>といったアルバイト以外の時間）<strong>に充てるか</strong>を決める必要があります。</p>
+</section>
+<section id="予算制約線" class="level3">
+<h3 class="anchored" data-anchor-id="予算制約線">3. 予算制約線</h3>
+<p>アルバイトに何時間充てるか（労働供給量）を決めるうえで、タカシはもう一つ別の制約にも直面しています。それが<strong>総収入と余暇時間の間のトレードオフ</strong>です。</p>
+<p>先ほどの例をもとに、両極端なケースを考えてみましょう。</p>
+<ol type="1">
+<li>週78時間すべてをアルバイトに使う</li>
+</ol>
+<ul>
+<li>月78,000円を稼げて生活は楽になる</li>
+<li>友人と遊んだり趣味に費やしたりする時間はゼロになる</li>
+<li>勉強時間が取れず成績が落ちるおそれもある</li>
+<li>大学生活を楽しんでいる実感が持てなかったり、何のために働いているのか分からなくなったりするかもしれない</li>
+</ul>
+<ol start="2" type="1">
+<li>78時間すべてを余暇に使う</li>
+</ol>
+<ul>
+<li>生活費の不足は解消されない</li>
+</ul>
+<p>どちらの極端な選択も、生活の満足度を最大化しているとは言えません。消費から得られる効用と余暇から得られる効用の両方をそれなりに確保できるよう、アルバイトと余暇の時間配分をバランスさせることこそが、消費と余暇のトレードオフを考えるということです。</p>
+<p>ここからは、タカシが取りうる選択肢を具体的に見ていきます。</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>余暇時間数（時間）<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>30</td>
+<td>40</td>
+<td>50</td>
+<td>60</td>
+<td>70</td>
+<td>78</td>
+</tr>
+<tr class="even">
+<td>アルバイト時間数</td>
+<td>78</td>
+<td>68</td>
+<td>58</td>
+<td>48</td>
+<td>38</td>
+<td>28</td>
+<td>18</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>アルバイト収入（千円）</td>
+<td>78</td>
+<td>68</td>
+<td>58</td>
+<td>48</td>
+<td>38</td>
+<td>28</td>
+<td>18</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>親からの仕送り収入（千円）</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>総収入（千円）</td>
+<td>98</td>
+<td>88</td>
+<td>78</td>
+<td>68</td>
+<td>58</td>
+<td>48</td>
+<td>38</td>
+<td>28</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>この表からも分かるように、タカシが使える時間は週78時間までに限られているため、総収入を増やすにはアルバイトの時間を増やし余暇時間を削る必要があり、逆に余暇時間を増やすにはアルバイトの時間を削る必要があります。</p>
+<p>なお、ここではタカシの時給が1000円で一定であることを前提としています。経済学では、この前提のもとにあるタカシのことを<strong>価格受容者</strong>、あるいは<strong>完全競争者</strong>と呼びます。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+価格受容者とは
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>一人ひとりの参加者が価格そのものに影響を与えられない状態のこと</p>
+<p>次の条件を満たす市場（<strong>完全競争市場</strong>）において生じる</p>
+<ol type="1">
+<li>売り手・買い手がともに多数存在する</li>
+<li>取引される財が同質である</li>
+<li>市場への参入・退出が自由である</li>
+<li>情報がすべての参加者に共有されている</li>
+</ol>
+<p>こうした市場では、価格は需要と供給の関係によって市場全体で決定される</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_budget.png" class="img-fluid figure-img"></p>
+<figcaption>余暇時間数と総収入</figcaption>
+</figure>
+</div>
+<p>この図は、先ほどの表をもとに、横軸に余暇時間数、縦軸に総収入をとって、タカシが選べる選択肢を右下がりの直線として描いたものです。先ほどの週78時間すべて働くという極端な選択肢は点A、すべて余暇に充てる選択肢は点Bにそれぞれ対応します。</p>
+<p>この直線上には他にも無数の選択肢があり、たとえば点Cは、週38時間アルバイトをして総収入58,000円を得る選択肢に相当します。</p>
+<p>経済学では、こうした選択可能なすべての組み合わせを表す右下がりの直線のことを予算制約線（予算線）と呼びます。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+予算制約線（予算線）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>選択可能な総収入と余暇時間数の組み合わせをグラフに表したもの<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+</div>
+</div>
+<p>予算制約線より上側の領域は、時間の制約を超えてしまっており、選ぶことのできない組み合わせにあたります。</p>
+<p>点Bを選ぶ人は働く意志を持たないため<strong>非労働力</strong>と呼ばれ、それ以外の選択可能な組み合わせ（直線上のいずれかの点）を選ぶ人たちは<strong>労働力</strong>と呼ばれます。</p>
+<ul>
+<li>予算制約線が右下がりであること <span class="math inline">\(\Leftrightarrow\)</span> 余暇時間を増やすと総収入が減る、というトレードオフの関係にあること</li>
+<li>予算制約線の傾き（ここでは‐1000円/時） <span class="math inline">\(=\)</span> 余暇を1時間増やすために手放すことになる総収入
+<ul>
+<li>これを<strong>機会費用</strong>、あるいは余暇の<strong>限界費用</strong>と呼ぶ</li>
+</ul></li>
+</ul>
+</section>
+<section id="無差別曲線" class="level3">
+<h3 class="anchored" data-anchor-id="無差別曲線">4. 無差別曲線</h3>
+<p>予算制約線によって、タカシが選べる余暇時間数と総収入の組み合わせが明らかになりました。次に考えるべきは、この中でどの組み合わせがタカシの満足度（<strong>効用</strong>）をもっとも高めるかです。</p>
+<p>どの選択肢が最善かは、タカシ自身の好み次第で変わります。余暇を重視するタイプなら、アルバイトをしない点Bを選ぶかもしれませんし、収入を増やすことを何より優先するなら点Aを選ぶかもしれません。</p>
+<p>このような好みを表現するために、経済学では<strong>無差別曲線</strong>という道具を使います。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_indcurve.png" class="img-fluid figure-img"></p>
+<figcaption>無差別曲線</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+無差別曲線
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>効用の水準が等しくなる財・サービスの組み合わせを結んだ曲線のこと。ここでは余暇時間数と総収入の組み合わせを、財・サービスの組み合わせとみなしている。</p>
+</div>
+</div>
+<p>無差別曲線は効用が等しい組み合わせを結んだ線なので、同じ曲線上であればどの点を選んでもタカシの満足度は変わりません。</p>
+<p>たとえば無差別曲線 <span class="math inline">\(U_{1}\)</span> 上を見ると、余暇時間数と総収入の組み合わせ <span class="math inline">\((余暇, 総収入)\)</span> について、<span class="math inline">\((10時間, 80千円)\)</span> と <span class="math inline">\((20時間, 60千円)\)</span> はどちらも同程度に望ましいということになります。</p>
+<p>無差別曲線には、次のような重要な性質があります。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+無差別曲線の性質
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>右下がりの形をしている</li>
+<li>同一の無差別曲線上では、余暇時間数が増えるほど余暇の限界効用は小さくなる（限界効用逓減）</li>
+<li>ある無差別曲線より右上に位置する無差別曲線は、より高い効用水準を表す</li>
+<li>2本の無差別曲線が交わることはない</li>
+</ol>
+</div>
+</div>
+<section id="無差別曲線は右下がり" class="level5">
+<h5 class="anchored" data-anchor-id="無差別曲線は右下がり">1. 無差別曲線は右下がり</h5>
+<p>余暇時間数が増えると効用は上がるため、同じ無差別曲線上で効用を一定に保つには、その分総収入を減らす必要があります。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+限界効用
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>（タカシにとって）余暇が追加的に1時間増えることでもたらされる効用の増加分</p>
+</div>
+</div>
+<ul>
+<li>無差別曲線の傾きは、タカシが追加的な1時間の余暇と引き換えにしてもよいと考える総収入の減少幅を表しており、いわば限界効用を総収入という単位で測ったものといえます</li>
+<li>経済学では、この無差別曲線の傾き（の絶対値）を<strong>限界代替率</strong>と呼びます</li>
+</ul>
+</section>
+<section id="限界効用逓減" class="level5">
+<h5 class="anchored" data-anchor-id="限界効用逓減">2. 限界効用逓減</h5>
+<p>すでに余暇時間数が多い状態では、そこからさらに1時間余暇が増えても、それによって得られる効用（限界効用）は小さくなります。</p>
+<ul>
+<li>この性質のために、無差別曲線は原点に向かって凸の形状になります</li>
+</ul>
+</section>
+<section id="右上に位置する無差別曲線-より高い効用水準" class="level5">
+<h5 class="anchored" data-anchor-id="右上に位置する無差別曲線-より高い効用水準">3. 右上に位置する無差別曲線 <span class="math inline">\(=\)</span> より高い効用水準</h5>
+<p>図では、<span class="math inline">\(U_{2}\)</span> よりも <span class="math inline">\(U_{1}\)</span> の方が効用が高くなっています。</p>
+<ul>
+<li>同じ余暇時間数20時間で比べても、
+<ul>
+<li><span class="math inline">\(U_{1}\)</span> 上では総収入が60千円</li>
+<li><span class="math inline">\(U_{2}\)</span> 上では総収入が44千円 <span class="math inline">\(\rightarrow\)</span> したがって <span class="math inline">\(U_{1}\)</span> の方が効用が高いことが分かります</li>
+</ul></li>
+</ul>
+</section>
+<section id="無差別曲線は交差しない" class="level5">
+<h5 class="anchored" data-anchor-id="無差別曲線は交差しない">4. 無差別曲線は交差しない</h5>
+<p>もし2本の曲線が交わるとすると、交点を境に一方が「より効用が高い（右上）」と同時に「より効用が低い（左下）」ことになってしまい、同一曲線上では効用が一定であるという定義と矛盾するためです。</p>
+</section>
+<section id="予算制約線と無差別曲線から予測するタカシにとっての最適な選択肢" class="level4">
+<h4 class="anchored" data-anchor-id="予算制約線と無差別曲線から予測するタカシにとっての最適な選択肢">🎯 予算制約線と無差別曲線から予測するタカシにとっての最適な選択肢</h4>
+<p>ここでは、タカシの選択肢を表す予算制約線と、タカシの好みを表す無差別曲線を組み合わせることで、タカシにとって最適な選択を予測するモデルを考えます。</p>
+<p>タカシが選べるのは予算制約線上の組み合わせなので、まず余暇10時間（労働68時間）の状態から、余暇を少しずつ増やしていく場合を考えてみます。</p>
+<ul>
+<li><p><span class="math inline">\((余暇, 総収入) = (10時間, 88千円)\)</span></p>
+<ul>
+<li>余暇の限界効用（無差別曲線の傾きの絶対値） <span class="math inline">\(&gt;\)</span> 限界費用（予算制約線の傾きの絶対値）</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 余暇を増やし総収入を減らした方がよい</p></li>
+<li><p><span class="math inline">\((余暇, 総収入) = (20時間, 78千円)\)</span></p>
+<ul>
+<li>余暇の限界効用 <span class="math inline">\(&gt;\)</span> 限界費用</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 余暇を増やし総収入を減らした方がよい</p></li>
+</ul>
+<p>つまり、余暇の限界効用が限界費用を上回っている間は、余暇を追加することで得られる効用の方が大きいため、余暇を増やして総収入を減らす方が望ましいということになります。</p>
+<p>無差別曲線の性質上、限界効用は余暇時間数が増えるほど小さくなっていく（限界効用逓減）一方、限界費用は時給1000円で一定なので、どこかの時点で<strong>余暇の限界効用 <span class="math inline">\(=\)</span> 限界費用</strong>となります。</p>
+<p>反対に、余暇70時間（労働8時間）の状態から、余暇を少しずつ減らしていく場合も考えてみます。</p>
+<ul>
+<li><p><span class="math inline">\((余暇, 総収入) = (70時間, 28千円)\)</span></p>
+<ul>
+<li>余暇の限界効用 <span class="math inline">\(&lt;\)</span> 限界費用</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 余暇を減らし総収入を増やした方がよい</p></li>
+<li><p><span class="math inline">\((余暇, 総収入) = (60時間, 38千円)\)</span></p>
+<ul>
+<li>余暇の限界効用 <span class="math inline">\(&lt;\)</span> 限界費用</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 余暇を減らし総収入を増やした方がよい</p></li>
+</ul>
+<p>こちらは先ほどと逆に、余暇の限界効用が限界費用を下回っている間は、余暇を増やしても得られる効用が限界費用に見合わないため、余暇を減らして総収入を増やす方が望ましいことになります。</p>
+<p>このように余暇を減らしていく場合も、どこかの時点で<strong>余暇の限界効用 <span class="math inline">\(=\)</span> 限界費用</strong>となる点にたどり着きます。</p>
+<p>タカシにとっての最適な選択は、最終的にこの点で実現します。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+余暇時間数と総収入の最適な選択肢
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>余暇の限界効用 <span class="math inline">\(=\)</span> 限界費用</strong>となる点で実現する</p>
+</div>
+</div>
+<p>このとき、タカシの<strong>効用は、予算制約線と最適点で接する無差別曲線</strong>（<span class="math inline">\(U^*\)</span>）によって表されます。最適な選択のもとで効用が最大化されている以上、その無差別曲線は予算制約線と交わる無差別曲線の中でもっとも右上に位置しているはずだからです。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_indstar.png" class="img-fluid figure-img"></p>
+<figcaption>余暇時間数と総収入の最適な選択肢</figcaption>
+</figure>
+</div>
+<p>図の無差別曲線がタカシの好みを正確に表しているとすれば、<span class="math inline">\((余暇, 総収入) = (25時間, 73千円)\)</span> という組み合わせが、タカシにとって効用がもっとも高くなる最適な選択ということになります。</p>
+</section>
+</section>
+<section id="mrule" class="level3">
+<h3 class="anchored" data-anchor-id="mrule">5. 限界原理</h3>
+<p>このように、ある点で最適な選択が実現するという事実は、経済学では限界原理として知られています。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+限界原理
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>トレードオフの関係にある物事において、追加的な1単位から得られる便益（限界効用）と、追加的な1単位にかかる費用（限界費用）とが等しくなる点が、最適な選択となる</p>
+</div>
+</div>
+<p>余暇時間数と総収入の配分をめぐる意思決定において、これは<strong>余暇の限界効用 <span class="math inline">\(=\)</span> 限界費用</strong>となる点で最適な選択が実現するということに対応します。</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+まとめ：労働供給モデル
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>個人の視点に立って労働供給量の決定を分析するモデルを<strong>労働供給モデル</strong>と呼ぶ</li>
+<li>余暇と総収入はトレードオフの関係にあるため、個人は<strong>予算制約線</strong>（選べる範囲）と<strong>無差別曲線</strong>（個人の好み）を組み合わせ、<strong>効用が最大になる</strong>ような最適な余暇時間数（労働供給量）を選ぶ
+<ul>
+<li><strong>予算制約線</strong>：個人が選べる総収入と余暇時間数の組み合わせを表す曲線</li>
+<li><strong>無差別曲線</strong>：個人にとって効用が等しくなる総収入と余暇時間数の組み合わせを表す曲線</li>
+</ul></li>
+<li>最適な労働供給量は、<strong>余暇の限界効用 <span class="math inline">\(=\)</span> 限界費用</strong>となる点で実現する
+<ul>
+<li>これを<strong>限界原理</strong>と呼ぶ</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>Aさんの余暇の限界効用が以下の表で与えられているとき、Aさんは時給2000円の仕事に全体の時間の何%を割り当てるのが最適か求めてください。</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>従事時間（%）</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>30</td>
+<td>40</td>
+<td>50</td>
+<td>60</td>
+<td>70</td>
+<td>80</td>
+<td>90</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>余暇時間（%）</td>
+<td>100</td>
+<td>90</td>
+<td>80</td>
+<td>70</td>
+<td>60</td>
+<td>50</td>
+<td>40</td>
+<td>30</td>
+<td>20</td>
+<td>10</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>余暇の限界効用（千円）</td>
+<td>0.2</td>
+<td>0.6</td>
+<td>0.8</td>
+<td>1</td>
+<td>1.5</td>
+<td>2</td>
+<td>4</td>
+<td>8</td>
+<td>12</td>
+<td>16</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong><input type="text" class="fill-in" id="50" placeholder="ここに入力"></strong> %</p>
+<button onclick="showAnswer('mb')">
+答えを見る
+</button>
+<div id="mb" class="answer" style="display:none; margin-top: 0.5em;">
+<p>50</p>
+</div>
+</div>
+</section>
+</section>
+<section id="所得賃金の変化と労働供給" class="level2">
+<h2 class="anchored" data-anchor-id="所得賃金の変化と労働供給">所得・賃金の変化と労働供給</h2>
+<p>基本的な労働供給モデルを理解したところで、次は周囲の環境が変化したとき、タカシが選択をどう変えるかを見ていきます。</p>
+<section id="非労働所得が増えるケース" class="level3">
+<h3 class="anchored" data-anchor-id="非労働所得が増えるケース">1. 非労働所得が増えるケース</h3>
+<p>まず、親からの仕送りが増えるケースから考えましょう。</p>
+<p>仕送りが週3万円に増額されると、タカシが選べる選択肢は次のように変化します。</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>余暇時間数（時間）</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>30</td>
+<td>40</td>
+<td>50</td>
+<td>60</td>
+<td>70</td>
+<td>78</td>
+</tr>
+<tr class="even">
+<td>アルバイト時間数</td>
+<td>78</td>
+<td>68</td>
+<td>58</td>
+<td>48</td>
+<td>38</td>
+<td>28</td>
+<td>18</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>アルバイト収入（千円）</td>
+<td>78</td>
+<td>68</td>
+<td>58</td>
+<td>48</td>
+<td>38</td>
+<td>28</td>
+<td>18</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><strong>親からの仕送り収入（千円）</strong></td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td><strong>総収入（千円）</strong></td>
+<td>108</td>
+<td>98</td>
+<td>88</td>
+<td>78</td>
+<td>68</td>
+<td>58</td>
+<td>48</td>
+<td>38</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>このとき、予算制約線は次の図のように変化します。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_budget_r.png" class="img-fluid figure-img"></p>
+<figcaption>余暇時間数と総収入（仕送り週3万円）</figcaption>
+</figure>
+</div>
+<p>仕送りが週2万円だったときの予算制約線（青い直線）と比べ、新しい予算制約線（赤い直線）は1万円分だけ上方に平行移動しています。</p>
+<p>アルバイトの時給（余暇の機会費用）自体は1000円のまま変わらないため、傾きは変化しません。</p>
+<p>経済学では、親からの仕送りのような<strong>非労働所得</strong>が増えると、人はより多くの余暇時間を望むようになることが知られています。</p>
+<ul>
+<li><strong>非労働所得</strong>：働かなくても得られる所得のこと</li>
+</ul>
+<p>たとえば、仕送りが増える前は点Aを選んでいたとすると、増えた後にはタカシは点Bのような選択に移るでしょう。</p>
+<p>これは、余暇が、所得が増えたときに消費を増やしたくなるタイプの財（<strong>正常財</strong>）にあたるためです。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+正常財と劣等財
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>正常財（上級財）：所得が増えると消費量（需要量）が増える財</li>
+<li>劣等財（下級財）：所得が増えると消費量（需要量）が減る財</li>
+</ul>
+</div>
+</div>
+<p>多くの研究から余暇は正常財であることが分かっており、所得が増えるほどより多くの余暇を消費したくなる傾向があります。これを<strong>所得効果</strong>と呼びます。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+所得効果
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>所得の変化が需要量に及ぼす効果のこと</p>
+<p>正常財であれば需要量を押し上げ、劣等財であれば需要量を押し下げる</p>
+</div>
+</div>
+</section>
+<section id="wage-up" class="level3">
+<h3 class="anchored" data-anchor-id="wage-up">2. 賃金が上がるケース</h3>
+<p>続いて、アルバイトの時給が上がるケースを考えます。</p>
+<p>時給が1000円から1500円へ引き上げられると、タカシの選択肢は次のように変化します。</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>余暇時間数（時間）</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>30</td>
+<td>40</td>
+<td>50</td>
+<td>60</td>
+<td>70</td>
+<td>78</td>
+</tr>
+<tr class="even">
+<td>アルバイト時間数</td>
+<td>78</td>
+<td>68</td>
+<td>58</td>
+<td>48</td>
+<td>38</td>
+<td>28</td>
+<td>18</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><strong>アルバイト収入（千円）</strong></td>
+<td>117</td>
+<td>102</td>
+<td>87</td>
+<td>72</td>
+<td>57</td>
+<td>42</td>
+<td>27</td>
+<td>12</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>親からの仕送り収入（千円）</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td><strong>総収入（千円）</strong></td>
+<td>137</td>
+<td>122</td>
+<td>107</td>
+<td>92</td>
+<td>77</td>
+<td>62</td>
+<td>47</td>
+<td>32</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>このとき、予算制約線は次の図のように変化します。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_budget_rr.png" class="img-fluid figure-img"></p>
+<figcaption>余暇時間数と総収入（時給1500円）</figcaption>
+</figure>
+</div>
+<p>時給1000円のときの予算制約線（青い直線）と比べると、新しい予算制約線（赤い直線）は右下の点を軸に時計回りへ回転したような形になっています。</p>
+<p>傾きが変わるのは、時給が1000円から1500円に上がったことで、余暇の機会費用も同じく1000円から1500円へ増えるためです。</p>
+<p>時給が上がったとき、タカシがより少ない余暇（より多くのアルバイト）を望むようになるとは限らず、逆により多い余暇（より少ないアルバイト）を望むようになる可能性もあります。</p>
+<p>たとえば時給上昇前に点Aを選んでいたとすれば、点Bに移る可能性も、点Cに移る可能性もあるということです。</p>
+<ul>
+<li><p>点Bを選ぶ場合（アルバイトを増やし余暇を減らす）</p>
+<p>時給上昇 <span class="math inline">\(\rightarrow\)</span> 余暇の機会費用が上がる <span class="math inline">\(\rightarrow\)</span> 余暇を減らしたくなる（<strong>代替効果</strong>）</p></li>
+<li><p>点Cを選ぶ場合（余暇を増やしアルバイトを減らす）</p>
+<p>時給上昇 <span class="math inline">\(\rightarrow\)</span> 短時間でより多く稼げる <span class="math inline">\(\rightarrow\)</span> 生活にゆとりが生まれる <span class="math inline">\(\rightarrow\)</span> 同じ余暇時間でも得られる総所得が増える <span class="math inline">\(\rightarrow\)</span> もっと余暇を消費したくなる（<strong>所得効果</strong>）</p></li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+代替効果
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>財の相対価格が変化したとき、価格が相対的に高くなった財の需要量を減らし、安くなった財の需要量を増やす効果</p>
+</div>
+</div>
+<p>ここでは、余暇の機会費用（相対価格）が上がったことによって、余暇を減らし労働供給を増やそうとする効果を指します。</p>
+<p>時給が上がるとき、タカシには代替効果を通じて余暇を減らす（アルバイトを増やす）方向の力と、所得効果を通じて余暇を増やす（アルバイトを減らす）方向の力の両方が働きます。そのため、結果としてタカシが余暇を増やすか減らすかは一概には決まりません。</p>
+<ul>
+<li>「代替効果 <span class="math inline">\(&gt;\)</span> 所得効果」の場合は余暇時間数が減少</li>
+<li>「代替効果 <span class="math inline">\(&lt;\)</span> 所得効果」の場合は余暇時間数が増加</li>
+</ul>
+<p>この代替効果と所得効果を合わせたものを<strong>総合効果</strong>と呼びます。</p>
+</section>
+<section id="賃金と労働時間の関係" class="level3">
+<h3 class="anchored" data-anchor-id="賃金と労働時間の関係">3. 賃金と労働時間の関係</h3>
+<p><a href="#wage-up">2. 賃金が上がるケース</a>で見たように、一般的にはアルバイトの時給が上がっても、タカシがアルバイト時間を増やすとは限りません。</p>
+<p>ただし、タカシがまったく働いていない状態であれば、時給が十分に上がったとき、タカシは必ずアルバイトを始めます。</p>
+<p>アルバイトをしていない <span class="math inline">\(\rightarrow\)</span> 時給が上がっても総所得は増えない <span class="math inline">\(\rightarrow\)</span> 所得効果は生じず代替効果のみが働く <span class="math inline">\(\Leftrightarrow\)</span> 余暇を減らしてアルバイトを増やす方向の圧力しか生まれない</p>
+<p>実際にどの時給水準でアルバイトを始めるかは個人の好みによって異なりますが、時給が十分に上がれば、タカシはいずれアルバイトを始めることになります。</p>
+<ul>
+<li><strong>留保賃金</strong>：ある人を働く気にさせる最低限の賃金水準
+<ul>
+<li>言い換えれば「働いていないときの最初の1時間を自分のために使うことの価値」</li>
+</ul></li>
+</ul>
+<p>一般に、所得効果の大きさはアルバイト時間数が増えるほど大きくなります。実際、時給1000円と1500円のケースで総収入の差を比べると、次のようになります。</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>アルバイト時間数</td>
+<td>78</td>
+<td>68</td>
+<td>58</td>
+<td>48</td>
+<td>38</td>
+<td>28</td>
+<td>18</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>総収入（千円）：時給1000円</td>
+<td>98</td>
+<td>88</td>
+<td>78</td>
+<td>68</td>
+<td>58</td>
+<td>48</td>
+<td>38</td>
+<td>28</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<td>総収入（千円）：時給1500円</td>
+<td>137</td>
+<td>122</td>
+<td>107</td>
+<td>92</td>
+<td>77</td>
+<td>62</td>
+<td>47</td>
+<td>32</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>総収入（千円）の差</td>
+<td>39</td>
+<td>34</td>
+<td>29</td>
+<td>24</td>
+<td>19</td>
+<td>14</td>
+<td>9</td>
+<td>4</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>つまり、時給とアルバイト時間数（<strong>賃金と労働供給</strong>）<strong>の関係は一様ではない</strong>ということです。</p>
+<p>アルバイト時間数が多いとき</p>
+<ol type="1">
+<li>所得効果が大きくなる</li>
+<li>「所得効果 <span class="math inline">\(&gt;\)</span> 代替効果」になりやすい</li>
+<li>さらに時給が上がっても、アルバイトを減らして余暇を増やす方向の圧力が働く</li>
+</ol>
+<p>アルバイト時間数が少ないとき</p>
+<ol type="1">
+<li>代替効果が大きくなる</li>
+<li>「代替効果 <span class="math inline">\(&gt;\)</span> 所得効果」になりやすい</li>
+<li>時給が十分に上がれば、余暇を減らしてアルバイトを増やす方向の圧力が働く</li>
+</ol>
+<p>まとめると、アルバイト時間数がある程度までは代替効果が優勢になりやすく労働供給は増加しますが、それを超えると所得効果が優勢になりやすく労働供給は減少に転じます。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_supcurve.png" class="img-fluid figure-img"></p>
+<figcaption>個人の労働供給曲線</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+個人の労働供給曲線
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>横軸に労働供給量、縦軸に賃金をとり、個人の労働供給量と賃金の関係を表したもの</p>
+<p>途中で折れ曲がって後方に反っているものは<strong>後屈労働供給曲線</strong>と呼ばれる</p>
+</div>
+</div>
+</section>
+</section>
+<section id="労働供給モデルの応用有配偶女性の職業選択" class="level2">
+<h2 class="anchored" data-anchor-id="労働供給モデルの応用有配偶女性の職業選択">労働供給モデルの応用：有配偶女性の職業選択</h2>
+<p>労働供給モデルは、さまざまな場面に応用することができます。</p>
+<ul>
+<li>高齢者や女性が就業するかしないかの選択</li>
+<li>政府の政策や企業の施策が労働供給に及ぼす影響</li>
+<li>労働供給が時間とともにどう変化してきたか</li>
+<li>格差の理解（男女・年齢・学歴・産業・職業・地域などの間の差）</li>
+</ul>
+<p>ここでは例として、配偶者のいる女性の就業選択を取り上げます。 経済学ではこれまで、女性（とりわけ既婚女性）が自身のキャリアを築きながら賃金収入を求めて働くのか、家庭内で家事・育児・介護といった賃金を伴わない形で働くのか、あるいは家計を補助する程度に働くのかという点に、大きな関心が寄せられてきました。</p>
+<p>かつては、結婚を機に仕事を辞めて家庭内労働を選ぶ女性が多数派でした。この傾向は、<a href="labor_intro.html#年齢階級別労働力率">はじめに-労働力率</a>で見たような労働力率のM字型カーブに表れています。</p>
+<p>現在では、多くの先進国で賃金収入を求めて働く女性が大きく増えています。これも、海外で見られるようになった高原型の労働力率カーブに反映されています。</p>
+<p>とはいえ、日本の女性の年齢階級別労働力率を見ると、依然として育児期に労働力が落ち込む傾向が残っています。ただし近年は、無配偶女性の労働力率は高原型に近づいてきています。</p>
+<p>配偶者のいる女性の就業選択は、さまざまな要因の影響を受けます。</p>
+<ul>
+<li>働かなくても生計を維持できる収入がどれだけあるか（夫の収入に対する裁量権など）</li>
+<li>働いた場合に手元に残る賃金の水準</li>
+<li>賃金以外にやりがいなどの便益がどれだけ得られるか</li>
+<li>家庭内の労働から得られる便益がどれだけあるか</li>
+<li>保育園・学童などの整備状況や利用にかかる費用</li>
+<li>育児休業制度の内容</li>
+<li>社会保障や税制（手取り額に影響するため）
+<ul>
+<li>年収103万円の壁：所得税などが課されない範囲</li>
+<li>年収130万円の壁：社会保険料が免除されつつ基礎年金の受給権や医療給付を受けられる範囲</li>
+</ul></li>
+<li>社会規範</li>
+<li>教育を通じて形成される価値観</li>
+</ul>
+<p>次の章では、「家庭内生産」という要素も組み込んで労働供給を分析していきます。</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+まとめ：所得・賃金の変化と労働供給
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>所得・賃金の変化と労働供給の間には、2つの力が働きます。</p>
+<ul>
+<li><p><strong>代替効果</strong></p>
+<ul>
+<li>賃金が上がると余暇の機会費用が高まる</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 余暇を減らして労働供給を増やす方向に働く</p></li>
+<li><p><strong>所得効果</strong></p>
+<ul>
+<li>非労働所得が増える、あるいは賃金上昇によって短時間でも高い所得を得られるようになる</li>
+</ul>
+<p><span class="math inline">\(\rightarrow\)</span> 生活にゆとりが生まれ余暇を増やす方向に働く</p></li>
+</ul>
+<p>最終的にどちらの力が優勢かは人によって異なります（<strong>総合効果</strong>）。</p>
+<p>一般に、労働供給量がすでに多い人ほど所得効果が働きやすくなります。</p>
+<ul>
+<li>労働供給量が多い人：「所得効果 <span class="math inline">\(&gt;\)</span> 代替効果」になりやすい <span class="math inline">\(\rightarrow\)</span> 賃金が上がると労働供給量を減らす</li>
+<li>労働供給量が少ない人：「所得効果 <span class="math inline">\(&lt;\)</span> 代替効果」になりやすい <span class="math inline">\(\rightarrow\)</span> 賃金が上がると労働供給量を増やす</li>
+</ul>
+<p>この結果として、<strong>後屈的な労働供給曲線</strong>が生まれます。</p>
+<p><strong>まだ働いていない人</strong>は、賃金が十分に高まれば働き始めます。</p>
+<ul>
+<li>この働き始めるボーダーラインとなる賃金水準を<strong>留保賃金</strong>と呼ぶ</li>
+</ul>
+</div>
+</div>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>労働供給モデルを使い、夫の失業が非労働力状態にある妻の就業に与える効果を分析してみましょう。 次の空欄に適切な語句を入れてください。 ただし、夫の失業は妻が働かなくとも生計維持に使える収入を減らすとします。</p>
+<p>非労働力状態にある妻は、 <strong><input type="text" class="fill-in" id="0" placeholder="ここに入力"></strong> が0の状態を選んでいると考えることができる。 夫の失業は妻の <strong><input type="text" class="fill-in" id="nlinc" placeholder="ここに入力"></strong> を減らし、予算制約線を <strong><input type="text" class="fill-in" id="dl" placeholder="ここに入力"></strong> に平行移動させるので、この移動が十分大きなものであれば、妻は労働力化するような状態を選ぶようになる。</p>
+<hr>
+<p><strong>選択肢</strong></p>
+<p>労働供給量　労働需要量　賃金　労働所得　非労働所得　右上　右下　左上　左下　時給　社会保険料　</p>
+<button onclick="showAnswer('wife')">
+答えを見る
+</button>
+<div id="wife" class="answer" style="display:none; margin-top: 0.5em;">
+<p>労働供給量・非労働所得・左下</p>
+</div>
+</div>
+</section>
+</section>
+<section id="労働と家庭内生産" class="level1">
+<h1>労働と家庭内生産</h1>
+<section id="家庭内生産モデル" class="level2">
+<h2 class="anchored" data-anchor-id="家庭内生産モデル">家庭内生産モデル</h2>
+<p>ここまでの章では、賃金が発生する労働と余暇という2つの活動しかない世界を想定してきました。</p>
+<p>しかし実際には、出産を機にいったん無職になったり育児休業を取得したりする女性が半数近くにのぼります。 こうした人たちは時間のすべてを余暇に充てているわけではなく、家事・育児・介護といった家庭内での生産活動に時間を使っています。 余暇は消費にあたる活動ですが、家事・育児・介護は生産にあたる活動です。家事代行サービスや介護事業者に依頼すれば料金が発生する、つまり賃金労働として成立しうる活動だからです。 そこで本章では、賃金の発生する労働とこれらの活動を明確に区別して考えます。</p>
+<ul>
+<li>市場労働：賃金が発生する労働</li>
+<li>家庭内生産活動：賃金の発生しない家庭内での労働</li>
+</ul>
+<p>そのうえで、財は市場で購入することも、家庭内での生産によって手に入れることもできるものとします。</p>
+<p>ここでは、</p>
+<ul>
+<li>個人が市場労働時間・家庭内生産活動時間・余暇時間をどのように配分するか</li>
+<li>現代においてなぜ市場労働をする女性が増えているのか</li>
+</ul>
+<p>について考えていきます。</p>
+<section id="単身者の家庭内生産と市場財の購入" class="level3">
+<h3 class="anchored" data-anchor-id="単身者の家庭内生産と市場財の購入">1. 単身者の家庭内生産と市場財の購入</h3>
+<p>市場労働時間と家庭内生産活動時間の配分は、1日・1週間・1年の単位でどれだけ働きどれだけ家事・育児に充てるか、あるいは生涯を通じて何年働き何年家事・育児に充てるかという時間配分の問題でもあります。</p>
+<p>ここでも財から効用を得るというモデルの枠組みを使いますが、これまでとの違いは、財が家庭内でも生産できるという点です。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+家庭内生産モデル
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>個人の効用が、市場で購入できる財と余暇に加えて、家庭内での生産物によっても決まるとするモデル</p>
+</div>
+</div>
+<p>家庭内で生産できる財の例</p>
+<ul>
+<li>家庭菜園で育てる野菜</li>
+<li>自分で作る服</li>
+<li>自分の手で行う子育て</li>
+<li>自分で作る料理</li>
+</ul>
+<blockquote class="blockquote">
+<p>※市場で購入する財より品質が劣ることもあり得ますが、単純化のためここでは財の質はすべて同一だと仮定します。</p>
+</blockquote>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+例：単身者の家庭内生産
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>マミはもうすぐ大学を卒業します。彼女は、時間を家庭内生産活動に充てて自分で財を生み出すこともできますし、仕事に出てその収入で財を購入することもできます。</p>
+<p>市場労働時間と家庭内生産活動時間に充てられる時間は最大100時間</p>
+<ul>
+<li>1週間は168時間（<span class="math inline">\(=24時間\times7日\)</span>）</li>
+<li>そのうち生存に必要な時間が68時間</li>
+</ul>
+<p>家庭内生産活動</p>
+<ul>
+<li>部屋の掃除や食事の準備など</li>
+<li>最初の数時間は1時間あたりの生産性が高いが、時間をかけるほど1時間あたりの生産性は落ちていく（<strong>限界生産性の逓減</strong>）
+<ul>
+<li>例：最初の10時間の掃除で部屋は見違えるように片付くが、20時間もかけると掃除する場所がもうなくなってくる
+<ul>
+<li>時間を2倍かけても、快適さが2倍になるわけではない</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>市場労働</p>
+<ul>
+<li>一定の時給（1500円）で働ける</li>
+</ul>
+<p>市場財</p>
+<ul>
+<li>価格は1000円</li>
+</ul>
+</div>
+</div>
+<p>このとき、マミは市場労働と家庭内生産活動にそれぞれ何時間ずつ充てるでしょうか。</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>家庭内生産時間数（<span class="math inline">\(H\)</span>）</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>30</td>
+<td>40</td>
+<td>50</td>
+<td>60</td>
+<td>70</td>
+<td>80</td>
+<td>90</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>家庭内生産量（<span class="math inline">\(Q\)</span>）</td>
+<td>0</td>
+<td>47</td>
+<td>67</td>
+<td>82</td>
+<td>95</td>
+<td>106</td>
+<td>116</td>
+<td>125</td>
+<td>134</td>
+<td>142</td>
+<td>150</td>
+</tr>
+<tr class="odd">
+<td>家庭内限界生産量</td>
+<td><span class="math inline">\(-\)</span></td>
+<td>47</td>
+<td>20</td>
+<td>15</td>
+<td>13</td>
+<td>11</td>
+<td>10</td>
+<td>9</td>
+<td>9</td>
+<td>8</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>上の表は、マミの1週間あたりの家庭内生産時間数と家庭内生産量の関係を示したものです。 この例では、家庭内生産時間数 <span class="math inline">\(H\)</span> から得られる生産量 <span class="math inline">\(Q\)</span> が次の式で表されます。</p>
+<p><span class="math display">\[
+Q = 15\sqrt{H}
+\]</span></p>
+<p>家庭内限界生産量は、家庭内生産時間を10時間増やすごとに生産量がどれだけ増えるかを表しています。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+限界生産量
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>生産要素（ここでは家庭内生産時間数）を1単位追加的に投入したときに増える生産量</p>
+</div>
+</div>
+<p><img src=".\images/labor_houseoutput.png" class="img-fluid"></p>
+<p>この図は、先ほどの表をもとに、マミの家庭内生産時間数と生産量、家庭内限界生産量の関係をグラフにしたものです。</p>
+<ul>
+<li>家庭内生産時間数が増えるほど家庭内生産量も増える</li>
+<li>家庭内生産時間数が増えるほど家庭内限界生産量は減っていく</li>
+</ul>
+<p>次に、市場労働と市場財の関係を見ていきます。</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>市場労働時間数</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>30</td>
+<td>40</td>
+<td>50</td>
+<td>60</td>
+<td>70</td>
+<td>80</td>
+<td>90</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>労働所得</td>
+<td>0</td>
+<td>15</td>
+<td>30</td>
+<td>45</td>
+<td>60</td>
+<td>75</td>
+<td>90</td>
+<td>105</td>
+<td>120</td>
+<td>135</td>
+<td>150</td>
+</tr>
+<tr class="odd">
+<td>市場財の購入量</td>
+<td>0</td>
+<td>15</td>
+<td>30</td>
+<td>45</td>
+<td>60</td>
+<td>75</td>
+<td>90</td>
+<td>105</td>
+<td>120</td>
+<td>135</td>
+<td>150</td>
+</tr>
+<tr class="even">
+<td><strong>市場労働の限界購入量</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></td>
+<td><span class="math inline">\(-\)</span></td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src=".\images/labor_hourincome.png" class="img-fluid"></p>
+<p>この図は、表をもとに、マミの市場労働時間数と市場財の購入量、市場労働の限界購入量の関係をグラフにしたものです。</p>
+<ul>
+<li>市場労働時間数が増えるほど市場財の購入量も一定の割合で増える</li>
+<li>市場労働時間数が増えても市場労働の限界購入量自体は変わらない</li>
+</ul>
+</section>
+<section id="最適な市場労働時間家庭内生産時間余暇" class="level3">
+<h3 class="anchored" data-anchor-id="最適な市場労働時間家庭内生産時間余暇">2. 最適な「市場労働時間」「家庭内生産時間」「余暇」</h3>
+<p>この状況で、マミはどのように行動するでしょうか。</p>
+<p>マミは最終的に「市場労働時間」「家庭内生産時間」「余暇」という3つの活動に時間を配分することになりますが、まずは最適な家庭内生産時間について考えます。</p>
+<section id="最適な家庭内生産時間数" class="level5">
+<h5 class="anchored" data-anchor-id="最適な家庭内生産時間数">最適な家庭内生産時間数</h5>
+<p>ここでも<a href="#mrule">限界原理</a>を用いて考えます。</p>
+<ul>
+<li>家庭内生産の限界便益は<strong>家庭内限界生産量</strong>、限界費用は<strong>市場労働の限界購入量</strong>にあたる
+<ul>
+<li>なぜなら、家庭内生産を追加的に10時間行えば家庭内限界生産量の分だけ生産量が増える一方、その10時間分市場労働を行っていれば得られたはずの財の購入量（市場労働の限界購入量）を手放すことになるから</li>
+</ul></li>
+<li>限界原理にしたがえば、最適な家庭内生産時間数は「<strong>家庭内限界生産量 <span class="math inline">\(=\)</span> 市場労働の限界購入量</strong>」となる点で決まる</li>
+<li>ここでは家庭内限界生産量 <span class="math inline">\(=\)</span> 市場労働の限界購入量 <span class="math inline">\(=15\)</span> となる<strong>30時間の家庭内生産が最適</strong>となる</li>
+</ul>
+<p>これをグラフに表すと次のようになります。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_housestar.png" class="img-fluid figure-img"></p>
+<figcaption>最適な家庭内生産時間数</figcaption>
+</figure>
+</div>
+<ul>
+<li>家庭内生産時間数が30時間に満たないときは、「家庭内限界生産量 <span class="math inline">\(&gt;\)</span> 市場労働の限界購入量」なので、市場で働くより家庭内生産をした方がよい</li>
+<li>家庭内生産時間数が30時間を超えるときは、「家庭内限界生産量 <span class="math inline">\(&lt;\)</span> 市場労働の限界購入量」なので、家庭内生産よりも市場で働いた方がよい</li>
+</ul>
+<p>ここで重要なのは、<strong>最適な家庭内生産時間数は、家庭内限界生産量と賃金</strong>（マミの家庭内での生産性の高さや時給の水準）<strong>のみによって決まり</strong>、マミの<strong>無差別曲線</strong>（財と余暇に対する好み）<strong>には左右されない</strong>という点です。</p>
+<p>この先、最適な市場労働時間と余暇について考えるには、無差別曲線、つまり両者のバランスも踏まえる必要があります。</p>
+</section>
+<section id="最適な市場労働時間と余暇" class="level5">
+<h5 class="anchored" data-anchor-id="最適な市場労働時間と余暇">最適な市場労働時間と余暇</h5>
+<p>最適な家庭内生産時間数がすでに30時間だと分かったので、残り70時間を市場労働と余暇にどう配分するかを考えます。</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>余暇時間数</td>
+<td>70</td>
+<td>60</td>
+<td>50</td>
+<td>40</td>
+<td>30</td>
+<td>20</td>
+<td>10</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>市場労働時間数</td>
+<td>0</td>
+<td>10</td>
+<td>20</td>
+<td>30</td>
+<td>40</td>
+<td>50</td>
+<td>60</td>
+<td>70</td>
+</tr>
+<tr class="odd">
+<td>労働所得</td>
+<td>0</td>
+<td>15</td>
+<td>30</td>
+<td>45</td>
+<td>60</td>
+<td>75</td>
+<td>90</td>
+<td>105</td>
+</tr>
+<tr class="even">
+<td>市場財の購入量</td>
+<td>0</td>
+<td>15</td>
+<td>30</td>
+<td>45</td>
+<td>60</td>
+<td>75</td>
+<td>90</td>
+<td>105</td>
+</tr>
+<tr class="odd">
+<td>家庭内生産量</td>
+<td>82</td>
+<td>82</td>
+<td>82</td>
+<td>82</td>
+<td>82</td>
+<td>82</td>
+<td>82</td>
+<td>82</td>
+</tr>
+<tr class="even">
+<td>財の消費量の総和<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></td>
+<td>82</td>
+<td>97</td>
+<td>112</td>
+<td>127</td>
+<td>142</td>
+<td>157</td>
+<td>172</td>
+<td>187</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>この表は、余暇時間数と市場労働時間数、それに対応する市場財の購入量、財の消費量の合計の関係を示しています。</p>
+<p>この条件のもとでは、最適な市場労働時間と余暇時間の組み合わせは、マミの無差別曲線によって決まります。</p>
+<p>ここでも<a href="#mrule">限界原理</a>を使って考えます。</p>
+<ul>
+<li>余暇の限界効用は<strong>無差別曲線の傾き</strong>（の絶対値）、限界費用は<strong>市場労働の限界購入量</strong>にあたる
+<ul>
+<li>なぜなら、余暇を追加的に1単位増やしても効用を変えないためには、その1単位分の市場労働で得られたはずの所得で購入できる財を諦める必要があり、余暇の限界効用とは余暇を1単位増やす際に手放してもよい財の単位数を意味するため</li>
+<li>この手放す財の単位数が、まさに余暇の限界費用にあたる</li>
+<li>ここでは限界費用 <span class="math inline">\(=\)</span> 財1.5単位</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src=".\images/labor_lsstar.png" class="img-fluid figure-img"></p>
+<figcaption>最適な市場労働時間と余暇</figcaption>
+</figure>
+</div>
+<p>グラフがマミの無差別曲線を正確に表しているとすれば、マミにとっての最適点は <span class="math inline">\((余暇時間, 財の消費量)=(50時間, 112単位)\)</span> となります。</p>
+<p>まとめると、家庭内生産モデルを用いることで、マミにとって最適な時間配分は <span class="math inline">\((家庭内生産時間, 余暇時間, 財の消費量)=(30時間, 50時間, 112単位)\)</span> であることが分かりました。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+（基本の）労働供給モデルと家庭内生産モデルの比較
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>労働供給モデル</strong></p>
+<ul>
+<li>個人は余暇と労働所得（で購入できる財の量）のトレードオフに直面する</li>
+<li>両者の組み合わせのうち、効用を最大化する最適なものを選ぶ</li>
+</ul>
+<p><strong>家庭内生産モデル</strong></p>
+<ul>
+<li>個人は余暇と消費できる財の量のトレードオフに直面する</li>
+<li>両者の組み合わせのうち、効用を最大化する最適なものを選ぶ</li>
+<li>ただし、財は家庭内生産によっても手に入れられる
+<ul>
+<li>一定量の財を最小の総労働時間で効率的に手に入れるように、家庭内生産時間数と市場労働時間数を決定する</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>電子レンジなどの家電製品は、家庭内生産関数をどのようにシフトさせたと考えられるか？</p>
+<p><strong><input type="text" class="fill-in" id="hhoutput" placeholder="ここに入力"></strong></p>
+<p><img src="images/labor_hhshift.png" class="img-fluid"></p>
+<button onclick="showAnswer('renji')">
+答えを見る
+</button>
+<div id="renji" class="answer" style="display:none; margin-top: 0.5em;">
+<p>左側の図のように、家庭内生産関数を上方向にシフトさせたと考えられる。</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="家庭内生産モデルの応用" class="level2">
+<h2 class="anchored" data-anchor-id="家庭内生産モデルの応用">家庭内生産モデルの応用</h2>
+<section id="女性の職業選択" class="level3">
+<h3 class="anchored" data-anchor-id="女性の職業選択">1. 女性の職業選択</h3>
+<p>家庭内生産モデルは、とりわけ女性の就業選択を理解するうえで役立ちます。</p>
+<p>女性が直面する状況</p>
+<ul>
+<li>働いた場合に得られる賃金水準（によって購入できる財の量）、余暇時間、家庭内生産時間をどう最適に配分するか</li>
+<li>非労働所得：働かなくても生計を維持できる収入（夫の収入に対する裁量権など）</li>
+<li>財を家庭内で生産するか市場で購入するか
+<ul>
+<li>保育園を利用するかどうか</li>
+<li>衣服や塾にお金をかけるかどうか</li>
+</ul></li>
+</ul>
+<p>こうした状況のもとで、市場の変化や家庭内の生産性、さまざまな制約は、最適な時間配分にどのような影響を与えるでしょうか。</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+賃金上昇の影響
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>賃金の上昇 <span class="math inline">\(\rightarrow\)</span> 家庭内生産の限界費用が上昇 <span class="math inline">\(\rightarrow\)</span> 家庭内生産時間 <span class="math inline">\(\downarrow\)</span></p>
+<p>市場労働時間がどう変わるかは、余暇に対する個人の好み次第</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+家庭内生産の生産性が変化したときの影響
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>家電製品の普及 <span class="math inline">\(\rightarrow\)</span> 家庭内の生産性 <span class="math inline">\(\uparrow\)</span></p>
+<ul>
+<li>理論上は家庭内生産時間が増えるはずだが、実際には家庭内生産時間が減り市場労働時間が増える傾向にある</li>
+<li>同じ家事の成果をより短時間で達成できるようになった分、浮いた時間を市場労働に回すため</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="テレワークワークライフバランス" class="level3">
+<h3 class="anchored" data-anchor-id="テレワークワークライフバランス">2. テレワーク、ワーク・ライフ・バランス</h3>
+<p>出社時刻や退社時刻がどのような影響を持つかも、このモデルで考えることができます。</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+出社時刻の影響
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>9:00〜17:00の間、会社にいなければならない場合
+<ul>
+<li>その時間帯は家庭内生産ができない</li>
+</ul></li>
+<li>効率的な時間の使い方の例
+<ul>
+<li>9:00〜9:30：保育園への送り迎え（家庭内生産）</li>
+<li>9:30〜10:00：市場労働</li>
+</ul></li>
+<li>出社という制約自体が、効率的な時間の使い方を妨げてしまう
+<ul>
+<li>退社時刻、休憩時間、勤務場所に関する制約も同様</li>
+</ul></li>
+</ul>
+<p>テレワークは、こうした問題を解決する手段になり得る</p>
+</div>
+</div>
+<p>このモデルは、ワークライフバランスについても示唆を与えてくれます。</p>
+<p>たとえば、市場賃金の高い側（多くの場合男性）が市場労働を優先し、家庭内生産が相対的に賃金の低い側（多くの場合女性）に集中するという現象は、家庭内生産モデルによって理論的に説明できます。</p>
+<p>つまりワークライフバランスとは、「<strong>市場労働だけでなく家庭内生産も必ず両方行う</strong>」<strong>ことを意味するわけではない</strong>のです。</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+家庭内生産の生産性が低く、市場賃金が高く、市場財の価格が低いとき
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="images/labor_housestar_highwage.png" class="img-fluid"></p>
+<ul>
+<li>最初の1時間の家庭内生産の限界生産量 <span class="math inline">\(&lt;\)</span> 限界費用
+<ul>
+<li>この場合、家庭内生産はまったく行わない</li>
+</ul></li>
+<li>（基本の）労働供給モデルと同様に、余暇と総収入のトレードオフのみを考えればよい</li>
+</ul>
+<p>このような状況は、家政婦やベビーシッターの市場が大きく整っていて、その賃金や紹介料が低くサービスを利用しやすい社会において、高賃金の世帯で見られる</p>
+</div>
+</div>
+</section>
+<section id="職場風土の改革と男性の育児休業の利用" class="level3">
+<h3 class="anchored" data-anchor-id="職場風土の改革と男性の育児休業の利用">3. 職場風土の改革と男性の育児休業の利用</h3>
+<p>（社会）規範とは、特定の集団の中で共有され、自然と守ろうとする意識が働くような暗黙のルールのことで、人々の好み（無差別曲線）そのものに影響を与えます。</p>
+<p>こうした規範が労働供給にどう影響するかについても、家庭内生産モデルは手がかりを与えてくれます。</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+育児休業制度の例
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>育児休業制度</strong></p>
+<ul>
+<li>1992年に法制化され、1995年からは育児休業給付も始まった
+<ul>
+<li>仕事を続けやすくすることで出産の機会費用を下げ、子どもを持ちやすくすることが狙い</li>
+</ul></li>
+<li>2000年代前半までは、第一子出産時に育児休業を利用する人は15%程度にとどまっていた<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>
+<ul>
+<li>「子育ては母親の役割」という社会規範</li>
+<li>企業側にも出産後の就業継続を歓迎しない職場風土があった</li>
+</ul></li>
+<li>その後、社会規範・職場風土は時代とともに変化し、優秀な女性に出産後も働き続けてほしいと考える企業や本人が増えた
+<ul>
+<li>2015〜19年の統計では、第一子の育児休業利用者は約40%まで増加している<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></li>
+</ul></li>
+</ul>
+<p>一方、男性の育児休業取得率は依然として低く、取得しても女性より期間が短い傾向にあります。</p>
+<ul>
+<li>発達心理学の知見では、男性が子どもが0歳の時期から育児に関わることが望ましいとされる</li>
+<li>共働き世帯では、父親が育児に関われない場合、第2子を持ちにくくなる傾向がある</li>
+</ul>
+<p>男性が育児休業を取ることが当たり前になるような規範の形成が望まれます。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+まとめ：家庭内生産モデル
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p><strong>市場労働</strong>（賃金の発生する労働）と<strong>家庭内生産</strong>（家事・育児・介護など賃金の発生しない生産活動）を区別して考えるモデル</p></li>
+<li><p>財は市場で購入することも、家庭内で生産することもできると仮定する</p></li>
+<li><p>個人は「市場労働時間」「家庭内生産時間」「余暇時間」の3つに時間を配分し、効用を最大化する</p></li>
+<li><p>家庭内生産では、時間を増やすほど<strong>限界生産量が逓減</strong>する</p>
+<ul>
+<li>最適な家庭内生産時間は「<strong>家庭内限界生産量 = 市場労働の限界購入量（賃金率）</strong>」で決まる</li>
+<li>この時点では無差別曲線（好み）には左右されず、生産性と賃金率のみで決まる</li>
+<li>その後、最適な余暇時間と市場労働時間は、無差別曲線をもとに「余暇の限界効用 <span class="math inline">\(=\)</span> 限界購入量（賃金率）」となる点で決まる</li>
+</ul></li>
+<li><p>家庭内生産モデルは、女性の就業選択や、男女間のワークライフバランスの差、職場環境や政策の変化がもたらす影響を理論的に読み解く手がかりを与えてくれる</p></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="労働需要" class="level1">
+<h1>労働需要</h1>
+<section id="労働者数と労働時間の決定" class="level2">
+<h2 class="anchored" data-anchor-id="労働者数と労働時間の決定">労働者数と労働時間の決定</h2>
+<p>労働需要とは、</p>
+<ul>
+<li>マクロ経済学の視点でみると
+<ul>
+<li>企業が現に働かせている人数と、追加で雇いたいと考えている人数の合計</li>
+<li>すでに雇用している、あるいは雇用しようと求人を出している労働時間の合計</li>
+</ul></li>
+<li>ミクロ経済学の視点でみると
+<ul>
+<li>個々の企業が、何人の労働者をどのような雇用形態で雇うか（あるいは雇わないか）</li>
+<li>労働者1人あたり何時間働かせるかという意思決定の結果</li>
+</ul></li>
+</ul>
+<p>こうした個々の企業側の意思決定を扱うのが<strong>労働需要モデル</strong>です。</p>
+<section id="長時間労働" class="level3">
+<h3 class="anchored" data-anchor-id="長時間労働">長時間労働</h3>
+<p>日本人は長時間労働の傾向があるとよく言われます。</p>
+<p>労働基準法の変遷</p>
+<ul>
+<li>1988年以前：週48時間労働</li>
+<li>1988年の改正：週40時間労働（1997年まで移行期間）</li>
+</ul>
+<p>こうした変化を経て、日本人の平均年間労働時間は1980年の2121時間から徐々に減少し、2017年には1710時間になりました。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/labor_longwork.png" class="img-fluid figure-img"></p>
+<figcaption>一人当たり平均年間総実労働時間（JILPT, データブック国際労働比較2024）</figcaption>
+</figure>
+</div>
+<ul>
+<li>それでも国際比較でみると、長時間労働者の割合は依然として高い</li>
+<li>平均労働時間が下がった主な要因はパート労働者比率の上昇であり、働き盛りの男性に限れば、むしろ長時間労働者が増えたとの指摘もある</li>
+</ul>
+</section>
+<section id="準固定費用モデル" class="level3">
+<h3 class="anchored" data-anchor-id="準固定費用モデル">準固定費用モデル</h3>
+<p>日本の労働者は、長時間働く代わりに何を得ているのでしょうか。そもそもなぜ長時間労働になりやすいのでしょうか。</p>
+<p>そのメカニズムの一つとして考えられるのが<strong>準固定費用</strong>です。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+準固定費用
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>企業が労働者を1人雇用する際にかかる費用</p>
+<ul>
+<li>採用にかかる費用</li>
+<li>訓練にかかる費用</li>
+<li>雇用保険・労災保険といった法定の社会保険</li>
+<li>福利厚生にかかる費用</li>
+<li>将来解雇する際に必要となる交渉・訴訟の費用</li>
+<li>早期退職を促す交渉の費用や退職金の上乗せ分</li>
+</ul>
+</div>
+</div>
+<p>企業が投入する労働サービスを増やすには、既存の労働者1人あたりの労働時間を増やす方法と、新たに労働者を採用する方法の2通りがありますが、これらは企業にとって発生する費用の性質が異なります。</p>
+<ul>
+<li>既存労働者の労働時間を増やす場合：増やした時間数に応じた追加の賃金がかかる</li>
+<li>新規に労働者を採用する場合：労働者1人あたりで発生する準固定費用がかかる
+<ul>
+<li>採用費用や訓練費用が大きく、準固定費用が高くつくほど、企業にとっての最適な労働者数は少なくなり、1人あたりの労働時間は長くなる</li>
+</ul></li>
+</ul>
+<p>準固定費用が存在するとき、企業が労働者数と労働時間数をどう決めるのかを、次のような企業を例に考えます。</p>
+<ul>
+<li>収入：労働者を雇い一定時間働かせて生産した財・サービスを販売して得る</li>
+<li>費用：
+<ul>
+<li>準固定費用：労働者1人あたりで発生する訓練費用、福利厚生費、企業負担分の社会保険料など</li>
+<li><strong>可変費用</strong>：労働時間1時間あたりで発生する賃金など</li>
+</ul></li>
+</ul>
+<p>企業は、<strong>利潤</strong>（総収入と総費用の差）が最大になるように労働者数と1人あたり労働時間数を決定します（<strong>利潤最大化</strong>）。ここでは、準固定費用が労働者数・労働時間数に与える影響だけを見るために、生産には労働者のみが必要であるという単純化を行います。</p>
+<section id="労働者数1人当たり労働時間数と生産量" class="level4">
+<h4 class="anchored" data-anchor-id="労働者数1人当たり労働時間数と生産量">1. 労働者数・1人当たり労働時間数と生産量</h4>
+<div class="callout callout-style-default callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+例：ベンチャー企業の立ち上げ
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>ハナコは、ベンチャー企業の立ち上げを準備しています。都会の運動不足な子どもたちに、放課後や休日にスポーツを教える小さな教室です。</p>
+<p>当面は学生アルバイトだけで運営するつもりで、そのために何人のアルバイトを雇い、1人あたり週何時間働かせるかを検討しています。</p>
+</div>
+</div>
+<p>ここで押さえておくべき法則があります。</p>
+<p><strong>達成される仕事の量（生産される財・サービスの量）は、労働者の数と1人あたりの労働時間数によって決まる</strong></p>
+<p>経済学ではこの関係を、次のような<strong>生産関数</strong>として表現します。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+生産関数
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>企業が生産する財・サービスの量と、それを生み出す生産要素との関係を表す関数<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<p><span class="math display">\[
+Q = f(N, H)
+\]</span></p>
+<ul>
+<li><span class="math inline">\(Q\)</span>：1週間に生産される財・サービスの量</li>
+<li><span class="math inline">\(f\)</span>：生産関数</li>
+<li><span class="math inline">\(N\)</span>：労働者数</li>
+<li><span class="math inline">\(H\)</span>：1人あたりの週労働時間数</li>
+</ul>
+<p>ここでの生産関数は、企業が労働者を <span class="math inline">\(N\)</span> 人雇い、1人あたり週 <span class="math inline">\(H\)</span> 時間働かせると、週あたり <span class="math inline">\(Q\)</span> 単位の財・サービスが生産される、という技術的な関係を表している</p>
+</div>
+</div>
+<p>具体的に、ハナコが直面する生産関数を次のように仮定しましょう。</p>
+<p><span class="math display">\[
+Q = 5 N^{0.6} H^{0.4}
+\]</span></p>
+<p>この生産関数には、重要な特徴が2つあります。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+労働時間数の限界生産物の逓減
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>労働者数が一定のとき、<strong>各労働者の労働時間を増やしていくと</strong>、生産量の総量は増えていくものの、1時間追加することで得られる生産量の増加分（<strong>労働時間数の限界生産量</strong>）<strong>は次第に小さくなっていく</strong></p>
+</div>
+</div>
+<p>実際に生産関数へ数字を当てはめてみると、</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>労働者数 <span class="math inline">\(N=6\)</span> で一定のとき</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>労働時間数 <span class="math inline">\(H\)</span></td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>生産量 <span class="math inline">\(Q\)</span><a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></td>
+<td>35.3</td>
+<td>36.8</td>
+<td>38.2</td>
+</tr>
+<tr class="odd">
+<td>限界生産量</td>
+<td></td>
+<td>1.5</td>
+<td>1.4</td>
+</tr>
+</tbody>
+</table>
+<p>最初の1時間はやる気も体力も十分で効率よく生産できますが、働く時間が長くなるにつれて集中力が切れ疲労も溜まり、最初ほど効率的には生産できなくなっていく、というイメージです。</p>
+<p>この特徴は、労働者数についても同様に成り立ちます。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+労働者数の限界生産物の逓減
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>1人あたりの労働時間数が一定のとき、<strong>労働者数を増やしていくと</strong>、生産量の総量は増えていくものの、1人追加することで得られる生産量の増加分（<strong>労働者数の限界生産量</strong>）<strong>は次第に小さくなっていく</strong></p>
+</div>
+</div>
+<p>こちらも同様に、生産関数へ数字を当てはめて確認します。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>労働時間数 <span class="math inline">\(H=10\)</span> で一定のとき</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>労働者数 <span class="math inline">\(N\)</span></td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>生産量 <span class="math inline">\(Q\)</span></td>
+<td>33.0</td>
+<td>36.8</td>
+<td>40.4</td>
+</tr>
+<tr class="odd">
+<td>限界生産量</td>
+<td></td>
+<td>3.8</td>
+<td>3.6</td>
+</tr>
+</tbody>
+</table>
+<p>たとえば飲食店で、労働者が少ないうちはキッチンとホールを分業することで効率よく回りますが、増えすぎると手持ち無沙汰な人が出てくる、というイメージです。</p>
+</section>
+<section id="労働者数1人当たり労働時間数と収入" class="level4">
+<h4 class="anchored" data-anchor-id="労働者数1人当たり労働時間数と収入">2. 労働者数・1人当たり労働時間数と収入</h4>
+<p>企業は、生産した財・サービスを販売することで収入を得ます。企業の週あたり収入は次のように表せます。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+企業の週当たり収入
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+R = PQ
+\]</span></p>
+<ul>
+<li><span class="math inline">\(R\)</span>：週あたり収入</li>
+<li><span class="math inline">\(Q\)</span>：1週間に生産される財・サービスの量</li>
+<li><span class="math inline">\(P\)</span>：生産物1単位あたりの価格</li>
+</ul>
+<p>単純化のため、企業は販売量にかかわらず常に一定の価格で販売するものとします（企業は<strong>価格受容者</strong>）。</p>
+</div>
+</div>
+<p>生産量 <span class="math inline">\(Q\)</span> は先ほどの生産関数によって決まるため、収入も<strong>労働者数・労働時間数それぞれの限界生産物の逓減</strong>の影響を受けます。つまり、<strong>労働者数や労働時間数を単純に増やせば利潤も増える、とは限らない</strong>わけです。</p>
+<p>このことを確かめるために、まず限界収入を見てみましょう。ここでは生産物の価格を4千円と仮定します。</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>労働者数 <span class="math inline">\(N=6\)</span> で一定のとき</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>労働時間数 <span class="math inline">\(H\)</span></td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td>生産量 <span class="math inline">\(Q\)</span></td>
+<td>35.3</td>
+<td>36.8</td>
+<td>38.2</td>
+</tr>
+<tr class="odd">
+<td>収入 <span class="math inline">\(R\)</span> （千円）</td>
+<td>141.1</td>
+<td>147.2</td>
+<td>152.9</td>
+</tr>
+<tr class="even">
+<td>限界収入（千円）</td>
+<td></td>
+<td>6.1</td>
+<td>5.7</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>労働時間数 <span class="math inline">\(H=10\)</span> で一定のとき</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>労働者数 <span class="math inline">\(N\)</span></td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td>生産量 <span class="math inline">\(Q\)</span></td>
+<td>33.0</td>
+<td>36.8</td>
+<td>40.4</td>
+</tr>
+<tr class="odd">
+<td>収入 <span class="math inline">\(R\)</span> （千円）</td>
+<td>132.0</td>
+<td>147.2</td>
+<td>161.5</td>
+</tr>
+<tr class="even">
+<td>限界収入（千円）</td>
+<td></td>
+<td>15.2</td>
+<td>14.3</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="労働者数1人当たり労働時間数と費用" class="level4">
+<h4 class="anchored" data-anchor-id="労働者数1人当たり労働時間数と費用">3. 労働者数・1人当たり労働時間数と費用</h4>
+<p>利潤は総収入と総費用の差で決まるため、ハナコは総費用の方も把握しておく必要があります。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+企業の週当たり総費用
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+C = wNH + \theta N = (wH + \theta)N
+\]</span></p>
+<ul>
+<li><span class="math inline">\(C\)</span>：週あたり総費用</li>
+<li><span class="math inline">\(w\)</span>：時間あたり賃金</li>
+<li><span class="math inline">\(\theta\)</span>：労働者1人あたりの準固定費用</li>
+</ul>
+<p>このとき</p>
+<ul>
+<li>可変費用 <span class="math inline">\(= wNH\)</span></li>
+<li>準固定費用 <span class="math inline">\(= \theta N\)</span></li>
+</ul>
+</div>
+</div>
+<p>準固定費用は、労働者を雇っている限り、たとえ働かせていなくても（労働時間がゼロでも）発生する点に注意が必要です。ハナコの例で言えば、学生アルバイトの研修費用や社会保険料がこれにあたります。</p>
+<p>可変費用と準固定費用は次の表のように決まります。ここでは時間あたり賃金を1000円、1人あたりの準固定費用を5000円とします。</p>
+<p><strong>可変費用（千円）</strong></p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(N/H\)</span></td>
+<td><span class="math inline">\(H=9\)</span></td>
+<td><span class="math inline">\(H=10\)</span></td>
+<td><span class="math inline">\(H=11\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N=5\)</span></td>
+<td>45</td>
+<td>50</td>
+<td>55</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(N=6\)</span></td>
+<td>54</td>
+<td>60</td>
+<td>66</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N=7\)</span></td>
+<td>63</td>
+<td>70</td>
+<td>77</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>準固定費用（千円）</strong></p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(N/H\)</span></td>
+<td><span class="math inline">\(H=9\)</span></td>
+<td><span class="math inline">\(H=10\)</span></td>
+<td><span class="math inline">\(H=11\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N=5\)</span></td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(N=6\)</span></td>
+<td>35</td>
+<td>35</td>
+<td>35</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N=7\)</span></td>
+<td>40</td>
+<td>40</td>
+<td>40</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>可変費用は労働者数と労働時間に応じて変わりますが、準固定費用は労働者を雇用しているだけで発生するため、労働時間がゼロ（<span class="math inline">\(H=0\)</span>）でも同じ金額がかかります。</p>
+<p>これらの費用には重要な特徴があります。それは、<strong>労働時間数の限界費用も労働者数の限界費用も一定</strong>だということです。</p>
+<ul>
+<li><strong>労働時間数の限界費用</strong>
+<ul>
+<li>労働者数を一定にしたまま、各労働者の労働時間を1単位増やしたときに増える可変費用の増加分</li>
+<li>たとえば労働者数を6人で固定すると、可変費用は <span class="math inline">\(54 \rightarrow 60 \rightarrow 66\)</span> と、常に6千円（<span class="math inline">\(=\)</span> 1人あたり1千円/時 <span class="math inline">\(\times\)</span> 6人）ずつ増加する</li>
+</ul></li>
+<li><strong>労働者数の限界費用</strong>
+<ul>
+<li>1人あたりの労働時間数を一定にしたまま、労働者数を1単位増やしたときに増える<strong>可変費用の増加分</strong>
+<ul>
+<li>たとえば労働時間数を10時間で固定すると、可変費用は <span class="math inline">\(50 \rightarrow 60 \rightarrow 70\)</span> と、常に10千円（<span class="math inline">\(=\)</span> 1人あたり1千円/時 <span class="math inline">\(\times\)</span> 10時間）ずつ増加する</li>
+</ul></li>
+<li>この労働者数の限界費用はあくまで可変費用部分の話であり、準固定費用とは別に考える必要がある点に注意
+<ul>
+<li>準固定費用の部分でみた労働者数の限界費用は5千円で一定</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>最終的に、ハナコが直面する総費用は次の表のようになります。</p>
+<p><strong>総費用（千円）</strong></p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(N/H\)</span></td>
+<td><span class="math inline">\(H=9\)</span></td>
+<td><span class="math inline">\(H=10\)</span></td>
+<td><span class="math inline">\(H=11\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N=5\)</span></td>
+<td>70</td>
+<td>75</td>
+<td>80</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(N=6\)</span></td>
+<td>84</td>
+<td>90</td>
+<td>96</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N=7\)</span></td>
+<td>98</td>
+<td>105</td>
+<td>112</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="労働者数1人当たり労働時間数と利潤" class="level4">
+<h4 class="anchored" data-anchor-id="労働者数1人当たり労働時間数と利潤">4. 労働者数・1人当たり労働時間数と利潤</h4>
+<p>ハナコは、利潤が最大になるように労働者数と労働時間数を選びます。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+企業の週当たり利潤
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\pi = R - C = PQ - (wH + \theta)N = P\cdot f(N, H) - (wH + \theta)N
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\pi\)</span>：企業の週あたり利潤</li>
+</ul>
+</div>
+</div>
+<p>これまでに求めた総収入と総費用から、利潤の表を作成できます。</p>
+<p><strong>利潤（千円）</strong></p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(N/H\)</span></td>
+<td><span class="math inline">\(H=9\)</span></td>
+<td><span class="math inline">\(H=10\)</span></td>
+<td><span class="math inline">\(H=11\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N=5\)</span></td>
+<td>56.5</td>
+<td>57.0</td>
+<td>57.1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(N=6\)</span></td>
+<td>57.1</td>
+<td><strong>57.2</strong></td>
+<td>56.9</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(N=7\)</span></td>
+<td>56.8</td>
+<td>56.5</td>
+<td>55.7</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>この表から、労働者6人を雇い、それぞれに10時間働かせたときに利潤が57.2千円で最大になることが分かります（表に載っていない他の組み合わせを当てはめても、この点で利潤が最大になることが確認できます）。</p>
+<p>実は、こうした利潤を最大化する労働者数と労働時間数は、<a href="#mrule">限界原理</a>によって決定されています。</p>
+<p>労働時間数を最適な水準である <span class="math inline">\(H=10\)</span> で固定すると、6人目の労働者を雇うことで得られる限界収入は15.2千円である一方、その限界費用は15千円（可変費用分の10千円 <span class="math inline">\(+\)</span> 準固定費用分の5千円）となっています。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+限界原理：労働者数の決定における収入と費用のトレードオフ
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+P \cdot MP_{N}(N, H) \approx wH + \theta
+\]</span></p>
+<ul>
+<li><span class="math inline">\(MP_{N}(N, H)\)</span>：労働者数 <span class="math inline">\(N\)</span>、労働時間数 <span class="math inline">\(H\)</span> のもとでの、労働者数に関する限界生産性
+<ul>
+<li>左辺 <span class="math inline">\(P \cdot MP_{N}(N, H)\)</span> が労働者数の限界収入にあたる</li>
+</ul></li>
+<li>右辺 <span class="math inline">\(wH + \theta\)</span> が労働者数の限界費用にあたる</li>
+</ul>
+</div>
+</div>
+<p>同様に、労働者数を最適な水準である <span class="math inline">\(N=6\)</span> で固定すると、10時間目に働かせることで得られる限界収入は6.1千円/時、限界費用は6千円/時となります。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+限界原理：労働時間数の決定における収入と費用のトレードオフ
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+P \cdot MP_{H}(N, H) = wN
+\]</span></p>
+<ul>
+<li><span class="math inline">\(MP_{H}(N, H)\)</span>：労働者数 <span class="math inline">\(N\)</span>、労働時間数 <span class="math inline">\(H\)</span> のもとでの、労働時間数に関する限界生産性
+<ul>
+<li>左辺 <span class="math inline">\(P \cdot MP_{H}(N, H)\)</span> が労働時間数の限界収入にあたる</li>
+</ul></li>
+<li>右辺 <span class="math inline">\(wN\)</span> が労働時間数の限界費用にあたる</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+まとめ：準固定費用モデル
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>企業が準固定費用と可変費用の両方に直面する状況で、労働需要を分析するモデル</p>
+<ul>
+<li><strong>生産関数</strong>：<span class="math inline">\(Q = f(N, H)\)</span>
+<ul>
+<li>生産には労働者のみを用いる企業を想定</li>
+<li>労働時間数・労働者数の両方について<strong>限界生産性が逓減</strong>する生産関数を仮定する</li>
+</ul></li>
+<li>企業の<strong>収入</strong>：<span class="math inline">\(R = PQ\)</span>
+<ul>
+<li>生産物1単位あたりの価格 <span class="math inline">\(P\)</span> は一定（企業は価格受容者）と仮定</li>
+<li>生産関数の仮定により、<strong>限界収入も逓減</strong>する</li>
+</ul></li>
+<li>企業の<strong>総費用</strong>：<span class="math inline">\(C = wNH + \theta N = (wH + \theta)N\)</span>
+<ul>
+<li><strong>可変費用</strong>：<span class="math inline">\(wNH\)</span></li>
+<li><strong>準固定費用</strong>：<span class="math inline">\(\theta N\)</span></li>
+<li>この式から、労働時間数・労働者数それぞれの<strong>限界費用は一定</strong>であることが分かる</li>
+</ul></li>
+<li>企業の<strong>利潤</strong>：<span class="math inline">\(\pi = P\cdot f(N,H) - (wH + \theta)N\)</span></li>
+</ul>
+<p><strong>利潤を最大化する最適な労働者数・労働時間数</strong>は、限界原理にしたがって決まる</p>
+<ul>
+<li>労働者数の決定：労働者数の限界収入 <span class="math inline">\(=\)</span> 労働者数の限界費用
+<ul>
+<li><span class="math inline">\(P \cdot MP_{N}(N, H) \approx wH + \theta\)</span></li>
+</ul></li>
+<li>労働時間数の決定：労働時間数の限界収入 <span class="math inline">\(=\)</span> 労働時間数の限界費用
+<ul>
+<li><span class="math inline">\(P \cdot MP_{H}(N, H) = wN\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="準固定費用と賃金の上昇が労働需要に与える影響" class="level3">
+<h3 class="anchored" data-anchor-id="準固定費用と賃金の上昇が労働需要に与える影響">準固定費用と賃金の上昇が労働需要に与える影響</h3>
+<p>準固定費用モデルを使って、準固定費用や賃金の上昇が労働需要（最適な労働者数・労働時間数）にどう影響するかを見ていきます。</p>
+<section id="人当たり準固定費用の上昇が労働需要に与える影響" class="level4">
+<h4 class="anchored" data-anchor-id="人当たり準固定費用の上昇が労働需要に与える影響">1. 1人当たり準固定費用の上昇が労働需要に与える影響</h4>
+<p>1人あたりの準固定費用が上がると、企業には<strong>労働者数を相対的に減らし、労働時間数を相対的に増やす</strong>インセンティブが生まれます。</p>
+<p>たとえば、ハナコが直面する1人あたり準固定費用が5千円から7千円に上昇したとしましょう。</p>
+<p>このとき、最適な労働者数は3人に減り、労働時間数は15時間に増え、利潤は48.2千円に減少します。</p>
+<p>限界原理を使って、このメカニズムを理解しましょう。</p>
+<div class="seminar-steps">
+<ol type="1">
+<li>限界原理により、最適な労働者数は次の式を満たす</li>
+</ol>
+<p><span class="math display">\[
+P \cdot MP_{N}(N, H) = wH + \theta
+\]</span></p>
+<ol start="2" type="1">
+<li>準固定費用 <span class="math inline">\(\theta\)</span> の上昇は、この式の右辺を押し上げる。つまり労働者数を増やすことの限界費用が上がる</li>
+<li>等号を保つには、労働者数の限界生産性 <span class="math inline">\(MP_{N}(N, H)\)</span> が（価格 <span class="math inline">\(P\)</span> は一定なので）上昇する必要がある</li>
+<li>生産関数の仮定により労働者数の限界生産性は逓減するため、これを上昇させるには労働者数を減らすインセンティブが働く</li>
+<li>限界原理により、最適な労働時間数は <span class="math inline">\(P \cdot MP_{H}(N, H) = wN\)</span> を満たすが、労働者数が減ることで右辺は小さくなる。つまり労働時間数を増やすことの限界費用が下がる</li>
+<li>等号を保つには、労働時間数の限界生産性 <span class="math inline">\(MP_{H}(N, H)\)</span> は下がってもよいことになる</li>
+<li>生産関数の仮定により労働時間数の限界生産性は逓減するため、限界生産性が十分に下がるところまで、労働時間数を増やすインセンティブが働く</li>
+</ol>
+</div>
+<p>つまり、準固定費用の上昇は労働者数を増やす際の限界費用を押し上げて労働者数を減らす方向に作用し、その分労働時間数を増やす際の限界費用が下がることで労働時間数を増やす方向に作用する、というメカニズムによって、最適な労働者数は減り労働時間数は増えるのです。</p>
+<p>こうした調整の結果、労働者数3人、労働時間数15時間という新しい最適解が導かれます。</p>
+</section>
+<section id="賃金の上昇が労働需要に与える影響" class="level4">
+<h4 class="anchored" data-anchor-id="賃金の上昇が労働需要に与える影響">2. 賃金の上昇が労働需要に与える影響</h4>
+<p>賃金の上昇は、企業に<strong>労働時間数を減らす</strong>インセンティブを与えます。労働者数については、増える場合も減る場合もあります。</p>
+<p>たとえば、ハナコが直面する賃金が1千円から1.8千円に上昇したとしましょう（準固定費用は5千円のままとします）。</p>
+<p>このとき、最適な労働者数は3人に減り、労働時間数は6時間に減り、利潤は31.8千円に減少します。</p>
+<p>ここでも限界原理を使って、このメカニズムを理解しましょう。</p>
+<div class="seminar-steps">
+<ol type="1">
+<li>限界原理により、最適な労働時間数は次の式を満たす</li>
+</ol>
+<p><span class="math display">\[
+P \cdot MP_{H}(N, H) = wN
+\]</span></p>
+<ol start="2" type="1">
+<li>賃金 <span class="math inline">\(w\)</span> の上昇は、この式の右辺を押し上げる。つまり労働時間数を増やすことの限界費用が上がる</li>
+<li>等号を保つには、労働時間数の限界生産性 <span class="math inline">\(MP_{H}(N, H)\)</span> が上昇する必要がある</li>
+<li>生産関数の仮定により労働時間数の限界生産性は逓減するため、これを上昇させるには労働時間数を減らすインセンティブが働く</li>
+<li>限界原理により、最適な労働者数は <span class="math inline">\(P \cdot MP_{N}(N, H) = wH + \theta\)</span> を満たすが、労働時間数が減ることで右辺は小さくなる。つまり労働者数を増やすことの限界費用が下がる</li>
+<li>一方で、賃金の上昇自体も労働者数を増やす際の限界費用を押し上げるため、等号を保つのに必要な労働者数の限界生産性 <span class="math inline">\(MP_{N}(N, H)\)</span> は、上昇する場合も下落する場合もある
+<ul>
+<li>上昇する場合：限界生産性が十分大きくなるところまで、労働者数を減らすインセンティブが働く</li>
+<li>下落する場合：限界生産性が十分小さくなるところまで、労働者数を増やすインセンティブが働く</li>
+<li>ただし通常、労働時間数 <span class="math inline">\(H\)</span> は賃金 <span class="math inline">\(w\)</span> ほど急激には変化しないため、基本的には労働者数も減少する傾向にある</li>
+</ul></li>
+</ol>
+</div>
+<p>こうした調整の結果、賃金が1.8千円まで上昇したケースでは、労働者数3人、労働時間数6時間という新しい最適解が導かれます。</p>
+</section>
+</section>
+<section id="準固定費用モデルの応用" class="level3">
+<h3 class="anchored" data-anchor-id="準固定費用モデルの応用">準固定費用モデルの応用</h3>
+<p>準固定費用は、法制度や景気見通しの変化によって変動します。</p>
+<ul>
+<li>社会保険料の引き上げや雇用保護の強化 <span class="math inline">\(\rightarrow\)</span> 準固定費用の増加</li>
+<li>景気の先行き悪化 <span class="math inline">\(\rightarrow\)</span> 企業が労働者数・採用・訓練・付加給付を絞る <span class="math inline">\(\rightarrow\)</span> 準固定費用の減少</li>
+</ul>
+<p>では、実際の準固定費用はどの程度の規模なのでしょうか。</p>
+<p><strong>労働費用の内訳（出典：2016年 厚生労働省「就労条件総合調査」）</strong></p>
+<p>■ 常用労働者1人・1か月あたりの平均額（全体平均）</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>項目</th>
+<th>金額（円）</th>
+<th>割合</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>労働費用総額</td>
+<td>416,824</td>
+<td>100.0%</td>
+</tr>
+<tr class="even">
+<td>├ 現金給与額</td>
+<td>337,192</td>
+<td>80.9%</td>
+</tr>
+<tr class="odd">
+<td>└ 現金給与以外の労働費用</td>
+<td>79,632</td>
+<td>19.1%</td>
+</tr>
+<tr class="even">
+<td>　　├ 法定福利費<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></td>
+<td>47,693</td>
+<td>59.9%<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></td>
+</tr>
+<tr class="odd">
+<td>　　├ 退職給付等の費用</td>
+<td>18,823</td>
+<td>23.7%<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></td>
+</tr>
+<tr class="even">
+<td>　　└ 法定外福利費<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></td>
+<td>6,528</td>
+<td>8.2%<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></td>
+</tr>
+</tbody>
+</table>
+<p>■ 現金給与以外の労働費用（企業規模別）</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>企業規模（常用労働者数）</th>
+<th>金額（円）</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1000人以上</td>
+<td>105,189</td>
+</tr>
+<tr class="even">
+<td>300～999人</td>
+<td>74,193</td>
+</tr>
+<tr class="odd">
+<td>100～299人</td>
+<td>64,254</td>
+</tr>
+<tr class="even">
+<td>30～99人</td>
+<td>54,439</td>
+</tr>
+</tbody>
+</table>
+<p>なお、1998年の調査と比較すると、現金給与・現金給与以外の労働費用のどちらも大きく縮小しています。</p>
+<p>社会保険料の負担率は、1990年時点の10.6%から2025年には18.0%まで上昇しています。社会保険料の上昇は準固定費用の増加を意味するため、企業には労働者数を絞り長時間労働をさせるインセンティブが生まれます。</p>
+<p>さらに、準固定費用を、企業が自ら決められない<strong>公的準固定費用</strong>（社会保険料や解雇規制にまつわる費用など）と、企業が独自に決められる<strong>私的準固定費用</strong>（採用費用、訓練費用、福利厚生費など）に分けて考えると、公的準固定費用の引き上げは、企業に厳選採用・少人数雇用・手厚い訓練・長時間労働というインセンティブを与えることになります。</p>
+<p>長年にわたる長時間労働への批判を受け、政府は近年ワーク・ライフ・バランスを後押しする政策を進めてきました。</p>
+<p>「仕事と生活の調和（ワーク・ライフ・バランス）憲章」、「仕事と生活の調和推進のための行動指針」</p>
+<ul>
+<li>2007年12月に策定</li>
+<li>2010年：2020年までの数値目標を見直す新たな合意</li>
+<li>2016年：数値目標を一部改正（例：男性の育児休業取得率を2.65% <span class="math inline">\(\rightarrow\)</span> 13%へ）</li>
+</ul>
+<p>「働き方改革法案」</p>
+<ul>
+<li>2018年6月成立</li>
+<li>36協定による労使合意があっても残業に上限を設定（大企業は2019年4月から、中小企業は2020年4月から適用）</li>
+</ul>
+<p>こうした政策の効果もあってか、週60時間以上働く労働者の割合は、2016年の7.7%から2019年には6.4%まで下がりました。</p>
+<p>とはいえ、現行制度には、長時間労働者と非正社員とで準固定費用の負担を非対称にしてしまう規制が残っています。たとえば、週20時間未満の雇用であれば、企業は社会保険料の負担を避けることができます。これは、割高な正社員を絞り込んで長時間働かせるインセンティブを企業に与えることになります。実際、2014年以降、割安な非正規雇用の比率はおよそ40%弱で推移しています。</p>
+<p>準固定費用モデルを使うと、こうした非対称性があるもとで、長時間働く少数の割高な正社員と、短時間しか働かない多数の割安な非正社員が併存するメカニズムを理解することができます。</p>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>同じ生産性を持つ労働者について、短時間労働であれば、事業主が社会保険料負担なしで雇用できるが、フルタイムであれば、事業主が社会保険料を負担しなければならないとき、労働需要にどのような影響が及ぼされるか。空欄に適切な語句を入れて答えなさい。</p>
+<p>企業がフルタイム労働者を雇用すると、賃金に加えて社会保険料などの <strong><input type="text" class="fill-in" id="qfcost" placeholder="ここに入力"></strong> が発生する。一方、短時間労働者にはこの負担がない場合、同じ生産性であれば企業は <strong><input type="text" class="fill-in" id="short" placeholder="ここに入力"></strong> の方を選好する。結果として、企業にとって <strong><input type="text" class="fill-in" id="long" placeholder="ここに入力"></strong> の雇用コストが相対的に高くなるため、 フルタイム労働者の労働需要が <strong><input type="text" class="fill-in" id="full" placeholder="ここに入力"></strong> する可能性がある。</p>
+<button onclick="showAnswer('syaho')">
+答えを見る
+</button>
+<div id="syaho" class="answer" style="display:none; margin-top: 0.5em;">
+<p>準固定費用・短時間労働者・フルタイム労働者・減少</p>
+</div>
+</div>
+</section>
+</section>
+<section id="景気と雇用調整" class="level2">
+<h2 class="anchored" data-anchor-id="景気と雇用調整">景気と雇用調整</h2>
+<p>この章では、景気変動に対して企業がどのように雇用を調整するかを考えます。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+雇用調整
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>企業が、景気動向や個別の経営事情を背景に、労働力の投入量を一時的または長期的に適正化すること</p>
+<ul>
+<li>新規採用</li>
+<li>残業規制</li>
+<li>一時休業</li>
+<li>休暇付与</li>
+<li>採用の一時停止</li>
+<li>配置転換</li>
+<li>希望退職の募集</li>
+<li>雇止めや解雇</li>
+</ul>
+<p>雇用を増やす場合は雇用調整量がプラス、減らす場合はマイナスとなる</p>
+</div>
+</div>
+<ul>
+<li>景気が良くなる <span class="math inline">\(\rightarrow\)</span> 雇用・生産・利潤が増える</li>
+<li>ただし、景気改善が次の改善につながらなかったり、非正規雇用ばかりが拡大して正規雇用が増えなかったりすることもある</li>
+</ul>
+<p>こうした現象を、雇用調整にかかる費用に着目して分析していきます。</p>
+<section id="調整費用モデル" class="level3">
+<h3 class="anchored" data-anchor-id="調整費用モデル">調整費用モデル</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+調整費用
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>企業が労働者数を増減させる調整を行う際に負担する費用</p>
+<p>既存の労働者を減らすとき</p>
+<ul>
+<li>退職を促すための交渉費用</li>
+<li>早期退職金</li>
+<li>解雇にかかる法的費用</li>
+</ul>
+<p>新たに労働者を増やすとき</p>
+<ul>
+<li>採用費用</li>
+<li>訓練費用</li>
+<li>（景気回復時に採用しても）景気後退時に解雇する際にかかる費用</li>
+</ul>
+</div>
+</div>
+<p>企業が労働者を増減させるたびに調整費用を負担しなければならないとすると、この費用は労働需要にどのような影響を与えるでしょうか。以下では単純化のため、正規・非正規の区別のない1種類の労働のみで生産が行われると仮定します。</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/labor_ccost.png" class="img-fluid figure-img"></p>
+<figcaption>調整費用と最適調整量</figcaption>
+</figure>
+</div>
+<p>このグラフは、雇用調整量と調整費用の関係を示しています。</p>
+<ul>
+<li>調整費用：下に凸の黒い曲線
+<ul>
+<li>雇用調整量がゼロでない限り必ず費用が発生し、ゼロのときのみ調整費用もゼロになる（黒丸の点）</li>
+<li>一般に、調整の規模が大きくなるほど調整費用の増え方も大きくなる</li>
+</ul></li>
+<li>粗利潤：上に凸の青い曲線
+<ul>
+<li>調整費用を考慮せずに、雇用調整を行った場合の利潤を表す</li>
+<li>曲線のピークが原点より右側にあるのは、調整費用さえなければ雇用を増やす方が利潤最大化につながるケースを想定しているため</li>
+<li>純利潤は、粗利潤と調整費用の差、すなわち2つの曲線の間の距離で表される</li>
+</ul></li>
+</ul>
+<p>企業は利潤最大化を目指すため、調整費用を踏まえたうえでの最適な雇用調整量は、粗利潤の曲線と調整費用の曲線の間の距離がもっとも大きくなる点で決まります。</p>
+<p>雇用調整のスピードは、調整費用の大きさによって変わります。</p>
+<p><strong>調整費用が低い場合</strong></p>
+<ul>
+<li>雇用調整は速やか（1期のうち）に行われます</li>
+<li>例：派遣社員を数人増やす、パートに1日多く出勤してもらうといったケース
+<ul>
+<li>すぐに人を増やしてもさほどコストがかからないため、企業は一気に「粗利潤のピーク」に到達しようとします</li>
+</ul></li>
+</ul>
+<p><strong>調整費用が高い場合</strong></p>
+<ul>
+<li>雇用調整はゆっくりと（複数の期にわたって少しずつ）行われます。図のように、あえて調整を行わないことが最適になる場合もあります</li>
+<li>例：正社員を雇うケース
+<ul>
+<li>採用コストや教育訓練の負担、将来の解雇のしにくさ</li>
+<li>一度に多く雇うとリスクが大きい</li>
+<li>まずは様子を見ながら少しずつ調整し、数期にわたって段階的に雇用を増やしていく</li>
+</ul></li>
+</ul>
+<div class="quizbox">
+<p><strong>確認クイズ：</strong></p>
+<p>企業の雇用量と粗利潤、雇用調整量と調整費用のデータが以下の表で与えられている。現在の雇用量が9人であるとき、来期の適切な雇用量は何人か答えなさい。</p>
+<p>雇用量と粗利潤</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>雇用量</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>粗利潤</td>
+<td>12</td>
+<td>19</td>
+<td>24</td>
+<td>27</td>
+<td>28</td>
+<td>24</td>
+<td>19</td>
+<td>12</td>
+<td>3</td>
+<td>-8</td>
+<td>-21</td>
+<td>-36</td>
+<td>-53</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>雇用調整量と調整費用</p>
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>雇用調整量</td>
+<td>-5</td>
+<td>-4</td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>調整費用</td>
+<td>53</td>
+<td>35</td>
+<td>21</td>
+<td>11</td>
+<td>5</td>
+<td>0</td>
+<td>5</td>
+<td>11</td>
+<td>21</td>
+<td>35</td>
+<td>53</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong><input type="text" class="fill-in" id="8" placeholder="ここに入力"></strong> 人</p>
+<button onclick="showAnswer('koyo')">
+答えを見る
+</button>
+<div id="koyo" class="answer" style="display:none; margin-top: 0.5em;">
+<p>8人</p>
+現在の雇用量は9人なので、雇用調整後の利潤は以下のようになる。
+<div style="overflow-x: auto;">
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>雇用調整量</td>
+<td>-5</td>
+<td>-4</td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>雇用量</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>利潤</td>
+<td>-29</td>
+<td>-8</td>
+<td>7</td>
+<td>13</td>
+<td>14</td>
+<td>12</td>
+<td>-2</td>
+<td>-19</td>
+<td>-42</td>
+<td>-71</td>
+<td>-106</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="調整費用モデルの応用" class="level3">
+<h3 class="anchored" data-anchor-id="調整費用モデルの応用">調整費用モデルの応用</h3>
+<p>調整費用モデルの観点から、日本企業の雇用調整のあり方を考察してみましょう。</p>
+<p>景気後退期において、大企業の雇用調整は次のような順序で進むとされています。</p>
+<div class="seminar-steps">
+<ol type="1">
+<li>従業員の残業時間を削減する</li>
+<li>パート・アルバイト、派遣社員、契約社員など有期労働者の採用や契約更新を見送る</li>
+<li>正社員の新規採用を見送る</li>
+<li>既存社員の出向・転籍を行う</li>
+<li>希望退職を募る</li>
+</ol>
+</div>
+<p>1990年代後半以降、企業は正社員の新卒採用を絞り込み有期雇用を増やしてきており、これによって雇用調整のスピードが以前より速まった可能性があります。</p>
+<p>続いて、解雇規制について考えます。解雇規制が強いほど、労働者を減らす際の調整費用は大きくなると考えられます。</p>
+<p>業績が悪化した企業が速やかに従業員を解雇できるかどうかは、各国の労働法制やそれを前提とした雇用慣行によって大きく異なります。</p>
+<p><strong>アメリカ</strong></p>
+<ul>
+<li>at-will employment（労使双方が自由に契約を解消できる雇用形態）が広く浸透している
+<ul>
+<li>雇用契約期間が明示されていない限り、企業側・労働者側のどちらからも自由に契約を終了できる</li>
+</ul></li>
+<li>同一企業に勤め続ける割合は日本より低く、平均勤続年数も短い</li>
+<li>解雇や転職といった労働移動の流動性が日本より高い</li>
+</ul>
+<p><strong>日本</strong></p>
+<ul>
+<li>解雇の要件：30日以上前の予告、またはその日数分以上の平均賃金の支払いのいずれかが必要
+<ul>
+<li>ただし、労働者側に責任がある事由の場合はこれが免除される</li>
+</ul></li>
+<li>1950〜60年代にかけて、企業の解雇を制限する判例が相次いだ
+<ul>
+<li>この結果、<strong>整理解雇の4要件</strong>が確立された</li>
+</ul></li>
+</ul>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+整理解雇の4要件
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>整理解雇を行う客観的な必要性があること</li>
+<li>解雇を回避するために最大限の努力をしたこと</li>
+<li>解雇対象者の選定基準・運用が合理的であること</li>
+<li>労使間で十分な協議を行ったこと</li>
+</ol>
+</div>
+</div>
+<p>では、日本では実際に解雇が難しいのでしょうか。</p>
+<p>裁判には長い時間がかかるため、中小企業を相手に何十年もかけて解雇の無効を争っても、得られる利益は限られます。そのため判例法は、大企業には解雇を避ける慣行を根付かせた一方、中小企業への影響は限定的だったと考えられます。</p>
+<p>実際、1994〜2007年に東京で寄せられた労働相談（主に中小企業の労働者が利用）で最も多かったのは「解雇」でした。この点から、日本の解雇規制は大企業にとっては強すぎる一方、中小企業の労働者にとっては十分に機能していないという見方もできます。</p>
+<p>こうした背景のもと、2003年に改正され2004年1月に施行された労働基準法では、それまでの判例法の内容が条文に盛り込まれました。</p>
+<ul>
+<li>就業規則や労働契約書（労働条件通知書）に、どのような事由で解雇されるかを明記できるようになった
+<ul>
+<li>ただし明記されていても、「客観的に合理的な理由を欠き、社会通念上相当と認められない解雇は、権利の乱用として無効とする」という原則が適用される（<strong>解雇権濫用の法理</strong>）</li>
+</ul></li>
+</ul>
+<p>この影響もあってか、2008〜18年の東京の労働相談は、第1位が「退職」、第2位が「解雇」という順に変わりました。</p>
+<p>大企業の立場から見れば、会社都合での雇用契約の解消が容易でないということは、新たに労働者を雇うこと自体のリスクが高いことを意味します。</p>
+<p>技術革新や世界情勢の変化が著しい現代において、採用時点でのスキルや生産性が40年間そのまま通用するとは考えにくく、こうした状況下では、正社員の新卒採用にあたって企業が面接を重ね慎重に選考を行うのも、無理からぬことと言えるかもしれません。</p>
+<p><a href="index.html">講義資料に戻る</a></p>
+<!-- クイズ機能スクリプト -->
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  // 入力ボックス .fill-in の値を復元・保存
+  document.querySelectorAll('.fill-in').forEach(input => {
+    const key = "fillin-" + input.id;
+    input.value = localStorage.getItem(key) || "";
+    input.addEventListener('input', () => {
+      localStorage.setItem(key, input.value);
+    });
+  });
+
+  // テキストエリア .quiz-answer の値を復元（oninput 属性から key を抽出）
+  document.querySelectorAll('.quiz-answer').forEach(textarea => {
+    const key = textarea.getAttribute("oninput")?.match(/'([^']+)'/)?.[1];
+    if (key) {
+      textarea.value = localStorage.getItem(key) || "";
+    }
+
+    // 入力イベントを明示的に設定（安全のため）
+    textarea.addEventListener('input', () => {
+      if (key) localStorage.setItem(key, textarea.value);
+    });
+  });
+
+  // 全削除ボタンの処理
+  const clearButton = document.getElementById("clear-answers");
+  if (clearButton) {
+    clearButton.addEventListener("click", () => {
+      const confirmed = confirm("本当にすべての回答を削除しますか？");
+      if (!confirmed) return;
+
+      document.querySelectorAll(".fill-in").forEach(input => {
+        const key = "fillin-" + input.id;
+        localStorage.removeItem(key);
+        input.value = "";
+      });
+
+      document.querySelectorAll(".quiz-answer").forEach(textarea => {
+        const k = textarea.getAttribute("oninput")?.match(/'([^']+)'/)?.[1];
+        if (k) {
+          localStorage.removeItem(k);
+        }
+        textarea.value = "";
+      });
+
+      alert("すべての回答を削除しました");
+    });
+  }
+});
+
+// 解答表示切替ボタン
+function showAnswer(id) {
+  const answerDiv = document.getElementById(id);
+  if (!answerDiv) return;
+  answerDiv.style.display = (answerDiv.style.display === "none") ? "block" : "none";
+}
+</script>
+<!-- 全削除ボタン -->
+<div id="quiz-tools" style="margin: 2em 0;">
+<p><button id="clear-answers">全問クリア</button></p>
+</div>
+
+
+</section>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>労働政策研究・研修機構（JILPT）.（2025）. <em>完全失業率・有効求人倍率</em>. <a href="https://www.jil.go.jp/kokunai/statistics/timeseries/html/g0301.html">https://www.jil.go.jp/kokunai/statistics/timeseries/html/g0301.html</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>リクルート・リサーチセンター.（n.d.）. <em>アルバイト・パート募集時平均時給調査</em>. <a href="https://jbrc.recruit.co.jp/data/ap/">https://jbrc.recruit.co.jp/data/ap/</a> （2025年8月5日アクセス）<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>学生にとって自主的な勉強は本業と言えるかもしれませんが、賃金の発生する労働時間ではないため、ここでは余暇に含めて扱います。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>ここで余暇時間数は、週90時間の必要最低限の余暇時間数を超過する、追加的な余暇時間数を表しています。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>ミクロ経済学で通常学ぶ予算制約線は、縦軸・横軸に2種類の財の消費量をとり、予算の範囲内で購入できる財の組み合わせを示す直線です。この考え方を労働供給量の決定に当てはめると、ここで扱っているような直線になります。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>労働時間を10時間増やすごとにどれだけ市場財の購入量が増えるかを示す。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>家庭内生産量 <span class="math inline">\(+\)</span> 市場財購入量 で求められる。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>社会保障・人口問題研究所「出生動向基本調査」<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>ただし、依然として約40%の女性が出産を機に、あるいは妊娠前に離職している<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>ここで生産関数を労働者数と1人あたり労働時間数のみで表しているのは、あくまで便宜的な仮定です。実際には資本、技術、機械、原材料など他にもさまざまな生産要素があり、それらと生産量の関係を捉えたい場合は状況に応じた生産関数を別途仮定する必要があります。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>小数点第2以下を四捨五入している。<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>企業が法律に基づいて負担することが義務付けられている、従業員の福利厚生に関する費用（社会保険料）<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>「現金給与以外の労働費用」に占める割合<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>「現金給与以外の労働費用」に占める割合<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>法律で義務付けられていないが、企業が自主的に提供する福利厚生制度にかかる費用（家賃補助等の手当、健康診断補助、レクリエーション関連、キャリア支援など）<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>「現金給与以外の労働費用」に占める割合<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

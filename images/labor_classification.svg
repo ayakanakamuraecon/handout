@@ -1,0 +1,75 @@
+<svg width="100%" viewBox="0 0 680 736" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>労働力調査における就業状態の分類</title>
+  <desc>労働力を就業者と完全失業者に分け、就業者を従業上の地位別、雇用者を雇用形態別に細分化した階層図</desc>
+  <style>
+    :root {
+      --seminar-ink: #242a30;
+      --seminar-line: #d5dbe2;
+      --seminar-accent: #2e5476;
+      --seminar-accent-soft: #e4ecf3;
+      --seminar-sub: #6b6558;
+    }
+    .conn { stroke: var(--seminar-line); stroke-width: 1; fill: none; }
+    .hi rect { fill: var(--seminar-accent-soft); stroke: var(--seminar-accent); stroke-width: 0.5; }
+    .hi text { fill: var(--seminar-accent); font-weight: 700; }
+    .nm rect { fill: #ffffff; stroke: var(--seminar-line); stroke-width: 0.5; }
+    .nm text { fill: var(--seminar-ink); font-weight: 400; }
+    .note-text { fill: var(--seminar-sub); font-size: 12px; }
+    text { font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif; font-size: 14px; }
+  </style>
+  <line class="conn" x1="60" y1="46" x2="60" y2="646"/>
+  <line class="conn" x1="100" y1="86" x2="100" y2="206"/>
+  <line class="conn" x1="140" y1="206" x2="140" y2="286"/>
+  <line class="conn" x1="180" y1="286" x2="180" y2="366"/>
+  <line class="conn" x1="200" y1="382" x2="200" y2="606"/>
+  <line class="conn" x1="60" y1="86" x2="80" y2="86"/>
+  <line class="conn" x1="60" y1="646" x2="80" y2="646"/>
+  <line class="conn" x1="100" y1="126" x2="120" y2="126"/>
+  <line class="conn" x1="100" y1="166" x2="120" y2="166"/>
+  <line class="conn" x1="100" y1="206" x2="120" y2="206"/>
+  <line class="conn" x1="140" y1="246" x2="160" y2="246"/>
+  <line class="conn" x1="140" y1="286" x2="160" y2="286"/>
+  <line class="conn" x1="180" y1="326" x2="200" y2="326"/>
+  <line class="conn" x1="180" y1="366" x2="200" y2="366"/>
+  <line class="conn" x1="200" y1="406" x2="240" y2="406"/>
+  <line class="conn" x1="200" y1="446" x2="240" y2="446"/>
+  <line class="conn" x1="200" y1="486" x2="240" y2="486"/>
+  <line class="conn" x1="200" y1="526" x2="240" y2="526"/>
+  <line class="conn" x1="200" y1="566" x2="240" y2="566"/>
+  <line class="conn" x1="200" y1="606" x2="240" y2="606"/>
+  <g class="hi"><rect x="40" y="30" width="120" height="32" rx="4"/>
+    <text x="100" y="46" text-anchor="middle" dominant-baseline="central">労働力</text></g>
+  <g class="hi"><rect x="80" y="70" width="140" height="32" rx="4"/>
+    <text x="150" y="86" text-anchor="middle" dominant-baseline="central">就業者</text></g>
+  <g class="nm"><rect x="120" y="110" width="140" height="32" rx="4"/>
+    <text x="190" y="126" text-anchor="middle" dominant-baseline="central">自営業主</text></g>
+  <g class="nm"><rect x="120" y="150" width="140" height="32" rx="4"/>
+    <text x="190" y="166" text-anchor="middle" dominant-baseline="central">家族従業者</text></g>
+  <g class="nm"><rect x="120" y="190" width="140" height="32" rx="4"/>
+    <text x="190" y="206" text-anchor="middle" dominant-baseline="central">雇用者</text></g>
+  <g class="nm"><rect x="160" y="230" width="200" height="32" rx="4"/>
+    <text x="260" y="246" text-anchor="middle" dominant-baseline="central">役員</text></g>
+  <g class="nm"><rect x="160" y="270" width="200" height="32" rx="4"/>
+    <text x="260" y="286" text-anchor="middle" dominant-baseline="central">雇用者(役員を除く)</text></g>
+  <g class="hi"><rect x="200" y="310" width="220" height="32" rx="4"/>
+    <text x="310" y="326" text-anchor="middle" dominant-baseline="central">正規の職員・従業員</text></g>
+  <g class="hi"><rect x="200" y="350" width="220" height="32" rx="4"/>
+    <text x="310" y="366" text-anchor="middle" dominant-baseline="central">非正規の職員・従業員</text></g>
+  <g class="nm"><rect x="240" y="390" width="140" height="32" rx="4"/>
+    <text x="310" y="406" text-anchor="middle" dominant-baseline="central">パート</text></g>
+  <g class="nm"><rect x="240" y="430" width="140" height="32" rx="4"/>
+    <text x="310" y="446" text-anchor="middle" dominant-baseline="central">アルバイト</text></g>
+  <g class="nm"><rect x="240" y="470" width="140" height="32" rx="4"/>
+    <text x="310" y="486" text-anchor="middle" dominant-baseline="central">派遣社員</text></g>
+  <g class="nm"><rect x="240" y="510" width="140" height="32" rx="4"/>
+    <text x="310" y="526" text-anchor="middle" dominant-baseline="central">契約社員</text></g>
+  <g class="nm"><rect x="240" y="550" width="140" height="32" rx="4"/>
+    <text x="310" y="566" text-anchor="middle" dominant-baseline="central">嘱託</text></g>
+  <g class="nm"><rect x="240" y="590" width="140" height="32" rx="4"/>
+    <text x="310" y="606" text-anchor="middle" dominant-baseline="central">その他</text></g>
+  <g class="hi"><rect x="80" y="630" width="140" height="32" rx="4"/>
+    <text x="150" y="646" text-anchor="middle" dominant-baseline="central">完全失業者</text></g>
+  <line class="conn" x1="40" y1="678" x2="640" y2="678"/>
+  <text class="note-text" x="40" y="698">注：「派遣社員」は労働力調査の分類上の正式名称「労働者派遣事業所の派遣社員」の略。</text>
+  <text class="note-text" x="40" y="718">「その他」は上記以外の呼称の雇用者を指す。</text>
+</svg>
