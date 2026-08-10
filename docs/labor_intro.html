@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>はじめに – 講義資料</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -35,10 +41,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dda421e7baab2750d3fe39ccc7eb988f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0ead46ec9691dca11d8f8435556fb843.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -81,7 +87,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -318,9 +324,12 @@ window.Quarto = {
 </ul></li>
 </ul>
 <p>賃金率が生産性を映す指標だとすれば、正社員の男女間や、正社員と非正社員の間には大きな生産性の差があることになりますが、実際にそれほどの差が存在するのでしょうか。</p>
-<p>仮に生産性の差があるとしても、それは受けてきた人材育成・訓練の差によるものなのでしょうか。</p>
-<p>それとも、各自が望む働き方を選んだ結果としての差なのでしょうか。</p>
-<p>非正社員が持つ能力は、十分に発揮される機会を得られているのでしょうか。</p>
+<p>仮に生産性の差があるとして、</p>
+<ul>
+<li>受けてきた人材育成・訓練の差？</li>
+<li>各自が望む働き方を選んだ結果としての差？</li>
+<li>非正社員が持つ能力は、十分に発揮される機会を得られている？</li>
+</ul>
 <p>実際のところ、日本における男女間・正規非正規間の賃金格差は、国際的に見ても大きい部類に入ります。一例として、アメリカとの比較でフルタイム労働者の男女賃金格差を見てみましょう。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -425,42 +434,24 @@ window.Quarto = {
 <section id="調査分析の方法" class="level4">
 <h4 class="anchored" data-anchor-id="調査分析の方法">調査分析の方法</h4>
 <p>調査は、その性質に応じていくつかの種類に分類することができます。</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 25%">
-<col style="width: 32%">
-<col style="width: 18%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>分析の種類</th>
-<th>データの特徴</th>
-<th>主な用途</th>
-<th>留意点</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>横断面分析<br>（クロスセクションデータ）</td>
-<td>複数の対象について、ある一時点のみで調査を行う</td>
-<td>地域による違いや性別・年齢層による違いを分析するのに用いる</td>
-<td>ある一時点の情報にとどまるため、時間の経過に伴う変化は把握できない</td>
-</tr>
-<tr class="even">
-<td>時系列分析</td>
-<td>同一の対象を複数の時点で継続的に調査する</td>
-<td>時間の経過に伴う傾向や変化を分析するのに用いる</td>
-<td>同じ対象を継続して調査し続ける必要がある</td>
-</tr>
-<tr class="odd">
-<td>パネル分析</td>
-<td>複数の対象について、複数の時点にわたり繰り返し調査を行う</td>
-<td>地域や属性ごとの変化の追跡、同一個体内での変化の分析などに適している</td>
-<td>時間の経過とともに特定の傾向を持つ対象が調査から抜け落ちやすく、母集団とのずれが生じる可能性がある</td>
-</tr>
-</tbody>
-</table>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">横断面分析（クロスセクションデータ）</span></p>
+<p><strong>複数の対象について、ある一時点のみで調査を行う</strong></p>
+<p><strong>メリット</strong>：地域による違いや性別・年齢層による違いを分析するのに用いる。</p>
+<p><strong>デメリット</strong>：ある一時点の情報にとどまるため、時間の経過に伴う変化は把握できない。</p>
+</div>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">時系列分析</span></p>
+<p><strong>同一の対象を複数の時点で継続的に調査する</strong></p>
+<p><strong>メリット</strong>：時間の経過に伴う傾向や変化を分析するのに用いる。</p>
+<p><strong>デメリット</strong>：同じ対象を継続して調査し続ける必要がある。</p>
+</div>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">パネル分析</span></p>
+<p><strong>複数の対象について、複数の時点にわたり繰り返し調査を行う</strong></p>
+<p><strong>メリット</strong>：地域や属性ごとの変化の追跡、同一個体内での変化の分析などに適している。</p>
+<p><strong>デメリット</strong>：時間の経過とともに特定の傾向を持つ対象が調査から抜け落ちやすく、母集団とのずれが生じる可能性がある。</p>
+</div>
 </section>
 <section id="統計における働き方の分類" class="level4">
 <h4 class="anchored" data-anchor-id="統計における働き方の分類">統計における働き方の分類</h4>
@@ -472,8 +463,12 @@ window.Quarto = {
 </div>
 <p>労働力調査や就業構造基本調査といった統計調査では、働き方はこの図のような形で分類されています。</p>
 <p>このような分類が用いられるようになった背景には、1980年代に主婦層を中心にパートという働き方が広がり、1990年代から2000年代にかけては未婚者や高齢者、男性にもパート・アルバイトという働き方が浸透し、さらに2000年代初頭の規制緩和を経て派遣労働者や契約労働者が増加したことで、正規の職員・従業員とは異なる働き方として区別されるようになったという経緯があります。</p>
-<p>日本では、雇用形態の呼び名によって賃金に大きな差が生じることが従来から指摘されてきました。正社員とパートの間、あるいは短時間正社員とパートの間には大きな賃金格差がある一方で、パート雇用者の中で有期雇用者と無期雇用者を比べても、賃金格差はほとんど見られません。</p>
-<p>これに対し海外の研究では、有期雇用か無期雇用かという違いこそが賃金を左右する重要な要因であるとする結果が多く報告されています。</p>
+<p>日本では、雇用形態の呼び名によって賃金に大きな差が生じることが従来から指摘されてきました。</p>
+<ul>
+<li>正社員とパートの間、あるいは短時間正社員とパートの間には大きな賃金格差がある</li>
+<li>一方、パート雇用者の中で有期雇用者と無期雇用者を比べても、賃金格差はほとんど見られない</li>
+<li>これに対し海外の研究では、有期雇用か無期雇用かという違いこそが賃金を左右する重要な要因であるとする結果が多く報告されている</li>
+</ul>
 </section>
 </section>
 </section>
@@ -614,13 +609,14 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
