@@ -1,0 +1,267 @@
+<!-- 男女別に見た生活時間（有償労働・無償労働、1日あたり分）日本とOECD平均の比較（積み上げ棒グラフ）。
+     データ出典：内閣府男女共同参画局「男女共同参画白書 令和2年版」コラム1本文中の数値
+     （元図はOECD (2020), Balancing paid work, unpaid work and leisure を基にした14か国の国際比較だが、
+     本文に数値が明記されているのは日本とOECD平均のみのため、この2つに絞って作図） -->
+<div class="viz-root unpaidwork-chart">
+<style>
+.unpaidwork-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #c3c2b7;
+  --paid:           #2a78d6;
+  --unpaid:         #eb6834;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 10px;
+  margin: 20px 0 10px;
+  position: relative;
+}
+.unpaidwork-chart .uw-legend{
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+.unpaidwork-chart .uw-legend span{
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.unpaidwork-chart .uw-legend i{
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.unpaidwork-chart svg{
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.unpaidwork-chart .uw-seg{
+  transition: opacity .15s;
+}
+.unpaidwork-chart .uw-hit{
+  fill: transparent;
+  cursor: pointer;
+}
+.unpaidwork-chart .uw-val{
+  font-size: 15px;
+  fill: #fff;
+  text-anchor: middle;
+  font-weight: 700;
+}
+.unpaidwork-chart .uw-axis-text{
+  font-size: 19px;
+  fill: var(--text-secondary);
+}
+.unpaidwork-chart .uw-axis-text.muted{
+  fill: var(--text-muted);
+  font-size: 17px;
+}
+.unpaidwork-chart .uw-ratio{
+  font-size: 17px;
+  fill: var(--text-primary);
+  font-weight: 700;
+  text-anchor: middle;
+}
+.unpaidwork-chart .uw-grid{
+  stroke: var(--grid-line);
+  stroke-width: 1px;
+}
+.unpaidwork-chart .uw-axis{
+  stroke: var(--axis-line);
+  stroke-width: 1px;
+}
+.unpaidwork-chart .uw-tooltip{
+  position: absolute;
+  pointer-events: none;
+  background: #fff;
+  border: 1px solid var(--grid-line);
+  border-radius: 3px;
+  padding: 8px 12px;
+  font-size: .95rem;
+  line-height: 1.5;
+  box-shadow: 0 2px 6px rgba(11,11,11,.12);
+  display: none;
+  z-index: 5;
+  white-space: nowrap;
+}
+.unpaidwork-chart .uw-caption{
+  font-size: .78rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 2px;
+}
+.unpaidwork-chart details{
+  margin-top: 10px;
+  font-size: .85rem;
+}
+.unpaidwork-chart table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .8rem;
+  margin-top: 6px;
+}
+.unpaidwork-chart th, .unpaidwork-chart td{
+  border: 1px solid var(--grid-line);
+  padding: 4px 8px;
+  text-align: right;
+}
+.unpaidwork-chart th:first-child, .unpaidwork-chart td:first-child{
+  text-align: left;
+}
+</style>
+
+<div class="uw-legend">
+  <span><i style="background: var(--paid)"></i>有償労働</span>
+  <span><i style="background: var(--unpaid)"></i>無償労働</span>
+</div>
+
+<svg id="uw-svg" viewBox="0 0 860 500" role="img" aria-label="日本とOECD平均の男女別・有償労働と無償労働の時間（1日あたり分）棒グラフ"></svg>
+
+<div class="uw-caption">出典：内閣府男女共同参画局『男女共同参画白書 令和2年版』コラム1本文中の数値をもとに筆者作成（元データ：OECD (2020), Balancing paid work, unpaid work and leisure）</div>
+
+<details>
+<summary>データを表で見る</summary>
+<div id="uw-table"></div>
+</details>
+
+</div>
+
+<script>
+(function(){
+  // 内閣府男女共同参画局コラム1本文に明記された数値（分／日）。
+  // 元図は14か国の国際比較だが、本文に数値が明記されているのは日本とOECD平均のみのため、この2つに限定。
+  const groups = [
+    {name:"日本",     male:{paid:452, unpaid:41},  female:{paid:272, unpaid:224}},
+    {name:"OECD平均", male:{paid:317, unpaid:136}, female:{paid:218, unpaid:262}}
+  ];
+
+  const margin = {left:56, right:20, top:36, bottom:110};
+  const width = 860, height = 500;
+  const plotW = width - margin.left - margin.right;
+  const plotH = height - margin.top - margin.bottom;
+  const yMax = 500;
+
+  function yScale(v){ return margin.top + (yMax - v) / yMax * plotH; }
+
+  const barW = 108, gapWithin = 26, gapBetween = 110;
+  const groupW = barW * 2 + gapWithin;
+  const totalW = groupW * 2 + gapBetween;
+  const startX = margin.left + (plotW - totalW) / 2;
+
+  const svgns = "http://www.w3.org/2000/svg";
+  const svg = document.getElementById("uw-svg");
+  function el(tag, attrs){
+    const e = document.createElementNS(svgns, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  // y軸グリッド
+  for (let v = 0; v <= yMax; v += 100){
+    const y = yScale(v);
+    svg.appendChild(el("line", {class:"uw-grid", x1:margin.left, x2:width-margin.right, y1:y, y2:y}));
+    const t = el("text", {class:"uw-axis-text muted", x:margin.left-10, y:y+5, "text-anchor":"end"});
+    t.textContent = v;
+    svg.appendChild(t);
+  }
+  svg.appendChild(el("line", {class:"uw-axis", x1:margin.left, x2:margin.left, y1:margin.top, y2:height-margin.bottom}));
+  svg.appendChild(el("line", {class:"uw-axis", x1:margin.left, x2:width-margin.right, y1:height-margin.bottom, y2:height-margin.bottom}));
+  {
+    const t = el("text", {class:"uw-axis-text muted", x:margin.left, y:margin.top-16, "text-anchor":"start"});
+    t.textContent = "分/日";
+    svg.appendChild(t);
+  }
+
+  const root = document.querySelector(".unpaidwork-chart");
+  const tooltip = document.createElement("div");
+  tooltip.className = "uw-tooltip";
+  root.appendChild(tooltip);
+
+  function bar(x, person, label, groupName){
+    const yBase = height - margin.bottom;
+    const paidTop = yScale(person.paid);
+    const unpaidTop = yScale(person.paid + person.unpaid);
+    const gapPx = 2;
+
+    const segs = [
+      {top: paidTop, bottom: yBase, val: person.paid, cls:"paid", name:"有償労働"},
+      {top: unpaidTop, bottom: paidTop - gapPx, val: person.unpaid, cls:"unpaid", name:"無償労働"}
+    ];
+    segs.forEach(s => {
+      const h = Math.max(0, s.bottom - s.top);
+      const rect = el("rect", {
+        class:"uw-seg", x, y:s.top, width:barW, height:h,
+        fill: s.cls === "paid" ? "var(--paid)" : "var(--unpaid)", rx:3
+      });
+      svg.appendChild(rect);
+      if (h > 22){
+        const t = el("text", {class:"uw-val", x:x + barW/2, y:s.top + h/2 + 5});
+        t.textContent = s.val;
+        svg.appendChild(t);
+      }
+      const hit = el("rect", {class:"uw-hit", x, y:s.top, width:barW, height:h});
+      hit.addEventListener("mousemove", (evt) => {
+        tooltip.innerHTML = `<b>${groupName}・${label}</b><br>${s.name}：${s.val}分/日`;
+        tooltip.style.display = "block";
+        const rect2 = root.getBoundingClientRect();
+        tooltip.style.left = (evt.clientX - rect2.left + 14) + "px";
+        tooltip.style.top = (evt.clientY - rect2.top - 10) + "px";
+      });
+      hit.addEventListener("mouseleave", () => { tooltip.style.display = "none"; });
+      svg.appendChild(hit);
+    });
+
+    const lt = el("text", {class:"uw-axis-text", x:x + barW/2, y:yBase + 24, "text-anchor":"middle"});
+    lt.textContent = label;
+    svg.appendChild(lt);
+  }
+
+  groups.forEach((g, gi) => {
+    const gx = startX + gi * (groupW + gapBetween);
+    bar(gx, g.male, "男性", g.name);
+    bar(gx + barW + gapWithin, g.female, "女性", g.name);
+
+    const gt = el("text", {class:"uw-axis-text", x:gx + groupW/2, y:height - margin.bottom + 48, "text-anchor":"middle"});
+    gt.style.fontWeight = "700";
+    gt.textContent = g.name;
+    svg.appendChild(gt);
+
+    const paidRatio = (g.male.paid / g.female.paid).toFixed(1);
+    const unpaidRatio = (g.female.unpaid / g.male.unpaid).toFixed(1);
+
+    const rt1 = el("text", {class:"uw-ratio", x:gx + groupW/2, y:height - margin.bottom + 72, "text-anchor":"middle"});
+    rt1.textContent = `有償 男/女＝${paidRatio}倍`;
+    rt1.style.fill = "var(--paid)";
+    svg.appendChild(rt1);
+
+    const rt2 = el("text", {class:"uw-ratio", x:gx + groupW/2, y:height - margin.bottom + 96, "text-anchor":"middle"});
+    rt2.textContent = `無償 女/男＝${unpaidRatio}倍`;
+    rt2.style.fill = "var(--unpaid)";
+    svg.appendChild(rt2);
+  });
+
+  // 表形式のフォールバック
+  const tableDiv = document.getElementById("uw-table");
+  let html = "<table><thead><tr><th>区分</th><th>有償労働(分)</th><th>無償労働(分)</th><th>合計(分)</th></tr></thead><tbody>";
+  groups.forEach(g => {
+    ["male","female"].forEach(k => {
+      const p = g[k];
+      html += `<tr><td>${g.name}・${k === "male" ? "男性" : "女性"}</td><td>${p.paid}</td><td>${p.unpaid}</td><td>${p.paid + p.unpaid}</td></tr>`;
+    });
+  });
+  html += "</tbody></table>";
+  tableDiv.innerHTML = html;
+})();
+</script>

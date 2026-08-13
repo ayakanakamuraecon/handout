@@ -272,11 +272,15 @@ body{
   .callout-header{
     padding: 10px 16px;
     font-weight: 700;
-    font-size: 1.0625rem;
+    font-size: 1.1875rem;
     letter-spacing: .02em;
     background: $seminar-accent-soft;
     color: $seminar-accent;
     border-bottom: 1px solid $seminar-line;
+
+    .callout-title-container{
+      font-size: 1.1875rem;
+    }
   }
   .callout-icon-container{ display: none; }
 
