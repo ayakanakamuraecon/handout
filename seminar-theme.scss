@@ -283,6 +283,8 @@ body{
   .callout-body{
     background: #fff;
     padding: 14px 18px;
+    // Quarto標準の .callout-body{font-size:.9rem} を打ち消し、本文と同じサイズに揃える
+    font-size: 1em;
 
     p:last-child{ margin-bottom: 0; }
     // 本文内の <strong> が青リンクと混同されないよう本文色で固定
@@ -475,7 +477,11 @@ body{
   margin: 20px 0 28px;
   padding: 0;
 }
-.seminar-steps ol li{
+// 直下の子(>)に限定する。子孫セレクタ(空白区切り)のままだと、
+// 各ステップ内に補足の箇条書き(ul li)をネストしたとき、
+// そのサブ項目にまで丸数字スタイル・カウンターが適用されて
+// 番号がズレてしまうため（例: ①②のはずが①のサブ項目が②を消費し③になる）
+.seminar-steps ol > li{
   counter-increment: seminar-step;
   position: relative;
   background: #fff;
@@ -485,7 +491,7 @@ body{
   margin: 0 0 8px;
   min-height: 30px;
 }
-.seminar-steps ol li::before{
+.seminar-steps ol > li::before{
   content: counter(seminar-step);
   position: absolute;
   left: 14px;
@@ -501,7 +507,7 @@ body{
   font-size: .8rem;
   font-weight: 700;
 }
-.seminar-steps ol li > :last-child{
+.seminar-steps ol > li > :last-child{
   margin-bottom: 0;
 }
 
