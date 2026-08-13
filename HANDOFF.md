@@ -21,7 +21,7 @@
 - [x] デザイン統一＋言い換え作業一式をコミット（`117a46d`、家PC 2026-08-10）
 - [x] labor_intro.qmdの構造化4件（箇条書き化2件、seminar-tip変換、メリット/デメリット表記）＋HANDOFF.md刷新をコミット（`87ce0bb`、家PC 2026-08-10）
 - [x] labor_intro.qmdの定義ボックス化等＋CSS不具合2件（callout文字サイズ、seminar-steps番号ズレ）の修正をコミット（`37a2590`、家PC 2026-08-13）
-- [ ] ローカルコミット（`117a46d`, `87ce0bb`, `873e4b7`, `37a2590`）を`origin/main`へpush。試行したがClaude Codeの実行環境では対話的なGitHub認証（GCMのブラウザログイン等）がブロックされており失敗（2026-08-10、家PC）。`credential.helper`を`manager`に設定済みだが未解決。ユーザーが普通のターミナルから手動でpush（初回ログインすれば以後Claude Codeからもpush可能になるはず）するか、PAT発行のいずれかで対応する方針。当面は保留してよいとユーザー確認済み。
+- [x] ローカルコミット（`117a46d`〜`bab810c`、計6コミット）を`origin/main`へpush完了（2026-08-13、家PC）。2026-08-10時点では対話的なGitHub認証がブロックされpush失敗していたが、`credential.helper=manager`設定後、再試行したら`Everything up-to-date`で成功（何らかの形で認証が済んでいた模様。詳細な原因は未確認）。
 - [ ] `labor_search.qmd`末尾のコメントアウトされた未使用下書き（「失業と不安定雇用」セクション）の扱いを検討（要ユーザー相談。現状は非表示のまま放置でよい）
 - [x] labor_intro.qmd のさらなる構造化（「スライド資料のように、一目で認知しやすく読みやすい資料に」というユーザーの意図に基づく作業。洗い出し済み候補8件、全件完了2026-08-13）
   - [x] 「賃金率」節、生産性差に関する3つの問いかけを箇条書き化（2026-08-10）
@@ -36,6 +36,7 @@
 - [x] `.callout-note`等の定義ボックスの文字サイズが他の本文より小さく見える不具合を修正。Quarto標準CSSが`.callout-body{font-size:.9rem}`を設定しており`seminar-theme.scss`側で未上書きだったため。`.callout-body`に`font-size: 1em;`を追加して解消（`seminar-theme.scss`はプロジェクト共通のため、labor_intro.qmdだけでなく`quarto render`（引数なし）でプロジェクト全体をrenderして反映）（2026-08-13）
 - [x] `.seminar-steps`の丸数字リストで、各ステップ内にネストした補足の箇条書き（`-`）が丸数字カウンターを消費してしまい番号がズレる不具合を修正（例：①のサブ項目が②を消費し、本来②のはずの項目が③として表示される）。原因は`seminar-theme.scss`の`.seminar-steps ol li`が子孫セレクタで、ネストした`ul li`にもカウンターと丸数字スタイルが適用されていたこと。`.seminar-steps ol > li`のように直下の子（`>`）に限定して解消（ネストした`ul`の見た目は素の状態に戻し、独自スタイルは追加していない）。プロジェクト共通の`seminar-theme.scss`の修正のため、`.seminar-steps`を使う全ファイル（labor_hc/labor_supdem/labor_search/labor_intro）に一括で反映される（2026-08-13）
   - labor_intro.qmdの構造化候補（洗い出し済み8件）はこれで全件完了（2026-08-13）
+- [x] labor_intro.qmd末尾付近にタイトルなしの単独`##`が紛れ込んでおり、空の`<h2>`と不自然な余白が生じていた問題を修正。`##`行を削除したところ区切りの水平線も消えたため、`---`（Markdownの水平線）に置き換えて区切りは維持（2026-08-13）
 
 ## 直近の意思決定とその理由
 
@@ -55,7 +56,6 @@
 ## 未解決の懸念・保留事項
 
 - `quarto render` 実行時、ロックされたファイル（`site_libs` 配下など）の削除に失敗する警告が頻発する。通常は実害なく出力は正常に生成されるが、`<file>_files`（空の支援ファイルディレクトリ）の削除失敗は警告ではなくエラーで処理が止まり、出力が更新されないことがある（2026-08-13、labor_intro.qmdで発生）。この場合はrender失敗時に出力（`docs/*.html`）が更新されているか必ず確認し、更新されていなければ該当の`<file>_files`フォルダを手動削除してから再renderする。
-- GitHub認証（`origin/main`へのpush）がClaude Codeの実行環境から行えない（上記TODO参照）。ユーザーが普通のターミナルから一度手動ログインすれば解消する可能性がある。
 - git操作（status/commit）がDropbox同期プロセスとの競合で一時的にハング・タイムアウトすることがある（上記参照）。頻発する場合は `.git` フォルダもDropbox同期除外（`com.dropbox.ignored`）の対象にすることを検討してもよい。
 - 職場PCのホスト名が未登録（`/Dropbox/CLAUDE.md`の「PCの識別」表を参照。次回職場PCで作業する際に追記する）。
 
@@ -66,3 +66,4 @@
 - `docs/styles.css` に誤って手動CSSを書き込んでいた問題: 内容を `seminar-theme.scss` に統合し、`docs/styles.css` を本来の空スタブに戻すことで解消（2026-08-06）。
 - `dataintro_estimation.html`（リポジトリ直下、`docs/`配下ではない方）が作業ディレクトリ上で削除扱いになっていた件: ユーザー確認の結果、対応不要と判明（`.qmd`が残っており `quarto render` で `docs/` 配下に正しく生成されるため）（2026-08-06）。
 - `seminar_bunken.html`（直下）と `docs/seminar_bunken.html` の、無関係な未コミット変更: 別PCでの作業によるものとユーザーが確認済み。現状のものを最新として維持し、触らない（2026-08-06）。
+- GitHub認証（`origin/main`へのpush）がClaude Codeの実行環境から行えない問題: `credential.helper=manager`設定後、再度 `git push origin main` を実行したら解消（2026-08-13）。詳細な原因（何が認証を通したか）は不明だが、再現時はまず素朴に再試行してみるとよい。
