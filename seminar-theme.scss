@@ -535,3 +535,30 @@ body{
 @media (max-width: 700px){
   .seminar-compare{ flex-direction: column; }
 }
+
+// ---------------------------------------------------------------
+// 現在位置パンくずバー（H1 > H2 > H3、breadcrumb.html から挿入）
+// ---------------------------------------------------------------
+
+#seminar-breadcrumb{
+  display: none; // 初期状態は非表示。見出しが見つかった時点でJSがblockにする
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: 1px solid $seminar-line;
+  // 背景をウィンドウ幅いっぱいに広げる（親の#quarto-document-contentがmax-width:880pxのため）
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+#seminar-breadcrumb-inner{
+  // 幅・左マージンはJSが#quarto-document-contentの実測位置に合わせて設定する
+  box-sizing: border-box;
+  padding: 8px 0;
+  font-family: $font-family-sans-serif;
+  font-size: .85rem;
+  color: $seminar-sub;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

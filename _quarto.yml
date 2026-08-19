@@ -30,6 +30,7 @@ format:
       - seminar-theme.scss
     css: styles.css
     toc: false
+    include-before-body: breadcrumb.html
 
 watch:
   input: true   # 入力ファイルの変更を監視

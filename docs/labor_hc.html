@@ -44,7 +44,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d46e40979eb8ca4414e09cf98e1f711e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-25597b1243aeaf77c6e5ffc9d4ade8b8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -116,6 +116,66 @@ window.Quarto = {
     
 <!-- main -->
 <main class="content" id="quarto-document-content">
+<!-- 現在位置パンくずバー（H1 > H2 > H3、Quartoのタイトルh1は除外）。プロジェクト全体の.qmdに _quarto.yml の include-before-body 経由で挿入 -->
+<!-- 外側divはウィンドウ幅いっぱいのフルブリード背景、内側divが本文と同じ幅・位置にテキストを収める -->
+<div id="seminar-breadcrumb" aria-hidden="true"><div id="seminar-breadcrumb-inner"></div></div>
+<script>
+(function(){
+  function init(){
+    var bar = document.getElementById('seminar-breadcrumb');
+    var inner = document.getElementById('seminar-breadcrumb-inner');
+    var container = document.getElementById('quarto-document-content');
+    if (!bar || !inner || !container) return;
+
+    var headings = Array.prototype.slice.call(
+      container.querySelectorAll('h1:not(.title), h2, h3')
+    );
+    if (!headings.length) return;
+
+    var current = {h1: null, h2: null, h3: null};
+
+    // Quartoのpage-columnsグリッドは固定pxと可変frが混在した複雑な列定義のため、
+    // margin:auto等での概算ではなく、本文コンテナの実際の位置をJSで測って正確に合わせる
+    function alignInner(){
+      var rect = container.getBoundingClientRect();
+      inner.style.marginLeft = rect.left + 'px';
+      inner.style.width = rect.width + 'px';
+    }
+
+    function update(){
+      var offset = bar.offsetHeight + 4;
+      var next = {h1: null, h2: null, h3: null};
+      for (var i = 0; i < headings.length; i++){
+        var h = headings[i];
+        if (h.getBoundingClientRect().top > offset) break;
+        var level = h.tagName.toLowerCase();
+        var text = h.textContent.trim();
+        if (level === 'h1'){ next.h1 = text; next.h2 = null; next.h3 = null; }
+        else if (level === 'h2'){ next.h2 = text; next.h3 = null; }
+        else if (level === 'h3'){ next.h3 = text; }
+      }
+      if (next.h1 === current.h1 && next.h2 === current.h2 && next.h3 === current.h3) return;
+      current = next;
+      var parts = [current.h1, current.h2, current.h3].filter(Boolean);
+      inner.textContent = parts.join(' > ');
+      bar.style.display = parts.length ? 'block' : 'none';
+    }
+
+    alignInner();
+    update();
+    window.addEventListener('scroll', update, {passive: true});
+    window.addEventListener('resize', function(){
+      alignInner();
+      update();
+    });
+  }
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
