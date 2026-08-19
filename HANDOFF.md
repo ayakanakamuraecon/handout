@@ -53,7 +53,8 @@
   - 「準固定費用モデル」節（スコープ外としていた「労働需要」章）の一部の表で、余分な空列（`||||||`→`|||||`など列数の不一致）を修正
   - **不具合を1件発見・修正**：ユーザーが追加した「限界（マージナル）」callout-noteの属性が`::: {.callout-note appearance="default" icon="false"} {#marginal}`のように波括弧が2つに分かれており、Pandocの仕様（属性は1つの`{...}`にまとめる必要がある）に反してcallout自体が一切認識されず、生のMarkdown記法がそのまま本文に表示される不具合が発生（render時に`[WARNING] The following string was found in the document: :::`）。`{#marginal}`を先頭の属性ブロックに統合（`{.callout-note appearance="default" icon="false" #marginal}`）して解消。render後、警告なし・`id="marginal"`のcalloutと`href="#marginal"`のリンクが正しく機能することを確認済み
   - あわせて`images/workinghour.txt`（workhour_chart.htmlの元データをユーザーが保存した参考ファイル。`_quarto.yml`の`resources`に`images/`が含まれるため`docs/images/`にも自動コピーされる）が新規追加されているのを確認。特に問題なし
-- [ ] **上記すべて（labor_supdem.qmdのseminar-steps構造化＋ユーザーによる限界便益への用語整理＋breadcrumbバー機能）をコミット・push**（未実施、次にやること）
+- [x] 上記すべて（labor_supdem.qmdのseminar-steps構造化＋ユーザーによる限界便益への用語整理＋breadcrumbバー機能）をコミット（`2f05fa1`、家PC 2026-08-19）
+- [x] `origin/main`へpush完了（`cefd9e5..2f05fa1`、家PC 2026-08-19）
 
 ## 直近の意思決定とその理由
 
