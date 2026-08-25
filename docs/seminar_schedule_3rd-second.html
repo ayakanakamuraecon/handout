@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>3回生後期スケジュール</title>
+<style>
+  :root{
+    --ink:#242a30;
+    --paper:#f7f8fa;
+    --line:#d5dbe2;
+    --accent:#2e5476;      /* 落ち着いた紺青 */
+    --accent-soft:#e4ecf3;
+    --sub:#6b6558;
+    --good:#3d6b5c;
+    --bad:#9c4a3c;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+    line-height:1.75;
+  }
+  .page{
+    max-width:920px;
+    margin:0 auto;
+    padding:56px 40px 120px;
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.15em;
+    color:var(--accent);
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  h1{
+    font-size:34px;
+    margin:0 0 6px;
+    font-weight:700;
+    letter-spacing:.02em;
+  }
+  .lead{
+    color:var(--sub);
+    font-size:15px;
+    margin:0 0 40px;
+    padding-bottom:32px;
+    border-bottom:1px solid var(--line);
+  }
+  h2{
+    font-size:22px;
+    margin:64px 0 20px;
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    scroll-margin-top:20px;
+  }
+  h2 .num{
+    font-size:14px;
+    color:var(--accent);
+    font-weight:700;
+    border:1px solid var(--accent);
+    border-radius:999px;
+    padding:2px 10px;
+    letter-spacing:.05em;
+    white-space:nowrap;
+  }
+  h3{
+    font-size:16px;
+    margin:28px 0 12px;
+    color:var(--ink);
+    font-weight:700;
+  }
+  h4{
+    font-size:14.5px;
+    margin:24px 0 10px;
+    color:var(--accent);
+    font-weight:700;
+  }
+  p{margin:0 0 14px;}
+  ul,ol{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px;}
+  li ul,li ol{margin-top:6px;}
+
+  /* 補足説明カード */
+  .callout{
+    background:var(--accent-soft);
+    border-left:4px solid var(--accent);
+    padding:18px 22px;
+    border-radius:2px;
+    margin:20px 0 28px;
+    font-size:15px;
+  }
+  .callout ul{margin:10px 0 0;}
+  .callout ul:last-child{margin-bottom:0;}
+
+  /* 良い例／避ける例の対比 */
+  .compare{
+    display:flex;
+    gap:16px;
+    margin:20px 0 28px;
+  }
+  .compare-box{
+    flex:1;
+    border-radius:2px;
+    padding:16px 18px;
+    font-size:14px;
+  }
+  .compare-box.bad{
+    background:#fbf1ee;
+    border:1px solid #e6c9c1;
+  }
+  .compare-box.bad .tag{color:var(--bad);}
+  .compare-box.good{
+    background:#e3efe9;
+    border:1px solid #c2ddd0;
+  }
+  .compare-box.good .tag{color:var(--good);}
+  .compare-box .tag{
+    font-weight:700;
+    font-size:13px;
+    margin-bottom:8px;
+    display:block;
+  }
+  .compare-box ul{margin:10px 0 0; padding-left:20px;}
+  .compare-box ul:last-child{margin-bottom:0;}
+  .compare-box li{margin-bottom:4px;}
+
+  /* 到達目標・求めていることのチェックリスト */
+  .checklist{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:18px 22px;
+    margin:16px 0 28px;
+  }
+  .checklist div{
+    display:flex;
+    gap:10px;
+    padding:6px 0;
+    font-size:14.5px;
+  }
+  .checklist div::before{
+    content:"✓";
+    color:var(--good);
+    font-weight:700;
+  }
+
+  /* 各回セクションを囲むカード */
+  .session{
+    background:#fff;
+    border:1px solid var(--line);
+    border-top:4px solid var(--accent);
+    padding:28px 30px 8px;
+    margin-bottom:8px;
+  }
+  .session h2{margin:0 0 18px;}
+  .session-note{
+    background:var(--accent-soft);
+    border-left:4px solid var(--accent);
+    padding:10px 16px;
+    margin:10px 0 4px;
+    font-size:13.5px;
+    color:var(--ink);
+    border-radius:2px;
+  }
+  .goal-label{
+    font-size:13px;
+    font-weight:700;
+    color:var(--accent);
+    letter-spacing:.05em;
+    margin:20px 0 8px;
+  }
+
+  /* 目次（アンカーリンク） */
+  .related-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px;}
+  .related-nav a{
+    font-size:12.5px; color:var(--sub); text-decoration:none;
+    padding:5px 12px; border:1px solid var(--line); border-radius:999px; background:#fff;
+  }
+  .related-nav a.current{color:#fff; background:var(--accent); border-color:var(--accent); font-weight:700;}
+
+  .toc-return{
+    margin-top:60px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:13px;
+    color:var(--sub);
+  }
+  .toc-return a{color:var(--accent); text-decoration:none;}
+
+  .back-to-toc{
+    display:inline-block;
+    margin:18px 0 0;
+    font-size:12.5px;
+    color:var(--sub);
+    text-decoration:none;
+  }
+  .back-to-toc:hover{color:var(--accent);}
+
+  @media (max-width:700px){
+    .compare{flex-direction:column;}
+    .page{padding:32px 20px 80px;}
+    .session{padding:22px 18px 4px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>3回生後期スケジュール</h1>
+  <p class="lead">個人研究（第16〜23回）の各回の進め方と、毎回の到達目標をまとめています。後期を通じて、卒論の土台となる研究計画書（専門演習レポート）を作成します。</p>
+
+  <h2 id="ichizuke"><span class="num">総論</span>後期の位置づけ</h2>
+
+  <h3>全体目標</h3>
+  <div class="callout">
+    卒論の土台となる<strong>研究計画書（専門演習レポート）</strong>を作成する
+    <ul>
+      <li>自分自身が卒論で取り組みたいテーマを見つける</li>
+      <li>テーマに沿ったリサーチクエスチョン（RQ）を決める</li>
+      <li>関連する先行研究を調べ、自分の研究の位置づけを説明できるようにする</li>
+    </ul>
+  </div>
+  <div class="compare">
+    <div class="compare-box good">
+      <span class="tag">〇 研究計画に求めること</span>
+      <strong>4回生の初めから卒業研究に着手できるような準備をすること</strong>
+      <ul>
+        <li>RQが良い問いの条件を満たしている</li>
+        <li>RQに対応するデータの目星がついている</li>
+        <li>参考文献が3本以上見つかっている</li>
+        <li>参考文献と自分のRQの差分を説明できる</li>
+      </ul>
+    </div>
+    <div class="compare-box bad">
+      <span class="tag">✕ 研究計画に求めないこと</span>
+      <strong>綿密な計画を立てること</strong>
+      <ul>
+        <li>卒論の章立て・目次を最初から確定させる</li>
+        <li>使用するデータや分析手法を早々に一つに絞り込む</li>
+        <li>分析結果や結論まで先に決める</li>
+        <li>スケジュールの日程まで細かく決める</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>注意事項</h3>
+  <ul>
+    <li>困ったことはTeamsの質問スレッドか、授業中に直接相談してください。</li>
+    <li>個人研究ワークファイル（<code>template_個人研究ワークファイル.docx</code>）を書き進めながら計画書を完成させてください。</li>
+    <li>研究に必要なものは、個人フォルダを作成し、自由に共有してください（例：<code>~2028卒/yamadataro/code.R</code>、<code>~2028卒/yamadataro/bunken1.pdf</code> 等）。</li>
+  </ul>
+
+  <h2 id="kaiichiran"><span class="num">目次</span>各回一覧</h2>
+  <nav class="related-nav">
+    <a href="#kai16">第16回｜振り返り・後期ガイダンス</a>
+    <a href="#kai17">第17回｜RQの絞り方・仮説の立て方</a>
+    <a href="#kai18">第18回｜文献検索・先行研究の位置づけ</a>
+    <a href="#kai19">第19回｜研究計画書の作成①</a>
+    <a href="#kai20">第20回｜研究計画書の作成②</a>
+    <a href="#kai21">第21回｜研究計画書の作成③</a>
+    <a href="#kai22">第22回｜研究計画書の発表①</a>
+    <a href="#kai23">第23回｜研究計画書の発表②</a>
+  </nav>
+
+  <div class="session">
+    <h2 id="kai16"><span class="num">第16回</span>合同ゼミの振り返り・後期ガイダンス</h2>
+    <ol>
+      <li>合同ゼミの振り返り
+        <ul>
+          <li>グループごとに合同ゼミを振り返る</li>
+          <li>教員から全体への講評</li>
+        </ul>
+      </li>
+      <li>後期の進め方の説明
+        <ul>
+          <li>資料の場所を確認する</li>
+          <li>論文とは何か、卒論分量について説明</li>
+          <li>後期の目標を確認</li>
+        </ul>
+      </li>
+      <li>研究計画書と卒論テーマ例の紹介
+        <ul>
+          <li>研究計画書のテンプレート</li>
+          <li>過去の卒論のテーマを紹介する</li>
+        </ul>
+      </li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>後期で何をやるのか、最終的に研究計画書を提出することをわかっている</div>
+      <div>研究に関する資料を自分で確認できる</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai17"><span class="num">第17回</span>RQの絞り方・仮説の立て方</h2>
+    <ol>
+      <li>リサーチクエスチョン（RQ）とは何か
+        <ul>
+          <li>研究の出発点となる「問い」の立て方を学ぶ</li>
+          <li>良い問いの5つの条件を知る</li>
+        </ul>
+      </li>
+      <li>演習：問いを作ってみる
+        <ul>
+          <li>最近気になっていることや違和感を思いつくだけ書き出す</li>
+          <li>書き出したものを「問い」の形に変換する</li>
+          <li>自分の問いを5つの基準でチェックする</li>
+          <li>他の人の問いを、同じ基準でチェックする</li>
+        </ul>
+        <div class="session-note">この演習は問いを立てる練習であり、ここで立てた問いを実際の卒論テーマにする必要はありません。</div>
+      </li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>良い問いの5つの条件を理解している</div>
+      <div>自分の関心を問いの形にする方法を実践している</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai18"><span class="num">第18回</span>文献検索・先行研究の位置づけ</h2>
+    <ol>
+      <li>文献の探し方と使い方
+        <ul>
+          <li>Google Scholar、CiNii Research などの使い方を学ぶ</li>
+          <li>AI（ChatGPTなど）を使うときの注意点</li>
+          <li>信頼できる文献の見分け方</li>
+          <li>先行研究の位置づけ</li>
+        </ul>
+      </li>
+      <li>演習：文献を探して読む
+        <ul>
+          <li>自分の問いに関連する文献を1本、実際に探して確定させる</li>
+          <li>その文献の<strong>要旨・序論・結論</strong>を読み、以下を書き出す
+            <ul>
+              <li>この文献で分かっていること</li>
+              <li>自分が明らかにしたいこととの差分</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>信頼できる文献を1本、自分で見つけられている</div>
+      <div>その文献と自分の問いの差分を言葉にできている</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai19"><span class="num">第19回</span>研究計画書の作成①</h2>
+    <ol>
+      <li>研究計画書の作り方
+        <ul>
+          <li>思考メモと研究計画書テンプレートの内容を確認する</li>
+        </ul>
+      </li>
+      <li>演習：思考メモの記入
+        <ul>
+          <li>ワークファイルの「研究計画書のためのメモ」を埋めていく</li>
+          <li>分からないことは教員に相談する</li>
+        </ul>
+      </li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>自分の研究の「現状把握」「問題意識」「研究目的」について、かけるところから書き始められている</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai20"><span class="num">第20回</span>研究計画書の作成②</h2>
+    <ol>
+      <li>導入
+        <ul>
+          <li>演習内容を確認する</li>
+        </ul>
+      </li>
+      <li>演習：思考メモの記入と研究計画書の作成
+        <ul>
+          <li>ワークファイルの「研究計画書のためのメモ」を埋めていく</li>
+          <li>完成した部分をもとに計画書を作成する</li>
+          <li>分からないことは教員に相談する</li>
+        </ul>
+      </li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>思考メモがほぼ完成している</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai21"><span class="num">第21回</span>研究計画書の作成③（相互フィードバック）</h2>
+    <ol>
+      <li>相互フィードバックの進め方
+        <ul>
+          <li>フィードバックシートの使い方を確認する</li>
+        </ul>
+      </li>
+      <li>演習：相互フィードバック
+        <ul>
+          <li>3人1組で実施</li>
+          <li>各自2分で自分の計画を口頭で説明する</li>
+          <li>他のメンバーがシートに沿ってコメントを書く</li>
+          <li>書いたコメントを口頭で伝える</li>
+        </ul>
+      </li>
+      <li>演習：計画書の修正
+        <ul>
+          <li>受け取ったコメントを踏まえて計画書を修正する</li>
+          <li>分からないことは教員に相談する</li>
+        </ul>
+      </li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>他のメンバーから受けたコメントを、自分の計画書に反映できている</div>
+      <div>他のメンバーの計画書に対して、建設的なコメントができている</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai22"><span class="num">第22回</span>研究計画書の発表①</h2>
+    <ol>
+      <li>導入
+        <ul>
+          <li>発表順と質疑の進め方を確認する</li>
+        </ul>
+      </li>
+      <li>発表
+        <ul>
+          <li>1人7分（発表3分、質疑4分）の口頭発表×10人</li>
+        </ul>
+      </li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>自分の研究計画を2〜3分で明確に説明できる</div>
+      <div>他のメンバーの発表を聞き、質問やコメントができている</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai23"><span class="num">第23回</span>研究計画書の発表②（45分）</h2>
+    <ol>
+      <li>導入
+        <ul>
+          <li>発表順と質疑の進め方を確認する</li>
+        </ul>
+      </li>
+      <li>発表
+        <ul>
+          <li>1人7分（発表3分、質疑4分）の口頭発表×4人</li>
+        </ul>
+      </li>
+      <li>後期のまとめ
+        <ul>
+          <li>全体を通したフィードバック</li>
+          <li>4回生（卒論執筆）に向けての展望</li>
+        </ul>
+      </li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>作成した研究計画書を発表できている</div>
+      <div>卒論執筆に向けて、具体的なイメージを持てている</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="toc-return">
+    <a href="https://wakayamauniv.sharepoint.com/:u:/r/sites/a_2025339_Grp/SitePages/%E7%9B%AE%E6%AC%A1.aspx?csf=1&web=1&e=Rscprh" target="_blank" rel="noopener">← 目次に戻る</a>
+  </div>
+</div>
+</body>
+</html>
