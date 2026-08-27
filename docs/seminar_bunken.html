@@ -93,12 +93,16 @@
   .format-box{
     background:#fff; border:1px solid var(--line); border-left:4px solid var(--sub);
     padding:16px 22px; margin:16px 0 24px; font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
-    font-size:13.5px; line-height:2.1;
+    font-size:13.5px; line-height:1.7;
   }
   .format-box .flabel{
     font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
-    color:var(--sub); font-size:12.5px; margin-right:8px; display:inline-block; min-width:6.5em;
+    color:var(--accent); font-size:12px; font-weight:700; margin-bottom:2px;
   }
+  .format-box .ftext{padding-left:14px; overflow-wrap:break-word;}
+  .format-box .fmt-entry{margin-bottom:14px;}
+  .format-box .fmt-entry:last-child{margin-bottom:0;}
+  .format-box .fexample{color:var(--sub); font-size:12px; opacity:.85; margin-top:2px;}
 
   /* 引用は2ヶ所：縦2ブロック構成 */
   .cite-steps{display:flex; flex-direction:column; gap:14px; margin:20px 0 28px;}
@@ -269,9 +273,61 @@ RQ：［自分のRQを入力］</div>
 
   <h3>書式サンプル</h3>
   <div class="format-box">
-    <div><span class="flabel">日本語論文</span>著者名（年次）「論文タイトル」『雑誌名』X巻（X号）, ページ数.</div>
-    <div><span class="flabel">英語論文</span>著者名（年次）"Title." Journal Name, vol(noX), pp.XX-XX</div>
-    <div><span class="flabel">Web サイト</span>著者 or 機関名（年次）「タイトル」URL（閲覧日：XXXX年XX月XX日）</div>
+    <div class="fmt-entry">
+      <div class="flabel">日本語論文</div>
+      <div class="ftext">著者名（年次）「論文タイトル」『雑誌名』X巻（X号）, ページ数.</div>
+      <div class="ftext fexample">例：架空太郎（2020）「たぬきの化かし行動が地域経済に与える影響」『空想経済学会誌』99巻（9号）, 999-1009頁.</div>
+    </div>
+    <div class="fmt-entry">
+      <div class="flabel">英語論文</div>
+      <div class="ftext">著者名（年次）"Title." Journal Name, vol(noX), pp.XX-XX</div>
+      <div class="ftext fexample">例：Fictional, T. (2019) "Minimum Wage and Employment in Japan." Journal of Labor Economics, 37(2), pp.245-270.</div>
+    </div>
+    <div class="fmt-entry">
+      <div class="flabel">Web サイト</div>
+      <div class="ftext">著者 or 機関名（年次）「タイトル」URL（閲覧日：XXXX年XX月XX日）</div>
+      <div class="ftext fexample">例：厚生労働省（2024）「賃金構造基本統計調査の概要」https://www.mhlw.go.jp/toukei/list/chinginkouzou.html（閲覧日：2024年10月1日）</div>
+    </div>
+    <div class="fmt-entry">
+      <div class="flabel">日本語書籍</div>
+      <div class="ftext">著者名（年次）『書名』出版社.</div>
+      <div class="ftext fexample">例：架空太郎（2020）『労働経済学入門』有斐閣.</div>
+    </div>
+    <div class="fmt-entry">
+      <div class="flabel">英語書籍</div>
+      <div class="ftext">著者名（年次）Title. Publisher.</div>
+      <div class="ftext fexample">例：Fictional, T. (2018) Introduction to Labor Economics. Princeton University Press.</div>
+    </div>
+    <div class="fmt-entry">
+      <div class="flabel">書籍中の1章（編著の1章）</div>
+      <div class="ftext">著者名（年次）「章タイトル」編者名（編）『書名』出版社, ページ数.</div>
+      <div class="ftext fexample">例：架空花子（2020）「保育政策の効果」空想次郎（編）『家族と労働の経済学』ミネルヴァ書房, pp.123-145.</div>
+    </div>
+    <div class="fmt-entry">
+      <div class="flabel">白書</div>
+      <div class="ftext">機関名（年次）『白書名』.</div>
+      <div class="ftext fexample">例：厚生労働省（2024）『令和6年版 労働経済の分析』.</div>
+    </div>
+    <div class="fmt-entry">
+      <div class="flabel">政府統計</div>
+      <div class="ftext">機関名（年次）「統計名」（閲覧日：XXXX年XX月XX日）URL.</div>
+      <div class="ftext fexample">例：総務省統計局（2024）「労働力調査（基本集計）」（閲覧日：2024年10月1日）https://www.stat.go.jp/data/roudou/.</div>
+    </div>
+    <div class="fmt-entry">
+      <div class="flabel">政府機関・シンクタンクのレポート</div>
+      <div class="ftext">著者名（年次）「タイトル」機関名 資料種別 番号.</div>
+      <div class="ftext fexample">例：架空太郎（2020）「最低賃金と雇用の実証分析」労働政策研究・研修機構 ディスカッションペーパー DP20-99.</div>
+    </div>
+    <div class="fmt-entry">
+      <div class="flabel">ワーキングペーパー（英語）</div>
+      <div class="ftext">著者名（年次）"Title." Institution Working Paper Series No. XX.</div>
+      <div class="ftext fexample">例：Fictional, T. (2020) "Wage Determination in Japan." NBER Working Paper No. 99999.</div>
+    </div>
+    <div class="fmt-entry">
+      <div class="flabel">国際機関の資料</div>
+      <div class="ftext">機関名（年次）Title. Publisher.</div>
+      <div class="ftext fexample">例：OECD (2023) Global Employment Report 2023. OECD Publishing.</div>
+    </div>
   </div>
   <p style="color:var(--sub);">
     ※ Google Scholar 検索結果の引用マークからコピペできる場合があります。<br>
