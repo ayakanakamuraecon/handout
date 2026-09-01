@@ -9,3 +9,6 @@
 !docs/site_libs/
 
 **/*.quarto_ipynb
+
+# Dropboxアプリ自体のクラッシュログが誤って生成されることがある（本プロジェクトとは無関係）
+/debug.log
