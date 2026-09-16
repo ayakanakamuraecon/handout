@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>労働市場における需要と供給 – 講義資料</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -35,10 +41,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e59d30a03d515bb4d255577a1fec75ff.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d2652e7066801c0a686b38290f1e463a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -81,7 +87,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -203,7 +209,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-労働市場
+<span class="screen-reader-only">Note</span>労働市場
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -229,7 +235,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-労働市場のモデル
+<span class="screen-reader-only">Note</span>労働市場のモデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -247,7 +253,7 @@ window.Quarto = {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_sdcurve.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_sdcurve.png" class="img-fluid figure-img"></p>
 <figcaption>労働市場のモデル</figcaption>
 </figure>
 </div>
@@ -284,7 +290,7 @@ window.Quarto = {
 <p>たとえば景気が良くなると、同じ賃金水準でも労働者を雇いたい企業が増える（<strong>労働需要の増加</strong>）ため、<strong>労働需要曲線が右上方向にシフト</strong>します。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_sdcurve_dshift.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_sdcurve_dshift.png" class="img-fluid figure-img"></p>
 <figcaption>労働需要曲線のシフト</figcaption>
 </figure>
 </div>
@@ -304,7 +310,7 @@ window.Quarto = {
 <p>たとえば、自国民と同等の労働を提供できる移民労働者の流入が何らかの理由で増えたとすると、同じ賃金水準でも働きたい人の数が増える（<strong>労働供給の増加</strong>）ため、<strong>労働供給曲線は右下方向にシフト</strong>します。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_sdcurve_sshift.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_sdcurve_sshift.png" class="img-fluid figure-img"></p>
 <figcaption>労働供給曲線のシフト</figcaption>
 </figure>
 </div>
@@ -325,7 +331,7 @@ window.Quarto = {
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_sdcurve_slope.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_sdcurve_slope.png" class="img-fluid figure-img"></p>
 <figcaption>労働供給曲線の傾き</figcaption>
 </figure>
 </div>
@@ -367,7 +373,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-労働供給
+<span class="screen-reader-only">Note</span>労働供給
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -407,7 +413,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-効用
+<span class="screen-reader-only">Note</span>効用
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -429,7 +435,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-労働供給モデルにおける前提
+<span class="screen-reader-only">Note</span>労働供給モデルにおける前提
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -443,7 +449,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-例：大学生のアルバイト
+<span class="screen-reader-only">Tip</span>例：大学生のアルバイト
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -472,7 +478,7 @@ window.Quarto = {
 <p>先ほどの例をもとに、両極端なケースを考えてみましょう。</p>
 <p><strong>1. 週78時間すべてをアルバイトに使う</strong></p>
 <ul>
-<li>月78,000円を稼げて生活は楽になる</li>
+<li>週78,000円を稼げて生活は楽になる</li>
 <li>友人と遊んだり趣味に費やしたりする時間はゼロになる</li>
 <li>勉強時間が取れず成績が落ちるおそれもある</li>
 <li>大学生活を楽しんでいる実感が持てなかったり、何のために働いているのか分からなくなったりするかもしれない</li>
@@ -483,6 +489,7 @@ window.Quarto = {
 </ul>
 <p>どちらの極端な選択も、生活の満足度を最大化しているとは言えません。消費から得られる効用と余暇から得られる効用の両方をそれなりに確保できるよう、アルバイトと余暇の時間配分をバランスさせることこそが、消費と余暇のトレードオフを考えるということです。</p>
 <p>ここからは、タカシが取りうる選択肢を具体的に見ていきます。</p>
+<p>またこれ以降、余暇時間数は、週90時間の必要最低限の余暇時間数を超過する、<strong>追加的な余暇時間数</strong>を指します。</p>
 <div style="overflow-x: auto;">
 <table class="caption-top table">
 <colgroup>
@@ -499,7 +506,7 @@ window.Quarto = {
 </colgroup>
 <tbody>
 <tr class="odd">
-<td>余暇時間数（時間）<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
+<td>余暇時間数（時間）</td>
 <td>0</td>
 <td>10</td>
 <td>20</td>
@@ -569,7 +576,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-価格受容者とは
+<span class="screen-reader-only">Note</span>価格受容者とは
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -586,7 +593,7 @@ window.Quarto = {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_budget.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_budget.png" class="img-fluid figure-img"></p>
 <figcaption>余暇時間数と総収入</figcaption>
 </figure>
 </div>
@@ -599,11 +606,11 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-予算制約線（予算線）
+<span class="screen-reader-only">Note</span>予算制約線（予算線）
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>選択可能な総収入と余暇時間数の組み合わせをグラフに表したもの<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p>選択可能な総収入と余暇時間数の組み合わせをグラフに表したもの<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 </div>
 </div>
 <p>予算制約線より上側の領域は、時間の制約を超えてしまっており、選ぶことのできない組み合わせにあたります。</p>
@@ -621,7 +628,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-「限界（マージナル：marginal）」とは
+<span class="screen-reader-only">Note</span>「限界（マージナル：marginal）」とは
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -638,7 +645,7 @@ window.Quarto = {
 <p>このような好みを表現するために、経済学では<strong>無差別曲線</strong>という道具を使います。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_indcurve.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_indcurve.png" class="img-fluid figure-img"></p>
 <figcaption>無差別曲線</figcaption>
 </figure>
 </div>
@@ -648,7 +655,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-無差別曲線
+<span class="screen-reader-only">Note</span>無差別曲線
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -698,7 +705,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-例：タカシにとっての最適な選択肢を予測する
+<span class="screen-reader-only">Tip</span>例：タカシにとっての最適な選択肢を予測する
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -742,7 +749,7 @@ window.Quarto = {
 <p>このとき、タカシの<strong>効用は、予算制約線と最適点で接する無差別曲線</strong>（<span class="math inline">\(U^*\)</span>）によって表されます。余暇の限界便益 <span class="math inline">\(=\)</span> 限界費用となっている（無差別曲線の傾きと予算制約線の傾きが一致する）最適な選択のもとで効用が最大化されているということは、その無差別曲線は予算制約線と交わる無差別曲線の中でもっとも右上に位置しているはずだからです。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_indstar.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_indstar.png" class="img-fluid figure-img"></p>
 <figcaption>余暇時間数と総収入の最適な選択肢</figcaption>
 </figure>
 </div>
@@ -754,7 +761,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-限界原理
+<span class="screen-reader-only">Note</span>限界原理
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -773,7 +780,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-まとめ：労働供給モデル
+<span class="screen-reader-only">Important</span>まとめ：労働供給モデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -960,7 +967,7 @@ window.Quarto = {
 <p>このとき、予算制約線は次の図のように変化します。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_budget_r.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_budget_r.png" class="img-fluid figure-img"></p>
 <figcaption>余暇時間数と総収入（仕送り週3万円）</figcaption>
 </figure>
 </div>
@@ -978,7 +985,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-正常財と劣等財
+<span class="screen-reader-only">Note</span>正常財と劣等財
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -995,7 +1002,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-所得効果
+<span class="screen-reader-only">Note</span>所得効果
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1089,7 +1096,7 @@ window.Quarto = {
 <p>このとき、予算制約線は次の図のように変化します。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_budget_rr.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_budget_rr.png" class="img-fluid figure-img"></p>
 <figcaption>余暇時間数と総収入（時給1500円）</figcaption>
 </figure>
 </div>
@@ -1109,7 +1116,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-代替効果
+<span class="screen-reader-only">Note</span>代替効果
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1136,7 +1143,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-留保賃金
+<span class="screen-reader-only">Note</span>留保賃金
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1231,7 +1238,7 @@ window.Quarto = {
 <p>まとめると、アルバイト時間数がある程度までは代替効果が優勢になりやすく労働供給は増加しますが、それを超えると所得効果が優勢になりやすく労働供給は減少に転じます。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_supcurve.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_supcurve.png" class="img-fluid figure-img"></p>
 <figcaption>個人の労働供給曲線</figcaption>
 </figure>
 </div>
@@ -1241,7 +1248,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-個人の労働供給曲線
+<span class="screen-reader-only">Note</span>個人の労働供給曲線
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1255,7 +1262,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-まとめ：所得・賃金の変化と労働供給
+<span class="screen-reader-only">Important</span>まとめ：所得・賃金の変化と労働供給
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1299,7 +1306,8 @@ window.Quarto = {
 <p>ここでは例として、配偶者のいる女性の就業選択を取り上げます。 経済学ではこれまで、女性（とりわけ既婚女性）が自身のキャリアを築きながら賃金収入を求めて働くのか、家庭内で家事・育児・介護といった賃金を伴わない形で働くのか、あるいは家計を補助する程度に働くのかという点に、大きな関心が寄せられてきました。</p>
 <p>かつては、結婚を機に仕事を辞めて家庭内労働を選ぶ女性が多数派でした。この傾向は、<a href="labor_intro.html#年齢階級別労働力率">はじめに-労働力率</a>で見たような労働力率のM字型カーブに表れています。</p>
 <p>現在では、多くの先進国で賃金収入を求めて働く女性が大きく増えています。これも、海外で見られるようになった高原型の労働力率カーブに反映されています。</p>
-<p>とはいえ、日本の女性の年齢階級別労働力率を見ると、依然として育児期に労働力が落ち込む傾向が残っています。ただし近年は、無配偶女性の労働力率は高原型に近づいてきています。</p>
+<p>日本でも近年はM字型カーブの谷は大幅に浅くなっていて、年齢階級別の労働力率は台形に近い形になっています。</p>
+<p>ただし、無配偶女性と比べると有配偶女性では30歳代の労働力率がやや低く、<strong>結婚・出産・育児と就業選択の関係は現在でも重要な分析対象</strong>です。</p>
 <p>配偶者のいる女性の就業選択は、さまざまな要因の影響を受けます。</p>
 <p><strong>無差別曲線に関わる要因</strong></p>
 <ul>
@@ -1323,7 +1331,7 @@ window.Quarto = {
 </ul></li>
 <li>負担が変化する境目は「年収の壁」と呼ばれ、就業時間を調整する要因になることがある
 <ul>
-<li>例：社会保険の「130万円の壁」など</li>
+<li>例：社会保険の「130万円の壁」など<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -1371,7 +1379,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-家庭内生産モデル
+<span class="screen-reader-only">Note</span>家庭内生産モデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1394,7 +1402,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-例：単身者の家庭内生産
+<span class="screen-reader-only">Tip</span>例：単身者の家庭内生産
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1500,7 +1508,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-限界生産量
+<span class="screen-reader-only">Note</span>限界生産量
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1509,7 +1517,7 @@ Q = 15\sqrt{H}
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_houseoutput.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_houseoutput.png" class="img-fluid figure-img"></p>
 <figcaption>家庭内生産量と限界生産量</figcaption>
 </figure>
 </div>
@@ -1597,7 +1605,7 @@ Q = 15\sqrt{H}
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_hourincome.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_hourincome.png" class="img-fluid figure-img"></p>
 <figcaption>市場財の購入量と市場労働の限界購入量</figcaption>
 </figure>
 </div>
@@ -1631,7 +1639,7 @@ Q = 15\sqrt{H}
 <p>これをグラフに表すと次のようになります。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_housestar.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_housestar.png" class="img-fluid figure-img"></p>
 <figcaption>最適な家庭内生産時間数</figcaption>
 </figure>
 </div>
@@ -1739,7 +1747,7 @@ Q = 15\sqrt{H}
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".\images/labor_lsstar.png" class="img-fluid figure-img"></p>
+<p><img src="./images/labor_lsstar.png" class="img-fluid figure-img"></p>
 <figcaption>最適な市場労働時間と余暇</figcaption>
 </figure>
 </div>
@@ -1751,7 +1759,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-（基本の）労働供給モデルと家庭内生産モデルの比較
+<span class="screen-reader-only">Note</span>（基本の）労働供給モデルと家庭内生産モデルの比較
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1815,7 +1823,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-賃金上昇の影響
+<span class="screen-reader-only">Tip</span>賃金上昇の影響
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1829,7 +1837,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-家庭内生産の生産性が変化したときの影響
+<span class="screen-reader-only">Tip</span>家庭内生産の生産性が変化したときの影響
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1852,7 +1860,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-出社時刻の影響
+<span class="screen-reader-only">Tip</span>出社時刻の影響
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1883,7 +1891,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-家庭内生産の生産性が低く、市場賃金が高く、市場財の価格が低いとき
+<span class="screen-reader-only">Tip</span>家庭内生産の生産性が低く、市場賃金が高く、市場財の価格が低いとき
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1909,7 +1917,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-育児休業制度の例
+<span class="screen-reader-only">Tip</span>育児休業制度の例
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1924,17 +1932,15 @@ Q = 15\sqrt{H}
 <li>「子育ては母親の役割」という社会規範</li>
 <li>企業側にも出産後の就業継続を歓迎しない職場風土があった</li>
 </ul></li>
-<li>その後、社会規範・職場風土は時代とともに変化し、優秀な女性に出産後も働き続けてほしいと考える企業や本人が増えた
+<li>2025年度の育児休業取得率は、女性88.3%、男性50.9%
 <ul>
-<li>2015〜19年の統計では、第一子の育児休業利用者は約40%まで増加している<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></li>
+<li>男性の取得率は近年急速に上昇し、2024年度の40.5%からさらに約10ポイント上昇</li>
+<li>一方で、女性と比べると男性の取得率はなお低く、取得期間も男性の方が短い傾向が残る</li>
 </ul></li>
 </ul>
-<p>一方、男性の育児休業取得率は依然として低く、取得しても女性より期間が短い傾向にあります。</p>
-<ul>
-<li>発達心理学の知見では、男性が子どもが0歳の時期から育児に関わることが望ましいとされる</li>
-<li>共働き世帯では、父親が育児に関われない場合、第2子を持ちにくくなる傾向がある</li>
-</ul>
-<p>男性が育児休業を取ることが当たり前になるような規範の形成が望まれます。</p>
+<p>つまり、男性の育児休業をめぐる論点は、単に「取得するかどうか」だけでなく、どの程度の期間取得するかという点にも広がっています。</p>
+<p>職場で「男性も育児休業を取得する」ことが一般的になると、男性が育児休業を取得することへの心理的な抵抗や周囲からの負の評価が小さくなり、仕事と家庭内生産の時間配分も変化すると考えられます。</p>
+<p>このように、社会規範や職場風土の変化が人々の選択を変える可能性についても、家庭内生産モデルを使って考えることができます。</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
@@ -1943,7 +1949,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-まとめ：家庭内生産モデル
+<span class="screen-reader-only">Important</span>まとめ：家庭内生産モデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1973,7 +1979,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-労働需要
+<span class="screen-reader-only">Note</span>労働需要
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2022,7 +2028,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-準固定費用
+<span class="screen-reader-only">Note</span>準固定費用
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2061,7 +2067,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-利潤最大化
+<span class="screen-reader-only">Note</span>利潤最大化
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2077,7 +2083,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-例：ベンチャー企業の立ち上げ
+<span class="screen-reader-only">Tip</span>例：ベンチャー企業の立ち上げ
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2094,11 +2100,11 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-生産関数
+<span class="screen-reader-only">Note</span>生産関数
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>企業が生産する財・サービスの量と、それを生み出す生産要素との関係を表す関数<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+<p>企業が生産する財・サービスの量と、それを生み出す生産要素との関係を表す関数<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 <p><span class="math display">\[
 Q = f(N, H)
 \]</span></p>
@@ -2122,7 +2128,7 @@ Q = 5 N^{0.6} H^{0.4}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-労働時間数の限界生産物の逓減
+<span class="screen-reader-only">Note</span>労働時間数の限界生産物の逓減
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2147,7 +2153,7 @@ Q = 5 N^{0.6} H^{0.4}
 <td>11</td>
 </tr>
 <tr class="even">
-<td>生産量 <span class="math inline">\(Q\)</span><a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></td>
+<td>生産量 <span class="math inline">\(Q\)</span><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></td>
 <td>35.3</td>
 <td>36.8</td>
 <td>38.2</td>
@@ -2168,7 +2174,7 @@ Q = 5 N^{0.6} H^{0.4}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-労働者数の限界生産物の逓減
+<span class="screen-reader-only">Note</span>労働者数の限界生産物の逓減
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2217,7 +2223,7 @@ Q = 5 N^{0.6} H^{0.4}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-企業の週当たり収入
+<span class="screen-reader-only">Note</span>企業の週当たり収入
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2316,7 +2322,7 @@ R = PQ
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-企業の週当たり総費用
+<span class="screen-reader-only">Note</span>企業の週当たり総費用
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2377,21 +2383,21 @@ C = wNH + \theta N = (wH + \theta)N
 </tr>
 <tr class="even">
 <td><span class="math inline">\(N=5\)</span></td>
-<td>30</td>
-<td>30</td>
-<td>30</td>
+<td>25</td>
+<td>25</td>
+<td>25</td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(N=6\)</span></td>
-<td>35</td>
-<td>35</td>
-<td>35</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(N=7\)</span></td>
-<td>40</td>
-<td>40</td>
-<td>40</td>
+<td>35</td>
+<td>35</td>
+<td>35</td>
 </tr>
 </tbody>
 </table>
@@ -2403,7 +2409,7 @@ C = wNH + \theta N = (wH + \theta)N
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-労働時間数・労働者数の限界費用は一定
+<span class="screen-reader-only">Note</span>労働時間数・労働者数の限界費用は一定
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2457,7 +2463,7 @@ C = wNH + \theta N = (wH + \theta)N
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-企業の週当たり利潤
+<span class="screen-reader-only">Note</span>企業の週当たり利潤
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2531,7 +2537,7 @@ P \cdot MP_{H}(N, H) = wN
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-まとめ：準固定費用モデル
+<span class="screen-reader-only">Important</span>まとめ：準固定費用モデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2669,19 +2675,19 @@ P \cdot MP_{H}(N, H) = wN
 <td>19.1%</td>
 </tr>
 <tr class="even">
-<td>　　├ 法定福利費<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></td>
+<td>　　├ 法定福利費<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></td>
 <td>47,693</td>
-<td>59.9%<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></td>
+<td>59.9%<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></td>
 </tr>
 <tr class="odd">
 <td>　　├ 退職給付等の費用</td>
 <td>18,823</td>
-<td>23.7%<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></td>
+<td>23.7%<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></td>
 </tr>
 <tr class="even">
-<td>　　└ 法定外福利費<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></td>
+<td>　　└ 法定外福利費<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></td>
 <td>6,528</td>
-<td>8.2%<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></td>
+<td>8.2%<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></td>
 </tr>
 </tbody>
 </table>
@@ -2732,7 +2738,7 @@ P \cdot MP_{H}(N, H) = wN
 <li>36協定による労使合意があっても残業に上限を設定（大企業は2019年4月から、中小企業は2020年4月から適用）</li>
 </ul>
 <p>こうした政策の効果もあってか、週60時間以上働く労働者の割合は、2016年の7.7%から2019年には6.4%まで下がりました。</p>
-<p>とはいえ、現行制度には、長時間労働者と非正社員とで準固定費用の負担を非対称にしてしまう規制が残っています。たとえば、週20時間未満の雇用であれば、企業は社会保険料の負担を避けることができます。これは、割高な正社員を絞り込んで長時間働かせるインセンティブを企業に与えることになります。実際、2014年以降、割安な非正規雇用の比率はおよそ40%弱で推移しています。</p>
+<p>とはいえ、現行制度には、長時間労働者と非正社員とで準固定費用の負担を非対称にしてしまう規制が残っています。<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>たとえば、週20時間未満の雇用であれば、企業は社会保険料の負担を避けることができます。これは、割高な正社員を絞り込んで長時間働かせるインセンティブを企業に与えることになります。実際、2014年以降、割安な非正規雇用の比率はおよそ40%弱で推移しています。</p>
 <p>準固定費用モデルを使うと、こうした非対称性があるもとで、長時間働く少数の割高な正社員と、短時間しか働かない多数の割安な非正社員が併存するメカニズムを理解することができます。</p>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
@@ -2757,7 +2763,7 @@ P \cdot MP_{H}(N, H) = wN
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-雇用調整
+<span class="screen-reader-only">Note</span>雇用調整
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2785,7 +2791,7 @@ P \cdot MP_{H}(N, H) = wN
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-調整費用
+<span class="screen-reader-only">Note</span>調整費用
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -3051,7 +3057,7 @@ P \cdot MP_{H}(N, H) = wN
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-整理解雇の4要件
+<span class="screen-reader-only">Note</span>整理解雇の4要件
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -3163,19 +3169,19 @@ function showAnswer(id) {
 <li id="fn1"><p>労働政策研究・研修機構（JILPT）.（2025）. <em>完全失業率・有効求人倍率</em>. <a href="https://www.jil.go.jp/kokunai/statistics/timeseries/html/g0301.html">https://www.jil.go.jp/kokunai/statistics/timeseries/html/g0301.html</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>リクルート・リサーチセンター.（n.d.）. <em>アルバイト・パート募集時平均時給調査</em>. <a href="https://jbrc.recruit.co.jp/data/ap/">https://jbrc.recruit.co.jp/data/ap/</a> （2025年8月5日アクセス）<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>学生にとって自主的な勉強は本業と言えるかもしれませんが、賃金の発生する労働時間ではないため、ここでは余暇に含めて扱います。<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>ここで余暇時間数は、週90時間の必要最低限の余暇時間数を超過する、追加的な余暇時間数を表しています。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>ミクロ経済学で通常学ぶ予算制約線は、縦軸・横軸に2種類の財の消費量をとり、予算の範囲内で購入できる財の組み合わせを示す直線です。この考え方を労働供給量の決定に当てはめると、ここで扱っているような直線になります。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>ミクロ経済学で通常学ぶ予算制約線は、縦軸・横軸に2種類の財の消費量をとり、予算の範囲内で購入できる財の組み合わせを示す直線です。この考え方を労働供給量の決定に当てはめると、ここで扱っているような直線になります。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>「年収の壁」については今まさに制度改正が進んでいて、具体的な金額は今後変わる可能性があります。最新の情報は厚生労働省のウェブサイトなどで確認できます。ここで大切なことは具体的な金額ではなく、「収入が増えても手取り額が同じだけ増えないことがある」という点です。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>労働時間を10時間増やすごとにどれだけ市場財の購入量が増えるかを示す。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>家庭内生産量 <span class="math inline">\(+\)</span> 市場財購入量 で求められる。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p>社会保障・人口問題研究所「出生動向基本調査」<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9"><p>ただし、依然として約40%の女性が出産を機に、あるいは妊娠前に離職している<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>ここで生産関数を労働者数と1人あたり労働時間数のみで表しているのは、あくまで便宜的な仮定です。実際には資本、技術、機械、原材料など他にもさまざまな生産要素があり、それらと生産量の関係を捉えたい場合は状況に応じた生産関数を別途仮定する必要があります。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>小数点第2以下を四捨五入している。<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12"><p>企業が法律に基づいて負担することが義務付けられている、従業員の福利厚生に関する費用（社会保険料）<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>ここで生産関数を労働者数と1人あたり労働時間数のみで表しているのは、あくまで便宜的な仮定です。実際には資本、技術、機械、原材料など他にもさまざまな生産要素があり、それらと生産量の関係を捉えたい場合は状況に応じた生産関数を別途仮定する必要があります。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>小数点第2以下を四捨五入している。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>企業が法律に基づいて負担することが義務付けられている、従業員の福利厚生に関する費用（社会保険料）<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>「現金給与以外の労働費用」に占める割合<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn13"><p>「現金給与以外の労働費用」に占める割合<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14"><p>「現金給与以外の労働費用」に占める割合<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15"><p>法律で義務付けられていないが、企業が自主的に提供する福利厚生制度にかかる費用（家賃補助等の手当、健康診断補助、レクリエーション関連、キャリア支援など）<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16"><p>「現金給与以外の労働費用」に占める割合<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p>法律で義務付けられていないが、企業が自主的に提供する福利厚生制度にかかる費用（家賃補助等の手当、健康診断補助、レクリエーション関連、キャリア支援など）<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15"><p>「現金給与以外の労働費用」に占める割合<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16"><p>社会保険の具体的な加入要件は週の所定労働時間、賃金、企業規模などによって決まります。制度自体も今まさに議論されているところであり、具体的な加入要件は今後変わる可能性もあります。<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -3229,13 +3235,14 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
