@@ -12,6 +12,11 @@ format: html
 
 # 労働市場のモデル
 
+::: {.seminar-question}
+[この節で考える問い]{.seminar-question-label}
+[賃金と雇用量は、どのように決まるのか？]{.seminar-question-body}
+:::
+
 ここまで何度も「労働市場」という語が登場していますが、そもそも労働市場とは何を指すのでしょうか。
 
 ::: {.callout-note appearance="default" icon="false"}
@@ -173,6 +178,11 @@ $\rightarrow$ **賃金**は$W_1$から$W_4$へ**下落**し、**雇用量**は$L
 :::
 
 # 労働供給
+
+::: {.seminar-question}
+[この節で考える問い]{.seminar-question-label}
+[私たちは、何時間働くかをどのように決めているのか？]{.seminar-question-body}
+:::
 
 ## 労働供給モデル
 
@@ -801,6 +811,11 @@ __<input type="text" class="fill-in" id="50" placeholder="ここに入力">__ %
 
 # 労働と家庭内生産
 
+::: {.seminar-question}
+[この節で考える問い]{.seminar-question-label}
+[家事を自分でするか、働いて得た所得でサービスを買うかは、どのように決まるのか？]{.seminar-question-body}
+:::
+
 ## 家庭内生産モデル
 
 ここまでの章では、賃金が発生する労働と余暇という2つの活動しかない世界を想定してきました。
@@ -1170,6 +1185,11 @@ __<input type="text" class="fill-in" id="hhoutput" placeholder="ここに入力"
 
 
 # 労働需要
+
+::: {.seminar-question}
+[この節で考える問い]{.seminar-question-label}
+[企業は何時間働く人を何人雇うかをどのように決めているのか？]{.seminar-question-body}
+:::
 
 次に、労働需要側のモデルを考えます。
 
@@ -1676,6 +1696,11 @@ $$
 :::
 
 ## 景気と雇用調整
+
+::: {.seminar-question}
+[この節で考える問い]{.seminar-question-label}
+[景気が変化したとき、企業は雇用をどのように調整するのか？]{.seminar-question-body}
+:::
 
 この章では、景気変動に対して企業がどのように雇用を調整するかを考えます。
 
