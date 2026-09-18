@@ -505,7 +505,7 @@ $\rightarrow$ 残りは78時間
 :::
 
 
-::: {.quizbox}
+::: {.quizbox #mt-table}
 
 **確認クイズ：**
 
@@ -546,7 +546,7 @@ __<input type="text" class="fill-in" id="50" placeholder="ここに入力">__ %
 
 仕送りが週3万円に増額されると、タカシが選べる選択肢は次のように変化します。
 
-<div style="overflow-x: auto;">
+<div style="overflow-x: auto;" id="nonlabor-income-table">
 
 | | | | | | | | | | |
 |-------------------|----|----|----|----|----|----|----|----|----|
@@ -599,7 +599,7 @@ __<input type="text" class="fill-in" id="50" placeholder="ここに入力">__ %
 
 時給が1000円から1500円へ引き上げられると、タカシの選択肢は次のように変化します。
 
-<div style="overflow-x: auto;">
+<div style="overflow-x: auto;" id="wage-income-table">
 
 | | | | | | | | | | |
 |-------------------|----|----|----|----|----|----|----|----|----|
