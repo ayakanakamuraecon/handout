@@ -1444,7 +1444,7 @@ window.Quarto = {
 </div>
 <p>このとき、マミは市場労働と家庭内生産活動にそれぞれ何時間ずつ充てるでしょうか。</p>
 <p><strong>家庭内生産時間と生産量の関係</strong></p>
-<div style="overflow-x: auto;">
+<div id="house-output-table" style="overflow-x: auto;">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 30%">
@@ -2148,6 +2148,7 @@ Q = 5 N^{0.6} H^{0.4}
 </div>
 </div>
 <p>実際に生産関数へ数字を当てはめてみると、</p>
+<div id="prod-hours-table" style="overflow-x: auto;">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -2178,6 +2179,7 @@ Q = 5 N^{0.6} H^{0.4}
 </tr>
 </tbody>
 </table>
+</div>
 <p>最初の1時間はやる気も体力も十分で効率よく生産できますが、働く時間が長くなるにつれて集中力が切れ疲労も溜まり、最初ほど効率的には生産できなくなっていく、というイメージです。</p>
 <p>この特徴は、労働者数についても同様に成り立ちます。</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -2252,6 +2254,7 @@ R = PQ
 </div>
 <p>生産量 <span class="math inline">\(Q\)</span> は先ほどの生産関数によって決まるため、収入も<strong>労働者数・労働時間数それぞれの限界生産物の逓減</strong>の影響を受けます。つまり、<strong>労働者数や労働時間数を単純に増やせば利潤も増える、とは限らない</strong>わけです。</p>
 <p>このことを確かめるために、まず限界収入を見てみましょう。ここでは生産物の価格を4千円と仮定します。</p>
+<div id="revenue-hours-table" style="overflow-x: auto;">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -2288,6 +2291,7 @@ R = PQ
 </tr>
 </tbody>
 </table>
+</div>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -2356,6 +2360,7 @@ C = wNH + \theta N = (wH + \theta)N
 <p>準固定費用は、労働者を雇っている限り、たとえ働かせていなくても（労働時間がゼロでも）発生する点に注意が必要です。ハナコの例で言えば、家庭教師として登録する学生への研修費用や社会保険料がこれにあたります。</p>
 <p>可変費用と準固定費用は次の表のように決まります。ここでは時間あたり賃金を1000円、1人あたりの準固定費用を5000円とします。</p>
 <p><strong>可変費用（千円）</strong></p>
+<div id="variable-cost-table" style="overflow-x: auto;">
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
@@ -2384,6 +2389,7 @@ C = wNH + \theta N = (wH + \theta)N
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>準固定費用（千円）</strong></p>
 <table class="caption-top table">
 <tbody>
@@ -2662,6 +2668,7 @@ P \cdot MP_{H}(N, H) = wN
 <h4 class="anchored" data-anchor-id="準固定費用の上昇と長時間労働">準固定費用の上昇と長時間労働</h4>
 <p><strong>労働費用の内訳（出典：2016年 厚生労働省「就労条件総合調査」）</strong></p>
 <p>■ 常用労働者1人・1か月あたりの平均額（全体平均）</p>
+<div id="labor-cost-table" style="overflow-x: auto;">
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -2703,6 +2710,7 @@ P \cdot MP_{H}(N, H) = wN
 </tr>
 </tbody>
 </table>
+</div>
 <p>■ 現金給与以外の労働費用（企業規模別）</p>
 <table class="caption-top table">
 <thead>
@@ -2870,7 +2878,7 @@ P \cdot MP_{H}(N, H) = wN
 <p><strong>確認クイズ：</strong></p>
 <p>企業の雇用量と粗利潤、雇用調整量と調整費用のデータが以下の表で与えられている。現在の雇用量が9人であるとき、来期の適切な雇用量は何人か答えなさい。</p>
 <p>雇用量と粗利潤</p>
-<div style="overflow-x: auto;">
+<div id="adj-profit-table" style="overflow-x: auto;">
 <table class="caption-top table">
 <colgroup>
 <col style="width: 6%">
@@ -2928,7 +2936,7 @@ P \cdot MP_{H}(N, H) = wN
 </table>
 </div>
 <p>雇用調整量と調整費用</p>
-<div style="overflow-x: auto;">
+<div id="adj-cost-table" style="overflow-x: auto;">
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
