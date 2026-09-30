@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>統計の基礎</title>
+<style>
+  :root{
+    --ink:#242a30;
+    --paper:#f7f8fa;
+    --line:#d5dbe2;
+    --accent:#2e5476;
+    --accent-soft:#e4ecf3;
+    --sub:#6b6558;
+    --good:#3d6b5c;
+    --good-soft:#e3efe9;
+    --good-line:#c2ddd0;
+    --bad:#9c4a3c;
+    --bad-soft:#f6ebe8;
+    --bad-line:#e6c9c1;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+    font-size:16px;
+    line-height:1.75;
+  }
+  .page{max-width:920px; margin:0 auto; padding:56px 40px 120px;}
+
+  h1{font-size:34px; margin:0 0 6px; font-weight:700; letter-spacing:.02em;}
+  .lead{
+    color:var(--sub); font-size:15px; margin:0 0 28px;
+    padding-bottom:32px; border-bottom:1px solid var(--line);
+  }
+  h2{font-size:22px; margin:64px 0 20px; display:flex; align-items:baseline; gap:12px; scroll-margin-top:24px;}
+  h2 .num{
+    font-size:14px; color:var(--accent); font-weight:700;
+    border:1px solid var(--accent); border-radius:999px;
+    padding:2px 10px; letter-spacing:.05em;
+  }
+  h3{font-size:16px; margin:28px 0 12px; color:var(--ink); font-weight:700;}
+  h4{font-size:14px; margin:20px 0 10px; color:var(--accent); font-weight:700;}
+  p{margin:0 0 14px;}
+  ul,ol{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px;}
+  code{
+    font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
+    background:var(--accent-soft); color:var(--accent);
+    padding:1px 5px; border-radius:3px; font-size:.92em;
+  }
+
+  /* ジャンプリンク目次 */
+  .jumpnav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 32px;}
+  .jumpnav a{
+    font-size:12.5px; color:var(--accent); text-decoration:none;
+    padding:5px 12px; border:1px solid var(--line); border-radius:999px; background:#fff;
+  }
+  .jumpnav a:hover{background:var(--accent-soft);}
+
+  /* 強調ボックス */
+  .callout{
+    background:var(--accent-soft); border-left:4px solid var(--accent);
+    padding:18px 22px; border-radius:2px; margin:20px 0 28px; font-size:1em;
+  }
+  .callout ul{margin:10px 0 0; padding-left:20px;}
+  .callout li{margin-bottom:4px;}
+
+  /* 補足ボックス（小さめ） */
+  .note{background:#fff; border:1px solid var(--line); border-left:3px solid var(--sub); padding:10px 16px; margin:10px 0 22px; font-size:1em;}
+  .note .note-label{font-size:12.5px; font-weight:700; color:var(--sub); letter-spacing:.05em; margin-bottom:4px;}
+
+  /* 補足ボックス（tip・見出し付き） */
+  .tip{background:#fff; border:1px solid var(--line); padding:16px 20px; margin:16px 0 28px; font-size:1em;}
+  .tip .tip-head{font-weight:700; margin-bottom:8px; color:var(--accent);}
+  .tip ul{margin:0; padding-left:20px;}
+  .tip ul li{margin-bottom:5px;}
+
+  /* 注意ボックス */
+  .alert{background:var(--bad-soft); border:1px solid var(--bad-line); border-left:4px solid var(--bad); padding:14px 18px; margin:14px 0 24px; font-size:1em;}
+  .alert strong{color:var(--bad);}
+
+  /* コードボックス */
+  .codebox{
+    background:#eef1f4; border:1px solid var(--line); border-radius:4px;
+    padding:16px 20px; font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
+    font-size:13px; line-height:1.8; overflow-x:auto; margin:14px 0 8px;
+    white-space:pre; color:var(--ink);
+  }
+  .codebox .cmt{color:var(--sub);}
+  .codebox:last-child{margin-bottom:24px;}
+
+  /* 実行結果ボックス */
+  .resultbox{
+    background:#fbfbfa; border:1px solid var(--line); border-left:4px solid var(--good);
+    border-radius:4px; padding:12px 18px 14px; margin:0 0 24px;
+  }
+  .resultbox .rlabel{font-size:11px; font-weight:700; color:var(--good); letter-spacing:.05em; margin-bottom:6px;}
+  .resultbox pre{
+    margin:0; font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
+    font-size:12px; line-height:1.65; white-space:pre; overflow-x:auto; color:var(--ink);
+  }
+
+  /* 左右対比（中立トーン） */
+  .compare{display:flex; flex-wrap:wrap; gap:16px; margin:20px 0 28px;}
+  .compare-box{flex:1 1 260px; border-radius:4px; padding:18px 22px; font-size:1em;}
+  .compare-box.neutral{background:var(--accent-soft); border:1px solid var(--line);}
+  .compare-box .tag{font-weight:700; margin-bottom:10px; display:block; color:var(--accent);}
+  .compare-box ul{margin:0; padding-left:18px;}
+  .compare-box li{margin-bottom:8px;}
+  .compare-box li b{color:var(--accent);}
+
+  /* 縦ステップ */
+  .steps{display:flex; flex-direction:column; margin:20px 0 28px;}
+  .step{
+    display:flex; align-items:center; gap:16px; padding:12px 18px;
+    background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent); margin-bottom:8px;
+  }
+  .step .n{
+    flex-shrink:0; width:30px; height:30px; background:var(--accent); color:#fff;
+    border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:700;
+  }
+  .step .txt{font-size:14.5px; color:var(--ink);}
+  .step .txt b{color:var(--accent); display:block; margin-bottom:2px;}
+
+  table{width:100%; border-collapse:collapse; font-size:13.5px; margin:16px 0 8px;}
+  th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top;}
+  th{background:var(--accent-soft); font-weight:700; font-size:12.5px;}
+  .table-caption{font-size:12.5px; color:var(--sub); margin:0 0 24px;}
+
+  /* ページ間ナビゲーション（フッター） */
+  .related-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px;}
+  .related-nav a{
+    font-size:12.5px; color:var(--sub); text-decoration:none;
+    padding:5px 12px; border:1px solid var(--line); border-radius:999px; background:#fff;
+  }
+  .related-nav a.current{color:#fff; background:var(--accent); border-color:var(--accent); font-weight:700;}
+
+  .toc-return{margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--sub);}
+  .toc-return a{color:var(--accent); text-decoration:none;}
+
+  @media (max-width:700px){
+    .compare{flex-direction:column;}
+    .page{padding:32px 20px 80px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>統計の基礎</h1>
+  <p class="lead">データを分析するうえで前提となる、統計の基礎知識をまとめています。</p>
+
+  <nav class="jumpnav">
+    <a href="#data-variable">データと変数</a>
+  </nav>
+
+  <h2 id="data-variable"><span class="num">01</span>データと変数</h2>
+
+  <div class="callout">
+    データを分析にかけるには、まず<strong>「整然データ（tidy data）」</strong>と呼ばれる形に整えておく必要があります。整然データとは、次の2つの条件を満たすデータの形式のことです。
+    <ul>
+      <li>各<strong>変数</strong>が1つの列をなす</li>
+      <li>各<strong>観測</strong>が1つの行をなす</li>
+    </ul>
+  </div>
+
+  <h3>具体例：mpgデータ</h3>
+  <p>具体的に見てみましょう。以下は、自動車の燃費データ <code>mpg</code> の先頭6台分を抜き出したものです。</p>
+
+  <table>
+    <tr>
+      <th>manufacturer</th><th>model</th><th>displ</th><th>cyl</th><th>drv</th><th>cty</th><th>hwy</th><th>class</th>
+    </tr>
+    <tr><td>audi</td><td>a4</td><td>1.8</td><td>4</td><td>f</td><td>18</td><td>29</td><td>compact</td></tr>
+    <tr><td>audi</td><td>a4</td><td>1.8</td><td>4</td><td>f</td><td>21</td><td>29</td><td>compact</td></tr>
+    <tr><td>audi</td><td>a4</td><td>2.0</td><td>4</td><td>f</td><td>20</td><td>31</td><td>compact</td></tr>
+    <tr><td>audi</td><td>a4</td><td>2.0</td><td>4</td><td>f</td><td>21</td><td>30</td><td>compact</td></tr>
+    <tr><td>audi</td><td>a4</td><td>2.8</td><td>6</td><td>f</td><td>16</td><td>26</td><td>compact</td></tr>
+    <tr><td>audi</td><td>a4</td><td>2.8</td><td>6</td><td>f</td><td>18</td><td>26</td><td>compact</td></tr>
+  </table>
+  <p class="table-caption">mpg（<code>head(mpg)</code>の一部）。displ=排気量、cyl=気筒数、drv=駆動方式、cty=市街地燃費、hwy=高速道路燃費、class=車種区分。</p>
+
+  <p>この表では、<strong>1行が1台の車（1つの観測）</strong>に対応しています。たとえば1行目は、排気量（<code>displ</code>）1.8、気筒数（<code>cyl</code>）4、駆動方式（<code>drv</code>）f、市街地燃費（<code>cty</code>）18、高速道路燃費（<code>hwy</code>）29、車種区分（<code>class</code>）compact という値を持つ、audi a4という1台についての観測です。</p>
+  <p>一方、<strong>1列が1つの変数</strong>に対応しています。<code>displ</code>列を縦に見ると、6台それぞれの排気量が並んでおり、これは「排気量」という1つの変数の値の集まりです。同様に<code>hwy</code>列は6台の高速道路燃費、<code>class</code>列は6台の車種区分という、それぞれ1つの変数を表しています。</p>
+
+  <h3>変数の種類</h3>
+  <p>変数は、値の性質によって<strong>量的変数</strong>と<strong>質的変数</strong>に分けられます。mpgの列で分類すると、次のようになります。</p>
+
+  <div class="compare">
+    <div class="compare-box neutral">
+      <span class="tag">量的変数</span>
+      <ul>
+        <li><b>連続変数</b>：<code>displ</code>（排気量）、<code>hwy</code>・<code>cty</code>（燃費）— 数値の大小・差に意味があり、小数などの細かい値も取りうる</li>
+        <li><b>離散変数</b>：<code>cyl</code>（気筒数）— 4・6・8のように、整数の値しか取らない</li>
+      </ul>
+    </div>
+    <div class="compare-box neutral">
+      <span class="tag">質的変数</span>
+      <ul>
+        <li><b>名義変数</b>：<code>class</code>（車種区分）、<code>drv</code>（駆動方式）、<code>manufacturer</code>（メーカー）— カテゴリを表すだけで、値の間に順序はない</li>
+        <li><b>順序変数</b>：mpgには該当する列がないが、たとえば「満足度（低・中・高）」のように、順序には意味があっても差の大きさには意味がない変数</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert">
+    <strong>よくある誤り：</strong><br>
+    質的変数を数値に置き換えて、平均を計算してしまうことがあります。たとえば <code>class</code> 列を <code>compact = 1, midsize = 2, suv = 3</code> のように数値化し、その平均を取っても、「車種の平均」に相当する値は存在しません。
+    <br><br>
+    1・2・3という数字は単なる区別のためのラベルであり、順序も大小も意味を持たないため、平均という演算自体が無意味になります。
+    <br><br>
+    量的変数か質的変数かによって、その後の記述統計・可視化・回帰分析で使える手法が変わるため、分析の前に必ず区別しておく必要があります。
+  </div>
+
+  <h3>Rで確認する</h3>
+  <p>実際にデータを扱う際は、まず観測数・変数数・先頭のデータを確認します。</p>
+  <ul>
+    <li><code>head(df)</code> — 先頭数行と各列の型を確認</li>
+    <li><code>nrow(df)</code> — 行数（観測数）</li>
+    <li><code>ncol(df)</code> — 列数（変数の数）</li>
+  </ul>
+  <div class="note"><div class="note-label">補足</div><code>head(df)</code> の出力では、列名の下に<code>&lt;chr&gt;</code>・<code>&lt;dbl&gt;</code>・<code>&lt;int&gt;</code>といった型が表示されます。<code>&lt;chr&gt;</code>（文字列）の列はおおむね質的変数、<code>&lt;dbl&gt;</code>・<code>&lt;int&gt;</code>（数値）の列はおおむね量的変数に対応しますが、<code>cyl</code>のように数値型でも実質的にはカテゴリとして扱いたい変数もあるため、型だけで機械的に判断せず、その変数が何を表しているかを確認することが大切です。</div>
+
+  <div class="toc-return">
+    <nav class="related-nav">
+      <a href="seminar_kiso.html">研究と論文の基礎</a>
+      <a href="seminar_hajimekata.html">研究の始め方</a>
+      <a href="seminar_bunken.html">文献の探し方</a>
+      <a href="seminar_data.html">データの準備</a>
+      <a href="seminar_bunseki.html">分析と解釈</a>
+      <a href="seminar_happyo.html">発表</a>
+      <a href="seminar_tokei.html" class="current">統計の基礎</a>
+      <a href="seminar_r.html">R</a>
+    </nav>
+    <a href="https://wakayamauniv.sharepoint.com/:u:/r/sites/a_2025339_Grp/SitePages/%E7%9B%AE%E6%AC%A1.aspx?csf=1&web=1&e=Rscprh" target="_blank" rel="noopener">← 目次に戻る</a>
+  </div>
+</div>
+</body>
+</html>
