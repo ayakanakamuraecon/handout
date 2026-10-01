@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>R</title>
 <style>
   :root{
@@ -154,6 +155,8 @@
   .layer-visual-legend{list-style:none; margin:10px 0 28px; padding:0; font-size:13.5px; color:var(--ink);}
   .layer-visual-legend li{margin-bottom:6px;}
   .layer-visual-legend li b{color:var(--accent); margin-right:4px;}
+
+  .resultbox svg{display:block; margin:0 auto; max-width:100%; height:auto;}
 
   /* Q&A */
   .qa{background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent); padding:16px 20px; margin-bottom:10px;}
@@ -505,11 +508,11 @@ cty      16.86  4.26     9    35  234</pre>
   <p>ggplot2 のグラフは、透明なシートを1枚ずつ重ねてグラフを完成させるようなイメージで組み立てます。</p>
 
   <div class="layer-stack">
-    <div class="layer"><div class="lnum">第1層：データ</div>ggplot(<b>df</b>, ...) — どのデータを使うか</div>
+    <div class="layer"><div class="lnum">第1層：データ</div><code>ggplot(df, ...)</code> — どのデータを使うか</div>
     <div class="layer-plus">＋</div>
-    <div class="layer"><div class="lnum">第2層：軸</div>aes(x = displ, y = hwy) — どの変数を軸に置くか</div>
+    <div class="layer"><div class="lnum">第2層：軸</div><code>aes(x = displ, y = hwy)</code> — どの変数を軸に置くか</div>
     <div class="layer-plus">＋</div>
-    <div class="layer"><div class="lnum">第3層：グラフの種類</div>geom_point() — どんなグラフにするか</div>
+    <div class="layer"><div class="lnum">第3層：グラフの種類</div><code>geom_point()</code> — どんなグラフにするか</div>
   </div>
 
   <div class="layer-visual">
@@ -519,8 +522,6 @@ cty      16.86  4.26     9    35  234</pre>
       <div class="axis-y"></div>
     </div>
     <div class="sheet s3">
-      <div class="axis-x"></div>
-      <div class="axis-y"></div>
       <div class="dot" style="left:30px; bottom:100px;"></div>
       <div class="dot" style="left:55px; bottom:85px;"></div>
       <div class="dot" style="left:80px; bottom:70px;"></div>
@@ -530,19 +531,51 @@ cty      16.86  4.26     9    35  234</pre>
     </div>
   </div>
   <ul class="layer-visual-legend">
-    <li><b>①</b>ggplot(df, ...) — 描画画面を用意する</li>
-    <li><b>②</b>+ aes(x = displ, y = hwy) — 軸を追加する</li>
-    <li><b>③</b>+ geom_point() — グラフ（点）を描き足す</li>
+    <li><b>①</b><code>ggplot(df, ...)</code> — 描画画面を用意する</li>
+    <li><b>②</b><code>+ aes(x = displ, y = hwy)</code> — 軸を追加する</li>
+    <li><b>③</b><code>+ geom_point()</code> — グラフ（点）を描き足す</li>
   </ul>
 
   <h3>ヒストグラム（1変数の分布）</h3>
   <div class="codebox">ggplot(df, aes(x = hwy)) +
   geom_histogram(binwidth = 2)</div>
+  <div class="resultbox">
+    <div class="rlabel">イメージ図</div>
+    <svg viewBox="0 0 260 130" width="260" height="130">
+      <line x1="10" y1="110" x2="250" y2="110" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="10" y1="15" x2="10" y2="110" stroke="var(--ink)" stroke-width="1.5"/>
+      <rect x="20" y="102" width="26" height="8" style="fill:var(--accent)"/>
+      <rect x="50" y="90" width="26" height="20" style="fill:var(--accent)"/>
+      <rect x="80" y="65" width="26" height="45" style="fill:var(--accent)"/>
+      <rect x="110" y="35" width="26" height="75" style="fill:var(--accent)"/>
+      <rect x="140" y="50" width="26" height="60" style="fill:var(--accent)"/>
+      <rect x="170" y="75" width="26" height="35" style="fill:var(--accent)"/>
+      <rect x="200" y="92" width="26" height="18" style="fill:var(--accent)"/>
+      <rect x="230" y="104" width="26" height="6" style="fill:var(--accent)"/>
+    </svg>
+  </div>
   <div class="note"><div class="note-label">補足</div><code>binwidth</code> は棒の幅。データに合わせて調整します。</div>
 
   <h3>散布図（2変数の関係）</h3>
   <div class="codebox">ggplot(df, aes(x = displ, y = hwy)) +
   geom_point()</div>
+  <div class="resultbox">
+    <div class="rlabel">イメージ図</div>
+    <svg viewBox="0 0 260 130" width="260" height="130">
+      <line x1="10" y1="115" x2="250" y2="115" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="10" y1="15" x2="10" y2="115" stroke="var(--ink)" stroke-width="1.5"/>
+      <circle cx="30" cy="35" r="4" style="fill:var(--accent)"/>
+      <circle cx="55" cy="50" r="4" style="fill:var(--accent)"/>
+      <circle cx="75" cy="40" r="4" style="fill:var(--accent)"/>
+      <circle cx="95" cy="60" r="4" style="fill:var(--accent)"/>
+      <circle cx="115" cy="55" r="4" style="fill:var(--accent)"/>
+      <circle cx="135" cy="75" r="4" style="fill:var(--accent)"/>
+      <circle cx="155" cy="68" r="4" style="fill:var(--accent)"/>
+      <circle cx="175" cy="85" r="4" style="fill:var(--accent)"/>
+      <circle cx="200" cy="78" r="4" style="fill:var(--accent)"/>
+      <circle cx="225" cy="95" r="4" style="fill:var(--accent)"/>
+    </svg>
+  </div>
 
   <h3>棒グラフ（グループ別の平均）</h3>
   <div class="codebox">df %&gt;%
@@ -550,11 +583,52 @@ cty      16.86  4.26     9    35  234</pre>
   summarise(mean_hwy = mean(hwy)) %&gt;%
   ggplot(aes(x = class, y = mean_hwy)) +
   geom_bar(stat = "identity")</div>
+  <div class="resultbox">
+    <div class="rlabel">イメージ図</div>
+    <svg viewBox="0 0 260 130" width="260" height="130">
+      <line x1="10" y1="110" x2="250" y2="110" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="10" y1="15" x2="10" y2="110" stroke="var(--ink)" stroke-width="1.5"/>
+      <rect x="20" y="55" width="28" height="55" style="fill:var(--accent)"/>
+      <rect x="56" y="30" width="28" height="80" style="fill:var(--accent)"/>
+      <rect x="92" y="70" width="28" height="40" style="fill:var(--accent)"/>
+      <rect x="128" y="45" width="28" height="65" style="fill:var(--accent)"/>
+      <rect x="164" y="80" width="28" height="30" style="fill:var(--accent)"/>
+      <rect x="200" y="60" width="28" height="50" style="fill:var(--accent)"/>
+    </svg>
+  </div>
   <div class="note"><div class="note-label">補足</div><code>geom_bar()</code> のデフォルトは <code>stat = "count"</code> で、カテゴリごとの件数を数えて棒の高さにします。上のようにあらかじめ <code>summarise()</code> で集計した値をそのまま棒の高さに使いたいときは、<code>stat = "identity"</code> を指定します。</div>
 
   <h3>箱ひげ図（グループ別の分布）</h3>
   <div class="codebox">ggplot(df, aes(x = class, y = hwy)) +
   geom_boxplot()</div>
+  <div class="resultbox">
+    <div class="rlabel">イメージ図</div>
+    <svg viewBox="0 0 260 130" width="260" height="130">
+      <line x1="10" y1="118" x2="250" y2="118" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="10" y1="10" x2="10" y2="118" stroke="var(--ink)" stroke-width="1.5"/>
+
+      <line x1="60" y1="20" x2="60" y2="50" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="45" y1="20" x2="75" y2="20" stroke="var(--ink)" stroke-width="1.5"/>
+      <rect x="40" y="50" width="40" height="35" style="fill:var(--accent-soft); stroke:var(--accent); stroke-width:1.5"/>
+      <line x1="40" y1="65" x2="80" y2="65" stroke="var(--accent)" stroke-width="2"/>
+      <line x1="60" y1="85" x2="60" y2="105" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="45" y1="105" x2="75" y2="105" stroke="var(--ink)" stroke-width="1.5"/>
+
+      <line x1="140" y1="15" x2="140" y2="40" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="125" y1="15" x2="155" y2="15" stroke="var(--ink)" stroke-width="1.5"/>
+      <rect x="120" y="40" width="40" height="40" style="fill:var(--accent-soft); stroke:var(--accent); stroke-width:1.5"/>
+      <line x1="120" y1="58" x2="160" y2="58" stroke="var(--accent)" stroke-width="2"/>
+      <line x1="140" y1="80" x2="140" y2="108" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="125" y1="108" x2="155" y2="108" stroke="var(--ink)" stroke-width="1.5"/>
+
+      <line x1="220" y1="45" x2="220" y2="60" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="205" y1="45" x2="235" y2="45" stroke="var(--ink)" stroke-width="1.5"/>
+      <rect x="200" y="60" width="40" height="35" style="fill:var(--accent-soft); stroke:var(--accent); stroke-width:1.5"/>
+      <line x1="200" y1="75" x2="240" y2="75" stroke="var(--accent)" stroke-width="2"/>
+      <line x1="220" y1="95" x2="220" y2="110" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="205" y1="110" x2="235" y2="110" stroke="var(--ink)" stroke-width="1.5"/>
+    </svg>
+  </div>
 
   <h3>グラフの保存</h3>
   <div class="codebox">ggsave("my_plot.png")                       <span class="cmt"># 最後に表示したグラフを保存</span>
