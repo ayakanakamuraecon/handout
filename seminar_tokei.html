@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>統計の基礎</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}]
+  });
+});
+</script>
 <style>
   :root{
     --ink:#242a30;
@@ -86,7 +96,7 @@
   .flagged{color:var(--bad); font-weight:700; background:var(--bad-soft); padding:1px 6px; border-radius:3px;}
 
   /* 数式表示 */
-  .formula{text-align:center; font-size:1.3em; font-style:italic; margin:14px 0; font-family:"Cambria Math","Times New Roman",serif;}
+  .formula{text-align:center; margin:14px 0; overflow-x:auto;}
 
   /* 注目させたい計算結果の値 */
   .pick{color:var(--accent); font-weight:700; background:var(--accent-soft); padding:1px 6px; border-radius:3px;}
@@ -348,24 +358,24 @@
   <div class="compare">
     <div class="compare-box neutral">
       <span class="tag">平均</span>
-      <p class="formula">x̄ = (1/n)(x<sub>1</sub>+x<sub>2</sub>+⋯+x<sub>n</sub>) = Σx<sub>i</sub> / n</p>
+      <p class="formula">$$\bar{x} = \frac{1}{n}(x_1+x_2+\cdots+x_n) = \frac{\sum_i x_i}{n}$$</p>
       <p>すべての値を足し合わせてから、観測数<code>n</code>で割ったもの。</p>
     </div>
     <div class="compare-box neutral">
       <span class="tag">中央値</span>
       <p>値を小さい順に並べたときに、ちょうど真ん中にくる値。</p>
-      <svg class="diagram" viewBox="0 0 520 76" xmlns="http://www.w3.org/2000/svg">
-        <line x1="30" y1="38" x2="490" y2="38" style="stroke:var(--line); stroke-width:2"/>
-        <circle cx="50" cy="38" r="6" style="fill:var(--sub)"/>
-        <circle cx="123" cy="38" r="6" style="fill:var(--sub)"/>
-        <circle cx="196" cy="38" r="6" style="fill:var(--sub)"/>
-        <circle cx="269" cy="38" r="9" style="fill:var(--accent)"/>
-        <circle cx="342" cy="38" r="6" style="fill:var(--sub)"/>
-        <circle cx="415" cy="38" r="6" style="fill:var(--sub)"/>
-        <circle cx="488" cy="38" r="6" style="fill:var(--sub)"/>
-        <text x="269" y="18" text-anchor="middle" style="font-size:13.5px; fill:var(--accent); font-weight:700">中央値</text>
-        <text x="30" y="62" style="font-size:12.5px; fill:var(--sub)">小さい</text>
-        <text x="490" y="62" text-anchor="end" style="font-size:12.5px; fill:var(--sub)">大きい</text>
+      <svg class="diagram" viewBox="0 0 360 90" xmlns="http://www.w3.org/2000/svg">
+        <line x1="20" y1="45" x2="340" y2="45" style="stroke:var(--line); stroke-width:2"/>
+        <circle cx="20"  cy="45" r="7"  style="fill:var(--sub)"/>
+        <circle cx="73"  cy="45" r="7"  style="fill:var(--sub)"/>
+        <circle cx="127" cy="45" r="7"  style="fill:var(--sub)"/>
+        <circle cx="180" cy="45" r="11" style="fill:var(--accent)"/>
+        <circle cx="233" cy="45" r="7"  style="fill:var(--sub)"/>
+        <circle cx="287" cy="45" r="7"  style="fill:var(--sub)"/>
+        <circle cx="340" cy="45" r="7"  style="fill:var(--sub)"/>
+        <text x="180" y="24" text-anchor="middle" style="font-size:16px; fill:var(--accent); font-weight:700">中央値</text>
+        <text x="20"  y="75" style="font-size:14px; fill:var(--sub)">小さい</text>
+        <text x="340" y="75" text-anchor="end" style="font-size:14px; fill:var(--sub)">大きい</text>
       </svg>
     </div>
   </div>
@@ -443,7 +453,7 @@
   <h3>分散・標準偏差</h3>
   <p>平均や中央値は「データの中心」を表しますが、同じ中心でも、値が中心の近くに集まっているか、大きく散らばっているかはまったく違います。この「散らばりの大きさ」を数値で表したものが<strong>分散</strong>・<strong>標準偏差</strong>です。</p>
 
-  <p class="formula">s² = (1/n){(x<sub>1</sub>-x̄)²+(x<sub>2</sub>-x̄)²+⋯+(x<sub>n</sub>-x̄)²} = Σ(x<sub>i</sub> - x̄)² / n</p>
+  <p class="formula">$$s^2 = \frac{1}{n}\left\{(x_1-\bar{x})^2+(x_2-\bar{x})^2+\cdots+(x_n-\bar{x})^2\right\} = \frac{\sum_i (x_i-\bar{x})^2}{n}$$</p>
   <p>各値が平均からどれだけ離れているか（<code>x<sub>i</sub> - x̄</code>）を2乗してから平均したものが分散です。2乗するのは、平均より大きい側・小さい側のズレを相殺させず、ズレの大きさだけを足し合わせるためです。</p>
 
   <div class="compare">
