@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>労働市場における需要と供給 – 講義資料</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -35,16 +29,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./favicon.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e072d2a2f144215c4ae260ff874a5078.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e6fdbebf315c2e0428615190f5e0081b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -74,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -87,7 +82,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -212,7 +207,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>労働市場
+労働市場
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -238,7 +233,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>労働市場のモデル
+労働市場のモデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -256,7 +251,7 @@ window.Quarto = {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_sdcurve.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_sdcurve.png" class="img-fluid figure-img"></p>
 <figcaption>労働市場のモデル</figcaption>
 </figure>
 </div>
@@ -293,7 +288,7 @@ window.Quarto = {
 <p>たとえば景気が良くなると、同じ賃金水準でも労働者を雇いたい企業が増える（<strong>労働需要の増加</strong>）ため、<strong>労働需要曲線が右上方向にシフト</strong>します。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_sdcurve_dshift.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_sdcurve_dshift.png" class="img-fluid figure-img"></p>
 <figcaption>労働需要曲線のシフト</figcaption>
 </figure>
 </div>
@@ -313,7 +308,7 @@ window.Quarto = {
 <p>たとえば、自国民と同等の労働を提供できる移民労働者の流入が何らかの理由で増えたとすると、同じ賃金水準でも働きたい人の数が増える（<strong>労働供給の増加</strong>）ため、<strong>労働供給曲線は右下方向にシフト</strong>します。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_sdcurve_sshift.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_sdcurve_sshift.png" class="img-fluid figure-img"></p>
 <figcaption>労働供給曲線のシフト</figcaption>
 </figure>
 </div>
@@ -334,7 +329,7 @@ window.Quarto = {
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_sdcurve_slope.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_sdcurve_slope.png" class="img-fluid figure-img"></p>
 <figcaption>労働供給曲線の傾き</figcaption>
 </figure>
 </div>
@@ -379,7 +374,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>労働供給
+労働供給
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -419,7 +414,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>効用
+効用
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -441,7 +436,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>労働供給モデルにおける前提
+労働供給モデルにおける前提
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -455,7 +450,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>例：大学生のアルバイト
+例：大学生のアルバイト
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -582,7 +577,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>価格受容者とは
+価格受容者とは
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -599,7 +594,7 @@ window.Quarto = {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_budget.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_budget.png" class="img-fluid figure-img"></p>
 <figcaption>余暇時間数と総収入</figcaption>
 </figure>
 </div>
@@ -612,7 +607,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>予算制約線（予算線）
+予算制約線（予算線）
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -634,7 +629,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>「限界（マージナル：marginal）」とは
+「限界（マージナル：marginal）」とは
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -651,7 +646,7 @@ window.Quarto = {
 <p>このような好みを表現するために、経済学では<strong>無差別曲線</strong>という道具を使います。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_indcurve.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_indcurve.png" class="img-fluid figure-img"></p>
 <figcaption>無差別曲線</figcaption>
 </figure>
 </div>
@@ -661,7 +656,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>無差別曲線
+無差別曲線
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -711,7 +706,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>例：タカシにとっての最適な選択肢を予測する
+例：タカシにとっての最適な選択肢を予測する
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -755,7 +750,7 @@ window.Quarto = {
 <p>このとき、タカシの<strong>効用は、予算制約線と最適点で接する無差別曲線</strong>（<span class="math inline">\(U^*\)</span>）によって表されます。余暇の限界便益 <span class="math inline">\(=\)</span> 限界費用となっている（無差別曲線の傾きと予算制約線の傾きが一致する）最適な選択のもとで効用が最大化されているということは、その無差別曲線は予算制約線と交わる無差別曲線の中でもっとも右上に位置しているはずだからです。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_indstar.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_indstar.png" class="img-fluid figure-img"></p>
 <figcaption>余暇時間数と総収入の最適な選択肢</figcaption>
 </figure>
 </div>
@@ -767,7 +762,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>限界原理
+限界原理
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -786,7 +781,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>まとめ：労働供給モデル
+まとめ：労働供給モデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -973,7 +968,7 @@ window.Quarto = {
 <p>このとき、予算制約線は次の図のように変化します。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_budget_r.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_budget_r.png" class="img-fluid figure-img"></p>
 <figcaption>余暇時間数と総収入（仕送り週3万円）</figcaption>
 </figure>
 </div>
@@ -991,7 +986,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>正常財と劣等財
+正常財と劣等財
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1008,7 +1003,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>所得効果
+所得効果
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1102,7 +1097,7 @@ window.Quarto = {
 <p>このとき、予算制約線は次の図のように変化します。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_budget_rr.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_budget_rr.png" class="img-fluid figure-img"></p>
 <figcaption>余暇時間数と総収入（時給1500円）</figcaption>
 </figure>
 </div>
@@ -1122,7 +1117,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>代替効果
+代替効果
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1149,7 +1144,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>留保賃金
+留保賃金
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1244,7 +1239,7 @@ window.Quarto = {
 <p>まとめると、アルバイト時間数がある程度までは代替効果が優勢になりやすく労働供給は増加しますが、それを超えると所得効果が優勢になりやすく労働供給は減少に転じます。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_supcurve.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_supcurve.png" class="img-fluid figure-img"></p>
 <figcaption>個人の労働供給曲線</figcaption>
 </figure>
 </div>
@@ -1254,7 +1249,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>個人の労働供給曲線
+個人の労働供給曲線
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1268,7 +1263,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>まとめ：所得・賃金の変化と労働供給
+まとめ：所得・賃金の変化と労働供給
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1388,7 +1383,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>家庭内生産モデル
+家庭内生産モデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1411,7 +1406,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>例：単身者の家庭内生産
+例：単身者の家庭内生産
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1517,7 +1512,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>限界生産量
+限界生産量
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1526,7 +1521,7 @@ Q = 15\sqrt{H}
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_houseoutput.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_houseoutput.png" class="img-fluid figure-img"></p>
 <figcaption>家庭内生産量と限界生産量</figcaption>
 </figure>
 </div>
@@ -1614,7 +1609,7 @@ Q = 15\sqrt{H}
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_hourincome.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_hourincome.png" class="img-fluid figure-img"></p>
 <figcaption>市場財の購入量と市場労働の限界購入量</figcaption>
 </figure>
 </div>
@@ -1648,7 +1643,7 @@ Q = 15\sqrt{H}
 <p>これをグラフに表すと次のようになります。</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_housestar.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_housestar.png" class="img-fluid figure-img"></p>
 <figcaption>最適な家庭内生産時間数</figcaption>
 </figure>
 </div>
@@ -1756,7 +1751,7 @@ Q = 15\sqrt{H}
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/labor_lsstar.png" class="img-fluid figure-img"></p>
+<p><img src=".\images/labor_lsstar.png" class="img-fluid figure-img"></p>
 <figcaption>最適な市場労働時間と余暇</figcaption>
 </figure>
 </div>
@@ -1768,7 +1763,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>（基本の）労働供給モデルと家庭内生産モデルの比較
+（基本の）労働供給モデルと家庭内生産モデルの比較
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1832,7 +1827,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>賃金上昇の影響
+賃金上昇の影響
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1846,7 +1841,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>家庭内生産の生産性が変化したときの影響
+家庭内生産の生産性が変化したときの影響
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1869,7 +1864,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>出社時刻の影響
+出社時刻の影響
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1900,7 +1895,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>家庭内生産の生産性が低く、市場賃金が高く、市場財の価格が低いとき
+家庭内生産の生産性が低く、市場賃金が高く、市場財の価格が低いとき
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1926,7 +1921,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>育児休業制度の例
+育児休業制度の例
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1958,7 +1953,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>まとめ：家庭内生産モデル
+まとめ：家庭内生産モデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1991,7 +1986,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>労働需要
+労働需要
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2040,7 +2035,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>準固定費用
+準固定費用
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2079,7 +2074,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>利潤最大化
+利潤最大化
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2095,7 +2090,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>例：ベンチャー企業の立ち上げ
+例：ベンチャー企業の立ち上げ
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2112,7 +2107,7 @@ Q = 15\sqrt{H}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>生産関数
+生産関数
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2140,7 +2135,7 @@ Q = 5 N^{0.6} H^{0.4}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>労働時間数の限界生産物の逓減
+労働時間数の限界生産物の逓減
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2188,7 +2183,7 @@ Q = 5 N^{0.6} H^{0.4}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>労働者数の限界生産物の逓減
+労働者数の限界生産物の逓減
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2237,7 +2232,7 @@ Q = 5 N^{0.6} H^{0.4}
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>企業の週当たり収入
+企業の週当たり収入
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2338,7 +2333,7 @@ R = PQ
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>企業の週当たり総費用
+企業の週当たり総費用
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2427,7 +2422,7 @@ C = wNH + \theta N = (wH + \theta)N
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>労働時間数・労働者数の限界費用は一定
+労働時間数・労働者数の限界費用は一定
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2481,7 +2476,7 @@ C = wNH + \theta N = (wH + \theta)N
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>企業の週当たり利潤
+企業の週当たり利潤
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2555,7 +2550,7 @@ P \cdot MP_{H}(N, H) = wN
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>まとめ：準固定費用モデル
+まとめ：準固定費用モデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2786,7 +2781,7 @@ P \cdot MP_{H}(N, H) = wN
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>雇用調整
+雇用調整
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2814,7 +2809,7 @@ P \cdot MP_{H}(N, H) = wN
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>調整費用
+調整費用
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -3080,7 +3075,7 @@ P \cdot MP_{H}(N, H) = wN
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>整理解雇の4要件
+整理解雇の4要件
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -3258,14 +3253,13 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

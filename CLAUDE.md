@@ -9,4 +9,5 @@
   - 一方、キャプション（`.table-caption`）・コード（`.codebox` / `code`）・ナビ/タグ的UI要素（`.jumpnav a` `.related-nav a` `.toc-return`）は本文ではなくメタ情報/UI要素なので、これまで通り小さめのpxのままでよい。
 - `.note-label`（補足・まとめ等のラベル見出し）は、上記のメタ情報/UI要素の例外として、`.tag`等とは異なり本文と同じ`font-size:1em`にする（2026-10時点の方針変更。以前は小さめpxだったが、視認性のためサイズアップした）。新規ページ作成時・既存ページ修正時とも、この1em版で統一する。
 - 新規ページを作る際は、既存の`seminar_*.html`（特に`seminar_kiso.html`のトーン、`seminar_r.html`のパーツ一式：callout/note/tip/alert/codebox/resultbox/compare/steps等）からCSSとコーディング規約をそのまま踏襲する。
+- `<head>`には`<meta charset>` → viewportメタタグ → `<link rel="icon" href="favicon.svg" type="image/svg+xml">`（タブアイコン、2026-10-08追加）の順で入れる。`favicon.svg`（ルート直下、`#2e5476`の円＋白い角帽シルエット）を既存ページからコピーする形で踏襲すれば自動的に引き継がれる。なお`labor_*.qmd`/`dataintro_*.qmd`等のQuarto生成ページは`_quarto.yml`の`website.favicon`で全ページに一括適用されるため、個別対応は不要。
 - Rコード・練習用データ（`mpg`等）を扱う場合は、`seminar_r.html`の記述と数値・出力を完全に一致させる。
