@@ -19,8 +19,6 @@
     --bad:#9c4a3c;
     --bad-soft:#f6ebe8;
     --bad-line:#e6c9c1;
-    --warm:#b5654a;
-    --warm-soft:#f3e3dc;
   }
   *{box-sizing:border-box;}
   body{
@@ -77,8 +75,6 @@
   /* 横持ち⇄整然データ／pivot_longer：常に縦並び */
   .reshape-row{display:flex; flex-direction:column; align-items:center; gap:12px; margin:20px 0 6px;}
   .reshape-row .diagram-box{width:100%; max-width:520px;}
-  /* left_join：幅に応じて折り返し */
-  .join-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:16px; margin:20px 0 6px;}
   .diagram-box{flex:1 1 260px; min-width:240px;}
   .diagram-box .dtitle{font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:8px; text-align:center;}
   .diagram-box .dnote{font-size:12.5px; color:var(--sub); text-align:center; margin:8px 0 0;}
@@ -89,13 +85,7 @@
   }
   .diagram-arrow .glyph{font-size:24px; line-height:1;}
   .diagram-arrow code{font-size:11.5px;}
-  .diagram-down{display:flex; flex-direction:column; align-items:center; gap:4px; margin:14px 0; color:var(--sub); font-size:13px;}
-  .diagram-down .glyph{font-size:24px;}
-  .diagram-result{margin:6px 0 4px;}
-  .diagram-legend{display:flex; flex-wrap:wrap; gap:18px; font-size:13px; color:var(--ink); margin:0 0 16px;}
-  .diagram-legend .dot{width:11px; height:11px; border-radius:3px; display:inline-block; margin-right:6px; vertical-align:middle;}
   .hl{background:var(--accent-soft); color:var(--accent); padding:0 5px; border-radius:2px; font-weight:700;}
-  .hl.good{background:var(--good-soft); color:var(--good);}
 
   .codebox{
     background:#eef1f4; border:1px solid var(--line); border-radius:4px;
@@ -126,10 +116,6 @@
   .mini-table th{background:var(--accent-soft); font-weight:700;}
   .mini-table th.col-key,.mini-table td.col-key{background:var(--good-soft); color:var(--ink);}
   .mini-table th.col-key{color:var(--good);}
-  .mini-table th.col-warm,.mini-table td.col-warm{background:var(--warm-soft); color:var(--ink);}
-  .mini-table th.col-warm{color:var(--warm);}
-  .mini-table th.col-accent,.mini-table td.col-accent{background:var(--accent-soft); color:var(--ink);}
-  .mini-table th.col-accent{color:var(--accent);}
 
   .related-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px;}
   .related-nav a{
@@ -269,109 +255,20 @@ df %&gt;% drop_na(変数名)        <span class="cmt"># 欠損のある行を除
   <details>
     <summary>▼ 横持ち→縦持ちの変換</summary>
     <div class="details-body">
-      <p>e-Stat などでよくある横持ちデータは、<code>pivot_longer()</code> で整形できます。</p>
-      <div class="codebox">df %&gt;%
-  pivot_longer(
-    cols = c("2019年", "2020年", "2021年"),  <span class="cmt"># 縦に変換したい列</span>
-    names_to = "year",             <span class="cmt"># 列名を格納する新しい変数名</span>
-    values_to = "productivity"     <span class="cmt"># 値を格納する新しい変数名</span>
-  )</div>
-
-      <div class="reshape-row">
-        <div class="diagram-box">
-          <div class="dtitle">変換前（横持ち）</div>
-          <table class="mini-table">
-            <thead><tr><th>pref</th><th class="col-accent">2019年</th><th class="col-accent">2020年</th><th class="col-accent">2021年</th></tr></thead>
-            <tbody>
-              <tr><td>東京都</td><td>820</td><td>810</td><td>830</td></tr>
-              <tr><td>大阪府</td><td>710</td><td>700</td><td>720</td></tr>
-              <tr><td>愛知県</td><td>680</td><td>670</td><td>690</td></tr>
-            </tbody>
-          </table>
-          <p class="dnote">年次が<span class="hl">列名</span>に埋め込まれている</p>
-        </div>
-        <div class="diagram-arrow"><span class="glyph">↓</span><code>pivot_longer()</code></div>
-        <div class="diagram-box">
-          <div class="dtitle">変換後（縦持ち）</div>
-          <table class="mini-table">
-            <thead><tr><th>pref</th><th class="col-accent">year</th><th>productivity</th></tr></thead>
-            <tbody>
-              <tr><td>東京都</td><td class="col-accent">2019年</td><td>820</td></tr>
-              <tr><td>東京都</td><td class="col-accent">2020年</td><td>810</td></tr>
-              <tr><td>東京都</td><td class="col-accent">2021年</td><td>830</td></tr>
-              <tr><td>大阪府</td><td class="col-accent">2019年</td><td>710</td></tr>
-            </tbody>
-          </table>
-          <p class="dnote">年次が<span class="hl">変数（列）</span>になった</p>
-        </div>
-      </div>
+      <p>e-Stat などでよくある横持ちデータ（年次等が列名に埋め込まれた表）は、整然データ（01参照）の形に変換してから分析します。年次ごとに列が分かれていると、「年」という変数が列名の中に埋もれてしまい、集計や可視化がしづらいためです。</p>
+      <p>詳しい書き方・実行例は<a href="seminar_r.html#advanced-wrangle" style="color:var(--accent);">「R」の応用的な前処理</a>を参照してください。</p>
     </div>
   </details>
 
   <details>
     <summary>▼ 複数ファイルの結合</summary>
     <div class="details-body">
-      <p>複数のデータソースを組み合わせたい場合は、<code>left_join()</code> で結合します。観察単位（都道府県名・年次など）が一致していることを確認してから結合してください。</p>
-      <div class="codebox">df_joined &lt;- left_join(
-  df_x, df_y,             <span class="cmt"># 結合したいデータフレーム名</span>
-  by = c("pref", "year")  <span class="cmt"># 結合に使用するキー変数</span>
-)</div>
-
-      <div class="diagram-legend">
-        <span><span class="dot" style="background:var(--good);"></span>結合キー（共通の変数）</span>
-        <span><span class="dot" style="background:var(--warm);"></span>df_x の変数</span>
-        <span><span class="dot" style="background:var(--accent);"></span>df_y の変数</span>
-      </div>
-
-      <div class="join-row">
-        <div class="diagram-box">
-          <div class="dtitle">df_x（基準）</div>
-          <table class="mini-table">
-            <thead><tr><th class="col-key">pref</th><th class="col-key">year</th><th class="col-warm">it_investment</th></tr></thead>
-            <tbody>
-              <tr><td class="col-key">東京都</td><td class="col-key">2019</td><td class="col-warm">150</td></tr>
-              <tr><td class="col-key">東京都</td><td class="col-key">2020</td><td class="col-warm">155</td></tr>
-              <tr><td class="col-key">大阪府</td><td class="col-key">2019</td><td class="col-warm">98</td></tr>
-              <tr><td class="col-key">大阪府</td><td class="col-key">2020</td><td class="col-warm">101</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="diagram-arrow"><code>left_join()</code><span class="glyph">⇐</span><span>by = c("pref","year")</span></div>
-        <div class="diagram-box">
-          <div class="dtitle">df_y</div>
-          <table class="mini-table">
-            <thead><tr><th class="col-key">pref</th><th class="col-key">year</th><th class="col-accent">productivity</th></tr></thead>
-            <tbody>
-              <tr><td class="col-key">東京都</td><td class="col-key">2019</td><td class="col-accent">820</td></tr>
-              <tr><td class="col-key">東京都</td><td class="col-key">2020</td><td class="col-accent">810</td></tr>
-              <tr><td class="col-key">大阪府</td><td class="col-key">2019</td><td class="col-accent">710</td></tr>
-              <tr><td class="col-key">大阪府</td><td class="col-key">2020</td><td class="col-accent">700</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="diagram-down"><span class="glyph">⇓</span>結合後</div>
-
-      <div class="diagram-result">
-        <div class="dtitle">df_joined（結合後）</div>
-        <div class="overflow-wrap">
-          <table class="mini-table">
-            <thead><tr><th class="col-key">pref</th><th class="col-key">year</th><th class="col-warm">it_investment</th><th class="col-accent">productivity</th></tr></thead>
-            <tbody>
-              <tr><td class="col-key">東京都</td><td class="col-key">2019</td><td class="col-warm">150</td><td class="col-accent">820</td></tr>
-              <tr><td class="col-key">東京都</td><td class="col-key">2020</td><td class="col-warm">155</td><td class="col-accent">810</td></tr>
-              <tr><td class="col-key">大阪府</td><td class="col-key">2019</td><td class="col-warm">98</td><td class="col-accent">710</td></tr>
-              <tr><td class="col-key">大阪府</td><td class="col-key">2020</td><td class="col-warm">101</td><td class="col-accent">700</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="dnote">結合キー（<span class="hl good">pref・year</span>）が一致する行が1つのデータにまとまる</p>
-      </div>
+      <p>複数のデータソース（例：IT投資額のファイルと労働生産性のファイル）を組み合わせて分析したい場合は、観察単位（都道府県名・年次など）が共通する変数をキーとしてデータを結合します。キーの表記が完全に一致していないと、うまく結合できません。</p>
+      <p>詳しい書き方・実行例は<a href="seminar_r.html#advanced-wrangle" style="color:var(--accent);">「R」の応用的な前処理</a>を参照してください。</p>
     </div>
   </details>
 
-  <h2><span class="num">04</span>よくあるエラーと対処</h2>
+  <h2 id="errors"><span class="num">04</span>よくあるエラーと対処</h2>
   <p>どのようなデータでどのような分析を行うかによって、さまざまなエラーが出ます。対処が難しいエラーが出たら、その都度教員に相談してください。代表的なエラーを以下にまとめます。</p>
   <table>
     <thead><tr><th>エラー・症状</th><th>原因</th><th>対処</th></tr></thead>
@@ -392,6 +289,7 @@ df %&gt;% drop_na(変数名)        <span class="cmt"># 欠損のある行を除
       <a href="seminar_data.html" class="current">データの準備</a>
       <a href="seminar_bunseki.html">分析と解釈</a>
       <a href="seminar_happyo.html">発表</a>
+      <a href="seminar_tokei.html">統計の基礎</a>
       <a href="seminar_r.html">R</a>
     </nav>
     <a href="https://wakayamauniv.sharepoint.com/:u:/r/sites/a_2025339_Grp/SitePages/%E3%82%BC%E3%83%9F%E8%B3%87%E6%96%99.aspx?d=w681d14a42e1340cc9b17175e1b9c1ab5&csf=1&web=1&e=Igjvxt" target="_blank" rel="noopener">← 目次に戻る</a>

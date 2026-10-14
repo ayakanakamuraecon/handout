@@ -19,6 +19,8 @@
     --bad:#9c4a3c;
     --bad-soft:#f6ebe8;
     --bad-line:#e6c9c1;
+    --warm:#b5654a;
+    --warm-soft:#f3e3dc;
   }
   *{box-sizing:border-box;}
   body{
@@ -108,6 +110,39 @@
   .compare-box{flex:1 1 260px; border-radius:4px; padding:18px 22px; font-size:1em;}
   .compare-box.neutral{background:var(--accent-soft); border:1px solid var(--line);}
   .compare-box .tag{font-weight:700; font-size:14px; margin-bottom:10px; display:block; color:var(--accent);}
+
+  /* 図解：横持ち⇄縦持ち／結合（seminar_data.htmlから移設） */
+  .reshape-row{display:flex; flex-direction:column; align-items:center; gap:12px; margin:20px 0 6px;}
+  .reshape-row .diagram-box{width:100%; max-width:520px;}
+  .join-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:16px; margin:20px 0 6px;}
+  .diagram-box{flex:1 1 260px; min-width:240px;}
+  .diagram-box .dtitle{font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:8px; text-align:center;}
+  .diagram-box .dnote{font-size:12.5px; color:var(--sub); text-align:center; margin:8px 0 0;}
+  .diagram-box .overflow-wrap{overflow-x:auto;}
+  .diagram-arrow{
+    flex:0 0 auto; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:4px; color:var(--sub); font-size:13px; text-align:center; padding:6px 10px;
+  }
+  .diagram-arrow .glyph{font-size:24px; line-height:1;}
+  .diagram-arrow code{font-size:11.5px;}
+  .diagram-down{display:flex; flex-direction:column; align-items:center; gap:4px; margin:14px 0; color:var(--sub); font-size:13px;}
+  .diagram-down .glyph{font-size:24px;}
+  .diagram-result{margin:6px 0 4px;}
+  .diagram-legend{display:flex; flex-wrap:wrap; gap:18px; font-size:13px; color:var(--ink); margin:0 0 16px;}
+  .diagram-legend .dot{width:11px; height:11px; border-radius:3px; display:inline-block; margin-right:6px; vertical-align:middle;}
+  .hl{background:var(--accent-soft); color:var(--accent); padding:0 5px; border-radius:2px; font-weight:700;}
+  .hl.good{background:var(--good-soft); color:var(--good);}
+
+  /* 図解内の小さな表 */
+  .mini-table{width:100%; border-collapse:collapse; font-size:12.5px; margin:0;}
+  .mini-table th,.mini-table td{border:1px solid var(--line); padding:6px 8px; text-align:left; white-space:nowrap;}
+  .mini-table th{background:var(--accent-soft); font-weight:700;}
+  .mini-table th.col-key,.mini-table td.col-key{background:var(--good-soft); color:var(--ink);}
+  .mini-table th.col-key{color:var(--good);}
+  .mini-table th.col-warm,.mini-table td.col-warm{background:var(--warm-soft); color:var(--ink);}
+  .mini-table th.col-warm{color:var(--warm);}
+  .mini-table th.col-accent,.mini-table td.col-accent{background:var(--accent-soft); color:var(--ink);}
+  .mini-table th.col-accent{color:var(--accent);}
 
   /* 縦ステップ */
   .steps{display:flex; flex-direction:column; margin:20px 0 28px;}
@@ -211,6 +246,7 @@
     <a href="#basics">基本操作</a>
     <a href="#import">データのインポート</a>
     <a href="#wrangle">前処理</a>
+    <a href="#advanced-wrangle">応用的な前処理</a>
     <a href="#descriptive">記述統計</a>
     <a href="#viz">可視化</a>
     <a href="#regression">回帰分析</a>
@@ -427,8 +463,8 @@ df %&gt;% filter(manufacturer == "toyota")      <span class="cmt"># トヨタの
 
   <h3>summarise：集計する</h3>
   <div class="codebox">df %&gt;% summarise(
-  mean.hwy = mean(hwy),
-  max.hwy = max(hwy),
+  mean_hwy = mean(hwy),
+  max_hwy = max(hwy),
   n = n()
 )</div>
   <div class="note"><div class="note-label">補足</div><code>n()</code> はデータの件数を数える関数です。</div>
@@ -436,22 +472,22 @@ df %&gt;% filter(manufacturer == "toyota")      <span class="cmt"># トヨタの
   <h3>group_by：グループ別に集計する</h3>
   <div class="codebox">df %&gt;%
   group_by(manufacturer) %&gt;%
-  summarise(mean.hwy = mean(hwy)) %&gt;%
-  arrange(desc(mean.hwy))    <span class="cmt"># 降順に並び替え</span></div>
+  summarise(mean_hwy = mean(hwy)) %&gt;%
+  arrange(desc(mean_hwy))    <span class="cmt"># 降順に並び替え</span></div>
   <div class="note"><div class="note-label">補足</div><code>arrange()</code> は並び替えの関数です。デフォルトは昇順で、<code>desc()</code> で囲むと降順になります。</div>
   <div class="resultbox">
     <div class="rlabel">結果</div>
     <pre># A tibble: 15 x 2
-   manufacturer mean.hwy
+   manufacturer mean_hwy
    &lt;chr&gt;           &lt;dbl&gt;
  1 honda            32.6
  2 volkswagen       29.2
  3 hyundai          26.9
- 4 subaru           25.6
- 5 audi             26.4
- 6 toyota           24.9
- 7 nissan           24.6
- 8 pontiac          26.4
+ 4 audi             26.4
+ 5 pontiac          26.4
+ 6 subaru           25.6
+ 7 toyota           24.9
+ 8 nissan           24.6
  9 chevrolet        21.9
 10 ford             19.4
    ...（以下略）</pre>
@@ -460,11 +496,213 @@ df %&gt;% filter(manufacturer == "toyota")      <span class="cmt"># トヨタの
   <h3>欠損値の確認</h3>
   <div class="codebox">is.na(df) %&gt;% colSums()    <span class="cmt"># 各変数の欠損値の数を確認</span>
 df %&gt;% filter(is.na(hwy))  <span class="cmt"># 欠損のある行を表示</span></div>
+  <p><code>mpg</code>（<code>df</code>）には欠損がないため、ここでは欠損を含む練習用データ <code>airquality</code> を、<code>df</code> とは別のオブジェクト <code>aq</code> に読み込んで確認します。</p>
+  <div class="codebox">aq &lt;- airquality         <span class="cmt"># 欠損のある練習用データ（df とは別）</span>
+colSums(is.na(aq))        <span class="cmt"># 各変数の欠損値の数を確認</span></div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre>  Ozone Solar.R    Wind    Temp   Month     Day
+     37       7       0       0       0       0</pre>
+  </div>
+  <p><code>Ozone</code>（オゾン濃度）に37件、<code>Solar.R</code>（日射量）に7件の欠損があります。欠損のある行を除外してから集計するか、<code>na.rm = TRUE</code> で欠損を除いて計算するかを選びます。</p>
+  <div class="codebox">aq %&gt;% drop_na()                     <span class="cmt"># 欠損のある行を除外</span>
+mean(aq$Ozone, na.rm = TRUE)        <span class="cmt"># 欠損を除いて平均を計算</span></div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre># drop_na() 後：153行 → 111行
 
-  <h2 id="descriptive"><span class="num">06</span>記述統計</h2>
+[1] 42.12931</pre>
+  </div>
+  <div class="note"><div class="note-label">補足</div><code>drop_na()</code> は欠損のある行を取り除きます。一方 <code>na.rm = TRUE</code> は、行を取り除かずにその関数の計算だけ欠損を無視します。複数の変数を同時に使う分析では、変数ごとに欠損の行が異なることがあるため、<code>drop_na()</code> で揃えてから進めると安全です。</div>
+
+  <h2 id="advanced-wrangle"><span class="num">06</span>応用的な前処理</h2>
+  <p>ここからは、より実践的な前処理である<strong>複数ファイルの結合</strong>と<strong>横持ち⇄縦持ちの変換</strong>を扱います。</p>
+
+  <h3>left_join：複数のデータフレームを結合する</h3>
+  <p>複数のデータソースを組み合わせたい場合は、<code>left_join()</code> で結合します。観察単位（都道府県名・年次など）が一致していることを確認してから結合してください。</p>
+  <div class="codebox">df_joined &lt;- left_join(
+  df_x, df_y,             <span class="cmt"># 結合したいデータフレーム名</span>
+  by = c("pref", "year")  <span class="cmt"># 結合に使用するキー変数</span>
+)</div>
+
+  <div class="diagram-legend">
+    <span><span class="dot" style="background:var(--good);"></span>結合キー（共通の変数）</span>
+    <span><span class="dot" style="background:var(--warm);"></span>df_x の変数</span>
+    <span><span class="dot" style="background:var(--accent);"></span>df_y の変数</span>
+  </div>
+
+  <div class="join-row">
+    <div class="diagram-box">
+      <div class="dtitle">df_x（基準）</div>
+      <table class="mini-table">
+        <thead><tr><th class="col-key">pref</th><th class="col-key">year</th><th class="col-warm">it_investment</th></tr></thead>
+        <tbody>
+          <tr><td class="col-key">東京都</td><td class="col-key">2019</td><td class="col-warm">150</td></tr>
+          <tr><td class="col-key">東京都</td><td class="col-key">2020</td><td class="col-warm">155</td></tr>
+          <tr><td class="col-key">大阪府</td><td class="col-key">2019</td><td class="col-warm">98</td></tr>
+          <tr><td class="col-key">大阪府</td><td class="col-key">2020</td><td class="col-warm">101</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="diagram-arrow"><code>left_join()</code><span class="glyph">⇐</span><span>by = c("pref","year")</span></div>
+    <div class="diagram-box">
+      <div class="dtitle">df_y</div>
+      <table class="mini-table">
+        <thead><tr><th class="col-key">pref</th><th class="col-key">year</th><th class="col-accent">productivity</th></tr></thead>
+        <tbody>
+          <tr><td class="col-key">東京都</td><td class="col-key">2019</td><td class="col-accent">820</td></tr>
+          <tr><td class="col-key">東京都</td><td class="col-key">2020</td><td class="col-accent">810</td></tr>
+          <tr><td class="col-key">大阪府</td><td class="col-key">2019</td><td class="col-accent">710</td></tr>
+          <tr><td class="col-key">大阪府</td><td class="col-key">2020</td><td class="col-accent">700</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="diagram-down"><span class="glyph">⇓</span>結合後</div>
+
+  <div class="diagram-result">
+    <div class="dtitle">df_joined（結合後）</div>
+    <div class="overflow-wrap">
+      <table class="mini-table">
+        <thead><tr><th class="col-key">pref</th><th class="col-key">year</th><th class="col-warm">it_investment</th><th class="col-accent">productivity</th></tr></thead>
+        <tbody>
+          <tr><td class="col-key">東京都</td><td class="col-key">2019</td><td class="col-warm">150</td><td class="col-accent">820</td></tr>
+          <tr><td class="col-key">東京都</td><td class="col-key">2020</td><td class="col-warm">155</td><td class="col-accent">810</td></tr>
+          <tr><td class="col-key">大阪府</td><td class="col-key">2019</td><td class="col-warm">98</td><td class="col-accent">710</td></tr>
+          <tr><td class="col-key">大阪府</td><td class="col-key">2020</td><td class="col-warm">101</td><td class="col-accent">700</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="dnote">結合キー（<span class="hl good">pref・year</span>）が一致する行が1つのデータにまとまる</p>
+  </div>
+  <div class="resultbox">
+    <div class="rlabel">結果（df_joined）</div>
+    <pre># A tibble: 4 x 4
+  pref    year it_investment productivity
+  &lt;chr&gt;  &lt;dbl&gt;          &lt;dbl&gt;        &lt;dbl&gt;
+1 東京都  2019            150          820
+2 東京都  2020            155          810
+3 大阪府  2019             98          710
+4 大阪府  2020            101          700</pre>
+  </div>
+  <div class="note"><div class="note-label">補足</div>結合で行数が増えてしまったり、結合後に NA が大量発生したりする場合の原因と対処は<a href="seminar_data.html#errors" style="color:var(--accent);">「データの準備」のよくあるエラー一覧</a>を参照してください。</div>
+
+  <h3>pivot_longer：横持ち→縦持ちの変換</h3>
+  <p>e-Stat などでよくある横持ちデータは、<code>pivot_longer()</code> で整形できます。</p>
+  <div class="codebox">df %&gt;%
+  pivot_longer(
+    cols = c("2019年", "2020年", "2021年"),  <span class="cmt"># 縦に変換したい列</span>
+    names_to = "year",             <span class="cmt"># 列名を格納する新しい変数名</span>
+    values_to = "productivity"     <span class="cmt"># 値を格納する新しい変数名</span>
+  )</div>
+
+  <div class="reshape-row">
+    <div class="diagram-box">
+      <div class="dtitle">変換前（横持ち）</div>
+      <table class="mini-table">
+        <thead><tr><th>pref</th><th class="col-accent">2019年</th><th class="col-accent">2020年</th><th class="col-accent">2021年</th></tr></thead>
+        <tbody>
+          <tr><td>東京都</td><td>820</td><td>810</td><td>830</td></tr>
+          <tr><td>大阪府</td><td>710</td><td>700</td><td>720</td></tr>
+          <tr><td>愛知県</td><td>680</td><td>670</td><td>690</td></tr>
+        </tbody>
+      </table>
+      <p class="dnote">年次が<span class="hl">列名</span>に埋め込まれている</p>
+    </div>
+    <div class="diagram-arrow"><span class="glyph">↓</span><code>pivot_longer()</code></div>
+    <div class="diagram-box">
+      <div class="dtitle">変換後（縦持ち）</div>
+      <table class="mini-table">
+        <thead><tr><th>pref</th><th class="col-accent">year</th><th>productivity</th></tr></thead>
+        <tbody>
+          <tr><td>東京都</td><td class="col-accent">2019年</td><td>820</td></tr>
+          <tr><td>東京都</td><td class="col-accent">2020年</td><td>810</td></tr>
+          <tr><td>東京都</td><td class="col-accent">2021年</td><td>830</td></tr>
+          <tr><td>大阪府</td><td class="col-accent">2019年</td><td>710</td></tr>
+        </tbody>
+      </table>
+      <p class="dnote">年次が<span class="hl">変数（列）</span>になった</p>
+    </div>
+  </div>
+  <div class="resultbox">
+    <div class="rlabel">結果（抜粋）</div>
+    <pre># A tibble: 9 x 3
+  pref   year   productivity
+  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;
+1 東京都 2019年          820
+2 東京都 2020年          810
+3 東京都 2021年          830
+4 大阪府 2019年          710
+5 大阪府 2020年          700
+   ...（以下略）</pre>
+  </div>
+
+  <h3>pivot_wider：縦持ち→横持ちの変換</h3>
+  <p><code>pivot_wider()</code> は <code>pivot_longer()</code> の逆変換です。縦持ちのデータを、ある変数の値ごとに列を分ける横持ちに戻します。発表用の表など、横持ちの方が見やすい場面で使います。</p>
+  <div class="codebox">df %&gt;%
+  pivot_wider(
+    names_from = year,            <span class="cmt"># 列名にする変数</span>
+    values_from = productivity    <span class="cmt"># 値にする変数</span>
+  )</div>
+
+  <div class="reshape-row">
+    <div class="diagram-box">
+      <div class="dtitle">変換前（縦持ち）</div>
+      <table class="mini-table">
+        <thead><tr><th>pref</th><th class="col-accent">year</th><th>productivity</th></tr></thead>
+        <tbody>
+          <tr><td>東京都</td><td class="col-accent">2019年</td><td>820</td></tr>
+          <tr><td>東京都</td><td class="col-accent">2020年</td><td>810</td></tr>
+          <tr><td>東京都</td><td class="col-accent">2021年</td><td>830</td></tr>
+          <tr><td>大阪府</td><td class="col-accent">2019年</td><td>710</td></tr>
+        </tbody>
+      </table>
+      <p class="dnote">年次が<span class="hl">変数（列）</span>になっている</p>
+    </div>
+    <div class="diagram-arrow"><span class="glyph">↓</span><code>pivot_wider()</code></div>
+    <div class="diagram-box">
+      <div class="dtitle">変換後（横持ち）</div>
+      <table class="mini-table">
+        <thead><tr><th>pref</th><th class="col-accent">2019年</th><th class="col-accent">2020年</th><th class="col-accent">2021年</th></tr></thead>
+        <tbody>
+          <tr><td>東京都</td><td>820</td><td>810</td><td>830</td></tr>
+          <tr><td>大阪府</td><td>710</td><td>700</td><td>720</td></tr>
+          <tr><td>愛知県</td><td>680</td><td>670</td><td>690</td></tr>
+        </tbody>
+      </table>
+      <p class="dnote">年次が<span class="hl">列名</span>に戻った</p>
+    </div>
+  </div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre># A tibble: 3 x 4
+  pref   `2019年` `2020年` `2021年`
+  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 東京都      820      810      830
+2 大阪府      710      700      720
+3 愛知県      680      670      690</pre>
+  </div>
+  <div class="note"><div class="note-label">補足</div><code>pivot_longer()</code> で整形してから分析し、発表用の表だけ <code>pivot_wider()</code> で横持ちに戻す、という使い分けが基本です。分析自体は整然データ（縦持ち）のまま行います。</div>
+
+  <h2 id="descriptive"><span class="num">07</span>記述統計</h2>
   <p>分析の前に、使う変数の平均・ばらつき・最小最大を確認します。</p>
 
+  <h3>変数ごとの統計量</h3>
+  <p><code>$</code> を使うと、データフレームから特定の列（変数）だけを取り出せます。</p>
+  <div class="codebox">df$hwy              <span class="cmt"># hwy列だけを取り出す</span>
+mean(df$hwy)        <span class="cmt"># 平均</span>
+median(df$hwy)      <span class="cmt"># 中央値</span>
+sd(df$hwy)          <span class="cmt"># 標準偏差</span></div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre>[1] 23.44017
+[1] 24
+[1] 5.954643</pre>
+  </div>
+
   <h3>確認用：summary</h3>
+  <p><code>summary()</code>を使うと、データフレーム全体の記述統計量を一度に確認できます。</p>
   <div class="codebox">summary(df)</div>
   <div class="note"><div class="note-label">補足</div>手早く全体を把握するのに便利ですが、論文に載せる形式ではありません。</div>
   <div class="resultbox">
@@ -503,7 +741,7 @@ cty      16.86  4.26     9    35  234</pre>
   <div class="note"><div class="note-label">補足</div><code>output = "flextable"</code> を付けて <code>save_as_docx()</code> に渡す、という形は、後述の回帰結果表の保存とまったく同じです。この型を覚えておけば、どちらの表も Word に出力できます。</div>
   <div class="note"><div class="note-label">補足</div>保存したファイルは右下の Files タブに表示されます。ダウンロードするには、Files タブでファイルにチェックを入れ、More → Export を選びます。</div>
 
-  <h2 id="viz"><span class="num">07</span>可視化</h2>
+  <h2 id="viz"><span class="num">08</span>可視化</h2>
   <p>グラフの作成には <code>ggplot2</code>（tidyverse に含まれる）を使います。</p>
 
   <p>ggplot2 のグラフは、透明なシートを1枚ずつ重ねてグラフを完成させるようなイメージで組み立てます。</p>
@@ -631,6 +869,25 @@ cty      16.86  4.26     9    35  234</pre>
     </svg>
   </div>
 
+  <h3>折れ線グラフ（時間による変化）</h3>
+  <div class="codebox">ggplot(economics, aes(x = date, y = unemploy)) +
+  geom_line()</div>
+  <div class="note"><div class="note-label">補足</div><code>economics</code> は <code>ggplot2</code> に含まれる米国の経済時系列データで、<code>df</code>（<code>mpg</code>）とは別のデータです。横軸に時間（日付・年など）を取り、値の推移を見たいときに折れ線グラフを使います。</div>
+  <div class="resultbox">
+    <div class="rlabel">イメージ図</div>
+    <svg viewBox="0 0 260 130" width="260" height="130">
+      <line x1="10" y1="110" x2="250" y2="110" stroke="var(--ink)" stroke-width="1.5"/>
+      <line x1="10" y1="15" x2="10" y2="110" stroke="var(--ink)" stroke-width="1.5"/>
+      <polyline points="20,95 60,80 100,85 140,60 180,65 220,35" style="fill:none; stroke:var(--accent); stroke-width:2.5"/>
+      <circle cx="20"  cy="95" r="4" style="fill:var(--accent)"/>
+      <circle cx="60"  cy="80" r="4" style="fill:var(--accent)"/>
+      <circle cx="100" cy="85" r="4" style="fill:var(--accent)"/>
+      <circle cx="140" cy="60" r="4" style="fill:var(--accent)"/>
+      <circle cx="180" cy="65" r="4" style="fill:var(--accent)"/>
+      <circle cx="220" cy="35" r="4" style="fill:var(--accent)"/>
+    </svg>
+  </div>
+
   <h3>グラフの保存</h3>
   <div class="codebox">ggsave("my_plot.png")                       <span class="cmt"># 最後に表示したグラフを保存</span>
 
@@ -641,7 +898,7 @@ ggsave("my_plot.png", plot = p)</div>
   <div class="codebox">ggsave("my_plot.png", plot = p, width = 8, height = 5, dpi = 150)</div>
   <div class="note"><div class="note-label">補足</div>保存したファイルは右下の Files タブに表示されます。ダウンロードするには、Files タブでファイルにチェックを入れ、More → Export を選びます。</div>
 
-  <h2 id="regression"><span class="num">08</span>回帰分析</h2>
+  <h2 id="regression"><span class="num">09</span>回帰分析</h2>
 
   <h3>単回帰分析</h3>
   <p><code>lm()</code> で回帰式を推定します。<code>Y ~ X</code> の形で書き、<code>data =</code> に使うデータを指定します。</p>
@@ -669,6 +926,27 @@ F-statistic: 329.9 on 1 and 232 DF,  p-value: &lt; 2.2e-16</pre>
   </div>
   <p style="font-size:13.5px;">詳しい解釈は<a href="seminar_bunseki.html" style="color:var(--accent);">「分析と解釈」のページ</a>を参照してください。</p>
 
+  <h3>予測値を計算する</h3>
+  <p>推定した回帰式 <code>hwy_hat = 35.70 − 3.53 × displ</code> に、たとえば <code>displ = 2.0</code> を代入すると、手計算では次のようになります。</p>
+  <div class="codebox">35.70 − 3.53 × 2.0 = 28.64</div>
+  <p><code>predict()</code> を使うと、この計算をデータの全行についてまとめて行えます。</p>
+  <div class="codebox">df &lt;- df %&gt;% mutate(hwy_hat = predict(model1))
+df %&gt;% select(displ, hwy, hwy_hat) %&gt;% head()</div>
+  <div class="resultbox">
+    <div class="rlabel">結果</div>
+    <pre># A tibble: 6 x 3
+  displ   hwy hwy_hat
+  &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;
+1   1.8    29   29.34
+2   1.8    29   29.34
+3   2      31   28.64
+4   2      30   28.64
+5   2.8    26   25.81
+6   2.8    26   25.81</pre>
+  </div>
+  <p>3・4行目（<code>displ = 2</code>）の <code>hwy_hat</code> が<span class="pick">28.64</span>となっており、先ほどの手計算の値と一致しています。この <code>hwy_hat</code> は、<a href="seminar_tokei.html#data-regression" style="color:var(--accent);">「統計の基礎」の回帰分析の節</a>で説明している推定値（Yハット）に対応するものです。</p>
+  <div class="note"><div class="note-label">補足</div>手元のデータにない新しい値で予測したいときは、<code>predict(model1, newdata = data.frame(displ = 3))</code> のように <code>newdata</code> を指定します。</div>
+
   <h3>重回帰分析</h3>
   <p>説明変数を増やすときは <code>+</code> でつなぎます。</p>
   <div class="codebox">model2 &lt;- lm(hwy ~ displ + cyl, data = df)
@@ -676,7 +954,7 @@ model3 &lt;- lm(hwy ~ displ + cyl + factor(year), data = df)
 
 summary(model2)
 summary(model3)</div>
-  <div class="note"><div class="note-label">補足</div><code>factor()</code> で変数をカテゴリ型に変換すると、<code>lm()</code> が自動的にダミー変数に変換して回帰式に組み込みます。年など、数値としてではなくカテゴリとして扱いたい変数に使います。</div>
+  <div class="note"><div class="note-label">補足</div><code>factor()</code> で変数をカテゴリ型に変換すると、<code>lm()</code> が自動的にダミー変数に変換して回帰式に組み込みます。年など、数値としてではなくカテゴリとして扱いたい変数に使います。ダミー変数の意味は<a href="seminar_bunseki.html" style="color:var(--accent);">「分析と解釈」のページ</a>を参照してください。</div>
 
   <h3>結果表の作成</h3>
   <p><code>modelsummary()</code> を使うと、複数のモデルを並べた結果表を作れます。</p>
@@ -709,7 +987,7 @@ modelsummary(model1, output = "flextable") %&gt;%
   save_as_pptx(path = "regression_table.pptx")</div>
   <div class="note"><div class="note-label">補足</div><code>output = "regression_table.docx"</code> と直接ファイル名を書く方法は、modelsummary v2.0以降では動きません。上記のように <code>output = "flextable"</code> と <code>save_as_docx()</code> を組み合わせてください。</div>
 
-  <h2 id="errors"><span class="num">09</span>エラーと困ったときは</h2>
+  <h2 id="errors"><span class="num">10</span>エラーと困ったときは</h2>
 
   <div class="qa">
     <div class="q">「Error」と赤い文字が出た</div>
@@ -740,7 +1018,7 @@ modelsummary(model1, output = "flextable") %&gt;%
     <strong>困ったときは：</strong>Teams の「質問チャンネル」に投稿する（スクリーンショット添付推奨）、または授業の前後に教員に直接聞いてください。
   </div>
 
-  <h2 id="samplecode"><span class="num">10</span>サンプルコード</h2>
+  <h2 id="samplecode"><span class="num">11</span>サンプルコード</h2>
   <p>このページで紹介したコードは、<code>sample_code.R</code> にまとめてあります。ダウンロードして Posit Cloud にアップロードすれば、実行しながら確認できます。</p>
   <a class="dl-link" href="sample_code.R" download><b>⬇</b> sample_code.R をダウンロード</a>
 
@@ -752,6 +1030,7 @@ modelsummary(model1, output = "flextable") %&gt;%
       <a href="seminar_data.html">データの準備</a>
       <a href="seminar_bunseki.html">分析と解釈</a>
       <a href="seminar_happyo.html">発表</a>
+      <a href="seminar_tokei.html">統計の基礎</a>
       <a href="seminar_r.html" class="current">R</a>
     </nav>
     <a href="https://wakayamauniv.sharepoint.com/:u:/r/sites/a_2025339_Grp/SitePages/%E3%82%BC%E3%83%9F%E8%B3%87%E6%96%99.aspx?d=w681d14a42e1340cc9b17175e1b9c1ab5&csf=1&web=1&e=Igjvxt" target="_blank" rel="noopener">← 目次に戻る</a>
