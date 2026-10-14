@@ -160,6 +160,8 @@ document.addEventListener("DOMContentLoaded", function() {
   th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top;}
   th{background:var(--accent-soft); font-weight:700; font-size:12.5px;}
   .table-caption{font-size:12.5px; color:var(--sub); margin:0 0 24px;}
+  /* 図の説明文（出典キャプションとは異なり、内容の解説を含むため地の文と同じ1emにする） */
+  .fig-note{font-size:1em; color:var(--sub); margin:8px 0 24px;}
 
   /* ページ間ナビゲーション（フッター） */
   .related-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px;}
@@ -171,6 +173,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
   .toc-return{margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--sub);}
   .toc-return a{color:var(--accent); text-decoration:none;}
+
+  .back-to-toc{
+    display:inline-block;
+    margin:18px 0 0;
+    font-size:12.5px;
+    color:var(--sub);
+    text-decoration:none;
+  }
+  .back-to-toc:hover{color:var(--accent);}
 
   @media (max-width:700px){
     .compare{flex-direction:column;}
@@ -184,11 +195,13 @@ document.addEventListener("DOMContentLoaded", function() {
   <h1>統計の基礎</h1>
   <p class="lead">データを分析するうえで前提となる、統計の基礎知識をまとめています。</p>
 
-  <nav class="jumpnav">
+  <nav class="jumpnav" id="top">
     <a href="#about">この資料について</a>
     <a href="#data-variable">データと変数</a>
     <a href="#data-quality">データの質</a>
     <a href="#data-summary">データを要約する</a>
+    <a href="#data-graph">データのグラフ化</a>
+    <a href="#data-regression">回帰分析の考え方・結果の読み方</a>
   </nav>
 
   <h2 id="about"><span class="num">00</span>この資料について</h2>
@@ -224,6 +237,8 @@ document.addEventListener("DOMContentLoaded", function() {
       <li><strong>目標2（一部から全体を知ろうとすること）</strong>は、この先のセクションで少しずつ登場し、今後のセクションでより本格的に扱います。</li>
     </ul>
   </div>
+
+  <a class="back-to-toc" href="#top">↑ トップに戻る</a>
 
   <h2 id="data-variable"><span class="num">01</span>データと変数</h2>
 
@@ -292,6 +307,8 @@ document.addEventListener("DOMContentLoaded", function() {
   </ul>
   <div class="note"><div class="note-label">補足</div><code>head(df)</code> の出力では、列名の下に<code>&lt;chr&gt;</code>・<code>&lt;dbl&gt;</code>・<code>&lt;int&gt;</code>といった型が表示されます。<code>&lt;chr&gt;</code>（文字列）の列はおおむね質的変数、<code>&lt;dbl&gt;</code>・<code>&lt;int&gt;</code>（数値）の列はおおむね量的変数に対応しますが、<code>cyl</code>のように数値型でも実質的にはカテゴリとして扱いたい変数もあるため、型だけで機械的に判断せず、その変数が何を表しているかを確認することが大切です。</div>
 
+  <a class="back-to-toc" href="#top">↑ トップに戻る</a>
+
   <h2 id="data-quality"><span class="num">02</span>データの質</h2>
 
   <div class="callout">
@@ -347,6 +364,8 @@ document.addEventListener("DOMContentLoaded", function() {
     <li><code>is.na(df$var)</code> — 変数<code>var</code>の各値が欠損かどうかを確認</li>
     <li><code>colSums(is.na(df))</code> — 各変数の欠損値の数をまとめて確認</li>
   </ul>
+
+  <a class="back-to-toc" href="#top">↑ トップに戻る</a>
 
   <h2 id="data-summary"><span class="num">03</span>データを要約する</h2>
 
@@ -498,6 +517,230 @@ document.addEventListener("DOMContentLoaded", function() {
     <li><code>sd(df$var)</code> — 標準偏差</li>
     <li><code>summary(df)</code> — 代表値・最小最大などをまとめて確認</li>
   </ul>
+
+  <a class="back-to-toc" href="#top">↑ トップに戻る</a>
+
+  <h2 id="data-graph"><span class="num">04</span>データのグラフ化</h2>
+
+  <div class="callout">
+    03では、平均・分散などの<strong>数値</strong>にデータを要約しました。しかし、<strong>平均・標準偏差が同じでも、分布の形が全く異なる</strong>ことがあります。たとえば平均25・標準偏差5のデータでも、1つの山に集まった形もあれば、2つの山に分かれた形もあります。数値だけでは見えない、データの形や全体像を<strong>視覚的に</strong>把握できることが、グラフ化の役割です。
+  </div>
+
+  <h3>グラフの使い分け</h3>
+  <p>知りたいことに応じて、適切なグラフの種類を選びます。</p>
+
+  <table>
+    <tr><th>知りたいこと</th><th>使うグラフ</th></tr>
+    <tr><td>1つの量的変数の分布</td><td>ヒストグラム</td></tr>
+    <tr><td>カテゴリ（質的変数）ごとの件数・代表値の比較</td><td>棒グラフ</td></tr>
+    <tr><td>2つの量的変数の関係</td><td>散布図</td></tr>
+    <tr><td>分布の広がり・外れ値の有無</td><td>箱ひげ図</td></tr>
+    <tr><td>時間的な変化</td><td>折れ線グラフ</td></tr>
+  </table>
+  <p class="fig-note">01で見た量的変数・質的変数の区別が、そのままグラフ選びに直結します。量的変数そのものの分布を見たいときはヒストグラム、質的変数のカテゴリごとに件数や平均などを比べたいときは棒グラフ、という対応を覚えておくと迷いません。</p>
+
+  <h3>ヒストグラム</h3>
+  <p>1つの<strong>量的変数</strong>について、値の範囲をいくつかの区間（ビン）に区切り、各区間に入る件数を棒の高さで示したものです。データ全体の分布の形（山の数、左右対称かどうか、裾の長さなど）が一目でわかります。</p>
+  <svg class="diagram" viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg">
+    <line x1="10" y1="110" x2="250" y2="110" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="10" y1="15" x2="10" y2="110" style="stroke:var(--ink); stroke-width:1.5"/>
+    <rect x="10"  y="100" width="30" height="10" style="fill:var(--accent)"/>
+    <rect x="40"  y="85"  width="30" height="25" style="fill:var(--accent)"/>
+    <rect x="70"  y="65"  width="30" height="45" style="fill:var(--accent)"/>
+    <rect x="100" y="40"  width="30" height="70" style="fill:var(--accent)"/>
+    <rect x="130" y="55"  width="30" height="55" style="fill:var(--accent)"/>
+    <rect x="160" y="75"  width="30" height="35" style="fill:var(--accent)"/>
+    <rect x="190" y="92"  width="30" height="18" style="fill:var(--accent)"/>
+    <rect x="220" y="102" width="30" height="8"  style="fill:var(--accent)"/>
+  </svg>
+
+  <h3>棒グラフ</h3>
+  <p>1つの<strong>質的変数</strong>について、カテゴリごとの件数や平均値などを棒の高さで比較するグラフです。</p>
+  <svg class="diagram" viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg">
+    <line x1="10" y1="110" x2="250" y2="110" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="10" y1="15" x2="10" y2="110" style="stroke:var(--ink); stroke-width:1.5"/>
+    <rect x="20"  y="60" width="40" height="50" style="fill:var(--accent)"/>
+    <rect x="75"  y="30" width="40" height="80" style="fill:var(--accent)"/>
+    <rect x="130" y="75" width="40" height="35" style="fill:var(--accent)"/>
+    <rect x="185" y="45" width="40" height="65" style="fill:var(--accent)"/>
+  </svg>
+  <div class="alert">
+    <strong>ヒストグラムとの違い：</strong><br>
+    見た目は似ていますが、ヒストグラムは<strong>量的変数を区切った区間</strong>を並べたもの（区間は連続しているので棒どうしが隙間なく接する）、棒グラフは<strong>カテゴリ</strong>を並べたもの（カテゴリ同士に順序関係はないので棒の間に隙間をあける）という違いがあります。上の2つの図の棒の間隔にも、その違いを反映させています。
+  </div>
+
+  <h3>散布図</h3>
+  <p>2つの<strong>量的変数</strong>の関係を、点の集まりとして示すグラフです。点が右上がりに並んでいれば2変数には正の関係があり、右下がりなら負の関係がある、といったことが視覚的にわかります。ただし、散布図から2変数に関係があるように見えても、それが<strong>因果関係</strong>を意味するとは限りません。この点は、今後のセクションで扱う相関と因果の話につながります。</p>
+  <svg class="diagram" viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg">
+    <line x1="10" y1="110" x2="250" y2="110" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="10" y1="15" x2="10" y2="110" style="stroke:var(--ink); stroke-width:1.5"/>
+    <circle cx="30"  cy="95" r="4" style="fill:var(--accent)"/>
+    <circle cx="55"  cy="60" r="4" style="fill:var(--accent)"/>
+    <circle cx="75"  cy="88" r="4" style="fill:var(--accent)"/>
+    <circle cx="95"  cy="50" r="4" style="fill:var(--accent)"/>
+    <circle cx="115" cy="82" r="4" style="fill:var(--accent)"/>
+    <circle cx="135" cy="42" r="4" style="fill:var(--accent)"/>
+    <circle cx="155" cy="70" r="4" style="fill:var(--accent)"/>
+    <circle cx="175" cy="35" r="4" style="fill:var(--accent)"/>
+    <circle cx="200" cy="58" r="4" style="fill:var(--accent)"/>
+    <circle cx="225" cy="22" r="4" style="fill:var(--accent)"/>
+  </svg>
+
+  <h3>箱ひげ図</h3>
+  <p>中央値・四分位範囲（データの中央50%が収まる範囲）・外れ値の有無を1つの図にまとめたグラフです。02で見た「値が他から大きく外れているかどうか」を、グラフ上で直接確認できます。</p>
+  <ul>
+    <li><strong>箱の中の線</strong> — 中央値</li>
+    <li><strong>箱の上端・下端</strong> — 第3四分位数（Q3）・第1四分位数（Q1）。箱の中に全体の50%のデータが収まる</li>
+    <li><strong>ひげ</strong> — 箱の端（Q1・Q3）から、四分位範囲（IQR = Q3 − Q1）の1.5倍以内にある、最も極端な実測値まで伸びる</li>
+    <li><strong>ひげの外の点</strong> — <strong>外れ値</strong>。ひげの範囲（1.5×IQR）を超える値を、個別の点として打つ</li>
+  </ul>
+  <div class="note"><div class="note-label">補足</div>ひげをデータの最大値・最小値まで単純に伸ばす、より簡易な描き方もあります。しかしRの<code>geom_boxplot()</code>（既定の設定）は上記の1.5×IQR方式で、外れ値を箱・ひげと別に点として表示します。この資料でもその方式に合わせています。</div>
+  <svg class="diagram" viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg">
+    <line x1="10" y1="118" x2="250" y2="118" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="10" y1="10"  x2="10" y2="118" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="60" y1="20" x2="60" y2="50" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="45" y1="20" x2="75" y2="20" style="stroke:var(--ink); stroke-width:1.5"/>
+    <rect x="40" y="50" width="40" height="35" style="fill:var(--accent-soft); stroke:var(--accent); stroke-width:1.5"/>
+    <line x1="40" y1="65" x2="80" y2="65" style="stroke:var(--accent); stroke-width:2"/>
+    <line x1="60" y1="85" x2="60" y2="105" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="45" y1="105" x2="75" y2="105" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="160" y1="40" x2="160" y2="60" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="145" y1="40" x2="175" y2="40" style="stroke:var(--ink); stroke-width:1.5"/>
+    <rect x="140" y="60" width="40" height="30" style="fill:var(--accent-soft); stroke:var(--accent); stroke-width:1.5"/>
+    <line x1="140" y1="72" x2="180" y2="72" style="stroke:var(--accent); stroke-width:2"/>
+    <line x1="160" y1="90" x2="160" y2="108" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="145" y1="108" x2="175" y2="108" style="stroke:var(--ink); stroke-width:1.5"/>
+    <circle cx="160" cy="18" r="4" style="fill:var(--bad)"/>
+  </svg>
+
+  <h3>折れ線グラフ</h3>
+  <p>横軸に時間などの順序がある場合に、値の推移を線でつないで示すグラフです。ヒストグラム・棒グラフ・散布図・箱ひげ図は、いずれも<strong>ある時点での</strong>分布・関係・比較を見るものですが、折れ線グラフは<strong>時間とともに値がどう変化したか</strong>を見る点が異なります。</p>
+  <svg class="diagram" viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg">
+    <line x1="10" y1="110" x2="250" y2="110" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="10" y1="15" x2="10" y2="110" style="stroke:var(--ink); stroke-width:1.5"/>
+    <polyline points="20,95 60,80 100,85 140,60 180,65 220,35" style="fill:none; stroke:var(--accent); stroke-width:2.5"/>
+    <circle cx="20"  cy="95" r="4" style="fill:var(--accent)"/>
+    <circle cx="60"  cy="80" r="4" style="fill:var(--accent)"/>
+    <circle cx="100" cy="85" r="4" style="fill:var(--accent)"/>
+    <circle cx="140" cy="60" r="4" style="fill:var(--accent)"/>
+    <circle cx="180" cy="65" r="4" style="fill:var(--accent)"/>
+    <circle cx="220" cy="35" r="4" style="fill:var(--accent)"/>
+  </svg>
+  <div class="note"><div class="note-label">補足</div>トレンド（長期的な傾向）や季節性（周期的な変動）など、時系列データをより詳しく分析する方法は、今後の拡張で扱う予定です。ここではまず、折れ線グラフが「時間的な変化」を見るためのグラフであることを押さえておけば十分です。</div>
+
+  <h3>Rで描く</h3>
+  <p><code>ggplot2</code>では、使うグラフの種類を<code>geom_*()</code>の指定で切り替えます。</p>
+  <ul>
+    <li><code>geom_histogram()</code> — ヒストグラム</li>
+    <li><code>geom_bar()</code> — 棒グラフ</li>
+    <li><code>geom_point()</code> — 散布図</li>
+    <li><code>geom_boxplot()</code> — 箱ひげ図</li>
+    <li><code>geom_line()</code> — 折れ線グラフ</li>
+  </ul>
+
+  <a class="back-to-toc" href="#top">↑ トップに戻る</a>
+
+  <h2 id="data-regression"><span class="num">05</span>回帰分析の考え方・結果の読み方</h2>
+
+  <div class="callout">
+    03では数値への要約、04では視覚化という「データを整理する」技術を見てきました。回帰分析では、これらとは異なる新しい目的が登場します。それは、<strong>ある変数（X）から別の変数（Y）を予測する</strong>ことです。XとYの間に見られる関係を使って、「Xがこの値のとき、Yはどのくらいになりそうか」を見積もります。
+  </div>
+
+  <h3>散布図に直線を引く</h3>
+  <p>04で扱った散布図に、データ全体の傾向を表す1本の直線を重ねます。この直線を使えば、Xの値からYの値を見積もることができます。これが回帰分析の基本的な発想です。</p>
+  <svg class="diagram" viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg">
+    <line x1="10" y1="110" x2="250" y2="110" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="10" y1="15" x2="10" y2="110" style="stroke:var(--ink); stroke-width:1.5"/>
+    <circle cx="30"  cy="95" r="4" style="fill:var(--sub)"/>
+    <circle cx="55"  cy="60" r="4" style="fill:var(--sub)"/>
+    <circle cx="75"  cy="88" r="4" style="fill:var(--sub)"/>
+    <circle cx="95"  cy="50" r="4" style="fill:var(--sub)"/>
+    <circle cx="115" cy="82" r="4" style="fill:var(--sub)"/>
+    <circle cx="135" cy="42" r="4" style="fill:var(--sub)"/>
+    <circle cx="155" cy="70" r="4" style="fill:var(--sub)"/>
+    <circle cx="175" cy="35" r="4" style="fill:var(--sub)"/>
+    <circle cx="200" cy="58" r="4" style="fill:var(--sub)"/>
+    <circle cx="225" cy="22" r="4" style="fill:var(--sub)"/>
+    <line x1="20" y1="88" x2="235" y2="31" style="stroke:var(--accent); stroke-width:2.5"/>
+  </svg>
+
+  <h3>最も当てはまる直線とは（最小二乗法）</h3>
+  <p>直線の引き方は無数にありますが、回帰分析では「最も当てはまりの良い直線」を選びます。各点と直線との縦方向のズレを<strong>残差</strong>と呼び、残差を2乗して合計した値（残差2乗和）が最も小さくなる直線を選ぶ方法を、<strong>最小二乗法</strong>といいます。</p>
+  <svg class="diagram" viewBox="0 0 260 130" xmlns="http://www.w3.org/2000/svg">
+    <line x1="10" y1="110" x2="250" y2="110" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="10" y1="15" x2="10" y2="110" style="stroke:var(--ink); stroke-width:1.5"/>
+    <line x1="30"  y1="95" x2="30"  y2="85.8" style="stroke:var(--bad); stroke-width:1.5; stroke-dasharray:2 2"/>
+    <line x1="55"  y1="60" x2="55"  y2="79.1" style="stroke:var(--bad); stroke-width:1.5; stroke-dasharray:2 2"/>
+    <line x1="75"  y1="88" x2="75"  y2="73.8" style="stroke:var(--bad); stroke-width:1.5; stroke-dasharray:2 2"/>
+    <line x1="95"  y1="50" x2="95"  y2="68.5" style="stroke:var(--bad); stroke-width:1.5; stroke-dasharray:2 2"/>
+    <line x1="115" y1="82" x2="115" y2="63.1" style="stroke:var(--bad); stroke-width:1.5; stroke-dasharray:2 2"/>
+    <line x1="135" y1="42" x2="135" y2="57.8" style="stroke:var(--bad); stroke-width:1.5; stroke-dasharray:2 2"/>
+    <line x1="155" y1="70" x2="155" y2="52.5" style="stroke:var(--bad); stroke-width:1.5; stroke-dasharray:2 2"/>
+    <line x1="175" y1="35" x2="175" y2="47.2" style="stroke:var(--bad); stroke-width:1.5; stroke-dasharray:2 2"/>
+    <line x1="200" y1="58" x2="200" y2="40.5" style="stroke:var(--bad); stroke-width:1.5; stroke-dasharray:2 2"/>
+    <line x1="225" y1="22" x2="225" y2="33.8" style="stroke:var(--bad); stroke-width:1.5; stroke-dasharray:2 2"/>
+    <line x1="20" y1="88" x2="235" y2="31" style="stroke:var(--accent); stroke-width:2.5"/>
+    <circle cx="30"  cy="95" r="4" style="fill:var(--accent)"/>
+    <circle cx="55"  cy="60" r="4" style="fill:var(--accent)"/>
+    <circle cx="75"  cy="88" r="4" style="fill:var(--accent)"/>
+    <circle cx="95"  cy="50" r="4" style="fill:var(--accent)"/>
+    <circle cx="115" cy="82" r="4" style="fill:var(--accent)"/>
+    <circle cx="135" cy="42" r="4" style="fill:var(--accent)"/>
+    <circle cx="155" cy="70" r="4" style="fill:var(--accent)"/>
+    <circle cx="175" cy="35" r="4" style="fill:var(--accent)"/>
+    <circle cx="200" cy="58" r="4" style="fill:var(--accent)"/>
+    <circle cx="225" cy="22" r="4" style="fill:var(--accent)"/>
+  </svg>
+  <p class="fig-note">赤い点線が各点の残差（直線とのズレ）。最小二乗法は、この残差を2乗して合計した値を最小にする直線を選ぶ。</p>
+
+  <h3>回帰式の読み方</h3>
+  <p>選ばれた直線は、次の式で表されます。</p>
+  <p class="formula">$$\hat{Y} = \alpha + \beta X$$</p>
+  <ul>
+    <li><strong><code>Ŷ</code>（Yハット）</strong> — Xの値から予測されるYの値</li>
+    <li><strong>α（切片）</strong> — X = 0のときの<code>Ŷ</code>の値（直線がY軸と交わる点）</li>
+    <li><strong>β（傾き）</strong> — Xが1単位増えたときに、<code>Ŷ</code>が平均的にどれだけ変化するか</li>
+  </ul>
+
+  <h3>回帰係数の解釈</h3>
+  <p>mpgデータで、排気量（<code>displ</code>）から高速道路燃費（<code>hwy</code>）を予測する回帰式を推定すると、次のようになります。</p>
+  <p class="formula">$$\widehat{\text{hwy}} = 35.70 - 3.53 \times \text{displ}$$</p>
+  <p>傾き（β）が<span class="flagged">−3.53</span>であることから、<strong>排気量が1リットル増えると、高速道路燃費は平均的に3.53低下する</strong>と読み取れます。</p>
+  <p>切片（α）の<span class="pick">35.70</span>は、式の上では排気量0リットルのときの予測燃費です。観測していないXの値についても予測できること（<strong>外挿</strong>）は、回帰分析の実用上のメリットの一つですが、Xの観測範囲から大きく外れた値への外挿は、一般に不確かになりやすく注意が必要です。今回の例では、mpgデータの排気量（<code>displ</code>）は<span class="pick">1.6〜7.0リットル</span>の範囲にあり、排気量0リットルはこの範囲から外れているだけでなく、現実の車としてもあり得ない値です。そのため、この切片をそのまま解釈するのは適切ではありません。</p>
+  <div class="note"><div class="note-label">補足</div>Xの観測範囲の中、またはその近くであれば、外挿にはあたらないため、切片を含めて回帰式の値をそのまま解釈してかまいません。注意が必要になるのは、観測範囲を大きく外れたXの値について予測・解釈しようとする場合です。</div>
+
+  <h3>決定係数（R²）</h3>
+  <p>決定係数（<strong>R²</strong>）は、次の式で定義されます。</p>
+  <p class="formula">$$R^2 = 1 - \frac{\sum_i (y_i - \hat{y}_i)^2}{\sum_i (y_i - \bar{y})^2}$$</p>
+  <p>分子は残差（Yの実測値と予測値のズレ）の2乗和で、回帰式が<strong>説明できなかった</strong>ばらつきを表します。分母はYの実測値と平均とのズレの2乗和で、Yの<strong>全体</strong>のばらつきを表します。</p>
+  <p>R²は<span class="pick">0〜1</span>の値を取り、1に近いほど直線がデータによく当てはまっていることを意味します。先ほどの回帰式では、R² = <span class="pick">0.587</span>でした。</p>
+  <div class="alert">
+    <strong>R²が高い＝良い分析、とは限りません。</strong><br>
+    R²はあくまで直線への当てはまりの良さを表す指標であり、その回帰式が意味のある関係を捉えているか、因果関係として解釈できるかとは別の問題です。当てはまりが悪くても重要な関係を示していることもあれば、当てはまりが良くても見せかけの相関（疑似相関）にすぎないこともあります。R²の高さだけで分析の良し悪しを判断しないようにしましょう。
+  </div>
+
+  <h3>p値の解釈</h3>
+  <p>手元のデータは、本当に知りたい対象（母集団）の一部にすぎません（00で見た目標2）。推定された傾き（β）が0ではないように見えても、<strong>本当の傾きは0（XとYに関係がない）かもしれない</strong>という可能性を考える必要があります。</p>
+  <ul>
+    <li><strong>p値とは</strong> — 「本当の傾きは0である」と仮定した場合に、手元のデータと同じか、それ以上に極端な結果が得られる確率</li>
+    <li><strong>読み方</strong> — p値が小さいほど、「傾きは0である」という仮定のもとでは説明しにくいデータだということになり、傾きが0ではない（関係がある）と考える根拠が強くなる</li>
+    <li><strong>判断の目安</strong> — 慣習的に、p値が<span class="pick">0.05</span>未満であれば「統計的に有意」（＝「XとYに関係がない」とは言えない）と判断する</li>
+  </ul>
+  <p>今回のデータでは、傾きのp値は<span class="pick">2×10⁻¹⁶未満</span>と非常に小さく、排気量と燃費の関係は統計的に有意と言えます。</p>
+  <div class="alert">
+    <strong>p値は「関係の大きさ」を表す指標ではありません。</strong><br>
+    p値が小さいことは、関係が「0ではなさそうだ」という統計的な根拠を示すだけで、その関係が<strong>実質的に大きい・重要であること</strong>は意味しません。観測数が非常に多い場合、わずかな関係でもp値は小さくなります。関係の大きさそのものは、係数（傾き）の値や、それが実質的に意味のある大きさかどうかで判断する必要があります。
+  </div>
+
+  <h3>Rで推定する</h3>
+  <p><code>lm()</code>で回帰式を推定し、<code>summary()</code>で結果を確認します。</p>
+  <ul>
+    <li><code>lm(Y ~ X, data = df)</code> — 回帰式の推定（<code>Y ~ X</code>で「XからYを予測する」ことを指定）</li>
+    <li><code>summary(model)</code> — 推定結果の表示（<code>Estimate</code>＝係数、<code>Pr(&gt;|t|)</code>＝p値、<code>Multiple R-squared</code>＝決定係数）</li>
+    <li><code>predict(model, newdata = ...)</code> — 推定したモデルを使って、Yを予測。<code>newdata</code>には、説明変数と同じ列名を持つ新しいdata.frameを渡す</li>
+  </ul>
+
+  <a class="back-to-toc" href="#top">↑ トップに戻る</a>
 
   <div class="toc-return">
     <nav class="related-nav">
