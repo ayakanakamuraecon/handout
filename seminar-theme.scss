@@ -315,6 +315,29 @@ body{
   }
 }
 
+// 左右に並べた callout（.columns 内）は高さをそろえる
+div.columns{
+  display: flex;
+  gap: 1.5em;
+  align-items: stretch;
+
+  > .column{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-width: 0;
+
+    > .callout{ flex: 1; }
+  }
+
+  // スマホ幅では縦積みに戻す
+  @media (max-width: 575px){
+    flex-direction: column;
+
+    > .column{ flex: none; }
+  }
+}
+
 // ---------------------------------------------------------------
 // 節冒頭の問いかけ（Calloutより軽く、本文よりは強調したいときに使う）
 // qmd側で ::: {.seminar-question} ... ::: のように使う想定
