@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>マクロ経済学から見る労働経済学 – 講義資料</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -42,10 +36,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0ea2ff7769e5ef82603bbe0ca7207a04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-cdebfaa07695f7ba0b196495d461e672.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -78,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -91,7 +85,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -215,7 +209,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>就職浪人をしようかどうか迷うタロウの例
+就職浪人をしようかどうか迷うタロウの例
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -245,7 +239,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>就職活動の便益
+就職活動の便益
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -266,7 +260,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>就職活動の費用
+就職活動の費用
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -289,7 +283,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>就職成功の場合
+就職成功の場合
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -303,7 +297,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>就職失敗の場合
+就職失敗の場合
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -359,7 +353,7 @@ P \approx&amp; 0.713 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>リスク中立的・リスク回避的な態度
+リスク中立的・リスク回避的な態度
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -381,7 +375,7 @@ P \approx&amp; 0.713 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>まとめ：就職活動を続けるために必要な内定確率
+まとめ：就職活動を続けるために必要な内定確率
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -433,7 +427,7 @@ P \pi_{S} + (1-P) \pi_{F} \geq&amp; 0
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>就職活動の便益
+就職活動の便益
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -450,7 +444,7 @@ P \pi_{S} + (1-P) \pi_{F} \geq&amp; 0
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>就職活動の費用
+就職活動の費用
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -469,7 +463,7 @@ P \pi_{S} + (1-P) \pi_{F} \geq&amp; 0
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>就職成功の場合
+就職成功の場合
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -483,7 +477,7 @@ P \pi_{S} + (1-P) \pi_{F} \geq&amp; 0
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>就職失敗の場合
+就職失敗の場合
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -507,13 +501,13 @@ P \approx&amp; 0.532 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>セーフティネット
+セーフティネット
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>ここで家業は、就職活動に失敗した場合の<strong>セーフティネット</strong>（安全網）として機能しています。この選択肢がなければ、最悪のケースでは生涯賃金がゼロになることすらあり得ますが、家業を継げるという逃げ道があるおかげでそうした事態を避けられているのです。</p>
-<p>セーフティネットはタロウを助ける一方で、<strong>就職活動の期間を延ばしてしまうという副作用</strong>も持ち合わせています。</p>
-<p>多くの労働者にとっては、雇用保険の失業手当がこのセーフティネットの役割を担っています。</p>
+<p>ここで家業は、就職活動に失敗した場合の<strong>セーフティネット</strong>（安全網）として機能している。この選択肢がなければ、最悪のケースでは生涯賃金がゼロになることすらあり得るが、家業を継げるという逃げ道があるおかげでそうした事態を避けられている。</p>
+<p>セーフティネットはタロウを助ける一方で、<strong>就職活動の期間を延ばしてしまうという副作用</strong>も持ち合わせている。</p>
+<p>多くの労働者にとっては、雇用保険の失業手当がこのセーフティネットの役割を担っている。</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-important no-icon callout-titled">
@@ -522,20 +516,20 @@ P \approx&amp; 0.532 \\
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>最悪のケース：セーフティネットがまったくないとき
+最悪のケース：セーフティネットがまったくないとき
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>仮に家業を継ぐという選択肢がなければ、最悪の場合、生涯賃金はゼロになります。このとき、就職失敗の場合の純便益は <strong>-3億110万円</strong>（0円 <span class="math inline">\(-\)</span> 3億110万円）となり、就職活動を続けることが合理的になる内定確率は、</p>
+<p>仮に家業を継ぐという選択肢がなければ、最悪の場合、生涯賃金はゼロになる。このとき、就職失敗の場合の純便益は <strong>-3億110万円</strong>（0円 <span class="math inline">\(-\)</span> 3億110万円）となり、就職活動を続けることが合理的になる内定確率は、</p>
 <p><span class="math display">\[
 \begin{align}
 P \times 8890万円 + (1 - P) \times (-3億110万円) \geq&amp; 0 \\
 P \approx&amp; 0.772 \\
 \end{align}
 \]</span></p>
-<p>を満たします。</p>
-<p>内定確率が77.2%を超えている必要があるとなると、相当な自信がなければ、就職活動を続けることは合理的とは言えません。</p>
-<p>家業を継ぐという選択肢がなければ、就職活動を切り上げて第2志望の会社に入社しようとするインセンティブが強まるのです。</p>
+<p>を満たす。</p>
+<p>内定確率が77.2%を超えている必要があるとなると、相当な自信がなければ、就職活動を続けることは合理的とは言えない。</p>
+<p>家業を継ぐという選択肢がなければ、就職活動を切り上げて第2志望の会社に入社しようとするインセンティブが強まる。</p>
 </div>
 </div>
 <div class="quizbox">
@@ -575,7 +569,7 @@ P\times 1億 + (1-P) \times (-1億) = 0
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>就職活動の便益
+就職活動の便益
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -593,7 +587,7 @@ P\times 1億 + (1-P) \times (-1億) = 0
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>就職活動の費用
+就職活動の費用
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -616,7 +610,7 @@ P\times 1億 + (1-P) \times (-1億) = 0
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>就職成功の場合
+就職成功の場合
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -630,7 +624,7 @@ P\times 1億 + (1-P) \times (-1億) = 0
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>就職失敗の場合
+就職失敗の場合
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -685,7 +679,7 @@ X =&amp; 3
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>就職活動の便益
+就職活動の便益
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -702,7 +696,7 @@ X =&amp; 3
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>就職活動の費用
+就職活動の費用
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -721,7 +715,7 @@ X =&amp; 3
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>就職成功の場合
+就職成功の場合
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -735,7 +729,7 @@ X =&amp; 3
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>就職失敗の場合
+就職失敗の場合
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -847,17 +841,9 @@ Y \geq&amp; 4.5
 </tr>
 </tbody>
 </table>
-<p>以上のCase 1〜Case 3を踏まえ<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、ジョブ・サーチの理論から得られる示唆をまとめると次のようになります。</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>まとめ：ジョブ・サーチの理論
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>以上のCase 1〜Case 3を踏まえ<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>、ジョブ・サーチの理論から導かれる帰結をまとめると次のようになります。</p>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">ジョブ・サーチの理論から導かれる帰結</span></p>
 <ul>
 <li><strong>経験年数が長い労働者ほど賃金が高い</strong>
 <ul>
@@ -873,11 +859,10 @@ Y \geq&amp; 4.5
 </ul></li>
 </ul>
 </div>
-</div>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
 <p>次の文章を読み、空欄に入る最も適切な語句を選びなさい。</p>
-<p>タロウが第1志望の企業への内定を目指して就職活動を続けるかどうかは、内定確率やその他の条件に左右される。たとえば、失敗したときに「家業を継ぐ」という選択肢があると、最悪でも一定の生涯賃金が得られる。このような選択肢は <input type="text" class="fill-in" id="safe" placeholder="ここに入力"> の役割を果たし、必要な内定確率を引き下げることになる。一方、第2志望の会社の生涯賃金が高まると、就職活動を続けることで失われる <input type="text" class="fill-in" id="cost" placeholder="ここに入力"> が大きくなり、活動を続けるにはより高い内定確率が必要になる。また、第1志望の会社の生涯賃金が高まると、得られる利益が大きくなるため、より <input type="text" class="fill-in" id="low" placeholder="ここに入力"> 内定確率でも活動を続けることが合理的になる。</p>
+<p>タロウが第1志望の企業への内定を目指して就職活動を続けるかどうかは、内定確率やその他の条件に左右される。たとえば、失敗したときに「家業を継ぐ」という選択肢があると、最悪でも一定の生涯賃金が得られる。このような選択肢は <input type="text" class="fill-in" id="safe" placeholder="ここに入力"> の役割を果たし、必要な内定確率を引き下げることになる。一方、第2志望の会社の生涯賃金が高まると、就職活動を続けることで失われる <input type="text" class="fill-in" id="oppcost" placeholder="ここに入力"> が大きくなり、活動を続けるにはより高い内定確率が必要になる。また、第1志望の会社の生涯賃金が高まると、得られる利益が大きくなるため、より <input type="text" class="fill-in" id="lowprob" placeholder="ここに入力"> 内定確率でも活動を続けることが合理的になる。</p>
 <button onclick="showAnswer('search')">
 答えを見る
 </button>
@@ -892,7 +877,7 @@ Y \geq&amp; 4.5
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>オン・ザ・ジョブ・サーチ
+オン・ザ・ジョブ・サーチ
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -901,7 +886,10 @@ Y \geq&amp; 4.5
 <li>転職しない場合と比べて、<strong>転職した方が生涯所得が大きくなると見込まれるときに転職</strong>が選ばれる
 <ul>
 <li>ただし生涯所得と賃金は同じではないため、転職によって必ずしも賃金自体が上がるとは限らない</li>
-<li>実際には、求職者は生涯賃金だけでなく、労働時間、フレックスタイム制の有無、仕事内容、通勤時間、出産・育児休暇、事業所内保育施設、訓練機会、将来の転職可能性など、さまざまな要素を踏まえて仕事全体の長期的な効用を比較し、転職の意思決定を行っていると考えられる</li>
+<li>実際には、賃金以外の要素も含めて、仕事全体の長期的な効用を比較していると考えられる
+<ul>
+<li>例：労働時間、フレックスタイム制の有無、仕事内容、通勤時間、出産・育児休暇、事業所内保育施設、訓練機会、将来の転職可能性など</li>
+</ul></li>
 </ul></li>
 </ul>
 </div>
@@ -911,6 +899,129 @@ Y \geq&amp; 4.5
 <li>現職の企業の業績悪化が見込まれ、今後賃金が下がりそうなため、下がる前に転職する</li>
 <li>現時点では現職の賃金の方が高いものの、今後の伸びは小さいと見込まれる一方、転職先は現時点の賃金は低くても長く勤めることで大きな上昇が期待できる</li>
 </ul>
+<!-- オン・ザ・ジョブ・サーチ：転職しても賃金が上がるとは限らないケースの概念図（2ケース）。
+     数値データに基づく図ではなく、現職と転職先の賃金の推移のイメージを示す概念図。
+     ケース1：現職の賃金が今後下がりそうなので、下がる前に転職する
+     ケース2：現時点では現職の賃金の方が高いが、転職先は長く勤めることで大きな上昇が期待できる -->
+<div class="viz-root onthejob-chart">
+<style>
+.onthejob-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #c3c2b7;
+  --current:        #eb6834;
+  --target:         #2a78d6;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 12px;
+  margin: 20px 0 10px;
+}
+.onthejob-chart .oj-panels{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.onthejob-chart .oj-panel{
+  flex: 1 1 280px;
+  min-width: 0;
+}
+.onthejob-chart .oj-title{
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.onthejob-chart svg{
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.onthejob-chart .oj-axis{
+  stroke: var(--axis-line);
+  stroke-width: 1.5;
+  fill: none;
+}
+.onthejob-chart .oj-axis-label{
+  font-size: 13px;
+  fill: var(--text-secondary);
+}
+.onthejob-chart .oj-move{
+  stroke: var(--text-muted);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+}
+.onthejob-chart .oj-move-label{
+  font-size: 13px;
+  fill: var(--text-secondary);
+  text-anchor: middle;
+}
+.onthejob-chart .oj-line{
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.onthejob-chart .oj-line.current{ stroke: var(--current); }
+.onthejob-chart .oj-line.target{ stroke: var(--target); }
+.onthejob-chart .oj-name{
+  font-size: 14px;
+  font-weight: 700;
+}
+.onthejob-chart .oj-name.current{ fill: var(--current); }
+.onthejob-chart .oj-name.target{ fill: var(--target); }
+.onthejob-chart .oj-loss{ fill: var(--current); fill-opacity: .16; }
+.onthejob-chart .oj-gain{ fill: var(--target); fill-opacity: .16; }
+.onthejob-chart .oj-legend{
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+.onthejob-chart .oj-legend span{
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.onthejob-chart .oj-legend i{
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.onthejob-chart .oj-legend i.loss{ background: rgba(235,104,52,.28); }
+.onthejob-chart .oj-legend i.gain{ background: rgba(42,120,214,.28); }
+</style>
+<div class="oj-panels">
+<div class="oj-panel">
+<div class="oj-title">
+ケース1：現職の賃金が今後下がりそうなとき
+</div>
+<svg viewbox="0 0 360 230" role="img" aria-label="現職の賃金は転職の時点では高いがその後下がり、転職先の賃金は転職時点では少し低いがその後も変わらない。転職後しばらくは転職先の方が低いが、やがて転職先の方が高くなる。">
+<polygon class="oj-loss" points="120,80 164,100 120,100"></polygon> <polygon class="oj-gain" points="164,100 330,175 330,100"></polygon> <line class="oj-move" x1="120" y1="28" x2="120" y2="200"></line> <text class="oj-move-label" x="120" y="20">転職</text> <polyline class="oj-axis" points="50,20 50,200 340,200"></polyline> <text class="oj-axis-label" x="50" y="14" text-anchor="middle">賃金</text> <text class="oj-axis-label" x="340" y="222" text-anchor="end">時間（勤続年数）</text> <polyline class="oj-line current" points="50,80 120,80 330,175"></polyline> <polyline class="oj-line target" points="120,100 330,100"></polyline> <text class="oj-name current" x="256" y="174">現職</text> <text class="oj-name target" x="256" y="92">転職先</text>
+</svg>
+</div>
+<div class="oj-panel">
+<div class="oj-title">
+ケース2：転職先は今は低くても、大きな上昇が期待できるとき
+</div>
+<svg viewbox="0 0 360 230" role="img" aria-label="現職の賃金は転職の時点では高いがほとんど伸びず、転職先の賃金は転職時点では低いが大きく上昇する。転職後しばらくは転職先の方が低いが、やがて転職先の方が高くなる。">
+<polygon class="oj-loss" points="120,72 238,68 120,130"></polygon> <polygon class="oj-gain" points="238,68 330,20 330,65"></polygon> <line class="oj-move" x1="120" y1="28" x2="120" y2="200"></line> <text class="oj-move-label" x="120" y="20">転職</text> <polyline class="oj-axis" points="50,20 50,200 340,200"></polyline> <text class="oj-axis-label" x="50" y="14" text-anchor="middle">賃金</text> <text class="oj-axis-label" x="340" y="222" text-anchor="end">時間（勤続年数）</text> <polyline class="oj-line current" points="50,75 330,65"></polyline> <polyline class="oj-line target" points="120,130 330,20"></polyline> <text class="oj-name current" x="270" y="86">現職</text> <text class="oj-name target" x="196" y="104">転職先</text>
+</svg>
+</div>
+</div>
+<div class="oj-legend">
+<p><span><i class="loss"></i>転職によって一時的に賃金が低くなる分</span> <span><i class="gain"></i>転職によって賃金が高くなる分</span></p>
+</div>
+</div>
 </section>
 </section>
 <section id="ジョブマッチングの理論" class="level2">
@@ -925,7 +1036,7 @@ Y \geq&amp; 4.5
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>ジョブ・マッチングの理論
+ジョブ・マッチングの理論
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -937,23 +1048,74 @@ Y \geq&amp; 4.5
 <li><strong>マッチの質が高い場合</strong>、労働者の生産性は高くなり、企業は離職を防ぐために高い賃金を支払う</li>
 <li><strong>マッチの質が低い場合</strong>、労働者の生産性は上がりにくく、転職や離職を通じてそのマッチングは淘汰されていく</li>
 </ul>
-<p>この理論から導かれる帰結</p>
+</div>
+</div>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">ジョブ・マッチングの理論から導かれる帰結</span></p>
 <ul>
 <li><strong>若い（勤続年数が短い）労働者ほど転職しやすい</strong></li>
 <li><strong>勤続年数が長い労働者ほど賃金が高い</strong></li>
 <li><strong>転職を通じてマッチの質が改善され、それに伴って賃金が上昇する</strong></li>
 </ul>
 </div>
-</div>
 <p>労働者は、自分の特性を生かせる質の高いマッチが実現すれば高い生産性を発揮でき、高い賃金も得られます。一方、ミスマッチな仕事に就いてしまうと、生産性は低く評価され、賃金も伸び悩み、結果として離職や転職を選ぶ可能性が高まります。</p>
 <p>ここでの「ミスマッチ」は、メディアなどでよく耳にする仕事と労働者のミスマッチとは意味合いが異なる点に注意が必要です。</p>
-<ul>
-<li>一般的に語られるミスマッチ：介護業界で労働需要が労働供給を上回る一方、他の産業では逆に供給が過剰になっているといった、各労働市場における需給のギャップ</li>
-<li>ジョブ・マッチング理論でのミスマッチ：個々の労働者と個々の仕事の組み合わせの質が低いこと（労働市場全体の需給が均衡していても起こり得る）</li>
-</ul>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">一般的に語られるミスマッチ</span></p>
+<p>介護業界で労働需要が労働供給を上回る一方、他の産業では逆に供給が過剰になっているといった、各労働市場における<strong>需給のギャップ</strong></p>
+</div>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">ジョブ・マッチング理論でのミスマッチ</span></p>
+<p>個々の労働者と個々の仕事の組み合わせの質が低いこと（労働市場全体の需給が均衡していても起こり得る）</p>
+<p><span class="math inline">\(\rightarrow\)</span> <strong>マッチの質の低さ</strong></p>
+</div>
 <p>ジョブ・マッチング理論が想定するミスマッチの実証的な証拠を見つけるのは、非常に難しい作業です。</p>
 <p>一方で、大森義明・永瀬伸子（2021）『労働経済学をつかむ』（有斐閣）は、学歴や専攻分野のミスマッチがない労働者に絞って比較しても、日本のミスマッチの割合は国際的に見て高いことを指摘しています。</p>
 <p>長期雇用を前提とする日本の雇用慣行が、多様な個人と多様な仕事とを柔軟にマッチングさせるうえでの制約になっている可能性も考えられます。</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+まとめ：ジョブ・サーチの理論とジョブ・マッチングの理論
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>2つの理論を、仕事の質の捉え方、勤続年数と賃金の関係、転職する理由の3点で比べると、次のようになる。</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>ジョブ・サーチの理論</th>
+<th>ジョブ・マッチングの理論</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>仕事の質</strong></td>
+<td>すべての仕事は同質で賃金（生涯賃金）の多寡のみが異なる</td>
+<td>人によって得手不得手が異なり、マッチの質は就職前に分からない</td>
+</tr>
+<tr class="even">
+<td><strong>勤続年数が長いほど賃金が高い理由</strong></td>
+<td>現在のオファーがすでに高水準で、それを上回るオファーがなかなか来ないため</td>
+<td>質の低いマッチは淘汰され、質の高いマッチでは企業が離職を防ぐために高い賃金を支払うため</td>
+</tr>
+<tr class="odd">
+<td><strong>転職する理由</strong></td>
+<td>現職より条件の良いオファーを見つけたとき</td>
+<td>ミスマッチな仕事から、より質の高いマッチの仕事へ移るため（マッチの質が未確定な若い労働者ほど転職しやすい）</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
 <p>次の文章を読み、空欄に入る最も適切な語句を選びなさい。</p>
@@ -969,100 +1131,134 @@ Y \geq&amp; 4.5
 <section id="労働市場の流動性" class="level2">
 <h2 class="anchored" data-anchor-id="労働市場の流動性">労働市場の流動性</h2>
 <p>ここでは、アメリカと日本の労働市場を比較しながら、日本における転職の実態を分析していきます。</p>
-<p>前提として、アメリカの労働市場は日本と比べてかなり流動性が高いことが知られています。</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>男女間の転職行動の差
+労働市場の流動性
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>日本</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<ul>
-<li><strong>男性</strong>：30代～50代の約5割は初職に就いた企業で働き続けており、約7割は転職回数が1回以下</li>
-<li><strong>女性</strong>：40代の初職継続者は3割以下</li>
-<li><strong>背景要因</strong>：育児・介護などケアに対する家族のニーズが、女性の離職を促しやすいと考えられる</li>
-</ul>
-<p><strong>アメリカ</strong></p>
-<ul>
-<li><strong>男性・女性共通</strong>：初職を長期間継続する雇用慣行は弱く、現職勤続年数の中央値は<br>
-男性4.2年、女性3.6年と短い<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
-<li><strong>性差</strong>：勤続年数は男性の方がやや長いが、日本のように女性の初職継続率が著しく低いという形では観察されない<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></li>
-<li><strong>背景要因</strong>：介護開始や家族ケアは、女性の就業継続や賃金に負の影響を与えやすいことが、行政データを用いた実証研究で示されている<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
-</ul>
+<p>労働者の企業や職種間の移動のしやすさの程度。転職率や平均勤続年数などで測られる。</p>
+</div>
+</div>
+<p>前提として、アメリカの労働市場は日本と比べてかなり流動性が高いことが知られています。</p>
+<div class="seminar-table-title">
+<p>男女間の転職行動の差</p>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>日本<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></th>
+<th>アメリカ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>男性</strong></td>
+<td>30代～50代の約5割は初職に就いた企業で働き続けており、約7割は転職回数が1回以下</td>
+<td>初職を長期間継続する雇用慣行は弱く、現職勤続年数の中央値は4.2年と短い<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></td>
+</tr>
+<tr class="even">
+<td><strong>女性</strong></td>
+<td>40代の初職継続者は3割以下</td>
+<td>現職勤続年数の中央値は3.6年と短い。勤続年数は男性の方がやや長いが、日本のように女性の初職継続率が著しく低いという形では観察されない<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></td>
+</tr>
+<tr class="odd">
+<td><strong>背景要因</strong></td>
+<td>育児・介護などケアに対する家族のニーズが、女性の離職を促しやすいと考えられる</td>
+<td>介護開始や家族ケアは、女性の就業継続や賃金に負の影響を与えやすいことが、行政データを用いた実証研究で示されている<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></td>
+</tr>
+</tbody>
+</table>
 <p><strong>共通点と差異</strong></p>
 <ul>
 <li><strong>共通点</strong>：家族ケアが女性の就業継続に不利に働きやすい点は日米で共通</li>
 <li><strong>差異</strong>：日本では初職からの長期継続を前提とした男女差が大きい一方、アメリカでは全体として勤続が短く、男女差は相対的に小さい</li>
 </ul>
+<div class="seminar-table-title">
+<p>年齢間の転職行動の差</p>
 </div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>年齢間の転職行動の差
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>日本</strong></p>
-<ul>
-<li><strong>若年層</strong>：比較的転職確率が高い。転職後の企業で長く働き続けることができること、仕事とのミスマッチを解消することができることのメリットが大きいと考えられる</li>
-<li><strong>高齢層</strong>：定年退職、健康状態の変化により初職継続率が大幅減。年金もあるため無職者が増える</li>
-</ul>
-<p><strong>アメリカ</strong><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
-<ul>
-<li><strong>若年層</strong>：雇用主変更（job-to-job transition）が最も多い。キャリア初期のミスマッチ解消や賃金成長の機会が大きい
-<ul>
-<li>典型的なアメリカの男性はキャリアの最初の10年で7つの雇い主のもとで働く<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></li>
-</ul></li>
-<li><strong>高齢層</strong>：雇用主変更は大きく低下し、仕事から非就業への移行が増加。年金受給とともに労働市場から退出する割合が高まる</li>
-</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>日本</th>
+<th>アメリカ<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>若年層</strong></td>
+<td>比較的転職確率が高い。転職後の企業で長く働き続けることができること、仕事とのミスマッチを解消することができることのメリットが大きいと考えられる</td>
+<td>雇用主変更（job-to-job transition）が最も多い。キャリア初期のミスマッチ解消や賃金成長の機会が大きい。典型的なアメリカの男性はキャリアの最初の10年で7つの雇い主のもとで働く<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></td>
+</tr>
+<tr class="even">
+<td><strong>高齢層</strong></td>
+<td>定年退職、健康状態の変化により初職継続率が大幅減。年金もあるため無職者が増える</td>
+<td>雇用主変更は大きく低下し、仕事から非就業への移行が増加。年金受給とともに労働市場から退出する割合が高まる</td>
+</tr>
+</tbody>
+</table>
 <p><strong>共通点と差異</strong></p>
 <ul>
 <li><strong>共通点</strong>：若年ほど転職が多く、高齢ほど労働市場から退出しやすい</li>
 <li><strong>差異</strong>：日本では定年制度が行動を強く規定するのに対し、アメリカでは制度よりも健康状態や資産状況に基づく段階的退出が多い</li>
 </ul>
+<div class="seminar-table-title">
+<p>転職による賃金上昇の役割</p>
 </div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>転職による賃金上昇の役割
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>日本</strong></p>
-<ul>
-<li>転職による賃金上昇の役割は限定的<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>であり、<strong>有効求人倍率</strong>との相関がみられる</li>
-</ul>
-<p><strong>アメリカ</strong></p>
-<ul>
-<li>雇用主間移動は、賃金上昇の重要な要因の一つであり、特に景気拡張期には、転職者の賃金上昇率が高い<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></li>
-<li>自発的離職率（quits rate）は景気循環に強く連動し、良好な労働市場では転職を通じた賃金上昇が起こりやすい<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></li>
-</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>日本</th>
+<th>アメリカ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>賃金上昇の役割</strong></td>
+<td>転職による賃金上昇の役割は限定的<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></td>
+<td>雇用主間移動は、賃金上昇の重要な要因の一つ<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></td>
+</tr>
+<tr class="even">
+<td><strong>景気との関係</strong></td>
+<td><strong>有効求人倍率</strong>との相関がみられる</td>
+<td>特に景気拡張期には、転職者の賃金上昇率が高い<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>。自発的離職率（quits rate）は景気循環に強く連動し、良好な労働市場では転職を通じた賃金上昇が起こりやすい<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></td>
+</tr>
+</tbody>
+</table>
 <p><strong>共通点と差異</strong></p>
 <ul>
 <li><strong>共通点</strong>：転職の便益は、労働需給が逼迫している局面ほど大きい</li>
-<li><strong>差異</strong>：日本では同じ企業で働き続ける中で賃金が上がりやすく、転職による賃金上昇は限定的であるのに対し、アメリカでは転職が賃金を高める有力な方法になりやすい。</li>
+<li><strong>差異</strong>：日本では同じ企業で働き続ける中で賃金が上がりやすく、転職による賃金上昇は限定的であるのに対し、アメリカでは転職が賃金を高める有力な方法になりやすい</li>
 </ul>
-</div>
-</div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>有効求人倍率
+有効求人倍率
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1074,16 +1270,269 @@ Y \geq&amp; 4.5
 </div>
 </div>
 <p>日本では、転職の前後で賃金がどう変化するかが有効求人倍率と関係しています。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/labor_switch.png" class="img-fluid figure-img"></p>
-<figcaption>『大森義明・永瀬伸子（2021）労働経済学をつかむ』図12-2 転職者の賃金変動の状況</figcaption>
-</figure>
+<!-- 転職による賃金変動D.I.（年齢階級別）と有効求人倍率の推移（1995〜2023年）。
+     D.I. ＝ 転職によって賃金が1割以上増加した転職者の割合（％）− 1割以上減少した転職者の割合（％）
+     データ出典：
+       転職による賃金変動D.I.：厚生労働省「雇用動向調査」。
+         労働政策研究・研修機構（JILPT）『ユースフル労働統計2025』表17-1（https://www.jil.go.jp/kokunai/statistics/kako/2025/tables/u2025_17.xlsx）の年齢階級別D.I.
+       有効求人倍率（年平均、新規学卒者を除きパートタイムを含む）：厚生労働省「一般職業紹介状況」。
+         JILPT「早わかり グラフでみる長期労働統計」図1（https://www.jil.go.jp/kokunai/statistics/timeseries/xls/g0301.xlsx）
+     D.I.の公表値は2023年までのため、2023年までを描いている。 -->
+<div class="viz-root switch-chart">
+<style>
+.switch-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #c3c2b7;
+  --ratio:          #8c8b86;
+  --total:          #1f2a44;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 12px;
+  margin: 20px 0 10px;
+}
+.switch-chart .sw-title{
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.switch-chart .sw-chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin-bottom: 6px;
+}
+.switch-chart .sw-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .95rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border: 1px solid var(--grid-line);
+  border-radius: 999px;
+  padding: 3px 11px 3px 9px;
+  background: #fff;
+  user-select: none;
+}
+.switch-chart .sw-chip i{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  background: var(--c);
+  opacity: .25;
+}
+.switch-chart .sw-chip.on{
+  color: var(--text-primary);
+  border-color: var(--c);
+  font-weight: 700;
+}
+.switch-chart .sw-chip.on i{ opacity: 1; }
+.switch-chart .sw-chip.fixed{ cursor: default; }
+.switch-chart svg{
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.switch-chart .sw-grid{ stroke: var(--grid-line); stroke-width: 1; }
+.switch-chart .sw-axis{ stroke: var(--axis-line); stroke-width: 1.5; }
+.switch-chart .sw-zero{ stroke: var(--text-muted); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.switch-chart .sw-tick{ font-size: 13px; fill: var(--text-secondary); }
+.switch-chart .sw-axis-title{ font-size: 13px; fill: var(--text-secondary); }
+.switch-chart .sw-line{ fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.switch-chart .sw-guide{ stroke: var(--text-muted); stroke-width: 1; }
+.switch-chart .sw-dot{ stroke: #fff; stroke-width: 1.5; }
+.switch-chart .sw-readout{
+  min-height: 3.2em;
+  font-size: .95rem;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  line-height: 1.6;
+}
+.switch-chart .sw-readout b{ color: var(--text-primary); }
+.switch-chart .sw-note{
+  font-size: .9rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.switch-chart .sw-caption{
+  font-size: .78rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 6px;
+}
+</style>
+<div class="sw-title">
+転職による賃金の変化と有効求人倍率の推移
 </div>
-<ul>
-<li>求人が多い時期（有効求人倍率が高い） <span class="math inline">\(\rightarrow\)</span> 賃金水準が上昇 <span class="math inline">\(\rightarrow\)</span> 賃金が上がる転職が増える</li>
-<li>求人が少ない時期（有効求人倍率が低い） <span class="math inline">\(\rightarrow\)</span> 経営不振などやむを得ない事情での転職が増える <span class="math inline">\(\rightarrow\)</span> 賃金が下がる転職が増える</li>
-</ul>
+<div id="sw-chips" class="sw-chips">
+
+</div>
+<svg id="sw-svg" viewbox="0 0 760 400" role="img" aria-label="転職によって賃金が上がった人の割合から下がった人の割合を引いた値（年齢計と年齢階級別）と、有効求人倍率の推移の折れ線グラフ。有効求人倍率が高い年ほど、賃金が上がった人の割合が高い傾向がある。">
+</svg>
+<div id="sw-readout" class="sw-readout">
+グラフにカーソルを合わせる（スマートフォンではタップする）と、その年の値が表示されます。
+</div>
+<div class="sw-note">
+左の目盛りは、賃金が1割以上増加した転職者の割合から、1割以上減少した転職者の割合を引いた値（％ポイント）。0より上なら、賃金が上がった転職者の方が多い。年齢階級は項目を押すと表示・非表示を切り替えられる。
+</div>
+<div class="sw-caption">
+出所：厚生労働省「雇用動向調査」「一般職業紹介状況」（労働政策研究・研修機構『ユースフル労働統計2025』等より作成）
+</div>
+<script>
+(function(){
+  var YEARS = [];
+  for (var y = 1995; y <= 2023; y++) YEARS.push(y);
+
+  var RATIO = [0.63,0.7,0.72,0.53,0.48,0.59,0.59,0.54,0.64,0.83,0.95,1.06,1.04,0.88,0.47,0.52,0.65,0.8,0.93,1.09,1.2,1.36,1.5,1.61,1.6,1.18,1.13,1.28,1.31];
+
+  var SERIES = [
+    { key:'total', label:'年齢計',   color:'#1f2a44', width:3.6, fixed:true, on:true,
+      v:[10.9,6.3,6.5,-3.1,-5.6,-1.9,-2.1,-4.6,-3.5,-4.4,-2.2,-0.8,-1.5,-4,-10.5,-4.5,-5.2,-1.3,-4.8,-0.6,1.1,-2.7,1.1,-0.8,-5,-2.2,-2.6,-0.7,2.2] },
+    { key:'a2024', label:'20〜24歳', color:'#0f9d8a', width:2.2, on:false,
+      v:[19,16.8,16.6,6.9,2.9,9.2,6.4,12,2.4,6.7,4.7,10,10.3,8.7,0.7,14.1,6.7,17,6.4,22.8,18.4,12.7,14,17.6,6.1,22.7,18.1,11.5,29.2] },
+    { key:'a2529', label:'25〜29歳', color:'#3a9a3f', width:2.2, on:false,
+      v:[9.8,7.9,11.2,0,-4.4,3.8,5.2,-0.3,6.1,-0.3,6,6,4.7,4.6,-4.2,0.6,0.4,7.1,0.5,1.6,10.8,8.1,13.8,12.8,-2.3,4.2,13.3,14.8,15.5] },
+    { key:'a3034', label:'30〜34歳', color:'#2a78d6', width:2.2, on:false,
+      v:[15.4,9.5,5.9,0.3,-2,5.9,2.8,-4.6,-0.3,-0.1,1.1,2.9,2.6,0,-7,3.2,0.4,2.3,4.1,-3.2,10.2,5.5,3.1,11.4,0.7,10.7,7.4,4.8,8.3] },
+    { key:'a3539', label:'35〜39歳', color:'#6a5acd', width:2.2, on:false,
+      v:[10.1,16,9,-2.3,2.1,2.7,4.3,-3.9,1.2,1.6,0,7.9,3.6,0.4,-6.2,-4.8,-3.1,3.6,5.1,5.7,5,5.1,15.7,4.4,12.8,-1.6,6.6,15,8.8] },
+    { key:'a4044', label:'40〜44歳', color:'#b8508e', width:2.2, on:false,
+      v:[14.5,11.1,8.1,0,0.2,0.9,-1.5,-8.9,-0.3,-4,-0.8,4.5,3.4,3.9,-10.3,1.3,0.2,2.3,-0.7,1.6,4.6,1.3,12.2,9.5,7.7,5.3,9.6,5.5,11.2] },
+    { key:'a4549', label:'45〜49歳', color:'#eb6834', width:2.2, on:false,
+      v:[14.4,1.9,5.2,-6.5,-7.6,-4.9,-3.9,-8.5,-7.7,-5.1,-7.7,-7.6,-6.6,-1.9,-12.3,-10.1,-3.4,2.9,-6.3,1.9,-0.9,-0.7,5.9,5,0.7,5,2.7,3,6.2] },
+    { key:'a5054', label:'50〜54歳', color:'#9a6a2f', width:2.2, on:false,
+      v:[5.6,-8.4,-2.8,-15,-11.3,-14.3,-12.2,-12.5,-17.9,-18.4,-8.2,-16.7,-13.2,-14.3,-18.2,-10.7,-8.1,-14.7,-16,-6.8,-2.5,-5.5,-10,-13.3,-0.7,-4.5,-6.1,-6.8,-3.7] }
+  ];
+
+  var NS = 'http://www.w3.org/2000/svg';
+  var W = 760, H = 400, L = 54, R = 54, T = 16, B = 40;
+  var PW = W - L - R, PH = H - T - B;
+  var DMIN = -20, DMAX = 30;      // 賃金が上がった割合 − 下がった割合（左軸）
+  var RMIN = 0, RMAX = 2.0;       // 有効求人倍率（右軸）
+
+  var svg = document.getElementById('sw-svg');
+  var chips = document.getElementById('sw-chips');
+  var readout = document.getElementById('sw-readout');
+
+  function X(year){ return L + (year - 1995) / (2023 - 1995) * PW; }
+  function YD(v){ return T + (DMAX - v) / (DMAX - DMIN) * PH; }
+  function YR(v){ return T + (RMAX - v) / (RMAX - RMIN) * PH; }
+
+  function el(name, attrs, parent){
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function text(str, attrs, parent){
+    var t = el('text', attrs, parent);
+    t.textContent = str;
+    return t;
+  }
+  function path(vals, yfn){
+    var d = '';
+    for (var i = 0; i < vals.length; i++) d += (i ? 'L' : 'M') + X(YEARS[i]).toFixed(1) + ',' + yfn(vals[i]).toFixed(1);
+    return d;
+  }
+
+  // 目盛り・グリッド
+  var g = el('g', {}, svg);
+  var d;
+  for (d = DMIN; d <= DMAX; d += 10){
+    el('line', { x1:L, x2:W-R, y1:YD(d), y2:YD(d), 'class': d === 0 ? 'sw-zero' : 'sw-grid' }, g);
+    text(String(d), { x:L-8, y:YD(d)+4, 'text-anchor':'end', 'class':'sw-tick' }, g);
+  }
+  var r;
+  for (r = 0; r <= 2.0001; r += 0.5){
+    text(r.toFixed(1), { x:W-R+8, y:YR(r)+4, 'text-anchor':'start', 'class':'sw-tick' }, g);
+  }
+  el('line', { x1:L, x2:W-R, y1:T+PH, y2:T+PH, 'class':'sw-axis' }, g);
+  [1995,2000,2005,2010,2015,2020,2023].forEach(function(yr){
+    text(String(yr), { x:X(yr), y:T+PH+22, 'text-anchor':'middle', 'class':'sw-tick' }, g);
+  });
+  text('賃金が上がった割合 − 下がった割合（％ポイント）', { x:L, y:T-4, 'text-anchor':'start', 'class':'sw-axis-title' }, g);
+  text('有効求人倍率（倍）', { x:W-R, y:T-4, 'text-anchor':'end', 'class':'sw-axis-title', fill:'#8c8b86' }, g);
+
+  // 有効求人倍率（右軸、灰色の太線）
+  el('path', { d:path(RATIO, YR), 'class':'sw-line', stroke:'#8c8b86', 'stroke-width':5, 'stroke-opacity':.75 }, svg);
+
+  // 賃金変化の各系列
+  var seriesLayer = el('g', {}, svg);
+  var paths = {};
+  SERIES.forEach(function(s){
+    paths[s.key] = el('path', { d:path(s.v, YD), 'class':'sw-line', stroke:s.color, 'stroke-width':s.width }, seriesLayer);
+    paths[s.key].style.display = s.on ? '' : 'none';
+  });
+
+  // ホバー用
+  var guide = el('line', { y1:T, y2:T+PH, 'class':'sw-guide', visibility:'hidden' }, svg);
+  var dotsLayer = el('g', {}, svg);
+  var hit = el('rect', { x:L, y:T, width:PW, height:PH, fill:'transparent' }, svg);
+
+  // 凡例（切り替えチップ）
+  function addChip(label, color, on, fixed, onclick){
+    var c = document.createElement('span');
+    c.className = 'sw-chip' + (on ? ' on' : '') + (fixed ? ' fixed' : '');
+    c.style.setProperty('--c', color);
+    c.innerHTML = '<i></i>' + label;
+    if (onclick) c.addEventListener('click', onclick);
+    chips.appendChild(c);
+    return c;
+  }
+  addChip('有効求人倍率（右目盛り）', '#8c8b86', true, true);
+  SERIES.forEach(function(s){
+    var chip = addChip(s.label, s.color, s.on, s.fixed, s.fixed ? null : function(){
+      s.on = !s.on;
+      chip.classList.toggle('on', s.on);
+      paths[s.key].style.display = s.on ? '' : 'none';
+      readout.innerHTML = '';
+      guide.setAttribute('visibility', 'hidden');
+      dotsLayer.innerHTML = '';
+    });
+  });
+
+  function showAt(clientX){
+    var box = svg.getBoundingClientRect();
+    var px = (clientX - box.left) / box.width * W;
+    var yr = Math.round(1995 + (px - L) / PW * (2023 - 1995));
+    yr = Math.max(1995, Math.min(2023, yr));
+    var i = yr - 1995;
+    guide.setAttribute('x1', X(yr)); guide.setAttribute('x2', X(yr));
+    guide.setAttribute('visibility', 'visible');
+    dotsLayer.innerHTML = '';
+    el('circle', { cx:X(yr), cy:YR(RATIO[i]), r:5, fill:'#8c8b86', 'class':'sw-dot' }, dotsLayer);
+    var html = '<b>' + yr + '年</b>　有効求人倍率 <b>' + RATIO[i].toFixed(2) + '倍</b>';
+    SERIES.forEach(function(s){
+      if (!s.on) return;
+      el('circle', { cx:X(yr), cy:YD(s.v[i]), r:4.5, fill:s.color, 'class':'sw-dot' }, dotsLayer);
+      html += '　／　' + s.label + ' <b>' + (s.v[i] > 0 ? '+' : '') + s.v[i].toFixed(1) + '</b>';
+    });
+    readout.innerHTML = html;
+  }
+  hit.addEventListener('mousemove', function(e){ showAt(e.clientX); });
+  hit.addEventListener('click', function(e){ showAt(e.clientX); });
+  hit.addEventListener('touchstart', function(e){ if (e.touches[0]) showAt(e.touches[0].clientX); }, { passive:true });
+  hit.addEventListener('touchmove', function(e){ if (e.touches[0]) showAt(e.touches[0].clientX); }, { passive:true });
+})();
+</script>
+</div>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">求人が多い時期（有効求人倍率が高い）</span></p>
+<p><span class="math inline">\(\rightarrow\)</span> 賃金水準が上昇 <span class="math inline">\(\rightarrow\)</span> <strong>賃金が上がる転職が増える</strong></p>
+</div>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">求人が少ない時期（有効求人倍率が低い）</span></p>
+<p><span class="math inline">\(\rightarrow\)</span> 経営不振などやむを得ない事情での転職が増える <span class="math inline">\(\rightarrow\)</span> <strong>賃金が下がる転職が増える</strong></p>
+</div>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
 <p>次の文の空欄に当てはまる最も適切な言葉を答えなさい。</p>
@@ -1105,10 +1554,12 @@ Y \geq&amp; 4.5
 <li>勤務時間を多様化し、育児や介護を担う労働者が働きやすくなる仕組み</li>
 <li>年功ではなく職種に応じて処遇が決まる仕組み</li>
 </ul>
-<p>こうした<strong>労働市場の流動化</strong>を実現する仕組みづくりが目指されました。<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
+<p>こうした<strong>労働市場の流動化</strong>を実現する仕組みづくりが目指されました。<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
 <p>転職は、<strong>労働資源の再配分</strong>という重要な役割を担っています。</p>
-<ul>
-<li>国際競争、技術革新、人口動態の変化などにより各産業・職種の労働需要は変化し、需要の高まった領域ほど労働者の価値も高まる
+<div class="seminar-steps">
+<ol type="1">
+<li>国際競争、技術革新、人口動態の変化などにより各産業・職種の労働需要が変化し、需要の高まった領域ほど労働者の価値も高まる</li>
+<li>労働者が、価値の高まった領域へ転職する
 <ul>
 <li>より業績の良い企業への転職</li>
 <li>輸入産業から輸出産業への転職</li>
@@ -1116,27 +1567,30 @@ Y \geq&amp; 4.5
 <li>より好況な地域への転職</li>
 </ul></li>
 <li>こうした転職の積み重ねによって、限られた労働資源が社会にとって望ましい形へと再配分されていく</li>
-<li><strong>解雇規制</strong>は転職率、ひいては労働資源の再配分のあり方にも大きく影響する
-<ul>
-<li>解雇規制が厳しい場合：解雇が起こりにくく、それに伴う転職も減る</li>
-<li>解雇規制が緩い場合：解雇が容易になり、それに伴う転職も増え、労働資源の再配分がより速く進む</li>
-</ul></li>
-</ul>
+</ol>
+</div>
+<p><strong>解雇規制</strong>は転職率、ひいては労働資源の再配分のあり方にも大きく影響します。</p>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">解雇規制が厳しい場合</span></p>
+<p>解雇が起こりにくく、それに伴う転職も減る</p>
+</div>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">解雇規制が緩い場合</span></p>
+<p>解雇が容易になり、それに伴う転職も増え、労働資源の再配分がより速く進む</p>
+</div>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
-<p>以下は、労働市場に関する政策や制度の特徴です。<br>
-それぞれについて、最も直接的に生じやすい結果として<strong>正しいもの</strong>を<br>
-A〜Dから1つずつ選びなさい。</p>
+<p>以下は、労働市場に関する政策や制度の特徴です。 それぞれについて、最も直接的に生じやすい結果として<strong>正しいもの</strong>を A〜Dから1つずつ選びなさい。</p>
 <p><strong>政策・制度</strong></p>
 <ol type="1">
 <li>解雇規制が厳しい <input type="text" class="fill-in" id="b" placeholder="ここに入力"></li>
 <li>労働市場の流動性が高い <input type="text" class="fill-in" id="a" placeholder="ここに入力"></li>
 <li>有効求人倍率が高い局面 <input type="text" class="fill-in" id="v" placeholder="ここに入力"></li>
-<li>同一企業内での長期雇用が中心 <input type="text" class="fill-in" id="b" placeholder="ここに入力"></li>
+<li>同一企業内での長期雇用が中心 <input type="text" class="fill-in" id="d" placeholder="ここに入力"></li>
 </ol>
 <p><strong>結果</strong></p>
 <p>A. 転職を通じた賃金上昇が起こりやすい</p>
-<p>B. 労働資源の再分配が進みにくい</p>
+<p>B. 労働資源の再配分が進みにくい</p>
 <p>C. 賃金が下がる転職が増えやすい</p>
 <p>D. 勤続を通じた賃金上昇が中心になる</p>
 <button onclick="showAnswer('ad')">
@@ -1152,48 +1606,190 @@ A〜Dから1つずつ選びなさい。</p>
 <h1>賃金格差</h1>
 <p>アルバイトや就職活動を通じて、私たちは普段から「時給」や「初任給」の違いを目にしています。では、日本全体で見たとき、こうした格差はどの程度あり、どのような要因から生まれているのでしょうか。</p>
 <p>まずは、現在観察できる事実を確認するところから始めましょう。</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>職種間の賃金格差
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p>職種によって平均賃金には大きな開きがあります。厚生労働省「賃金構造基本統計調査（令和6年）」のデータによると、職種別の所定内給与額の平均はおよそ次のとおりです。</p>
-<ul>
-<li>管理的職業：約57万円</li>
-<li>技術者：約37万円</li>
-<li>医師：約91万円</li>
-<li>看護師：約33万円</li>
-<li>学校教員：約43万円</li>
-<li>事務職：約32万円</li>
-<li>販売職：約33万円</li>
-<li>サービス職：約26万円</li>
-</ul>
+<!-- 職種別の所定内給与額（月額）の平均の比較（横棒グラフ）。
+     数値は本文（labor_search.qmd）の「職種間の賃金格差」にあった値（厚生労働省「賃金構造基本統計調査」令和6年、概数）をそのまま用いている。 -->
+<div class="viz-root occupation-chart">
+<style>
+.occupation-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --bar:            #2a78d6;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 10px;
+  margin: 20px 0 10px;
+}
+.occupation-chart .oc-title{
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.occupation-chart .oc-row{
+  display: grid;
+  grid-template-columns: 7.5em 1fr;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+}
+.occupation-chart .oc-name{
+  font-size: 1rem;
+  color: var(--text-secondary);
+  text-align: right;
+}
+.occupation-chart .oc-track{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.occupation-chart .oc-bar{
+  height: 22px;
+  background: var(--bar);
+  border-radius: 2px;
+  flex: none;
+}
+.occupation-chart .oc-val{
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.occupation-chart .oc-caption{
+  font-size: .78rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 8px;
+}
+</style>
+<div class="oc-title">
+職種別の平均賃金（所定内給与額、月額）
+</div>
+<div class="oc-row">
+<div class="oc-name">
+医師
+</div>
+<div class="oc-track">
+<div class="oc-bar" style="width:calc((100% - 5em) * 91 / 91)">
+
+</div>
+<div class="oc-val">
+約91万円
+</div>
+</div>
+</div>
+<div class="oc-row">
+<div class="oc-name">
+管理的職業
+</div>
+<div class="oc-track">
+<div class="oc-bar" style="width:calc((100% - 5em) * 57 / 91)">
+
+</div>
+<div class="oc-val">
+約57万円
+</div>
+</div>
+</div>
+<div class="oc-row">
+<div class="oc-name">
+学校教員
+</div>
+<div class="oc-track">
+<div class="oc-bar" style="width:calc((100% - 5em) * 43 / 91)">
+
+</div>
+<div class="oc-val">
+約43万円
+</div>
+</div>
+</div>
+<div class="oc-row">
+<div class="oc-name">
+技術者
+</div>
+<div class="oc-track">
+<div class="oc-bar" style="width:calc((100% - 5em) * 37 / 91)">
+
+</div>
+<div class="oc-val">
+約37万円
+</div>
+</div>
+</div>
+<div class="oc-row">
+<div class="oc-name">
+看護師
+</div>
+<div class="oc-track">
+<div class="oc-bar" style="width:calc((100% - 5em) * 33 / 91)">
+
+</div>
+<div class="oc-val">
+約33万円
+</div>
+</div>
+</div>
+<div class="oc-row">
+<div class="oc-name">
+販売職
+</div>
+<div class="oc-track">
+<div class="oc-bar" style="width:calc((100% - 5em) * 33 / 91)">
+
+</div>
+<div class="oc-val">
+約33万円
+</div>
+</div>
+</div>
+<div class="oc-row">
+<div class="oc-name">
+事務職
+</div>
+<div class="oc-track">
+<div class="oc-bar" style="width:calc((100% - 5em) * 32 / 91)">
+
+</div>
+<div class="oc-val">
+約32万円
+</div>
+</div>
+</div>
+<div class="oc-row">
+<div class="oc-name">
+サービス職
+</div>
+<div class="oc-track">
+<div class="oc-bar" style="width:calc((100% - 5em) * 26 / 91)">
+
+</div>
+<div class="oc-val">
+約26万円
+</div>
+</div>
+</div>
+<div class="oc-caption">
+出典：厚生労働省「賃金構造基本統計調査」令和6年
+</div>
+</div>
 <p>このように、職務内容や求められる技能が異なる職種間では、平均賃金にはっきりとした差が見られます。</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>男女間の賃金格差
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <p>男女間の賃金格差は、日本の労働市場が抱える大きな課題の一つです。</p>
-<ul>
-<li><strong>G7（主要7カ国）中最下位クラス</strong>：OECD（経済協力開発機構）のデータによれば、日本の男女間賃金格差は加盟国の中でも大きく、G7内でも依然として最下位レベルにあります。</li>
-<li><strong>およそ7割の水準</strong>：男性一般労働者の給与水準を100としたとき、女性一般労働者の給与水準はおおよそ70〜75程度で推移しています（所定内給与額ベース）。</li>
-</ul>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">G7（主要7カ国）中最下位クラス</span></p>
+<p>OECD（経済協力開発機構）のデータによれば、日本の男女間賃金格差は加盟国の中でも大きく、G7内でも依然として最下位レベルにある。</p>
+</div>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">およそ7割の水準</span></p>
+<p>男性一般労働者の給与水準を100としたとき、女性一般労働者の給与水準はおおよそ70〜75程度で推移している（所定内給与額ベース）。</p>
+</div>
 <p>この格差は単に「同じ仕事をしていても男女で賃金が異なる」ことだけを意味するものではなく、職種・勤続年数・労働時間・役職・雇用形態などの違いが複合的に絡み合っている可能性があります。</p>
-</div>
-</div>
 <section id="賃金格差を生じさせる要因" class="level2">
 <h2 class="anchored" data-anchor-id="賃金格差を生じさせる要因">賃金格差を生じさせる要因</h2>
 <p>このように、賃金格差はさまざまな角度から観察できます。では、こうした格差を生む要因とは何でしょうか。</p>
@@ -1203,12 +1799,15 @@ A〜Dから1つずつ選びなさい。</p>
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>格差の「要因」
+格差の「要因」
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>他の条件が同じであるとき</strong>に、賃金に対して<strong>因果的な影響を及ぼす原因</strong>のこと。</p>
-<p><strong>観察できる要因</strong></p>
+</div>
+</div>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">観察できる要因</span></p>
 <ul>
 <li>需要・供給要因</li>
 <li>人的資本（教育、学歴、訓練）</li>
@@ -1216,7 +1815,9 @@ A〜Dから1つずつ選びなさい。</p>
 <li>後払い賃金制度</li>
 <li>補償賃金（職場環境、付加給付）</li>
 </ul>
-<p><strong>観察できない要因</strong></p>
+</div>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">観察できない要因</span></p>
 <ul>
 <li>意欲・やる気</li>
 <li>能力</li>
@@ -1228,10 +1829,16 @@ A〜Dから1つずつ選びなさい。</p>
 </ul></li>
 </ul>
 </div>
-</div>
 <p>賃金格差は、さまざまなグループの間で観察されます。</p>
 <p>学歴間、経験年数・勤続年数間、職種間、企業規模間、産業間、雇用形態間、男女間などです。</p>
-<p>ただし、たとえば職種間で賃金格差が見られたとしても、「職種」そのものが格差の要因というわけではありません。職種という区分自体が賃金に因果的な影響を与えるわけではなく、職種間で賃金格差が生じるのは、その職種に対する需要と供給のバランス、必要とされる人的資本の水準、職場環境といった賃金格差の要因が職種ごとに異なることが主な理由だと考えられています。</p>
+<div class="seminar-tip">
+<p><span class="seminar-tip-head">「観察された違い」と「要因」は別</span></p>
+<p>たとえば職種間で賃金格差が見られたとしても、「職種」そのものが格差の要因というわけではない。職種という区分自体が賃金に因果的な影響を与えるわけではないからである。</p>
+<ul>
+<li><strong>観察された違い</strong>：職種間の賃金格差</li>
+<li><strong>要因</strong>：その職種に対する需要と供給のバランス、必要とされる人的資本の水準、職場環境といった、職種ごとに異なる賃金格差の要因</li>
+</ul>
+</div>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
 <p>次のA〜Eは、日本で観察される賃金格差に関する記述です。<br>
@@ -1260,115 +1867,62 @@ A〜Dから1つずつ選びなさい。</p>
 <p>ここではまず、測定可能な要因から見ていきます。</p>
 <div class="seminar-steps">
 <ol type="1">
-<li><strong>需要・供給要因</strong>
+<li><p><strong>需要・供給要因</strong></p>
+<p><strong>しくみ</strong>：労働市場のモデルによれば、労働需要が増えれば賃金は上がり、労働供給が増えれば賃金は下がる</p>
+<p><strong>例</strong>：ある仕事への需要が高まれば、その仕事の賃金は上昇する。ある世代の労働者数が多ければ、その世代の賃金は他の世代と比べて低くなりやすい</p>
+<p><strong>資源配分の機能</strong>：賃金格差が存在することで、需要の低い産業から高い産業へと労働者が移動していく（この動きは格差が解消されるまで続く）。これにより、賃金格差は労働サービスという希少な資源を効率的に配分する機能を果たしているといえる</p>
+<p><strong>表れる格差</strong>：<strong>産業間・職種間・世代間の格差</strong></p></li>
+<li><p><strong>教育・学歴</strong></p>
+<p><strong>しくみ</strong>：教育や学歴は、生産性の高い仕事に就く可能性を高める。企業は、より高い成果を期待できる（人的資本をより多く蓄積した）労働者に高い賃金を支払う傾向がある</p>
+<p><strong>表れる格差</strong>：<strong>学歴・教育年数間の格差</strong></p></li>
+<li><p><strong>訓練</strong></p>
+<p><strong>しくみ</strong>：企業内訓練や職業訓練を通じて技能を身につけた労働者は、生産性が高まる。訓練機会が多い職種・働き方ほど、賃金が高くなりやすい</p>
+<p><strong>表れる格差</strong>：<strong>雇用形態間、経験年数・勤続年数間の格差</strong></p></li>
+<li><p><strong>ジョブ・サーチ</strong></p>
+<p><strong>しくみ</strong>：転職や就職の際、より良い条件の仕事を見つけるには時間と情報が必要になる。ジョブ・サーチには収入の不安定さや時間・労力といったコストが伴い、その負担の大きさは労働者によって異なる</p>
+<p><strong>例</strong>：</p>
 <ul>
-<li>労働市場のモデルによれば、労働需要が増えれば賃金は上がり、労働供給が増えれば賃金は下がる
-<ul>
-<li>ある仕事への需要が高まれば、その仕事の賃金は上昇する</li>
-<li>ある世代の労働者数が多ければ、その世代の賃金は他の世代と比べて低くなりやすい</li>
-<li><strong>産業間・職種間・世代間の格差</strong>として表れる</li>
-</ul></li>
-<li>賃金格差が存在することで、需要の低い産業から高い産業へと労働者が移動していき（この動きは格差が解消されるまで続く）、賃金格差は労働サービスという希少な資源を効率的に配分する機能を果たしているといえる</li>
-</ul></li>
-<li><strong>教育・学歴</strong>
-<ul>
-<li>教育や学歴は、生産性の高い仕事に就く可能性を高める</li>
-<li>企業は、より高い成果を期待できる（人的資本をより多く蓄積した）労働者に高い賃金を支払う傾向がある</li>
-<li><strong>学歴・教育年数間の格差</strong>として表れる</li>
-</ul></li>
-<li><strong>訓練</strong>
-<ul>
-<li>企業内訓練や職業訓練を通じて技能を身につけた労働者は、生産性が高まる</li>
-<li>訓練機会が多い職種・働き方ほど、賃金が高くなりやすい</li>
-<li><strong>雇用形態間、経験年数・勤続年数間の格差</strong>として表れる</li>
-</ul></li>
-<li><strong>ジョブ・サーチ</strong>
-<ul>
-<li>転職や就職の際、より良い条件の仕事を見つけるには時間と情報が必要になる</li>
-<li>ジョブ・サーチには収入の不安定さや時間・労力といったコストが伴う
-<ul>
-<li>早急に収入を得る必要がある、転職回数の多さが評価を下げやすい、得られる情報が限られている、といった労働者は、条件の良くない仕事でも受け入れざるを得ない</li>
-<li>収入がなくても生活に余裕がある、転職が不利に働きにくい、情報収集や交渉が得意、といった労働者は、時間をかけて良い条件の仕事を探すことができる</li>
-</ul></li>
-<li><strong>能力（生産性）とは無関係に生じる格差</strong>として表れる</li>
-</ul></li>
-<li><strong>後払い賃金制度</strong>
-<ul>
-<li>従業員の定着や努力を引き出すため、若年期には生産性より低い賃金を、中高年期には生産性より高い賃金を支払う</li>
-<li><strong>勤続年数間・年齢間の賃金格差</strong>として表れる</li>
-</ul></li>
-<li><strong>補償賃金</strong>
-<ul>
-<li>敬遠されやすい仕事に人を集めるために、他の仕事より高い賃金を支払うことで生じる格差（<strong>補償賃金格差</strong>）
-<ul>
-<li>3K（きつい、危険、汚い）、責任の重さ、雇用の不安定さなど</li>
-</ul></li>
-<li><strong>職種間の賃金格差</strong>として表れる</li>
-</ul></li>
+<li><strong>条件の良くない仕事でも受け入れざるを得ない労働者</strong>：早急に収入を得る必要がある、転職回数の多さが評価を下げやすい、得られる情報が限られている、など</li>
+<li><strong>時間をかけて良い条件の仕事を探すことができる労働者</strong>：収入がなくても生活に余裕がある、転職が不利に働きにくい、情報収集や交渉が得意、など</li>
+</ul>
+<p><strong>表れる格差</strong>：<strong>能力（生産性）とは無関係に生じる格差</strong></p></li>
+<li><p><strong>後払い賃金制度</strong></p>
+<p><strong>しくみ</strong>：従業員の定着や努力を引き出すため、若年期には生産性より低い賃金を、中高年期には生産性より高い賃金を支払う</p>
+<p><strong>表れる格差</strong>：<strong>勤続年数間・年齢間の賃金格差</strong></p></li>
+<li><p><strong>補償賃金</strong></p>
+<p><strong>しくみ</strong>：敬遠されやすい仕事に人を集めるために、他の仕事より高い賃金を支払うことで生じる格差（<strong>補償賃金格差</strong>）</p>
+<p><strong>例</strong>：敬遠されやすい仕事として、3K（きつい、危険、汚い）、責任の重さ、雇用の不安定さなど</p>
+<p><strong>表れる格差</strong>：<strong>職種間の賃金格差</strong></p></li>
 </ol>
 </div>
 </section>
 <section id="賃金格差に関する測定不可能な要因" class="level3">
 <h3 class="anchored" data-anchor-id="賃金格差に関する測定不可能な要因">賃金格差に関する測定不可能な要因</h3>
 <p>ここまでで、賃金が資源配分（労働サービスの配分）を効率的に行ううえで重要な指標であることが分かりました。一方で、学歴や経験のように測定できる要因だけでは説明のつかない賃金格差も存在します。</p>
+<div class="seminar-steps">
 <ol type="1">
-<li><strong>偏見・嗜好による差別</strong>
+<li><p><strong>偏見・嗜好による差別</strong></p>
+<p><strong>しくみ</strong>：<strong>雇用主・労働者・顧客</strong>それぞれの偏見や嗜好によって生じる。古典的には Becker (1957)<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> による、偏見・嗜好に基づく人種差別が賃金格差をもたらすという理論がある</p>
+<p><strong>ポイント</strong>：生産性に関わる観測可能な要因が同じ労働者を、性別、年齢、出身地、人種、信仰、外見、性的指向などによって異なる扱いをするのは、本来は非合理的である</p>
+<p><strong>例</strong>：</p>
 <ul>
-<li><strong>雇用主・労働者・顧客</strong>それぞれの偏見や嗜好によって生じる
+<li><strong>雇用主による差別</strong>（女性より男性を好む場合）：女性の賃金が男性よりも十分に低くない限り女性を雇わない。雇用主は女性を雇うことに一種の心理的費用を感じていると解釈できる</li>
+<li><strong>労働者による差別</strong>（特定のグループの労働者と一緒に働くことを嫌う場合）：雇用主にとってはどちらか一方のグループのみを雇う方が最適になる。グループごとに分かれた職場は生まれるが、グループ間の賃金格差自体は生じない</li>
+<li><strong>顧客による差別</strong>（女性労働者による対応を嫌う場合）：雇用主は女性の賃金が男性よりも十分に低くない限り女性を雇わない</li>
+</ul></li>
+<li><p><strong>統計的差別</strong></p>
+<p><strong>しくみ</strong>：労働者個人の属性について企業と労働者の間に情報の非対称性があり、個々の属性を見極めるコストが高い場合に、企業が労働者の属するグループの平均的な特徴をもとにその個人を判断してしまうこと</p>
+<p><strong>例</strong>：</p>
 <ul>
-<li>古典的には Becker (1957)<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> による、偏見・嗜好に基づく人種差別が賃金格差をもたらすという理論がある</li>
-<li>生産性に関わる観測可能な要因が同じ労働者を、性別、年齢、出身地、人種、信仰、外見、性的指向などによって異なる扱いをするのは、本来は非合理的である</li>
-</ul></li>
-<li>雇用主による差別：（例）女性より男性を好む場合
-<ul>
-<li>女性の賃金が男性よりも十分に低くない限り女性を雇わない</li>
-<li>雇用主は女性を雇うことに一種の心理的費用を感じていると解釈できる</li>
-</ul></li>
-<li>労働者による差別：（例）特定のグループの労働者と一緒に働くことを嫌う場合
-<ul>
-<li>雇用主にとってはどちらか一方のグループのみを雇う方が最適になる</li>
-<li>グループごとに分かれた職場は生まれるが、グループ間の賃金格差自体は生じない</li>
-</ul></li>
-<li>顧客による差別：（例）女性労働者による対応を嫌う場合
-<ul>
-<li>雇用主は女性の賃金が男性よりも十分に低くない限り女性を雇わない</li>
-</ul></li>
-</ul></li>
+<li><strong>長期勤続の意思の見極め</strong>：企業は長く勤めてくれる労働者を雇いたいが、長期勤続の意思がある人とない人を個別に見分けるのは難しい。女性全体の平均離職率が男性全体より高い <span class="math inline">\(\rightarrow\)</span> 女性の採用を控えたり、女性に企業特殊訓練を実施しなかったりする</li>
+<li><strong>能力の見極め</strong>：企業が労働者個人の能力を見極めるのが難しい場合、偏差値の高い大学の卒業生の方が能力が高いだろうと予測する <span class="math inline">\(\rightarrow\)</span> 偏差値の低い大学の卒業生を採用対象から外す</li>
+</ul>
+<p><strong>ポイント</strong>：<strong>個々の労働者の属性を判断するコストが低いのであれば、こうした統計的差別は企業にとっても非合理的な行動になる</strong></p></li>
+<li><p><strong>アンコンシャス・バイアス</strong></p>
+<p><strong>しくみ</strong>：本人が意識しないまま差別的な行動をとってしまうこと。心理学の知見を取り入れた概念で、時間をかければ公正な判断ができても、仕事に追われて短時間で判断を下さざるを得ないときには、意識的な判断とは異なる脳の領域が働き、無意識のうちに判断してしまうことがある。その結果、本人が抱く暗黙の価値観の影響を受け、無自覚な差別が生じる</p>
+<p><strong>例</strong>：育児休業から復帰した女性に対し、本人に相談することなく、上司が無意識のうちに以前より簡単な仕事を割り振ってしまう。「母親は育児に専念すべきだ」という無意識の思い込みが背景にある</p></li>
 </ol>
-<ol start="2" type="1">
-<li><strong>統計的差別</strong></li>
-</ol>
-<ul>
-<li>労働者個人の属性について企業と労働者の間に情報の非対称性があり、個々の属性を見極めるコストが高い場合に、企業が労働者の属するグループの平均的な特徴をもとにその個人を判断してしまうこと</li>
-<li>（例）企業は長く勤めてくれる労働者を雇いたいが、長期勤続の意思がある人とない人を個別に見分けるのは難しい
-<ul>
-<li>女性全体の平均離職率が男性全体より高い</li>
-</ul>
-<span class="math inline">\(\rightarrow\)</span> 女性の採用を控えたり、女性に企業特殊訓練を実施しなかったりする</li>
-<li>（例）企業が労働者個人の能力を見極めるのが難しい場合
-<ul>
-<li>偏差値の高い大学の卒業生の方が能力が高いだろうと予測する</li>
-</ul>
-<span class="math inline">\(\rightarrow\)</span> 偏差値の低い大学の卒業生を採用対象から外す</li>
-<li><strong>個々の労働者の属性を判断するコストが低いのであれば、こうした統計的差別は企業にとっても非合理的な行動になる</strong></li>
-</ul>
-<ol start="3" type="1">
-<li><strong>アンコンシャス・バイアス</strong></li>
-</ol>
-<ul>
-<li>本人が意識しないまま差別的な行動をとってしまうこと
-<ul>
-<li>心理学の知見を取り入れた概念</li>
-<li>時間をかければ公正な判断ができても、仕事に追われて短時間で判断を下さざるを得ないときには、意識的な判断とは異なる脳の領域が働き、無意識のうちに判断してしまうことがある
-<ul>
-<li>その結果、本人が抱く暗黙の価値観の影響を受け、無自覚な差別が生じる</li>
-</ul></li>
-</ul></li>
-<li>（例）育児休業から復帰した女性に対し、本人に相談することなく、上司が無意識のうちに以前より簡単な仕事を割り振ってしまう
-<ul>
-<li>「母親は育児に専念すべきだ」という無意識の思い込みが背景にある</li>
-</ul></li>
-</ul>
+</div>
 <div class="quizbox">
 <p><strong>確認クイズ</strong></p>
 <p>次の１〜６は、賃金格差が生じている具体的な状況です。<br>
@@ -1851,14 +2405,15 @@ function showAnswer(id) {
 <li id="fn2"><p>『労働経済白書』2014年。「就業構造基本調査」より算出<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Bureau of Labor Statistics, <em>Employee Tenure Summary</em>, 2024<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>Bureau of Labor Statistics, <em>Employee Tenure Summary</em>, 2024<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p>（例）Goldin, Claudia. “A grand gender convergence: Its last chapter.” <em>American economic review</em> 104.4 (2014): 1091-1119.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Goldin, Claudia. “A grand gender convergence: Its last chapter.” <em>American economic review</em> 104.4 (2014): 1091-1119.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn6"><p>US Census Bureau <em>Job-to-Job Flows</em>；Fallick and Fleischman 2004<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7"><p>Topel, Robert H., and Michael P. Ward. “Job mobility and the careers of young men.” <em>The Quarterly Journal of Economics</em> 107, no. 2 (1992): 439-479.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8"><p>厚生労働省「雇用動向」1991～2018年<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>厚生労働省「雇用動向調査」1995～2023年<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p>Topel, Robert H., and Michael P. Ward. “Job mobility and the careers of young men.” <em>The Quarterly Journal of Economics</em> 107, no. 2 (1992): 439-479.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10"><p>Bureau of Labor Statistics, <em>Employee Tenure Summary</em>, 2024<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11"><p>ただし、「解雇の金銭補償ルール」のように正社員の流動性を高める政策については、今なお議論が続いています。<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12"><p>Becker, Gary Stanley. The economics of discrimination: an economic view of racial discrimination. University of Chicago, 1957.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>Topel, Robert H., and Michael P. Ward. “Job mobility and the careers of young men.” <em>The Quarterly Journal of Economics</em> 107, no. 2 (1992): 439-479.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p>Bureau of Labor Statistics, <em>Employee Tenure Summary</em>, 2024<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p>ただし、「解雇の金銭補償ルール」のように正社員の流動性を高める政策については、今なお議論が続いています。<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p>Becker, Gary Stanley. The economics of discrimination: an economic view of racial discrimination. University of Chicago, 1957.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1912,14 +2467,13 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

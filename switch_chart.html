@@ -1,0 +1,246 @@
+<!-- 転職による賃金変動D.I.（年齢階級別）と有効求人倍率の推移（1995〜2023年）。
+     D.I. ＝ 転職によって賃金が1割以上増加した転職者の割合（％）− 1割以上減少した転職者の割合（％）
+     データ出典：
+       転職による賃金変動D.I.：厚生労働省「雇用動向調査」。
+         労働政策研究・研修機構（JILPT）『ユースフル労働統計2025』表17-1（https://www.jil.go.jp/kokunai/statistics/kako/2025/tables/u2025_17.xlsx）の年齢階級別D.I.
+       有効求人倍率（年平均、新規学卒者を除きパートタイムを含む）：厚生労働省「一般職業紹介状況」。
+         JILPT「早わかり グラフでみる長期労働統計」図1（https://www.jil.go.jp/kokunai/statistics/timeseries/xls/g0301.xlsx）
+     D.I.の公表値は2023年までのため、2023年までを描いている。 -->
+<div class="viz-root switch-chart">
+<style>
+.switch-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #c3c2b7;
+  --ratio:          #8c8b86;
+  --total:          #1f2a44;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 12px;
+  margin: 20px 0 10px;
+}
+.switch-chart .sw-title{
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.switch-chart .sw-chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin-bottom: 6px;
+}
+.switch-chart .sw-chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .95rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border: 1px solid var(--grid-line);
+  border-radius: 999px;
+  padding: 3px 11px 3px 9px;
+  background: #fff;
+  user-select: none;
+}
+.switch-chart .sw-chip i{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  background: var(--c);
+  opacity: .25;
+}
+.switch-chart .sw-chip.on{
+  color: var(--text-primary);
+  border-color: var(--c);
+  font-weight: 700;
+}
+.switch-chart .sw-chip.on i{ opacity: 1; }
+.switch-chart .sw-chip.fixed{ cursor: default; }
+.switch-chart svg{
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.switch-chart .sw-grid{ stroke: var(--grid-line); stroke-width: 1; }
+.switch-chart .sw-axis{ stroke: var(--axis-line); stroke-width: 1.5; }
+.switch-chart .sw-zero{ stroke: var(--text-muted); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.switch-chart .sw-tick{ font-size: 13px; fill: var(--text-secondary); }
+.switch-chart .sw-axis-title{ font-size: 13px; fill: var(--text-secondary); }
+.switch-chart .sw-line{ fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.switch-chart .sw-guide{ stroke: var(--text-muted); stroke-width: 1; }
+.switch-chart .sw-dot{ stroke: #fff; stroke-width: 1.5; }
+.switch-chart .sw-readout{
+  min-height: 3.2em;
+  font-size: .95rem;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  line-height: 1.6;
+}
+.switch-chart .sw-readout b{ color: var(--text-primary); }
+.switch-chart .sw-note{
+  font-size: .9rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.switch-chart .sw-caption{
+  font-size: .78rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 6px;
+}
+</style>
+
+<div class="sw-title">転職による賃金の変化と有効求人倍率の推移</div>
+<div class="sw-chips" id="sw-chips"></div>
+<svg id="sw-svg" viewBox="0 0 760 400" role="img" aria-label="転職によって賃金が上がった人の割合から下がった人の割合を引いた値（年齢計と年齢階級別）と、有効求人倍率の推移の折れ線グラフ。有効求人倍率が高い年ほど、賃金が上がった人の割合が高い傾向がある。"></svg>
+<div class="sw-readout" id="sw-readout">グラフにカーソルを合わせる（スマートフォンではタップする）と、その年の値が表示されます。</div>
+<div class="sw-note">左の目盛りは、賃金が1割以上増加した転職者の割合から、1割以上減少した転職者の割合を引いた値（％ポイント）。0より上なら、賃金が上がった転職者の方が多い。年齢階級は項目を押すと表示・非表示を切り替えられる。</div>
+<div class="sw-caption">出所：厚生労働省「雇用動向調査」「一般職業紹介状況」（労働政策研究・研修機構『ユースフル労働統計2025』等より作成）</div>
+
+<script>
+(function(){
+  var YEARS = [];
+  for (var y = 1995; y <= 2023; y++) YEARS.push(y);
+
+  var RATIO = [0.63,0.7,0.72,0.53,0.48,0.59,0.59,0.54,0.64,0.83,0.95,1.06,1.04,0.88,0.47,0.52,0.65,0.8,0.93,1.09,1.2,1.36,1.5,1.61,1.6,1.18,1.13,1.28,1.31];
+
+  var SERIES = [
+    { key:'total', label:'年齢計',   color:'#1f2a44', width:3.6, fixed:true, on:true,
+      v:[10.9,6.3,6.5,-3.1,-5.6,-1.9,-2.1,-4.6,-3.5,-4.4,-2.2,-0.8,-1.5,-4,-10.5,-4.5,-5.2,-1.3,-4.8,-0.6,1.1,-2.7,1.1,-0.8,-5,-2.2,-2.6,-0.7,2.2] },
+    { key:'a2024', label:'20〜24歳', color:'#0f9d8a', width:2.2, on:false,
+      v:[19,16.8,16.6,6.9,2.9,9.2,6.4,12,2.4,6.7,4.7,10,10.3,8.7,0.7,14.1,6.7,17,6.4,22.8,18.4,12.7,14,17.6,6.1,22.7,18.1,11.5,29.2] },
+    { key:'a2529', label:'25〜29歳', color:'#3a9a3f', width:2.2, on:false,
+      v:[9.8,7.9,11.2,0,-4.4,3.8,5.2,-0.3,6.1,-0.3,6,6,4.7,4.6,-4.2,0.6,0.4,7.1,0.5,1.6,10.8,8.1,13.8,12.8,-2.3,4.2,13.3,14.8,15.5] },
+    { key:'a3034', label:'30〜34歳', color:'#2a78d6', width:2.2, on:false,
+      v:[15.4,9.5,5.9,0.3,-2,5.9,2.8,-4.6,-0.3,-0.1,1.1,2.9,2.6,0,-7,3.2,0.4,2.3,4.1,-3.2,10.2,5.5,3.1,11.4,0.7,10.7,7.4,4.8,8.3] },
+    { key:'a3539', label:'35〜39歳', color:'#6a5acd', width:2.2, on:false,
+      v:[10.1,16,9,-2.3,2.1,2.7,4.3,-3.9,1.2,1.6,0,7.9,3.6,0.4,-6.2,-4.8,-3.1,3.6,5.1,5.7,5,5.1,15.7,4.4,12.8,-1.6,6.6,15,8.8] },
+    { key:'a4044', label:'40〜44歳', color:'#b8508e', width:2.2, on:false,
+      v:[14.5,11.1,8.1,0,0.2,0.9,-1.5,-8.9,-0.3,-4,-0.8,4.5,3.4,3.9,-10.3,1.3,0.2,2.3,-0.7,1.6,4.6,1.3,12.2,9.5,7.7,5.3,9.6,5.5,11.2] },
+    { key:'a4549', label:'45〜49歳', color:'#eb6834', width:2.2, on:false,
+      v:[14.4,1.9,5.2,-6.5,-7.6,-4.9,-3.9,-8.5,-7.7,-5.1,-7.7,-7.6,-6.6,-1.9,-12.3,-10.1,-3.4,2.9,-6.3,1.9,-0.9,-0.7,5.9,5,0.7,5,2.7,3,6.2] },
+    { key:'a5054', label:'50〜54歳', color:'#9a6a2f', width:2.2, on:false,
+      v:[5.6,-8.4,-2.8,-15,-11.3,-14.3,-12.2,-12.5,-17.9,-18.4,-8.2,-16.7,-13.2,-14.3,-18.2,-10.7,-8.1,-14.7,-16,-6.8,-2.5,-5.5,-10,-13.3,-0.7,-4.5,-6.1,-6.8,-3.7] }
+  ];
+
+  var NS = 'http://www.w3.org/2000/svg';
+  var W = 760, H = 400, L = 54, R = 54, T = 16, B = 40;
+  var PW = W - L - R, PH = H - T - B;
+  var DMIN = -20, DMAX = 30;      // 賃金が上がった割合 − 下がった割合（左軸）
+  var RMIN = 0, RMAX = 2.0;       // 有効求人倍率（右軸）
+
+  var svg = document.getElementById('sw-svg');
+  var chips = document.getElementById('sw-chips');
+  var readout = document.getElementById('sw-readout');
+
+  function X(year){ return L + (year - 1995) / (2023 - 1995) * PW; }
+  function YD(v){ return T + (DMAX - v) / (DMAX - DMIN) * PH; }
+  function YR(v){ return T + (RMAX - v) / (RMAX - RMIN) * PH; }
+
+  function el(name, attrs, parent){
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function text(str, attrs, parent){
+    var t = el('text', attrs, parent);
+    t.textContent = str;
+    return t;
+  }
+  function path(vals, yfn){
+    var d = '';
+    for (var i = 0; i < vals.length; i++) d += (i ? 'L' : 'M') + X(YEARS[i]).toFixed(1) + ',' + yfn(vals[i]).toFixed(1);
+    return d;
+  }
+
+  // 目盛り・グリッド
+  var g = el('g', {}, svg);
+  var d;
+  for (d = DMIN; d <= DMAX; d += 10){
+    el('line', { x1:L, x2:W-R, y1:YD(d), y2:YD(d), 'class': d === 0 ? 'sw-zero' : 'sw-grid' }, g);
+    text(String(d), { x:L-8, y:YD(d)+4, 'text-anchor':'end', 'class':'sw-tick' }, g);
+  }
+  var r;
+  for (r = 0; r <= 2.0001; r += 0.5){
+    text(r.toFixed(1), { x:W-R+8, y:YR(r)+4, 'text-anchor':'start', 'class':'sw-tick' }, g);
+  }
+  el('line', { x1:L, x2:W-R, y1:T+PH, y2:T+PH, 'class':'sw-axis' }, g);
+  [1995,2000,2005,2010,2015,2020,2023].forEach(function(yr){
+    text(String(yr), { x:X(yr), y:T+PH+22, 'text-anchor':'middle', 'class':'sw-tick' }, g);
+  });
+  text('賃金が上がった割合 − 下がった割合（％ポイント）', { x:L, y:T-4, 'text-anchor':'start', 'class':'sw-axis-title' }, g);
+  text('有効求人倍率（倍）', { x:W-R, y:T-4, 'text-anchor':'end', 'class':'sw-axis-title', fill:'#8c8b86' }, g);
+
+  // 有効求人倍率（右軸、灰色の太線）
+  el('path', { d:path(RATIO, YR), 'class':'sw-line', stroke:'#8c8b86', 'stroke-width':5, 'stroke-opacity':.75 }, svg);
+
+  // 賃金変化の各系列
+  var seriesLayer = el('g', {}, svg);
+  var paths = {};
+  SERIES.forEach(function(s){
+    paths[s.key] = el('path', { d:path(s.v, YD), 'class':'sw-line', stroke:s.color, 'stroke-width':s.width }, seriesLayer);
+    paths[s.key].style.display = s.on ? '' : 'none';
+  });
+
+  // ホバー用
+  var guide = el('line', { y1:T, y2:T+PH, 'class':'sw-guide', visibility:'hidden' }, svg);
+  var dotsLayer = el('g', {}, svg);
+  var hit = el('rect', { x:L, y:T, width:PW, height:PH, fill:'transparent' }, svg);
+
+  // 凡例（切り替えチップ）
+  function addChip(label, color, on, fixed, onclick){
+    var c = document.createElement('span');
+    c.className = 'sw-chip' + (on ? ' on' : '') + (fixed ? ' fixed' : '');
+    c.style.setProperty('--c', color);
+    c.innerHTML = '<i></i>' + label;
+    if (onclick) c.addEventListener('click', onclick);
+    chips.appendChild(c);
+    return c;
+  }
+  addChip('有効求人倍率（右目盛り）', '#8c8b86', true, true);
+  SERIES.forEach(function(s){
+    var chip = addChip(s.label, s.color, s.on, s.fixed, s.fixed ? null : function(){
+      s.on = !s.on;
+      chip.classList.toggle('on', s.on);
+      paths[s.key].style.display = s.on ? '' : 'none';
+      readout.innerHTML = '';
+      guide.setAttribute('visibility', 'hidden');
+      dotsLayer.innerHTML = '';
+    });
+  });
+
+  function showAt(clientX){
+    var box = svg.getBoundingClientRect();
+    var px = (clientX - box.left) / box.width * W;
+    var yr = Math.round(1995 + (px - L) / PW * (2023 - 1995));
+    yr = Math.max(1995, Math.min(2023, yr));
+    var i = yr - 1995;
+    guide.setAttribute('x1', X(yr)); guide.setAttribute('x2', X(yr));
+    guide.setAttribute('visibility', 'visible');
+    dotsLayer.innerHTML = '';
+    el('circle', { cx:X(yr), cy:YR(RATIO[i]), r:5, fill:'#8c8b86', 'class':'sw-dot' }, dotsLayer);
+    var html = '<b>' + yr + '年</b>　有効求人倍率 <b>' + RATIO[i].toFixed(2) + '倍</b>';
+    SERIES.forEach(function(s){
+      if (!s.on) return;
+      el('circle', { cx:X(yr), cy:YD(s.v[i]), r:4.5, fill:s.color, 'class':'sw-dot' }, dotsLayer);
+      html += '　／　' + s.label + ' <b>' + (s.v[i] > 0 ? '+' : '') + s.v[i].toFixed(1) + '</b>';
+    });
+    readout.innerHTML = html;
+  }
+  hit.addEventListener('mousemove', function(e){ showAt(e.clientX); });
+  hit.addEventListener('click', function(e){ showAt(e.clientX); });
+  hit.addEventListener('touchstart', function(e){ if (e.touches[0]) showAt(e.touches[0].clientX); }, { passive:true });
+  hit.addEventListener('touchmove', function(e){ if (e.touches[0]) showAt(e.touches[0].clientX); }, { passive:true });
+})();
+</script>
+</div>

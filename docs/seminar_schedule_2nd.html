@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>2回生スケジュール</title>
+<style>
+  :root{
+    --ink:#242a30;
+    --paper:#fcfcfd;
+    --line:#d5dbe2;
+    --accent:#2e5476;      /* 落ち着いた紺青 */
+    --accent-soft:#e4ecf3;
+    --sub:#6b6558;
+    --good:#3d6b5c;
+    --bad:#9c4a3c;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+    line-height:1.75;
+  }
+  .page{
+    max-width:920px;
+    margin:0 auto;
+    padding:56px 40px 120px;
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.15em;
+    color:var(--accent);
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  h1{
+    font-size:34px;
+    margin:0 0 6px;
+    font-weight:700;
+    letter-spacing:.02em;
+  }
+  .lead{
+    color:var(--sub);
+    font-size:15px;
+    margin:0 0 40px;
+    padding-bottom:32px;
+    border-bottom:1px solid var(--line);
+  }
+  h2{
+    font-size:22px;
+    margin:64px 0 20px;
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    scroll-margin-top:20px;
+  }
+  h2 .num{
+    font-size:14px;
+    color:var(--accent);
+    font-weight:700;
+    border:1px solid var(--accent);
+    border-radius:999px;
+    padding:2px 10px;
+    letter-spacing:.05em;
+    white-space:nowrap;
+  }
+  h3{
+    font-size:16px;
+    margin:28px 0 12px;
+    color:var(--ink);
+    font-weight:700;
+  }
+  h4{
+    font-size:14.5px;
+    margin:24px 0 10px;
+    color:var(--accent);
+    font-weight:700;
+  }
+  p{margin:0 0 14px;}
+  ul,ol{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px;}
+  li ul,li ol{margin-top:6px;}
+
+  /* 補足説明カード */
+  .callout{
+    background:var(--accent-soft);
+    border-left:4px solid var(--accent);
+    padding:18px 22px;
+    border-radius:2px;
+    margin:20px 0 28px;
+    font-size:1em;
+  }
+  .callout ul{margin:10px 0 0;}
+  .callout ul:last-child{margin-bottom:0;}
+
+  /* 良い例／避ける例の対比 */
+  .compare{
+    display:flex;
+    gap:16px;
+    margin:20px 0 28px;
+  }
+  .compare-box{
+    flex:1;
+    border-radius:2px;
+    padding:16px 18px;
+    font-size:1em;
+  }
+  .compare-box.bad{
+    background:#fbf1ee;
+    border:1px solid #e6c9c1;
+  }
+  .compare-box.bad .tag{color:var(--bad);}
+  .compare-box.good{
+    background:#e3efe9;
+    border:1px solid #c2ddd0;
+  }
+  .compare-box.good .tag{color:var(--good);}
+  .compare-box .tag{
+    font-weight:700;
+    font-size:13px;
+    margin-bottom:8px;
+    display:block;
+  }
+  .compare-box ul{margin:10px 0 0; padding-left:20px;}
+  .compare-box ul:last-child{margin-bottom:0;}
+  .compare-box li{margin-bottom:4px;}
+
+  /* 到達目標・求めていることのチェックリスト */
+  .checklist{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:18px 22px;
+    margin:16px 0 28px;
+  }
+  .checklist div{
+    display:flex;
+    gap:10px;
+    padding:6px 0;
+    font-size:1em;
+  }
+  .checklist div::before{
+    content:"✓";
+    color:var(--good);
+    font-weight:700;
+  }
+
+  /* 各回セクションを囲むカード */
+  .session{
+    background:#fff;
+    border:1px solid var(--line);
+    border-top:4px solid var(--accent);
+    padding:28px 30px 8px;
+    margin-bottom:8px;
+  }
+  .session h2{margin:0 0 18px;}
+  .session-note{
+    background:var(--accent-soft);
+    border-left:4px solid var(--accent);
+    padding:10px 16px;
+    margin:10px 0 4px;
+    font-size:1em;
+    color:var(--ink);
+    border-radius:2px;
+  }
+  .small-note{color:var(--sub); margin-top:4px;}
+  .goal-label{
+    font-size:13px;
+    font-weight:700;
+    color:var(--accent);
+    letter-spacing:.05em;
+    margin:20px 0 8px;
+  }
+
+  /* 目次（アンカーリンク） */
+  .related-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px;}
+  .related-nav a{
+    font-size:12.5px; color:var(--sub); text-decoration:none;
+    padding:5px 12px; border:1px solid var(--line); border-radius:999px; background:#fff;
+  }
+  .related-nav a.current{color:#fff; background:var(--accent); border-color:var(--accent); font-weight:700;}
+
+  .toc-return{
+    margin-top:60px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:13px;
+    color:var(--sub);
+  }
+  .toc-return a{color:var(--accent); text-decoration:none;}
+
+  .back-to-toc{
+    display:inline-block;
+    margin:18px 0 0;
+    font-size:12.5px;
+    color:var(--sub);
+    text-decoration:none;
+  }
+  .back-to-toc:hover{color:var(--accent);}
+
+  @media (max-width:700px){
+    .compare{flex-direction:column;}
+    .page{padding:32px 20px 80px;}
+    .session{padding:22px 18px 4px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>2回生スケジュール</h1>
+  <p class="lead">全8回の各回の進め方と、毎回の到達目標をまとめています。Rで実際にデータを分析しながら、データ分析の基礎を体験します。</p>
+
+  <h2 id="zentai"><span class="num">総論①</span>ゼミ全体の流れ</h2>
+  <ul>
+    <li><strong>2回生：</strong>Rを使ってデータを扱いながら、単回帰分析までの考え方を学びます。単回帰を実行し、係数・p値・決定係数の意味を説明できるようになることが目標です。</li>
+    <li><strong>3回生：</strong>前半はグループ研究に取り組み、9月の合同ゼミで発表します。後期は個人研究として研究計画書を作成・発表し、4回生での卒論テーマ（仮題）を提出できる状態を目指します。</li>
+    <li><strong>4回生：</strong>個人テーマで分析を進めながら、卒業論文を書き上げていきます。最終的に、卒業論文を完成させることがゴールです。</li>
+  </ul>
+
+  <h2 id="ichizuke"><span class="num">総論②</span>2回生の位置づけ</h2>
+  <p>Rの演習を通してデータ分析の基礎を体験し、3回生・4回生で行う研究に活かします。</p>
+  <ul>
+    <li><strong>進め方：</strong>各回の前半で理論を短く学び、後半でRで同じ内容を演習します。演習は2人1組で行い、ペアの組み合わせは第7回まで毎回変わります。</li>
+    <li><strong>注意事項：</strong>資料の場所は <a href="seminar_r.html">seminar_r.html</a>、<a href="seminar_tokei.html">seminar_tokei.html</a> です。授業外の質問は、Teamsの「20_2回生」チャネルのピン留め投稿に返信してください。</li>
+  </ul>
+
+  <h2 id="kaiichiran"><span class="num">目次</span>各回一覧</h2>
+  <nav class="related-nav">
+    <a href="#kai1">第1回｜ガイダンス・自己紹介</a>
+    <a href="#kai2">第2回｜変数の種類・データの見方／基本操作・データ読込</a>
+    <a href="#kai3">第3回｜データの質・欠損値／前処理</a>
+    <a href="#kai4">第4回｜代表値・散らばりの指標／記述統計</a>
+    <a href="#kai5">第5回｜データのグラフ化／グラフの作成</a>
+    <a href="#kai6">第6回｜回帰分析とは／単回帰の実行</a>
+    <a href="#kai7">第7回｜決定係数・p値の読み方／単回帰の実践・発表準備</a>
+    <a href="#kai8">第8回｜推定結果の発表</a>
+  </nav>
+
+  <div class="session">
+    <h2 id="kai1"><span class="num">第1回</span>ガイダンス・自己紹介</h2>
+    <ol>
+      <li>自己紹介と全体の展望</li>
+      <li>Posit Cloudのサインアップ、画面の見方</li>
+      <li>ペア演習の進め方の説明</li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>ゼミ全体の流れと2回生の目標を知っている</div>
+      <div>Posit Cloudにログインし、画面の見方を知っている</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai2"><span class="num">第2回</span>変数の種類・データの見方／基本操作・データ読込</h2>
+    <ol>
+      <li>講義：変数の種類・データの見方</li>
+      <li>演習：基本操作・データ読込</li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>変数の種類を区別できる</div>
+      <div>データをRに読み込める</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai3"><span class="num">第3回</span>データの質・欠損値／前処理</h2>
+    <ol>
+      <li>講義：データの質・欠損値がなぜ問題か</li>
+      <li>演習：前処理</li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>欠損値が分析に与える影響を説明でき、Rで確認・処理できる</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai4"><span class="num">第4回</span>代表値・散らばりの指標／記述統計</h2>
+    <ol>
+      <li>講義：代表値・散らばりの指標</li>
+      <li>演習：記述統計</li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>平均・中央値・分散などの意味を説明でき、Rで計算できる</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai5"><span class="num">第5回</span>データのグラフ化／グラフの作成</h2>
+    <ol>
+      <li>講義：グラフの使い分け</li>
+      <li>演習：ヒストグラム・散布図・棒グラフ・箱ひげ図の作成</li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>データの種類に応じてグラフを選び、Rで作成できる</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai6"><span class="num">第6回</span>回帰分析とは／単回帰の実行</h2>
+    <ol>
+      <li>講義：回帰分析は予測であるという前提、回帰式の読み方、傾きの解釈</li>
+      <li>演習：mpgデータで単回帰を実行し、<code>predict()</code> で予測値を求める</li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>回帰式の傾きを解釈できる</div>
+      <div>Rで単回帰を実行し、予測値を求められる</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai7"><span class="num">第7回</span>決定係数・p値の読み方／単回帰の実践・発表準備</h2>
+    <ol>
+      <li>講義：決定係数・p値の読み方</li>
+      <li>演習：数種類のデータの中から関心のあるものを選んで単回帰を実践し、第8回の発表準備をする
+        <div class="small-note">※ このペアで第8回の発表まで取り組みます。</div>
+      </li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>決定係数・p値の意味を説明できる</div>
+      <div>ペアで発表の準備ができている</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="session">
+    <h2 id="kai8"><span class="num">第8回</span>推定結果の発表（45分）</h2>
+    <ol>
+      <li>ペアでミニ発表（2人とも必ず話す）。推定結果をWordなどに出力し、画面共有して話す
+        <ul>
+          <li>発表内容：
+            <ul>
+              <li>どの変数を使って何を調べたか</li>
+              <li>単回帰の結果（係数・決定係数）の読み方</li>
+              <li>この関係が因果と言えるか相関に留まるか、その理由</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p class="goal-label">◆ 到達目標</p>
+    <div class="checklist">
+      <div>回帰分析の結果が何を意味するかを自分の言葉で説明できる</div>
+      <div>結果を因果関係として語ってよいかを考えられる</div>
+    </div>
+    <a class="back-to-toc" href="#kaiichiran">↑ 各回一覧に戻る</a>
+  </div>
+
+  <div class="toc-return">
+    <nav class="related-nav">
+      <a href="seminar_kiso.html">研究と論文の基礎</a>
+      <a href="seminar_hajimekata.html">研究の始め方</a>
+      <a href="seminar_bunken.html">文献の探し方</a>
+      <a href="seminar_data.html">データの準備</a>
+      <a href="seminar_bunseki.html">分析と解釈</a>
+      <a href="seminar_happyo.html">発表</a>
+      <a href="seminar_tokei.html">統計の基礎</a>
+      <a href="seminar_r.html">R</a>
+    </nav>
+    <a href="https://wakayamauniv.sharepoint.com/:u:/r/sites/a_2025339_Grp/SitePages/%E3%82%BC%E3%83%9F%E8%B3%87%E6%96%99.aspx?d=w681d14a42e1340cc9b17175e1b9c1ab5&csf=1&web=1&e=Igjvxt" target="_blank" rel="noopener">← 目次に戻る</a>
+  </div>
+</div>
+</body>
+</html>

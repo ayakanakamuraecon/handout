@@ -1,0 +1,75 @@
+<!-- 職種別の所定内給与額（月額）の平均の比較（横棒グラフ）。
+     数値は本文（labor_search.qmd）の「職種間の賃金格差」にあった値（厚生労働省「賃金構造基本統計調査」令和6年、概数）をそのまま用いている。 -->
+<div class="viz-root occupation-chart">
+<style>
+.occupation-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --bar:            #2a78d6;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 10px;
+  margin: 20px 0 10px;
+}
+.occupation-chart .oc-title{
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.occupation-chart .oc-row{
+  display: grid;
+  grid-template-columns: 7.5em 1fr;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+}
+.occupation-chart .oc-name{
+  font-size: 1rem;
+  color: var(--text-secondary);
+  text-align: right;
+}
+.occupation-chart .oc-track{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.occupation-chart .oc-bar{
+  height: 22px;
+  background: var(--bar);
+  border-radius: 2px;
+  flex: none;
+}
+.occupation-chart .oc-val{
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+.occupation-chart .oc-caption{
+  font-size: .78rem;
+  color: var(--text-muted);
+  text-align: right;
+  margin-top: 8px;
+}
+</style>
+
+<div class="oc-title">職種別の平均賃金（所定内給与額、月額）</div>
+
+<div class="oc-row"><div class="oc-name">医師</div><div class="oc-track"><div class="oc-bar" style="width:calc((100% - 5em) * 91 / 91)"></div><div class="oc-val">約91万円</div></div></div>
+<div class="oc-row"><div class="oc-name">管理的職業</div><div class="oc-track"><div class="oc-bar" style="width:calc((100% - 5em) * 57 / 91)"></div><div class="oc-val">約57万円</div></div></div>
+<div class="oc-row"><div class="oc-name">学校教員</div><div class="oc-track"><div class="oc-bar" style="width:calc((100% - 5em) * 43 / 91)"></div><div class="oc-val">約43万円</div></div></div>
+<div class="oc-row"><div class="oc-name">技術者</div><div class="oc-track"><div class="oc-bar" style="width:calc((100% - 5em) * 37 / 91)"></div><div class="oc-val">約37万円</div></div></div>
+<div class="oc-row"><div class="oc-name">看護師</div><div class="oc-track"><div class="oc-bar" style="width:calc((100% - 5em) * 33 / 91)"></div><div class="oc-val">約33万円</div></div></div>
+<div class="oc-row"><div class="oc-name">販売職</div><div class="oc-track"><div class="oc-bar" style="width:calc((100% - 5em) * 33 / 91)"></div><div class="oc-val">約33万円</div></div></div>
+<div class="oc-row"><div class="oc-name">事務職</div><div class="oc-track"><div class="oc-bar" style="width:calc((100% - 5em) * 32 / 91)"></div><div class="oc-val">約32万円</div></div></div>
+<div class="oc-row"><div class="oc-name">サービス職</div><div class="oc-track"><div class="oc-bar" style="width:calc((100% - 5em) * 26 / 91)"></div><div class="oc-val">約26万円</div></div></div>
+
+<div class="oc-caption">出典：厚生労働省「賃金構造基本統計調査」令和6年</div>
+</div>

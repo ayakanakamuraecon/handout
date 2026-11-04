@@ -315,6 +315,25 @@ body{
   }
 }
 
+// callout内の表の見出し行は、calloutの種類に応じた色にそろえる
+// （#quarto-document-content thead th のID指定に負けないよう、同じIDから書く）
+#quarto-document-content .callout-note .callout-body thead th{ background: $seminar-accent-soft; }
+#quarto-document-content .callout-tip .callout-body thead th{ background: $seminar-good-soft; }
+#quarto-document-content .callout-important .callout-body thead th{ background: $seminar-bad-soft; }
+#quarto-document-content .callout-warning .callout-body thead th,
+#quarto-document-content .callout-caution .callout-body thead th{ background: $seminar-warm-soft; }
+
+// calloutの外に置く表のタイトル（calloutのタイトルと同じ文字色・サイズ。背景・左線はなし）
+.seminar-table-title{
+  margin: 20px 0 8px;
+  font-weight: 700;
+  font-size: 1.1875rem;
+  letter-spacing: .02em;
+  color: $seminar-accent;
+
+  p{ margin: 0; }
+}
+
 // 左右に並べた callout（.columns 内）は高さをそろえる
 div.columns{
   display: flex;

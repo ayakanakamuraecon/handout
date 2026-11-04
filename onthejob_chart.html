@@ -1,0 +1,145 @@
+<!-- オン・ザ・ジョブ・サーチ：転職しても賃金が上がるとは限らないケースの概念図（2ケース）。
+     数値データに基づく図ではなく、現職と転職先の賃金の推移のイメージを示す概念図。
+     ケース1：現職の賃金が今後下がりそうなので、下がる前に転職する
+     ケース2：現時点では現職の賃金の方が高いが、転職先は長く勤めることで大きな上昇が期待できる -->
+<div class="viz-root onthejob-chart">
+<style>
+.onthejob-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #c3c2b7;
+  --current:        #eb6834;
+  --target:         #2a78d6;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 12px;
+  margin: 20px 0 10px;
+}
+.onthejob-chart .oj-panels{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.onthejob-chart .oj-panel{
+  flex: 1 1 280px;
+  min-width: 0;
+}
+.onthejob-chart .oj-title{
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.onthejob-chart svg{
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.onthejob-chart .oj-axis{
+  stroke: var(--axis-line);
+  stroke-width: 1.5;
+  fill: none;
+}
+.onthejob-chart .oj-axis-label{
+  font-size: 13px;
+  fill: var(--text-secondary);
+}
+.onthejob-chart .oj-move{
+  stroke: var(--text-muted);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+}
+.onthejob-chart .oj-move-label{
+  font-size: 13px;
+  fill: var(--text-secondary);
+  text-anchor: middle;
+}
+.onthejob-chart .oj-line{
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.onthejob-chart .oj-line.current{ stroke: var(--current); }
+.onthejob-chart .oj-line.target{ stroke: var(--target); }
+.onthejob-chart .oj-name{
+  font-size: 14px;
+  font-weight: 700;
+}
+.onthejob-chart .oj-name.current{ fill: var(--current); }
+.onthejob-chart .oj-name.target{ fill: var(--target); }
+.onthejob-chart .oj-loss{ fill: var(--current); fill-opacity: .16; }
+.onthejob-chart .oj-gain{ fill: var(--target); fill-opacity: .16; }
+.onthejob-chart .oj-legend{
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+.onthejob-chart .oj-legend span{
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.onthejob-chart .oj-legend i{
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.onthejob-chart .oj-legend i.loss{ background: rgba(235,104,52,.28); }
+.onthejob-chart .oj-legend i.gain{ background: rgba(42,120,214,.28); }
+</style>
+
+<div class="oj-panels">
+
+<div class="oj-panel">
+<div class="oj-title">ケース1：現職の賃金が今後下がりそうなとき</div>
+<svg viewBox="0 0 360 230" role="img" aria-label="現職の賃金は転職の時点では高いがその後下がり、転職先の賃金は転職時点では少し低いがその後も変わらない。転職後しばらくは転職先の方が低いが、やがて転職先の方が高くなる。">
+  <polygon class="oj-loss" points="120,80 164,100 120,100"/>
+  <polygon class="oj-gain" points="164,100 330,175 330,100"/>
+  <line class="oj-move" x1="120" y1="28" x2="120" y2="200"/>
+  <text class="oj-move-label" x="120" y="20">転職</text>
+  <polyline class="oj-axis" points="50,20 50,200 340,200"/>
+  <text class="oj-axis-label" x="50" y="14" text-anchor="middle">賃金</text>
+  <text class="oj-axis-label" x="340" y="222" text-anchor="end">時間（勤続年数）</text>
+  <polyline class="oj-line current" points="50,80 120,80 330,175"/>
+  <polyline class="oj-line target" points="120,100 330,100"/>
+  <text class="oj-name current" x="256" y="174">現職</text>
+  <text class="oj-name target" x="256" y="92">転職先</text>
+</svg>
+</div>
+
+<div class="oj-panel">
+<div class="oj-title">ケース2：転職先は今は低くても、大きな上昇が期待できるとき</div>
+<svg viewBox="0 0 360 230" role="img" aria-label="現職の賃金は転職の時点では高いがほとんど伸びず、転職先の賃金は転職時点では低いが大きく上昇する。転職後しばらくは転職先の方が低いが、やがて転職先の方が高くなる。">
+  <polygon class="oj-loss" points="120,72 238,68 120,130"/>
+  <polygon class="oj-gain" points="238,68 330,20 330,65"/>
+  <line class="oj-move" x1="120" y1="28" x2="120" y2="200"/>
+  <text class="oj-move-label" x="120" y="20">転職</text>
+  <polyline class="oj-axis" points="50,20 50,200 340,200"/>
+  <text class="oj-axis-label" x="50" y="14" text-anchor="middle">賃金</text>
+  <text class="oj-axis-label" x="340" y="222" text-anchor="end">時間（勤続年数）</text>
+  <polyline class="oj-line current" points="50,75 330,65"/>
+  <polyline class="oj-line target" points="120,130 330,20"/>
+  <text class="oj-name current" x="270" y="86">現職</text>
+  <text class="oj-name target" x="196" y="104">転職先</text>
+</svg>
+</div>
+
+</div>
+
+<div class="oj-legend">
+  <span><i class="loss"></i>転職によって一時的に賃金が低くなる分</span>
+  <span><i class="gain"></i>転職によって賃金が高くなる分</span>
+</div>
+</div>
