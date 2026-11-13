@@ -90,7 +90,7 @@
   .codebox{
     background:#eef1f4; border:1px solid var(--line); border-radius:4px;
     padding:16px 20px; font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
-    font-size:13px; line-height:1.8; overflow-x:auto; margin:14px 0 24px;
+    font-size:15px; line-height:1.8; overflow-x:auto; margin:14px 0 24px;
     white-space:pre; color:var(--ink);
   }
   .codebox .cmt{color:var(--sub);}
@@ -208,7 +208,7 @@
       <ul>
         <li>列名が日本語・スペース入りでないか確認する</li>
         <li>数値のはずの列が <code>chr</code> になっていないか確認する</li>
-        <li>欠損値があるか確認する（<code>is.na(df) %&gt;% colSums()</code>）</li>
+        <li>欠損値があるか確認する（<code>is.na(df) |&gt; colSums()</code>）</li>
         <li>横持ちになっていないか確認する（年次等が列名に入っていないか）</li>
       </ul>
     </div>
@@ -238,7 +238,7 @@
         <li><code>fct</code>：因子型である。カテゴリ変数に使う</li>
       </ul>
       <p>型を確認するには <code>head(df)</code> を使います。数値のはずの列が <code>chr</code> になっている場合は、次のように変換します。</p>
-      <div class="codebox">df %&gt;% mutate(変数名 = as.numeric(変数名))</div>
+      <div class="codebox">df |&gt; mutate(変数名 = as.numeric(変数名))</div>
     </div>
   </details>
 
@@ -246,9 +246,9 @@
     <summary>▼ 欠損値の扱い</summary>
     <div class="details-body">
       <p>データに欠損値（NA）が含まれていると、集計や分析の結果に影響します。まず、どの変数にどれだけ欠損があるかを確認し、除外するか補完するかを判断してください。欠損が多い変数は、そもそも分析に使えない可能性があります。</p>
-      <div class="codebox">is.na(df) %&gt;% colSums()      <span class="cmt"># 各変数の欠損数を確認</span>
-df %&gt;% filter(is.na(変数名))  <span class="cmt"># 欠損のある行を表示</span>
-df %&gt;% drop_na(変数名)        <span class="cmt"># 欠損のある行を除外</span></div>
+      <div class="codebox">is.na(df) |&gt; colSums()      <span class="cmt"># 各変数の欠損数を確認</span>
+df |&gt; filter(is.na(変数名))  <span class="cmt"># 欠損のある行を表示</span>
+df |&gt; drop_na(変数名)        <span class="cmt"># 欠損のある行を除外</span></div>
     </div>
   </details>
 

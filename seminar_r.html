@@ -71,7 +71,7 @@
   .callout li{margin-bottom:4px;}
 
   /* 補足ボックス（小さめ） */
-  .note{background:#fff; border:1px solid var(--line); border-left:3px solid var(--sub); padding:10px 16px; margin:10px 0 22px; font-size:1em;}
+  .note{background:#fff; border:1px solid var(--line); border-left:3px solid var(--sub); padding:10px 16px; margin:10px 0 22px; font-size:.9em;}
   .note .note-label{font-size:1em; font-weight:700; color:var(--sub); letter-spacing:.05em; margin-bottom:4px;}
 
   /* 補足ボックス（tip・見出し付き） */
@@ -88,7 +88,7 @@
   .codebox{
     background:#eef1f4; border:1px solid var(--line); border-radius:4px;
     padding:16px 20px; font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
-    font-size:13px; line-height:1.8; overflow-x:auto; margin:14px 0 8px;
+    font-size:15px; line-height:1.8; overflow-x:auto; margin:14px 0 8px;
     white-space:pre; color:var(--ink);
   }
   .codebox .cmt{color:var(--sub);}
@@ -102,7 +102,7 @@
   .resultbox .rlabel{font-size:11px; font-weight:700; color:var(--good); letter-spacing:.05em; margin-bottom:6px;}
   .resultbox pre{
     margin:0; font-family:"SFMono-Regular",Consolas,"Courier New",monospace;
-    font-size:12px; line-height:1.65; white-space:pre; overflow-x:auto; color:var(--ink);
+    font-size:15px; line-height:1.65; white-space:pre; overflow-x:auto; color:var(--ink);
   }
 
   /* 左右対比（中立トーン） */
@@ -289,7 +289,7 @@
 
       <p>手順5：続けて貼り付けるコード</p>
       <div class="codebox">library(tidyverse)
-ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()</div>
+mpg |&gt; ggplot(aes(x = displ, y = hwy)) + geom_point()</div>
     </div>
   </details>
 
@@ -445,24 +445,25 @@ ncol(df)</div>
   <h2 id="wrangle"><span class="num">05</span>データの前処理</h2>
 
   <h3>パイプ演算子</h3>
-  <p><code>%&gt;%</code>（パイプ演算子）は、左の結果を右の関数に渡す記号です。処理を順番につなげて書けるため、コードが読みやすくなります。</p>
-  <div class="codebox">df %&gt;% filter(year == 2008)
+  <p><code>|&gt;</code>（パイプ演算子）は、左の結果を右の関数に渡す記号です。処理を順番につなげて書けるため、コードが読みやすくなります。</p>
+  <div class="codebox">df |&gt; filter(year == 2008)
 <span class="cmt"># df というデータを filter() に渡して、2008年の行だけを取り出す</span></div>
+  <div class="note"><div class="note-label">補足</div>右側の関数は、<code>filter(...)</code> や <code>colSums()</code> のように<strong>必ず括弧 <code>()</code> を付けて</strong>書きます（引数がなくても省略できません）。<br>ネットや AI が出すコードには、古い書き方の <code>%&gt;%</code> が使われていることがあります。<code>|&gt;</code> と同じ意味で、本資料のコードでも置き換えて動かせます。ただし <code>|&gt;</code> は R 4.1 以降で使えます。</div>
 
   <h3>filter：条件に合う行を取り出す</h3>
-  <div class="codebox">df %&gt;% filter(year == 2008)                  <span class="cmt"># 2008年のデータのみ</span>
-df %&gt;% filter(cyl >= 6)                      <span class="cmt"># 気筒数6以上</span>
-df %&gt;% filter(manufacturer == "toyota")      <span class="cmt"># トヨタのみ</span></div>
+  <div class="codebox">df |&gt; filter(year == 2008)                  <span class="cmt"># 2008年のデータのみ</span>
+df |&gt; filter(cyl >= 6)                      <span class="cmt"># 気筒数6以上</span>
+df |&gt; filter(manufacturer == "toyota")      <span class="cmt"># トヨタのみ</span></div>
   <div class="note"><div class="note-label">補足</div>「等しい」の条件はイコール2つ（<code>==</code>）です。1つ（<code>=</code>）は代入の意味になるためエラーになります。文字列は必ず <code>"</code> で囲みます。</div>
 
   <h3>select：列（変数）を選ぶ</h3>
-  <div class="codebox">df %&gt;% select(manufacturer, model, year, hwy)</div>
+  <div class="codebox">df |&gt; select(manufacturer, model, year, hwy)</div>
 
   <h3>mutate：新しい変数を作る</h3>
-  <div class="codebox">df %&gt;% mutate(hwy_km = hwy * 1.609)          <span class="cmt"># マイル→kmに変換した新しい列を追加</span></div>
+  <div class="codebox">df |&gt; mutate(hwy_km = hwy * 1.609)          <span class="cmt"># マイル→kmに変換した新しい列を追加</span></div>
 
   <h3>summarise：集計する</h3>
-  <div class="codebox">df %&gt;% summarise(
+  <div class="codebox">df |&gt; summarise(
   mean_hwy = mean(hwy),
   max_hwy = max(hwy),
   n = n()
@@ -470,9 +471,9 @@ df %&gt;% filter(manufacturer == "toyota")      <span class="cmt"># トヨタの
   <div class="note"><div class="note-label">補足</div><code>n()</code> はデータの件数を数える関数です。</div>
 
   <h3>group_by：グループ別に集計する</h3>
-  <div class="codebox">df %&gt;%
-  group_by(manufacturer) %&gt;%
-  summarise(mean_hwy = mean(hwy)) %&gt;%
+  <div class="codebox">df |&gt;
+  group_by(manufacturer) |&gt;
+  summarise(mean_hwy = mean(hwy)) |&gt;
   arrange(desc(mean_hwy))    <span class="cmt"># 降順に並び替え</span></div>
   <div class="note"><div class="note-label">補足</div><code>arrange()</code> は並び替えの関数です。デフォルトは昇順で、<code>desc()</code> で囲むと降順になります。</div>
   <div class="resultbox">
@@ -494,8 +495,8 @@ df %&gt;% filter(manufacturer == "toyota")      <span class="cmt"># トヨタの
   </div>
 
   <h3>欠損値の確認</h3>
-  <div class="codebox">is.na(df) %&gt;% colSums()    <span class="cmt"># 各変数の欠損値の数を確認</span>
-df %&gt;% filter(is.na(hwy))  <span class="cmt"># 欠損のある行を表示</span></div>
+  <div class="codebox">is.na(df) |&gt; colSums()    <span class="cmt"># 各変数の欠損値の数を確認</span>
+df |&gt; filter(is.na(hwy))  <span class="cmt"># 欠損のある行を表示</span></div>
   <p><code>mpg</code>（<code>df</code>）には欠損がないため、ここでは欠損を含む練習用データ <code>airquality</code> を、<code>df</code> とは別のオブジェクト <code>aq</code> に読み込んで確認します。</p>
   <div class="codebox">aq &lt;- airquality         <span class="cmt"># 欠損のある練習用データ（df とは別）</span>
 colSums(is.na(aq))        <span class="cmt"># 各変数の欠損値の数を確認</span></div>
@@ -505,7 +506,7 @@ colSums(is.na(aq))        <span class="cmt"># 各変数の欠損値の数を確�
      37       7       0       0       0       0</pre>
   </div>
   <p><code>Ozone</code>（オゾン濃度）に37件、<code>Solar.R</code>（日射量）に7件の欠損があります。欠損のある行を除外してから集計するか、<code>na.rm = TRUE</code> で欠損を除いて計算するかを選びます。</p>
-  <div class="codebox">aq %&gt;% drop_na()                     <span class="cmt"># 欠損のある行を除外</span>
+  <div class="codebox">aq |&gt; drop_na()                     <span class="cmt"># 欠損のある行を除外</span>
 mean(aq$Ozone, na.rm = TRUE)        <span class="cmt"># 欠損を除いて平均を計算</span></div>
   <div class="resultbox">
     <div class="rlabel">結果</div>
@@ -590,7 +591,7 @@ mean(aq$Ozone, na.rm = TRUE)        <span class="cmt"># 欠損を除いて平均
 
   <h3>pivot_longer：横持ち→縦持ちの変換</h3>
   <p>e-Stat などでよくある横持ちデータは、<code>pivot_longer()</code> で整形できます。</p>
-  <div class="codebox">df %&gt;%
+  <div class="codebox">df |&gt;
   pivot_longer(
     cols = c("2019年", "2020年", "2021年"),  <span class="cmt"># 縦に変換したい列</span>
     names_to = "year",             <span class="cmt"># 列名を格納する新しい変数名</span>
@@ -640,7 +641,7 @@ mean(aq$Ozone, na.rm = TRUE)        <span class="cmt"># 欠損を除いて平均
 
   <h3>pivot_wider：縦持ち→横持ちの変換</h3>
   <p><code>pivot_wider()</code> は <code>pivot_longer()</code> の逆変換です。縦持ちのデータを、ある変数の値ごとに列を分ける横持ちに戻します。発表用の表など、横持ちの方が見やすい場面で使います。</p>
-  <div class="codebox">df %&gt;%
+  <div class="codebox">df |&gt;
   pivot_wider(
     names_from = year,            <span class="cmt"># 列名にする変数</span>
     values_from = productivity    <span class="cmt"># 値にする変数</span>
@@ -736,9 +737,9 @@ cty      16.86  4.26     9    35  234</pre>
   <h3>Word形式で保存する</h3>
   <div class="codebox">datasummary(displ + hwy + cty ~ Mean + SD + Min + Max + N,
             data = df,
-            output = "flextable") %&gt;%
+            output = "flextable") |&gt;
   save_as_docx(path = "descriptive_stats.docx")</div>
-  <div class="note"><div class="note-label">補足</div><code>output = "flextable"</code> を付けて <code>save_as_docx()</code> に渡す、という形は、後述の回帰結果表の保存とまったく同じです。この型を覚えておけば、どちらの表も Word に出力できます。</div>
+  <div class="note"><div class="note-label">補足</div><code>output = "descriptive_stats.docx"</code> のように直接ファイル名を書く方法は、modelsummary v2.0以降では動きません。上記のように <code>output = "flextable"</code> を付けて <code>save_as_docx()</code> に渡してください。この形は、後述の回帰結果表の保存とまったく同じです。この型を覚えておけば、どちらの表も Word に出力できます。</div>
   <div class="note"><div class="note-label">補足</div>保存したファイルは右下の Files タブに表示されます。ダウンロードするには、Files タブでファイルにチェックを入れ、More → Export を選びます。</div>
 
   <h2 id="viz"><span class="num">08</span>可視化</h2>
@@ -747,7 +748,7 @@ cty      16.86  4.26     9    35  234</pre>
   <p>ggplot2 のグラフは、透明なシートを1枚ずつ重ねてグラフを完成させるようなイメージで組み立てます。</p>
 
   <div class="layer-stack">
-    <div class="layer"><div class="lnum">第1層：データ</div><code>ggplot(df, ...)</code> — どのデータを使うか</div>
+    <div class="layer"><div class="lnum">第1層：データ</div><code>df |&gt; ggplot(...)</code> — どのデータを使うか</div>
     <div class="layer-plus">＋</div>
     <div class="layer"><div class="lnum">第2層：軸</div><code>aes(x = displ, y = hwy)</code> — どの変数を軸に置くか</div>
     <div class="layer-plus">＋</div>
@@ -770,13 +771,13 @@ cty      16.86  4.26     9    35  234</pre>
     </div>
   </div>
   <ul class="layer-visual-legend">
-    <li><b>①</b><code>ggplot(df, ...)</code> — 描画画面を用意する</li>
+    <li><b>①</b><code>df |&gt; ggplot(...)</code> — 描画画面を用意する</li>
     <li><b>②</b><code>+ aes(x = displ, y = hwy)</code> — 軸を追加する</li>
     <li><b>③</b><code>+ geom_point()</code> — グラフ（点）を描き足す</li>
   </ul>
 
   <h3>ヒストグラム（1変数の分布）</h3>
-  <div class="codebox">ggplot(df, aes(x = hwy)) +
+  <div class="codebox">df |&gt; ggplot(aes(x = hwy)) +
   geom_histogram(binwidth = 2)</div>
   <div class="resultbox">
     <div class="rlabel">イメージ図</div>
@@ -796,7 +797,7 @@ cty      16.86  4.26     9    35  234</pre>
   <div class="note"><div class="note-label">補足</div><code>binwidth</code> は棒の幅。データに合わせて調整します。</div>
 
   <h3>散布図（2変数の関係）</h3>
-  <div class="codebox">ggplot(df, aes(x = displ, y = hwy)) +
+  <div class="codebox">df |&gt; ggplot(aes(x = displ, y = hwy)) +
   geom_point()</div>
   <div class="resultbox">
     <div class="rlabel">イメージ図</div>
@@ -817,9 +818,9 @@ cty      16.86  4.26     9    35  234</pre>
   </div>
 
   <h3>棒グラフ（グループ別の平均）</h3>
-  <div class="codebox">df %&gt;%
-  group_by(class) %&gt;%
-  summarise(mean_hwy = mean(hwy)) %&gt;%
+  <div class="codebox">df |&gt;
+  group_by(class) |&gt;
+  summarise(mean_hwy = mean(hwy)) |&gt;
   ggplot(aes(x = class, y = mean_hwy)) +
   geom_bar(stat = "identity")</div>
   <div class="resultbox">
@@ -838,7 +839,7 @@ cty      16.86  4.26     9    35  234</pre>
   <div class="note"><div class="note-label">補足</div><code>geom_bar()</code> のデフォルトは <code>stat = "count"</code> で、カテゴリごとの件数を数えて棒の高さにします。上のようにあらかじめ <code>summarise()</code> で集計した値をそのまま棒の高さに使いたいときは、<code>stat = "identity"</code> を指定します。</div>
 
   <h3>箱ひげ図（グループ別の分布）</h3>
-  <div class="codebox">ggplot(df, aes(x = class, y = hwy)) +
+  <div class="codebox">df |&gt; ggplot(aes(x = class, y = hwy)) +
   geom_boxplot()</div>
   <div class="resultbox">
     <div class="rlabel">イメージ図</div>
@@ -870,7 +871,7 @@ cty      16.86  4.26     9    35  234</pre>
   </div>
 
   <h3>折れ線グラフ（時間による変化）</h3>
-  <div class="codebox">ggplot(economics, aes(x = date, y = unemploy)) +
+  <div class="codebox">economics |&gt; ggplot(aes(x = date, y = unemploy)) +
   geom_line()</div>
   <div class="note"><div class="note-label">補足</div><code>economics</code> は <code>ggplot2</code> に含まれる米国の経済時系列データで、<code>df</code>（<code>mpg</code>）とは別のデータです。横軸に時間（日付・年など）を取り、値の推移を見たいときに折れ線グラフを使います。</div>
   <div class="resultbox">
@@ -891,7 +892,7 @@ cty      16.86  4.26     9    35  234</pre>
   <h3>グラフの保存</h3>
   <div class="codebox">ggsave("my_plot.png")                       <span class="cmt"># 最後に表示したグラフを保存</span>
 
-p &lt;- ggplot(df, aes(x = displ, y = hwy)) +  <span class="cmt"># 名前を付けて保存</span>
+p &lt;- df |&gt; ggplot(aes(x = displ, y = hwy)) +  <span class="cmt"># 名前を付けて保存</span>
   geom_point()
 ggsave("my_plot.png", plot = p)</div>
   <div class="note"><div class="note-label">補足</div><code>width</code>（幅）・<code>height</code>（高さ）・<code>dpi</code>（解像度）も指定できます。</div>
@@ -930,8 +931,8 @@ F-statistic: 329.9 on 1 and 232 DF,  p-value: &lt; 2.2e-16</pre>
   <p>推定した回帰式 <code>hwy_hat = 35.70 − 3.53 × displ</code> に、たとえば <code>displ = 2.0</code> を代入すると、手計算では次のようになります。</p>
   <div class="codebox">35.70 − 3.53 × 2.0 = 28.64</div>
   <p><code>predict()</code> を使うと、この計算をデータの全行についてまとめて行えます。</p>
-  <div class="codebox">df &lt;- df %&gt;% mutate(hwy_hat = predict(model1))
-df %&gt;% select(displ, hwy, hwy_hat) %&gt;% head()</div>
+  <div class="codebox">df &lt;- df |&gt; mutate(hwy_hat = predict(model1))
+df |&gt; select(displ, hwy, hwy_hat) |&gt; head()</div>
   <div class="resultbox">
     <div class="rlabel">結果</div>
     <pre># A tibble: 6 x 3
@@ -944,7 +945,7 @@ df %&gt;% select(displ, hwy, hwy_hat) %&gt;% head()</div>
 5   2.8    26   25.81
 6   2.8    26   25.81</pre>
   </div>
-  <p>3・4行目（<code>displ = 2</code>）の <code>hwy_hat</code> が<span class="pick">28.64</span>となっており、先ほどの手計算の値と一致しています。この <code>hwy_hat</code> は、<a href="seminar_tokei.html#data-regression" style="color:var(--accent);">「統計の基礎」の回帰分析の節</a>で説明している推定値（Yハット）に対応するものです。</p>
+  <p>3・4行目（<code>displ = 2</code>）の <code>hwy_hat</code> が<span class="hl">28.64</span>となっており、先ほどの手計算の値と一致しています。この <code>hwy_hat</code> は、<a href="seminar_tokei.html#data-regression" style="color:var(--accent);">「統計の基礎」の回帰分析の節</a>で説明している推定値（Yハット）に対応するものです。</p>
   <div class="note"><div class="note-label">補足</div>手元のデータにない新しい値で予測したいときは、<code>predict(model1, newdata = data.frame(displ = 3))</code> のように <code>newdata</code> を指定します。</div>
 
   <h3>重回帰分析</h3>
@@ -980,18 +981,17 @@ R2             0.587       0.610       0.613</pre>
   <div class="note"><div class="note-label">補足</div><code>msummary()</code> という書き方も見かけますが、<code>modelsummary()</code> と同じ関数です。</div>
 
   <h3>結果表をWord・PowerPointで保存する</h3>
-  <div class="codebox">modelsummary(model1, output = "flextable") %&gt;%
+  <div class="codebox">modelsummary(model1, output = "flextable") |&gt;
   save_as_docx(path = "regression_table.docx")
 
-modelsummary(model1, output = "flextable") %&gt;%
+modelsummary(model1, output = "flextable") |&gt;
   save_as_pptx(path = "regression_table.pptx")</div>
-  <div class="note"><div class="note-label">補足</div><code>output = "regression_table.docx"</code> と直接ファイル名を書く方法は、modelsummary v2.0以降では動きません。上記のように <code>output = "flextable"</code> と <code>save_as_docx()</code> を組み合わせてください。</div>
 
   <h2 id="errors"><span class="num">10</span>エラーと困ったときは</h2>
 
   <div class="qa">
     <div class="q">「Error」と赤い文字が出た</div>
-    <p class="a">エラーはよくあることです。まずエラー文をコピーして Teams の質問チャンネルに投稿してください。コードの打ち間違い（スペース、記号、大文字小文字）が原因のことが多いので、まず見直してみましょう。</p>
+    <p class="a">エラーはよくあることです。まずエラー文をコピーして Teams の所定の投稿に返信してください。コードの打ち間違い（スペース、記号、大文字小文字）が原因のことが多いので、まず見直してみましょう。</p>
   </div>
   <div class="qa">
     <div class="q">「could not find function」と出る</div>
@@ -1015,7 +1015,7 @@ modelsummary(model1, output = "flextable") %&gt;%
   </div>
 
   <div class="alert">
-    <strong>困ったときは：</strong>Teams の「質問チャンネル」に投稿する（スクリーンショット添付推奨）、または授業の前後に教員に直接聞いてください。
+    <strong>困ったときは：</strong>Teams の所定の投稿に返信する（スクリーンショット添付推奨）、または授業の前後に教員に直接聞いてください。
   </div>
 
   <h2 id="samplecode"><span class="num">11</span>サンプルコード</h2>

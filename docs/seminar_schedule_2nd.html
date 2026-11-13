@@ -174,6 +174,19 @@
     margin:20px 0 8px;
   }
 
+  /* ゼミ全体の流れ（学年ごとのステップ） */
+  .flow{margin:20px 0 28px;}
+  .flow-step{
+    display:flex; align-items:flex-start; gap:18px;
+    background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+    padding:14px 20px;
+  }
+  .flow-step .grade{color:var(--accent);
+    flex-shrink:0; width:5.5em; font-weight:700;
+  }
+  .flow-step .txt p{margin:0 0 4px;}
+  .flow-step .txt p:last-child{margin-bottom:0;}
+  .flow-arrow{text-align:center; color:var(--sub); line-height:1.6; margin:2px 0;}
   /* 目次（アンカーリンク） */
   .related-nav{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 12px;}
   .related-nav a{
@@ -204,6 +217,7 @@
     .compare{flex-direction:column;}
     .page{padding:32px 20px 80px;}
     .session{padding:22px 18px 4px;}
+    .flow-step{flex-direction:column; gap:6px;}
   }
 </style>
 </head>
@@ -214,11 +228,22 @@
   <p class="lead">全8回の各回の進め方と、毎回の到達目標をまとめています。Rで実際にデータを分析しながら、データ分析の基礎を体験します。</p>
 
   <h2 id="zentai"><span class="num">総論①</span>ゼミ全体の流れ</h2>
-  <ul>
-    <li><strong>2回生：</strong>Rを使ってデータを扱いながら、単回帰分析までの考え方を学びます。単回帰を実行し、係数・p値・決定係数の意味を説明できるようになることが目標です。</li>
-    <li><strong>3回生：</strong>前半はグループ研究に取り組み、9月の合同ゼミで発表します。後期は個人研究として研究計画書を作成・発表し、4回生での卒論テーマ（仮題）を提出できる状態を目指します。</li>
-    <li><strong>4回生：</strong>個人テーマで分析を進めながら、卒業論文を書き上げていきます。最終的に、卒業論文を完成させることがゴールです。</li>
-  </ul>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="grade">2回生</div>
+      <div class="txt"><p>Rを使ってデータを扱いながら、単回帰分析までの考え方を学びます。</p><p>単回帰を実行し、係数・p値・決定係数の意味を説明できるようになることが目標です。</p></div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step">
+      <div class="grade">3回生</div>
+      <div class="txt"><p><strong>前半：</strong>グループ研究に取り組み、9月の合同ゼミで発表します。</p><p><strong>後期：</strong>個人研究として研究計画書を作成・発表し、4回生での卒論テーマ（仮題）を提出できる状態を目指します。</p></div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-step">
+      <div class="grade">4回生</div>
+      <div class="txt"><p>個人テーマで分析を進めながら、卒業論文を書き上げていきます。</p><p>最終的に、卒業論文を完成させることがゴールです。</p></div>
+    </div>
+  </div>
 
   <h2 id="ichizuke"><span class="num">総論②</span>2回生の位置づけ</h2>
   <p>Rの演習を通してデータ分析の基礎を体験し、3回生・4回生で行う研究に活かします。</p>
@@ -258,7 +283,23 @@
     <h2 id="kai2"><span class="num">第2回</span>変数の種類・データの見方／基本操作・データ読込</h2>
     <ol>
       <li>講義：変数の種類・データの見方</li>
-      <li>演習：基本操作・データ読込</li>
+      <li>演習：基本操作・データ読込
+        <ul>
+          <li><strong>必須演習</strong>
+            <ul>
+              <li>アンケート（<code>survey.csv</code>）を <code>read_csv()</code> で読み込む</li>
+              <li>mpgを代入し、<code>head()</code>・<code>nrow()</code>・<code>ncol()</code> で確認する</li>
+              <li>ペアで相談：mpgの変数を量的変数と質的変数に分類し、型と種類が一致しない変数を探す</li>
+            </ul>
+          </li>
+          <li><strong>選択演習</strong>
+            <ul>
+              <li><code>head(survey)</code> で各列の型を確認し、講義で分類した変数の種類と比べる</li>
+              <li><code>summary(survey)</code> を実行し、量的変数と質的変数で出力がどう違うかを確かめる</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
     </ol>
     <p class="goal-label">◆ 到達目標</p>
     <div class="checklist">
@@ -272,7 +313,23 @@
     <h2 id="kai3"><span class="num">第3回</span>データの質・欠損値／前処理</h2>
     <ol>
       <li>講義：データの質・欠損値がなぜ問題か</li>
-      <li>演習：前処理</li>
+      <li>演習：欠損値の確認・前処理
+        <ul>
+          <li><strong>必須演習</strong>
+            <ul>
+              <li>mpgで <code>filter()</code>・<code>select()</code>・<code>mutate()</code>・<code>summarise()</code>・<code>group_by()</code> を使う</li>
+              <li>airqualityで欠損値を確認し、<code>drop_na()</code> と <code>na.rm = TRUE</code> の違いを確かめる</li>
+              <li>ペアで相談：airqualityで欠損のある行を削除すると、結果にどんな偏りが生じうるか</li>
+            </ul>
+          </li>
+          <li><strong>選択演習</strong>
+            <ul>
+              <li>surveyを使って、<code>filter()</code> で、生まれ変わるなら「動物」を選んだ人だけを取り出す</li>
+              <li>surveyを使って、<code>mutate()</code> で、家を出るまでの時間を「時間」の単位に換算した列を作る</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
     </ol>
     <p class="goal-label">◆ 到達目標</p>
     <div class="checklist">
@@ -285,7 +342,24 @@
     <h2 id="kai4"><span class="num">第4回</span>代表値・散らばりの指標／記述統計</h2>
     <ol>
       <li>講義：代表値・散らばりの指標</li>
-      <li>演習：記述統計</li>
+      <li>演習：記述統計
+        <ul>
+          <li><strong>必須演習</strong>
+            <ul>
+              <li>mpgで平均・中央値・標準偏差を求める</li>
+              <li><code>summary()</code> と <code>datasummary()</code> で記述統計表を作る</li>
+              <li>ペアで相談：hwyの平均と中央値が異なるのはなぜか</li>
+            </ul>
+          </li>
+          <li><strong>選択演習</strong>
+            <ul>
+              <li>mpgの記述統計表をWordに出力する</li>
+              <li>surveyを使って、睡眠時間の平均と中央値を比べる（欠損があるので <code>na.rm = TRUE</code> が必要）</li>
+              <li>surveyを使って、<code>group_by()</code> で、生まれ変わるなら の回答別に睡眠時間の平均を出す</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
     </ol>
     <p class="goal-label">◆ 到達目標</p>
     <div class="checklist">
@@ -298,7 +372,22 @@
     <h2 id="kai5"><span class="num">第5回</span>データのグラフ化／グラフの作成</h2>
     <ol>
       <li>講義：グラフの使い分け</li>
-      <li>演習：ヒストグラム・散布図・棒グラフ・箱ひげ図の作成</li>
+      <li>演習：グラフの作成
+        <ul>
+          <li><strong>必須演習</strong>
+            <ul>
+              <li>mpgでヒストグラム・散布図・棒グラフ・箱ひげ図を作る</li>
+              <li>ペアで相談：同じ変数を、別の種類のグラフで描くと何が見えるか</li>
+            </ul>
+          </li>
+          <li><strong>選択演習</strong>
+            <ul>
+              <li>mpgのグラフを <code>ggsave()</code> で保存する</li>
+              <li>surveyを使って、生まれ変わるなら の回答の件数を棒グラフにする</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
     </ol>
     <p class="goal-label">◆ 到達目標</p>
     <div class="checklist">
@@ -311,7 +400,23 @@
     <h2 id="kai6"><span class="num">第6回</span>回帰分析とは／単回帰の実行</h2>
     <ol>
       <li>講義：回帰分析は予測であるという前提、回帰式の読み方、傾きの解釈</li>
-      <li>演習：mpgデータで単回帰を実行し、<code>predict()</code> で予測値を求める</li>
+      <li>演習：単回帰の実行
+        <ul>
+          <li><strong>必須演習</strong>
+            <ul>
+              <li>mpgで <code>lm(hwy ~ displ)</code> を実行し、<code>summary()</code> で結果を確認する</li>
+              <li><code>predict()</code> で予測値を求める</li>
+              <li>ペアで相談：displの係数を、自分の言葉で説明する</li>
+            </ul>
+          </li>
+          <li><strong>選択演習</strong>
+            <ul>
+              <li><code>newdata</code> を指定し、データにない値で予測する</li>
+              <li>回帰結果を <code>modelsummary()</code> で表にし、Wordに出力する</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
     </ol>
     <p class="goal-label">◆ 到達目標</p>
     <div class="checklist">
@@ -325,7 +430,23 @@
     <h2 id="kai7"><span class="num">第7回</span>決定係数・p値の読み方／単回帰の実践・発表準備</h2>
     <ol>
       <li>講義：決定係数・p値の読み方</li>
-      <li>演習：数種類のデータの中から関心のあるものを選んで単回帰を実践し、第8回の発表準備をする
+      <li>演習：単回帰の実践・発表準備
+        <ul>
+          <li><strong>必須演習</strong>
+            <ul>
+              <li>配布データ（census・wage・oecd）から1つ選び、読み込む</li>
+              <li>記述統計と散布図で、使う変数を確認する</li>
+              <li>単回帰を実行し、結果をWordに出力する</li>
+              <li>ペアで相談：この関係は因果と言えるか、相関にとどまるか</li>
+            </ul>
+          </li>
+          <li><strong>選択演習</strong>
+            <ul>
+              <li>説明変数を変えて単回帰を実行し、第8回でどの結果を発表するかを決める</li>
+              <li>別の配布データでも単回帰を試す</li>
+            </ul>
+          </li>
+        </ul>
         <div class="small-note">※ このペアで第8回の発表まで取り組みます。</div>
       </li>
     </ol>
