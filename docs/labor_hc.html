@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>人的資本モデル – 講義資料</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -42,10 +36,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0ea2ff7769e5ef82603bbe0ca7207a04.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-cdebfaa07695f7ba0b196495d461e672.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -88,7 +82,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -246,11 +240,67 @@ window.Quarto = {
 </table>
 <p>2023年度の私立大学における4年間の平均的な学費<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>は、文系学部でおよそ410万円、理系学部でおよそ540万円です<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。</p>
 <p>大学に進学すると400〜500万円ほどの学費がかかりますが、生涯賃金は6千万円ほど増えます。平均的な学生にとって、大学進学は割の良い投資<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>だと言えるでしょう。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/labor_colhighwage.png" class="img-fluid figure-img"></p>
-<figcaption>収入と費用のフロー（学歴別）</figcaption>
-</figure>
+<!-- 収入と費用のフロー（学歴別）の概念図。
+     数値データに基づく図ではなく、高卒と大卒の収入の推移（年齢別）と、大学に通う間の費用のイメージ図。
+     大卒の収入は、卒業時点では高卒の収入より低いが、その後の伸びが大きく、やがて高卒の収入を上回る。
+     0より上が収入、0より下が費用。
+     旧画像：images/labor_colhighwage.png（参照されなくなったが削除はしていない） -->
+<div class="viz-root hc-diagram colhighwage-chart">
+<style>
+.hc-diagram{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #6b6a65;
+  --guide-line:     #898781;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 12px;
+  margin: 20px auto 10px;
+  max-width: 680px;
+}
+.hc-diagram svg{ width: 100%; height: auto; display: block; overflow: visible; }
+.hc-diagram .hd-axis{ stroke: var(--axis-line); stroke-width: 1.6; fill: none; }
+.hc-diagram .hd-arrow{ fill: var(--axis-line); }
+.hc-diagram .hd-guide{ stroke: var(--guide-line); stroke-width: 1.2; stroke-dasharray: 5 4; fill: none; }
+.hc-diagram .hd-text{ font-size: 16px; fill: var(--text-secondary); }
+.hc-diagram .hd-curve{ fill: none; stroke-width: 3.5; stroke-linecap: round; }
+.hc-diagram .hd-curve.hs{ stroke: #1971c2; }
+.hc-diagram .hd-curve.col{ stroke: #e03131; }
+.hc-diagram .hd-curve.cost{ stroke: #e03131; }
+.hc-diagram .hd-name{ font-size: 16px; font-weight: 700; }
+.hc-diagram .hd-name.hs{ fill: #1971c2; }
+.hc-diagram .hd-name.col{ fill: #e03131; }
+.hc-diagram .hd-name.cost{ fill: #e03131; }
+.hc-diagram .hd-zero{ stroke: var(--axis-line); stroke-width: 1.6; fill: none; }
+</style>
+<svg viewbox="0 0 600 345" role="img" aria-label="縦軸は収入（プラス）と費用（マイナス）、横軸は年齢。高卒の収入は高校卒業時点から緩やかに上昇し続ける。大学に通う間は収入がなく、大学の費用がかかる（0より下）。大卒の収入は卒業時点では高卒の収入より低いが、その後の伸びが大きく、やがて高卒の収入を上回る。">
+  <line class="hd-guide" x1="130" y1="215" x2="130" y2="312"></line>
+  <line class="hd-guide" x1="230" y1="200" x2="230" y2="312"></line>
+
+  <path class="hd-curve hs" d="M130,215 C140,170 190,150 300,138 C380,130 440,124 490,120"></path>
+  <path class="hd-curve col" d="M230,200 C238,160 255,140 300,120 C380,85 440,70 490,60"></path>
+  <line class="hd-curve cost" x1="130" y1="282" x2="230" y2="282"></line>
+
+  <polyline class="hd-axis" points="60,312 60,22"></polyline>
+  <polyline class="hd-zero" points="60,250 574,250"></polyline>
+  <polygon class="hd-arrow" points="60,14 54,26 66,26"></polygon>
+  <polygon class="hd-arrow" points="582,250 570,244 570,256"></polygon>
+
+  <text class="hd-name col" x="502" y="66">大卒の収入</text>
+  <text class="hd-name hs" x="502" y="126">高卒の収入</text>
+  <text class="hd-name cost" x="180" y="302" text-anchor="middle">大学の費用</text>
+
+  <text class="hd-text" x="60" y="12">収入・費用</text>
+  <text class="hd-text" x="50" y="255" text-anchor="end">0</text>
+  <text class="hd-text" x="130" y="334" text-anchor="middle">高卒</text>
+  <text class="hd-text" x="230" y="334" text-anchor="middle">大卒</text>
+  <text class="hd-text" x="596" y="274" text-anchor="end">年齢</text>
+</svg>
 </div>
 </section>
 <section id="人的資本モデル" class="level3">
@@ -262,7 +312,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>人的資本モデル
+人的資本モデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -295,7 +345,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>シグナリングモデル
+シグナリングモデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -321,7 +371,7 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>まとめ：人的資本モデルとシグナリングモデル
+まとめ：人的資本モデルとシグナリングモデル
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -360,12 +410,179 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="モデルの応用教育における男女の差異">モデルの応用：教育における男女の差異</h3>
 <p>人的資本モデルは、教育における男女の差を理解するうえでも役立ちます。</p>
 <p><strong>日本の大学進学率の推移</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/labor_colrate.png" class="img-fluid figure-img"></p>
-<figcaption>高等教育進学率の推移（男女別）</figcaption>
-</figure>
+<!-- 大学（学部）・短期大学（本科）への進学率の推移（男女別、1954〜2025年、折れ線グラフ）。
+     データ出典：文部科学省「学校基本調査」（参考資料）年次統計 総括表4 進学率（昭和23年～）。
+       e-Stat のファイル（statInfId=000031852304、e-Gov データポータルの文部科学省データセット
+       mext_20140912_0199 に掲載）から取得、2026-11-16。列は「大学（学部）への進学率（過年度高卒者等を含む）」
+       「短期大学（本科）への進学率（過年度高卒者等を含む）」の男・女。
+     定義：大学（学部）または短期大学（本科）入学者数（過年度高卒者等を含む）を、3年前の中学校等卒業者数で除した比率。
+       分母に特別支援学校（中学部）卒業者を含む（2025年12月の文部科学省の訂正後の算出方法。注5）。
+     旧画像：images/labor_colrate.png（参照されなくなったが削除はしていない） -->
+<div class="viz-root colrate-chart">
+<style>
+.colrate-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #c3c2b7;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 10px;
+  margin: 20px 0 10px;
+  position: relative;
+}
+.colrate-chart .cr-title{ font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+.colrate-chart svg{ width: 100%; height: auto; display: block; overflow: visible; touch-action: pan-y; }
+.colrate-chart .cr-grid{ stroke: var(--grid-line); stroke-width: 1px; }
+.colrate-chart .cr-axis{ stroke: var(--axis-line); stroke-width: 1px; }
+.colrate-chart .cr-axis-text{ font-size: 16px; fill: var(--text-muted); }
+.colrate-chart .cr-line{ fill: none; stroke-width: 3px; stroke-linejoin: round; }
+.colrate-chart .cr-name{ font-size: 16px; font-weight: 700; }
+.colrate-chart .cr-cross{ stroke: var(--text-muted); stroke-width: 1px; stroke-dasharray: 3 3; display: none; }
+.colrate-chart .cr-dot{ display: none; stroke: #fff; stroke-width: 1.5px; }
+.colrate-chart .cr-tooltip{
+  position: absolute; pointer-events: none; background: #fff;
+  border: 1px solid var(--grid-line); border-radius: 3px; padding: 8px 12px;
+  font-size: .95rem; line-height: 1.6; box-shadow: 0 2px 6px rgba(11,11,11,.12);
+  display: none; z-index: 5; white-space: nowrap;
+}
+.colrate-chart .cr-tooltip .cr-tt-year{ font-weight: 700; }
+.colrate-chart .cr-tooltip i{ display: inline-block; width: 18px; height: 0; border-top: 3px solid; vertical-align: middle; margin-right: 6px; }
+.colrate-chart .cr-tooltip i.dash{ border-top-style: dashed; }
+.colrate-chart .cr-note{ font-size: .78rem; color: var(--text-muted); margin-top: 8px; line-height: 1.6; }
+.colrate-chart details{ margin-top: 10px; font-size: .85rem; }
+.colrate-chart table{ width: 100%; border-collapse: collapse; font-size: .78rem; margin-top: 6px; }
+.colrate-chart th, .colrate-chart td{ border: 1px solid var(--grid-line); padding: 3px 6px; text-align: right; }
+.colrate-chart th:first-child, .colrate-chart td:first-child{ text-align: left; }
+.colrate-chart .cr-scroll{ max-height: 320px; overflow: auto; }
+</style>
+
+<div class="cr-title">大学・短期大学への進学率の推移（男女別）</div>
+<svg id="cr-svg" viewbox="0 0 860 460" role="img" aria-label="大学（学部）・短期大学（本科）への進学率の推移（男女別、1954〜2025年）。男性の大学進学率は1954年の13.3%から2025年の60.7%へ、女性は2.4%から56.5%へ上昇した。女性の短大進学率は1990年代半ばに約25%でピークとなり、2025年には4.7%まで低下した。"></svg>
+
+<div class="cr-note">
+（注）大学（学部）・短期大学（本科）への進学率（過年度高卒者等を含む）。それぞれの入学者数（過年度高卒者等を含む）を、3年前の中学校等卒業者数で除した比率。<br>
+（出典）文部科学省「学校基本調査」（参考資料）年次統計 総括表4 進学率より作成（2026年11月取得）。
 </div>
+
+<details>
+<summary>データを表で見る</summary>
+<div class="cr-scroll" id="cr-table"></div>
+</details>
+
+</div>
+
+<script>
+(function(){
+  const years = [1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+  const series = [
+    {name:"大学・男",  color:"#2a78d6", dash:"",    v:[13.3,13.1,13.1,15.2,14.5,13.7,13.6,15.4,16.5,19.8,25.5,20.6,18.7,20.5,22.0,24.6,27.2,30.3,33.4,35.5,37.9,40.9,40.8,39.5,40.6,39.2,39.1,38.5,37.7,35.9,36.2,38.4,34.0,35.1,35.1,33.9,33.3,34.3,35.0,36.4,38.7,40.5,41.6,43.2,44.7,46.3,47.2,46.6,46.7,47.6,49.0,51.0,51.8,53.2,54.8,55.5,55.9,55.5,55.1,53.5,55.3,54.8,55.0,55.3,55.7,56.0,57.1,57.4,59.0,60.0,61.2,60.7]},
+    {name:"大学・女",  color:"#e34948", dash:"",    v:[2.4,2.4,2.3,2.5,2.4,2.3,2.5,3.0,3.3,3.9,5.1,4.6,4.5,4.9,5.2,5.8,6.5,7.9,9.3,10.5,11.6,12.7,13.0,12.6,12.4,12.2,12.3,12.2,12.1,12.2,12.6,13.7,12.5,13.5,14.3,14.7,15.1,16.0,17.2,18.9,20.9,22.9,24.5,25.9,27.4,29.3,31.4,32.5,33.7,34.3,35.1,36.7,38.4,40.4,42.4,44.0,45.0,45.5,45.6,45.4,46.7,47.1,47.9,48.8,49.8,50.4,50.6,51.3,53.1,54.1,55.8,56.5]},
+    {name:"短大・女",  color:"#e34948", dash:"8 5", v:[2.3,2.6,2.6,2.8,2.8,2.8,3.0,3.5,4.1,5.1,6.5,6.7,7.3,8.5,9.2,10.3,11.2,12.8,14.3,16.4,18.1,20.1,20.6,20.6,20.9,20.8,20.9,20.7,20.4,19.9,20.1,20.7,20.9,21.5,21.8,22.0,22.2,23.0,23.5,24.3,24.8,24.6,23.6,22.8,21.8,20.1,17.2,15.7,14.6,13.8,13.5,13.0,12.4,11.8,11.4,11.0,10.7,10.3,9.7,9.5,9.4,9.2,8.9,8.6,8.3,7.9,7.6,7.1,6.6,6.0,5.5,4.7]},
+    {name:"短大・男",  color:"#2a78d6", dash:"8 5", v:[2.0,1.9,1.6,1.6,1.4,1.3,1.2,1.5,1.6,1.9,2.3,1.7,1.5,1.6,1.7,1.9,2.0,2.2,2.2,2.4,2.4,2.6,2.4,2.3,2.3,2.1,2.0,1.9,1.9,1.8,1.9,2.0,1.7,1.8,1.8,1.7,1.7,1.8,1.8,1.9,2.0,2.1,2.3,2.3,2.2,2.1,1.9,1.7,1.8,1.8,1.8,1.8,1.5,1.4,1.3,1.2,1.3,1.2,1.2,1.1,1.1,1.1,1.0,1.0,0.9,1.0,1.0,0.9,0.9,0.9,0.9,0.9]}
+  ];
+
+  const W = 860, H = 460;
+  const m = {left:56, right:92, top:20, bottom:46};
+  const plotW = W - m.left - m.right, plotH = H - m.top - m.bottom;
+  const x0 = years[0], x1 = years[years.length - 1];
+  const yMin = 0, yMax = 70;
+  const xScale = yr => m.left + (yr - x0) / (x1 - x0) * plotW;
+  const yScale = v => m.top + (yMax - v) / (yMax - yMin) * plotH;
+
+  const ns = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, parent){
+    const e = document.createElementNS(ns, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  const rootEl = document.querySelector(".colrate-chart");
+  const svg = document.getElementById("cr-svg");
+
+  for (let v = yMin; v <= yMax; v += 10){
+    const y = yScale(v);
+    el("line", {class:"cr-grid", x1:m.left, x2:W-m.right, y1:y, y2:y}, svg);
+    const t = el("text", {class:"cr-axis-text", x:m.left-10, y:y+5, "text-anchor":"end"}, svg);
+    t.textContent = v;
+  }
+  const unit = el("text", {class:"cr-axis-text", x:m.left-10, y:m.top-8, "text-anchor":"end"}, svg);
+  unit.textContent = "%";
+  el("line", {class:"cr-axis", x1:m.left, x2:W-m.right, y1:yScale(0), y2:yScale(0)}, svg);
+  [1954,1960,1970,1980,1990,2000,2010,2020,2025].forEach(yr => {
+    el("line", {class:"cr-axis", x1:xScale(yr), x2:xScale(yr), y1:yScale(0), y2:yScale(0)+5}, svg);
+    const t = el("text", {class:"cr-axis-text", x:xScale(yr), y:H-m.bottom+26, "text-anchor":"middle"}, svg);
+    t.textContent = yr;
+  });
+
+  series.forEach(s => {
+    const d = s.v.map((v, i) => (i ? "L" : "M") + xScale(years[i]).toFixed(1) + "," + yScale(v).toFixed(1)).join(" ");
+    const p = el("path", {class:"cr-line", d:d, stroke:s.color}, svg);
+    if (s.dash) p.setAttribute("stroke-dasharray", s.dash);
+    s.line = p;
+  });
+
+  // 右端のラベル（最小間隔を確保）
+  const lab = series.map(s => ({s:s, y:yScale(s.v[s.v.length-1]) + 5}));
+  lab.sort((a, b) => a.y - b.y);
+  for (let it = 0; it < 60; it++){
+    let moved = false;
+    for (let i = 1; i < lab.length; i++){
+      const d = lab[i].y - lab[i-1].y;
+      if (d < 19){ const s = (19 - d) / 2 + 0.01; lab[i-1].y -= s; lab[i].y += s; moved = true; }
+    }
+    if (!moved) break;
+  }
+  lab.forEach(l => {
+    const t = el("text", {class:"cr-name", x:W-m.right+10, y:l.y, fill:l.s.color}, svg);
+    t.textContent = l.s.name;
+  });
+
+  // ホバー（縦線＋その年の4つの値）
+  const cross = el("line", {class:"cr-cross", y1:m.top, y2:yScale(0)}, svg);
+  const dots = series.map(s => el("circle", {class:"cr-dot", r:5, fill:s.color}, svg));
+  const overlay = el("rect", {x:m.left, y:m.top, width:plotW, height:plotH, fill:"transparent"}, svg);
+  overlay.style.cursor = "crosshair";
+  const tooltip = document.createElement("div");
+  tooltip.className = "cr-tooltip";
+  rootEl.appendChild(tooltip);
+
+  function show(evt){
+    const pt = svg.createSVGPoint(); pt.x = evt.clientX; pt.y = evt.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+    let i = Math.round((p.x - m.left) / plotW * (years.length - 1));
+    i = Math.max(0, Math.min(years.length - 1, i));
+    const x = xScale(years[i]);
+    cross.setAttribute("x1", x); cross.setAttribute("x2", x); cross.style.display = "block";
+    dots.forEach((d, k) => { d.setAttribute("cx", x); d.setAttribute("cy", yScale(series[k].v[i])); d.style.display = "block"; });
+    const order = [0, 1, 2, 3];
+    tooltip.innerHTML = '<span class="cr-tt-year">' + years[i] + '年</span><br>' +
+      order.map(k => '<i class="' + (series[k].dash ? "dash" : "") + '" style="border-color:' + series[k].color + '"></i>' + series[k].name + '：' + series[k].v[i].toFixed(1) + '%').join("<br>");
+    tooltip.style.display = "block";
+    const r = rootEl.getBoundingClientRect();
+    const left = evt.clientX - r.left + 16;
+    tooltip.style.left = Math.min(left, r.width - tooltip.offsetWidth - 8) + "px";
+    tooltip.style.top = (evt.clientY - r.top - 20) + "px";
+  }
+  function hide(){
+    cross.style.display = "none"; dots.forEach(d => d.style.display = "none"); tooltip.style.display = "none";
+  }
+  overlay.addEventListener("pointermove", show);
+  overlay.addEventListener("pointerdown", show);
+  overlay.addEventListener("pointerleave", hide);
+
+  // 表
+  let html = "<table><thead><tr><th>年</th>" + series.map(s => "<th>" + s.name + "</th>").join("") + "</tr></thead><tbody>";
+  years.forEach((y, i) => { html += "<tr><td>" + y + "</td>" + series.map(s => "<td>" + s.v[i].toFixed(1) + "</td>").join("") + "</tr>"; });
+  html += "</tbody></table>";
+  document.getElementById("cr-table").innerHTML = html;
+})();
+</script>
 <ul>
 <li><strong>1954年</strong>：高校進学率は男女ほぼ半数</li>
 <li><strong>1960年代</strong>：高度経済成長期、家計所得の向上とホワイトカラー職の拡大により進学率が上昇</li>
@@ -445,36 +662,503 @@ window.Quarto = {
 <p>女性が技術開発に関わることでイノベーションが促進されるという研究結果もあり、日本においてもSTEM分野への女性の進出が期待されています。</p>
 <p><strong>賃金への影響</strong></p>
 <p>大学進学によって見込める収入には、男女でどのような違いがあるのでしょうか。</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/labor_wdifmf.png" class="img-fluid figure-img"></p>
-<figcaption>男女別・学歴別・年齢階級別の平均所定内給与</figcaption>
-</figure>
+<!-- 男女別・学歴別・年齢階級別の平均所定内給与（折れ線グラフ）。
+     データ出典：厚生労働省「令和7（2025）年賃金構造基本統計調査」結果の概況 第3表
+       「学歴、性、年齢階級別賃金及び対前年増減率」（https://www.mhlw.go.jp/toukei/itiran/roudou/chingin/kouzou/z2025/xls/zuhyo.xlsx、2026-11-16取得）。
+     条件：10人以上の常用労働者を雇用する民営事業所、一般労働者（短時間労働者を除く）、6月分の所定内給与額。
+     単位：千円で公表されている値を万円に換算（千円÷10）。
+     「～19歳」は高校のみ値がある（他の学歴は「-」）。70歳以上は年齢階級に含まれない。
+     旧画像：images/labor_wdifmf.png（2019年データ。参照されなくなったが削除はしていない） -->
+<div class="viz-root wdifmf-chart">
+<style>
+.wdifmf-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #c3c2b7;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 10px;
+  margin: 20px 0 10px;
+  position: relative;
+}
+.wdifmf-chart .wm-title{ font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+.wdifmf-chart .wm-chips{
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  font-size: .95rem; color: var(--text-secondary); margin-bottom: 8px;
+}
+.wdifmf-chart .wm-chip{
+  border: 1px solid var(--axis-line);
+  background: #fff;
+  color: var(--text-secondary);
+  border-radius: 999px;
+  padding: 3px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+.wdifmf-chart .wm-chip[aria-pressed="true"]{
+  background: #2e5476;
+  border-color: #2e5476;
+  color: #fff;
+}
+.wdifmf-chart svg{ width: 100%; height: auto; display: block; overflow: visible; }
+.wdifmf-chart .wm-grid{ stroke: var(--grid-line); stroke-width: 1px; }
+.wdifmf-chart .wm-axis{ stroke: var(--axis-line); stroke-width: 1px; }
+.wdifmf-chart .wm-axis-text{ font-size: 16px; fill: var(--text-muted); }
+.wdifmf-chart .wm-line{ fill: none; stroke-width: 3px; transition: opacity .15s, stroke-width .15s; }
+.wdifmf-chart .wm-dot{ transition: opacity .15s; }
+.wdifmf-chart .wm-label{ font-size: 15px; font-weight: 700; transition: opacity .15s; }
+.wdifmf-chart .wm-hit{ fill: none; stroke: transparent; stroke-width: 16px; cursor: pointer; }
+.wdifmf-chart .wm-tooltip{
+  position: absolute; pointer-events: none; background: #fff;
+  border: 1px solid var(--grid-line); border-radius: 3px; padding: 8px 12px;
+  font-size: .95rem; line-height: 1.5; box-shadow: 0 2px 6px rgba(11,11,11,.12);
+  display: none; z-index: 5; white-space: nowrap;
+}
+.wdifmf-chart .wm-tooltip .wm-tt-name{ font-weight: 700; }
+.wdifmf-chart .wm-legend{
+  display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .95rem;
+  color: var(--text-secondary); margin-top: 6px; align-items: center;
+}
+.wdifmf-chart .wm-legend span{ display: inline-flex; align-items: center; gap: 6px; }
+.wdifmf-chart .wm-legend svg{ width: 34px; height: 10px; overflow: visible; }
+.wdifmf-chart .wm-note{ font-size: .78rem; color: var(--text-muted); margin-top: 8px; line-height: 1.6; }
+.wdifmf-chart details{ margin-top: 10px; font-size: .85rem; }
+.wdifmf-chart table{ width: 100%; border-collapse: collapse; font-size: .78rem; margin-top: 6px; }
+.wdifmf-chart th, .wdifmf-chart td{ border: 1px solid var(--grid-line); padding: 3px 6px; text-align: right; }
+.wdifmf-chart th:first-child, .wdifmf-chart td:first-child{ text-align: left; }
+</style>
+
+<div class="wm-title">男女別・学歴別・年齢階級別の平均所定内給与（2025年、万円）</div>
+<div class="wm-chips" id="wm-chips"><span>表示する学歴：</span></div>
+<svg id="wm-svg" viewbox="0 0 860 520" role="img" aria-label="男女別・学歴別の年齢階級別の平均所定内給与（2025年）の折れ線グラフ。男性・女性とも、年齢とともに上昇し50歳代でピークとなる。学歴が高いほど上昇幅が大きく、女性は男性より低い。"></svg>
+<div class="wm-legend" id="wm-legend"></div>
+
+<div class="wm-note">
+（注）10人以上の常用労働者を雇用する民営事業所の一般労働者（短時間労働者を除く）の、6月分の所定内給与額。「～19歳」は高校卒のみ。<br>
+（出典）厚生労働省「賃金構造基本統計調査」令和7（2025）年（第3表）より作成。
 </div>
+
+<details>
+<summary>データを表で見る</summary>
+<div id="wm-table"></div>
+</details>
+
+</div>
+
+<script>
+(function(){
+  const ages = ["〜19","20〜24","25〜29","30〜34","35〜39","40〜44","45〜49","50〜54","55〜59","60〜64","65〜69"];
+  // 千円（公表値）。null は「-」（該当なし）
+  const raw = {
+    male: {
+      "高校":      [213.7,231.1,262.3,293.0,315.9,336.3,353.9,371.7,367.4,309.2,263.4],
+      "専門学校":  [null, 236.0,268.8,293.4,321.2,343.1,362.8,391.6,406.3,336.0,281.8],
+      "高専・短大":[null, 252.4,296.5,333.5,372.1,409.5,425.1,433.6,457.8,350.7,293.6],
+      "大学":      [null, 267.4,305.1,358.9,405.9,452.8,491.4,528.8,556.3,430.3,377.5],
+      "大学院":    [null, 302.0,341.0,416.2,479.8,569.7,644.4,660.9,691.9,590.0,579.4]
+    },
+    female: {
+      "高校":      [202.2,214.6,230.0,236.0,248.5,246.8,253.9,263.6,261.0,238.8,220.9],
+      "専門学校":  [null, 240.2,265.0,269.6,279.1,296.4,300.9,314.3,317.9,289.7,264.1],
+      "高専・短大":[null, 237.5,264.5,279.2,277.3,293.2,305.3,317.3,329.5,286.3,257.5],
+      "大学":      [null, 260.4,286.9,311.5,332.4,363.7,373.8,386.3,416.2,360.1,292.0],
+      "大学院":    [null, 288.0,317.1,361.3,406.7,466.7,503.2,574.7,580.6,589.0,517.8]
+    }
+  };
+  const edus = ["高校","専門学校","高専・短大","大学","大学院"];
+  const dash = {"高校":"2 5", "専門学校":"9 3 2 3", "高専・短大":"9 5", "大学":"", "大学院":""};
+  const sexes = [
+    {key:"male",   name:"男性", color:"#2a78d6"},
+    {key:"female", name:"女性", color:"#e34948"}
+  ];
+  const on = {"高校":true, "専門学校":false, "高専・短大":true, "大学":true, "大学院":false};
+
+  const width = 860, height = 520;
+  const margin = {left:56, right:130, top:34, bottom:46};
+  const plotW = width - margin.left - margin.right, plotH = height - margin.top - margin.bottom;
+  const yMin = 10, yMax = 70;
+  const xScale = i => margin.left + 20 + i / (ages.length - 1) * (plotW - 40);
+  const yScale = v => margin.top + (yMax - v) / (yMax - yMin) * plotH;
+
+  const ns = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, parent){
+    const e = document.createElementNS(ns, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  const rootEl = document.querySelector(".wdifmf-chart");
+  const svg = document.getElementById("wm-svg");
+  const tooltip = document.createElement("div");
+  tooltip.className = "wm-tooltip";
+  rootEl.appendChild(tooltip);
+
+  // 学歴の表示切り替えチップ
+  const chipBox = document.getElementById("wm-chips");
+  edus.forEach(e => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "wm-chip";
+    b.textContent = e;
+    b.setAttribute("aria-pressed", on[e] ? "true" : "false");
+    b.addEventListener("click", () => {
+      on[e] = !on[e];
+      if (!edus.some(x => on[x])) on[e] = true;   // 全部オフにはしない
+      chipBox.querySelectorAll(".wm-chip").forEach((c, i) => c.setAttribute("aria-pressed", on[edus[i]] ? "true" : "false"));
+      draw();
+    });
+    chipBox.appendChild(b);
+  });
+
+  // 凡例（線種＝学歴、色＝性別）
+  const legend = document.getElementById("wm-legend");
+  legend.innerHTML = '<span><svg viewBox="0 0 34 10"><line x1="0" y1="5" x2="34" y2="5" stroke="#2a78d6" stroke-width="3"/></svg>男性</span>' +
+                     '<span><svg viewBox="0 0 34 10"><line x1="0" y1="5" x2="34" y2="5" stroke="#e34948" stroke-width="3"/></svg>女性</span>' +
+                     '<span style="color:#898781">線の種類：</span>' +
+                     edus.map(e => '<span><svg viewBox="0 0 34 10"><line x1="0" y1="5" x2="34" y2="5" stroke="#52514e" stroke-width="3"' + (dash[e] ? ' stroke-dasharray="' + dash[e] + '"' : '') + '/><circle cx="17" cy="5" r="4" fill="' + (e === "大学院" ? "#fff" : "#52514e") + '" stroke="#52514e" stroke-width="2"/></svg>' + e + '</span>').join("");
+
+  let series = [];
+  function setActive(idx){
+    series.forEach((s, i) => {
+      const hot = (idx === null || i === idx);
+      s.line.style.opacity = hot ? 1 : .15;
+      s.line.style.strokeWidth = (i === idx) ? "5px" : "3px";
+      s.dots.forEach(d => d.style.opacity = hot ? 1 : .15);
+      s.label.style.opacity = hot ? 1 : .3;
+    });
+    if (idx !== null){ svg.appendChild(series[idx].line); }
+  }
+  function nearestIndex(x){
+    let best = 0, bd = Infinity;
+    ages.forEach((a, i) => { const d = Math.abs(xScale(i) - x); if (d < bd){ bd = d; best = i; } });
+    return best;
+  }
+
+  function draw(){
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    series = [];
+    for (let v = yMin; v <= yMax; v += 10){
+      const y = yScale(v);
+      el("line", {class:"wm-grid", x1:margin.left, x2:width-margin.right, y1:y, y2:y}, svg);
+      const t = el("text", {class:"wm-axis-text", x:margin.left-10, y:y+5, "text-anchor":"end"}, svg);
+      t.textContent = v;
+    }
+    el("line", {class:"wm-axis", x1:margin.left, x2:width-margin.right, y1:yScale(yMin), y2:yScale(yMin)}, svg);
+    ages.forEach((a, i) => {
+      const t = el("text", {class:"wm-axis-text", x:xScale(i), y:height-margin.bottom+26, "text-anchor":"middle"}, svg);
+      t.textContent = a;
+    });
+    const unit = el("text", {class:"wm-axis-text", x:margin.left-10, y:margin.top-18, "text-anchor":"end"}, svg);
+    unit.textContent = "万円";
+
+    const labelPos = [];
+    sexes.forEach(sx => {
+      edus.forEach(ed => {
+        if (!on[ed]) return;
+        const vals = raw[sx.key][ed].map(v => v === null ? null : v / 10);
+        let d = "", started = false;
+        vals.forEach((v, i) => { if (v === null) return; d += (started ? "L" : "M") + xScale(i).toFixed(1) + "," + yScale(v).toFixed(1) + " "; started = true; });
+        const line = el("path", {class:"wm-line", d:d, stroke:sx.color}, svg);
+        if (dash[ed]) line.setAttribute("stroke-dasharray", dash[ed]);
+        const dots = [];
+        vals.forEach((v, i) => { if (v === null) return; dots.push(el("circle", {class:"wm-dot", cx:xScale(i), cy:yScale(v), r: ed === "大学院" ? 4.2 : 3.4, fill: ed === "大学院" ? "#fff" : sx.color, stroke:sx.color, "stroke-width":2}, svg)); });
+        const hit = el("path", {class:"wm-hit", d:d}, svg);
+        const lastV = vals[vals.length - 1];
+        const lab = el("text", {class:"wm-label", x:xScale(ages.length - 1) + 12, y:0, fill:sx.color}, svg);
+        lab.textContent = sx.name + "・" + ed;
+        labelPos.push({lab:lab, y:yScale(lastV) + 5});
+        const idx = series.length;
+        series.push({line:line, dots:dots, label:lab, name:sx.name + "・" + ed + "卒", vals:vals});
+        hit.addEventListener("mouseenter", () => setActive(idx));
+        hit.addEventListener("mouseleave", () => { setActive(null); tooltip.style.display = "none"; });
+        hit.addEventListener("mousemove", evt => {
+          const pt = svg.createSVGPoint(); pt.x = evt.clientX; pt.y = evt.clientY;
+          const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+          let i = nearestIndex(p.x);
+          if (vals[i] === null) i = vals.findIndex(v => v !== null);
+          tooltip.innerHTML = '<span class="wm-tt-name">' + series[idx].name + '</span><br>' + ages[i] + '歳：' + vals[i].toFixed(1) + '万円';
+          tooltip.style.display = "block";
+          const r = rootEl.getBoundingClientRect();
+          tooltip.style.left = (evt.clientX - r.left + 14) + "px";
+          tooltip.style.top = (evt.clientY - r.top - 10) + "px";
+        });
+      });
+    });
+    // 右端ラベルの縦方向の重なりを解消（最小間隔を確保）
+    labelPos.sort((a, b) => a.y - b.y);
+    const gap = 17;
+    for (let it = 0; it < 80; it++){
+      let moved = false;
+      for (let i = 1; i < labelPos.length; i++){
+        const d = labelPos[i].y - labelPos[i-1].y;
+        if (d < gap){ const s = (gap - d) / 2 + 0.01; labelPos[i-1].y -= s; labelPos[i].y += s; moved = true; }
+      }
+      if (!moved) break;
+    }
+    labelPos.forEach(l => l.lab.setAttribute("y", l.y));
+  }
+  draw();
+
+  // 表
+  let html = "<table><thead><tr><th>性別・学歴</th>" + ages.map(a => "<th>" + a + "</th>").join("") + "</tr></thead><tbody>";
+  sexes.forEach(sx => edus.forEach(ed => {
+    html += "<tr><td>" + sx.name + "・" + ed + "</td>" + raw[sx.key][ed].map(v => "<td>" + (v === null ? "－" : (v / 10).toFixed(1)) + "</td>").join("") + "</tr>";
+  }));
+  html += "</tbody></table>";
+  document.getElementById("wm-table").innerHTML = html;
+})();
+</script>
 <ul>
 <li><strong>大学・大学院卒</strong>の男女差：20〜24歳時点ではほとんど差がない。男性は年齢とともに所定内給与が上昇していくが、女性の上昇幅はそれより緩やかで、高卒男性をわずかに上回る程度にとどまる</li>
 <li><strong>高卒</strong>の男女差：男性は年齢とともに所定内給与が上がっていくが、女性はあまり上がらない</li>
 </ul>
 <p>学歴や職務経験によって賃金に差が生じる現象は、さまざまな国で見られます。</p>
-<div id="fig-74" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-74-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/labor_wdifus.png" class="img-fluid figure-img">
+<div id="edu-wage-intl">
+<!-- 学歴別・男女別の賃金指数の国際比較（日本・アメリカ・ドイツ）。
+     データ出典：OECD, Education at a Glance Database（Education and earnings）。
+       OECD SDMX API（https://sdmx.oecd.org/public/rest/data/）から2026-11-16に取得。
+       DF_LSO_EARN_REL_UPPER（同性の後期中等教育修了者の所得を100とした相対所得）と
+       DF_LSO_EARN_REL_MALE（女性の所得／男性の所得、同じ学歴）。
+     指数の作り方：男性＝そのまま（各国の「後期中等教育・男性」＝100）。
+       女性＝（女性の相対所得）×（後期中等教育での女性／男性の所得比）。
+     条件：25〜64歳、就業者（フルタイム・パートタイム含む）、全分野。
+     年：OECDのデータベースで取得できる最新年。日本は2012年が最新（2005年・2012年のみ）、
+       アメリカ・ドイツは2024年。
+     学歴区分：中等教育未満＝ISCED 0〜2、後期中等教育＝ISCED 3（日本のみ3・4の合計。
+       日本は ISCED 3 単独の値が欠測のため）、高等教育＝ISCED 5〜8。
+     旧画像：images/labor_wdifus.png（参照されなくなったが削除はしていない） -->
+<div class="viz-root wdifus-chart">
+<style>
+.wdifus-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #c3c2b7;
+  --male:           #2a78d6;
+  --female:         #e34948;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 10px;
+  margin: 20px 0 10px;
+  position: relative;
+}
+.wdifus-chart .wu-title{
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.wdifus-chart .wu-panels{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px 10px;
+}
+.wdifus-chart .wu-panel{
+  min-width: 0;
+}
+@media (max-width: 560px){
+  .wdifus-chart .wu-panels{ grid-template-columns: 1fr; }
+}
+.wdifus-chart .wu-panel-title{
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.wdifus-chart .wu-panel-title small{
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: .85rem;
+}
+.wdifus-chart svg{ width: 100%; height: auto; display: block; overflow: visible; }
+.wdifus-chart .wu-grid{ stroke: var(--grid-line); stroke-width: 1px; }
+.wdifus-chart .wu-base{ stroke: var(--text-muted); stroke-width: 1.2px; stroke-dasharray: 5 4; }
+.wdifus-chart .wu-axis{ stroke: var(--axis-line); stroke-width: 1px; }
+.wdifus-chart .wu-axis-text{ font-size: 15px; fill: var(--text-muted); }
+.wdifus-chart .wu-cat{ font-size: 13px; fill: var(--text-secondary); }
+.wdifus-chart .wu-line{ fill: none; stroke-width: 3px; transition: opacity .15s, stroke-width .15s; }
+.wdifus-chart .wu-dot{ transition: opacity .15s; }
+.wdifus-chart .wu-name{ font-size: 17px; font-weight: 700; transition: opacity .15s; }
+.wdifus-chart .wu-val{ font-size: 14px; fill: var(--text-secondary); }
+.wdifus-chart .wu-hit{ fill: transparent; cursor: pointer; }
+.wdifus-chart .wu-tooltip{
+  position: absolute;
+  pointer-events: none;
+  background: #fff;
+  border: 1px solid var(--grid-line);
+  border-radius: 3px;
+  padding: 8px 12px;
+  font-size: .95rem;
+  line-height: 1.5;
+  box-shadow: 0 2px 6px rgba(11,11,11,.12);
+  display: none;
+  z-index: 5;
+  white-space: nowrap;
+}
+.wdifus-chart .wu-tooltip .wu-tt-name{ font-weight: 700; }
+.wdifus-chart .wu-note{
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.6;
+}
+.wdifus-chart details{ margin-top: 10px; font-size: .85rem; }
+.wdifus-chart table{ width: 100%; border-collapse: collapse; font-size: .78rem; margin-top: 6px; }
+.wdifus-chart th, .wdifus-chart td{ border: 1px solid var(--grid-line); padding: 3px 6px; text-align: right; }
+.wdifus-chart th:first-child, .wdifus-chart td:first-child{ text-align: left; }
+</style>
+
+<div class="wu-title">学歴別・男女別の賃金指数（各国の後期中等教育・男性＝100）</div>
+<div class="wu-panels" id="wu-panels"></div>
+
+<div class="wu-note">
+（注）25〜64歳、就業者（フルタイム・パートタイムを含む）。日本は2012年、アメリカ・ドイツは2024年の値（日本はOECDのデータベースで取得できる最新年が2012年）。点線は各国の「後期中等教育・男性＝100」の基準線。<br>
+（出典）OECD, Education at a Glance Database（Education and earnings）より作成（2026年11月取得）。
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-74-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: 学歴と賃金の関係の国際比較
-</figcaption>
-</figure>
+
+<details>
+<summary>データを表で見る</summary>
+<div id="wu-table"></div>
+</details>
+
+</div>
+
+<script>
+(function(){
+  const cats = ["中等教育未満", "後期中等教育", "高等教育"];
+  const countries = [
+    {name:"日本",     year:2012, male:[74.1, 100, 144.4], female:[31.1, 43.2, 69.1]},
+    {name:"アメリカ", year:2024, male:[70.7, 100, 180.2], female:[48.3, 67.8, 123.3]},
+    {name:"ドイツ",   year:2024, male:[75.6, 100, 154.0], female:[52.7, 67.3, 101.7]}
+  ];
+  const sexes = [
+    {key:"male",   name:"男性", color:"#2a78d6"},
+    {key:"female", name:"女性", color:"#e34948"}
+  ];
+
+  const W = 340, H = 330;
+  const m = {left:40, right:36, top:12, bottom:42};
+  const yMin = 0, yMax = 200;
+  const plotW = W - m.left - m.right, plotH = H - m.top - m.bottom;
+  const xs = [0, 1, 2].map(i => m.left + 28 + i * (plotW - 56) / 2);
+  const yScale = v => m.top + (yMax - v) / (yMax - yMin) * plotH;
+
+  const ns = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, parent){
+    const e = document.createElementNS(ns, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  const root = document.querySelector(".wdifus-chart");
+  const panels = document.getElementById("wu-panels");
+  const tooltip = document.createElement("div");
+  tooltip.className = "wu-tooltip";
+  root.appendChild(tooltip);
+
+  const allLines = [];   // {country, sex, line, dots, label}
+
+  function setActive(active){
+    allLines.forEach(o => {
+      const on = !active || o.panel !== active.panel || o.sex === active.sex;
+      o.line.style.opacity = on ? 1 : .2;
+      o.line.style.strokeWidth = (active && on && o.panel === active.panel) ? "4.5px" : "3px";
+      o.dots.forEach(d => d.style.opacity = on ? 1 : .25);
+      o.label.style.opacity = on ? 1 : .35;
+    });
+  }
+
+  countries.forEach((c, pi) => {
+    const panel = document.createElement("div");
+    panel.className = "wu-panel";
+    panel.innerHTML = '<div class="wu-panel-title">' + c.name + ' <small>（' + c.year + '年）</small></div>';
+    panels.appendChild(panel);
+
+    const svg = el("svg", {viewBox: "0 0 " + W + " " + H, role: "img",
+      "aria-label": c.name + "（" + c.year + "年）の学歴別・男女別の賃金指数。男性：" + c.male.join("、") + "。女性：" + c.female.join("、") + "。"}, panel);
+
+    for (let v = yMin; v <= yMax; v += 50){
+      const y = yScale(v);
+      el("line", {class: v === 100 ? "wu-base" : "wu-grid", x1: m.left, x2: W - m.right, y1: y, y2: y}, svg);
+      const t = el("text", {class: "wu-axis-text", x: m.left - 8, y: y + 4, "text-anchor": "end"}, svg);
+      t.textContent = v;
+    }
+    el("line", {class: "wu-axis", x1: m.left, x2: W - m.right, y1: yScale(0), y2: yScale(0)}, svg);
+    cats.forEach((cat, i) => {
+      const t = el("text", {class: "wu-cat", x: xs[i], y: H - m.bottom + 22, "text-anchor": "middle"}, svg);
+      t.textContent = cat;
+    });
+
+    sexes.forEach(s => {
+      const vals = c[s.key];
+      const d = vals.map((v, i) => (i ? "L" : "M") + xs[i].toFixed(1) + "," + yScale(v).toFixed(1)).join(" ");
+      const line = el("path", {class: "wu-line", d: d, stroke: s.color}, svg);
+      const dots = vals.map((v, i) => el("circle", {class: "wu-dot", cx: xs[i], cy: yScale(v), r: 4.2, fill: s.color}, svg));
+      // 値ラベルと系列名（最右の点の右）
+      vals.forEach((v, i) => {
+        if (i === 2) return;
+        const above = s.key === "male";
+        const t = el("text", {class: "wu-val", x: xs[i], y: yScale(v) + (above ? -10 : 18), "text-anchor": "middle"}, svg);
+        t.textContent = v.toFixed(0);
+      });
+      const tEnd = el("text", {class: "wu-val", x: xs[2], y: yScale(vals[2]) + (s.key === "male" ? -10 : 18), "text-anchor": "middle"}, svg);
+      tEnd.textContent = vals[2].toFixed(0);
+      const label = el("text", {class: "wu-name", x: xs[2] + 10, y: yScale(vals[2]) + 5, fill: s.color}, svg);
+      label.textContent = s.name;
+      label.setAttribute("text-anchor", "start");
+      label.setAttribute("dx", "6");
+      allLines.push({panel: pi, sex: s.key, line: line, dots: dots, label: label});
+
+      // ホバー用の当たり判定（各点）
+      vals.forEach((v, i) => {
+        const hit = el("circle", {class: "wu-hit", cx: xs[i], cy: yScale(v), r: 16}, svg);
+        function show(evt){
+          setActive({panel: pi, sex: s.key});
+          tooltip.innerHTML = '<span class="wu-tt-name">' + c.name + '・' + s.name + '</span><br>' + cats[i] + '：' + v.toFixed(1);
+          tooltip.style.display = "block";
+          const rect = root.getBoundingClientRect();
+          tooltip.style.left = (evt.clientX - rect.left + 14) + "px";
+          tooltip.style.top = (evt.clientY - rect.top - 10) + "px";
+        }
+        hit.addEventListener("pointerenter", show);
+        hit.addEventListener("pointermove", show);
+        hit.addEventListener("pointerleave", () => { setActive(null); tooltip.style.display = "none"; });
+      });
+    });
+  });
+
+  // 日本の「中等教育未満」の女性ラベルなどが重ならないよう、値ラベルは点の上（男性）・下（女性）に固定している。
+
+  // 表形式
+  let html = "<table><thead><tr><th>国（年）</th><th>性別</th>" + cats.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>";
+  countries.forEach(c => {
+    sexes.forEach(s => {
+      html += "<tr><td>" + c.name + "（" + c.year + "年）</td><td>" + s.name + "</td>" + c[s.key].map(v => "<td>" + v.toFixed(1) + "</td>").join("") + "</tr>";
+    });
+  });
+  html += "</tbody></table>";
+  document.getElementById("wu-table").innerHTML = html;
+})();
+</script>
 </div>
 <ul>
-<li>どの国でも学歴による月収格差が存在する</li>
-<li>日本は「数学的思考力」「読解力」ともにOECD平均を上回り分散も小さいにもかかわらず、学歴による賃金差は小さい</li>
+<li>どの国でも学歴による賃金格差が存在する</li>
 <li>学歴による賃金差の大きさは、アメリカ <span class="math inline">\(&gt;\)</span> ドイツ <span class="math inline">\(&gt;\)</span> 日本の順になっている
 <ul>
 <li>日本では、大卒以上の学歴を持ちながら、大卒の学歴を必要とせず、高卒程度の学歴で十分こなせる仕事に就いている者の割合が最も高いという指摘がある（三谷, 2020<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>）</li>
 <li>日本の大卒者には若年期に下積みを経験する傾向があり、求人に学歴要件が明確に示されるポストが少ないとの指摘もある（三谷, 2020<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>）</li>
 </ul></li>
-<li>日本では、高等教育を受けた女性の月収が高卒男性の月収を下回っている</li>
+<li>日本では、高等教育を受けた女性の賃金が高卒男性の賃金を下回っている</li>
 </ul>
 <div class="quizbox">
 <p><strong>確認クイズ：</strong></p>
@@ -522,7 +1206,7 @@ Figure&nbsp;1: 学歴と賃金の関係の国際比較
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>一般的人的資本と企業特殊的人的資本
+一般的人的資本と企業特殊的人的資本
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -540,7 +1224,7 @@ Figure&nbsp;1: 学歴と賃金の関係の国際比較
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>大卒で銀行に就職したユウコの例
+大卒で銀行に就職したユウコの例
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -579,7 +1263,78 @@ Figure&nbsp;1: 学歴と賃金の関係の国際比較
 </ol>
 </div>
 <p>よって、勤続年数と賃金の関係は下図のように表せます。</p>
-<p><img src="images/labor_traingen.png" class="img-fluid"></p>
+<!-- 一般的訓練：訓練期間と訓練後の賃金（労働の限界収入）の概念図。
+     数値データに基づく図ではなく、w1 < w0 < w2 の関係を示すイメージ図。
+     赤＝訓練の総費用（w0−w1）、青＝労働者が受け取る訓練の収益（w2−w0）。
+     旧画像：images/labor_traingen.png（参照されなくなったが削除はしていない） -->
+<div class="viz-root hc-diagram traingen-chart">
+<style>
+.hc-diagram{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #6b6a65;
+  --guide-line:     #898781;
+  --wage-line:      #2b2b2b;
+  --cost:           #e03131;
+  --benefit:        #1971c2;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 12px;
+  margin: 20px auto 10px;
+  max-width: 680px;
+}
+.hc-diagram svg{ width: 100%; height: auto; display: block; overflow: visible; }
+.hc-diagram .hd-axis{ stroke: var(--axis-line); stroke-width: 1.6; fill: none; }
+.hc-diagram .hd-arrow{ fill: var(--axis-line); }
+.hc-diagram .hd-guide{ stroke: var(--guide-line); stroke-width: 1.2; stroke-dasharray: 5 4; fill: none; }
+.hc-diagram .hd-wage{ stroke: var(--wage-line); stroke-width: 3.5; fill: none; stroke-linejoin: round; }
+.hc-diagram .hd-text{ font-size: 16px; fill: var(--text-secondary); }
+.hc-diagram .hd-math{ font-family: "Times New Roman","Noto Serif JP",serif; font-style: italic; font-size: 19px; fill: var(--text-primary); }
+.hc-diagram .hd-math tspan{ font-size: 13px; }
+.hc-diagram .hd-legend{
+  display: flex; gap: 8px 22px; flex-wrap: wrap;
+  font-size: 1rem; color: var(--text-secondary); margin-top: 8px;
+}
+.hc-diagram .hd-legend span{ display: inline-flex; align-items: center; gap: 7px; }
+.hc-diagram .hd-legend svg{ width: 15px; height: 15px; flex: none; }
+</style>
+
+<svg viewbox="0 0 560 330" role="img" aria-label="縦軸は賃金と労働の限界収入、横軸は経験年数。訓練期間中は賃金がw1まで下がり、訓練後はw2まで上がる。訓練前の水準w0との差が、訓練期間では総費用、訓練後では労働者が受け取る収益になる。">
+  <rect x="100" y="165" width="170" height="80" fill="var(--cost)" fill-opacity=".38"></rect>
+  <rect x="270" y="80" width="230" height="85" fill="var(--benefit)" fill-opacity=".38"></rect>
+
+  <line class="hd-guide" x1="60" y1="80" x2="270" y2="80"></line>
+  <line class="hd-guide" x1="60" y1="165" x2="500" y2="165"></line>
+  <line class="hd-guide" x1="60" y1="245" x2="100" y2="245"></line>
+  <line class="hd-guide" x1="270" y1="245" x2="270" y2="290"></line>
+
+  <polyline class="hd-wage" points="100,245 270,245 270,80 500,80"></polyline>
+
+  <polyline class="hd-axis" points="60,290 60,22"></polyline>
+  <polyline class="hd-axis" points="60,290 538,290"></polyline>
+  <polygon class="hd-arrow" points="60,14 54,26 66,26"></polygon>
+  <polygon class="hd-arrow" points="546,290 534,284 534,296"></polygon>
+
+  <text class="hd-math" x="50" y="86" text-anchor="end">w<tspan dy="5">2</tspan></text>
+  <text class="hd-math" x="50" y="171" text-anchor="end">w<tspan dy="5">0</tspan></text>
+  <text class="hd-math" x="50" y="251" text-anchor="end">w<tspan dy="5">1</tspan></text>
+
+  <text class="hd-text" x="60" y="12">賃金・労働の限界収入</text>
+  <text class="hd-text" x="185" y="313" text-anchor="middle">訓練期間</text>
+  <text class="hd-text" x="385" y="313" text-anchor="middle">訓練後の期間</text>
+  <text class="hd-text" x="556" y="314" text-anchor="end">経験年数</text>
+</svg>
+
+<div class="hd-legend">
+  <span><svg viewbox="0 0 15 15"><rect width="15" height="15" rx="2" fill="#e03131" fill-opacity=".38"></rect></svg>訓練の総費用</span>
+  <span><svg viewbox="0 0 15 15"><rect width="15" height="15" rx="2" fill="#1971c2" fill-opacity=".38"></rect></svg>労働者が受け取る訓練の収益</span>
+</div>
+</div>
 <ul>
 <li>訓練前の労働の限界収入を <span class="math inline">\(w_0\)</span> とする</li>
 <li>訓練期間中は、同じ勤務時間の一部を研修に充てるため、通常業務を行う時間が減る。そのため、労働の限界収入は <span class="math inline">\(w_1 &lt; w_0\)</span> に低下し、賃金も低くなる</li>
@@ -635,7 +1390,96 @@ Figure&nbsp;1: 学歴と賃金の関係の国際比較
 <p>このように、<strong>企業特殊的訓練の費用を単独で負担しようとするインセンティブが労働者にも企業にも生まれづらい</strong>ため、費用をシェアするなら便益もシェアする必要が出てくるのです。</p>
 <p>企業特殊的訓練の費用と便益をシェアすることは、<strong>雇用関係を維持しようとするインセンティブ</strong>にもつながります。企業が解雇する場合も労働者が自ら離職する場合も、<strong>雇用関係を続けていれば得られたはずの企業特殊的訓練の便益を、双方とも失うことになる</strong>からです。</p>
 <p>企業特殊訓練の場合、勤続年数と賃金の関係は下図のように表せます。</p>
-<p><img src="images/labor_trainfrm.png" class="img-fluid"></p>
+<!-- 企業特殊訓練：訓練費用と便益を労働者と企業がシェアするときの賃金（労働の限界収入との関係）の概念図。
+     数値データに基づく図ではなく、w1 < w'1 < w0 < w'2 < w2 の関係を示すイメージ図。
+     ベタ塗り＝労働者が負担・受け取る分、斜線＝企業が負担・受け取る分。
+     赤＝訓練費用、青＝訓練の便益。
+     旧画像：images/labor_trainfrm.png（参照されなくなったが削除はしていない） -->
+<div class="viz-root hc-diagram trainfrm-chart">
+<style>
+.hc-diagram{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #6b6a65;
+  --guide-line:     #898781;
+  --wage-line:      #2b2b2b;
+  --cost:           #e03131;
+  --benefit:        #1971c2;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 12px;
+  margin: 20px auto 10px;
+  max-width: 680px;
+}
+.hc-diagram svg{ width: 100%; height: auto; display: block; overflow: visible; }
+.hc-diagram .hd-axis{ stroke: var(--axis-line); stroke-width: 1.6; fill: none; }
+.hc-diagram .hd-arrow{ fill: var(--axis-line); }
+.hc-diagram .hd-guide{ stroke: var(--guide-line); stroke-width: 1.2; stroke-dasharray: 5 4; fill: none; }
+.hc-diagram .hd-wage{ stroke: var(--wage-line); stroke-width: 3.5; fill: none; stroke-linejoin: round; }
+.hc-diagram .hd-text{ font-size: 16px; fill: var(--text-secondary); }
+.hc-diagram .hd-math{ font-family: "Times New Roman","Noto Serif JP",serif; font-style: italic; font-size: 19px; fill: var(--text-primary); }
+.hc-diagram .hd-math tspan{ font-size: 13px; }
+.hc-diagram .hd-legend{
+  display: flex; gap: 8px 22px; flex-wrap: wrap;
+  font-size: 1rem; color: var(--text-secondary); margin-top: 8px;
+}
+.hc-diagram .hd-legend span{ display: inline-flex; align-items: center; gap: 7px; }
+.hc-diagram .hd-legend svg{ width: 15px; height: 15px; flex: none; }
+</style>
+
+<svg viewbox="0 0 560 330" role="img" aria-label="縦軸は賃金と労働の限界収入、横軸は勤続年数。訓練期間中の労働の限界収入はw1だが、費用をシェアするため実際の賃金はw1とw0の間のw1ダッシュになる。訓練後の限界収入はw2だが、便益をシェアするため実際の賃金はw0とw2の間のw2ダッシュになる。">
+  <defs>
+    <pattern id="tf-hatch-cost" width="5" height="5" patternunits="userSpaceOnUse" patterntransform="rotate(45)">
+      <rect width="5" height="5" fill="#fff"></rect><line x1="0" y1="0" x2="0" y2="5" stroke="#e03131" stroke-width="2"></line>
+    </pattern>
+    <pattern id="tf-hatch-benefit" width="5" height="5" patternunits="userSpaceOnUse" patterntransform="rotate(45)">
+      <rect width="5" height="5" fill="#fff"></rect><line x1="0" y1="0" x2="0" y2="5" stroke="#1971c2" stroke-width="2"></line>
+    </pattern>
+  </defs>
+
+  <rect x="100" y="165" width="170" height="45" fill="var(--cost)" fill-opacity=".38"></rect>
+  <rect x="100" y="210" width="170" height="45" fill="url(#tf-hatch-cost)" stroke="var(--cost)" stroke-width="1"></rect>
+  <rect x="270" y="105" width="230" height="60" fill="var(--benefit)" fill-opacity=".38"></rect>
+  <rect x="270" y="60" width="230" height="45" fill="url(#tf-hatch-benefit)" stroke="var(--benefit)" stroke-width="1"></rect>
+
+  <line class="hd-guide" x1="60" y1="60" x2="270" y2="60"></line>
+  <line class="hd-guide" x1="60" y1="105" x2="270" y2="105"></line>
+  <line class="hd-guide" x1="60" y1="165" x2="500" y2="165"></line>
+  <line class="hd-guide" x1="60" y1="210" x2="100" y2="210"></line>
+  <line class="hd-guide" x1="60" y1="255" x2="100" y2="255"></line>
+  <line class="hd-guide" x1="270" y1="255" x2="270" y2="290"></line>
+
+  <polyline class="hd-wage" points="100,210 270,210 270,105 500,105"></polyline>
+
+  <polyline class="hd-axis" points="60,290 60,22"></polyline>
+  <polyline class="hd-axis" points="60,290 538,290"></polyline>
+  <polygon class="hd-arrow" points="60,14 54,26 66,26"></polygon>
+  <polygon class="hd-arrow" points="546,290 534,284 534,296"></polygon>
+
+  <text class="hd-math" x="50" y="66" text-anchor="end">w<tspan dy="5">2</tspan></text>
+  <text class="hd-math" x="50" y="111" text-anchor="end">w′<tspan dy="5">2</tspan></text>
+  <text class="hd-math" x="50" y="171" text-anchor="end">w<tspan dy="5">0</tspan></text>
+  <text class="hd-math" x="50" y="216" text-anchor="end">w′<tspan dy="5">1</tspan></text>
+  <text class="hd-math" x="50" y="261" text-anchor="end">w<tspan dy="5">1</tspan></text>
+
+  <text class="hd-text" x="60" y="12">賃金・労働の限界収入</text>
+  <text class="hd-text" x="185" y="313" text-anchor="middle">訓練期間</text>
+  <text class="hd-text" x="385" y="313" text-anchor="middle">訓練後の期間</text>
+  <text class="hd-text" x="556" y="314" text-anchor="end">勤続年数</text>
+</svg>
+
+<div class="hd-legend">
+  <span><svg viewbox="0 0 15 15"><rect width="15" height="15" rx="2" fill="#e03131" fill-opacity=".38"></rect></svg>労働者が負担する訓練費用</span>
+  <span><svg viewbox="0 0 15 15"><rect x=".5" y=".5" width="14" height="14" fill="url(#tf-hatch-cost)" stroke="#e03131"></rect></svg>企業が負担する訓練費用</span>
+  <span><svg viewbox="0 0 15 15"><rect width="15" height="15" rx="2" fill="#1971c2" fill-opacity=".38"></rect></svg>労働者が受け取る訓練の便益</span>
+  <span><svg viewbox="0 0 15 15"><rect x=".5" y=".5" width="14" height="14" fill="url(#tf-hatch-benefit)" stroke="#1971c2"></rect></svg>企業が受け取る訓練の便益</span>
+</div>
+</div>
 <ul>
 <li>訓練前の労働の限界収入を <span class="math inline">\(w_0\)</span> とする</li>
 <li>訓練期間中は、同じ勤務時間の一部を研修に充てるため、通常業務を行う時間が減り、労働の限界収入は <span class="math inline">\(w_1\)</span> に低下する。ただし訓練費用を企業とシェアするため、実際の賃金は <span class="math inline">\(w'_1\)</span>（<span class="math inline">\(w_1 &lt; w'_1 &lt; w_0\)</span>）となる</li>
@@ -652,7 +1496,7 @@ Figure&nbsp;1: 学歴と賃金の関係の国際比較
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>まとめ：一般的訓練と企業特殊的訓練
+まとめ：一般的訓練と企業特殊的訓練
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -720,7 +1564,7 @@ Figure&nbsp;1: 学歴と賃金の関係の国際比較
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>まとめ：勤続年数と賃金の関係：企業特殊訓練モデルによる説明
+まとめ：勤続年数と賃金の関係：企業特殊訓練モデルによる説明
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -760,7 +1604,7 @@ Figure&nbsp;1: 学歴と賃金の関係の国際比較
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>後払い賃金の理論
+後払い賃金の理論
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -789,7 +1633,97 @@ Figure&nbsp;1: 学歴と賃金の関係の国際比較
 <li>貸し出していた分が<strong>返済される</strong>形になる（<svg width="14" height="14" style="vertical-align:middle;"><polygon points="7,1 13,13 1,13" fill="#1971c2"></polygon></svg>）</li>
 </ul></li>
 </ul>
-<p><img src="images/labor_shirk.png" class="img-fluid"></p>
+<!-- 怠けの理論（Shirking model）：後払い賃金の概念図。
+     数値データに基づく図ではなく、後払い賃金（右上がりの線）と労働の限界収入Wの関係を示すイメージ図。
+     勤続年数の前半は賃金がWを下回り（赤＝企業への貸し出し）、後半はWを上回る（青＝返済）。
+     両者の面積は等しい（図では W を中心に対称）。
+     灰色の斜線＝監視ありの場合の賃金 (W−m)×T。
+     旧画像：images/labor_shirk.png（背景が透過のため暗い背景だと見えなくなる。参照されなくなったが削除はしていない） -->
+<div class="viz-root hc-diagram shirk-chart">
+<style>
+.hc-diagram{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #6b6a65;
+  --guide-line:     #898781;
+  --wage-line:      #2b2b2b;
+  --cost:           #e03131;
+  --benefit:        #1971c2;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 12px;
+  margin: 20px auto 10px;
+  max-width: 680px;
+}
+.hc-diagram svg{ width: 100%; height: auto; display: block; overflow: visible; }
+.hc-diagram .hd-axis{ stroke: var(--axis-line); stroke-width: 1.6; fill: none; }
+.hc-diagram .hd-arrow{ fill: var(--axis-line); }
+.hc-diagram .hd-guide{ stroke: var(--guide-line); stroke-width: 1.2; stroke-dasharray: 5 4; fill: none; }
+.hc-diagram .hd-wage{ stroke: var(--wage-line); stroke-width: 3.5; fill: none; stroke-linejoin: round; }
+.hc-diagram .hd-text{ font-size: 16px; fill: var(--text-secondary); }
+.hc-diagram .hd-name{ font-size: 16px; font-weight: 700; }
+.hc-diagram .hd-halo{ paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; }
+.hc-diagram .hd-math{ font-family: "Times New Roman","Noto Serif JP",serif; font-style: italic; font-size: 19px; fill: var(--text-primary); }
+.hc-diagram .hd-legend{
+  display: flex; gap: 8px 22px; flex-wrap: wrap;
+  font-size: 1rem; color: var(--text-secondary); margin-top: 8px;
+}
+.hc-diagram .hd-legend span{ display: inline-flex; align-items: center; gap: 7px; }
+.hc-diagram .hd-legend svg{ width: 15px; height: 15px; flex: none; }
+</style>
+
+<svg viewbox="0 0 560 330" role="img" aria-label="縦軸は賃金と労働の限界収入、横軸は勤続年数。後払い賃金は右上がりの線で、勤続年数の前半は労働の限界収入Wを下回り、後半はWを上回る。下回る分は企業への貸し出し、上回る分は返済にあたり、両者の面積は等しい。監視ありの場合の賃金はWからmを引いた水準の長方形で、後払い賃金のもとでの方が高い賃金を得られる。">
+  <defs>
+    <pattern id="sk-hatch-gray" width="5" height="5" patternunits="userSpaceOnUse" patterntransform="rotate(45)">
+      <rect width="5" height="5" fill="#fff"></rect><line x1="0" y1="0" x2="0" y2="5" stroke="#868e96" stroke-width="2"></line>
+    </pattern>
+  </defs>
+
+  <rect x="60" y="185" width="420" height="105" fill="url(#sk-hatch-gray)" stroke="#868e96" stroke-width="1"></rect>
+  <polygon points="60,140 270,140 60,240" fill="var(--cost)" fill-opacity=".45"></polygon>
+  <polygon points="270,140 480,140 480,40" fill="var(--benefit)" fill-opacity=".45"></polygon>
+
+  <line class="hd-guide" x1="60" y1="140" x2="480" y2="140"></line>
+  <line class="hd-guide" x1="60" y1="185" x2="480" y2="185"></line>
+  <line class="hd-guide" x1="480" y1="140" x2="480" y2="290"></line>
+
+  <polyline class="hd-wage" points="60,240 480,40"></polyline>
+
+  <polyline class="hd-axis" points="60,290 60,22"></polyline>
+  <polyline class="hd-axis" points="60,290 538,290"></polyline>
+  <polygon class="hd-arrow" points="60,14 54,26 66,26"></polygon>
+  <polygon class="hd-arrow" points="546,290 534,284 534,296"></polygon>
+
+  <line x1="458" y1="143" x2="458" y2="182" stroke="#52514e" stroke-width="1.4"></line>
+  <polygon points="458,141 454,149 462,149" fill="#52514e"></polygon>
+  <polygon points="458,184 454,176 462,176" fill="#52514e"></polygon>
+  <text class="hd-math" x="440" y="168" text-anchor="end">m</text>
+
+  <text class="hd-math" x="490" y="146">W</text>
+  <text class="hd-math" x="490" y="191">W−m</text>
+  <text class="hd-math" x="480" y="312" text-anchor="middle">T</text>
+
+  <text class="hd-name" x="76" y="166" fill="#c92a2a">貸し出し</text>
+  <text class="hd-name" x="392" y="118" fill="#1864ab">返済</text>
+  <text class="hd-text" x="296" y="116" text-anchor="end">後払い賃金</text>
+  <text class="hd-text hd-halo" x="205" y="260">監視ありの場合の賃金 </text>
+  <text class="hd-math hd-halo" x="376" y="260">(W−m)×T</text>
+
+  <text class="hd-text" x="60" y="12">賃金・労働の限界収入</text>
+  <text class="hd-text" x="556" y="314" text-anchor="end">勤続年数</text>
+</svg>
+
+<div class="hd-legend">
+  <span><svg viewbox="0 0 15 15"><rect width="15" height="15" rx="2" fill="#e03131" fill-opacity=".45"></rect></svg>労働者が企業に貸し出している分</span>
+  <span><svg viewbox="0 0 15 15"><rect width="15" height="15" rx="2" fill="#1971c2" fill-opacity=".45"></rect></svg>貸し出した分の返済</span>
+  <span><svg viewbox="0 0 15 15"><rect x=".5" y=".5" width="14" height="14" fill="url(#sk-hatch-gray)" stroke="#868e96"></rect></svg>監視ありの場合の賃金</span>
+</div>
+</div>
 <p>このような後払い賃金の仕組みは、労働者に次の2つをもたらします。</p>
 <ul>
 <li>途中で怠けが発覚すれば解雇され、貸し出していた分を受け取れなくなるため、監視されなくても真面目に働く<strong>インセンティブ</strong></li>
@@ -864,7 +1798,7 @@ Figure&nbsp;1: 学歴と賃金の関係の国際比較
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>退職金と企業年金
+退職金と企業年金
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1102,14 +2036,13 @@ function showAnswer(id) {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

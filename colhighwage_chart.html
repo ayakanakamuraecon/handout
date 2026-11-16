@@ -1,0 +1,64 @@
+```{=html}
+<!-- 収入と費用のフロー（学歴別）の概念図。
+     数値データに基づく図ではなく、高卒と大卒の収入の推移（年齢別）と、大学に通う間の費用のイメージ図。
+     大卒の収入は、卒業時点では高卒の収入より低いが、その後の伸びが大きく、やがて高卒の収入を上回る。
+     0より上が収入、0より下が費用。
+     旧画像：images/labor_colhighwage.png（参照されなくなったが削除はしていない） -->
+<div class="viz-root hc-diagram colhighwage-chart">
+<style>
+.hc-diagram{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #6b6a65;
+  --guide-line:     #898781;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 12px;
+  margin: 20px auto 10px;
+  max-width: 680px;
+}
+.hc-diagram svg{ width: 100%; height: auto; display: block; overflow: visible; }
+.hc-diagram .hd-axis{ stroke: var(--axis-line); stroke-width: 1.6; fill: none; }
+.hc-diagram .hd-arrow{ fill: var(--axis-line); }
+.hc-diagram .hd-guide{ stroke: var(--guide-line); stroke-width: 1.2; stroke-dasharray: 5 4; fill: none; }
+.hc-diagram .hd-text{ font-size: 16px; fill: var(--text-secondary); }
+.hc-diagram .hd-curve{ fill: none; stroke-width: 3.5; stroke-linecap: round; }
+.hc-diagram .hd-curve.hs{ stroke: #1971c2; }
+.hc-diagram .hd-curve.col{ stroke: #e03131; }
+.hc-diagram .hd-curve.cost{ stroke: #e03131; }
+.hc-diagram .hd-name{ font-size: 16px; font-weight: 700; }
+.hc-diagram .hd-name.hs{ fill: #1971c2; }
+.hc-diagram .hd-name.col{ fill: #e03131; }
+.hc-diagram .hd-name.cost{ fill: #e03131; }
+.hc-diagram .hd-zero{ stroke: var(--axis-line); stroke-width: 1.6; fill: none; }
+</style>
+<svg viewBox="0 0 600 345" role="img" aria-label="縦軸は収入（プラス）と費用（マイナス）、横軸は年齢。高卒の収入は高校卒業時点から緩やかに上昇し続ける。大学に通う間は収入がなく、大学の費用がかかる（0より下）。大卒の収入は卒業時点では高卒の収入より低いが、その後の伸びが大きく、やがて高卒の収入を上回る。">
+  <line class="hd-guide" x1="130" y1="215" x2="130" y2="312"/>
+  <line class="hd-guide" x1="230" y1="200" x2="230" y2="312"/>
+
+  <path class="hd-curve hs" d="M130,215 C140,170 190,150 300,138 C380,130 440,124 490,120"/>
+  <path class="hd-curve col" d="M230,200 C238,160 255,140 300,120 C380,85 440,70 490,60"/>
+  <line class="hd-curve cost" x1="130" y1="282" x2="230" y2="282"/>
+
+  <polyline class="hd-axis" points="60,312 60,22"/>
+  <polyline class="hd-zero" points="60,250 574,250"/>
+  <polygon class="hd-arrow" points="60,14 54,26 66,26"/>
+  <polygon class="hd-arrow" points="582,250 570,244 570,256"/>
+
+  <text class="hd-name col" x="502" y="66">大卒の収入</text>
+  <text class="hd-name hs" x="502" y="126">高卒の収入</text>
+  <text class="hd-name cost" x="180" y="302" text-anchor="middle">大学の費用</text>
+
+  <text class="hd-text" x="60" y="12">収入・費用</text>
+  <text class="hd-text" x="50" y="255" text-anchor="end">0</text>
+  <text class="hd-text" x="130" y="334" text-anchor="middle">高卒</text>
+  <text class="hd-text" x="230" y="334" text-anchor="middle">大卒</text>
+  <text class="hd-text" x="596" y="274" text-anchor="end">年齢</text>
+</svg>
+</div>
+```

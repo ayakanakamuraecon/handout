@@ -1,0 +1,232 @@
+```{=html}
+<!-- 学歴別・男女別の賃金指数の国際比較（日本・アメリカ・ドイツ）。
+     データ出典：OECD, Education at a Glance Database（Education and earnings）。
+       OECD SDMX API（https://sdmx.oecd.org/public/rest/data/）から2026-11-16に取得。
+       DF_LSO_EARN_REL_UPPER（同性の後期中等教育修了者の所得を100とした相対所得）と
+       DF_LSO_EARN_REL_MALE（女性の所得／男性の所得、同じ学歴）。
+     指数の作り方：男性＝そのまま（各国の「後期中等教育・男性」＝100）。
+       女性＝（女性の相対所得）×（後期中等教育での女性／男性の所得比）。
+     条件：25〜64歳、就業者（フルタイム・パートタイム含む）、全分野。
+     年：OECDのデータベースで取得できる最新年。日本は2012年が最新（2005年・2012年のみ）、
+       アメリカ・ドイツは2024年。
+     学歴区分：中等教育未満＝ISCED 0〜2、後期中等教育＝ISCED 3（日本のみ3・4の合計。
+       日本は ISCED 3 単独の値が欠測のため）、高等教育＝ISCED 5〜8。
+     旧画像：images/labor_wdifus.png（参照されなくなったが削除はしていない） -->
+<div class="viz-root wdifus-chart">
+<style>
+.wdifus-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #c3c2b7;
+  --male:           #2a78d6;
+  --female:         #e34948;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 10px;
+  margin: 20px 0 10px;
+  position: relative;
+}
+.wdifus-chart .wu-title{
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.wdifus-chart .wu-panels{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px 10px;
+}
+.wdifus-chart .wu-panel{
+  min-width: 0;
+}
+@media (max-width: 560px){
+  .wdifus-chart .wu-panels{ grid-template-columns: 1fr; }
+}
+.wdifus-chart .wu-panel-title{
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.wdifus-chart .wu-panel-title small{
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: .85rem;
+}
+.wdifus-chart svg{ width: 100%; height: auto; display: block; overflow: visible; }
+.wdifus-chart .wu-grid{ stroke: var(--grid-line); stroke-width: 1px; }
+.wdifus-chart .wu-base{ stroke: var(--text-muted); stroke-width: 1.2px; stroke-dasharray: 5 4; }
+.wdifus-chart .wu-axis{ stroke: var(--axis-line); stroke-width: 1px; }
+.wdifus-chart .wu-axis-text{ font-size: 15px; fill: var(--text-muted); }
+.wdifus-chart .wu-cat{ font-size: 13px; fill: var(--text-secondary); }
+.wdifus-chart .wu-line{ fill: none; stroke-width: 3px; transition: opacity .15s, stroke-width .15s; }
+.wdifus-chart .wu-dot{ transition: opacity .15s; }
+.wdifus-chart .wu-name{ font-size: 17px; font-weight: 700; transition: opacity .15s; }
+.wdifus-chart .wu-val{ font-size: 14px; fill: var(--text-secondary); }
+.wdifus-chart .wu-hit{ fill: transparent; cursor: pointer; }
+.wdifus-chart .wu-tooltip{
+  position: absolute;
+  pointer-events: none;
+  background: #fff;
+  border: 1px solid var(--grid-line);
+  border-radius: 3px;
+  padding: 8px 12px;
+  font-size: .95rem;
+  line-height: 1.5;
+  box-shadow: 0 2px 6px rgba(11,11,11,.12);
+  display: none;
+  z-index: 5;
+  white-space: nowrap;
+}
+.wdifus-chart .wu-tooltip .wu-tt-name{ font-weight: 700; }
+.wdifus-chart .wu-note{
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.6;
+}
+.wdifus-chart details{ margin-top: 10px; font-size: .85rem; }
+.wdifus-chart table{ width: 100%; border-collapse: collapse; font-size: .78rem; margin-top: 6px; }
+.wdifus-chart th, .wdifus-chart td{ border: 1px solid var(--grid-line); padding: 3px 6px; text-align: right; }
+.wdifus-chart th:first-child, .wdifus-chart td:first-child{ text-align: left; }
+</style>
+
+<div class="wu-title">学歴別・男女別の賃金指数（各国の後期中等教育・男性＝100）</div>
+<div class="wu-panels" id="wu-panels"></div>
+
+<div class="wu-note">
+（注）25〜64歳、就業者（フルタイム・パートタイムを含む）。日本は2012年、アメリカ・ドイツは2024年の値（日本はOECDのデータベースで取得できる最新年が2012年）。点線は各国の「後期中等教育・男性＝100」の基準線。<br>
+（出典）OECD, Education at a Glance Database（Education and earnings）より作成（2026年11月取得）。
+</div>
+
+<details>
+<summary>データを表で見る</summary>
+<div id="wu-table"></div>
+</details>
+
+</div>
+
+<script>
+(function(){
+  const cats = ["中等教育未満", "後期中等教育", "高等教育"];
+  const countries = [
+    {name:"日本",     year:2012, male:[74.1, 100, 144.4], female:[31.1, 43.2, 69.1]},
+    {name:"アメリカ", year:2024, male:[70.7, 100, 180.2], female:[48.3, 67.8, 123.3]},
+    {name:"ドイツ",   year:2024, male:[75.6, 100, 154.0], female:[52.7, 67.3, 101.7]}
+  ];
+  const sexes = [
+    {key:"male",   name:"男性", color:"#2a78d6"},
+    {key:"female", name:"女性", color:"#e34948"}
+  ];
+
+  const W = 340, H = 330;
+  const m = {left:40, right:36, top:12, bottom:42};
+  const yMin = 0, yMax = 200;
+  const plotW = W - m.left - m.right, plotH = H - m.top - m.bottom;
+  const xs = [0, 1, 2].map(i => m.left + 28 + i * (plotW - 56) / 2);
+  const yScale = v => m.top + (yMax - v) / (yMax - yMin) * plotH;
+
+  const ns = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, parent){
+    const e = document.createElementNS(ns, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  const root = document.querySelector(".wdifus-chart");
+  const panels = document.getElementById("wu-panels");
+  const tooltip = document.createElement("div");
+  tooltip.className = "wu-tooltip";
+  root.appendChild(tooltip);
+
+  const allLines = [];   // {country, sex, line, dots, label}
+
+  function setActive(active){
+    allLines.forEach(o => {
+      const on = !active || o.panel !== active.panel || o.sex === active.sex;
+      o.line.style.opacity = on ? 1 : .2;
+      o.line.style.strokeWidth = (active && on && o.panel === active.panel) ? "4.5px" : "3px";
+      o.dots.forEach(d => d.style.opacity = on ? 1 : .25);
+      o.label.style.opacity = on ? 1 : .35;
+    });
+  }
+
+  countries.forEach((c, pi) => {
+    const panel = document.createElement("div");
+    panel.className = "wu-panel";
+    panel.innerHTML = '<div class="wu-panel-title">' + c.name + ' <small>（' + c.year + '年）</small></div>';
+    panels.appendChild(panel);
+
+    const svg = el("svg", {viewBox: "0 0 " + W + " " + H, role: "img",
+      "aria-label": c.name + "（" + c.year + "年）の学歴別・男女別の賃金指数。男性：" + c.male.join("、") + "。女性：" + c.female.join("、") + "。"}, panel);
+
+    for (let v = yMin; v <= yMax; v += 50){
+      const y = yScale(v);
+      el("line", {class: v === 100 ? "wu-base" : "wu-grid", x1: m.left, x2: W - m.right, y1: y, y2: y}, svg);
+      const t = el("text", {class: "wu-axis-text", x: m.left - 8, y: y + 4, "text-anchor": "end"}, svg);
+      t.textContent = v;
+    }
+    el("line", {class: "wu-axis", x1: m.left, x2: W - m.right, y1: yScale(0), y2: yScale(0)}, svg);
+    cats.forEach((cat, i) => {
+      const t = el("text", {class: "wu-cat", x: xs[i], y: H - m.bottom + 22, "text-anchor": "middle"}, svg);
+      t.textContent = cat;
+    });
+
+    sexes.forEach(s => {
+      const vals = c[s.key];
+      const d = vals.map((v, i) => (i ? "L" : "M") + xs[i].toFixed(1) + "," + yScale(v).toFixed(1)).join(" ");
+      const line = el("path", {class: "wu-line", d: d, stroke: s.color}, svg);
+      const dots = vals.map((v, i) => el("circle", {class: "wu-dot", cx: xs[i], cy: yScale(v), r: 4.2, fill: s.color}, svg));
+      // 値ラベルと系列名（最右の点の右）
+      vals.forEach((v, i) => {
+        if (i === 2) return;
+        const above = s.key === "male";
+        const t = el("text", {class: "wu-val", x: xs[i], y: yScale(v) + (above ? -10 : 18), "text-anchor": "middle"}, svg);
+        t.textContent = v.toFixed(0);
+      });
+      const tEnd = el("text", {class: "wu-val", x: xs[2], y: yScale(vals[2]) + (s.key === "male" ? -10 : 18), "text-anchor": "middle"}, svg);
+      tEnd.textContent = vals[2].toFixed(0);
+      const label = el("text", {class: "wu-name", x: xs[2] + 10, y: yScale(vals[2]) + 5, fill: s.color}, svg);
+      label.textContent = s.name;
+      label.setAttribute("text-anchor", "start");
+      label.setAttribute("dx", "6");
+      allLines.push({panel: pi, sex: s.key, line: line, dots: dots, label: label});
+
+      // ホバー用の当たり判定（各点）
+      vals.forEach((v, i) => {
+        const hit = el("circle", {class: "wu-hit", cx: xs[i], cy: yScale(v), r: 16}, svg);
+        function show(evt){
+          setActive({panel: pi, sex: s.key});
+          tooltip.innerHTML = '<span class="wu-tt-name">' + c.name + '・' + s.name + '</span><br>' + cats[i] + '：' + v.toFixed(1);
+          tooltip.style.display = "block";
+          const rect = root.getBoundingClientRect();
+          tooltip.style.left = (evt.clientX - rect.left + 14) + "px";
+          tooltip.style.top = (evt.clientY - rect.top - 10) + "px";
+        }
+        hit.addEventListener("pointerenter", show);
+        hit.addEventListener("pointermove", show);
+        hit.addEventListener("pointerleave", () => { setActive(null); tooltip.style.display = "none"; });
+      });
+    });
+  });
+
+  // 日本の「中等教育未満」の女性ラベルなどが重ならないよう、値ラベルは点の上（男性）・下（女性）に固定している。
+
+  // 表形式
+  let html = "<table><thead><tr><th>国（年）</th><th>性別</th>" + cats.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>";
+  countries.forEach(c => {
+    sexes.forEach(s => {
+      html += "<tr><td>" + c.name + "（" + c.year + "年）</td><td>" + s.name + "</td>" + c[s.key].map(v => "<td>" + v.toFixed(1) + "</td>").join("") + "</tr>";
+    });
+  });
+  html += "</tbody></table>";
+  document.getElementById("wu-table").innerHTML = html;
+})();
+</script>
+```

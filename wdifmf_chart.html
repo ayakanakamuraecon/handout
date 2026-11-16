@@ -1,0 +1,254 @@
+```{=html}
+<!-- 男女別・学歴別・年齢階級別の平均所定内給与（折れ線グラフ）。
+     データ出典：厚生労働省「令和7（2025）年賃金構造基本統計調査」結果の概況 第3表
+       「学歴、性、年齢階級別賃金及び対前年増減率」（https://www.mhlw.go.jp/toukei/itiran/roudou/chingin/kouzou/z2025/xls/zuhyo.xlsx、2026-11-16取得）。
+     条件：10人以上の常用労働者を雇用する民営事業所、一般労働者（短時間労働者を除く）、6月分の所定内給与額。
+     単位：千円で公表されている値を万円に換算（千円÷10）。
+     「～19歳」は高校のみ値がある（他の学歴は「-」）。70歳以上は年齢階級に含まれない。
+     旧画像：images/labor_wdifmf.png（2019年データ。参照されなくなったが削除はしていない） -->
+<div class="viz-root wdifmf-chart">
+<style>
+.wdifmf-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #c3c2b7;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 10px;
+  margin: 20px 0 10px;
+  position: relative;
+}
+.wdifmf-chart .wm-title{ font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+.wdifmf-chart .wm-chips{
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  font-size: .95rem; color: var(--text-secondary); margin-bottom: 8px;
+}
+.wdifmf-chart .wm-chip{
+  border: 1px solid var(--axis-line);
+  background: #fff;
+  color: var(--text-secondary);
+  border-radius: 999px;
+  padding: 3px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+.wdifmf-chart .wm-chip[aria-pressed="true"]{
+  background: #2e5476;
+  border-color: #2e5476;
+  color: #fff;
+}
+.wdifmf-chart svg{ width: 100%; height: auto; display: block; overflow: visible; }
+.wdifmf-chart .wm-grid{ stroke: var(--grid-line); stroke-width: 1px; }
+.wdifmf-chart .wm-axis{ stroke: var(--axis-line); stroke-width: 1px; }
+.wdifmf-chart .wm-axis-text{ font-size: 16px; fill: var(--text-muted); }
+.wdifmf-chart .wm-line{ fill: none; stroke-width: 3px; transition: opacity .15s, stroke-width .15s; }
+.wdifmf-chart .wm-dot{ transition: opacity .15s; }
+.wdifmf-chart .wm-label{ font-size: 15px; font-weight: 700; transition: opacity .15s; }
+.wdifmf-chart .wm-hit{ fill: none; stroke: transparent; stroke-width: 16px; cursor: pointer; }
+.wdifmf-chart .wm-tooltip{
+  position: absolute; pointer-events: none; background: #fff;
+  border: 1px solid var(--grid-line); border-radius: 3px; padding: 8px 12px;
+  font-size: .95rem; line-height: 1.5; box-shadow: 0 2px 6px rgba(11,11,11,.12);
+  display: none; z-index: 5; white-space: nowrap;
+}
+.wdifmf-chart .wm-tooltip .wm-tt-name{ font-weight: 700; }
+.wdifmf-chart .wm-legend{
+  display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .95rem;
+  color: var(--text-secondary); margin-top: 6px; align-items: center;
+}
+.wdifmf-chart .wm-legend span{ display: inline-flex; align-items: center; gap: 6px; }
+.wdifmf-chart .wm-legend svg{ width: 34px; height: 10px; overflow: visible; }
+.wdifmf-chart .wm-note{ font-size: .78rem; color: var(--text-muted); margin-top: 8px; line-height: 1.6; }
+.wdifmf-chart details{ margin-top: 10px; font-size: .85rem; }
+.wdifmf-chart table{ width: 100%; border-collapse: collapse; font-size: .78rem; margin-top: 6px; }
+.wdifmf-chart th, .wdifmf-chart td{ border: 1px solid var(--grid-line); padding: 3px 6px; text-align: right; }
+.wdifmf-chart th:first-child, .wdifmf-chart td:first-child{ text-align: left; }
+</style>
+
+<div class="wm-title">男女別・学歴別・年齢階級別の平均所定内給与（2025年、万円）</div>
+<div class="wm-chips" id="wm-chips"><span>表示する学歴：</span></div>
+<svg id="wm-svg" viewBox="0 0 860 520" role="img" aria-label="男女別・学歴別の年齢階級別の平均所定内給与（2025年）の折れ線グラフ。男性・女性とも、年齢とともに上昇し50歳代でピークとなる。学歴が高いほど上昇幅が大きく、女性は男性より低い。"></svg>
+<div class="wm-legend" id="wm-legend"></div>
+
+<div class="wm-note">
+（注）10人以上の常用労働者を雇用する民営事業所の一般労働者（短時間労働者を除く）の、6月分の所定内給与額。「～19歳」は高校卒のみ。<br>
+（出典）厚生労働省「賃金構造基本統計調査」令和7（2025）年（第3表）より作成。
+</div>
+
+<details>
+<summary>データを表で見る</summary>
+<div id="wm-table"></div>
+</details>
+
+</div>
+
+<script>
+(function(){
+  const ages = ["〜19","20〜24","25〜29","30〜34","35〜39","40〜44","45〜49","50〜54","55〜59","60〜64","65〜69"];
+  // 千円（公表値）。null は「-」（該当なし）
+  const raw = {
+    male: {
+      "高校":      [213.7,231.1,262.3,293.0,315.9,336.3,353.9,371.7,367.4,309.2,263.4],
+      "専門学校":  [null, 236.0,268.8,293.4,321.2,343.1,362.8,391.6,406.3,336.0,281.8],
+      "高専・短大":[null, 252.4,296.5,333.5,372.1,409.5,425.1,433.6,457.8,350.7,293.6],
+      "大学":      [null, 267.4,305.1,358.9,405.9,452.8,491.4,528.8,556.3,430.3,377.5],
+      "大学院":    [null, 302.0,341.0,416.2,479.8,569.7,644.4,660.9,691.9,590.0,579.4]
+    },
+    female: {
+      "高校":      [202.2,214.6,230.0,236.0,248.5,246.8,253.9,263.6,261.0,238.8,220.9],
+      "専門学校":  [null, 240.2,265.0,269.6,279.1,296.4,300.9,314.3,317.9,289.7,264.1],
+      "高専・短大":[null, 237.5,264.5,279.2,277.3,293.2,305.3,317.3,329.5,286.3,257.5],
+      "大学":      [null, 260.4,286.9,311.5,332.4,363.7,373.8,386.3,416.2,360.1,292.0],
+      "大学院":    [null, 288.0,317.1,361.3,406.7,466.7,503.2,574.7,580.6,589.0,517.8]
+    }
+  };
+  const edus = ["高校","専門学校","高専・短大","大学","大学院"];
+  const dash = {"高校":"2 5", "専門学校":"9 3 2 3", "高専・短大":"9 5", "大学":"", "大学院":""};
+  const sexes = [
+    {key:"male",   name:"男性", color:"#2a78d6"},
+    {key:"female", name:"女性", color:"#e34948"}
+  ];
+  const on = {"高校":true, "専門学校":false, "高専・短大":true, "大学":true, "大学院":false};
+
+  const width = 860, height = 520;
+  const margin = {left:56, right:130, top:34, bottom:46};
+  const plotW = width - margin.left - margin.right, plotH = height - margin.top - margin.bottom;
+  const yMin = 10, yMax = 70;
+  const xScale = i => margin.left + 20 + i / (ages.length - 1) * (plotW - 40);
+  const yScale = v => margin.top + (yMax - v) / (yMax - yMin) * plotH;
+
+  const ns = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, parent){
+    const e = document.createElementNS(ns, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  const rootEl = document.querySelector(".wdifmf-chart");
+  const svg = document.getElementById("wm-svg");
+  const tooltip = document.createElement("div");
+  tooltip.className = "wm-tooltip";
+  rootEl.appendChild(tooltip);
+
+  // 学歴の表示切り替えチップ
+  const chipBox = document.getElementById("wm-chips");
+  edus.forEach(e => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "wm-chip";
+    b.textContent = e;
+    b.setAttribute("aria-pressed", on[e] ? "true" : "false");
+    b.addEventListener("click", () => {
+      on[e] = !on[e];
+      if (!edus.some(x => on[x])) on[e] = true;   // 全部オフにはしない
+      chipBox.querySelectorAll(".wm-chip").forEach((c, i) => c.setAttribute("aria-pressed", on[edus[i]] ? "true" : "false"));
+      draw();
+    });
+    chipBox.appendChild(b);
+  });
+
+  // 凡例（線種＝学歴、色＝性別）
+  const legend = document.getElementById("wm-legend");
+  legend.innerHTML = '<span><svg viewBox="0 0 34 10"><line x1="0" y1="5" x2="34" y2="5" stroke="#2a78d6" stroke-width="3"/></svg>男性</span>' +
+                     '<span><svg viewBox="0 0 34 10"><line x1="0" y1="5" x2="34" y2="5" stroke="#e34948" stroke-width="3"/></svg>女性</span>' +
+                     '<span style="color:#898781">線の種類：</span>' +
+                     edus.map(e => '<span><svg viewBox="0 0 34 10"><line x1="0" y1="5" x2="34" y2="5" stroke="#52514e" stroke-width="3"' + (dash[e] ? ' stroke-dasharray="' + dash[e] + '"' : '') + '/><circle cx="17" cy="5" r="4" fill="' + (e === "大学院" ? "#fff" : "#52514e") + '" stroke="#52514e" stroke-width="2"/></svg>' + e + '</span>').join("");
+
+  let series = [];
+  function setActive(idx){
+    series.forEach((s, i) => {
+      const hot = (idx === null || i === idx);
+      s.line.style.opacity = hot ? 1 : .15;
+      s.line.style.strokeWidth = (i === idx) ? "5px" : "3px";
+      s.dots.forEach(d => d.style.opacity = hot ? 1 : .15);
+      s.label.style.opacity = hot ? 1 : .3;
+    });
+    if (idx !== null){ svg.appendChild(series[idx].line); }
+  }
+  function nearestIndex(x){
+    let best = 0, bd = Infinity;
+    ages.forEach((a, i) => { const d = Math.abs(xScale(i) - x); if (d < bd){ bd = d; best = i; } });
+    return best;
+  }
+
+  function draw(){
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    series = [];
+    for (let v = yMin; v <= yMax; v += 10){
+      const y = yScale(v);
+      el("line", {class:"wm-grid", x1:margin.left, x2:width-margin.right, y1:y, y2:y}, svg);
+      const t = el("text", {class:"wm-axis-text", x:margin.left-10, y:y+5, "text-anchor":"end"}, svg);
+      t.textContent = v;
+    }
+    el("line", {class:"wm-axis", x1:margin.left, x2:width-margin.right, y1:yScale(yMin), y2:yScale(yMin)}, svg);
+    ages.forEach((a, i) => {
+      const t = el("text", {class:"wm-axis-text", x:xScale(i), y:height-margin.bottom+26, "text-anchor":"middle"}, svg);
+      t.textContent = a;
+    });
+    const unit = el("text", {class:"wm-axis-text", x:margin.left-10, y:margin.top-18, "text-anchor":"end"}, svg);
+    unit.textContent = "万円";
+
+    const labelPos = [];
+    sexes.forEach(sx => {
+      edus.forEach(ed => {
+        if (!on[ed]) return;
+        const vals = raw[sx.key][ed].map(v => v === null ? null : v / 10);
+        let d = "", started = false;
+        vals.forEach((v, i) => { if (v === null) return; d += (started ? "L" : "M") + xScale(i).toFixed(1) + "," + yScale(v).toFixed(1) + " "; started = true; });
+        const line = el("path", {class:"wm-line", d:d, stroke:sx.color}, svg);
+        if (dash[ed]) line.setAttribute("stroke-dasharray", dash[ed]);
+        const dots = [];
+        vals.forEach((v, i) => { if (v === null) return; dots.push(el("circle", {class:"wm-dot", cx:xScale(i), cy:yScale(v), r: ed === "大学院" ? 4.2 : 3.4, fill: ed === "大学院" ? "#fff" : sx.color, stroke:sx.color, "stroke-width":2}, svg)); });
+        const hit = el("path", {class:"wm-hit", d:d}, svg);
+        const lastV = vals[vals.length - 1];
+        const lab = el("text", {class:"wm-label", x:xScale(ages.length - 1) + 12, y:0, fill:sx.color}, svg);
+        lab.textContent = sx.name + "・" + ed;
+        labelPos.push({lab:lab, y:yScale(lastV) + 5});
+        const idx = series.length;
+        series.push({line:line, dots:dots, label:lab, name:sx.name + "・" + ed + "卒", vals:vals});
+        hit.addEventListener("mouseenter", () => setActive(idx));
+        hit.addEventListener("mouseleave", () => { setActive(null); tooltip.style.display = "none"; });
+        hit.addEventListener("mousemove", evt => {
+          const pt = svg.createSVGPoint(); pt.x = evt.clientX; pt.y = evt.clientY;
+          const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+          let i = nearestIndex(p.x);
+          if (vals[i] === null) i = vals.findIndex(v => v !== null);
+          tooltip.innerHTML = '<span class="wm-tt-name">' + series[idx].name + '</span><br>' + ages[i] + '歳：' + vals[i].toFixed(1) + '万円';
+          tooltip.style.display = "block";
+          const r = rootEl.getBoundingClientRect();
+          tooltip.style.left = (evt.clientX - r.left + 14) + "px";
+          tooltip.style.top = (evt.clientY - r.top - 10) + "px";
+        });
+      });
+    });
+    // 右端ラベルの縦方向の重なりを解消（最小間隔を確保）
+    labelPos.sort((a, b) => a.y - b.y);
+    const gap = 17;
+    for (let it = 0; it < 80; it++){
+      let moved = false;
+      for (let i = 1; i < labelPos.length; i++){
+        const d = labelPos[i].y - labelPos[i-1].y;
+        if (d < gap){ const s = (gap - d) / 2 + 0.01; labelPos[i-1].y -= s; labelPos[i].y += s; moved = true; }
+      }
+      if (!moved) break;
+    }
+    labelPos.forEach(l => l.lab.setAttribute("y", l.y));
+  }
+  draw();
+
+  // 表
+  let html = "<table><thead><tr><th>性別・学歴</th>" + ages.map(a => "<th>" + a + "</th>").join("") + "</tr></thead><tbody>";
+  sexes.forEach(sx => edus.forEach(ed => {
+    html += "<tr><td>" + sx.name + "・" + ed + "</td>" + raw[sx.key][ed].map(v => "<td>" + (v === null ? "－" : (v / 10).toFixed(1)) + "</td>").join("") + "</tr>";
+  }));
+  html += "</tbody></table>";
+  document.getElementById("wm-table").innerHTML = html;
+})();
+</script>
+```

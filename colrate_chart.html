@@ -1,0 +1,175 @@
+```{=html}
+<!-- 大学（学部）・短期大学（本科）への進学率の推移（男女別、1954〜2025年、折れ線グラフ）。
+     データ出典：文部科学省「学校基本調査」（参考資料）年次統計 総括表4 進学率（昭和23年～）。
+       e-Stat のファイル（statInfId=000031852304、e-Gov データポータルの文部科学省データセット
+       mext_20140912_0199 に掲載）から取得、2026-11-16。列は「大学（学部）への進学率（過年度高卒者等を含む）」
+       「短期大学（本科）への進学率（過年度高卒者等を含む）」の男・女。
+     定義：大学（学部）または短期大学（本科）入学者数（過年度高卒者等を含む）を、3年前の中学校等卒業者数で除した比率。
+       分母に特別支援学校（中学部）卒業者を含む（2025年12月の文部科学省の訂正後の算出方法。注5）。
+     旧画像：images/labor_colrate.png（参照されなくなったが削除はしていない） -->
+<div class="viz-root colrate-chart">
+<style>
+.colrate-chart{
+  --surface-1:      #fcfcfb;
+  --text-primary:   #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted:     #898781;
+  --grid-line:      #e1e0d9;
+  --axis-line:      #c3c2b7;
+  font-family: "Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--grid-line);
+  border-radius: 4px;
+  padding: 16px 18px 10px;
+  margin: 20px 0 10px;
+  position: relative;
+}
+.colrate-chart .cr-title{ font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+.colrate-chart svg{ width: 100%; height: auto; display: block; overflow: visible; touch-action: pan-y; }
+.colrate-chart .cr-grid{ stroke: var(--grid-line); stroke-width: 1px; }
+.colrate-chart .cr-axis{ stroke: var(--axis-line); stroke-width: 1px; }
+.colrate-chart .cr-axis-text{ font-size: 16px; fill: var(--text-muted); }
+.colrate-chart .cr-line{ fill: none; stroke-width: 3px; stroke-linejoin: round; }
+.colrate-chart .cr-name{ font-size: 16px; font-weight: 700; }
+.colrate-chart .cr-cross{ stroke: var(--text-muted); stroke-width: 1px; stroke-dasharray: 3 3; display: none; }
+.colrate-chart .cr-dot{ display: none; stroke: #fff; stroke-width: 1.5px; }
+.colrate-chart .cr-tooltip{
+  position: absolute; pointer-events: none; background: #fff;
+  border: 1px solid var(--grid-line); border-radius: 3px; padding: 8px 12px;
+  font-size: .95rem; line-height: 1.6; box-shadow: 0 2px 6px rgba(11,11,11,.12);
+  display: none; z-index: 5; white-space: nowrap;
+}
+.colrate-chart .cr-tooltip .cr-tt-year{ font-weight: 700; }
+.colrate-chart .cr-tooltip i{ display: inline-block; width: 18px; height: 0; border-top: 3px solid; vertical-align: middle; margin-right: 6px; }
+.colrate-chart .cr-tooltip i.dash{ border-top-style: dashed; }
+.colrate-chart .cr-note{ font-size: .78rem; color: var(--text-muted); margin-top: 8px; line-height: 1.6; }
+.colrate-chart details{ margin-top: 10px; font-size: .85rem; }
+.colrate-chart table{ width: 100%; border-collapse: collapse; font-size: .78rem; margin-top: 6px; }
+.colrate-chart th, .colrate-chart td{ border: 1px solid var(--grid-line); padding: 3px 6px; text-align: right; }
+.colrate-chart th:first-child, .colrate-chart td:first-child{ text-align: left; }
+.colrate-chart .cr-scroll{ max-height: 320px; overflow: auto; }
+</style>
+
+<div class="cr-title">大学・短期大学への進学率の推移（男女別）</div>
+<svg id="cr-svg" viewBox="0 0 860 460" role="img" aria-label="大学（学部）・短期大学（本科）への進学率の推移（男女別、1954〜2025年）。男性の大学進学率は1954年の13.3%から2025年の60.7%へ、女性は2.4%から56.5%へ上昇した。女性の短大進学率は1990年代半ばに約25%でピークとなり、2025年には4.7%まで低下した。"></svg>
+
+<div class="cr-note">
+（注）大学（学部）・短期大学（本科）への進学率（過年度高卒者等を含む）。それぞれの入学者数（過年度高卒者等を含む）を、3年前の中学校等卒業者数で除した比率。<br>
+（出典）文部科学省「学校基本調査」（参考資料）年次統計 総括表4 進学率より作成（2026年11月取得）。
+</div>
+
+<details>
+<summary>データを表で見る</summary>
+<div class="cr-scroll" id="cr-table"></div>
+</details>
+
+</div>
+
+<script>
+(function(){
+  const years = [1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+  const series = [
+    {name:"大学・男",  color:"#2a78d6", dash:"",    v:[13.3,13.1,13.1,15.2,14.5,13.7,13.6,15.4,16.5,19.8,25.5,20.6,18.7,20.5,22.0,24.6,27.2,30.3,33.4,35.5,37.9,40.9,40.8,39.5,40.6,39.2,39.1,38.5,37.7,35.9,36.2,38.4,34.0,35.1,35.1,33.9,33.3,34.3,35.0,36.4,38.7,40.5,41.6,43.2,44.7,46.3,47.2,46.6,46.7,47.6,49.0,51.0,51.8,53.2,54.8,55.5,55.9,55.5,55.1,53.5,55.3,54.8,55.0,55.3,55.7,56.0,57.1,57.4,59.0,60.0,61.2,60.7]},
+    {name:"大学・女",  color:"#e34948", dash:"",    v:[2.4,2.4,2.3,2.5,2.4,2.3,2.5,3.0,3.3,3.9,5.1,4.6,4.5,4.9,5.2,5.8,6.5,7.9,9.3,10.5,11.6,12.7,13.0,12.6,12.4,12.2,12.3,12.2,12.1,12.2,12.6,13.7,12.5,13.5,14.3,14.7,15.1,16.0,17.2,18.9,20.9,22.9,24.5,25.9,27.4,29.3,31.4,32.5,33.7,34.3,35.1,36.7,38.4,40.4,42.4,44.0,45.0,45.5,45.6,45.4,46.7,47.1,47.9,48.8,49.8,50.4,50.6,51.3,53.1,54.1,55.8,56.5]},
+    {name:"短大・女",  color:"#e34948", dash:"8 5", v:[2.3,2.6,2.6,2.8,2.8,2.8,3.0,3.5,4.1,5.1,6.5,6.7,7.3,8.5,9.2,10.3,11.2,12.8,14.3,16.4,18.1,20.1,20.6,20.6,20.9,20.8,20.9,20.7,20.4,19.9,20.1,20.7,20.9,21.5,21.8,22.0,22.2,23.0,23.5,24.3,24.8,24.6,23.6,22.8,21.8,20.1,17.2,15.7,14.6,13.8,13.5,13.0,12.4,11.8,11.4,11.0,10.7,10.3,9.7,9.5,9.4,9.2,8.9,8.6,8.3,7.9,7.6,7.1,6.6,6.0,5.5,4.7]},
+    {name:"短大・男",  color:"#2a78d6", dash:"8 5", v:[2.0,1.9,1.6,1.6,1.4,1.3,1.2,1.5,1.6,1.9,2.3,1.7,1.5,1.6,1.7,1.9,2.0,2.2,2.2,2.4,2.4,2.6,2.4,2.3,2.3,2.1,2.0,1.9,1.9,1.8,1.9,2.0,1.7,1.8,1.8,1.7,1.7,1.8,1.8,1.9,2.0,2.1,2.3,2.3,2.2,2.1,1.9,1.7,1.8,1.8,1.8,1.8,1.5,1.4,1.3,1.2,1.3,1.2,1.2,1.1,1.1,1.1,1.0,1.0,0.9,1.0,1.0,0.9,0.9,0.9,0.9,0.9]}
+  ];
+
+  const W = 860, H = 460;
+  const m = {left:56, right:92, top:20, bottom:46};
+  const plotW = W - m.left - m.right, plotH = H - m.top - m.bottom;
+  const x0 = years[0], x1 = years[years.length - 1];
+  const yMin = 0, yMax = 70;
+  const xScale = yr => m.left + (yr - x0) / (x1 - x0) * plotW;
+  const yScale = v => m.top + (yMax - v) / (yMax - yMin) * plotH;
+
+  const ns = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, parent){
+    const e = document.createElementNS(ns, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  const rootEl = document.querySelector(".colrate-chart");
+  const svg = document.getElementById("cr-svg");
+
+  for (let v = yMin; v <= yMax; v += 10){
+    const y = yScale(v);
+    el("line", {class:"cr-grid", x1:m.left, x2:W-m.right, y1:y, y2:y}, svg);
+    const t = el("text", {class:"cr-axis-text", x:m.left-10, y:y+5, "text-anchor":"end"}, svg);
+    t.textContent = v;
+  }
+  const unit = el("text", {class:"cr-axis-text", x:m.left-10, y:m.top-8, "text-anchor":"end"}, svg);
+  unit.textContent = "%";
+  el("line", {class:"cr-axis", x1:m.left, x2:W-m.right, y1:yScale(0), y2:yScale(0)}, svg);
+  [1954,1960,1970,1980,1990,2000,2010,2020,2025].forEach(yr => {
+    el("line", {class:"cr-axis", x1:xScale(yr), x2:xScale(yr), y1:yScale(0), y2:yScale(0)+5}, svg);
+    const t = el("text", {class:"cr-axis-text", x:xScale(yr), y:H-m.bottom+26, "text-anchor":"middle"}, svg);
+    t.textContent = yr;
+  });
+
+  series.forEach(s => {
+    const d = s.v.map((v, i) => (i ? "L" : "M") + xScale(years[i]).toFixed(1) + "," + yScale(v).toFixed(1)).join(" ");
+    const p = el("path", {class:"cr-line", d:d, stroke:s.color}, svg);
+    if (s.dash) p.setAttribute("stroke-dasharray", s.dash);
+    s.line = p;
+  });
+
+  // 右端のラベル（最小間隔を確保）
+  const lab = series.map(s => ({s:s, y:yScale(s.v[s.v.length-1]) + 5}));
+  lab.sort((a, b) => a.y - b.y);
+  for (let it = 0; it < 60; it++){
+    let moved = false;
+    for (let i = 1; i < lab.length; i++){
+      const d = lab[i].y - lab[i-1].y;
+      if (d < 19){ const s = (19 - d) / 2 + 0.01; lab[i-1].y -= s; lab[i].y += s; moved = true; }
+    }
+    if (!moved) break;
+  }
+  lab.forEach(l => {
+    const t = el("text", {class:"cr-name", x:W-m.right+10, y:l.y, fill:l.s.color}, svg);
+    t.textContent = l.s.name;
+  });
+
+  // ホバー（縦線＋その年の4つの値）
+  const cross = el("line", {class:"cr-cross", y1:m.top, y2:yScale(0)}, svg);
+  const dots = series.map(s => el("circle", {class:"cr-dot", r:5, fill:s.color}, svg));
+  const overlay = el("rect", {x:m.left, y:m.top, width:plotW, height:plotH, fill:"transparent"}, svg);
+  overlay.style.cursor = "crosshair";
+  const tooltip = document.createElement("div");
+  tooltip.className = "cr-tooltip";
+  rootEl.appendChild(tooltip);
+
+  function show(evt){
+    const pt = svg.createSVGPoint(); pt.x = evt.clientX; pt.y = evt.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+    let i = Math.round((p.x - m.left) / plotW * (years.length - 1));
+    i = Math.max(0, Math.min(years.length - 1, i));
+    const x = xScale(years[i]);
+    cross.setAttribute("x1", x); cross.setAttribute("x2", x); cross.style.display = "block";
+    dots.forEach((d, k) => { d.setAttribute("cx", x); d.setAttribute("cy", yScale(series[k].v[i])); d.style.display = "block"; });
+    const order = [0, 1, 2, 3];
+    tooltip.innerHTML = '<span class="cr-tt-year">' + years[i] + '年</span><br>' +
+      order.map(k => '<i class="' + (series[k].dash ? "dash" : "") + '" style="border-color:' + series[k].color + '"></i>' + series[k].name + '：' + series[k].v[i].toFixed(1) + '%').join("<br>");
+    tooltip.style.display = "block";
+    const r = rootEl.getBoundingClientRect();
+    const left = evt.clientX - r.left + 16;
+    tooltip.style.left = Math.min(left, r.width - tooltip.offsetWidth - 8) + "px";
+    tooltip.style.top = (evt.clientY - r.top - 20) + "px";
+  }
+  function hide(){
+    cross.style.display = "none"; dots.forEach(d => d.style.display = "none"); tooltip.style.display = "none";
+  }
+  overlay.addEventListener("pointermove", show);
+  overlay.addEventListener("pointerdown", show);
+  overlay.addEventListener("pointerleave", hide);
+
+  // 表
+  let html = "<table><thead><tr><th>年</th>" + series.map(s => "<th>" + s.name + "</th>").join("") + "</tr></thead><tbody>";
+  years.forEach((y, i) => { html += "<tr><td>" + y + "</td>" + series.map(s => "<td>" + s.v[i].toFixed(1) + "</td>").join("") + "</tr>"; });
+  html += "</tbody></table>";
+  document.getElementById("cr-table").innerHTML = html;
+})();
+</script>
+```
